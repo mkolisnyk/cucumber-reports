@@ -1,0 +1,202 @@
+[
+  {
+    "source": "^This is what we see on error$",
+    "steps": [
+      {
+        "name": "This is what we see on error",
+        "aggregatedDurations": {
+          "median": 0.000197739,
+          "average": 0.000199677
+        },
+        "durations": [
+          {
+            "duration": 0.000198423,
+            "location": "SampleFeature.feature:18"
+          },
+          {
+            "duration": 0.000195686,
+            "location": "SampleFeature.feature:18"
+          },
+          {
+            "duration": 0.000193633,
+            "location": "SampleFeature.feature:18"
+          },
+          {
+            "duration": 0.000207318,
+            "location": "SampleGlobalValuesFeature.feature:18"
+          },
+          {
+            "duration": 0.00020595,
+            "location": "SampleGlobalValuesFeature.feature:18"
+          },
+          {
+            "duration": 0.000197055,
+            "location": "SampleGlobalValuesFeature.feature:18"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "source": "^Sample action$",
+    "steps": [
+      {
+        "name": "Sample action",
+        "aggregatedDurations": {
+          "median": 0.000204923,
+          "average": 0.000213589
+        },
+        "durations": [
+          {
+            "duration": 0.000203213,
+            "location": "SampleFeature.feature:6"
+          },
+          {
+            "duration": 0.000186107,
+            "location": "SampleFeature.feature:6"
+          },
+          {
+            "duration": 0.000197739,
+            "location": "SampleFeature.feature:6"
+          },
+          {
+            "duration": 0.000273687,
+            "location": "SampleFeature.feature:17"
+          },
+          {
+            "duration": 0.000212792,
+            "location": "SampleFeature.feature:17"
+          },
+          {
+            "duration": 0.000203896,
+            "location": "SampleFeature.feature:17"
+          },
+          {
+            "duration": 0.00023195,
+            "location": "SampleGlobalValuesFeature.feature:6"
+          },
+          {
+            "duration": 0.000199107,
+            "location": "SampleGlobalValuesFeature.feature:6"
+          },
+          {
+            "duration": 0.00020595,
+            "location": "SampleGlobalValuesFeature.feature:6"
+          },
+          {
+            "duration": 0.000229897,
+            "location": "SampleGlobalValuesFeature.feature:17"
+          },
+          {
+            "duration": 0.000192265,
+            "location": "SampleGlobalValuesFeature.feature:17"
+          },
+          {
+            "duration": 0.000226476,
+            "location": "SampleGlobalValuesFeature.feature:17"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "source": "^This is what we see on success$",
+    "steps": [
+      {
+        "name": "This is what we see on success",
+        "aggregatedDurations": {
+          "median": 0.000226134,
+          "average": 0.000223853
+        },
+        "durations": [
+          {
+            "duration": 0.000203213,
+            "location": "SampleFeature.feature:7"
+          },
+          {
+            "duration": 0.000202528,
+            "location": "SampleFeature.feature:7"
+          },
+          {
+            "duration": 0.000240161,
+            "location": "SampleFeature.feature:7"
+          },
+          {
+            "duration": 0.000240845,
+            "location": "SampleGlobalValuesFeature.feature:7"
+          },
+          {
+            "duration": 0.000244265,
+            "location": "SampleGlobalValuesFeature.feature:7"
+          },
+          {
+            "duration": 0.000212107,
+            "location": "SampleGlobalValuesFeature.feature:7"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "source": "^These are our pre-requisites$",
+    "steps": [
+      {
+        "name": "These are our pre-requisites",
+        "aggregatedDurations": {
+          "median": 0.000328424,
+          "average": 0.028392642
+        },
+        "durations": [
+          {
+            "duration": 0.336080239,
+            "location": "SampleFeature.feature:5"
+          },
+          {
+            "duration": 0.000320214,
+            "location": "SampleFeature.feature:5"
+          },
+          {
+            "duration": 0.000330477,
+            "location": "SampleFeature.feature:5"
+          },
+          {
+            "duration": 0.000300372,
+            "location": "SampleFeature.feature:16"
+          },
+          {
+            "duration": 0.000302424,
+            "location": "SampleFeature.feature:16"
+          },
+          {
+            "duration": 0.000325003,
+            "location": "SampleFeature.feature:16"
+          },
+          {
+            "duration": 0.000338688,
+            "location": "SampleGlobalValuesFeature.feature:5"
+          },
+          {
+            "duration": 0.000333898,
+            "location": "SampleGlobalValuesFeature.feature:5"
+          },
+          {
+            "duration": 0.00032774,
+            "location": "SampleGlobalValuesFeature.feature:5"
+          },
+          {
+            "duration": 0.001414278,
+            "location": "SampleGlobalValuesFeature.feature:16"
+          },
+          {
+            "duration": 0.000329109,
+            "location": "SampleGlobalValuesFeature.feature:16"
+          },
+          {
+            "duration": 0.000309267,
+            "location": "SampleGlobalValuesFeature.feature:16"
+          }
+        ]
+      }
+    ]
+  }
+]

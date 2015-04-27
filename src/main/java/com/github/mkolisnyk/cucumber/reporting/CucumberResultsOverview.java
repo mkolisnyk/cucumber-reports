@@ -3,12 +3,16 @@ package com.github.mkolisnyk.cucumber.reporting;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStream;
 
 import org.apache.commons.io.FileUtils;
+import org.apache.commons.io.IOUtils;
 
 import com.cedarsoftware.util.io.JsonObject;
 import com.cedarsoftware.util.io.JsonReader;
 import com.github.mkolisnyk.cucumber.reporting.types.result.CucumberFeatureResult;
+import com.github.mkolisnyk.cucumber.reporting.types.result.CucumberScenarioResult;
 import com.github.mkolisnyk.cucumber.reporting.types.usage.CucumberStepSource;
 
 public class CucumberResultsOverview {
@@ -82,44 +86,46 @@ public class CucumberResultsOverview {
         return sources;
     }
     
-    private String getReportBase() {
-        return "<html><head><style type=\"text/css\">" +
-                "h1 {background-color:#9999CC}" + System.lineSeparator() +
-                "h2 {background-color:#BBBBCC}" + System.lineSeparator() +
-                "h3 {background-color:#DDDDFF}" + System.lineSeparator() +
-                "th {border:1px solid black;background-color:#CCCCDD;}" + System.lineSeparator() +
-                "td{border:1px solid black;}" + System.lineSeparator() +
-                "table{border:1px solid black;border-collapse: collapse;}" + System.lineSeparator() +
-                ".passed {background-color:lightgreen;font-weight:bold;color:darkgreen}" + System.lineSeparator() +
-                ".failed {background-color:tomato;font-weight:bold;color:darkred}" + System.lineSeparator() +
-                ".undefined {background-color:gold;font-weight:bold;color:goldenrod}" + System.lineSeparator() +
-                //"tr:nth-child(even) {background: #CCC}" + System.lineSeparator() +
-                //"tr:nth-child(odd) {background: #FFF}"
-                "</style>"
-                + "<title>__TITLE__</title></head>"
-                + "<body>__REPORT__</body></html>";
+    private String getReportBase() throws IOException {
+        InputStream is = this.getClass().getResourceAsStream("/feature-overview-tmpl.html");
+        String result = IOUtils.toString(is);
+        return result;
     }
     
-    private String generateFeatureOverview(CucumberFeatureResult[] results) {
-        String content = this.getReportBase();
-        content = content.replaceAll("__TITLE__", "Features Overview");
-        
+    private String getFeatureData(CucumberFeatureResult[] results) {
         int passed = 0;
         int failed = 0;
         int undefined = 0;
         
-        String reportContent = "";
-        
         for (CucumberFeatureResult result : results) {
-            String status = result.getStatus();
-            if (status.equalsIgnoreCase("failed")) {
-                failed++;
-            } else if (status.equalsIgnoreCase("passed")) {
-                passed++;
-            } else {
-                undefined++;
+            passed += result.getStatus().trim().equalsIgnoreCase("passed") ? 1 : 0;
+            failed += result.getStatus().trim().equalsIgnoreCase("failed") ? 1 : 0;
+            undefined += result.getStatus().trim().equalsIgnoreCase("undefined") ? 1 : 0;
+        }
+        
+        return String.format("['Passed', %d], ['Failed', %d], ['Undefined', %d]", passed, failed, undefined);
+    }
+    
+    private String getScenarioData(CucumberFeatureResult[] results) {
+        int passed = 0;
+        int failed = 0;
+        int undefined = 0;
+
+        for (CucumberFeatureResult result : results) {
+            for (CucumberScenarioResult element : result.getElements()) {
+                passed += element.getStatus().trim().equalsIgnoreCase("passed") ? 1 : 0;
+                failed += element.getStatus().trim().equalsIgnoreCase("failed") ? 1 : 0;
+                undefined += element.getStatus().trim().equalsIgnoreCase("undefined") ? 1 : 0;
             }
         }
+
+        return String.format("['Passed', %d], ['Failed', %d], ['Undefined', %d]", passed, failed, undefined);
+    }
+    
+    private String generateFeatureOverview(CucumberFeatureResult[] results) throws IOException {
+        String content = this.getReportBase();
+        content = content.replaceAll("__TITLE__", "Features Overview");
+        String reportContent = "";
         
         reportContent += "<h1>Features Status</h1><table><tr><th>Feature Name</th><th>Status</th><th>Passed</th><th>Failed</th><th>Undefined</th></tr>";
         
@@ -128,7 +134,18 @@ public class CucumberResultsOverview {
                     result.getStatus(), result.getName(), result.getStatus(), result.getPassed(), result.getFailed(), result.getUndefined());
         }
         reportContent += "</table>";
+        reportContent += "<h1>Scenario Status</h1><table><tr><th>Feature Name</th><th>Scenario</th><th>Status</th><th>Passed</th><th>Failed</th><th>Undefined</th></tr>";
+        
+        for (CucumberFeatureResult result : results) {
+            for (CucumberScenarioResult element : result.getElements()) {
+                reportContent += String.format("<tr class=\"%s\"><td>%s</td><td>%s</td><td>%s</td><td>%d</td><td>%d</td><td>%d</td></tr>",
+                        element.getStatus(), result.getName(), element.getName(), element.getStatus(), element.getPassed(), element.getFailed(), element.getUndefined());
+            }
+        }
+        reportContent += "</table>";
         content = content.replaceAll("__REPORT__", reportContent);
+        content = content.replaceAll("__FEATURE_DATA__", getFeatureData(results));
+        content = content.replaceAll("__SCENARIO_DATA__", getScenarioData(results));
         return content;
     }
     

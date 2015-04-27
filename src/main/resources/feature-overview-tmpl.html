@@ -1,0 +1,71 @@
+<html>
+<head><style type="text/css">h1 {background-color:#9999CC}
+h2 {background-color:#BBBBCC}
+h3 {background-color:#DDDDFF}
+th {border:1px solid black;background-color:#CCCCDD;}
+td{border:1px solid black;}
+table {border:1px solid black;border-collapse: collapse;}
+.chart {border:0px none black;border-collapse: collapse;background-color: none;}
+.passed {background-color:lightgreen;font-weight:bold;color:darkgreen}
+.failed {background-color:tomato;font-weight:bold;color:darkred}
+.undefined {background-color:gold;font-weight:bold;color:goldenrod}
+</style>
+<title>__TITLE__</title>
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    <script type="text/javascript">
+      google.load("visualization", "1.1", {packages:["corechart","bar"]});
+	  google.setOnLoadCallback(drawChart);
+      function drawChart() {
+        var sc_data = google.visualization.arrayToDataTable([
+          ['Status', 'Number'],
+__SCENARIO_DATA__
+        ]);
+
+        var sc_options = {
+          title: 'Scenario Status',
+          is3D: true,
+		  slices: {
+            0: { color: 'green' },
+            1: { color: 'red' , offset: 0.1 },
+            2: { color: 'silver' , offset: 0.1 }
+          },
+		  tooltip: {
+		  showColorCode: true
+		  }
+        };
+
+        var sc_chart = new google.visualization.PieChart(document.getElementById('scenariochart_3d'));
+        sc_chart.draw(sc_data, sc_options);
+        var feat_data = google.visualization.arrayToDataTable([
+          ['Status', 'Number'],
+__FEATURE_DATA__
+        ]);
+
+        var feat_options = {
+          title: 'Feature Status',
+          is3D: true,
+		  slices: {
+            0: { color: 'green' },
+            1: { color: 'red', offset: 0.1 },
+            2: { color: 'silver', offset: 0.1 }
+          },
+		  tooltip: {
+		  showColorCode: true
+		  }
+        };
+
+        var feat_chart = new google.visualization.PieChart(document.getElementById('featurechart_3d'));
+        feat_chart.draw(feat_data, feat_options);
+      }
+    </script>
+  </head>
+  <body>
+  <h1>Overview Chart</h1>
+	<table class="chart"><tr class="chart">
+    <td class="chart"><div id="featurechart_3d"  style="width: 400px; height: 300px;" ></div></td>
+    <td class="chart"><div id="scenariochart_3d" style="width: 400px; height: 300px;"></div></td></tr>
+	<tr>
+	</table>
+__REPORT__	
+	</body>
+</html>

@@ -35,6 +35,9 @@ public class CucumberScenarioResult {
 
     
     public void valuate() {
+        passed = 0;
+        failed = 0;
+        undefined = 0;
         if (steps == null) {
             return;
         }
@@ -183,5 +186,18 @@ public class CucumberScenarioResult {
      */
     public final void setType(String typeValue) {
         this.type = typeValue;
+    }
+    
+    public String getStatus() {
+        valuate();
+        if ( this.getFailed() > 0) {
+            return "failed";
+        } else if (this.getUndefined() > 0) {
+            return "undefined";
+        } else if (this.getPassed() > 0) {
+            return "passed";
+        } else {
+            return "undefined";
+        }
     }
 }

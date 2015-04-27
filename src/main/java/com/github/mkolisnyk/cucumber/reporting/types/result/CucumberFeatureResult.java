@@ -38,6 +38,9 @@ public class CucumberFeatureResult {
     private int undefined = 0;
 
     public void valuate() {
+        passed = 0;
+        failed = 0;
+        undefined = 0;
         for (CucumberScenarioResult scenario : elements) {
             scenario.valuate();
             if (scenario.getFailed() > 0) {

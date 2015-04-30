@@ -25,8 +25,8 @@
   </developers>
   <scm>
     <connection>scm:git:git@github.com:mkolisnyk/cucumber-reports.git</connection>
-    <developerConnection>scm:git:git@github.com:mkolisnyk/cucumber-report.git</developerConnection>
-    <url>https://github.com/mkolisnyk/cucumber-report.git</url>
+    <developerConnection>scm:git:git@github.com:mkolisnyk/cucumber-reports.git</developerConnection>
+    <url>https://github.com/mkolisnyk/cucumber-reports.git</url>
     <tag>HEAD</tag>
   </scm>
   	<properties>

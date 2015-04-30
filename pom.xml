@@ -5,24 +5,100 @@
     <artifactId>parent-pom</artifactId>
     <version>0.0.2</version>
   </parent>
-  <groupId>com.github.mkolisnyk</groupId>
   <artifactId>cucumber-reports</artifactId>
   <version>0.0.1-SNAPSHOT</version>
+  <name>Cucumber Reports</name>
+  <description>Library generating different Cucumber reports</description>
+  <licenses>
+    <license>
+      <name>The Apache Software License, Version 2.0</name>
+      <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+      <distribution>repo</distribution>
+    </license>
+  </licenses>
+  <developers>
+    <developer>
+      <id>mkolisnyk</id>
+      <name>mkolisnyk</name>
+      <email>kolesnik.nickolay@gmail.com</email>
+    </developer>
+  </developers>
+  <scm>
+    <connection>scm:git:git@github.com:mkolisnyk/cucumber-reports.git</connection>
+    <developerConnection>scm:git:git@github.com:mkolisnyk/cucumber-report.git</developerConnection>
+    <url>https://github.com/mkolisnyk/cucumber-report.git</url>
+    <tag>HEAD</tag>
+  </scm>
+  	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<fail.pmd>false</fail.pmd>
+		<fail.checkstyle>false</fail.checkstyle>
+		<fail.findbugs>false</fail.findbugs>
+		<fail.coverage>false</fail.coverage>
+		<fail.ncss>false</fail.ncss>
+	</properties>
+  <build>
+    <resources>
+      <resource>
+         <directory>${project.basedir}/src/main/resources</directory>
+      </resource>
+    </resources>
+    <testResources>
+        <testResource>
+            <directory>${project.basedir}/src/test/resources</directory>
+        </testResource>
+        <testResource>
+            <directory>${project.basedir}/src/main/resources</directory>
+        </testResource>
+    </testResources>
+    <plugins>
+      <plugin>
+        <groupId>org.sonatype.plugins</groupId>
+        <artifactId>nexus-staging-maven-plugin</artifactId>
+        <version>1.1</version>
+        <executions>
+          <execution>
+            <id>default-deploy</id>
+            <phase>deploy</phase>
+            <goals>
+              <goal>deploy</goal>
+            </goals>
+          </execution>
+        </executions>
+        <configuration>
+          <serverId>sonatype-nexus-staging</serverId>
+          <nexusUrl>https://oss.sonatype.org/</nexusUrl>
+          <skipLocalStaging>true</skipLocalStaging>
+        </configuration>
+      </plugin>
+      			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>findbugs-maven-plugin</artifactId>
+				<version>2.5.2</version>
+				<configuration>
+					<encoding>${project.build.sourceEncoding}</encoding>
+					<failOnError>false</failOnError>
+					<excludeFilterFile>findBugsExclude.xml</excludeFilterFile>
+					<skip>true</skip>
+				</configuration>
+			</plugin>
+    </plugins>
+  </build>
   <dependencies>
-  		<dependency>
-			<groupId>com.cedarsoftware</groupId>
-			<artifactId>json-io</artifactId>
-			<version>2.2.31</version>
-		</dependency>
-		<dependency>
-			<groupId>info.cukes</groupId>
-			<artifactId>cucumber-picocontainer</artifactId>
-			<version>1.2.2</version>
-		</dependency>
-		<dependency>
-			<groupId>info.cukes</groupId>
-			<artifactId>cucumber-junit</artifactId>
-			<version>1.2.2</version>
-		</dependency>
+      <dependency>
+      <groupId>com.cedarsoftware</groupId>
+      <artifactId>json-io</artifactId>
+      <version>2.2.31</version>
+    </dependency>
+    <dependency>
+      <groupId>info.cukes</groupId>
+      <artifactId>cucumber-picocontainer</artifactId>
+      <version>1.2.2</version>
+    </dependency>
+    <dependency>
+      <groupId>info.cukes</groupId>
+      <artifactId>cucumber-junit</artifactId>
+      <version>1.2.2</version>
+    </dependency>
   </dependencies>
 </project>

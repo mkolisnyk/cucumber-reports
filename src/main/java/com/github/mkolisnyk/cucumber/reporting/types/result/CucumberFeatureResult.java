@@ -1,8 +1,6 @@
 package com.github.mkolisnyk.cucumber.reporting.types.result;
 
 import com.cedarsoftware.util.io.JsonObject;
-import com.github.mkolisnyk.cucumber.reporting.types.usage.CucumberAggregatedDuration;
-import com.github.mkolisnyk.cucumber.reporting.types.usage.CucumberStepDuration;
 
 public class CucumberFeatureResult {
     private String                   id;
@@ -16,7 +14,11 @@ public class CucumberFeatureResult {
 
     public CucumberFeatureResult(JsonObject<String, Object> json) {
         this.id = (String)json.get("id");
-        Object[] objs = (Object[])((JsonObject<String, Object>)json.get("tags")).get("@items");
+        JsonObject<String, Object> tagEntry = (JsonObject<String, Object>)json.get("tags");
+        Object[] objs = {};
+        if (tagEntry != null) {
+            objs = (Object[])((JsonObject<String, Object>)json.get("tags")).get("@items");
+        }
         this.tags = new CucumberTagResults[objs.length];
         for(int i=0;i<objs.length;i++){
             this.tags[i] = new CucumberTagResults((JsonObject<String, Object>)objs[i]);

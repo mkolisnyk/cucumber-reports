@@ -13,7 +13,6 @@ import com.cedarsoftware.util.io.JsonObject;
 import com.cedarsoftware.util.io.JsonReader;
 import com.github.mkolisnyk.cucumber.reporting.types.result.CucumberFeatureResult;
 import com.github.mkolisnyk.cucumber.reporting.types.result.CucumberScenarioResult;
-import com.github.mkolisnyk.cucumber.reporting.types.usage.CucumberStepSource;
 
 public class CucumberResultsOverview {
 

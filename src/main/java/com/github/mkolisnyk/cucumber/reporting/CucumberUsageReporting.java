@@ -23,136 +23,42 @@ import com.github.mkolisnyk.cucumber.reporting.types.usage.CucumberStepDuration;
 import com.github.mkolisnyk.cucumber.reporting.types.usage.CucumberStepSource;
 import com.github.mkolisnyk.cucumber.reporting.utils.helpers.MapUtils;
 
-/**
- * Generates HTML report based on Cucumber usage page. The input is the result of the site:cucumber 
- * goal which is the part of this plugin
- * @author Myk Kolisnyk
- * @goal cucumber-usage
- * @phase site
- */
 public class CucumberUsageReporting {
 
-    /**
-     * The path to the JSON usage file which is an input for the report generation
-     * @parameter expression="${project.reporting.jsonUsageFile}"
-     * @required
-     */
     private String       jsonUsageFile;
 
-    /**
-     * The directory the output should be produced to.
-     * @parameter expression="${project.reporting.outputDirectory}"
-     * @required
-     * @readonly
-     */
     private String       outputDirectory;
 
-    /**
-     * @parameter default-value="${project}"
-     * @required
-     * @readonly
-     */
     private MavenProject project;
 
-    /**
-     * @component
-     * @required
-     * @readonly
-     */
     private Renderer     siteRenderer;
 
-    /*
-     * (non-Javadoc)
-     * 
-     * @see
-     * org.apache.maven.reporting.MavenReport#getDescription(java.util.Locale)
-     */
     public String getDescription(Locale arg0) {
         return "HTML formatted Cucumber keywords usage report";
     }
 
-    /*
-     * (non-Javadoc)
-     * 
-     * @see org.apache.maven.reporting.MavenReport#getName(java.util.Locale)
-     */
     public String getName(Locale arg0) {
         return "Cucumber usage report";
     }
 
-    /*
-     * (non-Javadoc)
-     * 
-     * @see org.apache.maven.reporting.MavenReport#getOutputName()
-     */
     public String getOutputName() {
         return "cucumber-usage-report";
     }
 
-    /*
-     * (non-Javadoc)
-     * 
-     * @see org.apache.maven.reporting.AbstractMavenReport#getOutputDirectory()
-     */
     protected String getOutputDirectory() {
         return this.outputDirectory;
     }
 
-    /*
-     * (non-Javadoc)
-     * 
-     * @see org.apache.maven.reporting.AbstractMavenReport#getProject()
-     */
-    protected MavenProject getProject() {
-        return this.project;
-    }
-
-    /*
-     * (non-Javadoc)
-     * 
-     * @see org.apache.maven.reporting.AbstractMavenReport#getSiteRenderer()
-     */
-    protected Renderer getSiteRenderer() {
-        return this.siteRenderer;
-    }
-
-    /**
-     * @return the jsonUsageFile
-     */
     public String getJsonUsageFile() {
         return jsonUsageFile;
     }
 
-    /**
-     * @param jsonUsageFile
-     *            the jsonUsageFile to set
-     */
     public void setJsonUsageFile(String jsonUsageFile) {
         this.jsonUsageFile = jsonUsageFile;
     }
 
-    /**
-     * @param outputDirectory
-     *            the outputDirectory to set
-     */
     public void setOutputDirectory(String outputDirectory) {
         this.outputDirectory = outputDirectory;
-    }
-
-    /**
-     * @param project
-     *            the project to set
-     */
-    public void setProject(MavenProject project) {
-        this.project = project;
-    }
-
-    /**
-     * @param siteRenderer
-     *            the siteRenderer to set
-     */
-    public void setSiteRenderer(Renderer siteRenderer) {
-        this.siteRenderer = siteRenderer;
     }
 
     public LinkedHashMap<String,Integer> calculateStepsUsageScore(CucumberStepSource[] sources){
@@ -253,11 +159,6 @@ public class CucumberUsageReporting {
         return max;
     }
     
-    /**
-     * .
-     * @param sink .
-     * @param sources .
-     */
     protected String generateUsageOverviewGraphReport(CucumberStepSource[] sources){
         double hscale;
         double vscale;
@@ -353,11 +254,6 @@ public class CucumberUsageReporting {
         return htmlContent;
     }
     
-    /**
-     * .
-     * @param sink .
-     * @param sources .
-     */
     protected String generateUsageOverviewTableReport(CucumberStepSource[] sources){
         LinkedHashMap<String,Integer> map = calculateStepsUsageScore(sources);
         String content = "<table><tr><th>Expression</th><th>Occurences</th></tr>";
@@ -369,11 +265,6 @@ public class CucumberUsageReporting {
         return content;
     }
     
-    /**
-     * .
-     * @param sink .
-     * @param sources .
-     */
     protected String generateUsageDetailedReport(CucumberStepSource[] sources){
         String content = "";
         for(CucumberStepSource source:sources){
@@ -426,13 +317,6 @@ public class CucumberUsageReporting {
 "tr:nth-child(odd) {background: #FFF}";
     }
     
-    /*
-     * (non-Javadoc)
-     * 
-     * @see
-     * org.apache.maven.reporting.AbstractMavenReport#executeReport(java.util
-     * .Locale)
-     */
     public void executeReport() throws MavenReportException {
         try {
             

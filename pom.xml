@@ -6,7 +6,7 @@
     <version>0.0.2</version>
   </parent>
   <artifactId>cucumber-reports</artifactId>
-  <version>0.0.2</version>
+  <version>0.0.3-SNAPSHOT</version>
   <name>Cucumber Reports</name>
   <description>Library generating different Cucumber reports</description>
   <licenses>

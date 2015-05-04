@@ -31,11 +31,7 @@
   </scm>
   	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<fail.pmd>false</fail.pmd>
-		<fail.checkstyle>false</fail.checkstyle>
-		<fail.findbugs>false</fail.findbugs>
 		<fail.coverage>false</fail.coverage>
-		<fail.ncss>false</fail.ncss>
 	</properties>
   <build>
     <resources>
@@ -71,7 +67,7 @@
           <skipLocalStaging>true</skipLocalStaging>
         </configuration>
       </plugin>
-      			<plugin>
+      		<plugin>
 				<groupId>org.codehaus.mojo</groupId>
 				<artifactId>findbugs-maven-plugin</artifactId>
 				<version>2.5.2</version>
@@ -80,6 +76,15 @@
 					<failOnError>false</failOnError>
 					<excludeFilterFile>findBugsExclude.xml</excludeFilterFile>
 					<skip>true</skip>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-checkstyle-plugin</artifactId>
+				<version>2.13</version>
+				<configuration>
+					<configLocation>./sun_checks.xml</configLocation>
+					<suppressionsLocation>./checkstyle-suppressions.xml</suppressionsLocation>
 				</configuration>
 			</plugin>
     </plugins>

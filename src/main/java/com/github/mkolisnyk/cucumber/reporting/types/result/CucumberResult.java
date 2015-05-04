@@ -7,7 +7,7 @@ public class CucumberResult {
     private String status;
 
     public CucumberResult(JsonObject<String, Object> json) {
-        this.status = (String)json.get("status");
+        this.status = (String) json.get("status");
     }
 
     /**

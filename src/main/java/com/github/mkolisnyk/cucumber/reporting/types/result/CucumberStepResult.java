@@ -7,13 +7,15 @@ public class CucumberStepResult {
     private CucumberResult result;
     private String         name;
     private String         keyword;
-    private Long            line;
+    private Long           line;
 
+    @SuppressWarnings("unchecked")
     public CucumberStepResult(JsonObject<String, Object> json) {
-        this.name = (String)json.get("name");
-        this.keyword = (String)json.get("keyword");
-        this.line = (Long)json.get("line");
-        this.result = new CucumberResult((JsonObject<String, Object>)json.get("result"));
+        this.name = (String) json.get("name");
+        this.keyword = (String) json.get("keyword");
+        this.line = (Long) json.get("line");
+        this.result = new CucumberResult(
+                (JsonObject<String, Object>) json.get("result"));
     }
 
     /**

@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+
+<!DOCTYPE suppressions PUBLIC
+    "-//Puppy Crawl//DTD Suppressions 1.1//EN"
+    "http://www.puppycrawl.com/dtds/suppressions_1_1.dtd">
+
+<suppressions>
+    <suppress checks="AvoidInlineConditionals"
+              files="NumericRangeValueExpression.java"
+              lines="130-138"/>
+    <suppress checks="MethodName"
+              files="AerialTestNGRunner.java"
+              lines="68"/>
+    <suppress checks="RegexpSingleline"
+              files="cucumber.properties"
+              lines="15-23"/>
+    <suppress checks="RegexpSingleline"
+              files="jbehave.properties"
+              lines="13-21"/>
+</suppressions>

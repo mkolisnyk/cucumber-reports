@@ -1,5 +1,5 @@
 /**
- * 
+ * .
  */
 package com.github.mkolisnyk.cucumber.reporting.types.usage;
 
@@ -15,26 +15,27 @@ public class CucumberStepSource {
     public String getSource() {
         return source;
     }
-    public void setSource(String source) {
-        this.source = source;
+    public void setSource(String sourceValue) {
+        this.source = sourceValue;
     }
     public CucumberStep[] getSteps() {
         return steps;
     }
-    public void setSteps(CucumberStep[] steps) {
-        this.steps = steps;
+    public void setSteps(CucumberStep[] stepsValue) {
+        this.steps = stepsValue;
     }
-    public CucumberStepSource(String source, CucumberStep[] steps) {
+    public CucumberStepSource(String sourceValue, CucumberStep[] stepsValue) {
         super();
-        this.source = source;
-        this.steps = steps;
+        this.source = sourceValue;
+        this.steps = stepsValue;
     }
-    public CucumberStepSource(JsonObject<String,Object> json){
-        this.source = (String)json.get("source");
-        Object[] objs = (Object[])((JsonObject<String,Object>)json.get("steps")).get("@items");
+    @SuppressWarnings("unchecked")
+    public CucumberStepSource(JsonObject<String, Object> json) {
+        this.source = (String) json.get("source");
+        Object[] objs = (Object[]) ((JsonObject<String, Object>) json.get("steps")).get("@items");
         this.steps = new CucumberStep[objs.length];
-        for(int i=0;i<objs.length;i++){
-            this.steps[i] = new CucumberStep((JsonObject<String,Object>)objs[i]);
+        for (int i = 0; i < objs.length; i++) {
+            this.steps[i] = new CucumberStep((JsonObject<String, Object>) objs[i]);
         }
     }
 }

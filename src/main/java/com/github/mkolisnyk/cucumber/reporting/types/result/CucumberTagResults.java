@@ -4,8 +4,9 @@ import com.cedarsoftware.util.io.JsonObject;
 
 public class CucumberTagResults {
 
-    public CucumberTagResults(JsonObject<String, Object> jsonObject) {
-        // TODO Auto-generated constructor stub
+    public CucumberTagResults(JsonObject<String, Object> json) {
+        this.name = (String) json.get("name");
+        this.line = (Long) json.get("line");
     }
 
     /**
@@ -26,7 +27,7 @@ public class CucumberTagResults {
     /**
      * @return the line
      */
-    public final int getLine() {
+    public final Long getLine() {
         return line;
     }
 
@@ -34,10 +35,10 @@ public class CucumberTagResults {
      * @param lineValue
      *            the line to set
      */
-    public final void setLine(int lineValue) {
+    public final void setLine(Long lineValue) {
         this.line = lineValue;
     }
 
     private String name;
-    private int    line;
+    private Long    line;
 }

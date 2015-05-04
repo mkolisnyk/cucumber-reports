@@ -8,32 +8,33 @@ public class CucumberScenarioResult {
     private String               description;
     private String               name;
     private String               keyword;
-    private Long                  line;
+    private Long                 line;
     private CucumberStepResult[] steps;
     private String               type;
 
-    private int passed = 0;
-    private int failed = 0;
-    private int undefined = 0;
-    
-    public CucumberScenarioResult(
-            JsonObject<String, Object> json) {
-        this.id = (String)json.get("id");
-        this.description = (String)json.get("description");
-        this.name = (String)json.get("name");
-        this.keyword = (String)json.get("keyword");
-        this.line = (Long)json.get("line");
-        this.type = (String)json.get("type");
+    private int                  passed    = 0;
+    private int                  failed    = 0;
+    private int                  undefined = 0;
+
+    @SuppressWarnings("unchecked")
+    public CucumberScenarioResult(JsonObject<String, Object> json) {
+        this.id = (String) json.get("id");
+        this.description = (String) json.get("description");
+        this.name = (String) json.get("name");
+        this.keyword = (String) json.get("keyword");
+        this.line = (Long) json.get("line");
+        this.type = (String) json.get("type");
         if (json.containsKey("steps")) {
-            Object[] objs = (Object[])((JsonObject<String, Object>)json.get("steps")).get("@items");
+            Object[] objs = (Object[]) ((JsonObject<String, Object>) json
+                    .get("steps")).get("@items");
             this.steps = new CucumberStepResult[objs.length];
-            for(int i=0;i<objs.length;i++){
-                this.steps[i] = new CucumberStepResult((JsonObject<String, Object>)objs[i]);
+            for (int i = 0; i < objs.length; i++) {
+                this.steps[i] = new CucumberStepResult(
+                        (JsonObject<String, Object>) objs[i]);
             }
         }
     }
 
-    
     public void valuate() {
         passed = 0;
         failed = 0;
@@ -52,16 +53,13 @@ public class CucumberScenarioResult {
             }
         }
     }
-    
+
     /**
      * @return the passed
      */
     public final int getPassed() {
         return passed;
     }
-
-
-
 
     /**
      * @return the failed
@@ -70,9 +68,6 @@ public class CucumberScenarioResult {
         return failed;
     }
 
-
-
-
     /**
      * @return the undefined
      */
@@ -80,22 +75,24 @@ public class CucumberScenarioResult {
         return undefined;
     }
 
-
-
+    public String getStatus() {
+        valuate();
+        if (this.getFailed() > 0) {
+            return "failed";
+        } else if (this.getUndefined() > 0) {
+            return "undefined";
+        } else if (this.getPassed() > 0) {
+            return "passed";
+        } else {
+            return "undefined";
+        }
+    }
 
     /**
      * @return the id
      */
     public final String getId() {
         return id;
-    }
-
-    /**
-     * @param idValue
-     *            the id to set
-     */
-    public final void setId(String idValue) {
-        this.id = idValue;
     }
 
     /**
@@ -106,26 +103,10 @@ public class CucumberScenarioResult {
     }
 
     /**
-     * @param descriptionValue
-     *            the description to set
-     */
-    public final void setDescription(String descriptionValue) {
-        this.description = descriptionValue;
-    }
-
-    /**
      * @return the name
      */
     public final String getName() {
         return name;
-    }
-
-    /**
-     * @param nameValue
-     *            the name to set
-     */
-    public final void setName(String nameValue) {
-        this.name = nameValue;
     }
 
     /**
@@ -136,26 +117,10 @@ public class CucumberScenarioResult {
     }
 
     /**
-     * @param keywordValue
-     *            the keyword to set
-     */
-    public final void setKeyword(String keywordValue) {
-        this.keyword = keywordValue;
-    }
-
-    /**
      * @return the line
      */
     public final Long getLine() {
         return line;
-    }
-
-    /**
-     * @param lineValue
-     *            the line to set
-     */
-    public final void setLine(Long lineValue) {
-        this.line = lineValue;
     }
 
     /**
@@ -166,14 +131,6 @@ public class CucumberScenarioResult {
     }
 
     /**
-     * @param stepsValue
-     *            the steps to set
-     */
-    public final void setSteps(CucumberStepResult[] stepsValue) {
-        this.steps = stepsValue;
-    }
-
-    /**
      * @return the type
      */
     public final String getType() {
@@ -181,23 +138,51 @@ public class CucumberScenarioResult {
     }
 
     /**
-     * @param typeValue
-     *            the type to set
+     * @param idValue the id to set
+     */
+    public final void setId(String idValue) {
+        this.id = idValue;
+    }
+
+    /**
+     * @param descriptionValue the description to set
+     */
+    public final void setDescription(String descriptionValue) {
+        this.description = descriptionValue;
+    }
+
+    /**
+     * @param nameValue the name to set
+     */
+    public final void setName(String nameValue) {
+        this.name = nameValue;
+    }
+
+    /**
+     * @param keywordValue the keyword to set
+     */
+    public final void setKeyword(String keywordValue) {
+        this.keyword = keywordValue;
+    }
+
+    /**
+     * @param lineValue the line to set
+     */
+    public final void setLine(Long lineValue) {
+        this.line = lineValue;
+    }
+
+    /**
+     * @param stepsValue the steps to set
+     */
+    public final void setSteps(CucumberStepResult[] stepsValue) {
+        this.steps = stepsValue;
+    }
+
+    /**
+     * @param typeValue the type to set
      */
     public final void setType(String typeValue) {
         this.type = typeValue;
-    }
-    
-    public String getStatus() {
-        valuate();
-        if ( this.getFailed() > 0) {
-            return "failed";
-        } else if (this.getUndefined() > 0) {
-            return "undefined";
-        } else if (this.getPassed() > 0) {
-            return "passed";
-        } else {
-            return "undefined";
-        }
     }
 }

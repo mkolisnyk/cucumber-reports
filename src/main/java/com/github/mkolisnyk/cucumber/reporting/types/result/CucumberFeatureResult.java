@@ -8,35 +8,41 @@ public class CucumberFeatureResult {
     private String                   description;
     private String                   name;
     private String                   keyword;
-    private Long                      line;
+    private Long                     line;
     private CucumberScenarioResult[] elements;
     private String                   uri;
 
+    @SuppressWarnings("unchecked")
     public CucumberFeatureResult(JsonObject<String, Object> json) {
-        this.id = (String)json.get("id");
-        JsonObject<String, Object> tagEntry = (JsonObject<String, Object>)json.get("tags");
+        this.id = (String) json.get("id");
+        JsonObject<String, Object> tagEntry = (JsonObject<String, Object>) json
+                .get("tags");
         Object[] objs = {};
         if (tagEntry != null) {
-            objs = (Object[])((JsonObject<String, Object>)json.get("tags")).get("@items");
+            objs = (Object[]) ((JsonObject<String, Object>) json
+                    .get("tags")).get("@items");
         }
         this.tags = new CucumberTagResults[objs.length];
-        for(int i=0;i<objs.length;i++){
-            this.tags[i] = new CucumberTagResults((JsonObject<String, Object>)objs[i]);
+        for (int i = 0; i < objs.length; i++) {
+            this.tags[i] = new CucumberTagResults(
+                    (JsonObject<String, Object>) objs[i]);
         }
-        this.description = (String)json.get("description");
-        this.name = (String)json.get("name");
-        this.keyword = (String)json.get("keyword");
-        this.line = (Long)json.get("line");
-        objs = (Object[])((JsonObject<String, Object>)json.get("elements")).get("@items");
+        this.description = (String) json.get("description");
+        this.name = (String) json.get("name");
+        this.keyword = (String) json.get("keyword");
+        this.line = (Long) json.get("line");
+        objs = (Object[]) ((JsonObject<String, Object>) json
+                .get("elements")).get("@items");
         this.elements = new CucumberScenarioResult[objs.length];
-        for(int i=0;i<objs.length;i++){
-            this.elements[i] = new CucumberScenarioResult((JsonObject<String, Object>)objs[i]);
+        for (int i = 0; i < objs.length; i++) {
+            this.elements[i] = new CucumberScenarioResult(
+                    (JsonObject<String, Object>) objs[i]);
         }
-        this.uri = (String)json.get("uri");
+        this.uri = (String) json.get("uri");
     }
 
-    private int passed = 0;
-    private int failed = 0;
+    private int passed    = 0;
+    private int failed    = 0;
     private int undefined = 0;
 
     public void valuate() {
@@ -54,10 +60,10 @@ public class CucumberFeatureResult {
             }
         }
     }
-    
+
     public String getStatus() {
         this.valuate();
-        if (this.getFailed() > 0 ) {
+        if (this.getFailed() > 0) {
             return "failed";
         } else if (this.getUndefined() > 0) {
             return "undefined";
@@ -65,7 +71,7 @@ public class CucumberFeatureResult {
             return "passed";
         }
     }
-    
+
     /**
      * @return the passed
      */
@@ -188,7 +194,8 @@ public class CucumberFeatureResult {
      * @param elementsValue
      *            the elements to set
      */
-    public final void setElements(CucumberScenarioResult[] elementsValue) {
+    public final void setElements(
+            CucumberScenarioResult[] elementsValue) {
         this.elements = elementsValue;
     }
 

@@ -1,5 +1,5 @@
 /**
- * 
+ * .
  */
 package com.github.mkolisnyk.cucumber.reporting.types.usage;
 
@@ -15,23 +15,23 @@ public class CucumberStepDuration {
     public Double getDuration() {
         return duration;
     }
-    public void setDuration(Double duration) {
-        this.duration = duration;
+    public void setDuration(Double durationValue) {
+        this.duration = durationValue;
     }
     public String getLocation() {
         return location;
     }
-    public void setLocation(String location) {
-        this.location = location;
+    public void setLocation(String locationValue) {
+        this.location = locationValue;
     }
-    public CucumberStepDuration(Double duration, String location) {
+    public CucumberStepDuration(Double durationValue, String locationValue) {
         super();
-        this.duration = duration;
-        this.location = location;
+        this.duration = durationValue;
+        this.location = locationValue;
     }
-    
-    public CucumberStepDuration(JsonObject<String, Object> json){
-        this.duration = (Double)json.get("duration");
-        this.location = (String)json.get("location");
+
+    public CucumberStepDuration(JsonObject<String, Object> json) {
+        this.duration = (Double) json.get("duration");
+        this.location = (String) json.get("location");
     }
 }

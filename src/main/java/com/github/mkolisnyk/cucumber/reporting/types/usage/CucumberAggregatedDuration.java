@@ -1,5 +1,5 @@
 /**
- * 
+ * .
  */
 package com.github.mkolisnyk.cucumber.reporting.types.usage;
 
@@ -11,27 +11,27 @@ import com.cedarsoftware.util.io.JsonObject;
  */
 public class CucumberAggregatedDuration {
     private Double average;
-    private Double median;    
+    private Double median;
     public Double getAverage() {
         return average;
     }
-    public void setAverage(Double average) {
-        this.average = average;
+    public void setAverage(Double averageValue) {
+        this.average = averageValue;
     }
     public Double getMedian() {
         return median;
     }
-    public void setMedian(Double median) {
-        this.median = median;
+    public void setMedian(Double medianValue) {
+        this.median = medianValue;
     }
-    public CucumberAggregatedDuration(Double average, Double median) {
+    public CucumberAggregatedDuration(Double averageValue, Double medianValue) {
         super();
-        this.average = average;
-        this.median = median;
+        this.average = averageValue;
+        this.median = medianValue;
     }
-    
-    public CucumberAggregatedDuration(JsonObject<String, Object> json){
-        this.average = (Double)json.get("average");
-        this.median = (Double)json.get("median");
+
+    public CucumberAggregatedDuration(JsonObject<String, Object> json) {
+        this.average = (Double) json.get("average");
+        this.median = (Double) json.get("median");
     }
 }

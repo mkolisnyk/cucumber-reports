@@ -5,12 +5,16 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
+import java.net.URL;
 
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.IOUtils;
 
 import com.cedarsoftware.util.io.JsonObject;
 import com.cedarsoftware.util.io.JsonReader;
+import com.gargoylesoftware.htmlunit.BrowserVersion;
+import com.gargoylesoftware.htmlunit.WebClient;
+import com.gargoylesoftware.htmlunit.html.HtmlPage;
 import com.github.mkolisnyk.cucumber.reporting.types.result.CucumberFeatureResult;
 import com.github.mkolisnyk.cucumber.reporting.types.result.CucumberScenarioResult;
 
@@ -187,5 +191,10 @@ public class CucumberResultsOverview {
                 this.getOutputDirectory() + File.separator + this.getOutputName()
                 + "-feature-overview.html");
         FileUtils.writeStringToFile(outFile, generateFeatureOverview(features));
+        final WebClient webClient = new WebClient(BrowserVersion.INTERNET_EXPLORER_11);
+        final HtmlPage page = webClient.getPage(new URL("file://" + outFile.getAbsolutePath()).toExternalForm());
+        String content = page.asXml();
+        FileUtils.writeStringToFile(outFile, content);
+        webClient.close();
     }
 }

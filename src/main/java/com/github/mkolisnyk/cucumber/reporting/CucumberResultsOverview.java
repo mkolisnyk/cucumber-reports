@@ -192,6 +192,7 @@ public class CucumberResultsOverview {
                 + "-feature-overview.html");
         FileUtils.writeStringToFile(outFile, generateFeatureOverview(features));
         final WebClient webClient = new WebClient(BrowserVersion.INTERNET_EXPLORER_11);
+        webClient.getOptions().setThrowExceptionOnScriptError(false);
         final HtmlPage page = webClient.getPage(new URL("file://" + outFile.getAbsolutePath()).toExternalForm());
         String content = page.asXml();
         FileUtils.writeStringToFile(outFile, content);

@@ -29,10 +29,10 @@
     <url>https://github.com/mkolisnyk/cucumber-reports.git</url>
     <tag>HEAD</tag>
   </scm>
-  	<properties>
-		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<fail.coverage>false</fail.coverage>
-	</properties>
+      <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <fail.coverage>false</fail.coverage>
+    </properties>
   <build>
     <resources>
       <resource>
@@ -67,26 +67,26 @@
           <skipLocalStaging>true</skipLocalStaging>
         </configuration>
       </plugin>
-      		<plugin>
-				<groupId>org.codehaus.mojo</groupId>
-				<artifactId>findbugs-maven-plugin</artifactId>
-				<version>2.5.2</version>
-				<configuration>
-					<encoding>${project.build.sourceEncoding}</encoding>
-					<failOnError>false</failOnError>
-					<excludeFilterFile>findBugsExclude.xml</excludeFilterFile>
-					<skip>true</skip>
-				</configuration>
-			</plugin>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-checkstyle-plugin</artifactId>
-				<version>2.13</version>
-				<configuration>
-					<configLocation>./sun_checks.xml</configLocation>
-					<suppressionsLocation>./checkstyle-suppressions.xml</suppressionsLocation>
-				</configuration>
-			</plugin>
+          <plugin>
+            <groupId>org.codehaus.mojo</groupId>
+            <artifactId>findbugs-maven-plugin</artifactId>
+            <version>2.5.2</version>
+            <configuration>
+                <encoding>${project.build.sourceEncoding}</encoding>
+                <failOnError>false</failOnError>
+                <excludeFilterFile>findBugsExclude.xml</excludeFilterFile>
+                <skip>true</skip>
+            </configuration>
+        </plugin>
+        <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-checkstyle-plugin</artifactId>
+            <version>2.13</version>
+            <configuration>
+                <configLocation>./sun_checks.xml</configLocation>
+                <suppressionsLocation>./checkstyle-suppressions.xml</suppressionsLocation>
+            </configuration>
+        </plugin>
     </plugins>
   </build>
   <dependencies>
@@ -109,6 +109,11 @@
       <groupId>net.sourceforge.htmlunit</groupId>
       <artifactId>htmlunit</artifactId>
       <version>2.16</version>
+    </dependency>
+       <dependency>
+        <groupId>junit</groupId>
+        <artifactId>junit</artifactId>
+        <version>4.11</version>
     </dependency>
   </dependencies>
 </project>

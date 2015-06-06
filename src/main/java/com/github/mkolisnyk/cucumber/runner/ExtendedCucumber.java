@@ -25,13 +25,6 @@ public class ExtendedCucumber extends ParentRunner<ExtendedFeatureRunner> {
     private final List<ExtendedFeatureRunner> children = new ArrayList<ExtendedFeatureRunner>();
     private final Runtime runtime;
 
-    /**
-     * Constructor called by JUnit.
-     *
-     * @param clazz the class with the @RunWith annotation.
-     * @throws java.io.IOException                         if there is a problem
-     * @throws org.junit.runners.model.InitializationError if there is another problem
-     */
     public ExtendedCucumber(Class clazz) throws InitializationError, IOException {
         super(clazz);
         ClassLoader classLoader = clazz.getClassLoader();
@@ -48,16 +41,6 @@ public class ExtendedCucumber extends ParentRunner<ExtendedFeatureRunner> {
         addChildren(cucumberFeatures);
     }
 
-    /**
-     * Create the Runtime. Can be overridden to customize the runtime or backend.
-     *
-     * @param resourceLoader used to load resources
-     * @param classLoader    used to load classes
-     * @param runtimeOptions configuration
-     * @return a new runtime
-     * @throws InitializationError if a JUnit error occurred
-     * @throws IOException if a class or resource could not be loaded
-     */
     protected Runtime createRuntime(ResourceLoader resourceLoader, ClassLoader classLoader,
                                     RuntimeOptions runtimeOptions) throws InitializationError, IOException {
         ClassFinder classFinder = new ResourceLoaderClassFinder(resourceLoader, classLoader);

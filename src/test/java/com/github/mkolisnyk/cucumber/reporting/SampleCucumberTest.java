@@ -1,11 +1,13 @@
 package com.github.mkolisnyk.cucumber.reporting;
 
+import org.junit.Ignore;
 import org.junit.runner.RunWith;
 
 import com.github.mkolisnyk.cucumber.runner.ExtendedCucumber;
 
 import cucumber.api.CucumberOptions;
 
+@Ignore
 @RunWith(ExtendedCucumber.class)
 @CucumberOptions(
         plugin = {"html:target/cucumber-html-report",

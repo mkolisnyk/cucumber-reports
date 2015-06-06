@@ -12,4 +12,13 @@ public class CucumberResultsReportTest {
         results.setSourceFile("./src/test/resources/cucumber.json");
         results.executeFeaturesOverviewReport();
     }
+    
+    @Test
+    public void testGenerateDetailedReport() throws Exception {
+        CucumberDetailedResults results = new CucumberDetailedResults();
+        results.setOutputDirectory("target");
+        results.setOutputName("cucumber-results");
+        results.setSourceFile("./src/test/resources/cucumber.json");
+        results.executeDetailedResultsReport(true);
+    }
 }

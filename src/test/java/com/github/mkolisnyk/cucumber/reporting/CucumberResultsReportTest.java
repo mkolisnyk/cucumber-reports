@@ -16,9 +16,10 @@ public class CucumberResultsReportTest {
     @Test
     public void testGenerateDetailedReport() throws Exception {
         CucumberDetailedResults results = new CucumberDetailedResults();
-        results.setOutputDirectory("target");
+        results.setOutputDirectory("target/");
         results.setOutputName("cucumber-results");
         results.setSourceFile("./src/test/resources/cucumber.json");
+        results.setScreenShotLocation("../src/test/resources/");
         results.executeDetailedResultsReport(true);
     }
 }

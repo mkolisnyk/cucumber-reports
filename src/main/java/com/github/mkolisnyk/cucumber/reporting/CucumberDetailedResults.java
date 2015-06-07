@@ -27,6 +27,8 @@ public class CucumberDetailedResults {
     private String outputDirectory;
     private String outputName;
 
+    private String screenShotLocation;
+    
     /**
      * @return the sourceFile
      */
@@ -69,6 +71,20 @@ public class CucumberDetailedResults {
         this.outputName = outputNameValue;
     }
 
+    /**
+     * @return the screenShotLocation
+     */
+    public final String getScreenShotLocation() {
+        return screenShotLocation;
+    }
+
+    /**
+     * @param screenShotLocationValue the screenShotLocation to set
+     */
+    public final void setScreenShotLocation(String screenShotLocationValue) {
+        this.screenShotLocation = screenShotLocationValue;
+    }
+
     @SuppressWarnings("unchecked")
     public CucumberFeatureResult[] readFileContent() throws Exception {
         FileInputStream fis = null;
@@ -96,47 +112,6 @@ public class CucumberDetailedResults {
         InputStream is = this.getClass().getResourceAsStream("/results-report-tmpl.html");
         String result = IOUtils.toString(is);
         return result;
-    }
-
-    private String getStepsData(CucumberFeatureResult[] results) {
-        int passed = 0;
-        int failed = 0;
-        int undefined = 0;
-
-        for (CucumberFeatureResult result : results) {
-            if (result.getStatus().trim().equalsIgnoreCase("passed")) {
-                passed++;
-            }
-            if (result.getStatus().trim().equalsIgnoreCase("failed")) {
-                failed++;
-            }
-            if (result.getStatus().trim().equalsIgnoreCase("undefined")) {
-                undefined++;
-            }
-        }
-        return String.format("['Passed', %d], ['Failed', %d], ['Undefined', %d]", passed, failed, undefined);
-    }
-
-    private String getScenarioData(CucumberFeatureResult[] results) {
-        int passed = 0;
-        int failed = 0;
-        int undefined = 0;
-
-        for (CucumberFeatureResult result : results) {
-            for (CucumberScenarioResult element : result.getElements()) {
-                if (element.getStatus().trim().equalsIgnoreCase("passed")) {
-                    passed++;
-                }
-                if (element.getStatus().trim().equalsIgnoreCase("failed")) {
-                    failed++;
-                }
-                if (element.getStatus().trim().equalsIgnoreCase("undefined")) {
-                    undefined++;
-                }
-            }
-        }
-
-        return String.format("['Passed', %d], ['Failed', %d], ['Undefined', %d]", passed, failed, undefined);
     }
 
     private String generateOverview(CucumberFeatureResult[] results) {
@@ -185,7 +160,10 @@ public class CucumberDetailedResults {
                 stepsUndefined,
                 100.f * (float)stepsPassed / (float)(stepsPassed + stepsFailed + stepsUndefined));
     }
-    
+    private String generateNameFromId(String scId) {
+        String result = scId.replaceAll("[; !@#$%^&*()+=]", "_");
+        return result;
+    }
     private String generateStepsReport(CucumberFeatureResult[] results) throws IOException {
         String content = this.getReportBase();
         content = content.replaceAll("__TITLE__", "Detailed Results Report");
@@ -258,6 +236,16 @@ public class CucumberDetailedResults {
                                 System.lineSeparator(),
                                 step.getResult().getErrorMessage()
                         );
+                        String filePath = this.getScreenShotLocation()
+                                + this.generateNameFromId(scenario.getId()) + ".png";
+                        File shot = new File(this.outputDirectory + filePath);
+                        if (shot.exists()) {
+                            reportContent += String.format(
+                                    "<tr class=\"%s\"><td><img src=\"%s\" /></td></tr>",
+                                    step.getResult().getStatus(),
+                                    filePath
+                            );
+                        }
                     }
                 }
                 reportContent += "</table></td></tr><tr><td colspan=\"5\"><sup><a href=\"#top\">Back to Table of Contents</a></sup></td></tr>";
@@ -289,11 +277,5 @@ public class CucumberDetailedResults {
             
             os.close();
         }
-        /*final WebClient webClient = new WebClient(BrowserVersion.INTERNET_EXPLORER_11);
-        webClient.getOptions().setThrowExceptionOnScriptError(false);
-        final HtmlPage page = webClient.getPage(new URL("file://" + outFile.getAbsolutePath()).toExternalForm());
-        String content = page.asXml();
-        FileUtils.writeStringToFile(outFile, content);
-        webClient.close();*/
     }
 }

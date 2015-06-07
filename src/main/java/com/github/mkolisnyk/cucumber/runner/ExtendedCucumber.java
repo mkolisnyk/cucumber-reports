@@ -37,7 +37,10 @@ public class ExtendedCucumber extends ParentRunner<ExtendedFeatureRunner> {
         runtime = createRuntime(resourceLoader, classLoader, runtimeOptions);
 
         final List<CucumberFeature> cucumberFeatures = runtimeOptions.cucumberFeatures(resourceLoader);
-        jUnitReporter = new JUnitReporter(runtimeOptions.reporter(classLoader), runtimeOptions.formatter(classLoader), runtimeOptions.isStrict());
+        jUnitReporter = new JUnitReporter(
+                runtimeOptions.reporter(classLoader),
+                runtimeOptions.formatter(classLoader),
+                runtimeOptions.isStrict());
         addChildren(cucumberFeatures);
     }
 

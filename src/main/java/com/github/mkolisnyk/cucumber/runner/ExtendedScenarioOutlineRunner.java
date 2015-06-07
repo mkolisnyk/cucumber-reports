@@ -20,13 +20,19 @@ public class ExtendedScenarioOutlineRunner extends
     private final JUnitReporter jUnitReporter;
     private Description description;
 
-    public ExtendedScenarioOutlineRunner(Runtime runtime, CucumberScenarioOutline cucumberScenarioOutline, JUnitReporter jUnitReporter) throws InitializationError {
-        super(null, buildRunners(runtime, cucumberScenarioOutline, jUnitReporter));
-        this.cucumberScenarioOutline = cucumberScenarioOutline;
-        this.jUnitReporter = jUnitReporter;
+    public ExtendedScenarioOutlineRunner(
+            Runtime runtimeValue,
+            CucumberScenarioOutline cucumberScenarioOutlineValue,
+            JUnitReporter jUnitReporterValue) throws InitializationError {
+        super(null, buildRunners(runtimeValue, cucumberScenarioOutlineValue, jUnitReporterValue));
+        this.cucumberScenarioOutline = cucumberScenarioOutlineValue;
+        this.jUnitReporter = jUnitReporterValue;
     }
 
-    private static List<Runner> buildRunners(Runtime runtime, CucumberScenarioOutline cucumberScenarioOutline, JUnitReporter jUnitReporter) throws InitializationError {
+    private static List<Runner> buildRunners(
+            Runtime runtime,
+            CucumberScenarioOutline cucumberScenarioOutline,
+            JUnitReporter jUnitReporter) throws InitializationError {
         List<Runner> runners = new ArrayList<Runner>();
         for (CucumberExamples cucumberExamples : cucumberScenarioOutline.getCucumberExamplesList()) {
             runners.add(new ExtendedExamplesRunner(runtime, cucumberExamples, jUnitReporter));

@@ -49,6 +49,23 @@
     </testResources>
     <plugins>
       <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-jar-plugin</artifactId>
+          <version>2.3.2</version>
+          <configuration>
+              <archive>
+                  <manifest>
+                      <addClasspath>true</addClasspath>
+                      <addDefaultImplementationEntries>true</addDefaultImplementationEntries>
+                      <addDefaultSpecificationEntries>true</addDefaultSpecificationEntries>
+                      <classpathLayoutType>repository</classpathLayoutType>
+                      <addExtensions>true</addExtensions>
+                      <mainClass>${java.main.class}</mainClass>
+                  </manifest>
+              </archive>
+          </configuration>
+      </plugin>
+      <plugin>
         <groupId>org.sonatype.plugins</groupId>
         <artifactId>nexus-staging-maven-plugin</artifactId>
         <version>1.1</version>
@@ -119,6 +136,16 @@
         <groupId>org.xhtmlrenderer</groupId>
         <artifactId>flying-saucer-pdf</artifactId>
         <version>9.0.7</version>
+        <exclusions>
+	        <exclusion>
+		        <groupId>org.bouncycastle</groupId>
+		        <artifactId>bcprov-jdk14</artifactId>
+	        </exclusion>
+	        <exclusion>
+		        <groupId>org.bouncycastle</groupId>
+		        <artifactId>bcmail-jdk14</artifactId>
+	        </exclusion>
+        </exclusions>
     </dependency>
   </dependencies>
 </project>

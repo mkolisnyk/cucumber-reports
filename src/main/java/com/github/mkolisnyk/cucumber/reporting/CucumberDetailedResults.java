@@ -1,47 +1,23 @@
 package com.github.mkolisnyk.cucumber.reporting;
 
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
-import java.net.URL;
 
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.IOUtils;
 import org.xhtmlrenderer.pdf.ITextRenderer;
 
-import com.cedarsoftware.util.io.JsonObject;
-import com.cedarsoftware.util.io.JsonReader;
-import com.gargoylesoftware.htmlunit.BrowserVersion;
-import com.gargoylesoftware.htmlunit.WebClient;
-import com.gargoylesoftware.htmlunit.html.HtmlPage;
 import com.github.mkolisnyk.cucumber.reporting.types.result.CucumberFeatureResult;
 import com.github.mkolisnyk.cucumber.reporting.types.result.CucumberScenarioResult;
 import com.github.mkolisnyk.cucumber.reporting.types.result.CucumberStepResult;
 
-public class CucumberDetailedResults {
-    private String sourceFile;
+public class CucumberDetailedResults extends CucumberResultsCommon {
     private String outputDirectory;
     private String outputName;
-
     private String screenShotLocation;
-    
-    /**
-     * @return the sourceFile
-     */
-    public final String getSourceFile() {
-        return sourceFile;
-    }
-
-    /**
-     * @param sourceFileValue the sourceFile to set
-     */
-    public final void setSourceFile(String sourceFileValue) {
-        this.sourceFile = sourceFileValue;
-    }
 
     /**
      * @return the outputDirectory
@@ -85,29 +61,6 @@ public class CucumberDetailedResults {
         this.screenShotLocation = screenShotLocationValue;
     }
 
-    @SuppressWarnings("unchecked")
-    public CucumberFeatureResult[] readFileContent() throws Exception {
-        FileInputStream fis = null;
-        JsonReader jr = null;
-        File file = new File(this.getSourceFile());
-
-        if (!(file.exists() && file.isFile())) {
-            throw new FileNotFoundException();
-        }
-
-        fis = new FileInputStream(file);
-        jr = new JsonReader(fis, true);
-        JsonObject<String, Object> source = (JsonObject<String, Object>) jr.readObject();
-        Object[] objs = (Object[]) source.get("@items");
-
-        CucumberFeatureResult[] sources = new CucumberFeatureResult[objs.length];
-        for (int i = 0; i < objs.length; i++) {
-            sources[i] = new CucumberFeatureResult((JsonObject<String, Object>) objs[i]);
-        }
-        jr.close();
-        fis.close();
-        return sources;
-    }
     private String getReportBase() throws IOException {
         InputStream is = this.getClass().getResourceAsStream("/results-report-tmpl.html");
         String result = IOUtils.toString(is);
@@ -124,7 +77,7 @@ public class CucumberDetailedResults {
         int stepsPassed = 0;
         int stepsFailed = 0;
         int stepsUndefined = 0;
-        
+        final float highestPercent = 100.f;
         for (CucumberFeatureResult result : results) {
             if (result.getStatus().equals("passed")) {
                 featuresPassed++;
@@ -143,33 +96,35 @@ public class CucumberDetailedResults {
                 stepsUndefined += scenario.getUndefined();
             }
         }
-        return String.format("<table><tr><th></th><th>Passed</th><th>Failed</th><th>Undefined</th><th>%%Passed</th></tr>"
-                + "<tr><th>Features</th><td class=\"passed\">%d</td><td class=\"failed\">%d</td><td class=\"undefined\">%d</td><td>%.2f</td></tr>"
-                + "<tr><th>Scenarios</th><td class=\"passed\">%d</td><td class=\"failed\">%d</td><td class=\"undefined\">%d</td><td>%.2f</td></tr>"
-                + "<tr><th>Steps</th><td class=\"passed\">%d</td><td class=\"failed\">%d</td><td class=\"undefined\">%d</td><td>%.2f</td></tr></table>",
+        return String.format("<table>"
+                + "<tr><th></th><th>Passed</th><th>Failed</th><th>Undefined</th><th>%%Passed</th></tr>"
+                + "<tr><th>Features</th><td class=\"passed\">%d</td><td class=\"failed\">%d</td>"
+                    + "<td class=\"undefined\">%d</td><td>%.2f</td></tr>"
+                + "<tr><th>Scenarios</th><td class=\"passed\">%d</td><td class=\"failed\">%d</td>"
+                    + "<td class=\"undefined\">%d</td><td>%.2f</td></tr>"
+                + "<tr><th>Steps</th><td class=\"passed\">%d</td><td class=\"failed\">%d</td>"
+                    + "<td class=\"undefined\">%d</td><td>%.2f</td></tr></table>",
                 featuresPassed,
                 featuresFailed,
                 featuresUndefined,
-                100.f * (float)featuresPassed / (float)(featuresPassed + featuresFailed + featuresUndefined),
+                highestPercent * (float) featuresPassed
+                    / (float) (featuresPassed + featuresFailed + featuresUndefined),
                 scenariosPassed,
                 scenariosFailed,
                 scenariosUndefined,
-                100.f * (float)scenariosPassed / (float)(scenariosPassed + scenariosFailed + scenariosUndefined),
+                highestPercent * (float) scenariosPassed
+                    / (float) (scenariosPassed + scenariosFailed + scenariosUndefined),
                 stepsPassed,
                 stepsFailed,
                 stepsUndefined,
-                100.f * (float)stepsPassed / (float)(stepsPassed + stepsFailed + stepsUndefined));
+                highestPercent * (float) stepsPassed / (float) (stepsPassed + stepsFailed + stepsUndefined));
     }
     private String generateNameFromId(String scId) {
         String result = scId.replaceAll("[; !@#$%^&*()+=]", "_");
         return result;
     }
-    private String generateStepsReport(CucumberFeatureResult[] results) throws IOException {
-        String content = this.getReportBase();
-        content = content.replaceAll("__TITLE__", "Detailed Results Report");
-        content = content.replaceAll("__OVERVIEW__", generateOverview(results));
+    private String generateTableOfContents(CucumberFeatureResult[] results) {
         String reportContent = "";
-
         reportContent += "<a id=\"top\"></a><h1>Table of Contents</h1><ol>";
         for (CucumberFeatureResult result : results) {
             reportContent += String.format(
@@ -187,12 +142,60 @@ public class CucumberDetailedResults {
             reportContent += "</ol></li>";
         }
         reportContent += "</ol>";
-        
+        return reportContent;
+    }
+    private String generateStepRows(CucumberStepResult step) {
+        String reportContent = "";
+        if (step.getRows() != null) {
+            reportContent += String.format(
+                    "<tr class=\"%s\"><td style=\"padding-left:20px\"><table>",
+                    step.getResult().getStatus());
+            for (int i = 0; i < step.getRows().length; i++) {
+                reportContent += "<tr>";
+                for (int j = 0; j < step.getRows()[i].length; j++) {
+                    reportContent += String.format("<td>%s</td>", step.getRows()[i][j]);
+                }
+                reportContent += "</tr>";
+            }
+            reportContent += "</table></td></tr>";
+        }
+        return reportContent;
+    }
+    private String generateScreenShot(CucumberScenarioResult scenario, CucumberStepResult step) {
+        String reportContent = "";
+        if (step.getResult().getStatus().trim().equalsIgnoreCase("failed")) {
+            reportContent += String.format(
+                    "<tr class=\"%s\"><td><pre>%s%s</pre></td></tr>",
+                    step.getResult().getStatus(),
+                    System.lineSeparator(),
+                    step.getResult().getErrorMessage()
+            );
+            String filePath = this.getScreenShotLocation()
+                    + this.generateNameFromId(scenario.getId()) + ".png";
+            File shot = new File(this.outputDirectory + filePath);
+            if (shot.exists()) {
+                reportContent += String.format(
+                        "<tr class=\"%s\"><td><img src=\"%s\" /></td></tr>",
+                        step.getResult().getStatus(),
+                        filePath
+                );
+            }
+        }
+        return reportContent;
+    }
+    private String generateStepsReport(CucumberFeatureResult[] results) throws IOException {
+        String content = this.getReportBase();
+        content = content.replaceAll("__TITLE__", "Detailed Results Report");
+        content = content.replaceAll("__OVERVIEW__", generateOverview(results));
+        String reportContent = "";
+        reportContent += generateTableOfContents(results);
         reportContent += "<h1>Detailed Results Report</h1><table>";
         for (CucumberFeatureResult result : results) {
             reportContent += String.format(
-                    "<tr class=\"%s\"><td><b>Feature:</b> <a id=\"feature-%s\">%s</a></td><td><b>Passed:</b> %d</td><td><b>Failed:</b> %d</td>"
-                    + "<td><b>Undefined:</b> %d</td></tr><tr class=\"%s\"><td colspan=\"4\" style=\"padding-left:20px\"> <table width=\"100%%\">",
+                    "<tr class=\"%s\"><td><b>Feature:</b> <a id=\"feature-%s\">%s</a></td>"
+                    + "<td><b>Passed:</b> %d</td><td><b>Failed:</b> %d</td>"
+                    + "<td><b>Undefined:</b> %d</td></tr><tr class=\"%s\">"
+                    + "<td colspan=\"4\" style=\"padding-left:20px\"> <table width=\"100%%\">",
                     result.getStatus(),
                     result.getId(),
                     result.getName(),
@@ -202,8 +205,10 @@ public class CucumberDetailedResults {
                     result.getStatus());
             for (CucumberScenarioResult scenario : result.getElements()) {
                 reportContent += String.format(
-                        "<tr class=\"%s\"><td><b>Scenario:</b> <a id=\"sc-%s\">%s</a></td><td><b>Passed:</b> %d</td><td><b>Failed:</b> %d</td>"
-                        + "<td><b>Undefined:</b> %d</td></tr><tr class=\"%s\"><td colspan=\"4\" style=\"padding-left:20px\"> <table width=\"100%%\">",
+                        "<tr class=\"%s\"><td><b>Scenario:</b> <a id=\"sc-%s\">%s</a></td>"
+                        + "<td><b>Passed:</b> %d</td><td><b>Failed:</b> %d</td>"
+                        + "<td><b>Undefined:</b> %d</td></tr><tr class=\"%s\">"
+                        + "<td colspan=\"4\" style=\"padding-left:20px\"> <table width=\"100%%\">",
                         scenario.getStatus(),
                         scenario.getId(),
                         scenario.getName(),
@@ -218,37 +223,11 @@ public class CucumberDetailedResults {
                             step.getKeyword(),
                             step.getName()
                     );
-                    if (step.getRows() != null) {
-                        reportContent += String.format("<tr class=\"%s\"><td style=\"padding-left:20px\"><table>", step.getResult().getStatus());
-                        for (int i = 0; i < step.getRows().length; i++) {
-                            reportContent += "<tr>";
-                            for (int j = 0; j < step.getRows()[i].length ; j++) {
-                                reportContent += String.format("<td>%s</td>", step.getRows()[i][j]);
-                            }
-                            reportContent += "</tr>";
-                        }
-                        reportContent += "</table></td></tr>";
-                    }
-                    if (step.getResult().getStatus().trim().equalsIgnoreCase("failed")) {
-                        reportContent += String.format(
-                                "<tr class=\"%s\"><td><pre>%s%s</pre></td></tr>",
-                                step.getResult().getStatus(),
-                                System.lineSeparator(),
-                                step.getResult().getErrorMessage()
-                        );
-                        String filePath = this.getScreenShotLocation()
-                                + this.generateNameFromId(scenario.getId()) + ".png";
-                        File shot = new File(this.outputDirectory + filePath);
-                        if (shot.exists()) {
-                            reportContent += String.format(
-                                    "<tr class=\"%s\"><td><img src=\"%s\" /></td></tr>",
-                                    step.getResult().getStatus(),
-                                    filePath
-                            );
-                        }
-                    }
+                    reportContent += this.generateStepRows(step);
+                    reportContent += this.generateScreenShot(scenario, step);
                 }
-                reportContent += "</table></td></tr><tr><td colspan=\"5\"><sup><a href=\"#top\">Back to Table of Contents</a></sup></td></tr>";
+                reportContent += "</table></td></tr><tr><td colspan=\"5\">"
+                        + "<sup><a href=\"#top\">Back to Table of Contents</a></sup></td></tr>";
             }
             reportContent += "</table></td></tr><tr><td colspan=\"5\"></td></tr>";
         }
@@ -269,12 +248,12 @@ public class CucumberDetailedResults {
             String outputFile = this.getOutputDirectory() + File.separator + this.getOutputName()
                     + "-test-results.pdf";
             OutputStream os = new FileOutputStream(outputFile);
-            
+
             ITextRenderer renderer = new ITextRenderer();
             renderer.setDocument(url);
             renderer.layout();
             renderer.createPDF(os);
-            
+
             os.close();
         }
     }

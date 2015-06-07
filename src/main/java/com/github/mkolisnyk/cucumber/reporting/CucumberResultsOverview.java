@@ -1,8 +1,6 @@
 package com.github.mkolisnyk.cucumber.reporting;
 
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
@@ -10,33 +8,15 @@ import java.net.URL;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.IOUtils;
 
-import com.cedarsoftware.util.io.JsonObject;
-import com.cedarsoftware.util.io.JsonReader;
 import com.gargoylesoftware.htmlunit.BrowserVersion;
 import com.gargoylesoftware.htmlunit.WebClient;
 import com.gargoylesoftware.htmlunit.html.HtmlPage;
 import com.github.mkolisnyk.cucumber.reporting.types.result.CucumberFeatureResult;
 import com.github.mkolisnyk.cucumber.reporting.types.result.CucumberScenarioResult;
 
-public class CucumberResultsOverview {
-
-    private String sourceFile;
+public class CucumberResultsOverview extends CucumberResultsCommon {
     private String outputDirectory;
     private String outputName;
-
-    /**
-     * @return the sourceFile
-     */
-    public final String getSourceFile() {
-        return sourceFile;
-    }
-
-    /**
-     * @param sourceFileValue the sourceFile to set
-     */
-    public final void setSourceFile(String sourceFileValue) {
-        this.sourceFile = sourceFileValue;
-    }
 
     /**
      * @return the outputDirectory
@@ -64,30 +44,6 @@ public class CucumberResultsOverview {
      */
     public final void setOutputName(String outputNameValue) {
         this.outputName = outputNameValue;
-    }
-
-    @SuppressWarnings("unchecked")
-    public CucumberFeatureResult[] readFileContent() throws Exception {
-        FileInputStream fis = null;
-        JsonReader jr = null;
-        File file = new File(this.getSourceFile());
-
-        if (!(file.exists() && file.isFile())) {
-            throw new FileNotFoundException();
-        }
-
-        fis = new FileInputStream(file);
-        jr = new JsonReader(fis, true);
-        JsonObject<String, Object> source = (JsonObject<String, Object>) jr.readObject();
-        Object[] objs = (Object[]) source.get("@items");
-
-        CucumberFeatureResult[] sources = new CucumberFeatureResult[objs.length];
-        for (int i = 0; i < objs.length; i++) {
-            sources[i] = new CucumberFeatureResult((JsonObject<String, Object>) objs[i]);
-        }
-        jr.close();
-        fis.close();
-        return sources;
     }
 
     private String getReportBase() throws IOException {

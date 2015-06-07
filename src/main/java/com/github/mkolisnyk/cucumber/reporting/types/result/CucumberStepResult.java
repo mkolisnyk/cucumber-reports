@@ -1,6 +1,5 @@
 package com.github.mkolisnyk.cucumber.reporting.types.result;
 
-import java.util.ArrayList;
 import java.util.LinkedHashMap;
 
 import com.cedarsoftware.util.io.JsonObject;
@@ -25,7 +24,8 @@ public class CucumberStepResult {
                     .get("rows")).get("@items");
             this.rows = new String[objs.length][];
             for (int i = 0; i < objs.length; i++) {
-                Object[] row = (Object[]) ((JsonObject<String, Object>) ((LinkedHashMap<String, Object>) objs[i]).get("cells")).get("@items");
+                Object[] row = (Object[]) ((JsonObject<String, Object>)
+                        ((LinkedHashMap<String, Object>) objs[i]).get("cells")).get("@items");
                 this.rows[i] = new String[row.length];
                 for (int j = 0; j < row.length; j++) {
                     this.rows[i][j] = (String) row[j];

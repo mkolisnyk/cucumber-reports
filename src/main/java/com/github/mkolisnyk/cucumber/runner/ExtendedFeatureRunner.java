@@ -6,7 +6,6 @@ import java.util.List;
 import org.junit.Assert;
 import org.junit.internal.AssumptionViolatedException;
 import org.junit.runner.Description;
-import org.junit.runner.Result;
 import org.junit.runner.notification.Failure;
 import org.junit.runner.notification.RunNotifier;
 import org.junit.runners.ParentRunner;
@@ -31,14 +30,16 @@ public class ExtendedFeatureRunner extends FeatureRunner {
     private Runtime runtime;
     private CucumberFeature cucumberFeature;
     private JUnitReporter jUnitReporter;
-    
-    public ExtendedFeatureRunner(CucumberFeature cucumberFeature,
-            Runtime runtime, JUnitReporter jUnitReporter)
+
+    public ExtendedFeatureRunner(
+            CucumberFeature cucumberFeatureValue,
+            Runtime runtimeValue,
+            JUnitReporter jUnitReporterValue)
             throws InitializationError {
-        super(cucumberFeature, runtime, jUnitReporter);
-        this.cucumberFeature = cucumberFeature;
-        this.runtime = runtime;
-        this.jUnitReporter = jUnitReporter;
+        super(cucumberFeatureValue, runtimeValue, jUnitReporterValue);
+        this.cucumberFeature = cucumberFeatureValue;
+        this.runtime = runtimeValue;
+        this.jUnitReporter = jUnitReporterValue;
         buildFeatureElementRunners();
     }
 
@@ -47,9 +48,11 @@ public class ExtendedFeatureRunner extends FeatureRunner {
             try {
                 ParentRunner featureElementRunner;
                 if (cucumberTagStatement instanceof CucumberScenario) {
-                    featureElementRunner = new ExecutionUnitRunner(runtime, (CucumberScenario) cucumberTagStatement, jUnitReporter);
+                    featureElementRunner = new ExecutionUnitRunner(
+                            runtime, (CucumberScenario) cucumberTagStatement, jUnitReporter);
                 } else {
-                    featureElementRunner = new ExtendedScenarioOutlineRunner(runtime, (CucumberScenarioOutline) cucumberTagStatement, jUnitReporter);
+                    featureElementRunner = new ExtendedScenarioOutlineRunner(
+                            runtime, (CucumberScenarioOutline) cucumberTagStatement, jUnitReporter);
                 }
                 children.add(featureElementRunner);
             } catch (InitializationError e) {
@@ -57,17 +60,12 @@ public class ExtendedFeatureRunner extends FeatureRunner {
             }
         }
     }
-    
     /**
      * @return the runtime
      */
     public final Runtime getRuntime() {
         return runtime;
     }
-
-    /* (non-Javadoc)
-     * @see cucumber.runtime.junit.FeatureRunner#runChild(org.junit.runners.ParentRunner, org.junit.runner.notification.RunNotifier)
-     */
     @Override
     protected void runChild(ParentRunner child, RunNotifier notifier) {
         System.out.println("Running Feature child (scenario)...");
@@ -82,7 +80,6 @@ public class ExtendedFeatureRunner extends FeatureRunner {
         } catch (Throwable e) {
             System.out.println("Initiating retry...");
             retry(notifier, child, e);
-            Result result;
         } finally {
             System.out.println("Scenario completed..." + this.getRuntime().exitStatus());
             notifier.fireTestFinished(child.getDescription());
@@ -95,9 +92,6 @@ public class ExtendedFeatureRunner extends FeatureRunner {
         Throwable caughtThrowable = currentThrowable;
         ParentRunner featureElementRunner = null;
         boolean failed = true;
-
-        System.out.println("Retrying...");
-        
         Class<? extends ParentRunner> clazz = child.getClass();
         System.out.println("Current class is: " + clazz.getCanonicalName());
         CucumberTagStatement cucumberTagStatement = this.cucumberFeature.getFeatureElements().get(scenarioCount);
@@ -107,7 +101,10 @@ public class ExtendedFeatureRunner extends FeatureRunner {
         }
         while (retryCount > failedAttempts) {
             try {
-                featureElementRunner = new ExecutionUnitRunner(runtime, (CucumberScenario) cucumberTagStatement , jUnitReporter);
+                featureElementRunner = new ExecutionUnitRunner(
+                        runtime,
+                        (CucumberScenario) cucumberTagStatement,
+                        jUnitReporter);
                 featureElementRunner.run(notifier);
                 Assert.assertEquals(0, this.getRuntime().exitStatus());
                 failed = false;

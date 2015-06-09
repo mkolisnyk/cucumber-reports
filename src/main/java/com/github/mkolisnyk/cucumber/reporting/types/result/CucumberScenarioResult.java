@@ -198,4 +198,18 @@ public class CucumberScenarioResult {
     public final void setType(String typeValue) {
         this.type = typeValue;
     }
+
+    /**
+     * @return the tags
+     */
+    public final CucumberTagResults[] getTags() {
+        return tags;
+    }
+
+    /**
+     * @param tagsValue the tags to set
+     */
+    public final void setTags(CucumberTagResults[] tagsValue) {
+        this.tags = tagsValue;
+    }
 }

@@ -8,6 +8,7 @@ import java.io.OutputStream;
 
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.IOUtils;
+import org.apache.commons.lang.StringUtils;
 import org.xhtmlrenderer.pdf.ITextRenderer;
 
 import com.github.mkolisnyk.cucumber.reporting.types.result.CucumberFeatureResult;
@@ -18,6 +19,7 @@ public class CucumberDetailedResults extends CucumberResultsCommon {
     private String outputDirectory;
     private String outputName;
     private String screenShotLocation;
+    private String screenShotWidth;
 
     /**
      * @return the outputDirectory
@@ -59,6 +61,20 @@ public class CucumberDetailedResults extends CucumberResultsCommon {
      */
     public final void setScreenShotLocation(String screenShotLocationValue) {
         this.screenShotLocation = screenShotLocationValue;
+    }
+
+    /**
+     * @return the screenShotWidth
+     */
+    public final String getScreenShotWidth() {
+        return screenShotWidth;
+    }
+
+    /**
+     * @param screenShotWidthValue the screenShotWidth to set
+     */
+    public final void setScreenShotWidth(String screenShotWidthValue) {
+        this.screenShotWidth = screenShotWidthValue;
     }
 
     private String getReportBase() throws IOException {
@@ -174,10 +190,15 @@ public class CucumberDetailedResults extends CucumberResultsCommon {
                     + this.generateNameFromId(scenario.getId()) + ".png";
             File shot = new File(this.outputDirectory + filePath);
             if (shot.exists()) {
+                String widthString = "";
+                if (StringUtils.isNotBlank(this.getScreenShotWidth())) {
+                    widthString = String.format("width=\"%s\"", this.getScreenShotWidth());
+                }
                 reportContent += String.format(
-                        "<tr class=\"%s\"><td><img src=\"%s\" /></td></tr>",
+                        "<tr class=\"%s\"><td><img src=\"%s\" %s /></td></tr>",
                         step.getResult().getStatus(),
-                        filePath
+                        filePath,
+                        widthString
                 );
             }
         }

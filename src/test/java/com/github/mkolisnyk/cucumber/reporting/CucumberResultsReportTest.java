@@ -22,4 +22,15 @@ public class CucumberResultsReportTest {
         results.setScreenShotLocation("../src/test/resources/");
         results.executeDetailedResultsReport(true);
     }
+
+    @Test
+    public void testGenerateDetailedReportScreenShotWidth() throws Exception {
+        CucumberDetailedResults results = new CucumberDetailedResults();
+        results.setOutputDirectory("target/");
+        results.setOutputName("cucumber-results-width");
+        results.setSourceFile("./src/test/resources/cucumber.json");
+        results.setScreenShotLocation("../src/test/resources/");
+        results.setScreenShotWidth("200px");
+        results.executeDetailedResultsReport(true);
+    }
 }

@@ -5,6 +5,7 @@ import com.cedarsoftware.util.io.JsonObject;
 public class CucumberScenarioResult {
 
     private String               id;
+    private CucumberTagResults[]     tags;
     private String               description;
     private String               name;
     private String               keyword;
@@ -32,6 +33,18 @@ public class CucumberScenarioResult {
                 this.steps[i] = new CucumberStepResult(
                         (JsonObject<String, Object>) objs[i]);
             }
+        }
+        JsonObject<String, Object> tagEntry = (JsonObject<String, Object>) json
+                .get("tags");
+        Object[] objs = {};
+        if (tagEntry != null) {
+            objs = (Object[]) ((JsonObject<String, Object>) json
+                    .get("tags")).get("@items");
+        }
+        this.tags = new CucumberTagResults[objs.length];
+        for (int i = 0; i < objs.length; i++) {
+            this.tags[i] = new CucumberTagResults(
+                    (JsonObject<String, Object>) objs[i]);
         }
     }
 

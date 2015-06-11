@@ -253,6 +253,7 @@ public class CucumberDetailedResults extends CucumberResultsCommon {
             reportContent += "</table></td></tr><tr><td colspan=\"5\"></td></tr>";
         }
         reportContent += "</table>";
+        reportContent = reportContent.replaceAll("[$]", "&#36;");
         content = content.replaceAll("__REPORT__", reportContent);
         return content;
     }

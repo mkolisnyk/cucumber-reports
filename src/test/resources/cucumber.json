@@ -1564,7 +1564,7 @@
           {
             "result": {
               "duration": 71485330114,
-              "error_message": "java.lang.AssertionError: Home page isn\u0027t current\r\n\tat org.junit.Assert.fail(Assert.java:88)\r\n\tat org.junit.Assert.assertTrue(Assert.java:41)\r\n\tat com.thetrainline.common.steps.NavigationActions.navigateToHomePage(NavigationActions.java:47)\r\n\tat com.thetrainline.common.steps.NavigationActions.navigateToPaymetsCardsPage(NavigationActions.java:68)\r\n\tat ✽.And I am on the Payment cards screen(Payments.feature:13)\r\n",
+              "error_message": "java.lang.AssertionError: Home page i$n\u0027t current\r\n\tat org.junit.Assert.fail(Assert.java:88)\r\n\tat org.junit.Assert.assertTrue(Assert.java:41)\r\n\tat com.thetrainline.common.steps.NavigationActions.navigateToHomePage(NavigationActions.java:47)\r\n\tat com.thetrainline.common.steps.NavigationActions.navigateToPaymetsCardsPage(NavigationActions.java:68)\r\n\tat ✽.And I am on the Payment cards screen(Payments.feature:13)\r\n",
               "status": "failed"
             },
             "line": 13,

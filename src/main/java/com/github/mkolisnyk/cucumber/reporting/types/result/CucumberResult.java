@@ -1,15 +1,20 @@
 package com.github.mkolisnyk.cucumber.reporting.types.result;
 
+import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
+
 import com.cedarsoftware.util.io.JsonObject;
 
 public class CucumberResult {
 
     private String status;
     private String errorMessage;
+    private Long duration;
 
     public CucumberResult(JsonObject<String, Object> json) {
         this.status = (String) json.get("status");
         this.errorMessage = (String) json.get("error_message");
+        this.setDuration((Long) json.get("duration"));
     }
 
     /**
@@ -40,4 +45,26 @@ public class CucumberResult {
     public final void setErrorMessage(String errorMessageValue) {
         this.errorMessage = errorMessageValue;
     }
+
+    /**
+     * @return the duration
+     */
+    public final Long getDuration() {
+        return duration;
+    }
+
+    /**
+     * @param durationValue the duration to set
+     */
+    public final void setDuration(Long durationValue) {
+        if (durationValue == null) {
+            this.duration = 0L;
+        } else {
+            this.duration = durationValue;
+        }
+    }
+    public final String getDurationTimeString(String format) {
+        return String.format("%.2fs", (double)(this.getDuration() / 1000000)/1000.f);
+    }
 }
+

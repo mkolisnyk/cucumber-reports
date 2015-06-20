@@ -164,7 +164,7 @@ public class CucumberDetailedResults extends CucumberResultsCommon {
         String reportContent = "";
         if (step.getRows() != null) {
             reportContent += String.format(
-                    "<tr class=\"%s\"><td style=\"padding-left:20px\"><table>",
+                    "<tr class=\"%s\"><td style=\"padding-left:20px\" colspan=\"2\"><table>",
                     step.getResult().getStatus());
             for (int i = 0; i < step.getRows().length; i++) {
                 reportContent += "<tr>";
@@ -181,10 +181,10 @@ public class CucumberDetailedResults extends CucumberResultsCommon {
         String reportContent = "";
         if (step.getResult().getStatus().trim().equalsIgnoreCase("failed")) {
             reportContent += String.format(
-                    "<tr class=\"%s\"><td><pre>%s%s</pre></td></tr>",
+                    "<tr class=\"%s\"><td colspan=\"2\"><div>%s%s</br></div></td></tr>",
                     step.getResult().getStatus(),
-                    System.lineSeparator(),
-                    step.getResult().getErrorMessage()
+                    "<br>",
+                    step.getResult().getErrorMessage().replaceAll(System.lineSeparator(), "</br><br>" + System.lineSeparator())
             );
             String filePath = this.getScreenShotLocation()
                     + this.generateNameFromId(scenario.getId()) + ".png";
@@ -195,7 +195,7 @@ public class CucumberDetailedResults extends CucumberResultsCommon {
                     widthString = String.format("width=\"%s\"", this.getScreenShotWidth());
                 }
                 reportContent += String.format(
-                        "<tr class=\"%s\"><td><img src=\"%s\" %s /></td></tr>",
+                        "<tr class=\"%s\"><td colspan=\"2\"><img src=\"%s\" %s /></td></tr>",
                         step.getResult().getStatus(),
                         filePath,
                         widthString
@@ -210,39 +210,55 @@ public class CucumberDetailedResults extends CucumberResultsCommon {
         content = content.replaceAll("__OVERVIEW__", generateOverview(results));
         String reportContent = "";
         reportContent += generateTableOfContents(results);
-        reportContent += "<h1>Detailed Results Report</h1><table>";
+        reportContent += "<h1>Detailed Results Report</h1><table width=\"700px\">";
         for (CucumberFeatureResult result : results) {
             reportContent += String.format(
-                    "<tr class=\"%s\"><td><b>Feature:</b> <a id=\"feature-%s\">%s</a></td>"
-                    + "<td><b>Passed:</b> %d</td><td><b>Failed:</b> %d</td>"
-                    + "<td><b>Undefined:</b> %d</td></tr><tr class=\"%s\">"
+                    "<tr class=\"%s\"><td colspan=\"4\"><b>Feature:</b> <a id=\"feature-%s\">%s</a></td></tr>"
+                    + "<tr class=\"%s_description\"><td colspan=\"4\"><br>%s</br></td></tr>"
+                    + "<tr class=\"%s\"><td><small><b>Passed:</b> %d</small></td><td><small><b>Failed:</b> %d</small></td>"
+                    + "<td><small><b>Undefined:</b> %d</small></td><td><small>Duration: %.2fs</small></td></tr>"
+                    + "<tr class=\"%s\">"
                     + "<td colspan=\"4\" style=\"padding-left:20px\"> <table width=\"100%%\">",
                     result.getStatus(),
                     result.getId(),
                     result.getName(),
+                    result.getStatus(),
+                    result.getDescription().replaceAll(System.lineSeparator(),"</br><br>"
+                            + System.lineSeparator()),
+                    result.getStatus(),
                     result.getPassed(),
                     result.getFailed(),
                     result.getUndefined(),
+                    result.getDuration(),
                     result.getStatus());
             for (CucumberScenarioResult scenario : result.getElements()) {
                 reportContent += String.format(
-                        "<tr class=\"%s\"><td><b>Scenario:</b> <a id=\"sc-%s\">%s</a></td>"
-                        + "<td><b>Passed:</b> %d</td><td><b>Failed:</b> %d</td>"
-                        + "<td><b>Undefined:</b> %d</td></tr><tr class=\"%s\">"
+                        "<tr class=\"%s\"><td colspan=\"4\"><b>Scenario:</b> <a id=\"sc-%s\">%s</a></td></tr>"
+                        + "<tr class=\"%s_description\"><td colspan=\"4\"><br>%s</br></td></tr>"
+                        + "<tr class=\"%s\">"
+                        + "<td><small><b>Passed:</b> %d</small></td><td><small><b>Failed:</b> %d</small></td>"
+                        + "<td><small><b>Undefined:</b> %d</small></td><td><small>Duration: %.2fs</small></td></tr>"
+                        + "<tr class=\"%s\">"
                         + "<td colspan=\"4\" style=\"padding-left:20px\"> <table width=\"100%%\">",
                         scenario.getStatus(),
                         scenario.getId(),
                         scenario.getName(),
+                        scenario.getStatus(),
+                        scenario.getDescription().replaceAll(System.lineSeparator(),"</br><br>"
+                                + System.lineSeparator()),
+                        scenario.getStatus(),
                         scenario.getPassed(),
                         scenario.getFailed(),
                         scenario.getUndefined(),
+                        scenario.getDuration(),
                         scenario.getStatus());
                 for (CucumberStepResult step : scenario.getSteps()) {
                     reportContent += String.format(
-                            "<tr class=\"%s\"><td><b>%s</b> %s</td></tr>",
+                            "<tr class=\"%s\"><td><b>%s</b> %s</td><td width=\"100\">%s</td></tr>",
                             step.getResult().getStatus(),
                             step.getKeyword(),
-                            step.getName()
+                            step.getName(),
+                            step.getResult().getDurationTimeString("HH:mm:ss:S")
                     );
                     reportContent += this.generateStepRows(step);
                     reportContent += this.generateScreenShot(scenario, step);

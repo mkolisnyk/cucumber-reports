@@ -16,6 +16,7 @@ public class CucumberScenarioResult {
     private int                  passed    = 0;
     private int                  failed    = 0;
     private int                  undefined = 0;
+    private double duration = 0.f;
 
     @SuppressWarnings("unchecked")
     public CucumberScenarioResult(JsonObject<String, Object> json) {
@@ -52,6 +53,7 @@ public class CucumberScenarioResult {
         passed = 0;
         failed = 0;
         undefined = 0;
+        this.duration = 0.f;
         if (steps == null) {
             return;
         }
@@ -64,6 +66,7 @@ public class CucumberScenarioResult {
             } else {
                 this.undefined++;
             }
+            this.duration += (float)(step.getResult().getDuration() / 1000000)/1000.f;
         }
     }
 
@@ -211,5 +214,12 @@ public class CucumberScenarioResult {
      */
     public final void setTags(CucumberTagResults[] tagsValue) {
         this.tags = tagsValue;
+    }
+
+    /**
+     * @return the duration
+     */
+    public final double getDuration() {
+        return duration;
     }
 }

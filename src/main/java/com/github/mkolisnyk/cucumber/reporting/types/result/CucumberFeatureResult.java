@@ -11,6 +11,7 @@ public class CucumberFeatureResult {
     private Long                     line;
     private CucumberScenarioResult[] elements;
     private String                   uri;
+    private float                    duration;
 
     @SuppressWarnings("unchecked")
     public CucumberFeatureResult(JsonObject<String, Object> json) {
@@ -49,6 +50,7 @@ public class CucumberFeatureResult {
         passed = 0;
         failed = 0;
         undefined = 0;
+        duration = 0.f;
         for (CucumberScenarioResult scenario : elements) {
             scenario.valuate();
             if (scenario.getFailed() > 0) {
@@ -58,6 +60,7 @@ public class CucumberFeatureResult {
             } else {
                 this.passed++;
             }
+            duration += scenario.getDuration();
         }
     }
 
@@ -213,4 +216,12 @@ public class CucumberFeatureResult {
     public final void setUri(String uriValue) {
         this.uri = uriValue;
     }
+
+    /**
+     * @return the duration
+     */
+    public final float getDuration() {
+        return duration;
+    }
 }
+

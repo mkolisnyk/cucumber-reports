@@ -50,6 +50,8 @@ public class CucumberScenarioResult {
     }
 
     public void valuate() {
+        final int nanosecondsInMillisecond = 1000000;
+        final float millesecondsInSecond = 1000.f;
         passed = 0;
         failed = 0;
         undefined = 0;
@@ -66,7 +68,8 @@ public class CucumberScenarioResult {
             } else {
                 this.undefined++;
             }
-            this.duration += (float)(step.getResult().getDuration() / 1000000)/1000.f;
+            this.duration += (float) (step.getResult().getDuration() / nanosecondsInMillisecond)
+                    / millesecondsInSecond;
         }
     }
 

@@ -1,8 +1,5 @@
 package com.github.mkolisnyk.cucumber.reporting.types.result;
 
-import java.sql.Timestamp;
-import java.text.SimpleDateFormat;
-
 import com.cedarsoftware.util.io.JsonObject;
 
 public class CucumberResult {
@@ -64,7 +61,10 @@ public class CucumberResult {
         }
     }
     public final String getDurationTimeString(String format) {
-        return String.format("%.2fs", (double)(this.getDuration() / 1000000)/1000.f);
+        final int nanosecondsInMillisecond = 1000000;
+        final double millesecondsInSecond = 1000.f;
+        return String.format("%.2fs",
+                (double) (this.getDuration() / nanosecondsInMillisecond) / millesecondsInSecond);
     }
 }
 

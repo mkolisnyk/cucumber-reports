@@ -184,7 +184,8 @@ public class CucumberDetailedResults extends CucumberResultsCommon {
                     "<tr class=\"%s\"><td colspan=\"2\"><div>%s%s</br></div></td></tr>",
                     step.getResult().getStatus(),
                     "<br>",
-                    step.getResult().getErrorMessage().replaceAll(System.lineSeparator(), "</br><br>" + System.lineSeparator())
+                    step.getResult().getErrorMessage().replaceAll(System.lineSeparator(),
+                            "</br><br>" + System.lineSeparator())
             );
             String filePath = this.getScreenShotLocation()
                     + this.generateNameFromId(scenario.getId()) + ".png";
@@ -215,7 +216,8 @@ public class CucumberDetailedResults extends CucumberResultsCommon {
             reportContent += String.format(
                     "<tr class=\"%s\"><td colspan=\"4\"><b>Feature:</b> <a id=\"feature-%s\">%s</a></td></tr>"
                     + "<tr class=\"%s_description\"><td colspan=\"4\"><br>%s</br></td></tr>"
-                    + "<tr class=\"%s\"><td><small><b>Passed:</b> %d</small></td><td><small><b>Failed:</b> %d</small></td>"
+                    + "<tr class=\"%s\"><td><small><b>Passed:</b> %d</small></td>"
+                        + "<td><small><b>Failed:</b> %d</small></td>"
                     + "<td><small><b>Undefined:</b> %d</small></td><td><small>Duration: %.2fs</small></td></tr>"
                     + "<tr class=\"%s\">"
                     + "<td colspan=\"4\" style=\"padding-left:20px\"> <table width=\"100%%\">",
@@ -223,8 +225,8 @@ public class CucumberDetailedResults extends CucumberResultsCommon {
                     result.getId(),
                     result.getName(),
                     result.getStatus(),
-                    result.getDescription().replaceAll(System.lineSeparator(),"</br><br>"
-                            + System.lineSeparator()),
+                    result.getDescription().replaceAll(System.lineSeparator(),
+                            "</br><br>" + System.lineSeparator()),
                     result.getStatus(),
                     result.getPassed(),
                     result.getFailed(),
@@ -244,8 +246,8 @@ public class CucumberDetailedResults extends CucumberResultsCommon {
                         scenario.getId(),
                         scenario.getName(),
                         scenario.getStatus(),
-                        scenario.getDescription().replaceAll(System.lineSeparator(),"</br><br>"
-                                + System.lineSeparator()),
+                        scenario.getDescription().replaceAll(System.lineSeparator(),
+                                "</br><br>" + System.lineSeparator()),
                         scenario.getStatus(),
                         scenario.getPassed(),
                         scenario.getFailed(),

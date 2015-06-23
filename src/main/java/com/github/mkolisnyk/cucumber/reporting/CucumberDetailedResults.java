@@ -282,7 +282,8 @@ public class CucumberDetailedResults extends CucumberResultsCommon {
         File outFile = new File(
                 this.getOutputDirectory() + File.separator + this.getOutputName()
                 + "-test-results.html");
-        FileUtils.writeStringToFile(outFile, generateStepsReport(features));
+        String content = generateStepsReport(features);
+        FileUtils.writeStringToFile(outFile, content, "UTF-8");
         if (toPdf) {
             String url = outFile.toURI().toURL().toString();
             String outputFile = this.getOutputDirectory() + File.separator + this.getOutputName()

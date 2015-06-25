@@ -94,7 +94,10 @@ public class CucumberDetailedResults extends CucumberResultsCommon {
         int stepsFailed = 0;
         int stepsUndefined = 0;
         final float highestPercent = 100.f;
+        float overallDuration = 0.f;
         for (CucumberFeatureResult result : results) {
+        	result.valuate();
+        	overallDuration += result.getDuration();
             if (result.getStatus().equals("passed")) {
                 featuresPassed++;
             } else if (result.getStatus().equals("failed")) {
@@ -119,7 +122,8 @@ public class CucumberDetailedResults extends CucumberResultsCommon {
                 + "<tr><th>Scenarios</th><td class=\"passed\">%d</td><td class=\"failed\">%d</td>"
                     + "<td class=\"undefined\">%d</td><td>%.2f</td></tr>"
                 + "<tr><th>Steps</th><td class=\"passed\">%d</td><td class=\"failed\">%d</td>"
-                    + "<td class=\"undefined\">%d</td><td>%.2f</td></tr></table>",
+                    + "<td class=\"undefined\">%d</td><td>%.2f</td></tr></table>"
+                + "<div><b>Overall Duration: %dh %02dm %02ds</b></div>",
                 featuresPassed,
                 featuresFailed,
                 featuresUndefined,
@@ -133,7 +137,10 @@ public class CucumberDetailedResults extends CucumberResultsCommon {
                 stepsPassed,
                 stepsFailed,
                 stepsUndefined,
-                highestPercent * (float) stepsPassed / (float) (stepsPassed + stepsFailed + stepsUndefined));
+                highestPercent * (float) stepsPassed / (float) (stepsPassed + stepsFailed + stepsUndefined),
+                (int)overallDuration/3600,
+                ((int)overallDuration % 3600) / 60,
+                ((int)overallDuration % 3600) % 60);
     }
     private String generateNameFromId(String scId) {
         String result = scId.replaceAll("[; !@#$%^&*()+=]", "_");

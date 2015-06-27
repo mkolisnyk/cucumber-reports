@@ -4,10 +4,15 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.maven.reporting.MavenReportException;
 import org.junit.runner.Description;
 import org.junit.runner.notification.RunNotifier;
 import org.junit.runners.ParentRunner;
 import org.junit.runners.model.InitializationError;
+
+import com.github.mkolisnyk.cucumber.reporting.CucumberDetailedResults;
+import com.github.mkolisnyk.cucumber.reporting.CucumberResultsOverview;
+import com.github.mkolisnyk.cucumber.reporting.CucumberUsageReporting;
 
 import cucumber.runtime.ClassFinder;
 import cucumber.runtime.Runtime;
@@ -24,6 +29,7 @@ public class ExtendedCucumber extends ParentRunner<ExtendedFeatureRunner> {
     private final JUnitReporter jUnitReporter;
     private final List<ExtendedFeatureRunner> children = new ArrayList<ExtendedFeatureRunner>();
     private final Runtime runtime;
+    private final ExtendedRuntimeOptions extendedOptions;
 
     public ExtendedCucumber(Class clazz) throws InitializationError, IOException {
         super(clazz);
@@ -35,7 +41,8 @@ public class ExtendedCucumber extends ParentRunner<ExtendedFeatureRunner> {
 
         ResourceLoader resourceLoader = new MultiLoader(classLoader);
         runtime = createRuntime(resourceLoader, classLoader, runtimeOptions);
-
+        extendedOptions = new ExtendedRuntimeOptions(clazz);
+        
         final List<CucumberFeature> cucumberFeatures = runtimeOptions.cucumberFeatures(resourceLoader);
         jUnitReporter = new JUnitReporter(
                 runtimeOptions.reporter(classLoader),
@@ -71,11 +78,55 @@ public class ExtendedCucumber extends ParentRunner<ExtendedFeatureRunner> {
         jUnitReporter.done();
         jUnitReporter.close();
         runtime.printSummary();
+        if (extendedOptions.isUsageReport()) {
+            CucumberUsageReporting report = new CucumberUsageReporting();
+            report.setOutputDirectory(extendedOptions.getOutputFolder());
+            report.setJsonUsageFile(extendedOptions.getJsonUsageReportPath());
+            try {
+				report.executeReport();
+			} catch (MavenReportException e) {
+				e.printStackTrace();
+			}
+        } 
+        if (extendedOptions.isOverviewReport()) {
+            CucumberResultsOverview results = new CucumberResultsOverview();
+            results.setOutputDirectory(extendedOptions.getOutputFolder());
+            results.setOutputName(extendedOptions.getReportPrefix());
+            results.setSourceFile(extendedOptions.getJsonReportPath());
+            try {
+				results.executeFeaturesOverviewReport();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+        } 
+        if (extendedOptions.isDetailedReport()) {
+            CucumberDetailedResults results = new CucumberDetailedResults();
+            results.setOutputDirectory(extendedOptions.getOutputFolder());
+            results.setOutputName(extendedOptions.getReportPrefix());
+            results.setSourceFile(extendedOptions.getJsonReportPath());
+            results.setScreenShotLocation(extendedOptions.getScreenShotLocation());
+            results.setScreenShotWidth(extendedOptions.getScreenShotSize());
+            try {
+				results.executeDetailedResultsReport(extendedOptions.isToPDF());
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+        } 
+        if (extendedOptions.isDetailedAggregatedReport()) {
+        	;
+        } 
     }
 
     private void addChildren(List<CucumberFeature> cucumberFeatures) throws InitializationError {
         for (CucumberFeature cucumberFeature : cucumberFeatures) {
-            children.add(new ExtendedFeatureRunner(cucumberFeature, runtime, jUnitReporter));
+            children.add(
+            		new ExtendedFeatureRunner(
+            				cucumberFeature,
+            				runtime,
+            				jUnitReporter,
+            				this.extendedOptions.getRetryCount()
+            				)
+            		);
         }
     }
 }

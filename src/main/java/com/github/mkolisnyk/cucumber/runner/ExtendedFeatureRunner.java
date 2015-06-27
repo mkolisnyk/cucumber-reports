@@ -24,7 +24,7 @@ import cucumber.runtime.model.CucumberTagStatement;
 public class ExtendedFeatureRunner extends FeatureRunner {
     private final List<ParentRunner> children = new ArrayList<ParentRunner>();
 
-    private final int retryCount = 3;
+    private int retryCount;
     private int failedAttempts = 0;
     private int scenarioCount = 0;
     private Runtime runtime;
@@ -34,12 +34,14 @@ public class ExtendedFeatureRunner extends FeatureRunner {
     public ExtendedFeatureRunner(
             CucumberFeature cucumberFeatureValue,
             Runtime runtimeValue,
-            JUnitReporter jUnitReporterValue)
+            JUnitReporter jUnitReporterValue,
+            int retryCountValue)
             throws InitializationError {
         super(cucumberFeatureValue, runtimeValue, jUnitReporterValue);
         this.cucumberFeature = cucumberFeatureValue;
         this.runtime = runtimeValue;
         this.jUnitReporter = jUnitReporterValue;
+        this.retryCount = retryCountValue;
         buildFeatureElementRunners();
     }
 
@@ -52,7 +54,7 @@ public class ExtendedFeatureRunner extends FeatureRunner {
                             runtime, (CucumberScenario) cucumberTagStatement, jUnitReporter);
                 } else {
                     featureElementRunner = new ExtendedScenarioOutlineRunner(
-                            runtime, (CucumberScenarioOutline) cucumberTagStatement, jUnitReporter);
+                            runtime, (CucumberScenarioOutline) cucumberTagStatement, jUnitReporter, retryCount);
                 }
                 children.add(featureElementRunner);
             } catch (InitializationError e) {

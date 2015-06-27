@@ -20,8 +20,7 @@ import cucumber.runtime.model.CucumberExamples;
 import cucumber.runtime.model.CucumberScenario;
 
 public class ExtendedExamplesRunner extends Suite {
-    private static final int DEFAULT_RETRY_COUNT = 3;
-    private int retryCount = DEFAULT_RETRY_COUNT;
+    private int retryCount;
     private Runtime runtime;
 
     private final CucumberExamples cucumberExamples;
@@ -34,11 +33,13 @@ public class ExtendedExamplesRunner extends Suite {
     protected ExtendedExamplesRunner(
             Runtime runtimeValue,
             CucumberExamples cucumberExamplesValue,
-            JUnitReporter jUnitReporterValue) throws InitializationError {
+            JUnitReporter jUnitReporterValue,
+            int retryCountValue) throws InitializationError {
         super(ExtendedExamplesRunner.class, buildRunners(runtimeValue, cucumberExamplesValue, jUnitReporterValue));
         this.cucumberExamples = cucumberExamplesValue;
         this.jUnitReporter = jUnitReporterValue;
         this.runtime = runtimeValue;
+        this.retryCount = retryCountValue;
     }
 
     private static List<Runner> buildRunners(

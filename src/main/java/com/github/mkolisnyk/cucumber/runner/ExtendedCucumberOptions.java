@@ -12,7 +12,7 @@ public @interface ExtendedCucumberOptions {
 	String jsonReport();
 	String jsonUsageReport() default "cucumber-usage.json";
 	String outputFolder() default ".";
-	String reportPrefix() default "cucumber-reports-";
+	String reportPrefix() default "cucumber-reports";
 	boolean usageReport() default false;
 	boolean overviewReport() default false;
 	boolean detailedReport() default false;

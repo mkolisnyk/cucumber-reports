@@ -1,5 +1,7 @@
 package com.github.mkolisnyk.cucumber.reporting.types.result;
 
+import org.apache.commons.lang.ArrayUtils;
+
 import com.cedarsoftware.util.io.JsonObject;
 
 public class CucumberFeatureResult {
@@ -222,6 +224,21 @@ public class CucumberFeatureResult {
      */
     public final float getDuration() {
         return duration;
+    }
+    
+    public void aggregateScenarioResults() {
+    	String prevId = "";
+    	for (int i = 0; i < this.elements.length; i++) {
+    		if (this.elements[i].getKeyword().equalsIgnoreCase("Background")) {
+    			continue;
+    		}
+    		if (this.elements[i].getId().equals(prevId)) {
+    			this.elements[i].addRerunAttempts(this.elements[i - 1].getRerunAttempts() + 1);
+    			this.elements = (CucumberScenarioResult[]) ArrayUtils.remove(this.elements, i - 1);
+    			i--;
+    		}
+    		prevId = this.elements[i].getId();
+    	}
     }
 }
 

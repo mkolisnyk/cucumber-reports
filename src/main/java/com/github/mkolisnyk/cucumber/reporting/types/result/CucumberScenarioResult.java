@@ -20,6 +20,7 @@ public class CucumberScenarioResult {
     private int                  failed    = 0;
     private int                  undefined = 0;
     private double duration = 0.f;
+    private int rerunAttempts = 0;
 
     @SuppressWarnings("unchecked")
     public CucumberScenarioResult(JsonObject<String, Object> json) {
@@ -259,5 +260,12 @@ public class CucumberScenarioResult {
 
 	public final CucumberBeforeAfterResult getAfter() {
 		return after;
+	}
+
+	public final int getRerunAttempts() {
+		return rerunAttempts;
+	}
+	public void addRerunAttempts(int count) {
+		this.rerunAttempts += count;
 	}
 }

@@ -142,7 +142,7 @@ public class CucumberResultsOverview extends CucumberResultsCommon {
 
 
     public void executeFeaturesOverviewReport() throws Exception {
-        CucumberFeatureResult[] features = readFileContent();
+        CucumberFeatureResult[] features = readFileContent(true);
         File outFile = new File(
                 this.getOutputDirectory() + File.separator + this.getOutputName()
                 + "-feature-overview.html");

@@ -26,8 +26,15 @@ public class CucumberResultsCommon {
         this.sourceFile = sourceFileValue;
     }
 
+    public CucumberFeatureResult[] aggregateResults(CucumberFeatureResult[] input) {
+    	for(int i = 0; i < input.length; i++) {
+    		input[i].aggregateScenarioResults();
+    	}
+    	return input;
+    }
+    
     @SuppressWarnings("unchecked")
-    public CucumberFeatureResult[] readFileContent() throws Exception {
+    public CucumberFeatureResult[] readFileContent(boolean aggregate) throws Exception {
         FileInputStream fis = null;
         JsonReader jr = null;
         File file = new File(this.getSourceFile());
@@ -47,6 +54,9 @@ public class CucumberResultsCommon {
         }
         jr.close();
         fis.close();
+        if (aggregate) {
+        	sources = aggregateResults(sources);
+        }
         return sources;
     }
 

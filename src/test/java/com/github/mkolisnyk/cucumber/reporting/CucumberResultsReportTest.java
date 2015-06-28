@@ -20,7 +20,17 @@ public class CucumberResultsReportTest {
         results.setOutputName("cucumber-results");
         results.setSourceFile("./src/test/resources/cucumber.json");
         results.setScreenShotLocation("../src/test/resources/");
-        results.executeDetailedResultsReport(true);
+        results.executeDetailedResultsReport(true, false);
+    }
+
+    @Test
+    public void testGenerateDetailedAggregatedReport() throws Exception {
+        CucumberDetailedResults results = new CucumberDetailedResults();
+        results.setOutputDirectory("target/");
+        results.setOutputName("cucumber-results");
+        results.setSourceFile("./src/test/resources/cucumber.json");
+        results.setScreenShotLocation("../src/test/resources/");
+        results.executeDetailedResultsReport(true, true);
     }
 
     @Test
@@ -31,6 +41,6 @@ public class CucumberResultsReportTest {
         results.setSourceFile("./src/test/resources/cucumber.json");
         results.setScreenShotLocation("../src/test/resources/");
         results.setScreenShotWidth("200px");
-        results.executeDetailedResultsReport(true);
+        results.executeDetailedResultsReport(true, false);
     }
 }

@@ -315,11 +315,11 @@ public class CucumberDetailedResults extends CucumberResultsCommon {
     }
 
 
-    public void executeDetailedResultsReport(boolean toPdf) throws Exception {
-        CucumberFeatureResult[] features = readFileContent();
+    public void executeDetailedResultsReport(boolean toPdf, boolean aggregate) throws Exception {
+        CucumberFeatureResult[] features = readFileContent(aggregate);
         File outFile = new File(
                 this.getOutputDirectory() + File.separator + this.getOutputName()
-                + "-test-results.html");
+                + (aggregate ? "-agg" : "") + "-test-results.html");
         String content = generateStepsReport(features);
         FileUtils.writeStringToFile(outFile, content, "UTF-8");
         if (toPdf) {

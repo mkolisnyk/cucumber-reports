@@ -99,21 +99,27 @@ public class ExtendedCucumber extends ParentRunner<ExtendedFeatureRunner> {
 				e.printStackTrace();
 			}
         } 
-        if (extendedOptions.isDetailedReport()) {
+        if (extendedOptions.isDetailedReport() || extendedOptions.isDetailedAggregatedReport()) {
             CucumberDetailedResults results = new CucumberDetailedResults();
             results.setOutputDirectory(extendedOptions.getOutputFolder());
             results.setOutputName(extendedOptions.getReportPrefix());
             results.setSourceFile(extendedOptions.getJsonReportPath());
             results.setScreenShotLocation(extendedOptions.getScreenShotLocation());
             results.setScreenShotWidth(extendedOptions.getScreenShotSize());
-            try {
-				results.executeDetailedResultsReport(extendedOptions.isToPDF());
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-        } 
-        if (extendedOptions.isDetailedAggregatedReport()) {
-        	;
+        	if (extendedOptions.isDetailedReport()) {
+        		try {
+					results.executeDetailedResultsReport(extendedOptions.isToPDF(), false);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+        	}
+        	if (extendedOptions.isDetailedAggregatedReport()) {
+        		try {
+					results.executeDetailedResultsReport(extendedOptions.isToPDF(), true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+        	}
         } 
     }
 

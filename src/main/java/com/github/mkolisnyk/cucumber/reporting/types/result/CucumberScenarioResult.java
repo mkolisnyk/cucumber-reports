@@ -13,6 +13,9 @@ public class CucumberScenarioResult {
     private CucumberStepResult[] steps;
     private String               type;
 
+    private CucumberBeforeAfterResult before;
+    private CucumberBeforeAfterResult after;
+    
     private int                  passed    = 0;
     private int                  failed    = 0;
     private int                  undefined = 0;
@@ -26,6 +29,22 @@ public class CucumberScenarioResult {
         this.keyword = (String) json.get("keyword");
         this.line = (Long) json.get("line");
         this.type = (String) json.get("type");
+        if (json.containsKey("before")) {
+            Object[] objs = (Object[]) ((JsonObject<String, Object>) json
+                    .get("before")).get("@items");
+            for (int i = 0; i < objs.length; i++) {
+                this.before = new CucumberBeforeAfterResult(
+                        (JsonObject<String, Object>) objs[i]);
+            }
+        }
+        if (json.containsKey("after")) {
+            Object[] objs = (Object[]) ((JsonObject<String, Object>) json
+                    .get("after")).get("@items");
+            for (int i = 0; i < objs.length; i++) {
+                this.after = new CucumberBeforeAfterResult(
+                        (JsonObject<String, Object>) objs[i]);
+            }
+        }
         if (json.containsKey("steps")) {
             Object[] objs = (Object[]) ((JsonObject<String, Object>) json
                     .get("steps")).get("@items");
@@ -69,6 +88,14 @@ public class CucumberScenarioResult {
                 this.undefined++;
             }
             this.duration += (float) (step.getResult().getDuration() / nanosecondsInMillisecond)
+                    / millesecondsInSecond;
+        }
+        if (this.getBefore() != null) {
+        	this.duration += (float) (this.getBefore().getResult().getDuration() / nanosecondsInMillisecond)
+                    / millesecondsInSecond;
+        }
+        if (this.getAfter() != null) {
+        	this.duration += (float) (this.getAfter().getResult().getDuration() / nanosecondsInMillisecond)
                     / millesecondsInSecond;
         }
     }
@@ -225,4 +252,12 @@ public class CucumberScenarioResult {
     public final double getDuration() {
         return duration;
     }
+
+	public final CucumberBeforeAfterResult getBefore() {
+		return before;
+	}
+
+	public final CucumberBeforeAfterResult getAfter() {
+		return after;
+	}
 }

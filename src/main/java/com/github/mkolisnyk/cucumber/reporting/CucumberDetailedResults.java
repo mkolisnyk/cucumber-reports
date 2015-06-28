@@ -8,9 +8,11 @@ import java.io.OutputStream;
 
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.IOUtils;
+import org.apache.commons.lang.StringEscapeUtils;
 import org.apache.commons.lang.StringUtils;
 import org.xhtmlrenderer.pdf.ITextRenderer;
 
+import com.github.mkolisnyk.cucumber.reporting.types.result.CucumberBeforeAfterResult;
 import com.github.mkolisnyk.cucumber.reporting.types.result.CucumberFeatureResult;
 import com.github.mkolisnyk.cucumber.reporting.types.result.CucumberScenarioResult;
 import com.github.mkolisnyk.cucumber.reporting.types.result.CucumberStepResult;
@@ -83,6 +85,10 @@ public class CucumberDetailedResults extends CucumberResultsCommon {
         return result;
     }
 
+    private String escapeHtml(String input) {
+    	return StringEscapeUtils.escapeHtml(input);
+    }
+    
     private String generateOverview(CucumberFeatureResult[] results) {
         int featuresPassed = 0;
         int featuresFailed = 0;
@@ -154,13 +160,15 @@ public class CucumberDetailedResults extends CucumberResultsCommon {
                     "<li> <span class=\"%s\"><a href=\"#feature-%s\">%s</a></span><ol>",
                     result.getStatus(),
                     result.getId(),
-                    result.getName());
+                    escapeHtml(result.getName()));
             for (CucumberScenarioResult scenario : result.getElements()) {
-                reportContent += String.format(
-                        "<li> <span class=\"%s\"><a href=\"#sc-%s\">%s</a></span></li>",
-                        scenario.getStatus(),
-                        scenario.getId(),
-                        scenario.getName());
+            	if (scenario.getKeyword().contains("Scenario")) {
+	                reportContent += String.format(
+	                        "<li> <span class=\"%s\"><a href=\"#sc-%s\">%s</a></span></li>",
+	                        scenario.getStatus(),
+	                        scenario.getId(),
+	                        escapeHtml(scenario.getName()));
+            	}
             }
             reportContent += "</ol></li>";
         }
@@ -176,7 +184,7 @@ public class CucumberDetailedResults extends CucumberResultsCommon {
             for (int i = 0; i < step.getRows().length; i++) {
                 reportContent += "<tr>";
                 for (int j = 0; j < step.getRows()[i].length; j++) {
-                    reportContent += String.format("<td>%s</td>", step.getRows()[i][j]);
+                    reportContent += String.format("<td>%s</td>", escapeHtml(step.getRows()[i][j]));
                 }
                 reportContent += "</tr>";
             }
@@ -191,7 +199,7 @@ public class CucumberDetailedResults extends CucumberResultsCommon {
                     "<tr class=\"%s\"><td colspan=\"2\"><div>%s%s</br></div></td></tr>",
                     step.getResult().getStatus(),
                     "<br>",
-                    step.getResult().getErrorMessage().replaceAll(System.lineSeparator(),
+                    escapeHtml(step.getResult().getErrorMessage()).replaceAll(System.lineSeparator(),
                             "</br><br>" + System.lineSeparator())
             );
             String filePath = this.getScreenShotLocation()
@@ -212,6 +220,23 @@ public class CucumberDetailedResults extends CucumberResultsCommon {
         }
         return reportContent;
     }
+    private String generateBeforeAfterRow(CucumberBeforeAfterResult results, String name) {
+    	if (results != null) {
+    		String error = escapeHtml(results.getResult().getErrorMessage());
+    		return String.format(
+                    "<tr class=\"%s\"><td>%s</td><td colspan=\"2\"></td><td width=\"100\">%s</td></tr>"
+                    + "<tr class=\"%s\"><td colspan=\"4\">%s</td></tr>",
+                    results.getResult().getStatus(),
+                    name,
+                    results.getResult().getDurationTimeString("HH:mm:ss:S"),
+                    results.getResult().getStatus(),
+                    StringUtils.isNotBlank(error)
+                    		? "<br>" + error.replaceAll(System.lineSeparator(), "</br><br>") + "</br>"
+                    		: ""
+            );
+    	} 
+    	return "";
+    }
     private String generateStepsReport(CucumberFeatureResult[] results) throws IOException {
         String content = this.getReportBase();
         content = content.replaceAll("__TITLE__", "Detailed Results Report");
@@ -230,9 +255,9 @@ public class CucumberDetailedResults extends CucumberResultsCommon {
                     + "<td colspan=\"4\" style=\"padding-left:20px\"> <table width=\"100%%\">",
                     result.getStatus(),
                     result.getId(),
-                    result.getName(),
+                    escapeHtml(result.getName()),
                     result.getStatus(),
-                    result.getDescription().replaceAll(System.lineSeparator(),
+                    escapeHtml(result.getDescription()).replaceAll(System.lineSeparator(),
                             "</br><br>" + System.lineSeparator()),
                     result.getStatus(),
                     result.getPassed(),
@@ -241,44 +266,50 @@ public class CucumberDetailedResults extends CucumberResultsCommon {
                     result.getDuration(),
                     result.getStatus());
             for (CucumberScenarioResult scenario : result.getElements()) {
+            	
                 reportContent += String.format(
-                        "<tr class=\"%s\"><td colspan=\"4\"><b>Scenario:</b> <a id=\"sc-%s\">%s</a></td></tr>"
+                        "<tr class=\"%s\"><td colspan=\"4\"><b>%s:</b> <a id=\"sc-%s\">%s</a></td></tr>"
                         + "<tr class=\"%s_description\"><td colspan=\"4\"><br>%s</br></td></tr>"
-                        + "<tr class=\"%s\">"
+                   	    + "<tr class=\"%s\">"
                         + "<td><small><b>Passed:</b> %d</small></td><td><small><b>Failed:</b> %d</small></td>"
                         + "<td><small><b>Undefined:</b> %d</small></td><td><small>Duration: %.2fs</small></td></tr>"
+                   		+ "%s"
                         + "<tr class=\"%s\">"
                         + "<td colspan=\"4\" style=\"padding-left:20px\"> <table width=\"100%%\">",
                         scenario.getStatus(),
+                        scenario.getKeyword(),
                         scenario.getId(),
-                        scenario.getName(),
+                        escapeHtml(scenario.getName()),
                         scenario.getStatus(),
-                        scenario.getDescription().replaceAll(System.lineSeparator(),
+                        escapeHtml(scenario.getDescription()).replaceAll(System.lineSeparator(),
                                 "</br><br>" + System.lineSeparator()),
                         scenario.getStatus(),
                         scenario.getPassed(),
                         scenario.getFailed(),
                         scenario.getUndefined(),
                         scenario.getDuration(),
+                        this.generateBeforeAfterRow(scenario.getBefore(), "Before"),
                         scenario.getStatus());
                 for (CucumberStepResult step : scenario.getSteps()) {
                     reportContent += String.format(
                             "<tr class=\"%s\"><td><b>%s</b> %s</td><td width=\"100\">%s</td></tr>",
                             step.getResult().getStatus(),
                             step.getKeyword(),
-                            step.getName(),
+                            escapeHtml(step.getName()),
                             step.getResult().getDurationTimeString("HH:mm:ss:S")
                     );
                     reportContent += this.generateStepRows(step);
                     reportContent += this.generateScreenShot(scenario, step);
                 }
-                reportContent += "</table></td></tr><tr><td colspan=\"5\">"
+                reportContent += "</table></td></tr>"
+                		+ this.generateBeforeAfterRow(scenario.getAfter(), "After")
+                		+ "<tr><td colspan=\"5\">"
                         + "<sup><a href=\"#top\">Back to Table of Contents</a></sup></td></tr>";
             }
             reportContent += "</table></td></tr><tr><td colspan=\"5\"></td></tr>";
         }
         reportContent += "</table>";
-        reportContent = reportContent.replaceAll("[$]", "&#36;");
+        reportContent = reportContent.replaceAll("&pound;", "&#163;");
         content = content.replaceAll("__REPORT__", reportContent);
         return content;
     }

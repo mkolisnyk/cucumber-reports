@@ -5,15 +5,15 @@ import org.apache.commons.lang.ArrayUtils;
 import com.cedarsoftware.util.io.JsonObject;
 
 public class CucumberFeatureResult {
-    private String                   id;
-    private CucumberTagResults[]     tags;
-    private String                   description;
-    private String                   name;
-    private String                   keyword;
-    private Long                     line;
+    private String id;
+    private CucumberTagResults[] tags;
+    private String description;
+    private String name;
+    private String keyword;
+    private Long line;
     private CucumberScenarioResult[] elements;
-    private String                   uri;
-    private float                    duration;
+    private String uri;
+    private float duration;
 
     @SuppressWarnings("unchecked")
     public CucumberFeatureResult(JsonObject<String, Object> json) {
@@ -22,8 +22,8 @@ public class CucumberFeatureResult {
                 .get("tags");
         Object[] objs = {};
         if (tagEntry != null) {
-            objs = (Object[]) ((JsonObject<String, Object>) json
-                    .get("tags")).get("@items");
+            objs = (Object[]) ((JsonObject<String, Object>) json.get("tags"))
+                    .get("@items");
         }
         this.tags = new CucumberTagResults[objs.length];
         for (int i = 0; i < objs.length; i++) {
@@ -34,8 +34,8 @@ public class CucumberFeatureResult {
         this.name = (String) json.get("name");
         this.keyword = (String) json.get("keyword");
         this.line = (Long) json.get("line");
-        objs = (Object[]) ((JsonObject<String, Object>) json
-                .get("elements")).get("@items");
+        objs = (Object[]) ((JsonObject<String, Object>) json.get("elements"))
+                .get("@items");
         this.elements = new CucumberScenarioResult[objs.length];
         for (int i = 0; i < objs.length; i++) {
             this.elements[i] = new CucumberScenarioResult(
@@ -44,8 +44,8 @@ public class CucumberFeatureResult {
         this.uri = (String) json.get("uri");
     }
 
-    private int passed    = 0;
-    private int failed    = 0;
+    private int passed = 0;
+    private int failed = 0;
     private int undefined = 0;
 
     public void valuate() {
@@ -199,8 +199,7 @@ public class CucumberFeatureResult {
      * @param elementsValue
      *            the elements to set
      */
-    public final void setElements(
-            CucumberScenarioResult[] elementsValue) {
+    public final void setElements(CucumberScenarioResult[] elementsValue) {
         this.elements = elementsValue;
     }
 
@@ -225,28 +224,33 @@ public class CucumberFeatureResult {
     public final float getDuration() {
         return duration;
     }
-    
+
     public void aggregateScenarioResults(boolean collapse) {
-    	String prevId = "";
-    	for (int i = 0; i < this.elements.length; i++) {
-    		if (this.elements[i].getKeyword().equalsIgnoreCase("Background")) {
-    			continue;
-    		}
-    		if (this.elements[i].getId().equals(prevId)) {
-    			this.elements[i].addRerunAttempts(this.elements[i - 1].getRerunAttempts() + 1);
-    			if (collapse) {
-	    			this.elements = (CucumberScenarioResult[]) ArrayUtils.remove(this.elements, i - 1);
-	    			i--;
-	    			prevId = this.elements[i].getId();
-    			} else {
-    				prevId = this.elements[i].getId();
-    				this.elements[i].setId(String.format("%s-retry%d",this.elements[i].getId(), this.elements[i].getRerunAttempts()));
-    				this.elements[i].setName(String.format("%s (retry %d)", this.elements[i].getName(), this.elements[i].getRerunAttempts()));
-    			}
-    		} else {
-    			prevId = this.elements[i].getId();
-    		}
-    	}
+        String prevId = "";
+        for (int i = 0; i < this.elements.length; i++) {
+            if (this.elements[i].getKeyword().equalsIgnoreCase("Background")) {
+                continue;
+            }
+            if (this.elements[i].getId().equals(prevId)) {
+                this.elements[i].addRerunAttempts(this.elements[i - 1]
+                        .getRerunAttempts() + 1);
+                if (collapse) {
+                    this.elements = (CucumberScenarioResult[]) ArrayUtils
+                            .remove(this.elements, i - 1);
+                    i--;
+                    prevId = this.elements[i].getId();
+                } else {
+                    prevId = this.elements[i].getId();
+                    this.elements[i].setId(String.format("%s-retry%d",
+                            this.elements[i].getId(),
+                            this.elements[i].getRerunAttempts()));
+                    this.elements[i].setName(String.format("%s (retry %d)",
+                            this.elements[i].getName(),
+                            this.elements[i].getRerunAttempts()));
+                }
+            } else {
+                prevId = this.elements[i].getId();
+            }
+        }
     }
 }
-

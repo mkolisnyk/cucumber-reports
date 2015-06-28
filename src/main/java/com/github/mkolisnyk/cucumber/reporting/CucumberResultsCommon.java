@@ -27,12 +27,12 @@ public class CucumberResultsCommon {
     }
 
     public CucumberFeatureResult[] aggregateResults(CucumberFeatureResult[] input, boolean collapse) {
-    	for(int i = 0; i < input.length; i++) {
-    		input[i].aggregateScenarioResults(collapse);
-    	}
-    	return input;
+        for (int i = 0; i < input.length; i++) {
+            input[i].aggregateScenarioResults(collapse);
+        }
+        return input;
     }
-    
+
     @SuppressWarnings("unchecked")
     public CucumberFeatureResult[] readFileContent(boolean aggregate) throws Exception {
         FileInputStream fis = null;
@@ -54,7 +54,7 @@ public class CucumberResultsCommon {
         }
         jr.close();
         fis.close();
-       	sources = aggregateResults(sources, aggregate);
+           sources = aggregateResults(sources, aggregate);
         return sources;
     }
 

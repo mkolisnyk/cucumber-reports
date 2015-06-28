@@ -6,18 +6,29 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 @Retention(RetentionPolicy.RUNTIME)
-@Target({ElementType.TYPE })
+@Target({ ElementType.TYPE })
 public @interface ExtendedCucumberOptions {
-	int retryCount() default 0;
-	String jsonReport();
-	String jsonUsageReport() default "cucumber-usage.json";
-	String outputFolder() default ".";
-	String reportPrefix() default "cucumber-reports";
-	boolean usageReport() default false;
-	boolean overviewReport() default false;
-	boolean detailedReport() default false;
-	boolean detailedAggregatedReport() default false;
-	String screenShotSize() default "";
-	boolean toPDF() default false;
-	String screenShotLocation() default "";
+    int retryCount() default 0;
+
+    String jsonReport();
+
+    String jsonUsageReport() default "cucumber-usage.json";
+
+    String outputFolder() default ".";
+
+    String reportPrefix() default "cucumber-results";
+
+    boolean usageReport() default false;
+
+    boolean overviewReport() default false;
+
+    boolean detailedReport() default false;
+
+    boolean detailedAggregatedReport() default false;
+
+    String screenShotSize() default "";
+
+    boolean toPDF() default false;
+
+    String screenShotLocation() default "";
 }

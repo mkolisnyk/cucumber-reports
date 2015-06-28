@@ -124,7 +124,9 @@ public class CucumberResultsOverview extends CucumberResultsCommon {
         for (CucumberFeatureResult result : results) {
             for (CucumberScenarioResult element : result.getElements()) {
                 reportContent += String.format(
-                        "<tr class=\"%s\"><td>%s</td><td>%s</td><td>%s</td><td>%d</td><td>%d</td><td>%d</td><td>%d</td></tr>",
+                        "<tr class=\"%s\">"
+                        + "<td>%s</td><td>%s</td><td>%s</td>"
+                        + "<td>%d</td><td>%d</td><td>%d</td><td>%d</td></tr>",
                         element.getStatus(),
                         result.getName(),
                         element.getName(),

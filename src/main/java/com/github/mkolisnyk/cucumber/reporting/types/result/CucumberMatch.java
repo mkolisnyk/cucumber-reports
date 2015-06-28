@@ -6,9 +6,9 @@ public class CucumberMatch {
     private String location;
 
     public CucumberMatch(JsonObject<String, Object> json) {
-    	this.location  = (String) json.get("location");
+        this.location = (String) json.get("location");
     }
-    
+
     /**
      * @return the location
      */

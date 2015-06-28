@@ -17,6 +17,9 @@ import com.github.mkolisnyk.cucumber.reporting.types.result.CucumberFeatureResul
 import com.github.mkolisnyk.cucumber.reporting.types.result.CucumberScenarioResult;
 import com.github.mkolisnyk.cucumber.reporting.types.result.CucumberStepResult;
 
+/**
+ * @author Myk Kolisnyk
+ */
 public class CucumberDetailedResults extends CucumberResultsCommon {
     private String outputDirectory;
     private String outputName;
@@ -86,10 +89,12 @@ public class CucumberDetailedResults extends CucumberResultsCommon {
     }
 
     private String escapeHtml(String input) {
-    	return StringEscapeUtils.escapeHtml(input);
+        return StringEscapeUtils.escapeHtml(input);
     }
-    
+
     private String generateOverview(CucumberFeatureResult[] results) {
+        final int secondsInMinute = 60;
+        final int secondsInHour = 3600;
         int featuresPassed = 0;
         int featuresFailed = 0;
         int featuresUndefined = 0;
@@ -102,8 +107,8 @@ public class CucumberDetailedResults extends CucumberResultsCommon {
         final float highestPercent = 100.f;
         float overallDuration = 0.f;
         for (CucumberFeatureResult result : results) {
-        	result.valuate();
-        	overallDuration += result.getDuration();
+            result.valuate();
+            overallDuration += result.getDuration();
             if (result.getStatus().equals("passed")) {
                 featuresPassed++;
             } else if (result.getStatus().equals("failed")) {
@@ -144,9 +149,9 @@ public class CucumberDetailedResults extends CucumberResultsCommon {
                 stepsFailed,
                 stepsUndefined,
                 highestPercent * (float) stepsPassed / (float) (stepsPassed + stepsFailed + stepsUndefined),
-                (int)overallDuration/3600,
-                ((int)overallDuration % 3600) / 60,
-                ((int)overallDuration % 3600) % 60);
+                (int) overallDuration / secondsInHour,
+                ((int) overallDuration % secondsInHour) / secondsInMinute,
+                ((int) overallDuration % secondsInHour) % secondsInMinute);
     }
     private String generateNameFromId(String scId) {
         String result = scId.replaceAll("[; !@#$%^&*()+=]", "_");
@@ -162,13 +167,13 @@ public class CucumberDetailedResults extends CucumberResultsCommon {
                     result.getId(),
                     escapeHtml(result.getName()));
             for (CucumberScenarioResult scenario : result.getElements()) {
-            	if (scenario.getKeyword().contains("Scenario")) {
-	                reportContent += String.format(
-	                        "<li> <span class=\"%s\"><a href=\"#sc-%s\">%s</a></span></li>",
-	                        scenario.getStatus(),
-	                        scenario.getId(),
-	                        escapeHtml(scenario.getName()));
-            	}
+                if (scenario.getKeyword().contains("Scenario")) {
+                    reportContent += String.format(
+                            "<li> <span class=\"%s\"><a href=\"#sc-%s\">%s</a></span></li>",
+                            scenario.getStatus(),
+                            scenario.getId(),
+                            escapeHtml(scenario.getName()));
+                }
             }
             reportContent += "</ol></li>";
         }
@@ -221,21 +226,22 @@ public class CucumberDetailedResults extends CucumberResultsCommon {
         return reportContent;
     }
     private String generateBeforeAfterRow(CucumberBeforeAfterResult results, String name) {
-    	if (results != null) {
-    		String error = escapeHtml(results.getResult().getErrorMessage());
-    		return String.format(
+        if (results != null) {
+            String error = escapeHtml(results.getResult().getErrorMessage());
+            if (StringUtils.isBlank(error)) {
+                error = "";
+            }
+            return String.format(
                     "<tr class=\"%s\"><td>%s</td><td colspan=\"2\"></td><td width=\"100\">%s</td></tr>"
                     + "<tr class=\"%s\"><td colspan=\"4\">%s</td></tr>",
                     results.getResult().getStatus(),
                     name,
                     results.getResult().getDurationTimeString("HH:mm:ss:S"),
                     results.getResult().getStatus(),
-                    StringUtils.isNotBlank(error)
-                    		? "<br>" + error.replaceAll(System.lineSeparator(), "</br><br>") + "</br>"
-                    		: ""
+                    "<br>" + error.replaceAll(System.lineSeparator(), "</br><br>") + "</br>"
             );
-    	} 
-    	return "";
+        }
+        return "";
     }
     private String generateStepsReport(CucumberFeatureResult[] results) throws IOException {
         String content = this.getReportBase();
@@ -266,14 +272,13 @@ public class CucumberDetailedResults extends CucumberResultsCommon {
                     result.getDuration(),
                     result.getStatus());
             for (CucumberScenarioResult scenario : result.getElements()) {
-            	
                 reportContent += String.format(
                         "<tr class=\"%s\"><td colspan=\"4\"><b>%s:</b> <a id=\"sc-%s\">%s</a></td></tr>"
                         + "<tr class=\"%s_description\"><td colspan=\"4\"><br>%s</br></td></tr>"
-                   	    + "<tr class=\"%s\">"
+                           + "<tr class=\"%s\">"
                         + "<td><small><b>Passed:</b> %d</small></td><td><small><b>Failed:</b> %d</small></td>"
                         + "<td><small><b>Undefined:</b> %d</small></td><td><small>Duration: %.2fs</small></td></tr>"
-                   		+ "%s"
+                           + "%s"
                         + "<tr class=\"%s\">"
                         + "<td colspan=\"4\" style=\"padding-left:20px\"> <table width=\"100%%\">",
                         scenario.getStatus(),
@@ -302,14 +307,15 @@ public class CucumberDetailedResults extends CucumberResultsCommon {
                     reportContent += this.generateScreenShot(scenario, step);
                 }
                 reportContent += "</table></td></tr>"
-                		+ this.generateBeforeAfterRow(scenario.getAfter(), "After")
-                		+ "<tr><td colspan=\"5\">"
+                        + this.generateBeforeAfterRow(scenario.getAfter(), "After")
+                        + "<tr><td colspan=\"5\">"
                         + "<sup><a href=\"#top\">Back to Table of Contents</a></sup></td></tr>";
             }
             reportContent += "</table></td></tr><tr><td colspan=\"5\"></td></tr>";
         }
         reportContent += "</table>";
         reportContent = reportContent.replaceAll("&pound;", "&#163;");
+        reportContent = reportContent.replaceAll("[$]", "&#36;");
         content = content.replaceAll("__REPORT__", reportContent);
         return content;
     }
@@ -317,9 +323,15 @@ public class CucumberDetailedResults extends CucumberResultsCommon {
 
     public void executeDetailedResultsReport(boolean toPdf, boolean aggregate) throws Exception {
         CucumberFeatureResult[] features = readFileContent(aggregate);
+        String formatName = "";
+        if (aggregate) {
+            formatName = "%s%s%s-agg-test-results.html";
+        } else {
+            formatName = "%s%s%s-test-results.html";
+        }
         File outFile = new File(
-                this.getOutputDirectory() + File.separator + this.getOutputName()
-                + (aggregate ? "-agg" : "") + "-test-results.html");
+                String.format(formatName,
+                        this.getOutputDirectory(), File.separator, this.getOutputName()));
         String content = generateStepsReport(features);
         FileUtils.writeStringToFile(outFile, content, "UTF-8");
         if (toPdf) {

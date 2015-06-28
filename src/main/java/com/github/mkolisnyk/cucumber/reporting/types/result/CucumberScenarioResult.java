@@ -4,21 +4,21 @@ import com.cedarsoftware.util.io.JsonObject;
 
 public class CucumberScenarioResult {
 
-    private String               id;
-    private CucumberTagResults[]     tags;
-    private String               description;
-    private String               name;
-    private String               keyword;
-    private Long                 line;
+    private String id;
+    private CucumberTagResults[] tags;
+    private String description;
+    private String name;
+    private String keyword;
+    private Long line;
     private CucumberStepResult[] steps;
-    private String               type;
+    private String type;
 
     private CucumberBeforeAfterResult before;
     private CucumberBeforeAfterResult after;
-    
-    private int                  passed    = 0;
-    private int                  failed    = 0;
-    private int                  undefined = 0;
+
+    private int passed = 0;
+    private int failed = 0;
+    private int undefined = 0;
     private double duration = 0.f;
     private int rerunAttempts = 0;
 
@@ -59,8 +59,8 @@ public class CucumberScenarioResult {
                 .get("tags");
         Object[] objs = {};
         if (tagEntry != null) {
-            objs = (Object[]) ((JsonObject<String, Object>) json
-                    .get("tags")).get("@items");
+            objs = (Object[]) ((JsonObject<String, Object>) json.get("tags"))
+                    .get("@items");
         }
         this.tags = new CucumberTagResults[objs.length];
         for (int i = 0; i < objs.length; i++) {
@@ -92,11 +92,12 @@ public class CucumberScenarioResult {
                     / millesecondsInSecond;
         }
         if (this.getBefore() != null) {
-        	this.duration += (float) (this.getBefore().getResult().getDuration() / nanosecondsInMillisecond)
+            this.duration += (float) (this.getBefore().getResult()
+                    .getDuration() / nanosecondsInMillisecond)
                     / millesecondsInSecond;
         }
         if (this.getAfter() != null) {
-        	this.duration += (float) (this.getAfter().getResult().getDuration() / nanosecondsInMillisecond)
+            this.duration += (float) (this.getAfter().getResult().getDuration() / nanosecondsInMillisecond)
                     / millesecondsInSecond;
         }
     }
@@ -185,49 +186,56 @@ public class CucumberScenarioResult {
     }
 
     /**
-     * @param idValue the id to set
+     * @param idValue
+     *            the id to set
      */
     public final void setId(String idValue) {
         this.id = idValue;
     }
 
     /**
-     * @param descriptionValue the description to set
+     * @param descriptionValue
+     *            the description to set
      */
     public final void setDescription(String descriptionValue) {
         this.description = descriptionValue;
     }
 
     /**
-     * @param nameValue the name to set
+     * @param nameValue
+     *            the name to set
      */
     public final void setName(String nameValue) {
         this.name = nameValue;
     }
 
     /**
-     * @param keywordValue the keyword to set
+     * @param keywordValue
+     *            the keyword to set
      */
     public final void setKeyword(String keywordValue) {
         this.keyword = keywordValue;
     }
 
     /**
-     * @param lineValue the line to set
+     * @param lineValue
+     *            the line to set
      */
     public final void setLine(Long lineValue) {
         this.line = lineValue;
     }
 
     /**
-     * @param stepsValue the steps to set
+     * @param stepsValue
+     *            the steps to set
      */
     public final void setSteps(CucumberStepResult[] stepsValue) {
         this.steps = stepsValue;
     }
 
     /**
-     * @param typeValue the type to set
+     * @param typeValue
+     *            the type to set
      */
     public final void setType(String typeValue) {
         this.type = typeValue;
@@ -241,7 +249,8 @@ public class CucumberScenarioResult {
     }
 
     /**
-     * @param tagsValue the tags to set
+     * @param tagsValue
+     *            the tags to set
      */
     public final void setTags(CucumberTagResults[] tagsValue) {
         this.tags = tagsValue;
@@ -254,18 +263,19 @@ public class CucumberScenarioResult {
         return duration;
     }
 
-	public final CucumberBeforeAfterResult getBefore() {
-		return before;
-	}
+    public final CucumberBeforeAfterResult getBefore() {
+        return before;
+    }
 
-	public final CucumberBeforeAfterResult getAfter() {
-		return after;
-	}
+    public final CucumberBeforeAfterResult getAfter() {
+        return after;
+    }
 
-	public final int getRerunAttempts() {
-		return rerunAttempts;
-	}
-	public void addRerunAttempts(int count) {
-		this.rerunAttempts += count;
-	}
+    public final int getRerunAttempts() {
+        return rerunAttempts;
+    }
+
+    public void addRerunAttempts(int count) {
+        this.rerunAttempts += count;
+    }
 }

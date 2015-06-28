@@ -226,7 +226,7 @@ public class CucumberFeatureResult {
         return duration;
     }
     
-    public void aggregateScenarioResults() {
+    public void aggregateScenarioResults(boolean collapse) {
     	String prevId = "";
     	for (int i = 0; i < this.elements.length; i++) {
     		if (this.elements[i].getKeyword().equalsIgnoreCase("Background")) {
@@ -234,10 +234,18 @@ public class CucumberFeatureResult {
     		}
     		if (this.elements[i].getId().equals(prevId)) {
     			this.elements[i].addRerunAttempts(this.elements[i - 1].getRerunAttempts() + 1);
-    			this.elements = (CucumberScenarioResult[]) ArrayUtils.remove(this.elements, i - 1);
-    			i--;
+    			if (collapse) {
+	    			this.elements = (CucumberScenarioResult[]) ArrayUtils.remove(this.elements, i - 1);
+	    			i--;
+	    			prevId = this.elements[i].getId();
+    			} else {
+    				prevId = this.elements[i].getId();
+    				this.elements[i].setId(String.format("%s-retry%d",this.elements[i].getId(), this.elements[i].getRerunAttempts()));
+    				this.elements[i].setName(String.format("%s (retry %d)", this.elements[i].getName(), this.elements[i].getRerunAttempts()));
+    			}
+    		} else {
+    			prevId = this.elements[i].getId();
     		}
-    		prevId = this.elements[i].getId();
     	}
     }
 }

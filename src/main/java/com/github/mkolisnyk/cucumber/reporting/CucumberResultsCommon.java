@@ -26,9 +26,9 @@ public class CucumberResultsCommon {
         this.sourceFile = sourceFileValue;
     }
 
-    public CucumberFeatureResult[] aggregateResults(CucumberFeatureResult[] input) {
+    public CucumberFeatureResult[] aggregateResults(CucumberFeatureResult[] input, boolean collapse) {
     	for(int i = 0; i < input.length; i++) {
-    		input[i].aggregateScenarioResults();
+    		input[i].aggregateScenarioResults(collapse);
     	}
     	return input;
     }
@@ -54,9 +54,7 @@ public class CucumberResultsCommon {
         }
         jr.close();
         fis.close();
-        if (aggregate) {
-        	sources = aggregateResults(sources);
-        }
+       	sources = aggregateResults(sources, aggregate);
         return sources;
     }
 

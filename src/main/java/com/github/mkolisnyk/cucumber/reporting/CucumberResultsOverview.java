@@ -118,19 +118,21 @@ public class CucumberResultsOverview extends CucumberResultsCommon {
                 + "<th>Status</th>"
                 + "<th>Passed</th>"
                 + "<th>Failed</th>"
-                + "<th>Undefined</th></tr>";
+                + "<th>Undefined</th>"
+                + "<th>Retries</th></tr>";
 
         for (CucumberFeatureResult result : results) {
             for (CucumberScenarioResult element : result.getElements()) {
                 reportContent += String.format(
-                        "<tr class=\"%s\"><td>%s</td><td>%s</td><td>%s</td><td>%d</td><td>%d</td><td>%d</td></tr>",
+                        "<tr class=\"%s\"><td>%s</td><td>%s</td><td>%s</td><td>%d</td><td>%d</td><td>%d</td><td>%d</td></tr>",
                         element.getStatus(),
                         result.getName(),
                         element.getName(),
                         element.getStatus(),
                         element.getPassed(),
                         element.getFailed(),
-                        element.getUndefined());
+                        element.getUndefined(),
+                        element.getRerunAttempts());
             }
         }
         reportContent += "</table>";

@@ -3,6 +3,9 @@
  */
 package com.github.mkolisnyk.cucumber.reporting.types.usage;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import com.cedarsoftware.util.io.JsonObject;
 
 /**
@@ -37,5 +40,14 @@ public class CucumberStepSource {
         for (int i = 0; i < objs.length; i++) {
             this.steps[i] = new CucumberStep((JsonObject<String, Object>) objs[i]);
         }
+    }
+    public List<Double> getDurations() {
+        List<Double> results = new ArrayList<Double>();
+        for (CucumberStep step : steps) {
+            for (CucumberStepDuration duration : step.getDurations()) {
+                results.add(duration.getDuration());
+            }
+        }
+        return results;
     }
 }

@@ -6,7 +6,9 @@ package com.github.mkolisnyk.cucumber.reporting;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.util.Collections;
 import java.util.LinkedHashMap;
+import java.util.List;
 import java.util.Locale;
 import java.util.SortedMap;
 import java.util.TreeMap;
@@ -295,17 +297,74 @@ public class CucumberUsageReporting {
         return htmlContent;
     }
 
+    private CucumberStepSource getSourceByString(CucumberStepSource[] sources, String text) {
+        for (CucumberStepSource source : sources) {
+            if (source.getSource().equals(text)) {
+                return source;
+            }
+        }
+        return null;
+    }
     protected String generateUsageOverviewTableReport(CucumberStepSource[] sources) {
         LinkedHashMap<String, Integer> map = calculateStepsUsageScore(sources);
-        String content = "<table><tr><th>Expression</th><th>Occurences</th></tr>";
+        String content = "<table><tr><th rowspan=\"2\">Expression</th><th rowspan=\"2\">Occurences</th>"
+                + "<th colspan=\"5\">Duration</th></tr>"
+                + "<tr>"
+                + "<th>Average</th><th>Median</th><th>Minimal</th><th>Maximal</th><th>Total</th></tr>";
 
         for (String key:map.keySet()) {
-            content += "<tr><td width=\"80%\">" + key + "</td><td>" + map.get(key) + "</td></tr>";
+            content += "<tr><td width=\"60%\">" + key + "</td><td>" + map.get(key) + "</td>";
+            CucumberStepSource source = getSourceByString(sources, key);
+            if (source == null) {
+                content += "<td>-</td><td>-</td><td>-</td><td>-</td><td>-</td>";
+            } else {
+                List<Double> durations = source.getDurations();
+                if (durations.size() <= 0) {
+                    return "";
+                }
+                Collections.sort(durations);
+                Double median = durations.get(durations.size() / 2);
+                Double total = 0.;
+                for (Double duration : durations) {
+                    total += duration;
+                }
+                Double average = total / durations.size();
+                Double min = Collections.min(durations);
+                Double max = Collections.max(durations);
+                content += String.format(
+                        "<td>%.2fs</td><td>%.2fs</td><td>%.2fs</td><td>%.2fs</td><td>%.2fs</td>",
+                        average, median, min, max, total);
+            }
+            content += "</tr>";
         }
         content += "</table>";
         return content;
     }
 
+    private String generateSourceDurationOverview(CucumberStepSource source) {
+        List<Double> durations = source.getDurations();
+        if (durations.size() <= 0) {
+            return "";
+        }
+        Collections.sort(durations);
+        Double median = durations.get(durations.size() / 2);
+        Double total = 0.;
+        for (Double duration : durations) {
+            total += duration;
+        }
+        Double average = total / durations.size();
+        Double min = Collections.min(durations);
+        Double max = Collections.max(durations);
+        return String.format("<p><table>"
+                + "<tr><th colspan=\"2\">Duration Characteristic</th></tr>"
+                + "<tr><th>Average</th><td>%.2fs</td></tr>"
+                + "<tr><th>Median</th><td>%.2fs</td></tr>"
+                + "<tr><th>Minimum</th><td>%.2fs</td></tr>"
+                + "<tr><th>Maximum</th><td>%.2fs</td></tr>"
+                + "<tr><th>Total</th><td>%.2fs</td></tr>"
+                + "</table></p>", average, median, min, max, total);
+    }
+    
     protected String generateUsageDetailedReport(CucumberStepSource[] sources) {
         String content = "";
         for (CucumberStepSource source:sources) {
@@ -321,6 +380,7 @@ public class CucumberUsageReporting {
                 }
             }
             content += "</table>";
+            content += generateSourceDurationOverview(source);
         }
         return content;
     }

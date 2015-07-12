@@ -364,7 +364,7 @@ public class CucumberUsageReporting {
                 + "<tr><th>Total</th><td>%.2fs</td></tr>"
                 + "</table></p>", average, median, min, max, total);
     }
-    
+
     protected String generateUsageDetailedReport(CucumberStepSource[] sources) {
         String content = "";
         for (CucumberStepSource source:sources) {

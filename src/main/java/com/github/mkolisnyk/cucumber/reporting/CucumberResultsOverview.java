@@ -99,17 +99,18 @@ public class CucumberResultsOverview extends CucumberResultsCommon {
         String reportContent = "";
 
         reportContent += "<h1>Features Status</h1><table><tr><th>Feature Name</th><th>Status</th>"
-                + "<th>Passed</th><th>Failed</th><th>Undefined</th></tr>";
+                + "<th>Passed</th><th>Failed</th><th>Undefined</th><th>Duration</th></tr>";
 
         for (CucumberFeatureResult result : results) {
             reportContent += String.format(
-                    "<tr class=\"%s\"><td>%s</td><td>%s</td><td>%d</td><td>%d</td><td>%d</td></tr>",
+                    "<tr class=\"%s\"><td>%s</td><td>%s</td><td>%d</td><td>%d</td><td>%d</td><td>%.2fs</td></tr>",
                     result.getStatus(),
                     result.getName(),
                     result.getStatus(),
                     result.getPassed(),
                     result.getFailed(),
-                    result.getUndefined());
+                    result.getUndefined(),
+                    result.getDuration());
         }
         reportContent += "</table>";
         reportContent += "<h1>Scenario Status</h1><table>"
@@ -119,14 +120,16 @@ public class CucumberResultsOverview extends CucumberResultsCommon {
                 + "<th>Passed</th>"
                 + "<th>Failed</th>"
                 + "<th>Undefined</th>"
-                + "<th>Retries</th></tr>";
+                + "<th>Retries</th>"
+                + "<th>Duration</th></tr>";
 
         for (CucumberFeatureResult result : results) {
             for (CucumberScenarioResult element : result.getElements()) {
                 reportContent += String.format(
                         "<tr class=\"%s\">"
                         + "<td>%s</td><td>%s</td><td>%s</td>"
-                        + "<td>%d</td><td>%d</td><td>%d</td><td>%d</td></tr>",
+                        + "<td>%d</td><td>%d</td><td>%d</td><td>%d</td>"
+                        + "<td>%.2fs</td></tr>",
                         element.getStatus(),
                         result.getName(),
                         element.getName(),
@@ -134,7 +137,8 @@ public class CucumberResultsOverview extends CucumberResultsCommon {
                         element.getPassed(),
                         element.getFailed(),
                         element.getUndefined(),
-                        element.getRerunAttempts());
+                        element.getRerunAttempts(),
+                        element.getDuration());
             }
         }
         reportContent += "</table>";

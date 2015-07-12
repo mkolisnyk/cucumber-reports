@@ -197,6 +197,18 @@ public class CucumberDetailedResults extends CucumberResultsCommon {
         }
         return reportContent;
     }
+    private String generateDocString(CucumberStepResult step) {
+        String reportContent = "";
+        if (StringUtils.isNotBlank(step.getDocString())) {
+            reportContent += String.format(
+                    "<tr class=\"%s_description\"><td style=\"padding-left:20px\" colspan=\"2\">",
+                    step.getResult().getStatus());
+            reportContent += String.format("<br>%s</br>",
+                    escapeHtml(step.getDocString()).replaceAll(System.lineSeparator(), "</br><br>"));
+            reportContent += "</td></tr>";
+        }
+        return reportContent;
+    }
     private String generateScreenShot(CucumberScenarioResult scenario, CucumberStepResult step) {
         String reportContent = "";
         if (step.getResult().getStatus().trim().equalsIgnoreCase("failed")) {
@@ -304,6 +316,7 @@ public class CucumberDetailedResults extends CucumberResultsCommon {
                             step.getResult().getDurationTimeString("HH:mm:ss:S")
                     );
                     reportContent += this.generateStepRows(step);
+                    reportContent += this.generateDocString(step);
                     reportContent += this.generateScreenShot(scenario, step);
                 }
                 reportContent += "</table></td></tr>"

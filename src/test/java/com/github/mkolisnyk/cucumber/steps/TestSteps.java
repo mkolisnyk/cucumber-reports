@@ -57,4 +57,9 @@ public class TestSteps {
             System.out.println("[Step] DONE!!!");
         }
     }
+    @When("I use the following text:")
+    @Then("I should see the following text:")
+    public void docstringText(String text) {
+        System.out.println(text);
+    }
 }

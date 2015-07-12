@@ -11,6 +11,7 @@ public class CucumberStepResult {
     private String         keyword;
     private Long           line;
     private String[][] rows;
+    private String docString;
 
     @SuppressWarnings("unchecked")
     public CucumberStepResult(JsonObject<String, Object> json) {
@@ -31,6 +32,10 @@ public class CucumberStepResult {
                     this.rows[i][j] = (String) row[j];
                 }
             }
+        }
+        if (json.containsKey("doc_string")) {
+            this.docString = (String) ((JsonObject<String, Object>) json
+                    .get("doc_string")).get("value");
         }
     }
 
@@ -106,5 +111,7 @@ public class CucumberStepResult {
     public final void setRows(String[][] rowsValue) {
         this.rows = rowsValue;
     }
-
+    public final String getDocString() {
+        return docString;
+    }
 }

@@ -1,0 +1,33 @@
+<svg  xmlns="http://www.w3.org/2000/svg" version="1.1" width="400" height="300">
+			<filter id="f1" x="0" y="0" width="200%" height="200%">
+		<feOffset result="offOut" in="SourceAlpha" dx="10" dy="10" />
+		<feGaussianBlur result="blurOut" in="offOut" stdDeviation="10" />
+		<feBlend in="SourceGraphic" in2="blurOut" mode="normal" /></filter>
+		<radialGradient id="grad4" cx="0%" cy="100%" r="150%" fx="0%"
+			fy="100%">
+		<stop offset="0%" style="stop-color:white;stop-opacity:0.1" />
+		<stop offset="100%" style="stop-color:silver;stop-opacity:0.7" /></radialGradient>
+	</defs>
+<rect width="90%" height="90%" stroke="black" stroke-width="1" fill="url(#grad4)" filter="url(#f1)"/>
+			<line x1="30" y1="30" x2="30" y2="240"
+			style="stroke:black;stroke-width:1" />
+		<line x1="30" y1="240" x2="350" y2="240"
+			style="stroke:black;stroke-width:1" />
+		<polygon points="25,50 30,30 35,50"
+			style="fill:black;stroke:black;stroke-width:1" />
+		<polygon points="350,240 330,245 330,235"
+			style="fill:black;stroke:black;stroke-width:1" />
+		<!-- Scale Marks-->
+		<line x1="40" y1="240" x2="40" y2="245"
+			style="stroke:black;stroke-width:1" />
+		<text x="42" y="253" font-size="8">0.0s</text>
+		<line x1="320" y1="240" x2="320" y2="245"
+			style="stroke:black;stroke-width:1" />
+		<text x="322" y="253" font-size="8">0.0s</text>
+
+		<text x="60" y="220" font-weight="bold" font-size="14"
+			transform="rotate(-90 20,220)">Frequency</text>
+			<text x="140" y="260" font-weight="bold" font-size="14">Duration</text>
+		<!-- Polygon -->
+			<text x="22%" y="55%" font-weight="bold" font-size="120" fill="gray">N/A</text>
+</svg>

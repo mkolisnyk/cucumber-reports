@@ -6,6 +6,8 @@ package com.github.mkolisnyk.cucumber.reporting;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.Collections;
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -14,6 +16,7 @@ import java.util.SortedMap;
 import java.util.TreeMap;
 
 import org.apache.commons.io.FileUtils;
+import org.apache.commons.io.IOUtils;
 import org.apache.maven.reporting.MavenReportException;
 
 import com.cedarsoftware.util.io.JsonObject;
@@ -361,6 +364,30 @@ public class CucumberUsageReporting {
         return content;
     }
 
+    private String getEmptyHystogram() throws IOException {
+        InputStream is = this.getClass().getResourceAsStream("/usage-na-graph-tmpl.html");
+        String result = IOUtils.toString(is);
+        return result;
+    }
+
+    private String getFilledHystogram() throws IOException {
+        InputStream is = this.getClass().getResourceAsStream("/usage-base-graph-tmpl.html");
+        String result = IOUtils.toString(is);
+        return result;
+    }
+    private String getHystogram(CucumberStepSource source) throws Exception {
+        int durations = 0;
+        for (CucumberStep step : source.getSteps()) {
+            for (CucumberStepDuration duration : step.getDurations()) {
+                durations++;
+            }
+        }
+        if (durations < 5) {
+            return getEmptyHystogram();
+        }
+        return getFilledHystogram();
+    }
+
     private String generateSourceDurationOverview(CucumberStepSource source) {
         List<Double> durations = source.getDurations();
         if (durations.size() <= 0) {
@@ -385,12 +412,12 @@ public class CucumberUsageReporting {
                 + "</table></p>", average, median, min, max, total);
     }
 
-    protected String generateUsageDetailedReport(CucumberStepSource[] sources) {
+    protected String generateUsageDetailedReport(CucumberStepSource[] sources) throws Exception {
         String content = "";
         for (CucumberStepSource source:sources) {
 
             content += "<h3>" + source.getSource() + "</h3>"
-                    + "<table><tr><th>Step Name</th><th>Duration</th><th>Location</th></tr>";
+                    + "<p><table><tr><th>Step Name</th><th>Duration</th><th>Location</th></tr>";
 
             for (CucumberStep step:source.getSteps()) {
                 content += "<tr><td>" + step.getName() + "</td><td> - </td><td> - </td></tr>";
@@ -399,8 +426,10 @@ public class CucumberUsageReporting {
                             + "</td><td>" + duration.getLocation() + "</td></tr>";
                 }
             }
-            content += "</table>";
-            content += generateSourceDurationOverview(source);
+            content += "</table></p>";
+            content += "<p><table class=\"none\"><tr><td class=\"none\">" + this.getHystogram(source) + "</td>"
+                    + "<td valign=top class=\"none\">" + generateSourceDurationOverview(source) + "</td></tr>"
+                    + "</table></p>";
         }
         return content;
     }
@@ -435,6 +464,7 @@ public class CucumberUsageReporting {
             + "h3 {background-color:#DDDDFF}" + System.lineSeparator()
             + "th {border:1px solid black;background-color:#CCCCDD;}" + System.lineSeparator()
             + "td{border:1px solid black;}" + System.lineSeparator()
+            + ".none {border:0px none black;}" + System.lineSeparator()
             + "table{border:1px solid black;border-collapse: collapse;}" + System.lineSeparator()
             + "tr:nth-child(even) {background: #CCC}" + System.lineSeparator()
             + "tr:nth-child(odd) {background: #FFF}";

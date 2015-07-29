@@ -278,12 +278,12 @@ public class CucumberUsageReporting {
                 + "\" style=\"stroke:red;stroke-width:3\" />"
                 + "<rect x=\"60%\" y=\"20%\" width=\"28%\" height=\"20%\" stroke=\"black\""
                 + " stroke-width=\"1\" fill=\"white\" filter=\"url(#f1)\" />"
-                + "<line x1=\"63%\" y1=\"29%\" x2=\"68%\" y2=\"29%\" stroke-dasharray=\"5,5\""
-                + " style=\"stroke:red;stroke-width:3\" /><text x=\"73%\" y=\"30%\""
-                + " font-weight = \"bold\" font-size = \"12\">Average</text>"
-                + "<line x1=\"63%\" y1=\"34%\" x2=\"68%\" y2=\"34%\" stroke-dasharray=\"5,5\""
-                + " style=\"stroke:yellow;stroke-width:3\" /><text x=\"73%\" y=\"35%\""
-                + " font-weight = \"bold\" font-size = \"12\">Median</text>"
+                + "<line x1=\"62%\" y1=\"29%\" x2=\"67%\" y2=\"29%\" stroke-dasharray=\"5,5\""
+                + " style=\"stroke:red;stroke-width:3\" /><text x=\"69%\" y=\"30%\""
+                + " font-weight = \"bold\" font-size = \"12\">Average: " + String.format("%.1f", average) + "</text>"
+                + "<line x1=\"62%\" y1=\"34%\" x2=\"67%\" y2=\"34%\" stroke-dasharray=\"5,5\""
+                + " style=\"stroke:yellow;stroke-width:3\" /><text x=\"69%\" y=\"35%\""
+                + " font-weight = \"bold\" font-size = \"12\">Median: " + median + "</text>"
                 + "<text x=\"60%\" y=\"55%\" font-weight = \"bold\" font-size = \"40\" fill=\""
                 + statusColor + "\">" + String.format("%.1f", usage)
                 + "%</text>"
@@ -307,13 +307,33 @@ public class CucumberUsageReporting {
     }
     protected String generateUsageOverviewTableReport(CucumberStepSource[] sources) {
         LinkedHashMap<String, Integer> map = calculateStepsUsageScore(sources);
-        String content = "<table><tr><th rowspan=\"2\">Expression</th><th rowspan=\"2\">Occurences</th>"
+        String content = "<table><tr><th rowspan=\"2\">#</th>"
+                + "<th rowspan=\"2\">Expression</th><th rowspan=\"2\">Occurences</th>"
                 + "<th colspan=\"5\">Duration</th></tr>"
                 + "<tr>"
                 + "<th>Average</th><th>Median</th><th>Minimal</th><th>Maximal</th><th>Total</th></tr>";
-
+        int index = 0;
         for (String key:map.keySet()) {
-            content += "<tr><td width=\"60%\">" + key + "</td><td>" + map.get(key) + "</td>";
+            String color = "silver";
+            switch (index / (map.keySet().size() / 3)) {
+                case 0:
+                    color = "lightgreen";
+                    break;
+                case 1:
+                    color = "gold";
+                    break;
+                case 2:
+                    color = "tomato";
+                    break;
+                case 3:
+                    color = "red";
+                    break;
+                default:
+                    break;
+            }
+            content += "<tr style=\"background:" + color + "\"><td>" + (++index) + "</td>"
+                    + "<td width=\"60%\">" + key + "</td>"
+                    + "<td>" + map.get(key) + "</td>";
             CucumberStepSource source = getSourceByString(sources, key);
             if (source == null) {
                 content += "<td>-</td><td>-</td><td>-</td><td>-</td><td>-</td>";

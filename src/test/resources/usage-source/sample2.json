@@ -1,0 +1,46 @@
+  {
+    "source": "^I am logged into the system$",
+    "steps": [
+      {
+        "name": "I am logged into the system",
+        "aggregatedDurations": {
+          "average": 27.921531606,
+          "median": 26.189979265
+        },
+        "durations": [
+          {
+            "duration": 27.434434917,
+            "location": "Payments.feature:11"
+          },
+          {
+            "duration": 32.945934022,
+            "location": "Payments.feature:11"
+          },
+          {
+            "duration": 24.708850136,
+            "location": "Payments.feature:11"
+          },
+          {
+            "duration": 24.887393397,
+            "location": "Payments.feature:11"
+          },
+          {
+            "duration": 31.21465576,
+            "location": "Payments.feature:11"
+          },
+          {
+            "duration": 32.580911171,
+            "location": "Payments.feature:11"
+          },
+          {
+            "duration": 24.654549831,
+            "location": "Payments.feature:11"
+          },
+          {
+            "duration": 24.945523614,
+            "location": "journeysearch/BasicJourneySearch.feature:20"
+          }
+        ]
+      }
+    ]
+  }

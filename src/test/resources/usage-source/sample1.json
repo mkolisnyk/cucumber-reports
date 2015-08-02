@@ -1,0 +1,18 @@
+  {
+    "source": "^(?:I |)click on the \"([^\"]*)\" (?:text|label)$",
+    "steps": [
+      {
+        "name": "click on the \"Anytime\" text",
+        "aggregatedDurations": {
+          "average": 2.733746396,
+          "median": 2.733746396
+        },
+        "durations": [
+          {
+            "duration": 2.733746396,
+            "location": "booking/JourneyOptions.feature:96"
+          }
+        ]
+      }
+    ]
+  }

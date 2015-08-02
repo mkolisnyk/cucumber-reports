@@ -1,0 +1,531 @@
+  {
+    "source": "^(?:I should see |)the \"([^\"]*)\" (?:message|label|text) is shown$",
+    "steps": [
+      {
+        "name": "the \"Arrivals\" label is shown",
+        "aggregatedDurations": {
+          "average": 0.402070314,
+          "median": 0.402070314
+        },
+        "durations": [
+          {
+            "duration": 0.448733562,
+            "location": "LiveTrainTimes.feature:12"
+          },
+          {
+            "duration": 0.355407067,
+            "location": "LiveTrainTimes.feature:12"
+          }
+        ]
+      },
+      {
+        "name": "the \"Departures\" label is shown",
+        "aggregatedDurations": {
+          "average": 0.902722581,
+          "median": 0.902722581
+        },
+        "durations": [
+          {
+            "duration": 1.001337674,
+            "location": "LiveTrainTimes.feature:12"
+          },
+          {
+            "duration": 0.804107488,
+            "location": "LiveTrainTimes.feature:12"
+          }
+        ]
+      },
+      {
+        "name": "the \"No live times for this route\" message is shown",
+        "aggregatedDurations": {
+          "average": 2.760303032,
+          "median": 2.760303032
+        },
+        "durations": [
+          {
+            "duration": 2.760303032,
+            "location": "LiveTrainTimes.feature:47"
+          }
+        ]
+      },
+      {
+        "name": "the \"no booking fee on the day of travel\" message is shown",
+        "aggregatedDurations": {
+          "average": 2.866863992,
+          "median": 2.866863992
+        },
+        "durations": [
+          {
+            "duration": 2.866863992,
+            "location": "LiveTrainTimes.feature:60"
+          }
+        ]
+      },
+      {
+        "name": "I should see the \"Farringdon\" text is shown",
+        "aggregatedDurations": {
+          "average": 0.264241068,
+          "median": 0.264241068
+        },
+        "durations": [
+          {
+            "duration": 0.264241068,
+            "location": "LiveTrainTimes.feature:62"
+          }
+        ]
+      },
+      {
+        "name": "I should see the \"Joe Public\" text is shown",
+        "aggregatedDurations": {
+          "average": 0.969122873,
+          "median": 0.97281905
+        },
+        "durations": [
+          {
+            "duration": 1.021496507,
+            "location": "Payments.feature:21"
+          },
+          {
+            "duration": 0.922468831,
+            "location": "Payments.feature:21"
+          },
+          {
+            "duration": 0.947854835,
+            "location": "Payments.feature:21"
+          },
+          {
+            "duration": 0.997783265,
+            "location": "Payments.feature:21"
+          },
+          {
+            "duration": 0.824917751,
+            "location": "Payments.feature:21"
+          },
+          {
+            "duration": 1.10021605,
+            "location": "Payments.feature:21"
+          }
+        ]
+      },
+      {
+        "name": "the \"0051\" text is shown",
+        "aggregatedDurations": {
+          "average": 0.50868517,
+          "median": 0.50868517
+        },
+        "durations": [
+          {
+            "duration": 0.50868517,
+            "location": "Payments.feature:22"
+          }
+        ]
+      },
+      {
+        "name": "the \"0302\" text is shown",
+        "aggregatedDurations": {
+          "average": 0.14414972,
+          "median": 0.14414972
+        },
+        "durations": [
+          {
+            "duration": 0.14414972,
+            "location": "Payments.feature:22"
+          }
+        ]
+      },
+      {
+        "name": "the \"0106\" text is shown",
+        "aggregatedDurations": {
+          "average": 0.500852951,
+          "median": 0.500852951
+        },
+        "durations": [
+          {
+            "duration": 0.500852951,
+            "location": "Payments.feature:22"
+          }
+        ]
+      },
+      {
+        "name": "the \"1111\" text is shown",
+        "aggregatedDurations": {
+          "average": 0.492184518,
+          "median": 0.492184518
+        },
+        "durations": [
+          {
+            "duration": 0.492184518,
+            "location": "Payments.feature:22"
+          }
+        ]
+      },
+      {
+        "name": "the \"0025\" text is shown",
+        "aggregatedDurations": {
+          "average": 0.497849881,
+          "median": 0.497849881
+        },
+        "durations": [
+          {
+            "duration": 0.497849881,
+            "location": "Payments.feature:22"
+          }
+        ]
+      },
+      {
+        "name": "the \"2862\" text is shown",
+        "aggregatedDurations": {
+          "average": 0.482025765,
+          "median": 0.482025765
+        },
+        "durations": [
+          {
+            "duration": 0.482025765,
+            "location": "Payments.feature:22"
+          }
+        ]
+      },
+      {
+        "name": "the \"Cheapest Tickets\" label is shown",
+        "aggregatedDurations": {
+          "average": 0.14593998,
+          "median": 0.14593998
+        },
+        "durations": [
+          {
+            "duration": 0.14593998,
+            "location": "journeysearch/BON-88_SingleOptionsForJourney.feature:24"
+          }
+        ]
+      },
+      {
+        "name": "the \"Advance Single\" text is shown",
+        "aggregatedDurations": {
+          "average": 0.197097288,
+          "median": 0.197097288
+        },
+        "durations": [
+          {
+            "duration": 0.222524132,
+            "location": "journeysearch/BON-88_SingleOptionsForJourney.feature:25"
+          },
+          {
+            "duration": 0.171670445,
+            "location": "journeysearch/BON-88_SingleOptionsForJourney.feature:90"
+          }
+        ]
+      },
+      {
+        "name": "the \"Cheapest Tickets\" text is shown",
+        "aggregatedDurations": {
+          "average": 0.17382525,
+          "median": 0.17382525
+        },
+        "durations": [
+          {
+            "duration": 0.17382525,
+            "location": "journeysearch/BON-88_SingleOptionsForJourney.feature:89"
+          }
+        ]
+      },
+      {
+        "name": "the \"Farringdon\" label is shown",
+        "aggregatedDurations": {
+          "average": 0.197480714,
+          "median": 0.191092319
+        },
+        "durations": [
+          {
+            "duration": 0.203223606,
+            "location": "journeysearch/BasicJourneySearch.feature:45"
+          },
+          {
+            "duration": 0.229151575,
+            "location": "journeysearch/BasicJourneySearch.feature:45"
+          },
+          {
+            "duration": 0.211902081,
+            "location": "journeysearch/BasicJourneySearch.feature:45"
+          },
+          {
+            "duration": 0.284635233,
+            "location": "journeysearch/BasicJourneySearch.feature:45"
+          },
+          {
+            "duration": 0.239067967,
+            "location": "journeysearch/BasicJourneySearch.feature:45"
+          },
+          {
+            "duration": 0.190167229,
+            "location": "journeysearch/BasicJourneySearch.feature:45"
+          },
+          {
+            "duration": 0.255594394,
+            "location": "journeysearch/BasicJourneySearch.feature:45"
+          },
+          {
+            "duration": 0.214389966,
+            "location": "journeysearch/BasicJourneySearch.feature:45"
+          },
+          {
+            "duration": 0.209532698,
+            "location": "journeysearch/BasicJourneySearch.feature:45"
+          },
+          {
+            "duration": 0.168690807,
+            "location": "journeysearch/BasicJourneySearch.feature:45"
+          },
+          {
+            "duration": 0.173217674,
+            "location": "journeysearch/BasicJourneySearch.feature:71"
+          },
+          {
+            "duration": 0.19201741,
+            "location": "journeysearch/BasicJourneySearch.feature:76"
+          },
+          {
+            "duration": 0.221135576,
+            "location": "journeysearch/BasicJourneySearch.feature:71"
+          },
+          {
+            "duration": 0.138563695,
+            "location": "journeysearch/BasicJourneySearch.feature:76"
+          },
+          {
+            "duration": 0.186876606,
+            "location": "journeysearch/BasicJourneySearch.feature:71"
+          },
+          {
+            "duration": 0.188592885,
+            "location": "journeysearch/BasicJourneySearch.feature:76"
+          },
+          {
+            "duration": 0.160142551,
+            "location": "journeysearch/BasicJourneySearch.feature:71"
+          },
+          {
+            "duration": 0.134696627,
+            "location": "journeysearch/BasicJourneySearch.feature:76"
+          },
+          {
+            "duration": 0.174693266,
+            "location": "journeysearch/BasicJourneySearch.feature:71"
+          },
+          {
+            "duration": 0.173322451,
+            "location": "journeysearch/BasicJourneySearch.feature:76"
+          }
+        ]
+      },
+      {
+        "name": "the \"Newcastle\" label is shown",
+        "aggregatedDurations": {
+          "average": 0.22034191,
+          "median": 0.198356964
+        },
+        "durations": [
+          {
+            "duration": 0.183536439,
+            "location": "journeysearch/BasicJourneySearch.feature:46"
+          },
+          {
+            "duration": 0.158294379,
+            "location": "journeysearch/BasicJourneySearch.feature:46"
+          },
+          {
+            "duration": 0.176912344,
+            "location": "journeysearch/BasicJourneySearch.feature:46"
+          },
+          {
+            "duration": 0.224370965,
+            "location": "journeysearch/BasicJourneySearch.feature:46"
+          },
+          {
+            "duration": 0.257496127,
+            "location": "journeysearch/BasicJourneySearch.feature:46"
+          },
+          {
+            "duration": 0.30312097,
+            "location": "journeysearch/BasicJourneySearch.feature:46"
+          },
+          {
+            "duration": 0.32715658,
+            "location": "journeysearch/BasicJourneySearch.feature:46"
+          },
+          {
+            "duration": 0.270748669,
+            "location": "journeysearch/BasicJourneySearch.feature:46"
+          },
+          {
+            "duration": 0.186242248,
+            "location": "journeysearch/BasicJourneySearch.feature:46"
+          },
+          {
+            "duration": 0.266497974,
+            "location": "journeysearch/BasicJourneySearch.feature:46"
+          },
+          {
+            "duration": 0.158341579,
+            "location": "journeysearch/BasicJourneySearch.feature:72"
+          },
+          {
+            "duration": 0.185509809,
+            "location": "journeysearch/BasicJourneySearch.feature:77"
+          },
+          {
+            "duration": 0.213819882,
+            "location": "journeysearch/BasicJourneySearch.feature:72"
+          },
+          {
+            "duration": 0.163336766,
+            "location": "journeysearch/BasicJourneySearch.feature:77"
+          },
+          {
+            "duration": 0.210471681,
+            "location": "journeysearch/BasicJourneySearch.feature:72"
+          },
+          {
+            "duration": 0.177559422,
+            "location": "journeysearch/BasicJourneySearch.feature:77"
+          },
+          {
+            "duration": 0.357182932,
+            "location": "journeysearch/BasicJourneySearch.feature:72"
+          },
+          {
+            "duration": 0.250403377,
+            "location": "journeysearch/BasicJourneySearch.feature:77"
+          },
+          {
+            "duration": 0.162776388,
+            "location": "journeysearch/BasicJourneySearch.feature:72"
+          },
+          {
+            "duration": 0.17305967,
+            "location": "journeysearch/BasicJourneySearch.feature:77"
+          }
+        ]
+      },
+      {
+        "name": "I should see the \"You must choose origin and destination\" message is shown",
+        "aggregatedDurations": {
+          "average": 0.6344623,
+          "median": 0.6344623
+        },
+        "durations": [
+          {
+            "duration": 0.6344623,
+            "location": "journeysearch/BasicJourneySearch.feature:96"
+          }
+        ]
+      },
+      {
+        "name": "I should see the \"You must choose a destination station\" message is shown",
+        "aggregatedDurations": {
+          "average": 0.658368694,
+          "median": 0.658368694
+        },
+        "durations": [
+          {
+            "duration": 0.658368694,
+            "location": "journeysearch/BasicJourneySearch.feature:96"
+          }
+        ]
+      },
+      {
+        "name": "I should see the \"You must choose an origin station\" message is shown",
+        "aggregatedDurations": {
+          "average": 0.623589853,
+          "median": 0.623589853
+        },
+        "durations": [
+          {
+            "duration": 0.623589853,
+            "location": "journeysearch/BasicJourneySearch.feature:96"
+          }
+        ]
+      },
+      {
+        "name": "I should see the \"From and To stations must be different\" message is shown",
+        "aggregatedDurations": {
+          "average": 0.611112599,
+          "median": 0.611112599
+        },
+        "durations": [
+          {
+            "duration": 0.611112599,
+            "location": "journeysearch/BasicJourneySearch.feature:96"
+          }
+        ]
+      },
+      {
+        "name": "I should see the \"The via or avoid station can\" message is shown",
+        "aggregatedDurations": {
+          "average": 0.641850301,
+          "median": 0.641850301
+        },
+        "durations": [
+          {
+            "duration": 0.666030525,
+            "location": "journeysearch/BasicJourneySearch.feature:96"
+          },
+          {
+            "duration": 0.617670078,
+            "location": "journeysearch/BasicJourneySearch.feature:96"
+          }
+        ]
+      },
+      {
+        "name": "the \"Plat\" text is shown",
+        "aggregatedDurations": {
+          "average": 0.171759489,
+          "median": 0.171759489
+        },
+        "durations": [
+          {
+            "duration": 0.171759489,
+            "location": "journeysearch/BasicJourneySearch.feature:140"
+          }
+        ]
+      },
+      {
+        "name": "the \"Not available\" text is shown",
+        "aggregatedDurations": {
+          "average": 0.173814539,
+          "median": 0.173814539
+        },
+        "durations": [
+          {
+            "duration": 0.173814539,
+            "location": "journeysearch/BasicJourneySearch.feature:190"
+          }
+        ]
+      },
+      {
+        "name": "the \"Select outbound\" label is shown",
+        "aggregatedDurations": {
+          "average": 0.199337792,
+          "median": 0.199337792
+        },
+        "durations": [
+          {
+            "duration": 0.199337792,
+            "location": "journeysearch/BasicJourneySearch.feature:226"
+          }
+        ]
+      },
+      {
+        "name": "the \"Select return\" label is shown",
+        "aggregatedDurations": {
+          "average": 0.120578078,
+          "median": 0.120578078
+        },
+        "durations": [
+          {
+            "duration": 0.120578078,
+            "location": "journeysearch/BasicJourneySearch.feature:229"
+          }
+        ]
+      }
+    ]
+  }

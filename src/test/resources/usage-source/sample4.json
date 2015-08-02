@@ -1,0 +1,43 @@
+  {
+    "source": "^(?:I should see |)all \"([^\"]*)\" list items contain the \"([^\"]*)\" text$",
+    "steps": [
+      {
+        "name": "all \"Platform Column\" list items contain the \"Platform\" text",
+        "aggregatedDurations": {
+          "average": 8.149398816,
+          "median": 8.223203011
+        },
+        "durations": [
+          {
+            "duration": 9.283466275,
+            "location": "LiveTrainTimes.feature:16"
+          },
+          {
+            "duration": 8.112249755,
+            "location": "LiveTrainTimes.feature:16"
+          },
+          {
+            "duration": 6.867722969,
+            "location": "LiveTrainTimes.feature:16"
+          },
+          {
+            "duration": 8.334156268,
+            "location": "LiveTrainTimes.feature:16"
+          }
+        ]
+      },
+      {
+        "name": "all \"Tickets\" list items contain the \"Single\" text",
+        "aggregatedDurations": {
+          "average": 0.165903318,
+          "median": 0.165903318
+        },
+        "durations": [
+          {
+            "duration": 0.165903318,
+            "location": "journeysearch/BasicJourneySearch.feature:207"
+          }
+        ]
+      }
+    ]
+  }

@@ -309,6 +309,7 @@ public class CucumberUsageReporting {
         return null;
     }
     protected String generateUsageOverviewTableReport(CucumberStepSource[] sources) {
+        final int groupsCount = 3;
         LinkedHashMap<String, Integer> map = calculateStepsUsageScore(sources);
         String content = "<table><tr><th rowspan=\"2\">#</th>"
                 + "<th rowspan=\"2\">Expression</th><th rowspan=\"2\">Occurences</th>"
@@ -318,7 +319,7 @@ public class CucumberUsageReporting {
         int index = 0;
         for (String key:map.keySet()) {
             String color = "silver";
-            switch (index / (map.keySet().size() / 3)) {
+            switch (index / (map.keySet().size() / groupsCount)) {
                 case 0:
                     color = "lightgreen";
                     break;
@@ -328,7 +329,7 @@ public class CucumberUsageReporting {
                 case 2:
                     color = "tomato";
                     break;
-                case 3:
+                case groupsCount:
                     color = "red";
                     break;
                 default:
@@ -370,22 +371,153 @@ public class CucumberUsageReporting {
         return result;
     }
 
-    private String getFilledHystogram() throws IOException {
+    public int getDurationGroupsCount(CucumberStepSource source) {
+        final int minimalDurations = 5;
+        final int minimalDurationSize = 3;
+        final int maxDurationGroups = 10;
+        List<Double> durations = source.getDurations();
+        if (durations.size() <= minimalDurations) {
+            return 0;
+        }
+        if (durations.size() < minimalDurationSize * maxDurationGroups) {
+            return durations.size() / minimalDurationSize;
+        }
+        return maxDurationGroups;
+    }
+
+    public int[] getFrequencyData(CucumberStepSource source) {
+        final int minimalDurations = 5;
+        int[] result = new int[]{};
+        List<Double> durations = source.getDurations();
+        if (durations.size() <= minimalDurations) {
+            return result;
+        }
+        double minDuration = this.getMinDuration(source);
+        double maxDuration = this.getMaxDuration(source);
+        int count = getDurationGroupsCount(source);
+        result = new int[count];
+        for (int i = 0; i < count; i++) {
+            result[i] = 0;
+        }
+        double step = (maxDuration - minDuration) / (double) count;
+        for (Double duration : durations) {
+            int index = (int) ((duration - minDuration) / step);
+            if (index >= count) {
+                index = count - 1;
+            }
+            result[index] = result[index] + 1;
+        }
+        return result;
+    }
+    private String getFrequencyPolyPoints(int[] data) {
+        final int startX = 40;
+        final int endX = 320;
+        final int topY = 50;
+        final int bottomY = 240;
+        int max = 0;
+        int stepX = (endX - startX) / data.length;
+        for (int item : data) {
+            max = Math.max(max, item);
+        }
+        int stepY = (bottomY - topY) / max;
+        String result = "";
+        for (int i = 0; i < data.length; i++) {
+            result = result.concat(
+                String.format("%d,%d %d,%d %d,%d %d,%d ",
+                    startX + i * stepX, bottomY,
+                    startX + i * stepX, bottomY - data[i] * stepY,
+                    startX + (i + 1) * stepX, bottomY - data[i] * stepY,
+                    startX + (i + 1) * stepX, bottomY
+                )
+            );
+        }
+        return result;
+    }
+
+    private Double getMaxDuration(CucumberStepSource source) {
+        List<Double> durations = source.getDurations();
+        double maxDuration = durations.get(0);
+        for (Double duration : durations) {
+            maxDuration = Math.max(maxDuration, duration);
+        }
+        return maxDuration;
+    }
+
+    private Double getMinDuration(CucumberStepSource source) {
+        List<Double> durations = source.getDurations();
+        double minDuration = durations.get(0);
+        for (Double duration : durations) {
+            minDuration = Math.min(minDuration, duration);
+        }
+        return minDuration;
+    }
+
+    private String getFrequencyLabels(CucumberStepSource source, int[] data) {
+        final int startX = 40;
+        final int endX = 320;
+        final int topY = 50;
+        final int bottomY = 240;
+        int max = 0;
+        int stepX = (endX - startX) / data.length;
+        for (int item : data) {
+            max = Math.max(max, item);
+        }
+        int stepY = (bottomY - topY) / max;
+        String result = "";
+        for (int i = 0; i < data.length; i++) {
+            result = result.concat(
+                String.format("<text x=\"%d\" y=\"%d\" font-weight=\"bold\" font-size=\"14\">%d</text>",
+                    startX + i * stepX + stepX / 2 - (int)(Math.log10(data[i])) * 7,
+                    bottomY - data[i] * stepY - 2,
+                    data[i])
+            );
+            double step = (this.getMaxDuration(source) - this.getMinDuration(source)) / (double) data.length;
+            result = result.concat(
+                    String.format("<line x1=\"%d\" y1=\"%d\" x2=\"%d\""
+                            + " y2=\"%d\" style=\"stroke:black;stroke-width:1\" />"
+                            + "<text x=\"%d\" y=\"%d\" font-size=\"8\">%.2f</text>"
+                            ,
+                        startX + i * stepX, bottomY,
+                        startX + i * stepX, bottomY + 2,
+                        startX + i * stepX + 2, bottomY + 8, this.getMinDuration(source) + (double) i * step)
+                );
+        }
+        result = result.concat(
+                String.format("<line x1=\"%d\" y1=\"%d\" x2=\"%d\""
+                        + " y2=\"%d\" style=\"stroke:black;stroke-width:1\" />"
+                        + "<text x=\"%d\" y=\"%d\" font-size=\"8\">%.2f</text>"
+                        ,
+                    endX, bottomY,
+                    endX, bottomY + 2,
+                    endX + 2, bottomY + 8, this.getMaxDuration(source))
+            );
+        return result;
+    }
+
+    private String getFilledHystogram(CucumberStepSource source) throws IOException {
         InputStream is = this.getClass().getResourceAsStream("/usage-base-graph-tmpl.html");
         String result = IOUtils.toString(is);
+        int[] data = getFrequencyData(source);
+        String polypoints = "";
+        String frequencies = "";
+        if (data.length > 0) {
+            polypoints = getFrequencyPolyPoints(data);
+            frequencies = getFrequencyLabels(source, data);
+        }
+        result = result.replaceAll("\\{POLYPOINTS\\}", polypoints);
+        result = result.replaceAll("\\{FREQUENCIES\\}", frequencies);
         return result;
     }
     private String getHystogram(CucumberStepSource source) throws Exception {
+        final int minimalDurations = 5;
         int durations = 0;
         for (CucumberStep step : source.getSteps()) {
-            for (CucumberStepDuration duration : step.getDurations()) {
-                durations++;
-            }
+            durations += step.getDurations().length;
         }
-        if (durations < 5) {
+        if (durations <= minimalDurations) {
             return getEmptyHystogram();
         }
-        return getFilledHystogram();
+        return getFilledHystogram(source);
     }
 
     private String generateSourceDurationOverview(CucumberStepSource source) {

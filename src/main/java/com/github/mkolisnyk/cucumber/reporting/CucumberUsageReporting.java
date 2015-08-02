@@ -457,6 +457,8 @@ public class CucumberUsageReporting {
         final int endX = 320;
         final int topY = 50;
         final int bottomY = 240;
+        final int shiftX = 7;
+        final int shiftY = 8;
         int max = 0;
         int stepX = (endX - startX) / data.length;
         for (int item : data) {
@@ -467,7 +469,7 @@ public class CucumberUsageReporting {
         for (int i = 0; i < data.length; i++) {
             result = result.concat(
                 String.format("<text x=\"%d\" y=\"%d\" font-weight=\"bold\" font-size=\"14\">%d</text>",
-                    startX + i * stepX + stepX / 2 - (int)(Math.log10(data[i])) * 7,
+                    startX + i * stepX + stepX / 2 - (int) (Math.log10(data[i])) * shiftX,
                     bottomY - data[i] * stepY - 2,
                     data[i])
             );
@@ -479,7 +481,7 @@ public class CucumberUsageReporting {
                             ,
                         startX + i * stepX, bottomY,
                         startX + i * stepX, bottomY + 2,
-                        startX + i * stepX + 2, bottomY + 8, this.getMinDuration(source) + (double) i * step)
+                        startX + i * stepX + 2, bottomY + shiftY, this.getMinDuration(source) + (double) i * step)
                 );
         }
         result = result.concat(
@@ -489,7 +491,7 @@ public class CucumberUsageReporting {
                         ,
                     endX, bottomY,
                     endX, bottomY + 2,
-                    endX + 2, bottomY + 8, this.getMaxDuration(source))
+                    endX + 2, bottomY + shiftY, this.getMaxDuration(source))
             );
         return result;
     }

@@ -10,6 +10,7 @@ import org.junit.runner.notification.RunNotifier;
 import org.junit.runners.ParentRunner;
 import org.junit.runners.model.InitializationError;
 
+import com.github.mkolisnyk.cucumber.reporting.CucumberCoverageOverview;
 import com.github.mkolisnyk.cucumber.reporting.CucumberDetailedResults;
 import com.github.mkolisnyk.cucumber.reporting.CucumberResultsOverview;
 import com.github.mkolisnyk.cucumber.reporting.CucumberUsageReporting;
@@ -123,7 +124,17 @@ public class ExtendedCucumber extends ParentRunner<ExtendedFeatureRunner> {
             e.printStackTrace();
         }
     }
-
+    private void runCoverageReport() {
+        CucumberCoverageOverview results = new CucumberCoverageOverview();
+        results.setOutputDirectory(extendedOptions.getOutputFolder());
+        results.setOutputName(extendedOptions.getReportPrefix());
+        results.setSourceFile(extendedOptions.getJsonReportPath());
+        try {
+            results.executeCoverageReport();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
     @Override
     public void run(RunNotifier notifier) {
         super.run(notifier);
@@ -141,6 +152,9 @@ public class ExtendedCucumber extends ParentRunner<ExtendedFeatureRunner> {
         }
         if (extendedOptions.isDetailedAggregatedReport()) {
             runDetailedAggregatedReport();
+        }
+        if (extendedOptions.isCoverageReport()) {
+            runCoverageReport();
         }
     }
 

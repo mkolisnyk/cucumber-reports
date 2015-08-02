@@ -47,6 +47,7 @@ public class CucumberFeatureResult {
     private int passed = 0;
     private int failed = 0;
     private int undefined = 0;
+    private int skipped = 0;
 
     public void valuate() {
         passed = 0;
@@ -55,10 +56,14 @@ public class CucumberFeatureResult {
         duration = 0.f;
         for (CucumberScenarioResult scenario : elements) {
             scenario.valuate();
-            if (scenario.getFailed() > 0) {
+            if (scenario.getSteps() == null || scenario.getSteps().length <= 0) {
+                this.undefined++;
+            } else if (scenario.getFailed() > 0) {
                 this.failed++;
             } else if (scenario.getUndefined() > 0) {
                 this.undefined++;
+            } else if (scenario.getSkipped() > 0) {
+                this.skipped++;
             } else {
                 this.passed++;
             }
@@ -72,6 +77,8 @@ public class CucumberFeatureResult {
             return "failed";
         } else if (this.getUndefined() > 0) {
             return "undefined";
+        } else if (this.getSkipped() > 0) {
+            return "skipped";
         } else {
             return "passed";
         }
@@ -96,6 +103,10 @@ public class CucumberFeatureResult {
      */
     public final int getUndefined() {
         return undefined;
+    }
+
+    public final int getSkipped() {
+        return skipped;
     }
 
     /**

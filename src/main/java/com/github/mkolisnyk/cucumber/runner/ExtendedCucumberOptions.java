@@ -22,6 +22,8 @@ public @interface ExtendedCucumberOptions {
 
     boolean overviewReport() default false;
 
+    boolean coverageReport() default false;
+
     boolean detailedReport() default false;
 
     boolean detailedAggregatedReport() default false;

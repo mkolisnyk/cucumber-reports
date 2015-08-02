@@ -46,13 +46,13 @@ public class CucumberResultsOverview extends CucumberResultsCommon {
         this.outputName = outputNameValue;
     }
 
-    private String getReportBase() throws IOException {
+    protected String getReportBase() throws IOException {
         InputStream is = this.getClass().getResourceAsStream("/feature-overview-tmpl.html");
         String result = IOUtils.toString(is);
         return result;
     }
 
-    private String getFeatureData(CucumberFeatureResult[] results) {
+    protected String getFeatureData(CucumberFeatureResult[] results) {
         int passed = 0;
         int failed = 0;
         int undefined = 0;
@@ -64,14 +64,15 @@ public class CucumberResultsOverview extends CucumberResultsCommon {
             if (result.getStatus().trim().equalsIgnoreCase("failed")) {
                 failed++;
             }
-            if (result.getStatus().trim().equalsIgnoreCase("undefined")) {
+            if (result.getStatus().trim().equalsIgnoreCase("undefined")
+                    || result.getStatus().trim().equalsIgnoreCase("skipped")) {
                 undefined++;
             }
         }
         return String.format("['Passed', %d], ['Failed', %d], ['Undefined', %d]", passed, failed, undefined);
     }
 
-    private String getScenarioData(CucumberFeatureResult[] results) {
+    protected String getScenarioData(CucumberFeatureResult[] results) {
         int passed = 0;
         int failed = 0;
         int undefined = 0;
@@ -84,7 +85,8 @@ public class CucumberResultsOverview extends CucumberResultsCommon {
                 if (element.getStatus().trim().equalsIgnoreCase("failed")) {
                     failed++;
                 }
-                if (element.getStatus().trim().equalsIgnoreCase("undefined")) {
+                if (element.getStatus().trim().equalsIgnoreCase("undefined")
+                        || element.getStatus().trim().equalsIgnoreCase("skipped")) {
                     undefined++;
                 }
             }
@@ -93,7 +95,7 @@ public class CucumberResultsOverview extends CucumberResultsCommon {
         return String.format("['Passed', %d], ['Failed', %d], ['Undefined', %d]", passed, failed, undefined);
     }
 
-    private String generateFeatureOverview(CucumberFeatureResult[] results) throws IOException {
+    protected String generateFeatureOverview(CucumberFeatureResult[] results) throws IOException {
         String content = this.getReportBase();
         content = content.replaceAll("__TITLE__", "Features Overview");
         String reportContent = "";
@@ -148,12 +150,11 @@ public class CucumberResultsOverview extends CucumberResultsCommon {
         return content;
     }
 
-
-    public void executeFeaturesOverviewReport() throws Exception {
+    public void executeOverviewReport(String reportSuffix) throws Exception {
         CucumberFeatureResult[] features = readFileContent(true);
         File outFile = new File(
                 this.getOutputDirectory() + File.separator + this.getOutputName()
-                + "-feature-overview.html");
+                + "-" + reportSuffix + ".html");
         FileUtils.writeStringToFile(outFile, generateFeatureOverview(features));
         final WebClient webClient = new WebClient(BrowserVersion.INTERNET_EXPLORER_11);
         webClient.getOptions().setThrowExceptionOnScriptError(false);
@@ -161,5 +162,9 @@ public class CucumberResultsOverview extends CucumberResultsCommon {
         String content = page.asXml();
         FileUtils.writeStringToFile(outFile, content);
         webClient.close();
+    }
+
+    public void executeFeaturesOverviewReport() throws Exception {
+        executeOverviewReport("feature-overview");
     }
 }

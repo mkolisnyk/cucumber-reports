@@ -18,6 +18,7 @@ public class CucumberScenarioResult {
 
     private int passed = 0;
     private int failed = 0;
+    private int skipped = 0;
     private int undefined = 0;
     private double duration = 0.f;
     private int rerunAttempts = 0;
@@ -74,6 +75,7 @@ public class CucumberScenarioResult {
         final float millesecondsInSecond = 1000.f;
         passed = 0;
         failed = 0;
+        skipped = 0;
         undefined = 0;
         this.duration = 0.f;
         if (steps == null) {
@@ -85,6 +87,8 @@ public class CucumberScenarioResult {
                 this.passed++;
             } else if (status.equalsIgnoreCase("failed")) {
                 this.failed++;
+            } else if (status.equalsIgnoreCase("skipped")) {
+                this.skipped++;
             } else {
                 this.undefined++;
             }
@@ -122,6 +126,9 @@ public class CucumberScenarioResult {
     public final int getUndefined() {
         return undefined;
     }
+    public final int getSkipped() {
+        return skipped;
+    }
 
     public String getStatus() {
         valuate();
@@ -131,6 +138,8 @@ public class CucumberScenarioResult {
             return "undefined";
         } else if (this.getPassed() > 0) {
             return "passed";
+        } else if (this.getSkipped() > 0) {
+            return "skipped";
         } else {
             return "undefined";
         }

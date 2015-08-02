@@ -1,0 +1,404 @@
+[
+  {
+    "line": 2,
+    "elements": [
+      {
+        "line": 4,
+        "name": "Sample",
+        "description": "",
+        "id": "tests-with-docstrings;sample",
+        "type": "scenario",
+        "keyword": "Scenario",
+        "steps": [
+          {
+            "result": {
+              "status": "skipped"
+            },
+            "line": 5,
+            "name": "I use the following text:",
+            "match": {
+              "location": "TestSteps.docstringText(String)"
+            },
+            "keyword": "When ",
+            "doc_string": {
+              "content_type": "",
+              "line": 6,
+              "value": "Some multiline\r\ndocstring text"
+            }
+          },
+          {
+            "result": {
+              "status": "skipped"
+            },
+            "line": 10,
+            "name": "I should see the following text:",
+            "match": {
+              "location": "TestSteps.docstringText(String)"
+            },
+            "keyword": "Then ",
+            "doc_string": {
+              "content_type": "",
+              "line": 11,
+              "value": "Another multiline\r\ndocstring output"
+            }
+          }
+        ]
+      }
+    ],
+    "name": "Tests with docstrings",
+    "description": "",
+    "id": "tests-with-docstrings",
+    "keyword": "Feature",
+    "uri": "Docstring.feature",
+    "tags": [
+      {
+        "line": 1,
+        "name": "@docstring"
+      }
+    ]
+  },
+  {
+    "line": 1,
+    "elements": [
+      {
+        "line": 3,
+        "name": "Always passed test",
+        "description": "",
+        "id": "sample-re-run-feature;always-passed-test",
+        "type": "scenario",
+        "keyword": "Scenario",
+        "steps": [
+          {
+            "result": {
+              "status": "skipped"
+            },
+            "line": 4,
+            "name": "I am in the system",
+            "match": {
+              "location": "TestSteps.i_am_in_the_system()"
+            },
+            "keyword": "Given "
+          },
+          {
+            "result": {
+              "status": "skipped"
+            },
+            "line": 5,
+            "name": "I do nothing",
+            "match": {
+              "location": "TestSteps.i_do_nothing()"
+            },
+            "keyword": "When "
+          },
+          {
+            "result": {
+              "status": "skipped"
+            },
+            "line": 6,
+            "name": "I should see nothing",
+            "match": {
+              "location": "TestSteps.i_should_see_nothing()"
+            },
+            "keyword": "Then "
+          }
+        ]
+      },
+      {
+        "line": 8,
+        "name": "Always failed test",
+        "description": "",
+        "id": "sample-re-run-feature;always-failed-test",
+        "type": "scenario",
+        "keyword": "Scenario",
+        "steps": [
+          {
+            "result": {
+              "status": "skipped"
+            },
+            "line": 9,
+            "name": "I am in the system",
+            "match": {
+              "location": "TestSteps.i_am_in_the_system()"
+            },
+            "keyword": "Given "
+          },
+          {
+            "result": {
+              "status": "skipped"
+            },
+            "line": 10,
+            "name": "I do wrong",
+            "match": {
+              "location": "TestSteps.i_do_wrong()"
+            },
+            "keyword": "When "
+          },
+          {
+            "result": {
+              "status": "skipped"
+            },
+            "line": 11,
+            "name": "I should see nothing",
+            "match": {
+              "location": "TestSteps.i_should_see_nothing()"
+            },
+            "keyword": "Then "
+          }
+        ]
+      },
+      {
+        "line": 13,
+        "name": "Flaky test",
+        "description": "",
+        "id": "sample-re-run-feature;flaky-test",
+        "type": "scenario",
+        "keyword": "Scenario",
+        "steps": [
+          {
+            "result": {
+              "status": "skipped"
+            },
+            "line": 14,
+            "name": "I am in the system",
+            "match": {
+              "location": "TestSteps.i_am_in_the_system()"
+            },
+            "keyword": "Given "
+          },
+          {
+            "result": {
+              "status": "skipped"
+            },
+            "line": 15,
+            "name": "I do something",
+            "match": {
+              "location": "TestSteps.i_do_something()"
+            },
+            "keyword": "When "
+          },
+          {
+            "result": {
+              "status": "skipped"
+            },
+            "line": 16,
+            "name": "I should see nothing",
+            "match": {
+              "location": "TestSteps.i_should_see_nothing()"
+            },
+            "keyword": "Then "
+          }
+        ]
+      },
+      {
+        "line": 25,
+        "name": "outlining test",
+        "description": "",
+        "id": "sample-re-run-feature;outlining-test;;2",
+        "type": "scenario",
+        "keyword": "Scenario Outline",
+        "steps": [
+          {
+            "result": {
+              "status": "skipped"
+            },
+            "line": 19,
+            "name": "I am in the system",
+            "match": {
+              "location": "TestSteps.i_am_in_the_system()"
+            },
+            "keyword": "Given "
+          },
+          {
+            "result": {
+              "status": "skipped"
+            },
+            "line": 20,
+            "name": "I do some 1 things",
+            "match": {
+              "arguments": [
+                {
+                  "val": "1",
+                  "offset": 10
+                }
+              ],
+              "location": "TestSteps.i_do_some_things(int)"
+            },
+            "matchedColumns": [
+              0
+            ],
+            "keyword": "When "
+          },
+          {
+            "result": {
+              "status": "skipped"
+            },
+            "line": 21,
+            "name": "I should see nothing",
+            "match": {
+              "location": "TestSteps.i_should_see_nothing()"
+            },
+            "keyword": "Then "
+          }
+        ]
+      },
+      {
+        "line": 26,
+        "name": "outlining test",
+        "description": "",
+        "id": "sample-re-run-feature;outlining-test;;3",
+        "type": "scenario",
+        "keyword": "Scenario Outline",
+        "steps": [
+          {
+            "result": {
+              "status": "skipped"
+            },
+            "line": 19,
+            "name": "I am in the system",
+            "match": {
+              "location": "TestSteps.i_am_in_the_system()"
+            },
+            "keyword": "Given "
+          },
+          {
+            "result": {
+              "status": "skipped"
+            },
+            "line": 20,
+            "name": "I do some 2 things",
+            "match": {
+              "arguments": [
+                {
+                  "val": "2",
+                  "offset": 10
+                }
+              ],
+              "location": "TestSteps.i_do_some_things(int)"
+            },
+            "matchedColumns": [
+              0
+            ],
+            "keyword": "When "
+          },
+          {
+            "result": {
+              "status": "skipped"
+            },
+            "line": 21,
+            "name": "I should see nothing",
+            "match": {
+              "location": "TestSteps.i_should_see_nothing()"
+            },
+            "keyword": "Then "
+          }
+        ]
+      },
+      {
+        "line": 27,
+        "name": "outlining test",
+        "description": "",
+        "id": "sample-re-run-feature;outlining-test;;4",
+        "type": "scenario",
+        "keyword": "Scenario Outline",
+        "steps": [
+          {
+            "result": {
+              "status": "skipped"
+            },
+            "line": 19,
+            "name": "I am in the system",
+            "match": {
+              "location": "TestSteps.i_am_in_the_system()"
+            },
+            "keyword": "Given "
+          },
+          {
+            "result": {
+              "status": "skipped"
+            },
+            "line": 20,
+            "name": "I do some 3 things",
+            "match": {
+              "arguments": [
+                {
+                  "val": "3",
+                  "offset": 10
+                }
+              ],
+              "location": "TestSteps.i_do_some_things(int)"
+            },
+            "matchedColumns": [
+              0
+            ],
+            "keyword": "When "
+          },
+          {
+            "result": {
+              "status": "skipped"
+            },
+            "line": 21,
+            "name": "I should see nothing",
+            "match": {
+              "location": "TestSteps.i_should_see_nothing()"
+            },
+            "keyword": "Then "
+          }
+        ]
+      },
+      {
+        "line": 29,
+        "name": "Some undefined scenario",
+        "description": "",
+        "id": "sample-re-run-feature;some-undefined-scenario",
+        "type": "scenario",
+        "keyword": "Scenario"
+      },
+      {
+        "line": 31,
+        "name": "Some scenario with undefined step",
+        "description": "",
+        "id": "sample-re-run-feature;some-scenario-with-undefined-step",
+        "type": "scenario",
+        "keyword": "Scenario",
+        "steps": [
+          {
+            "result": {
+              "status": "skipped"
+            },
+            "line": 32,
+            "name": "I am in the system",
+            "match": {
+              "location": "TestSteps.i_am_in_the_system()"
+            },
+            "keyword": "Given "
+          },
+          {
+            "result": {
+              "status": "skipped"
+            },
+            "line": 33,
+            "name": "I do nothing",
+            "match": {
+              "location": "TestSteps.i_do_nothing()"
+            },
+            "keyword": "When "
+          },
+          {
+            "result": {
+              "status": "undefined"
+            },
+            "line": 34,
+            "name": "I should see something",
+            "match": {},
+            "keyword": "Then "
+          }
+        ]
+      }
+    ],
+    "name": "Sample re-run feature",
+    "description": "",
+    "id": "sample-re-run-feature",
+    "keyword": "Feature",
+    "uri": "Test.feature"
+  }
+]

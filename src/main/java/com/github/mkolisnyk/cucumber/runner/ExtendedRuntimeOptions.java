@@ -6,6 +6,7 @@ public class ExtendedRuntimeOptions {
     private boolean isUsageReport = false;
     private boolean isDetailedReport = false;
     private boolean isDetailedAggregatedReport = false;
+    private boolean isCoverageReport = false;
     private String jsonReportPath;
     private String outputFolder;
     private String reportPrefix;
@@ -24,6 +25,7 @@ public class ExtendedRuntimeOptions {
             this.isDetailedReport = options.detailedReport();
             this.isDetailedAggregatedReport = options
                     .detailedAggregatedReport();
+            this.isCoverageReport = options.coverageReport();
             this.jsonReportPath = options.jsonReport();
             this.outputFolder = options.outputFolder();
             this.reportPrefix = options.reportPrefix();
@@ -49,6 +51,10 @@ public class ExtendedRuntimeOptions {
 
     public final boolean isDetailedAggregatedReport() {
         return isDetailedAggregatedReport;
+    }
+
+    public final boolean isCoverageReport() {
+        return isCoverageReport;
     }
 
     public final String getJsonReportPath() {

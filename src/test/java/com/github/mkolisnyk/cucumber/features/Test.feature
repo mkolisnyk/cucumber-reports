@@ -25,3 +25,10 @@ Feature: Sample re-run feature
       | 1     |
       | 2     |
       | 3     |
+
+  Scenario: Some undefined scenario
+
+  Scenario: Some scenario with undefined step
+    Given I am in the system
+    When I do nothing
+    Then I should see something

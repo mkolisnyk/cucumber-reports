@@ -118,12 +118,12 @@ public class CucumberDetailedResults extends CucumberResultsCommon {
             }
             scenariosPassed += result.getPassed();
             scenariosFailed += result.getFailed();
-            scenariosUndefined += result.getUndefined();
+            scenariosUndefined += result.getUndefined() + result.getSkipped();
 
             for (CucumberScenarioResult scenario : result.getElements()) {
                 stepsPassed += scenario.getPassed();
                 stepsFailed += scenario.getFailed();
-                stepsUndefined += scenario.getUndefined();
+                stepsUndefined += scenario.getUndefined() + scenario.getSkipped();
             }
         }
         return String.format("<table>"
@@ -280,7 +280,7 @@ public class CucumberDetailedResults extends CucumberResultsCommon {
                     result.getStatus(),
                     result.getPassed(),
                     result.getFailed(),
-                    result.getUndefined(),
+                    result.getUndefined() + result.getSkipped(),
                     result.getDuration(),
                     result.getStatus());
             for (CucumberScenarioResult scenario : result.getElements()) {
@@ -303,7 +303,7 @@ public class CucumberDetailedResults extends CucumberResultsCommon {
                         scenario.getStatus(),
                         scenario.getPassed(),
                         scenario.getFailed(),
-                        scenario.getUndefined(),
+                        scenario.getUndefined() + scenario.getSkipped(),
                         scenario.getDuration(),
                         this.generateBeforeAfterRow(scenario.getBefore(), "Before"),
                         scenario.getStatus());

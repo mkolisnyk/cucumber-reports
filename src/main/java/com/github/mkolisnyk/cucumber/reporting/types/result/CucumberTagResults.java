@@ -41,4 +41,8 @@ public class CucumberTagResults {
 
     private String name;
     private Long    line;
+    @Override
+    public String toString() {
+        return name;
+    }
 }

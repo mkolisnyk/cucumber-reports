@@ -1,15 +1,19 @@
+@sample @feature
 Feature: Sample re-run feature
 
+  @passed
   Scenario: Always passed test
     Given I am in the system
     When I do nothing
     Then I should see nothing
 
+  @failed
   Scenario: Always failed test
     Given I am in the system
     When I do wrong
     Then I should see nothing
 
+  @flaky
   Scenario: Flaky test
     Given I am in the system
     When I do something
@@ -33,6 +37,7 @@ Feature: Sample re-run feature
     When I do nothing
     Then I should see something
 
+  @nc_outline
   Scenario Outline: Some scenario outline with undefined step
     Given I am in the system
     When I do nothing

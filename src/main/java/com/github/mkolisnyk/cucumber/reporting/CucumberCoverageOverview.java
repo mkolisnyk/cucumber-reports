@@ -19,7 +19,7 @@ public class CucumberCoverageOverview extends CucumberResultsOverview {
                 passed++;
             }
         }
-        return String.format("['Passed', %d], ['Undefined', %d]", passed, undefined);
+        return String.format("['Covered', %d], ['Not Covered', %d]", passed, undefined);
     }
 
     @Override
@@ -37,7 +37,7 @@ public class CucumberCoverageOverview extends CucumberResultsOverview {
             }
         }
 
-        return String.format("['Passed', %d], ['Undefined', %d]", passed, undefined);
+        return String.format("['Covered', %d], ['Not Covered', %d]", passed, undefined);
     }
 
     @Override
@@ -47,8 +47,10 @@ public class CucumberCoverageOverview extends CucumberResultsOverview {
         content = content.replaceAll("__TITLE__", "Test Coverage Overview");
         String reportContent = "";
 
-        reportContent += "<h1>Features Status</h1><table><tr><th>Feature Name</th><th>Status</th>"
-                + "<th>Covered</th><th>Not Covered</th></tr>";
+        reportContent += "<h1>Features Status</h1><table>"
+                + "<tr><th rowspan=\"2\">Feature Name</th><th rowspan=\"2\">Status</th>"
+                + "<th colspan=\"2\">Scenarios</th></tr>"
+                + "<tr><th>Covered</th><th>Not Covered</th></tr>";
 
         for (CucumberFeatureResult result : results) {
             String status = result.getStatus();
@@ -65,10 +67,11 @@ public class CucumberCoverageOverview extends CucumberResultsOverview {
         }
         reportContent += "</table>";
         reportContent += "<h1>Scenario Status</h1><table>"
-                + "<tr><th>Feature Name</th>"
-                + "<th>Scenario</th>"
-                + "<th>Status</th>"
-                + "<th>Covered</th>"
+                + "<tr><th rowspan=\"2\">Feature Name</th>"
+                + "<th rowspan=\"2\">Scenario</th>"
+                + "<th rowspan=\"2\">Status</th>"
+                + "<th colspan=\"2\">Steps</th></tr>"
+                + "<tr><th>Covered</th>"
                 + "<th>Not Covered</th></tr>";
 
         for (CucumberFeatureResult result : results) {
@@ -88,6 +91,7 @@ public class CucumberCoverageOverview extends CucumberResultsOverview {
                         element.getPassed() + element.getFailed() + element.getSkipped(),
                         element.getUndefined());
             }
+            reportContent += "<tr><td colspan=\"5\"></td></tr>";
         }
         reportContent += "</table>";
         content = content.replaceAll("__REPORT__", reportContent);

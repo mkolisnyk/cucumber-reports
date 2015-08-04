@@ -32,3 +32,15 @@ Feature: Sample re-run feature
     Given I am in the system
     When I do nothing
     Then I should see something
+
+  Scenario Outline: Some scenario outline with undefined step
+    Given I am in the system
+    When I do nothing
+    Then I should see <Data> something
+
+    Examples: 
+      | Data |
+      | 1    |
+      | 2    |
+      | 3    |
+      | 4    |

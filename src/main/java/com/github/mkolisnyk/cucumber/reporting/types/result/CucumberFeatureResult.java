@@ -84,6 +84,11 @@ public class CucumberFeatureResult {
         }
     }
 
+    public boolean isInTagSet(String[] include, String[] exclude) {
+        String[] tags = this.getAllTags(true);
+        return true;
+    }
+
     /**
      * @return the passed
      */
@@ -263,5 +268,22 @@ public class CucumberFeatureResult {
                 prevId = this.elements[i].getId();
             }
         }
+    }
+
+    public String[] getAllTags(boolean includeScenarioTags) {
+        String[] result = {};
+        for (CucumberTagResults tag : this.getTags()) {
+            result = (String[]) ArrayUtils.add(result, tag.getName());
+        }
+        if (includeScenarioTags) {
+            for (CucumberScenarioResult scenario : this.getElements()) {
+                for (String tag : scenario.getAllTags()) {
+                    if (!ArrayUtils.contains(result, tag)) {
+                        result = (String[]) ArrayUtils.add(result, tag);
+                    }
+                }
+            }
+        }
+        return result;
     }
 }

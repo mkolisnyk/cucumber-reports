@@ -1,5 +1,7 @@
 package com.github.mkolisnyk.cucumber.reporting.types.result;
 
+import org.apache.commons.lang.ArrayUtils;
+
 import com.cedarsoftware.util.io.JsonObject;
 
 public class CucumberScenarioResult {
@@ -286,5 +288,12 @@ public class CucumberScenarioResult {
 
     public void addRerunAttempts(int count) {
         this.rerunAttempts += count;
+    }
+    public String[] getAllTags() {
+        String[] result = {};
+        for (CucumberTagResults tag : this.getTags()) {
+            result = (String[]) ArrayUtils.add(result, tag.getName());
+        }
+        return result;
     }
 }

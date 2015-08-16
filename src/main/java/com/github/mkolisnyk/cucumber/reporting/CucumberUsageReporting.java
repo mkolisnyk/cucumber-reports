@@ -319,21 +319,25 @@ public class CucumberUsageReporting {
         int index = 0;
         for (String key:map.keySet()) {
             String color = "silver";
-            switch (index / (map.keySet().size() / groupsCount)) {
-                case 0:
-                    color = "lightgreen";
-                    break;
-                case 1:
-                    color = "gold";
-                    break;
-                case 2:
-                    color = "tomato";
-                    break;
-                case groupsCount:
-                    color = "red";
-                    break;
-                default:
-                    break;
+            if (map.keySet().size() >= groupsCount) {
+                switch (index / (map.keySet().size() / groupsCount)) {
+                    case 0:
+                        color = "lightgreen";
+                        break;
+                    case 1:
+                        color = "gold";
+                        break;
+                    case 2:
+                        color = "tomato";
+                        break;
+                    case groupsCount:
+                        color = "red";
+                        break;
+                    default:
+                        break;
+                }
+            } else {
+                color = "red"; 
             }
             content += "<tr style=\"background:" + color + "\"><td>" + (++index) + "</td>"
                     + "<td width=\"60%\">" + key + "</td>"
@@ -419,14 +423,14 @@ public class CucumberUsageReporting {
         for (int item : data) {
             max = Math.max(max, item);
         }
-        int stepY = (bottomY - topY) / max;
+        float stepY = ((float) bottomY - (float) topY) / (float) max;
         String result = "";
         for (int i = 0; i < data.length; i++) {
             result = result.concat(
                 String.format("%d,%d %d,%d %d,%d %d,%d ",
                     startX + i * stepX, bottomY,
-                    startX + i * stepX, bottomY - data[i] * stepY,
-                    startX + (i + 1) * stepX, bottomY - data[i] * stepY,
+                    startX + i * stepX, bottomY - (int) (data[i] * stepY),
+                    startX + (i + 1) * stepX, bottomY - (int) (data[i] * stepY),
                     startX + (i + 1) * stepX, bottomY
                 )
             );

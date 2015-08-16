@@ -1,7 +1,6 @@
 package com.github.mkolisnyk.cucumber.reporting;
 
 import java.io.IOException;
-import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -9,9 +8,35 @@ import org.apache.commons.lang3.StringUtils;
 
 import com.github.mkolisnyk.cucumber.reporting.types.result.CucumberFeatureResult;
 import com.github.mkolisnyk.cucumber.reporting.types.result.CucumberScenarioResult;
-import com.github.mkolisnyk.cucumber.reporting.types.result.CucumberTagResults;
 
 public class CucumberCoverageOverview extends CucumberResultsOverview {
+
+    private String[] includeCoverageTags = {};
+    private String[] excludeCoverageTags = {};
+
+    public final String[] getIncludeCoverageTags() {
+        return includeCoverageTags;
+    }
+
+    public final void setIncludeCoverageTags(String[] includeCoverageTagsValue) {
+        if (includeCoverageTagsValue == null) {
+            this.includeCoverageTags = new String[0];
+        } else {
+            this.includeCoverageTags = includeCoverageTagsValue;
+        }
+    }
+
+    public final String[] getExcludeCoverageTags() {
+        return excludeCoverageTags;
+    }
+
+    public final void setExcludeCoverageTags(String[] excludeCoverageTagsValue) {
+        if (excludeCoverageTagsValue == null) {
+            this.excludeCoverageTags = new String[0];
+        } else {
+            this.excludeCoverageTags = excludeCoverageTagsValue;
+        }
+    }
 
     @Override
     protected String getFeatureData(CucumberFeatureResult[] results) {
@@ -88,14 +113,12 @@ public class CucumberCoverageOverview extends CucumberResultsOverview {
                     status = "passed";
                 }
                 Set<String> tags = new HashSet<String>();
-                for (CucumberTagResults tag : result.getTags()) {
-                    if (!tags.contains(tag.getName())) {
-                        tags.add(tag.getName());
-                    }
+                for (String tag : result.getAllTags(true)) {
+                    tags.add(tag);
                 }
-                for (CucumberTagResults tag : element.getTags()) {
-                    if (!tags.contains(tag.getName())) {
-                        tags.add(tag.getName());
+                for (String tag : element.getAllTags()) {
+                    if (!tags.contains(tag)) {
+                        tags.add(tag);
                     }
                 }
                 reportContent += String.format(

@@ -9,6 +9,8 @@ public class CucumberCoverageOverviewTest {
         results.setOutputDirectory("target");
         results.setOutputName("cucumber-results");
         results.setSourceFile("./src/test/resources/cucumber-dry.json");
+        results.setExcludeCoverageTags(new String[]{"@flaky"});
+        results.setIncludeCoverageTags(new String[]{"@passed"});
         results.executeOverviewReport("coverage");
     }
     @Test

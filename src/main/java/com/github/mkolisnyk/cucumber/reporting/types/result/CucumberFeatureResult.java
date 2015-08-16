@@ -15,6 +15,9 @@ public class CucumberFeatureResult {
     private String uri;
     private float duration;
 
+    private String[] includeCoverageTags = {};
+    private String[] excludeCoverageTags = {};
+
     @SuppressWarnings("unchecked")
     public CucumberFeatureResult(JsonObject<String, Object> json) {
         this.id = (String) json.get("id");
@@ -56,7 +59,12 @@ public class CucumberFeatureResult {
         duration = 0.f;
         for (CucumberScenarioResult scenario : elements) {
             scenario.valuate();
-            if (scenario.getSteps() == null || scenario.getSteps().length <= 0) {
+            if (!scenario.isInTagSet(this.includeCoverageTags, this.excludeCoverageTags)) {
+                this.undefined++;
+            } else if (scenario.getSteps() == null
+                    || scenario.getSteps().length <= 0
+                    //|| !this.isInTagSet(this.includeCoverageTags, this.excludeCoverageTags)
+                    ) {
                 this.undefined++;
             } else if (scenario.getFailed() > 0) {
                 this.failed++;
@@ -85,7 +93,22 @@ public class CucumberFeatureResult {
     }
 
     public boolean isInTagSet(String[] include, String[] exclude) {
-        String[] tags = this.getAllTags(true);
+        String[] tagValues = this.getAllTags(false);
+        for (String tag : include) {
+            if (ArrayUtils.contains(tagValues, tag)) {
+                return true;
+            }
+        }
+        for (String tag : exclude) {
+            if (ArrayUtils.contains(tagValues, tag)) {
+                return false;
+            }
+        }
+        for (CucumberScenarioResult scenario : this.getElements()) {
+            if (!scenario.isInTagSet(include, exclude)) {
+                return false;
+            }
+        }
         return true;
     }
 
@@ -285,5 +308,21 @@ public class CucumberFeatureResult {
             }
         }
         return result;
+    }
+
+    public final String[] getIncludeCoverageTags() {
+        return includeCoverageTags;
+    }
+
+    public final void setIncludeCoverageTags(String[] includeCoverageTagsValue) {
+        this.includeCoverageTags = includeCoverageTagsValue;
+    }
+
+    public final String[] getExcludeCoverageTags() {
+        return excludeCoverageTags;
+    }
+
+    public final void setExcludeCoverageTags(String[] excludeCoverageTagsValue) {
+        this.excludeCoverageTags = excludeCoverageTagsValue;
     }
 }

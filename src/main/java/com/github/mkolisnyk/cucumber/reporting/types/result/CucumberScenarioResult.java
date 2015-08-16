@@ -25,6 +25,9 @@ public class CucumberScenarioResult {
     private double duration = 0.f;
     private int rerunAttempts = 0;
 
+    private String[] includeCoverageTags = {};
+    private String[] excludeCoverageTags = {};
+
     @SuppressWarnings("unchecked")
     public CucumberScenarioResult(JsonObject<String, Object> json) {
         this.id = (String) json.get("id");
@@ -96,6 +99,9 @@ public class CucumberScenarioResult {
             }
             this.duration += (float) (step.getResult().getDuration() / nanosecondsInMillisecond)
                     / millesecondsInSecond;
+        }
+        if (!this.isInTagSet(this.includeCoverageTags, this.excludeCoverageTags)) {
+            undefined++;
         }
         if (this.getBefore() != null) {
             this.duration += (float) (this.getBefore().getResult()
@@ -295,5 +301,36 @@ public class CucumberScenarioResult {
             result = (String[]) ArrayUtils.add(result, tag.getName());
         }
         return result;
+    }
+    public boolean isInTagSet(String[] include, String[] exclude) {
+        String[] tagValues = this.getAllTags();
+        for (String tag : include) {
+            if (ArrayUtils.contains(tagValues, tag)) {
+                return true;
+            }
+        }
+        for (String tag : exclude) {
+            if (ArrayUtils.contains(tagValues, tag)) {
+                System.out.println("Exclude tag found: " + tag);
+                return false;
+            }
+        }
+        return true;
+    }
+
+    public final String[] getIncludeCoverageTags() {
+        return includeCoverageTags;
+    }
+
+    public final void setIncludeCoverageTags(String[] includeCoverageTagsValue) {
+        this.includeCoverageTags = includeCoverageTagsValue;
+    }
+
+    public final String[] getExcludeCoverageTags() {
+        return excludeCoverageTags;
+    }
+
+    public final void setExcludeCoverageTags(String[] excludeCoverageTagsValue) {
+        this.excludeCoverageTags = excludeCoverageTagsValue;
     }
 }

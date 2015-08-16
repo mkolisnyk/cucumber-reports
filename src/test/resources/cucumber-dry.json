@@ -58,10 +58,10 @@
     ]
   },
   {
-    "line": 1,
+    "line": 2,
     "elements": [
       {
-        "line": 3,
+        "line": 5,
         "name": "Always passed test",
         "description": "",
         "id": "sample-re-run-feature;always-passed-test",
@@ -72,7 +72,7 @@
             "result": {
               "status": "skipped"
             },
-            "line": 4,
+            "line": 6,
             "name": "I am in the system",
             "match": {
               "location": "TestSteps.i_am_in_the_system()"
@@ -83,7 +83,7 @@
             "result": {
               "status": "skipped"
             },
-            "line": 5,
+            "line": 7,
             "name": "I do nothing",
             "match": {
               "location": "TestSteps.i_do_nothing()"
@@ -94,17 +94,23 @@
             "result": {
               "status": "skipped"
             },
-            "line": 6,
+            "line": 8,
             "name": "I should see nothing",
             "match": {
               "location": "TestSteps.i_should_see_nothing()"
             },
             "keyword": "Then "
           }
+        ],
+        "tags": [
+          {
+            "line": 4,
+            "name": "@passed"
+          }
         ]
       },
       {
-        "line": 8,
+        "line": 11,
         "name": "Always failed test",
         "description": "",
         "id": "sample-re-run-feature;always-failed-test",
@@ -115,7 +121,7 @@
             "result": {
               "status": "skipped"
             },
-            "line": 9,
+            "line": 12,
             "name": "I am in the system",
             "match": {
               "location": "TestSteps.i_am_in_the_system()"
@@ -126,7 +132,7 @@
             "result": {
               "status": "skipped"
             },
-            "line": 10,
+            "line": 13,
             "name": "I do wrong",
             "match": {
               "location": "TestSteps.i_do_wrong()"
@@ -137,17 +143,23 @@
             "result": {
               "status": "skipped"
             },
-            "line": 11,
+            "line": 14,
             "name": "I should see nothing",
             "match": {
               "location": "TestSteps.i_should_see_nothing()"
             },
             "keyword": "Then "
           }
+        ],
+        "tags": [
+          {
+            "line": 10,
+            "name": "@failed"
+          }
         ]
       },
       {
-        "line": 13,
+        "line": 17,
         "name": "Flaky test",
         "description": "",
         "id": "sample-re-run-feature;flaky-test",
@@ -158,7 +170,7 @@
             "result": {
               "status": "skipped"
             },
-            "line": 14,
+            "line": 18,
             "name": "I am in the system",
             "match": {
               "location": "TestSteps.i_am_in_the_system()"
@@ -169,7 +181,7 @@
             "result": {
               "status": "skipped"
             },
-            "line": 15,
+            "line": 19,
             "name": "I do something",
             "match": {
               "location": "TestSteps.i_do_something()"
@@ -180,17 +192,23 @@
             "result": {
               "status": "skipped"
             },
-            "line": 16,
+            "line": 20,
             "name": "I should see nothing",
             "match": {
               "location": "TestSteps.i_should_see_nothing()"
             },
             "keyword": "Then "
           }
+        ],
+        "tags": [
+          {
+            "line": 16,
+            "name": "@flaky"
+          }
         ]
       },
       {
-        "line": 25,
+        "line": 29,
         "name": "outlining test",
         "description": "",
         "id": "sample-re-run-feature;outlining-test;;2",
@@ -201,7 +219,7 @@
             "result": {
               "status": "skipped"
             },
-            "line": 19,
+            "line": 23,
             "name": "I am in the system",
             "match": {
               "location": "TestSteps.i_am_in_the_system()"
@@ -212,7 +230,7 @@
             "result": {
               "status": "skipped"
             },
-            "line": 20,
+            "line": 24,
             "name": "I do some 1 things",
             "match": {
               "arguments": [
@@ -232,17 +250,27 @@
             "result": {
               "status": "skipped"
             },
-            "line": 21,
+            "line": 25,
             "name": "I should see nothing",
             "match": {
               "location": "TestSteps.i_should_see_nothing()"
             },
             "keyword": "Then "
           }
+        ],
+        "tags": [
+          {
+            "line": 1,
+            "name": "@feature"
+          },
+          {
+            "line": 1,
+            "name": "@sample"
+          }
         ]
       },
       {
-        "line": 26,
+        "line": 30,
         "name": "outlining test",
         "description": "",
         "id": "sample-re-run-feature;outlining-test;;3",
@@ -253,7 +281,7 @@
             "result": {
               "status": "skipped"
             },
-            "line": 19,
+            "line": 23,
             "name": "I am in the system",
             "match": {
               "location": "TestSteps.i_am_in_the_system()"
@@ -264,7 +292,7 @@
             "result": {
               "status": "skipped"
             },
-            "line": 20,
+            "line": 24,
             "name": "I do some 2 things",
             "match": {
               "arguments": [
@@ -284,17 +312,27 @@
             "result": {
               "status": "skipped"
             },
-            "line": 21,
+            "line": 25,
             "name": "I should see nothing",
             "match": {
               "location": "TestSteps.i_should_see_nothing()"
             },
             "keyword": "Then "
           }
+        ],
+        "tags": [
+          {
+            "line": 1,
+            "name": "@feature"
+          },
+          {
+            "line": 1,
+            "name": "@sample"
+          }
         ]
       },
       {
-        "line": 27,
+        "line": 31,
         "name": "outlining test",
         "description": "",
         "id": "sample-re-run-feature;outlining-test;;4",
@@ -305,7 +343,7 @@
             "result": {
               "status": "skipped"
             },
-            "line": 19,
+            "line": 23,
             "name": "I am in the system",
             "match": {
               "location": "TestSteps.i_am_in_the_system()"
@@ -316,7 +354,7 @@
             "result": {
               "status": "skipped"
             },
-            "line": 20,
+            "line": 24,
             "name": "I do some 3 things",
             "match": {
               "arguments": [
@@ -336,17 +374,27 @@
             "result": {
               "status": "skipped"
             },
-            "line": 21,
+            "line": 25,
             "name": "I should see nothing",
             "match": {
               "location": "TestSteps.i_should_see_nothing()"
             },
             "keyword": "Then "
           }
+        ],
+        "tags": [
+          {
+            "line": 1,
+            "name": "@feature"
+          },
+          {
+            "line": 1,
+            "name": "@sample"
+          }
         ]
       },
       {
-        "line": 29,
+        "line": 33,
         "name": "Some undefined scenario",
         "description": "",
         "id": "sample-re-run-feature;some-undefined-scenario",
@@ -354,7 +402,7 @@
         "keyword": "Scenario"
       },
       {
-        "line": 31,
+        "line": 35,
         "name": "Some scenario with undefined step",
         "description": "",
         "id": "sample-re-run-feature;some-scenario-with-undefined-step",
@@ -365,7 +413,7 @@
             "result": {
               "status": "skipped"
             },
-            "line": 32,
+            "line": 36,
             "name": "I am in the system",
             "match": {
               "location": "TestSteps.i_am_in_the_system()"
@@ -376,7 +424,7 @@
             "result": {
               "status": "skipped"
             },
-            "line": 33,
+            "line": 37,
             "name": "I do nothing",
             "match": {
               "location": "TestSteps.i_do_nothing()"
@@ -387,10 +435,244 @@
             "result": {
               "status": "undefined"
             },
-            "line": 34,
+            "line": 38,
             "name": "I should see something",
             "match": {},
             "keyword": "Then "
+          }
+        ]
+      },
+      {
+        "line": 48,
+        "name": "Some scenario outline with undefined step",
+        "description": "",
+        "id": "sample-re-run-feature;some-scenario-outline-with-undefined-step;;2",
+        "type": "scenario",
+        "keyword": "Scenario Outline",
+        "steps": [
+          {
+            "result": {
+              "status": "skipped"
+            },
+            "line": 42,
+            "name": "I am in the system",
+            "match": {
+              "location": "TestSteps.i_am_in_the_system()"
+            },
+            "keyword": "Given "
+          },
+          {
+            "result": {
+              "status": "skipped"
+            },
+            "line": 43,
+            "name": "I do nothing",
+            "match": {
+              "location": "TestSteps.i_do_nothing()"
+            },
+            "keyword": "When "
+          },
+          {
+            "result": {
+              "status": "undefined"
+            },
+            "line": 44,
+            "name": "I should see 1 something",
+            "match": {},
+            "matchedColumns": [
+              0
+            ],
+            "keyword": "Then "
+          }
+        ],
+        "tags": [
+          {
+            "line": 40,
+            "name": "@nc_outline"
+          },
+          {
+            "line": 1,
+            "name": "@feature"
+          },
+          {
+            "line": 1,
+            "name": "@sample"
+          }
+        ]
+      },
+      {
+        "line": 49,
+        "name": "Some scenario outline with undefined step",
+        "description": "",
+        "id": "sample-re-run-feature;some-scenario-outline-with-undefined-step;;3",
+        "type": "scenario",
+        "keyword": "Scenario Outline",
+        "steps": [
+          {
+            "result": {
+              "status": "skipped"
+            },
+            "line": 42,
+            "name": "I am in the system",
+            "match": {
+              "location": "TestSteps.i_am_in_the_system()"
+            },
+            "keyword": "Given "
+          },
+          {
+            "result": {
+              "status": "skipped"
+            },
+            "line": 43,
+            "name": "I do nothing",
+            "match": {
+              "location": "TestSteps.i_do_nothing()"
+            },
+            "keyword": "When "
+          },
+          {
+            "result": {
+              "status": "undefined"
+            },
+            "line": 44,
+            "name": "I should see 2 something",
+            "match": {},
+            "matchedColumns": [
+              0
+            ],
+            "keyword": "Then "
+          }
+        ],
+        "tags": [
+          {
+            "line": 40,
+            "name": "@nc_outline"
+          },
+          {
+            "line": 1,
+            "name": "@feature"
+          },
+          {
+            "line": 1,
+            "name": "@sample"
+          }
+        ]
+      },
+      {
+        "line": 50,
+        "name": "Some scenario outline with undefined step",
+        "description": "",
+        "id": "sample-re-run-feature;some-scenario-outline-with-undefined-step;;4",
+        "type": "scenario",
+        "keyword": "Scenario Outline",
+        "steps": [
+          {
+            "result": {
+              "status": "skipped"
+            },
+            "line": 42,
+            "name": "I am in the system",
+            "match": {
+              "location": "TestSteps.i_am_in_the_system()"
+            },
+            "keyword": "Given "
+          },
+          {
+            "result": {
+              "status": "skipped"
+            },
+            "line": 43,
+            "name": "I do nothing",
+            "match": {
+              "location": "TestSteps.i_do_nothing()"
+            },
+            "keyword": "When "
+          },
+          {
+            "result": {
+              "status": "skipped"
+            },
+            "line": 44,
+            "name": "I should see 3 something",
+            "match": {
+              "location": "TestSteps.i_should_see_something(int)"
+            },
+            "matchedColumns": [
+              0
+            ],
+            "keyword": "Then "
+          }
+        ],
+        "tags": [
+          {
+            "line": 40,
+            "name": "@nc_outline"
+          },
+          {
+            "line": 1,
+            "name": "@feature"
+          },
+          {
+            "line": 1,
+            "name": "@sample"
+          }
+        ]
+      },
+      {
+        "line": 51,
+        "name": "Some scenario outline with undefined step",
+        "description": "",
+        "id": "sample-re-run-feature;some-scenario-outline-with-undefined-step;;5",
+        "type": "scenario",
+        "keyword": "Scenario Outline",
+        "steps": [
+          {
+            "result": {
+              "status": "skipped"
+            },
+            "line": 42,
+            "name": "I am in the system",
+            "match": {
+              "location": "TestSteps.i_am_in_the_system()"
+            },
+            "keyword": "Given "
+          },
+          {
+            "result": {
+              "status": "skipped"
+            },
+            "line": 43,
+            "name": "I do nothing",
+            "match": {
+              "location": "TestSteps.i_do_nothing()"
+            },
+            "keyword": "When "
+          },
+          {
+            "result": {
+              "status": "undefined"
+            },
+            "line": 44,
+            "name": "I should see 4 something",
+            "match": {},
+            "matchedColumns": [
+              0
+            ],
+            "keyword": "Then "
+          }
+        ],
+        "tags": [
+          {
+            "line": 40,
+            "name": "@nc_outline"
+          },
+          {
+            "line": 1,
+            "name": "@feature"
+          },
+          {
+            "line": 1,
+            "name": "@sample"
           }
         ]
       }
@@ -399,6 +681,16 @@
     "description": "",
     "id": "sample-re-run-feature",
     "keyword": "Feature",
-    "uri": "Test.feature"
+    "uri": "Test.feature",
+    "tags": [
+      {
+        "line": 1,
+        "name": "@sample"
+      },
+      {
+        "line": 1,
+        "name": "@feature"
+      }
+    ]
   }
 ]

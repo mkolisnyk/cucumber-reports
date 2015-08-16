@@ -24,7 +24,7 @@ Feature: Sample re-run feature
     When I do some <Value> things
     Then I should see nothing
 
-    Examples: 
+    Examples:
       | Value |
       | 1     |
       | 2     |

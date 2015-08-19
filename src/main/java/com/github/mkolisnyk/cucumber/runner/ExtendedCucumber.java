@@ -129,6 +129,8 @@ public class ExtendedCucumber extends ParentRunner<ExtendedFeatureRunner> {
         results.setOutputDirectory(extendedOptions.getOutputFolder());
         results.setOutputName(extendedOptions.getReportPrefix());
         results.setSourceFile(extendedOptions.getJsonReportPath());
+        results.setExcludeCoverageTags(extendedOptions.getExcludeCoverageTags());
+        results.setIncludeCoverageTags(extendedOptions.getIncludeCoverageTags());
         try {
             results.executeCoverageReport();
         } catch (Exception e) {

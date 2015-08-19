@@ -12,7 +12,7 @@ public class CucumberScenarioResult {
     private String name;
     private String keyword;
     private Long line;
-    private CucumberStepResult[] steps;
+    private CucumberStepResult[] steps = {};
     private String type;
 
     private CucumberBeforeAfterResult before;
@@ -311,7 +311,6 @@ public class CucumberScenarioResult {
         }
         for (String tag : exclude) {
             if (ArrayUtils.contains(tagValues, tag)) {
-                System.out.println("Exclude tag found: " + tag);
                 return false;
             }
         }

@@ -8,12 +8,14 @@ import com.github.mkolisnyk.cucumber.runner.ExtendedCucumberOptions;
 
 import cucumber.api.CucumberOptions;
 
-//@Ignore
+@Ignore
 @RunWith(ExtendedCucumber.class)
 @ExtendedCucumberOptions(
         jsonReport = "target/cucumber-dry.json",
         retryCount = 0,
         coverageReport = true,
+        excludeCoverageTags = {"@flaky" },
+        includeCoverageTags = {"@passed" },
         reportPrefix = "dry-run",
         outputFolder = "target")
 @CucumberOptions(plugin = { "html:target/cucumber-html-report",

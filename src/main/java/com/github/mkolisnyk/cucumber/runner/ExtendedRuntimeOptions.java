@@ -15,6 +15,8 @@ public class ExtendedRuntimeOptions {
     private boolean toPDF = false;
     private String jsonUsageReportPath;
     private String screenShotLocation = "";
+    private String[] includeCoverageTags = {};
+    private String[] excludeCoverageTags = {};
 
     public ExtendedRuntimeOptions(Class<?> clazz) {
         ExtendedCucumberOptions options = clazz
@@ -34,6 +36,8 @@ public class ExtendedRuntimeOptions {
             this.toPDF = options.toPDF();
             this.jsonUsageReportPath = options.jsonUsageReport();
             this.screenShotLocation = options.screenShotLocation();
+            this.includeCoverageTags = options.includeCoverageTags();
+            this.excludeCoverageTags = options.excludeCoverageTags();
         }
     }
 
@@ -87,5 +91,21 @@ public class ExtendedRuntimeOptions {
 
     public final String getScreenShotLocation() {
         return screenShotLocation;
+    }
+
+    public final String[] getIncludeCoverageTags() {
+        return includeCoverageTags;
+    }
+
+    public final void setIncludeCoverageTags(String[] includeCoverageTagsValue) {
+        this.includeCoverageTags = includeCoverageTagsValue;
+    }
+
+    public final String[] getExcludeCoverageTags() {
+        return excludeCoverageTags;
+    }
+
+    public final void setExcludeCoverageTags(String[] excludeCoverageTagsValue) {
+        this.excludeCoverageTags = excludeCoverageTagsValue;
     }
 }

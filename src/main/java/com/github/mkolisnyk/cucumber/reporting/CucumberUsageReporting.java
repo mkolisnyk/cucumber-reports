@@ -8,6 +8,8 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
 import java.util.Collections;
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -308,39 +310,40 @@ public class CucumberUsageReporting {
         }
         return null;
     }
-    protected String generateUsageOverviewTableReport(CucumberStepSource[] sources) {
+    private String getGroupColor(LinkedHashMap<String, Integer> map, int groupsCount, int index) {
+        String color = "silver";
+        if (map.keySet().size() >= groupsCount) {
+            switch (index / (map.keySet().size() / groupsCount)) {
+                case 0:
+                    color = "lightgreen";
+                    break;
+                case 1:
+                    color = "gold";
+                    break;
+                case 2:
+                    color = "tomato";
+                    break;
+                default:
+                    break;
+            }
+        } else {
+            color = "red";
+        }
+        return color;
+    }
+    protected String generateUsageOverviewTableReport(CucumberStepSource[] sources) throws Exception {
         final int groupsCount = 3;
         LinkedHashMap<String, Integer> map = calculateStepsUsageScore(sources);
-        String content = "<table><tr><th rowspan=\"2\">#</th>"
+        String content = "<table><tr><th rowspan=\"2\"><a id=\"top\">#</a></th>"
                 + "<th rowspan=\"2\">Expression</th><th rowspan=\"2\">Occurences</th>"
                 + "<th colspan=\"5\">Duration</th></tr>"
                 + "<tr>"
                 + "<th>Average</th><th>Median</th><th>Minimal</th><th>Maximal</th><th>Total</th></tr>";
         int index = 0;
         for (String key:map.keySet()) {
-            String color = "silver";
-            if (map.keySet().size() >= groupsCount) {
-                switch (index / (map.keySet().size() / groupsCount)) {
-                    case 0:
-                        color = "lightgreen";
-                        break;
-                    case 1:
-                        color = "gold";
-                        break;
-                    case 2:
-                        color = "tomato";
-                        break;
-                    case groupsCount:
-                        color = "red";
-                        break;
-                    default:
-                        break;
-                }
-            } else {
-                color = "red"; 
-            }
+            String color = getGroupColor(map, groupsCount, index);
             content += "<tr style=\"background:" + color + "\"><td>" + (++index) + "</td>"
-                    + "<td width=\"60%\">" + key + "</td>"
+                    + "<td width=\"60%\"><a href=\"#" + getKeyId(key) + "\">" + key + "</a></td>"
                     + "<td>" + map.get(key) + "</td>";
             CucumberStepSource source = getSourceByString(sources, key);
             if (source == null) {
@@ -550,11 +553,22 @@ public class CucumberUsageReporting {
                 + "</table></p>", average, median, min, max, total);
     }
 
+    private String getKeyId(String key) throws UnsupportedEncodingException {
+        String result = URLEncoder.encode(key, "UTF-8").replaceAll("\\+", "-")
+                /*.replaceAll("\\%21", "_")
+                .replaceAll("\\%27", "_")
+                .replaceAll("\\%28", "_")
+                .replaceAll("\\%29", "_")
+                .replaceAll("\\%7E", "_")*/
+                .replaceAll("\\%", "_");
+        return result;
+    }
+
     protected String generateUsageDetailedReport(CucumberStepSource[] sources) throws Exception {
         String content = "";
         for (CucumberStepSource source:sources) {
-
-            content += "<h3>" + source.getSource() + "</h3>"
+            content += "<h3><a id=\"" + getKeyId(source.getSource()) + "\">"
+                    + source.getSource() + "</a></h3>"
                     + "<p><table><tr><th>Step Name</th><th>Duration</th><th>Location</th></tr>";
 
             for (CucumberStep step:source.getSteps()) {
@@ -567,7 +581,7 @@ public class CucumberUsageReporting {
             content += "</table></p>";
             content += "<p><table class=\"none\"><tr><td class=\"none\">" + this.getHystogram(source) + "</td>"
                     + "<td valign=top class=\"none\">" + generateSourceDurationOverview(source) + "</td></tr>"
-                    + "</table></p>";
+                    + "</table></p><p><a href=\"#top\">To Overview Table</a></p>";
         }
         return content;
     }

@@ -33,4 +33,7 @@ public @interface ExtendedCucumberOptions {
     boolean toPDF() default false;
 
     String screenShotLocation() default "";
+
+    String[] includeCoverageTags() default { };
+    String[] excludeCoverageTags() default { };
 }

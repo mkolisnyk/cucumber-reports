@@ -471,13 +471,13 @@ public class CucumberUsageReporting {
         for (int item : data) {
             max = Math.max(max, item);
         }
-        int stepY = (bottomY - topY) / max;
+        float stepY = ((float) bottomY - (float) topY) / (float) max;
         String result = "";
         for (int i = 0; i < data.length; i++) {
             result = result.concat(
                 String.format("<text x=\"%d\" y=\"%d\" font-weight=\"bold\" font-size=\"14\">%d</text>",
                     startX + i * stepX + stepX / 2 - (int) (Math.log10(data[i])) * shiftX,
-                    bottomY - data[i] * stepY - 2,
+                    bottomY - (int) ((float) data[i] * stepY) - 2,
                     data[i])
             );
             double step = (this.getMaxDuration(source) - this.getMinDuration(source)) / (double) data.length;

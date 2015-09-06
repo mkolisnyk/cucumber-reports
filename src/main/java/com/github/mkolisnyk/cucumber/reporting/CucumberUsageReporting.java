@@ -529,6 +529,31 @@ public class CucumberUsageReporting {
         return getFilledHystogram(source);
     }
 
+    private double variance(List<Double> durations, double average) {
+        double result = 0.f;
+        for (double duration : durations) {
+            result += (duration - average) * (duration - average);
+        }
+        if (durations.size() > 0) {
+            result = result / durations.size();
+        }
+        return result;
+    }
+    private double skewness(List<Double> durations, double average) {
+        double result = 0.f;
+        for (double duration : durations) {
+            result += (duration - average) * (duration - average) * (duration - average);
+        }
+        if (durations.size() > 0) {
+            result = result / durations.size();
+        }
+        double variance = variance(durations, average);
+        if (Math.abs(variance) < 0.000000001) {
+            variance = 1.;
+        }
+        result = result / Math.pow(variance, 1.5);
+        return result;
+    }
     private String generateSourceDurationOverview(CucumberStepSource source) {
         List<Double> durations = source.getDurations();
         if (durations.size() <= 0) {
@@ -547,10 +572,15 @@ public class CucumberUsageReporting {
                 + "<tr><th colspan=\"2\">Duration Characteristic</th></tr>"
                 + "<tr><th>Average</th><td>%.2fs</td></tr>"
                 + "<tr><th>Median</th><td>%.2fs</td></tr>"
+                + "<tr><th>Variance</th><td>%.2f</td></tr>"
+                + "<tr><th>Skewness</th><td>%.2f</td></tr>"
                 + "<tr><th>Minimum</th><td>%.2fs</td></tr>"
                 + "<tr><th>Maximum</th><td>%.2fs</td></tr>"
                 + "<tr><th>Total</th><td>%.2fs</td></tr>"
-                + "</table></p>", average, median, min, max, total);
+                + "</table></p>", average, median,
+                    variance(durations, average),
+                    skewness(durations, average),
+                    min, max, total);
     }
 
     private String getKeyId(String key) throws UnsupportedEncodingException {

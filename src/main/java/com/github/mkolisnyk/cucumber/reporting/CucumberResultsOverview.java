@@ -111,7 +111,7 @@ public class CucumberResultsOverview extends CucumberResultsCommon {
                     result.getStatus(),
                     result.getPassed(),
                     result.getFailed(),
-                    result.getUndefined(),
+                    result.getUndefined() + result.getSkipped(),
                     result.getDuration());
         }
         reportContent += "</table>";
@@ -138,7 +138,7 @@ public class CucumberResultsOverview extends CucumberResultsCommon {
                         element.getStatus(),
                         element.getPassed(),
                         element.getFailed(),
-                        element.getUndefined(),
+                        element.getUndefined() + element.getSkipped(),
                         element.getRerunAttempts(),
                         element.getDuration());
             }

@@ -19,7 +19,6 @@ import java.util.TreeMap;
 
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.IOUtils;
-import org.apache.maven.reporting.MavenReportException;
 
 import com.cedarsoftware.util.io.JsonObject;
 import com.cedarsoftware.util.io.JsonReader;
@@ -652,7 +651,7 @@ public class CucumberUsageReporting {
             + "tr:nth-child(odd) {background: #FFF}";
     }
 
-    public void executeReport() throws MavenReportException {
+    public void executeReport() throws Exception {
         try {
 
             CucumberStepSource[] sources = getStepSources(jsonUsageFile);
@@ -674,7 +673,7 @@ public class CucumberUsageReporting {
             File report = new File(this.getOutputDirectory() + File.separator + this.getOutputName() + ".html");
             FileUtils.writeStringToFile(report, output);
         } catch (Exception e) {
-            throw new MavenReportException(
+            throw new Exception(
                     "Error occured while generating Cucumber usage report", e);
         }
     }

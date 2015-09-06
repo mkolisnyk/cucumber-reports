@@ -1,0 +1,56 @@
+apply plugin: 'java'
+
+dependencies {
+    compile gradleApi()
+}
+
+sourceSets {
+    main {
+        java {
+            srcDir 'src/main/java'
+        }
+        resources {
+            srcDir 'src/main/resources'
+        }
+    }
+    test {
+        java {
+            srcDir 'src/test/java'
+        }
+        resources {
+            srcDir 'src/test/resources'
+        }
+    }
+}
+
+apply plugin: 'maven'
+
+repositories {
+    //mavenLocal()
+    maven {
+        url 'C:/Maven-3.0.4/repo'
+    }
+    mavenLocal()
+    mavenCentral()
+}
+
+dependencies {
+   compile 'com.cedarsoftware:json-io:2.2.31'
+   compile 'info.cukes:cucumber-picocontainer:1.2.2'
+   compile 'info.cukes:cucumber-junit:1.2.2'
+   compile 'net.sourceforge.htmlunit:htmlunit:2.16'
+   compile 'junit:junit:4.11'
+   compile ('org.xhtmlrenderer:flying-saucer-pdf:9.0.7') {
+       exclude group: 'org.bouncycastle' 
+   }
+}
+
+buildscript {
+    repositories {
+        maven {
+            url uri('C:/Maven-3.0.4/repo')
+        }
+        mavenLocal()
+        mavenCentral()
+    }
+}

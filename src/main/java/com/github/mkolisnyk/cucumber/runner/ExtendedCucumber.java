@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.apache.maven.reporting.MavenReportException;
 import org.junit.runner.Description;
 import org.junit.runner.notification.RunNotifier;
 import org.junit.runners.ParentRunner;
@@ -79,7 +78,7 @@ public class ExtendedCucumber extends ParentRunner<ExtendedFeatureRunner> {
         report.setJsonUsageFile(extendedOptions.getJsonUsageReportPath());
         try {
             report.executeReport();
-        } catch (MavenReportException e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
@@ -140,8 +139,6 @@ public class ExtendedCucumber extends ParentRunner<ExtendedFeatureRunner> {
     @Override
     public void run(RunNotifier notifier) {
         super.run(notifier);
-        jUnitReporter.done();
-        jUnitReporter.close();
         runtime.printSummary();
         if (extendedOptions.isUsageReport()) {
             runUsageReport();
@@ -158,6 +155,8 @@ public class ExtendedCucumber extends ParentRunner<ExtendedFeatureRunner> {
         if (extendedOptions.isCoverageReport()) {
             runCoverageReport();
         }
+        jUnitReporter.done();
+        jUnitReporter.close();
     }
 
     private void addChildren(List<CucumberFeature> cucumberFeatures) throws InitializationError {

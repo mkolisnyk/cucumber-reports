@@ -140,6 +140,8 @@ public class ExtendedCucumber extends ParentRunner<ExtendedFeatureRunner> {
     public void run(RunNotifier notifier) {
         super.run(notifier);
         runtime.printSummary();
+        jUnitReporter.done();
+        jUnitReporter.close();
         if (extendedOptions.isUsageReport()) {
             runUsageReport();
         }
@@ -155,8 +157,6 @@ public class ExtendedCucumber extends ParentRunner<ExtendedFeatureRunner> {
         if (extendedOptions.isCoverageReport()) {
             runCoverageReport();
         }
-        jUnitReporter.done();
-        jUnitReporter.close();
     }
 
     private void addChildren(List<CucumberFeature> cucumberFeatures) throws InitializationError {

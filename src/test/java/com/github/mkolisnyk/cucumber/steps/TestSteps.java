@@ -63,6 +63,6 @@ public class TestSteps {
         System.out.println(text);
     }
     @Then("^I should see 3 something$")
-    public void i_should_see_something(int arg1) throws Throwable {
+    public void i_should_see_something() throws Throwable {
     }
 }

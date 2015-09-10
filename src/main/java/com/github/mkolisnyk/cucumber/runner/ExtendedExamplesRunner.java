@@ -5,13 +5,16 @@ import java.util.List;
 
 import org.junit.Assert;
 import org.junit.internal.AssumptionViolatedException;
+import org.junit.internal.runners.model.EachTestNotifier;
 import org.junit.runner.Description;
 import org.junit.runner.Runner;
 import org.junit.runner.notification.Failure;
 import org.junit.runner.notification.RunNotifier;
+import org.junit.runner.notification.StoppedByUserException;
 import org.junit.runners.ParentRunner;
 import org.junit.runners.Suite;
 import org.junit.runners.model.InitializationError;
+import org.junit.runners.model.Statement;
 
 import cucumber.runtime.Runtime;
 import cucumber.runtime.junit.ExecutionUnitRunner;
@@ -35,7 +38,8 @@ public class ExtendedExamplesRunner extends Suite {
             CucumberExamples cucumberExamplesValue,
             JUnitReporter jUnitReporterValue,
             int retryCountValue) throws InitializationError {
-        super(ExtendedExamplesRunner.class, buildRunners(runtimeValue, cucumberExamplesValue, jUnitReporterValue));
+        super(ExtendedExamplesRunner.class,
+                buildRunners(runtimeValue, cucumberExamplesValue, jUnitReporterValue, retryCountValue));
         this.cucumberExamples = cucumberExamplesValue;
         this.jUnitReporter = jUnitReporterValue;
         this.runtime = runtimeValue;
@@ -45,12 +49,14 @@ public class ExtendedExamplesRunner extends Suite {
     private static List<Runner> buildRunners(
             Runtime runtime,
             CucumberExamples cucumberExamples,
-            JUnitReporter jUnitReporter) {
+            JUnitReporter jUnitReporter,
+            int retries) {
         runners = new ArrayList<Runner>();
         exampleScenarios = cucumberExamples.createExampleScenarios();
         for (CucumberScenario scenario : exampleScenarios) {
             try {
-                ExecutionUnitRunner exampleScenarioRunner = new ExecutionUnitRunner(runtime, scenario, jUnitReporter);
+                ExtendedExecutionUnitRunner exampleScenarioRunner
+                    = new ExtendedExecutionUnitRunner(runtime, scenario, jUnitReporter, retries);
                 runners.add(exampleScenarioRunner);
             } catch (InitializationError initializationError) {
                 initializationError.printStackTrace();
@@ -91,53 +97,30 @@ public class ExtendedExamplesRunner extends Suite {
     /* (non-Javadoc)
      * @see org.junit.runners.Suite#runChild(org.junit.runner.Runner, org.junit.runner.notification.RunNotifier)
      */
-    @Override
+    //@Override
     protected void runChild(Runner runner, RunNotifier notifier) {
-        ParentRunner featureElementRunner = null;
-        featureElementRunner = (ExecutionUnitRunner) runner;
-
-        try {
-                featureElementRunner.run(notifier);
-                Assert.assertEquals(0, this.getRuntime().exitStatus());
-        } catch (AssumptionViolatedException e) {
-            System.out.println("Scenario AssumptionViolatedException...");
-            notifier.fireTestAssumptionFailed(new Failure(runner.getDescription(), e));
-        } catch (Throwable e) {
-            System.out.println("Initiating retry...");
-            retry(notifier, featureElementRunner, e);
-        } finally {
-            System.out.println("Scenario completed..." + this.getRuntime().exitStatus());
-            notifier.fireTestFinished(runner.getDescription());
-        }
-        exampleCount++;
-   }
-
-    public void retry(RunNotifier notifier, ParentRunner child, Throwable currentThrowable) {
-        Throwable caughtThrowable = currentThrowable;
-        CucumberScenario scenario = exampleScenarios.get(exampleCount);
-        ParentRunner featureElementRunner = null;
-        boolean failed = true;
-
-        System.out.println("Retrying...");
-
-        int failedAttempts = 0;
-        while (retryCount > failedAttempts) {
+        //super.runChild(runner, notifier);
+        ExtendedExecutionUnitRunner featureElementRunner = (ExtendedExecutionUnitRunner) runner;
+        for (int i = 0; i <= this.retryCount; i++) {
             try {
-                featureElementRunner = new ExecutionUnitRunner(runtime, scenario, jUnitReporter);
-                //super.getChildren().add(exampleCount, featureElementRunner);
-                //super.getChildren().get(exampleCount).run(notifier);
+                featureElementRunner = new ExtendedExecutionUnitRunner(
+                        runtime,
+                        ((ExtendedExecutionUnitRunner) runner).getCucumberScenario(),
+                        jUnitReporter,
+                        retryCount);
                 featureElementRunner.run(notifier);
                 Assert.assertEquals(0, this.getRuntime().exitStatus());
-                failed = false;
-                break;
-            } catch (Throwable t) {
-                failedAttempts++;
-                caughtThrowable = t;
+            } catch (AssumptionViolatedException e) {
+                System.out.println("Scenario AssumptionViolatedException...");
+    //            notifier.fireTestAssumptionFailed(new Failure(runner.getDescription(), e));
+            } catch (Throwable e) {
+                System.out.println(((ExtendedExecutionUnitRunner) runner).getCucumberScenario().getGherkinModel().getId());
+                System.out.println(e.getClass().getCanonicalName() + ":" + e.getMessage());
+                System.out.println("Initiating retry...");
                 this.getRuntime().getErrors().clear();
+                continue;
             }
         }
-        if (failed) {
-            notifier.fireTestFailure(new Failure(featureElementRunner.getDescription(), caughtThrowable));
-        }
-    }
+        System.out.println(((ExtendedExecutionUnitRunner) runner).getCucumberScenario().getGherkinModel().getId() + "Scenario completed..." + this.getRuntime().exitStatus());
+   }
 }

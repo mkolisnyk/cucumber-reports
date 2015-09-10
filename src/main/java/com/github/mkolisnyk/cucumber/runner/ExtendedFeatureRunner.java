@@ -5,11 +5,14 @@ import java.util.List;
 
 import org.junit.Assert;
 import org.junit.internal.AssumptionViolatedException;
+import org.junit.internal.runners.model.EachTestNotifier;
 import org.junit.runner.Description;
 import org.junit.runner.notification.Failure;
 import org.junit.runner.notification.RunNotifier;
+import org.junit.runner.notification.StoppedByUserException;
 import org.junit.runners.ParentRunner;
 import org.junit.runners.model.InitializationError;
+import org.junit.runners.model.Statement;
 
 import cucumber.runtime.CucumberException;
 import cucumber.runtime.Runtime;
@@ -50,8 +53,8 @@ public class ExtendedFeatureRunner extends FeatureRunner {
             try {
                 ParentRunner featureElementRunner;
                 if (cucumberTagStatement instanceof CucumberScenario) {
-                    featureElementRunner = new ExecutionUnitRunner(
-                            runtime, (CucumberScenario) cucumberTagStatement, jUnitReporter);
+                    featureElementRunner = new ExtendedExecutionUnitRunner(
+                            runtime, (CucumberScenario) cucumberTagStatement, jUnitReporter, retryCount);
                 } else {
                     featureElementRunner = new ExtendedScenarioOutlineRunner(
                             runtime, (CucumberScenarioOutline) cucumberTagStatement, jUnitReporter, retryCount);
@@ -68,23 +71,24 @@ public class ExtendedFeatureRunner extends FeatureRunner {
     public final Runtime getRuntime() {
         return runtime;
     }
+
     @Override
     protected void runChild(ParentRunner child, RunNotifier notifier) {
         System.out.println("Running Feature child (scenario)...");
-        notifier.fireTestStarted(child.getDescription());
+        //notifier.fireTestStarted(child.getDescription());
         try {
             System.out.println("Begin scenario run...");
             child.run(notifier);
             Assert.assertEquals(0, this.getRuntime().exitStatus());
         } catch (AssumptionViolatedException e) {
             System.out.println("Scenario AssumptionViolatedException...");
-            notifier.fireTestAssumptionFailed(new Failure(child.getDescription(), e));
+            //notifier.fireTestAssumptionFailed(new Failure(child.getDescription(), e));
         } catch (Throwable e) {
             System.out.println("Initiating retry...");
             retry(notifier, child, e);
         } finally {
             System.out.println("Scenario completed..." + this.getRuntime().exitStatus());
-            notifier.fireTestFinished(child.getDescription());
+            //notifier.fireTestFinished(child.getDescription());
         }
         scenarioCount++;
         failedAttempts = 0;
@@ -103,10 +107,11 @@ public class ExtendedFeatureRunner extends FeatureRunner {
         }
         while (retryCount > failedAttempts) {
             try {
-                featureElementRunner = new ExecutionUnitRunner(
+                featureElementRunner = new ExtendedExecutionUnitRunner(
                         runtime,
                         (CucumberScenario) cucumberTagStatement,
-                        jUnitReporter);
+                        jUnitReporter,
+                        retryCount);
                 featureElementRunner.run(notifier);
                 Assert.assertEquals(0, this.getRuntime().exitStatus());
                 failed = false;
@@ -116,9 +121,6 @@ public class ExtendedFeatureRunner extends FeatureRunner {
                 caughtThrowable = t;
                 this.getRuntime().getErrors().clear();
             }
-        }
-        if (failed) {
-            notifier.fireTestFailure(new Failure(featureElementRunner.getDescription(), caughtThrowable));
         }
     }
 

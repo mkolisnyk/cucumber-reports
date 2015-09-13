@@ -1,0 +1,138 @@
+[
+ {
+ "id": "ntt-create-network",
+ "tags": [
+ {
+ "name": "@nttNW",
+ "line": 1
+ }
+ ],
+ "description": "As an Regular user\r\nI want to Create Network",
+ "name": "NTT Create Network",
+ "keyword": "Feature",
+ "line": 2,
+ "elements": [
+ {
+ "id": "ntt-create-network;",
+ "description": "",
+ "name": "",
+ "keyword": "Scenario",
+ "line": 6,
+ "steps": [
+ {
+ "result": {
+ "duration": 633132719,
+ "status": "passed"
+ },
+ "name": "\"ACP Add Network\" in \"Scenario: Create NTT Network without mandatory fields\"",
+ "keyword": "Given ",
+ "line": 8,
+ "match": {
+ "arguments": [
+ {
+ "val": "ACP Add Network",
+ "offset": 1
+ },
+ {
+ "val": "Scenario: Create NTT Network without mandatory fields",
+ "offset": 22
+ }
+ ],
+ "location": "OnboardingOperationScenario.getServcieScenario(String,String)"
+ }
+ },
+ {
+ "result": {
+ "duration": 43433762272,
+ "status": "passed"
+ },
+ "name": "as a \"Regular User\"",
+ "keyword": "Given ",
+ "line": 9,
+ "match": {
+ "arguments": [
+ {
+ "val": "Regular User",
+ "offset": 6
+ }
+ ],
+ "location": "OnboardingOperationScenario.as_a(String)"
+ }
+ },
+ {
+ "result": {
+ "duration": 49732333655,
+ "status": "passed"
+ },
+ "name": "the \"ACP Add Network\" order page",
+ "keyword": "Given ",
+ "line": 10,
+ "match": {
+ "arguments": [
+ {
+ "val": "ACP Add Network",
+ "offset": 5
+ }
+ ],
+ "location": "OnboardingOperationScenario.the_order_page(String)"
+ }
+ },
+ {
+ "result": {
+ "duration": 11950765154,
+ "status": "passed"
+ },
+ "name": "I populate the new form with the following details",
+ "keyword": "When ",
+ "line": 11,
+ "match": {
+ "location": "OnboardingOperationScenario.I_populate_the_new_form_with_the_following_details(String,String\u003e\u003e)"
+ },
+ "rows": [
+ {
+ "cells": [
+ "name",
+ "value"
+ ],
+ "line": 12
+ },
+ {
+ "cells": [
+ "Account",
+ "{acp.account}"
+ ],
+ "line": 13
+ }
+ ]
+ },
+ {
+ "result": {
+ "duration": 24726775358,
+ "status": "passed"
+ },
+ "name": "I submit the order and check for mandatory fields",
+ "keyword": "Then ",
+ "line": 14,
+ "match": {
+ "location": "OnboardingOperationScenario.I_submit_the_order_and_check_for_mandatory_fields()"
+ }
+ },
+ {
+ "result": {
+ "duration": 1501485576,
+ "status": "passed"
+ },
+ "name": "I close the page",
+ "keyword": "Then ",
+ "line": 15,
+ "match": {
+ "location": "OnboardingOperationScenario.I_close_the_page()"
+ }
+ }
+ ],
+ "type": "scenario"
+ }
+ ],
+ "uri": "3001CiacNTTAddNetwork.feature"
+ }
+ ]

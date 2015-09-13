@@ -14,8 +14,9 @@ import cucumber.api.CucumberOptions;
         retryCount = 3,
         detailedReport = true,
         detailedAggregatedReport = true,
-        //overviewReport = true,
+        overviewReport = true,
         //coverageReport = true,
+        toPDF = true,
         excludeCoverageTags = {"@flaky" },
         includeCoverageTags = {"@passed" },
         outputFolder = "target")

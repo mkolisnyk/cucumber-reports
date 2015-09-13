@@ -43,4 +43,13 @@ public class CucumberResultsReportTest {
         results.setScreenShotWidth("200px");
         results.executeDetailedResultsReport(true, false);
     }
+
+    @Test
+    public void testDetailedReportIssue27() throws Exception {
+        CucumberDetailedResults results = new CucumberDetailedResults();
+        results.setOutputDirectory("target/");
+        results.setOutputName("cucumber-results-27");
+        results.setSourceFile("./src/test/resources/cucumber1.json");
+        results.executeDetailedResultsReport(true, false);
+    }
 }

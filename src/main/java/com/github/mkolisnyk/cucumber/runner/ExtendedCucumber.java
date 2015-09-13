@@ -1,6 +1,8 @@
 package com.github.mkolisnyk.cucumber.runner;
 
 import java.io.IOException;
+import java.lang.annotation.Annotation;
+import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -30,9 +32,11 @@ public class ExtendedCucumber extends ParentRunner<ExtendedFeatureRunner> {
     private final List<ExtendedFeatureRunner> children = new ArrayList<ExtendedFeatureRunner>();
     private final Runtime runtime;
     private final ExtendedRuntimeOptions extendedOptions;
+    private Class clazzValue;
 
     public ExtendedCucumber(Class clazz) throws InitializationError, IOException {
         super(clazz);
+        this.clazzValue = clazz;
         ClassLoader classLoader = clazz.getClassLoader();
         Assertions.assertNoCucumberAnnotatedMethods(clazz);
 
@@ -136,9 +140,36 @@ public class ExtendedCucumber extends ParentRunner<ExtendedFeatureRunner> {
             e.printStackTrace();
         }
     }
+
+    private void runPredefinedMethods(Class annotation) throws Exception {
+        if (!annotation.isAnnotation()) {
+            return;
+        }
+        Method[] methodList = this.clazzValue.getMethods();
+        for (Method method : methodList) {
+            Annotation[] annotations = method.getAnnotations();
+            for (Annotation item : annotations) {
+                if (item.annotationType().equals(annotation)) {
+                    method.invoke(null);
+                    break;
+                }
+            }
+        }
+    }
+
     @Override
     public void run(RunNotifier notifier) {
+        try {
+            runPredefinedMethods(BeforeSuite.class);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         super.run(notifier);
+        try {
+            runPredefinedMethods(AfterSuite.class);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         runtime.printSummary();
         jUnitReporter.done();
         jUnitReporter.close();

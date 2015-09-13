@@ -5,18 +5,13 @@ import java.util.List;
 
 import org.junit.Assert;
 import org.junit.internal.AssumptionViolatedException;
-import org.junit.internal.runners.model.EachTestNotifier;
 import org.junit.runner.Description;
-import org.junit.runner.notification.Failure;
 import org.junit.runner.notification.RunNotifier;
-import org.junit.runner.notification.StoppedByUserException;
 import org.junit.runners.ParentRunner;
 import org.junit.runners.model.InitializationError;
-import org.junit.runners.model.Statement;
 
 import cucumber.runtime.CucumberException;
 import cucumber.runtime.Runtime;
-import cucumber.runtime.junit.ExecutionUnitRunner;
 import cucumber.runtime.junit.FeatureRunner;
 import cucumber.runtime.junit.JUnitReporter;
 import cucumber.runtime.model.CucumberFeature;
@@ -54,7 +49,7 @@ public class ExtendedFeatureRunner extends FeatureRunner {
                 ParentRunner featureElementRunner;
                 if (cucumberTagStatement instanceof CucumberScenario) {
                     featureElementRunner = new ExtendedExecutionUnitRunner(
-                            runtime, (CucumberScenario) cucumberTagStatement, jUnitReporter, retryCount);
+                            runtime, (CucumberScenario) cucumberTagStatement, jUnitReporter/*, retryCount*/);
                 } else {
                     featureElementRunner = new ExtendedScenarioOutlineRunner(
                             runtime, (CucumberScenarioOutline) cucumberTagStatement, jUnitReporter, retryCount);
@@ -95,9 +90,9 @@ public class ExtendedFeatureRunner extends FeatureRunner {
     }
 
     public void retry(RunNotifier notifier, ParentRunner child, Throwable currentThrowable) {
-        Throwable caughtThrowable = currentThrowable;
+        //Throwable caughtThrowable = currentThrowable;
         ParentRunner featureElementRunner = null;
-        boolean failed = true;
+        //boolean failed = true;
         Class<? extends ParentRunner> clazz = child.getClass();
         System.out.println("Current class is: " + clazz.getCanonicalName());
         CucumberTagStatement cucumberTagStatement = this.cucumberFeature.getFeatureElements().get(scenarioCount);
@@ -110,15 +105,15 @@ public class ExtendedFeatureRunner extends FeatureRunner {
                 featureElementRunner = new ExtendedExecutionUnitRunner(
                         runtime,
                         (CucumberScenario) cucumberTagStatement,
-                        jUnitReporter,
-                        retryCount);
+                        jUnitReporter/*,
+                        retryCount*/);
                 featureElementRunner.run(notifier);
                 Assert.assertEquals(0, this.getRuntime().exitStatus());
-                failed = false;
+                //failed = false;
                 break;
             } catch (Throwable t) {
                 failedAttempts++;
-                caughtThrowable = t;
+                //caughtThrowable = t;
                 this.getRuntime().getErrors().clear();
             }
         }

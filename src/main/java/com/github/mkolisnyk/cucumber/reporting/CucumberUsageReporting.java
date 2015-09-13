@@ -540,6 +540,8 @@ public class CucumberUsageReporting {
     }
     private double skewness(List<Double> durations, double average) {
         double result = 0.f;
+        final double precision = 0.000000001;
+        final double extand = 1.5;
         for (double duration : durations) {
             result += (duration - average) * (duration - average) * (duration - average);
         }
@@ -547,10 +549,10 @@ public class CucumberUsageReporting {
             result = result / durations.size();
         }
         double variance = variance(durations, average);
-        if (Math.abs(variance) < 0.000000001) {
+        if (Math.abs(variance) < precision) {
             variance = 1.;
         }
-        result = result / Math.pow(variance, 1.5);
+        result = result / Math.pow(variance, extand);
         return result;
     }
     private String generateSourceDurationOverview(CucumberStepSource source) {

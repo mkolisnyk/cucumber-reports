@@ -1,9 +1,6 @@
 package com.github.mkolisnyk.cucumber.runner;
 
-import org.junit.Assert;
-import org.junit.runner.notification.Failure;
 import org.junit.runner.notification.RunNotifier;
-import org.junit.runners.ParentRunner;
 import org.junit.runners.model.InitializationError;
 
 import cucumber.runtime.Runtime;
@@ -16,19 +13,19 @@ public class ExtendedExecutionUnitRunner extends ExecutionUnitRunner {
     private JUnitReporter jUnitReporter;
     private CucumberScenario cucumberScenario;
     private Runtime runtime;
-    private int retryCount;
+    //private int retryCount;
 
     public ExtendedExecutionUnitRunner(
             Runtime runtimeValue,
             CucumberScenario cucumberScenarioValue,
-            JUnitReporter jUnitReporterValue,
-            int retryCountValue)
+            JUnitReporter jUnitReporterValue/*,
+            int retryCountValue*/)
             throws InitializationError {
         super(runtimeValue, cucumberScenarioValue, jUnitReporterValue);
         this.runtime = runtimeValue;
         this.cucumberScenario = cucumberScenarioValue;
         this.jUnitReporter = jUnitReporterValue;
-        this.retryCount = retryCountValue;
+        //this.retryCount = retryCountValue;
     }
 
     @Override
@@ -43,7 +40,7 @@ public class ExtendedExecutionUnitRunner extends ExecutionUnitRunner {
         return cucumberScenario;
     }
 
-    public final void setCucumberScenario(CucumberScenario cucumberScenario) {
-        this.cucumberScenario = cucumberScenario;
+    public final void setCucumberScenario(CucumberScenario cucumberScenarioValue) {
+        this.cucumberScenario = cucumberScenarioValue;
     }
 }

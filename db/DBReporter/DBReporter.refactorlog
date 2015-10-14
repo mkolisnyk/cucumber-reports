@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Operations Version="1.0" xmlns="http://schemas.microsoft.com/sqlserver/dac/Serialization/2012/02">
+  <Operation Name="Rename Refactor" Key="88c1f053-36a2-4d9e-9828-25fa700439c0" ChangeDateTime="09/28/2015 21:18:53">
+    <Property Name="ElementName" Value="[cukes].[Features].[FeatureID]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[cukes].[Features]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="id" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="20af75f6-d4d1-4f1a-98eb-ee0dd000e9d2" ChangeDateTime="09/30/2015 20:58:14">
+    <Property Name="ElementName" Value="[cukes].[FK_StepResults_ToTable]" />
+    <Property Name="ElementType" Value="SqlForeignKeyConstraint" />
+    <Property Name="ParentElementName" Value="[cukes].[StepResults]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="[FK_StepResults_Runs]" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="5dd2a708-51aa-4d5f-9c9c-0b1488eb783f" ChangeDateTime="09/30/2015 21:00:27">
+    <Property Name="ElementName" Value="[cukes].[FK_StepResults_ToTable]" />
+    <Property Name="ElementType" Value="SqlForeignKeyConstraint" />
+    <Property Name="ParentElementName" Value="[cukes].[StepResults]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="[FK_StepResults_Features]" />
+  </Operation>
+</Operations>

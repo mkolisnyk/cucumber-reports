@@ -5,6 +5,7 @@
     [Name] VARCHAR(100) NULL, 
     [Description]  VARCHAR(500) NULL,
 	[Type] VARCHAR(20) NULL, 
+	[Version] [bigint] NOT NULL,
     [ValidFrom] DATETIME NULL, 
     [ValidTo] DATETIME NULL
 )

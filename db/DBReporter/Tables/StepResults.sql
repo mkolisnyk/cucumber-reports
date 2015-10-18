@@ -9,7 +9,7 @@
     [TableSteps] TEXT NULL, 
     [Matches] VARCHAR(100) NULL, 
     [Status] VARCHAR(10) NULL, 
-    [ErrorMessage] TEXT NULL, 
+    [ErrorMessage] VARCHAR(500) NULL, 
     [Duration] NUMERIC(10, 4) NULL, 
     [StartAt] DATETIME NULL, 
     [EndAt] DATETIME NULL, 

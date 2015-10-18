@@ -69,6 +69,11 @@
     <Build Include="Tables\Runs.sql" />
     <Build Include="Tables\Scenarios.sql" />
     <Build Include="Tables\StepResults.sql" />
+    <Build Include="Procedures\StartScenario.sql" />
+    <Build Include="Procedures\StartRun.sql" />
+    <Build Include="Procedures\StartStep.sql" />
+    <Build Include="Procedures\EndStep.sql" />
+    <Build Include="Procedures\EndRun.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="DBReporter.refactorlog" />

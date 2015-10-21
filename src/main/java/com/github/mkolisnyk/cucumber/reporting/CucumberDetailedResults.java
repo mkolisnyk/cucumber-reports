@@ -219,8 +219,13 @@ public class CucumberDetailedResults extends CucumberResultsCommon {
                     escapeHtml(step.getResult().getErrorMessage()).replaceAll(System.lineSeparator(),
                             "</br><br>" + System.lineSeparator())
             );
+            String scenarioId = scenario.getId();
+            if (StringUtils.isBlank(scenarioId)) {
+                scenarioId = "background";
+                // TODO: Add more precise background generation
+            }
             String filePath = this.getScreenShotLocation()
-                    + this.generateNameFromId(scenario.getId()) + ".png";
+                    + this.generateNameFromId(scenarioId) + ".png";
             File shot = new File(this.outputDirectory + filePath);
             if (shot.exists()) {
                 String widthString = "";

@@ -7,3 +7,9 @@ release.properties
 dependency-reduced-pom.xml
 buildNumber.properties
 /build
+/db/DBReporter/obj/
+/db/DBReporter/bin/
+/db/DBReporter/*.dbmdl
+/db/DBReporter/*.refactorlog
+
+

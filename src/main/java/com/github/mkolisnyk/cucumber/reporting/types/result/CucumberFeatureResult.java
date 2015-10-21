@@ -58,6 +58,7 @@ public class CucumberFeatureResult {
         undefined = 0;
         duration = 0.f;
         for (CucumberScenarioResult scenario : elements) {
+            boolean isBackground = scenario.getType().equalsIgnoreCase("background");
             scenario.valuate();
             if (!scenario.isInTagSet(this.includeCoverageTags, this.excludeCoverageTags)) {
                 this.undefined++;
@@ -66,14 +67,16 @@ public class CucumberFeatureResult {
                     //|| !this.isInTagSet(this.includeCoverageTags, this.excludeCoverageTags)
                     ) {
                 this.undefined++;
-            } else if (scenario.getFailed() > 0) {
-                this.failed++;
-            } else if (scenario.getUndefined() > 0) {
-                this.undefined++;
-            } else if (scenario.getSkipped() > 0) {
-                this.skipped++;
-            } else {
-                this.passed++;
+            } else if (!isBackground) {
+                if (scenario.getFailed() > 0) {
+                    this.failed++;
+                } else if (scenario.getUndefined() > 0) {
+                    this.undefined++;
+                } else if (scenario.getSkipped() > 0) {
+                    this.skipped++;
+                } else {
+                    this.passed++;
+                }
             }
             duration += scenario.getDuration();
         }

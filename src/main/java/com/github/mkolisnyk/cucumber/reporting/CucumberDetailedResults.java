@@ -92,40 +92,141 @@ public class CucumberDetailedResults extends CucumberResultsCommon {
         return StringEscapeUtils.escapeHtml(input);
     }
 
+    public class OverviewStats {
+        private int featuresPassed;
+        private int featuresFailed;
+        private int featuresUndefined;
+        private int scenariosPassed;
+        private int scenariosFailed;
+        private int scenariosUndefined;
+        private int stepsPassed;
+        private int stepsFailed;
+        private int stepsUndefined;
+        private float overallDuration;
+
+        public OverviewStats() {
+            featuresPassed = 0;
+            featuresFailed = 0;
+            featuresUndefined = 0;
+            scenariosPassed = 0;
+            scenariosFailed = 0;
+            scenariosUndefined = 0;
+            stepsPassed = 0;
+            stepsFailed = 0;
+            stepsUndefined = 0;
+            overallDuration = 0.f;
+        }
+
+        public final int getFeaturesPassed() {
+            return featuresPassed;
+        }
+
+        public final int getFeaturesFailed() {
+            return featuresFailed;
+        }
+
+        public final int getFeaturesUndefined() {
+            return featuresUndefined;
+        }
+
+        public final int getScenariosPassed() {
+            return scenariosPassed;
+        }
+
+        public final int getScenariosFailed() {
+            return scenariosFailed;
+        }
+
+        public final int getScenariosUndefined() {
+            return scenariosUndefined;
+        }
+
+        public final int getStepsPassed() {
+            return stepsPassed;
+        }
+
+        public final int getStepsFailed() {
+            return stepsFailed;
+        }
+
+        public final int getStepsUndefined() {
+            return stepsUndefined;
+        }
+
+        public final float getOverallDuration() {
+            return overallDuration;
+        }
+
+        public final void addFeaturesPassed(int featuresPassedValue) {
+            this.featuresPassed += featuresPassedValue;
+        }
+
+        public final void addFeaturesFailed(int featuresFailedValue) {
+            this.featuresFailed += featuresFailedValue;
+        }
+
+        public final void addFeaturesUndefined(int featuresUndefinedValue) {
+            this.featuresUndefined += featuresUndefinedValue;
+        }
+
+        public final void addScenariosPassed(int scenariosPassedValue) {
+            this.scenariosPassed += scenariosPassedValue;
+        }
+
+        public final void addScenariosFailed(int scenariosFailedValue) {
+            this.scenariosFailed += scenariosFailedValue;
+        }
+
+        public final void addScenariosUndefined(int scenariosUndefinedValue) {
+            this.scenariosUndefined += scenariosUndefinedValue;
+        }
+
+        public final void addStepsPassed(int stepsPassedValue) {
+            this.stepsPassed += stepsPassedValue;
+        }
+
+        public final void addStepsFailed(int stepsFailedValue) {
+            this.stepsFailed += stepsFailedValue;
+        }
+
+        public final void addStepsUndefined(int stepsUndefinedValue) {
+            this.stepsUndefined += stepsUndefinedValue;
+        }
+
+        public final void addOverallDuration(float overallDurationValue) {
+            this.overallDuration += overallDurationValue;
+        }
+    }
+    public OverviewStats valuateOverviewStats(CucumberFeatureResult[] results) {
+        OverviewStats stats = new OverviewStats();
+        for (CucumberFeatureResult result : results) {
+            result.valuate();
+            stats.addOverallDuration(result.getDuration());
+            if (result.getStatus().equals("passed")) {
+                stats.addFeaturesPassed(1);
+            } else if (result.getStatus().equals("failed")) {
+                stats.addFeaturesFailed(1);
+            } else {
+                stats.addFeaturesUndefined(1);
+            }
+            stats.addScenariosPassed(result.getPassed());
+            stats.addScenariosFailed(result.getFailed());
+            stats.addScenariosUndefined(result.getUndefined() + result.getSkipped());
+
+            for (CucumberScenarioResult scenario : result.getElements()) {
+                stats.addStepsPassed(scenario.getPassed());
+                stats.addStepsFailed(scenario.getFailed());
+                stats.addStepsUndefined(scenario.getUndefined() + scenario.getSkipped());
+            }
+        }
+        return stats;
+    }
     private String generateOverview(CucumberFeatureResult[] results) {
         final int secondsInMinute = 60;
         final int secondsInHour = 3600;
-        int featuresPassed = 0;
-        int featuresFailed = 0;
-        int featuresUndefined = 0;
-        int scenariosPassed = 0;
-        int scenariosFailed = 0;
-        int scenariosUndefined = 0;
-        int stepsPassed = 0;
-        int stepsFailed = 0;
-        int stepsUndefined = 0;
         final float highestPercent = 100.f;
         float overallDuration = 0.f;
-        for (CucumberFeatureResult result : results) {
-            result.valuate();
-            overallDuration += result.getDuration();
-            if (result.getStatus().equals("passed")) {
-                featuresPassed++;
-            } else if (result.getStatus().equals("failed")) {
-                featuresFailed++;
-            } else {
-                featuresUndefined++;
-            }
-            scenariosPassed += result.getPassed();
-            scenariosFailed += result.getFailed();
-            scenariosUndefined += result.getUndefined() + result.getSkipped();
-
-            for (CucumberScenarioResult scenario : result.getElements()) {
-                stepsPassed += scenario.getPassed();
-                stepsFailed += scenario.getFailed();
-                stepsUndefined += scenario.getUndefined() + scenario.getSkipped();
-            }
-        }
+        OverviewStats stats = valuateOverviewStats(results);
         return String.format("<table>"
                 + "<tr><th></th><th>Passed</th><th>Failed</th><th>Undefined</th><th>%%Passed</th></tr>"
                 + "<tr><th>Features</th><td class=\"passed\">%d</td><td class=\"failed\">%d</td>"
@@ -135,20 +236,21 @@ public class CucumberDetailedResults extends CucumberResultsCommon {
                 + "<tr><th>Steps</th><td class=\"passed\">%d</td><td class=\"failed\">%d</td>"
                     + "<td class=\"undefined\">%d</td><td>%.2f</td></tr></table>"
                 + "<div><b>Overall Duration: %dh %02dm %02ds</b></div>",
-                featuresPassed,
-                featuresFailed,
-                featuresUndefined,
-                highestPercent * (float) featuresPassed
-                    / (float) (featuresPassed + featuresFailed + featuresUndefined),
-                scenariosPassed,
-                scenariosFailed,
-                scenariosUndefined,
-                highestPercent * (float) scenariosPassed
-                    / (float) (scenariosPassed + scenariosFailed + scenariosUndefined),
-                stepsPassed,
-                stepsFailed,
-                stepsUndefined,
-                highestPercent * (float) stepsPassed / (float) (stepsPassed + stepsFailed + stepsUndefined),
+                stats.getFeaturesPassed(),
+                stats.getFeaturesFailed(),
+                stats.getFeaturesUndefined(),
+                highestPercent * (float) stats.getFeaturesPassed()
+                    / (float) (stats.getFeaturesPassed() + stats.getFeaturesFailed() + stats.getFeaturesUndefined()),
+                stats.getScenariosPassed(),
+                stats.getScenariosFailed(),
+                stats.getScenariosUndefined(),
+                highestPercent * (float) stats.getScenariosPassed()
+                    / (float) (stats.getScenariosPassed() + stats.getScenariosFailed() + stats.getScenariosUndefined()),
+                stats.getStepsPassed(),
+                stats.getStepsFailed(),
+                stats.getStepsUndefined(),
+                highestPercent * (float) stats.getStepsPassed()
+                    / (float) (stats.getStepsPassed() + stats.getStepsFailed() + stats.getStepsUndefined()),
                 (int) overallDuration / secondsInHour,
                 ((int) overallDuration % secondsInHour) / secondsInMinute,
                 ((int) overallDuration % secondsInHour) % secondsInMinute);
@@ -222,7 +324,7 @@ public class CucumberDetailedResults extends CucumberResultsCommon {
             String scenarioId = scenario.getId();
             if (StringUtils.isBlank(scenarioId)) {
                 scenarioId = "background";
-                // TODO: Add more precise background generation
+                // Add more precise background generation
             }
             String filePath = this.getScreenShotLocation()
                     + this.generateNameFromId(scenarioId) + ".png";

@@ -1,0 +1,228 @@
+[
+  {
+    "line": 1,
+    "elements": [
+      {
+        "line": 3,
+        "name": "",
+        "description": "",
+        "type": "background",
+        "keyword": "Background",
+        "steps": [
+          {
+            "result": {
+              "duration": 630024727,
+              "status": "passed"
+            },
+            "line": 4,
+            "name": "I am in the system",
+            "match": {
+              "location": "TestSteps.i_am_in_the_system()"
+            },
+            "keyword": "Given "
+          },
+          {
+            "result": {
+              "duration": 29841494,
+              "error_message": "java.lang.AssertionError\r\n\tat org.junit.Assert.fail(Assert.java:86)\r\n\tat org.junit.Assert.assertTrue(Assert.java:41)\r\n\tat org.junit.Assert.assertTrue(Assert.java:52)\r\n\tat com.github.mkolisnyk.cucumber.steps.TestSteps.i_do_wrong(TestSteps.java:44)\r\n\tat ✽.When I do wrong(Background.feature:5)\r\n",
+              "status": "failed"
+            },
+            "line": 5,
+            "name": "I do wrong",
+            "match": {
+              "location": "TestSteps.i_do_wrong()"
+            },
+            "keyword": "When "
+          }
+        ]
+      },
+      {
+        "line": 8,
+        "name": "Always passed test",
+        "description": "",
+        "id": "tests-with-backgrounds;always-passed-test",
+        "type": "scenario",
+        "keyword": "Scenario",
+        "steps": [
+          {
+            "result": {
+              "status": "skipped"
+            },
+            "line": 9,
+            "name": "I do nothing",
+            "match": {
+              "location": "TestSteps.i_do_nothing()"
+            },
+            "keyword": "When "
+          },
+          {
+            "result": {
+              "status": "skipped"
+            },
+            "line": 10,
+            "name": "I should see nothing",
+            "match": {
+              "location": "TestSteps.i_should_see_nothing()"
+            },
+            "keyword": "Then "
+          }
+        ],
+        "tags": [
+          {
+            "line": 7,
+            "name": "@passed_background"
+          }
+        ]
+      },
+      {
+        "line": 3,
+        "name": "",
+        "description": "",
+        "type": "background",
+        "keyword": "Background",
+        "steps": [
+          {
+            "result": {
+              "duration": 7207556,
+              "status": "passed"
+            },
+            "line": 4,
+            "name": "I am in the system",
+            "match": {
+              "location": "TestSteps.i_am_in_the_system()"
+            },
+            "keyword": "Given "
+          },
+          {
+            "result": {
+              "duration": 12064820,
+              "error_message": "java.lang.AssertionError\r\n\tat org.junit.Assert.fail(Assert.java:86)\r\n\tat org.junit.Assert.assertTrue(Assert.java:41)\r\n\tat org.junit.Assert.assertTrue(Assert.java:52)\r\n\tat com.github.mkolisnyk.cucumber.steps.TestSteps.i_do_wrong(TestSteps.java:44)\r\n\tat ✽.When I do wrong(Background.feature:5)\r\n",
+              "status": "failed"
+            },
+            "line": 5,
+            "name": "I do wrong",
+            "match": {
+              "location": "TestSteps.i_do_wrong()"
+            },
+            "keyword": "When "
+          }
+        ]
+      },
+      {
+        "line": 14,
+        "name": "Always passed test 2",
+        "description": "",
+        "id": "tests-with-backgrounds;always-passed-test-2",
+        "type": "scenario",
+        "keyword": "Scenario",
+        "steps": [
+          {
+            "result": {
+              "status": "skipped"
+            },
+            "line": 15,
+            "name": "I do nothing",
+            "match": {
+              "location": "TestSteps.i_do_nothing()"
+            },
+            "keyword": "When "
+          },
+          {
+            "result": {
+              "status": "skipped"
+            },
+            "line": 16,
+            "name": "I should see nothing",
+            "match": {
+              "location": "TestSteps.i_should_see_nothing()"
+            },
+            "keyword": "Then "
+          }
+        ],
+        "tags": [
+          {
+            "line": 13,
+            "name": "@passed_background"
+          }
+        ]
+      },
+      {
+        "line": 3,
+        "name": "",
+        "description": "",
+        "type": "background",
+        "keyword": "Background",
+        "steps": [
+          {
+            "result": {
+              "duration": 309950,
+              "status": "passed"
+            },
+            "line": 4,
+            "name": "I am in the system",
+            "match": {
+              "location": "TestSteps.i_am_in_the_system()"
+            },
+            "keyword": "Given "
+          },
+          {
+            "result": {
+              "duration": 3184352,
+              "error_message": "java.lang.AssertionError\r\n\tat org.junit.Assert.fail(Assert.java:86)\r\n\tat org.junit.Assert.assertTrue(Assert.java:41)\r\n\tat org.junit.Assert.assertTrue(Assert.java:52)\r\n\tat com.github.mkolisnyk.cucumber.steps.TestSteps.i_do_wrong(TestSteps.java:44)\r\n\tat ✽.When I do wrong(Background.feature:5)\r\n",
+              "status": "failed"
+            },
+            "line": 5,
+            "name": "I do wrong",
+            "match": {
+              "location": "TestSteps.i_do_wrong()"
+            },
+            "keyword": "When "
+          }
+        ]
+      },
+      {
+        "line": 19,
+        "name": "Always failing test 2",
+        "description": "",
+        "id": "tests-with-backgrounds;always-failing-test-2",
+        "type": "scenario",
+        "keyword": "Scenario",
+        "steps": [
+          {
+            "result": {
+              "status": "skipped"
+            },
+            "line": 20,
+            "name": "I do wrong",
+            "match": {
+              "location": "TestSteps.i_do_wrong()"
+            },
+            "keyword": "When "
+          },
+          {
+            "result": {
+              "status": "skipped"
+            },
+            "line": 21,
+            "name": "I should see nothing",
+            "match": {
+              "location": "TestSteps.i_should_see_nothing()"
+            },
+            "keyword": "Then "
+          }
+        ],
+        "tags": [
+          {
+            "line": 18,
+            "name": "@passed_background"
+          }
+        ]
+      }
+    ],
+    "name": "Tests with backgrounds",
+    "description": "",
+    "id": "tests-with-backgrounds",
+    "keyword": "Feature",
+    "uri": "Background.feature"
+  }
+]

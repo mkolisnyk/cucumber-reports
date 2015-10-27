@@ -56,6 +56,7 @@ public class CucumberFeatureResult {
         passed = 0;
         failed = 0;
         undefined = 0;
+        skipped = 0;
         duration = 0.f;
         for (CucumberScenarioResult scenario : elements) {
             boolean isBackground = scenario.getType().equalsIgnoreCase("background");

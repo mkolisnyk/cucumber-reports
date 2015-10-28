@@ -3,7 +3,14 @@ package com.github.mkolisnyk.cucumber.reporting;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStream;
 import java.lang.reflect.Array;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Map.Entry;
+
+import org.apache.commons.io.IOUtils;
 
 import com.cedarsoftware.util.io.JsonObject;
 import com.cedarsoftware.util.io.JsonReader;
@@ -80,5 +87,19 @@ public class CucumberResultsCommon {
         jr.close();
         fis.close();
         return sources;
+    }
+    public String replaceHtmlEntitiesWithCodes(String input) throws IOException {
+        String output = input;
+        Map<String, String> entitiesMap = new HashMap<String, String>();
+        InputStream is = this.getClass().getResourceAsStream("/html_entities_map.txt");
+        String[] result = IOUtils.toString(is).split("\n");
+        is.close();
+        for (String line : result) {
+            entitiesMap.put(line.split("(\\s+)")[0], line.split("(\\s+)")[1]);
+        }
+        for (Entry<String, String> entry : entitiesMap.entrySet()) {
+            output = output.replace(entry.getKey(), entry.getValue());
+        }
+        return output;
     }
 }

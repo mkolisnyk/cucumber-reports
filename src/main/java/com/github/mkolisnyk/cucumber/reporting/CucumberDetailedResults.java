@@ -306,7 +306,7 @@ public class CucumberDetailedResults extends CucumberResultsCommon {
                     "<tr class=\"%s_description\"><td style=\"padding-left:20px\" colspan=\"2\">",
                     step.getResult().getStatus());
             reportContent += String.format("<br>%s</br>",
-                    escapeHtml(step.getDocString()).replaceAll(System.lineSeparator(), "</br><br>"));
+                    escapeHtml(step.getDocString()).replaceAll("\n", "</br><br>"));
             reportContent += "</td></tr>";
         }
         return reportContent;
@@ -434,7 +434,8 @@ public class CucumberDetailedResults extends CucumberResultsCommon {
             reportContent += "</table></td></tr><tr><td colspan=\"5\"></td></tr>";
         }
         reportContent += "</table>";
-        reportContent = reportContent.replaceAll("&pound;", "&#163;");
+        //reportContent = reportContent.replaceAll("&pound;", "&#163;");
+        reportContent = this.replaceHtmlEntitiesWithCodes(reportContent);
         reportContent = reportContent.replaceAll("[$]", "&#36;");
         content = content.replaceAll("__REPORT__", reportContent);
         return content;

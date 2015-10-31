@@ -9,8 +9,8 @@
               files="NumericRangeValueExpression.java"
               lines="130-138"/>
     <suppress checks="MethodName"
-              files="AerialTestNGRunner.java"
-              lines="68"/>
+              files="ExtendedTestNGRunner.java"
+              lines="80"/>
     <suppress checks="RegexpSingleline"
               files="cucumber.properties"
               lines="15-23"/>

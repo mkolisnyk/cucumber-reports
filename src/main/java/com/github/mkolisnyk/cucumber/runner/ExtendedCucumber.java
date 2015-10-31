@@ -76,71 +76,6 @@ public class ExtendedCucumber extends ParentRunner<ExtendedFeatureRunner> {
         child.run(notifier);
     }
 
-    private void runUsageReport() {
-        CucumberUsageReporting report = new CucumberUsageReporting();
-        report.setOutputDirectory(extendedOptions.getOutputFolder());
-        report.setJsonUsageFile(extendedOptions.getJsonUsageReportPath());
-        try {
-            report.executeReport();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-
-    private void runOverviewReport() {
-        CucumberResultsOverview results = new CucumberResultsOverview();
-        results.setOutputDirectory(extendedOptions.getOutputFolder());
-        results.setOutputName(extendedOptions.getReportPrefix());
-        results.setSourceFile(extendedOptions.getJsonReportPath());
-        try {
-            results.executeFeaturesOverviewReport();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-
-    private void runDetailedReport() {
-        CucumberDetailedResults results = new CucumberDetailedResults();
-        results.setOutputDirectory(extendedOptions.getOutputFolder());
-        results.setOutputName(extendedOptions.getReportPrefix());
-        results.setSourceFile(extendedOptions.getJsonReportPath());
-        results.setScreenShotLocation(extendedOptions.getScreenShotLocation());
-        results.setScreenShotWidth(extendedOptions.getScreenShotSize());
-        try {
-            results.executeDetailedResultsReport(
-                    extendedOptions.isToPDF(), false);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-    private void runDetailedAggregatedReport() {
-        CucumberDetailedResults results = new CucumberDetailedResults();
-        results.setOutputDirectory(extendedOptions.getOutputFolder());
-        results.setOutputName(extendedOptions.getReportPrefix());
-        results.setSourceFile(extendedOptions.getJsonReportPath());
-        results.setScreenShotLocation(extendedOptions.getScreenShotLocation());
-        results.setScreenShotWidth(extendedOptions.getScreenShotSize());
-        try {
-            results.executeDetailedResultsReport(
-                    extendedOptions.isToPDF(), true);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-    private void runCoverageReport() {
-        CucumberCoverageOverview results = new CucumberCoverageOverview();
-        results.setOutputDirectory(extendedOptions.getOutputFolder());
-        results.setOutputName(extendedOptions.getReportPrefix());
-        results.setSourceFile(extendedOptions.getJsonReportPath());
-        results.setExcludeCoverageTags(extendedOptions.getExcludeCoverageTags());
-        results.setIncludeCoverageTags(extendedOptions.getIncludeCoverageTags());
-        try {
-            results.executeCoverageReport();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-
     private void runPredefinedMethods(Class annotation) throws Exception {
         if (!annotation.isAnnotation()) {
             return;
@@ -173,21 +108,6 @@ public class ExtendedCucumber extends ParentRunner<ExtendedFeatureRunner> {
         runtime.printSummary();
         jUnitReporter.done();
         jUnitReporter.close();
-        if (extendedOptions.isUsageReport()) {
-            runUsageReport();
-        }
-        if (extendedOptions.isOverviewReport()) {
-            runOverviewReport();
-        }
-        if (extendedOptions.isDetailedReport()) {
-            runDetailedReport();
-        }
-        if (extendedOptions.isDetailedAggregatedReport()) {
-            runDetailedAggregatedReport();
-        }
-        if (extendedOptions.isCoverageReport()) {
-            runCoverageReport();
-        }
     }
 
     private void addChildren(List<CucumberFeature> cucumberFeatures) throws InitializationError {

@@ -125,8 +125,30 @@ public class CucumberResultsOverview extends CucumberResultsCommon {
                 + "<th>Retries</th>"
                 + "<th>Duration</th></tr>";
 
+        int[] featureStatuses = {0, 0, 0};
+        int[] scenarioStatuses = {0, 0, 0};
         for (CucumberFeatureResult result : results) {
+            if (result.getStatus().trim().equalsIgnoreCase("passed")) {
+                featureStatuses[0]++;
+            }
+            if (result.getStatus().trim().equalsIgnoreCase("failed")) {
+                featureStatuses[1]++;
+            }
+            if (result.getStatus().trim().equalsIgnoreCase("undefined")
+                    || result.getStatus().trim().equalsIgnoreCase("skipped")) {
+                featureStatuses[2]++;
+            }
             for (CucumberScenarioResult element : result.getElements()) {
+                if (element.getStatus().trim().equalsIgnoreCase("passed")) {
+                    scenarioStatuses[0]++;
+                }
+                if (element.getStatus().trim().equalsIgnoreCase("failed")) {
+                    scenarioStatuses[1]++;
+                }
+                if (element.getStatus().trim().equalsIgnoreCase("undefined")
+                        || element.getStatus().trim().equalsIgnoreCase("skipped")) {
+                    scenarioStatuses[2]++;
+                }
                 reportContent += String.format(
                         "<tr class=\"%s\">"
                         + "<td>%s</td><td>%s</td><td>%s</td>"
@@ -145,8 +167,22 @@ public class CucumberResultsOverview extends CucumberResultsCommon {
         }
         reportContent += "</table>";
         content = content.replaceAll("__REPORT__", reportContent);
-        content = content.replaceAll("__FEATURE_DATA__", getFeatureData(results));
-        content = content.replaceAll("__SCENARIO_DATA__", getScenarioData(results));
+        content = content.replaceAll("__FEATURE_DATA__", this.generatePieChart(
+                350, 240,
+                featureStatuses,
+                new String[]{"Passed", "Failed", "Undefined"},
+                new String[]{"green", "red", "silver"},
+                new String[]{"darkgreen", "darkred", "darkgray"},
+                20,
+                2));
+        content = content.replaceAll("__SCENARIO_DATA__", this.generatePieChart(
+                350, 240,
+                scenarioStatuses,
+                new String[]{"Passed", "Failed", "Undefined"},
+                new String[]{"green", "red", "silver"},
+                new String[]{"darkgreen", "darkred", "darkgray"},
+                20,
+                2));
         return content;
     }
 
@@ -156,12 +192,12 @@ public class CucumberResultsOverview extends CucumberResultsCommon {
                 this.getOutputDirectory() + File.separator + this.getOutputName()
                 + "-" + reportSuffix + ".html");
         FileUtils.writeStringToFile(outFile, generateFeatureOverview(features));
-        final WebClient webClient = new WebClient(BrowserVersion.INTERNET_EXPLORER_11);
+        /*final WebClient webClient = new WebClient(BrowserVersion.INTERNET_EXPLORER_11);
         webClient.getOptions().setThrowExceptionOnScriptError(false);
         final HtmlPage page = webClient.getPage(new URL("file://" + outFile.getAbsolutePath()).toExternalForm());
         String content = page.asXml();
         FileUtils.writeStringToFile(outFile, content);
-        webClient.close();
+        webClient.close();*/
     }
 
     public void executeFeaturesOverviewReport() throws Exception {

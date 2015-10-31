@@ -12,59 +12,16 @@ table {border:1px solid black;border-collapse: collapse;}
 .undefined {background-color:gold;font-weight:bold;color:goldenrod}
 </style>
 <title>__TITLE__</title>
-    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
-    <script type="text/javascript">
-      google.load("visualization", "1.1", {packages:["corechart","bar"]});
-	  google.setOnLoadCallback(drawChart);
-      function drawChart() {
-        var sc_data = google.visualization.arrayToDataTable([
-          ['Status', 'Number'],
-__SCENARIO_DATA__
-        ]);
-
-        var sc_options = {
-          title: 'Scenario Status',
-          is3D: true,
-		  slices: {
-            0: { color: 'green' },
-            1: { color: 'red' , offset: 0.1 },
-            2: { color: 'silver' , offset: 0.1 }
-          },
-		  tooltip: {
-		  showColorCode: true
-		  }
-        };
-
-        var sc_chart = new google.visualization.PieChart(document.getElementById('scenariochart_3d'));
-        sc_chart.draw(sc_data, sc_options);
-        var feat_data = google.visualization.arrayToDataTable([
-          ['Status', 'Number'],
-__FEATURE_DATA__
-        ]);
-
-        var feat_options = {
-          title: 'Feature Status',
-          is3D: true,
-		  slices: {
-            0: { color: 'green' },
-            1: { color: 'red', offset: 0.1 },
-            2: { color: 'silver', offset: 0.1 }
-          },
-		  tooltip: {
-		  showColorCode: true
-		  }
-        };
-
-        var feat_chart = new google.visualization.PieChart(document.getElementById('featurechart_3d'));
-        feat_chart.draw(feat_data, feat_options);
-      }
-    </script>
-  </head>
+</head>
   <body>
   <h1>Overview Chart</h1>
-	<table class="chart"><tr class="chart">
-    <td class="chart"><div id="featurechart_3d"  style="width: 400px; height: 300px;" ></div></td>
-    <td class="chart"><div id="scenariochart_3d" style="width: 400px; height: 300px;"></div></td></tr>
+	<table class="chart">
+	<tr>
+	<th class="chart">Features Status</th><th class="chart">Scenario Status</th>
+	</tr>
+	<tr class="chart">
+    <td class="chart"><div style="width: 400px; height: 200px;" >__FEATURE_DATA__</div></td>
+    <td class="chart"><div style="width: 400px; height: 200px;">__SCENARIO_DATA__</div></td></tr>
 	</table>
 __REPORT__	
 	</body>

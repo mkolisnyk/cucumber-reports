@@ -14,6 +14,7 @@ import cucumber.api.CucumberOptions;
     detailedReport = true,
     detailedAggregatedReport = true,
     overviewReport = true,
+    toPDF = true,
     outputFolder = "target",
     reportPrefix = "cucumber-docstring-report")
 @CucumberOptions(plugin = { "html:target/cucumber-docstring-html-report",

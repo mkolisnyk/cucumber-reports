@@ -1,16 +1,16 @@
 package com.github.mkolisnyk.cucumber.reporting;
 
 import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.net.URL;
+import java.io.OutputStream;
 
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.IOUtils;
+import org.xhtmlrenderer.pdf.ITextRenderer;
+import org.xhtmlrenderer.simple.PDFRenderer;
 
-import com.gargoylesoftware.htmlunit.BrowserVersion;
-import com.gargoylesoftware.htmlunit.WebClient;
-import com.gargoylesoftware.htmlunit.html.HtmlPage;
 import com.github.mkolisnyk.cucumber.reporting.types.result.CucumberFeatureResult;
 import com.github.mkolisnyk.cucumber.reporting.types.result.CucumberScenarioResult;
 
@@ -95,6 +95,28 @@ public class CucumberResultsOverview extends CucumberResultsCommon {
         return String.format("['Passed', %d], ['Failed', %d], ['Undefined', %d]", passed, failed, undefined);
     }
 
+    private int[][] getStatuses(CucumberFeatureResult[] results) {
+        int[][] statuses = {{0, 0, 0}, {0, 0, 0}};
+        for (CucumberFeatureResult result : results) {
+            if (result.getStatus().trim().equalsIgnoreCase("passed")) {
+                statuses[0][0]++;
+            } else if (result.getStatus().trim().equalsIgnoreCase("failed")) {
+                statuses[0][1]++;
+            } else {
+                statuses[0][2]++;
+            }
+            for (CucumberScenarioResult element : result.getElements()) {
+                if (element.getStatus().trim().equalsIgnoreCase("passed")) {
+                    statuses[1][0]++;
+                } else if (element.getStatus().trim().equalsIgnoreCase("failed")) {
+                    statuses[1][1]++;
+                } else {
+                    statuses[1][2]++;
+                }
+            }
+        }
+        return statuses;
+    }
     protected String generateFeatureOverview(CucumberFeatureResult[] results) throws IOException {
         String content = this.getReportBase();
         content = content.replaceAll("__TITLE__", "Features Overview");
@@ -125,30 +147,11 @@ public class CucumberResultsOverview extends CucumberResultsCommon {
                 + "<th>Retries</th>"
                 + "<th>Duration</th></tr>";
 
-        int[] featureStatuses = {0, 0, 0};
-        int[] scenarioStatuses = {0, 0, 0};
+        int[][] statuses = this.getStatuses(results);
+        int[] featureStatuses = statuses[0];
+        int[] scenarioStatuses = statuses[1];
         for (CucumberFeatureResult result : results) {
-            if (result.getStatus().trim().equalsIgnoreCase("passed")) {
-                featureStatuses[0]++;
-            }
-            if (result.getStatus().trim().equalsIgnoreCase("failed")) {
-                featureStatuses[1]++;
-            }
-            if (result.getStatus().trim().equalsIgnoreCase("undefined")
-                    || result.getStatus().trim().equalsIgnoreCase("skipped")) {
-                featureStatuses[2]++;
-            }
             for (CucumberScenarioResult element : result.getElements()) {
-                if (element.getStatus().trim().equalsIgnoreCase("passed")) {
-                    scenarioStatuses[0]++;
-                }
-                if (element.getStatus().trim().equalsIgnoreCase("failed")) {
-                    scenarioStatuses[1]++;
-                }
-                if (element.getStatus().trim().equalsIgnoreCase("undefined")
-                        || element.getStatus().trim().equalsIgnoreCase("skipped")) {
-                    scenarioStatuses[2]++;
-                }
                 reportContent += String.format(
                         "<tr class=\"%s\">"
                         + "<td>%s</td><td>%s</td><td>%s</td>"
@@ -168,39 +171,41 @@ public class CucumberResultsOverview extends CucumberResultsCommon {
         reportContent += "</table>";
         content = content.replaceAll("__REPORT__", reportContent);
         content = content.replaceAll("__FEATURE_DATA__", this.generatePieChart(
-                350, 240,
+                CHART_WIDTH, CHART_HEIGHT,
                 featureStatuses,
                 new String[]{"Passed", "Failed", "Undefined"},
                 new String[]{"green", "red", "silver"},
                 new String[]{"darkgreen", "darkred", "darkgray"},
-                20,
+                CHART_THICKNESS,
                 2));
         content = content.replaceAll("__SCENARIO_DATA__", this.generatePieChart(
-                350, 240,
+                CHART_WIDTH, CHART_HEIGHT,
                 scenarioStatuses,
                 new String[]{"Passed", "Failed", "Undefined"},
                 new String[]{"green", "red", "silver"},
                 new String[]{"darkgreen", "darkred", "darkgray"},
-                20,
+                CHART_THICKNESS,
                 2));
         return content;
     }
 
     public void executeOverviewReport(String reportSuffix) throws Exception {
+        executeOverviewReport(reportSuffix, false);
+    }
+    public void executeOverviewReport(String reportSuffix, boolean toPdf) throws Exception {
         CucumberFeatureResult[] features = readFileContent(true);
         File outFile = new File(
                 this.getOutputDirectory() + File.separator + this.getOutputName()
                 + "-" + reportSuffix + ".html");
         FileUtils.writeStringToFile(outFile, generateFeatureOverview(features));
-        /*final WebClient webClient = new WebClient(BrowserVersion.INTERNET_EXPLORER_11);
-        webClient.getOptions().setThrowExceptionOnScriptError(false);
-        final HtmlPage page = webClient.getPage(new URL("file://" + outFile.getAbsolutePath()).toExternalForm());
-        String content = page.asXml();
-        FileUtils.writeStringToFile(outFile, content);
-        webClient.close();*/
+        if (toPdf) {
+            String url = outFile.toURI().toURL().toString();
+            String outputFile = this.getOutputDirectory() + File.separator + this.getOutputName()
+                    + "-" + reportSuffix + ".pdf";
+            PDFRenderer.renderToPDF(outFile, outputFile);
+        }
     }
-
     public void executeFeaturesOverviewReport() throws Exception {
-        executeOverviewReport("feature-overview");
+        executeOverviewReport("feature-overview", false);
     }
 }

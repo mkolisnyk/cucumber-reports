@@ -5,15 +5,15 @@
     "http://www.puppycrawl.com/dtds/suppressions_1_1.dtd">
 
 <suppressions>
-    <suppress checks="AvoidInlineConditionals"
-              files="NumericRangeValueExpression.java"
-              lines="130-138"/>
+    <suppress checks="MagicNumber"
+              files="CucumberResultsCommon.java"
+              lines="1-272"/>
     <suppress checks="MethodName"
               files="ExtendedTestNGRunner.java"
               lines="80"/>
-    <suppress checks="RegexpSingleline"
-              files="cucumber.properties"
-              lines="15-23"/>
+    <suppress checks="ParameterNumber"
+              files="CucumberResultsCommon.java"
+              lines="240"/>
     <suppress checks="RegexpSingleline"
               files="jbehave.properties"
               lines="13-21"/>

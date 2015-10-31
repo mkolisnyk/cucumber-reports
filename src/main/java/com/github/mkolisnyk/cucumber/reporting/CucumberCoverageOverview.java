@@ -90,7 +90,24 @@ public class CucumberCoverageOverview extends CucumberResultsOverview {
             return "passed";
         }
     }
-
+    private int[][] getStatuses(CucumberFeatureResult[] results) {
+        int[][] statuses = {{0, 0}, {0, 0}};
+        for (CucumberFeatureResult result : results) {
+            if (result.getStatus().equals("undefined") || result.getUndefined() > 0) {
+                statuses[0][0]++;
+            } else {
+                statuses[0][1]++;
+            }
+            for (CucumberScenarioResult element : result.getElements()) {
+                if (element.getStatus().equals("undefined") || element.getUndefined() > 0) {
+                    statuses[1][1]++;
+                } else {
+                    statuses[1][0]++;
+                }
+            }
+        }
+        return statuses;
+    }
     @Override
     protected String generateFeatureOverview(CucumberFeatureResult[] results)
             throws IOException {
@@ -126,14 +143,10 @@ public class CucumberCoverageOverview extends CucumberResultsOverview {
                 + "<tr><th>Covered</th>"
                 + "<th>Not Covered</th></tr>";
 
-        int[] featureStatuses = {0, 0};
-        int[] scenarioStatuses = {0, 0};
+        int[][] statuses = this.getStatuses(results);
+        int[] featureStatuses = statuses[0];
+        int[] scenarioStatuses = statuses[1];
         for (CucumberFeatureResult result : results) {
-            if (result.getStatus().equals("undefined") || result.getUndefined() > 0) {
-                featureStatuses[0]++;
-            } else {
-                featureStatuses[1]++;
-            }
             result.setIncludeCoverageTags(includeCoverageTags);
             result.setExcludeCoverageTags(excludeCoverageTags);
 
@@ -141,11 +154,6 @@ public class CucumberCoverageOverview extends CucumberResultsOverview {
                 element.setIncludeCoverageTags(includeCoverageTags);
                 element.setExcludeCoverageTags(excludeCoverageTags);
 
-                if (element.getStatus().equals("undefined") || element.getUndefined() > 0) {
-                    scenarioStatuses[1]++;
-                } else {
-                    scenarioStatuses[0]++;
-                }
                 String status = getScenarioStatus(element);
                 Set<String> tags = new HashSet<String>();
                 for (String tag : result.getAllTags(false)) {
@@ -173,25 +181,25 @@ public class CucumberCoverageOverview extends CucumberResultsOverview {
         reportContent += "</table>";
         content = content.replaceAll("__REPORT__", reportContent);
         content = content.replaceAll("__FEATURE_DATA__", this.generatePieChart(
-                400, 240,
+                CHART_WIDTH, CHART_HEIGHT,
                 featureStatuses,
                 new String[]{"Covered", "Not Covered"},
                 new String[]{"green", "gold"},
                 new String[]{"darkgreen", "GoldenRod"},
-                20,
+                CHART_THICKNESS,
                 2));
         content = content.replaceAll("__SCENARIO_DATA__", this.generatePieChart(
-                400, 240,
+                CHART_WIDTH, CHART_HEIGHT,
                 scenarioStatuses,
                 new String[]{"Covered", "Not Covered"},
                 new String[]{"green", "gold"},
                 new String[]{"darkgreen", "GoldenRod"},
-                20,
+                CHART_THICKNESS,
                 2));
         return content;
     }
 
     public void executeCoverageReport() throws Exception {
-        executeOverviewReport("coverage");
+        executeOverviewReport("coverage", false);
     }
 }

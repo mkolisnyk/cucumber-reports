@@ -11,11 +11,6 @@ import org.junit.runner.notification.RunNotifier;
 import org.junit.runners.ParentRunner;
 import org.junit.runners.model.InitializationError;
 
-import com.github.mkolisnyk.cucumber.reporting.CucumberCoverageOverview;
-import com.github.mkolisnyk.cucumber.reporting.CucumberDetailedResults;
-import com.github.mkolisnyk.cucumber.reporting.CucumberResultsOverview;
-import com.github.mkolisnyk.cucumber.reporting.CucumberUsageReporting;
-
 import cucumber.runtime.ClassFinder;
 import cucumber.runtime.Runtime;
 import cucumber.runtime.RuntimeOptions;
@@ -108,6 +103,21 @@ public class ExtendedCucumber extends ParentRunner<ExtendedFeatureRunner> {
         runtime.printSummary();
         jUnitReporter.done();
         jUnitReporter.close();
+        if (extendedOptions.isUsageReport()) {
+            ReportRunner.runUsageReport(extendedOptions);
+        }
+        if (extendedOptions.isOverviewReport()) {
+            ReportRunner.runOverviewReport(extendedOptions);
+        }
+        if (extendedOptions.isDetailedReport()) {
+            ReportRunner.runDetailedReport(extendedOptions);
+        }
+        if (extendedOptions.isDetailedAggregatedReport()) {
+            ReportRunner.runDetailedAggregatedReport(extendedOptions);
+        }
+        if (extendedOptions.isCoverageReport()) {
+            ReportRunner.runCoverageReport(extendedOptions);
+        }
     }
 
     private void addChildren(List<CucumberFeature> cucumberFeatures) throws InitializationError {

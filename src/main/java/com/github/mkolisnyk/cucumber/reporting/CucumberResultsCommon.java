@@ -17,6 +17,10 @@ import com.cedarsoftware.util.io.JsonReader;
 import com.github.mkolisnyk.cucumber.reporting.types.result.CucumberFeatureResult;
 
 public class CucumberResultsCommon {
+    public static final int CHART_WIDTH = 350;
+    public static final int CHART_HEIGHT = 240;
+    public static final int CHART_THICKNESS = 20;
+
     private String sourceFile;
 
     /**
@@ -112,6 +116,7 @@ public class CucumberResultsCommon {
             sum += value;
         }
         final double scale = 0.25;
+        final double centerScale = 3.;
         String drawing = "";
         int accumulated = 0;
         for (int i = 0; i < values.length; i++) {
@@ -119,8 +124,8 @@ public class CucumberResultsCommon {
             double endAngle = 2 * Math.PI * (double) (accumulated + values[i]) / (double) sum;
             double shiftAngle = (startAngle + endAngle) / 2.;
 
-            double centerX = (double) width / 3. + (double) shift * Math.sin(shiftAngle);
-            double centerY = (double) height / 3. - (double) shift * Math.cos(shiftAngle);
+            double centerX = (double) width / centerScale + (double) shift * Math.sin(shiftAngle);
+            double centerY = (double) height / centerScale - (double) shift * Math.cos(shiftAngle);
             double startX = centerX + (scale * (double) width) * Math.sin(startAngle)
                     + (double) shift * Math.sin(shiftAngle);
             double startY = centerY - (scale * (double) height) * Math.cos(startAngle)
@@ -148,8 +153,8 @@ public class CucumberResultsCommon {
             double endAngle = 2 * Math.PI * (double) (accumulated + values[i]) / (double) sum;
             double shiftAngle = (startAngle + endAngle) / 2.;
 
-            double centerX = (double) width / 3. + (double) shift * Math.sin(shiftAngle);
-            double centerY = (double) height / 3. - (double) shift * Math.cos(shiftAngle);
+            double centerX = (double) width / centerScale + (double) shift * Math.sin(shiftAngle);
+            double centerY = (double) height / centerScale - (double) shift * Math.cos(shiftAngle);
             double endX = 0.f;
             double endY = 0.f;
 
@@ -187,6 +192,7 @@ public class CucumberResultsCommon {
             sum += value;
         }
         final double scale = 0.25;
+        final double centerScale = 3.;
         String drawing = "";
         int accumulated = 0;
         for (int i = 0; i < values.length; i++) {
@@ -194,8 +200,8 @@ public class CucumberResultsCommon {
             double endAngle = 2 * Math.PI * (double) (accumulated + values[i]) / (double) sum;
             double shiftAngle = (startAngle + endAngle) / 2.;
 
-            double centerX = (double) width / 3. + (double) shift * Math.sin(shiftAngle);
-            double centerY = (double) height / 3. - (double) shift * Math.cos(shiftAngle);
+            double centerX = (double) width / centerScale + (double) shift * Math.sin(shiftAngle);
+            double centerY = (double) height / centerScale - (double) shift * Math.cos(shiftAngle);
             double startX = centerX + (scale * (double) width) * Math.sin(startAngle)
                     + (double) shift * Math.sin(shiftAngle);
             double startY = centerY - (scale * (double) height) * Math.cos(startAngle)

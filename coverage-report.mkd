@@ -17,7 +17,7 @@ Additional tags filtering allows mark test as covered if it belongs to some spec
 
 Generally the report looks like this:
 
-![Test Coverage Report](/cucumber-reports/images/test-coverage-report/coverage-sample.png)]
+![Test Coverage Report](/cucumber-reports/images/test-coverage-report/coverage-sample.png)
 
 This report contains 3 major sections:
 
@@ -29,7 +29,7 @@ This report contains 3 major sections:
 
 Overview charts section contains graphical summary of coverage statistics and has the following view:
 
-![Overview Section](/cucumber-reports/images/test-coverage-report/overview-section.png)]
+![Overview Section](/cucumber-reports/images/test-coverage-report/overview-section.png)
 
 Here we see pie charts for features and scenario coverage with summary information.
 
@@ -37,7 +37,7 @@ Here we see pie charts for features and scenario coverage with summary informati
 
 Feature status section is represented with the table with detailed information on feature level. Typical section looks like this:
 
-![Feature Status Section](/cucumber-reports/images/test-coverage-report/feature-status-section.png)]
+![Feature Status Section](/cucumber-reports/images/test-coverage-report/feature-status-section.png)
 
 Each feature row shows the feature coverage status, the number of scenarios covered/non-covered and the list of tags available within the feature.
 
@@ -45,7 +45,7 @@ Each feature row shows the feature coverage status, the number of scenarios cove
 
 Scenario status section is represented with the table with detailed information on scenario level. Typical section looks like this:
 
-![Scenario Status Section](/cucumber-reports/images/test-coverage-report/scenario-status-section.png)]
+![Scenario Status Section](/cucumber-reports/images/test-coverage-report/scenario-status-section.png)
 
 This time it shows the list of scenarios with their coverage status and the number of steps covered/non-covered.
 

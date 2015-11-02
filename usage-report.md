@@ -5,6 +5,9 @@ layout: default
 
 # Where is it used?
 
+Usage report is mainly targeted to show how frequently we use each specific keyword. This report is the result of standard Cucumber Usage report post-processing.
+Due to that fact **this report is not applicable for dry runs** as dry runs do not produce any usage information. 
+
 # Major sections
 
 ## Overview Graph
@@ -28,15 +31,30 @@ In terms of re-use ratio we just should make sure that this ratio is as big as p
 
 ## Overview Table
 
+Shows the same data as the above graph but this data with precise numbers is grouped and represented in tabular form.
+It is needed just because graph has some restrictions in displaying all numbers so in some cases we cannot get precise information about actual re-use count.
+So, table provides this information. Additionally, each overview table row references to the detailed information on each keyword. Generally the overview table
+looks like:
+
 ![Overview Table](/cucumber-reports/images/usage-report/overview-table.png)
 
 ## Cucumber Usage Detailed Information
 
+Detailed information part shows each keyword usage with all variations of all parameters the keyword is used with. E.g:
+
 ![Detailed Information Table](/cucumber-reports/images/usage-report/detailed-information-table.png)
+
+Here we can identify which parts of the keyword are really varying and how many different variations are used. Mainly, based on that information we can identify which regular expressions can be optimized or joint in order to make more effective use of keywords.
+
+Additionally, the report provides statistical summary of steps duration in the form of barchart and summary table as it's shown on the below picture:
 
 ![Detailed Information Charts](/cucumber-reports/images/usage-report/detailed-information-charts.png)
 
+This information gives detailed picture about duration distribution for each specific keyword.
+
 # Generating report from code
+
+The following API fragment shows how to generate usage report based on existing standard Cucumber usage JSON report (in current example it is the **./src/test/resources/cucumber-usage.json** file):
 
 {% highlight java linenos=table %}
 import com.github.mkolisnyk.cucumber.reporting.CucumberUsageReporting;
@@ -50,6 +68,14 @@ report.executeReport();
 {% endhighlight %}
 
 # Generating report via Cucumber runner
+
+When we use [Extended Cucumber Runner](/cucumber-reports/extended-cucumber-runner) we should make sure the following:
+
+* The standard **@CucumberOptions** annotation should contain plugin entry for usage report
+* The **@ExtendedCucumberOptions** annotation should have **jsonUsageReport** field defined pointing to the same path as in **@CucumberOptions**
+* The **usageReport** flag should be set to **true**
+
+Here is the code sample generating the usage report after test execution:
 
 {% highlight java linenos=table %}
 package com.github.mkolisnyk.cucumber.reporting;

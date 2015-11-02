@@ -23,7 +23,7 @@ In all other cases scenario is treated as passed. Features status uses similar l
 In other words if feature contains at least one failed scenario it is treated as failed. If no fails occurred but there are some undefined scenarios the
  feature is undefined. Otherwise it is treated as passed. Eventually, the overview chart looks like this: 
 
-![Overview Chart](/cucumber-reports/images/overview-report/overview-section.png)
+![Overview Chart](/cucumber-reports/images/overview-report/overview-chart.png)
 
 ## Features Status
 
@@ -50,7 +50,7 @@ Overview report can be generated using built-in Cucumber Reports API. This repor
 Here is the sample code generating coverage report:
 
 {% highlight java linenos=table %}
-import com.github.mkolisnyk.cucumber.reporting.CucumberCoverageOverview;
+import com.github.mkolisnyk.cucumber.reporting.CucumberResultsOverview;
 
 ...
 

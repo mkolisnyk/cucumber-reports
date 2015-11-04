@@ -227,6 +227,7 @@ public class CucumberDetailedResults extends CucumberResultsCommon {
         final float highestPercent = 100.f;
         float overallDuration = 0.f;
         OverviewStats stats = valuateOverviewStats(results);
+        overallDuration = stats.getOverallDuration();
         return String.format("<table>"
                 + "<tr><th></th><th>Passed</th><th>Failed</th><th>Undefined</th><th>%%Passed</th></tr>"
                 + "<tr><th>Features</th><td class=\"passed\">%d</td><td class=\"failed\">%d</td>"

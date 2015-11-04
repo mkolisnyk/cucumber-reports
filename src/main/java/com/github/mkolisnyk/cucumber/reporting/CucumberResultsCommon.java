@@ -115,7 +115,7 @@ public class CucumberResultsCommon {
         for (int value : values) {
             sum += value;
         }
-        final double scale = 0.25;
+        final double scale = 0.2;
         final double centerScale = 3.;
         String drawing = "";
         int accumulated = 0;
@@ -197,7 +197,7 @@ public class CucumberResultsCommon {
         for (int value : values) {
             sum += value;
         }
-        final double scale = 0.25;
+        final double scale = 0.2;
         final double centerScale = 3.;
         String drawing = "";
         int accumulated = 0;
@@ -268,11 +268,11 @@ public class CucumberResultsCommon {
         for (int i = 0; i < values.length; i++) {
             drawing = drawing.concat(String.format("<text x=\"%d\" y=\"%d\" font-weight = \"bold\" "
                     + "font-size = \"14\">%.0f%% (%d) %s</text>",
-                    (int) (0.65 * width) + 10, (int) (0.15 * width) + 30 * i,
+                    (int) (0.6 * width) + 10, (int) (0.15 * width) + 30 * i,
                     100. * (double) values[i] / (double) sum, values[i], labels[i]));
             drawing = drawing.concat(String.format(
                     "<circle cx=\"%d\" cy=\"%d\" r=\"5\" stroke=\"%s\" stroke-width=\"1\" fill=\"%s\" />",
-                    (int) (0.65 * width), (int) (0.15 * width) + 30 * i - 5,
+                    (int) (0.6 * width), (int) (0.15 * width) + 30 * i - 5,
                     shadowColors[i], colors[i]
                     ));
         }

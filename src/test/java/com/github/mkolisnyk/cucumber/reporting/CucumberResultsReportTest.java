@@ -14,6 +14,33 @@ public class CucumberResultsReportTest {
     }
 
     @Test
+    public void testGenerateOverview100Report() throws Exception {
+        CucumberResultsOverview results = new CucumberResultsOverview();
+        results.setOutputDirectory("target");
+        results.setOutputName("cucumber-100-results");
+        results.setSourceFile("./src/test/resources/overview-sources/all-passed.json");
+        results.executeFeaturesOverviewReport();
+    }
+
+    @Test
+    public void testGenerateOverview100FailedReport() throws Exception {
+        CucumberResultsOverview results = new CucumberResultsOverview();
+        results.setOutputDirectory("target");
+        results.setOutputName("cucumber-100-f-results");
+        results.setSourceFile("./src/test/resources/overview-sources/all-failed.json");
+        results.executeFeaturesOverviewReport();
+    }
+
+    @Test
+    public void testGenerateOverviewNoDataReport() throws Exception {
+        CucumberResultsOverview results = new CucumberResultsOverview();
+        results.setOutputDirectory("target");
+        results.setOutputName("cucumber-0-results");
+        results.setSourceFile("./src/test/resources/overview-sources/nothing.json");
+        results.executeFeaturesOverviewReport();
+    }
+
+    @Test
     public void testGenerateDetailedReport() throws Exception {
         CucumberDetailedResults results = new CucumberDetailedResults();
         results.setOutputDirectory("target/");

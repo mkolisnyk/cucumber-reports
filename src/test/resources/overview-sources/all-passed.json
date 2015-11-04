@@ -1,0 +1,78 @@
+[
+  {
+    "line": 2,
+    "elements": [
+      {
+        "line": 5,
+        "name": "Always passed test",
+        "description": "",
+        "id": "sample-re-run-feature;always-passed-test",
+        "type": "scenario",
+        "keyword": "Scenario",
+        "steps": [
+          {
+            "result": {
+              "duration": 562413018,
+              "status": "passed"
+            },
+            "line": 6,
+            "name": "I am in the system",
+            "match": {
+              "location": "TestSteps.i_am_in_the_system()"
+            },
+            "keyword": "Given "
+          },
+          {
+            "result": {
+              "duration": 300372,
+              "status": "passed"
+            },
+            "line": 7,
+            "name": "I do nothing",
+            "match": {
+              "location": "TestSteps.i_do_nothing()"
+            },
+            "keyword": "When "
+          },
+          {
+            "result": {
+              "duration": 303792,
+              "status": "passed"
+            },
+            "line": 8,
+            "name": "I should see nothing",
+            "match": {
+              "location": "TestSteps.i_should_see_nothing()"
+            },
+            "keyword": "Then "
+          }
+        ],
+        "tags": [
+          {
+            "line": 4,
+            "name": "@passed"
+          },
+          {
+            "line": 4,
+            "name": "@consistent"
+          }
+        ]
+      }
+    ],
+    "name": "Sample re-run feature",
+    "description": "",
+    "id": "sample-re-run-feature",
+    "keyword": "Feature",
+    "uri": "Test.feature",
+    "tags": [
+      {
+        "line": 1,
+        "name": "@sample"
+      },
+      {
+        "line": 1,
+        "name": "@feature"
+      }
+    ]
+  }
+]

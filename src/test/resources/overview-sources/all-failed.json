@@ -1,0 +1,246 @@
+[
+  {
+    "line": 2,
+    "elements": [
+      {
+        "line": 11,
+        "name": "Always failed test",
+        "description": "",
+        "id": "sample-re-run-feature;always-failed-test",
+        "type": "scenario",
+        "keyword": "Scenario",
+        "steps": [
+          {
+            "result": {
+              "duration": 301222286,
+              "status": "passed"
+            },
+            "line": 12,
+            "name": "I am in the system",
+            "match": {
+              "location": "TestSteps.i_am_in_the_system()"
+            },
+            "keyword": "Given "
+          },
+          {
+            "result": {
+              "duration": 71718388,
+              "error_message": "java.lang.AssertionError\r\n\tat org.junit.Assert.fail(Assert.java:86)\r\n\tat org.junit.Assert.assertTrue(Assert.java:41)\r\n\tat org.junit.Assert.assertTrue(Assert.java:52)\r\n\tat com.github.mkolisnyk.cucumber.steps.TestSteps.i_do_wrong(TestSteps.java:44)\r\n\tat ✽.When I do wrong(Test.feature:13)\r\n",
+              "status": "failed"
+            },
+            "line": 13,
+            "name": "I do wrong",
+            "match": {
+              "location": "TestSteps.i_do_wrong()"
+            },
+            "keyword": "When "
+          },
+          {
+            "result": {
+              "status": "skipped"
+            },
+            "line": 14,
+            "name": "I should see nothing",
+            "match": {
+              "location": "TestSteps.i_should_see_nothing()"
+            },
+            "keyword": "Then "
+          }
+        ],
+        "tags": [
+          {
+            "line": 10,
+            "name": "@failed"
+          },
+          {
+            "line": 10,
+            "name": "@consistent"
+          }
+        ]
+      },
+      {
+        "line": 11,
+        "name": "Always failed test",
+        "description": "",
+        "id": "sample-re-run-feature;always-failed-test",
+        "type": "scenario",
+        "keyword": "Scenario",
+        "steps": [
+          {
+            "result": {
+              "duration": 403004,
+              "status": "passed"
+            },
+            "line": 12,
+            "name": "I am in the system",
+            "match": {
+              "location": "TestSteps.i_am_in_the_system()"
+            },
+            "keyword": "Given "
+          },
+          {
+            "result": {
+              "duration": 12111346,
+              "error_message": "java.lang.AssertionError\r\n\tat org.junit.Assert.fail(Assert.java:86)\r\n\tat org.junit.Assert.assertTrue(Assert.java:41)\r\n\tat org.junit.Assert.assertTrue(Assert.java:52)\r\n\tat com.github.mkolisnyk.cucumber.steps.TestSteps.i_do_wrong(TestSteps.java:44)\r\n\tat ✽.When I do wrong(Test.feature:13)\r\n",
+              "status": "failed"
+            },
+            "line": 13,
+            "name": "I do wrong",
+            "match": {
+              "location": "TestSteps.i_do_wrong()"
+            },
+            "keyword": "When "
+          },
+          {
+            "result": {
+              "status": "skipped"
+            },
+            "line": 14,
+            "name": "I should see nothing",
+            "match": {
+              "location": "TestSteps.i_should_see_nothing()"
+            },
+            "keyword": "Then "
+          }
+        ],
+        "tags": [
+          {
+            "line": 10,
+            "name": "@failed"
+          },
+          {
+            "line": 10,
+            "name": "@consistent"
+          }
+        ]
+      },
+      {
+        "line": 11,
+        "name": "Always failed test",
+        "description": "",
+        "id": "sample-re-run-feature;always-failed-test",
+        "type": "scenario",
+        "keyword": "Scenario",
+        "steps": [
+          {
+            "result": {
+              "duration": 418056,
+              "status": "passed"
+            },
+            "line": 12,
+            "name": "I am in the system",
+            "match": {
+              "location": "TestSteps.i_am_in_the_system()"
+            },
+            "keyword": "Given "
+          },
+          {
+            "result": {
+              "duration": 2306500,
+              "error_message": "java.lang.AssertionError\r\n\tat org.junit.Assert.fail(Assert.java:86)\r\n\tat org.junit.Assert.assertTrue(Assert.java:41)\r\n\tat org.junit.Assert.assertTrue(Assert.java:52)\r\n\tat com.github.mkolisnyk.cucumber.steps.TestSteps.i_do_wrong(TestSteps.java:44)\r\n\tat ✽.When I do wrong(Test.feature:13)\r\n",
+              "status": "failed"
+            },
+            "line": 13,
+            "name": "I do wrong",
+            "match": {
+              "location": "TestSteps.i_do_wrong()"
+            },
+            "keyword": "When "
+          },
+          {
+            "result": {
+              "status": "skipped"
+            },
+            "line": 14,
+            "name": "I should see nothing",
+            "match": {
+              "location": "TestSteps.i_should_see_nothing()"
+            },
+            "keyword": "Then "
+          }
+        ],
+        "tags": [
+          {
+            "line": 10,
+            "name": "@failed"
+          },
+          {
+            "line": 10,
+            "name": "@consistent"
+          }
+        ]
+      },
+      {
+        "line": 11,
+        "name": "Always failed test",
+        "description": "",
+        "id": "sample-re-run-feature;always-failed-test",
+        "type": "scenario",
+        "keyword": "Scenario",
+        "steps": [
+          {
+            "result": {
+              "duration": 2488502,
+              "status": "passed"
+            },
+            "line": 12,
+            "name": "I am in the system",
+            "match": {
+              "location": "TestSteps.i_am_in_the_system()"
+            },
+            "keyword": "Given "
+          },
+          {
+            "result": {
+              "duration": 6528812,
+              "error_message": "java.lang.AssertionError\r\n\tat org.junit.Assert.fail(Assert.java:86)\r\n\tat org.junit.Assert.assertTrue(Assert.java:41)\r\n\tat org.junit.Assert.assertTrue(Assert.java:52)\r\n\tat com.github.mkolisnyk.cucumber.steps.TestSteps.i_do_wrong(TestSteps.java:44)\r\n\tat ✽.When I do wrong(Test.feature:13)\r\n",
+              "status": "failed"
+            },
+            "line": 13,
+            "name": "I do wrong",
+            "match": {
+              "location": "TestSteps.i_do_wrong()"
+            },
+            "keyword": "When "
+          },
+          {
+            "result": {
+              "status": "skipped"
+            },
+            "line": 14,
+            "name": "I should see nothing",
+            "match": {
+              "location": "TestSteps.i_should_see_nothing()"
+            },
+            "keyword": "Then "
+          }
+        ],
+        "tags": [
+          {
+            "line": 10,
+            "name": "@failed"
+          },
+          {
+            "line": 10,
+            "name": "@consistent"
+          }
+        ]
+      }
+    ],
+    "name": "Sample re-run feature",
+    "description": "",
+    "id": "sample-re-run-feature",
+    "keyword": "Feature",
+    "uri": "Test.feature",
+    "tags": [
+      {
+        "line": 1,
+        "name": "@sample"
+      },
+      {
+        "line": 1,
+        "name": "@feature"
+      }
+    ]
+  }
+]

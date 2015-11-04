@@ -1,6 +1,6 @@
 Cucumber Reporting library is the set of Cucumber extensions to produce additional HTML reports and extend existing Cucumber runner functionality (currently based on JUnit).
 
-**The Latest Version:** <!--[![Cucumber Report](https://maven-badges.herokuapp.com/maven-central/com.github.mkolisnyk/cucumber-reports/badge.svg?style=flat)](http://mvnrepository.com/artifact/com.github.mkolisnyk/cucumber-reports)-->
+**The Latest Version:** [![Cucumber Report](https://maven-badges.herokuapp.com/maven-central/com.github.mkolisnyk/cucumber-reports/badge.svg?style=flat)](http://mvnrepository.com/artifact/com.github.mkolisnyk/cucumber-reports)
 
 # How to include
 
@@ -12,14 +12,14 @@ So, in order to add this library we should add either Maven dependency like:
 <dependency>
     <groupId>com.github.mkolisnyk</groupId>
     <artifactId>cucumber-reports</artifactId>
-    <version>0.0.11</version>
+    <version>0.0.12</version>
 </dependency>
 ```
 
 or Gradle dependency:
 
 ```groovy
-compile 'com.github.mkolisnyk:cucumber-reports:0.0.11'
+compile 'com.github.mkolisnyk:cucumber-reports:0.0.12'
 ```
 
 # Features

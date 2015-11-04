@@ -120,6 +120,12 @@ public class CucumberResultsCommon {
         String drawing = "";
         int accumulated = 0;
         for (int i = 0; i < values.length; i++) {
+            if (values[i] == 0) {
+                continue;
+            }
+            if (values[i] == sum) {
+                shift = 0;
+            }
             double startAngle = 2 * Math.PI * (double) accumulated / (double) sum;
             double endAngle = 2 * Math.PI * (double) (accumulated + values[i]) / (double) sum;
             double shiftAngle = (startAngle + endAngle) / 2.;
@@ -196,43 +202,49 @@ public class CucumberResultsCommon {
         String drawing = "";
         int accumulated = 0;
         for (int i = 0; i < values.length; i++) {
+            if (values[i] == 0) {
+                continue;
+            }
+            if (values[i] == sum) {
+                shift = 0;
+            }
             double startAngle = 2 * Math.PI * (double) accumulated / (double) sum;
             double endAngle = 2 * Math.PI * (double) (accumulated + values[i]) / (double) sum;
             double shiftAngle = (startAngle + endAngle) / 2.;
 
             double centerX = (double) width / centerScale + (double) shift * Math.sin(shiftAngle);
             double centerY = (double) height / centerScale - (double) shift * Math.cos(shiftAngle);
-            double startX = centerX + (scale * (double) width) * Math.sin(startAngle)
-                    + (double) shift * Math.sin(shiftAngle);
-            double startY = centerY - (scale * (double) height) * Math.cos(startAngle)
-                    - (double) shift * Math.cos(shiftAngle);
             double radiusX = (scale *  (double) width);
             double radiusY = (scale *  (double) height);
-            double endX = 0.f;
-            double endY = 0.f;
 
-            if (i < values.length - 1) {
-            endX = centerX + (scale * (double) width) * Math.sin(endAngle) + (double) shift * Math.sin(shiftAngle);
-            endY = centerY - (scale * (double) height) * Math.cos(endAngle) - (double) shift * Math.cos(shiftAngle);
-            } else {
-                endX = centerX + (double) shift * Math.sin(shiftAngle);
-                endY = centerY - (scale * (double) height) - (double) shift * Math.cos(shiftAngle);
+            for (int j = 0; j < 5; j++) {
+                double angleDiff = endAngle - startAngle;
+                double startX = centerX + (scale * (double) width) * Math.sin(startAngle + (double) j * angleDiff / 5)
+                        + (double) shift * Math.sin(shiftAngle);
+                double startY = centerY - (scale * (double) height) * Math.cos(startAngle + (double) j * angleDiff / 5)
+                        - (double) shift * Math.cos(shiftAngle);
+                double endX = centerX + (scale * (double) width) * Math.sin(startAngle + (double) (j + 1) * angleDiff / 5)
+                        + (double) shift * Math.sin(shiftAngle);
+                double endY = centerY - (scale * (double) height) * Math.cos(startAngle + (double) (j + 1) * angleDiff / 5)
+                        - (double) shift * Math.cos(shiftAngle);
+    
+                /*int largeArcFlag = 0;
+                if (values[i] * 2 > sum) {
+                    largeArcFlag = 1;
+                }*/
+                drawing = drawing.concat(String.format("<path fill=\"%s\" stroke-width=\"1\" stroke=\"%s\""
+                        + " d=\"M%.8f,%.8f L%.8f,%.8f A%.8f,%.8f,0,%d,1,%.8f,%.8f M%.8f,%.8f L%.8f,%.8f" + "\"></path>",
+                        colors[i], colors[i],
+                        centerX, centerY + pieVOffset,
+                        startX, startY + pieVOffset,
+                        radiusX, radiusY,
+                        //largeArcFlag,
+                        0,
+                        endX, endY + pieVOffset,
+                        endX, endY + pieVOffset,
+                        centerX, centerY + pieVOffset
+                        ));
             }
-            int largeArcFlag = 0;
-            if (values[i] * 2 > sum) {
-                largeArcFlag = 1;
-            }
-            drawing = drawing.concat(String.format("<path fill=\"%s\" stroke-width=\"1\" stroke=\"%s\""
-                    + " d=\"M%.8f,%.8f L%.8f,%.8f A%.8f,%.8f,0,%d,1,%.8f,%.8f M%.8f,%.8f L%.8f,%.8f" + "\"></path>",
-                    colors[i], colors[i],
-                    centerX, centerY + pieVOffset,
-                    startX, startY + pieVOffset,
-                    radiusX, radiusY,
-                    largeArcFlag,
-                    endX, endY + pieVOffset,
-                    endX, endY + pieVOffset,
-                    centerX, centerY + pieVOffset
-                    ));
             accumulated += values[i];
         }
         return drawing;

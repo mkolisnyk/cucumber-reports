@@ -16,6 +16,8 @@ import cucumber.api.CucumberOptions;
         detailedAggregatedReport = true,
         overviewReport = true,
         //coverageReport = true,
+        jsonUsageReport = "target/cucumber-usage.json",
+        usageReport = true,
         toPDF = true,
         excludeCoverageTags = {"@flaky" },
         includeCoverageTags = {"@passed" },
@@ -27,5 +29,4 @@ import cucumber.api.CucumberOptions;
         glue = { "com/github/mkolisnyk/cucumber/steps" },
         tags = {"@consistent"})
 public class SampleCucumberTest {
-
 }

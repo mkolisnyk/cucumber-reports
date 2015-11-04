@@ -49,49 +49,6 @@ public class CucumberResultsOverview extends CucumberResultsCommon {
         return result;
     }
 
-    protected String getFeatureData(CucumberFeatureResult[] results) {
-        int passed = 0;
-        int failed = 0;
-        int undefined = 0;
-
-        for (CucumberFeatureResult result : results) {
-            if (result.getStatus().trim().equalsIgnoreCase("passed")) {
-                passed++;
-            }
-            if (result.getStatus().trim().equalsIgnoreCase("failed")) {
-                failed++;
-            }
-            if (result.getStatus().trim().equalsIgnoreCase("undefined")
-                    || result.getStatus().trim().equalsIgnoreCase("skipped")) {
-                undefined++;
-            }
-        }
-        return String.format("['Passed', %d], ['Failed', %d], ['Undefined', %d]", passed, failed, undefined);
-    }
-
-    protected String getScenarioData(CucumberFeatureResult[] results) {
-        int passed = 0;
-        int failed = 0;
-        int undefined = 0;
-
-        for (CucumberFeatureResult result : results) {
-            for (CucumberScenarioResult element : result.getElements()) {
-                if (element.getStatus().trim().equalsIgnoreCase("passed")) {
-                    passed++;
-                }
-                if (element.getStatus().trim().equalsIgnoreCase("failed")) {
-                    failed++;
-                }
-                if (element.getStatus().trim().equalsIgnoreCase("undefined")
-                        || element.getStatus().trim().equalsIgnoreCase("skipped")) {
-                    undefined++;
-                }
-            }
-        }
-
-        return String.format("['Passed', %d], ['Failed', %d], ['Undefined', %d]", passed, failed, undefined);
-    }
-
     private int[][] getStatuses(CucumberFeatureResult[] results) {
         int[][] statuses = {{0, 0, 0}, {0, 0, 0}};
         for (CucumberFeatureResult result : results) {

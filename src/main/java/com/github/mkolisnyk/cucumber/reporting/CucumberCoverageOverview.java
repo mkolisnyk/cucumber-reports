@@ -38,44 +38,6 @@ public class CucumberCoverageOverview extends CucumberResultsOverview {
         }
     }
 
-    @Override
-    protected String getFeatureData(CucumberFeatureResult[] results) {
-        int passed = 0;
-        int undefined = 0;
-
-        for (CucumberFeatureResult result : results) {
-            if (result.getStatus().equals("undefined") || result.getUndefined() > 0) {
-                undefined++;
-            } else {
-                passed++;
-            }
-        }
-        return String.format("['Covered', %d], ['Not Covered', %d]", passed, undefined);
-    }
-
-    @Override
-    protected String getScenarioData(CucumberFeatureResult[] results) {
-        int passed = 0;
-        int undefined = 0;
-
-        for (CucumberFeatureResult result : results) {
-            result.setIncludeCoverageTags(includeCoverageTags);
-            result.setExcludeCoverageTags(excludeCoverageTags);
-            for (CucumberScenarioResult element : result.getElements()) {
-               element.setIncludeCoverageTags(includeCoverageTags);
-               element.setExcludeCoverageTags(excludeCoverageTags);
-               //if (element.getStatus().trim().equalsIgnoreCase("undefined")) {
-               if (element.getStatus().equals("undefined") || element.getUndefined() > 0) {
-                    undefined++;
-                } else {
-                    passed++;
-                }
-            }
-        }
-
-        return String.format("['Covered', %d], ['Not Covered', %d]", passed, undefined);
-    }
-
     private String getFeatureStatus(CucumberFeatureResult result) {
         if (result.getStatus().equals("undefined") || result.getUndefined() > 0) {
             return "undefined";
@@ -93,12 +55,16 @@ public class CucumberCoverageOverview extends CucumberResultsOverview {
     private int[][] getStatuses(CucumberFeatureResult[] results) {
         int[][] statuses = {{0, 0}, {0, 0}};
         for (CucumberFeatureResult result : results) {
+            result.setIncludeCoverageTags(includeCoverageTags);
+            result.setExcludeCoverageTags(excludeCoverageTags);
             if (result.getStatus().equals("undefined") || result.getUndefined() > 0) {
-                statuses[0][0]++;
-            } else {
                 statuses[0][1]++;
+            } else {
+                statuses[0][0]++;
             }
             for (CucumberScenarioResult element : result.getElements()) {
+                element.setIncludeCoverageTags(includeCoverageTags);
+                element.setExcludeCoverageTags(excludeCoverageTags);
                 if (element.getStatus().equals("undefined") || element.getUndefined() > 0) {
                     statuses[1][1]++;
                 } else {

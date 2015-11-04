@@ -17,8 +17,8 @@ import com.cedarsoftware.util.io.JsonReader;
 import com.github.mkolisnyk.cucumber.reporting.types.result.CucumberFeatureResult;
 
 public class CucumberResultsCommon {
-    public static final int CHART_WIDTH = 350;
-    public static final int CHART_HEIGHT = 240;
+    public static final int CHART_WIDTH = 450;
+    public static final int CHART_HEIGHT = 300;
     public static final int CHART_THICKNESS = 20;
 
     private String sourceFile;

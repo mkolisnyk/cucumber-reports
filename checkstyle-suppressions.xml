@@ -7,13 +7,13 @@
 <suppressions>
     <suppress checks="MagicNumber"
               files="CucumberResultsCommon.java"
-              lines="1-272"/>
+              lines="1-291"/>
     <suppress checks="MethodName"
               files="ExtendedTestNGRunner.java"
               lines="80"/>
     <suppress checks="ParameterNumber"
               files="CucumberResultsCommon.java"
-              lines="240"/>
+              lines="240,254,260"/>
     <suppress checks="RegexpSingleline"
               files="jbehave.properties"
               lines="13-21"/>

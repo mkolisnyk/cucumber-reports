@@ -219,17 +219,23 @@ public abstract class CucumberResultsCommon {
             double radiusX = (scale *  (double) width);
             double radiusY = (scale *  (double) height);
 
-            for (int j = 0; j < 5; j++) {
+            final int pieParts = 5;
+
+            for (int j = 0; j < pieParts; j++) {
                 double angleDiff = endAngle - startAngle;
-                double startX = centerX + (scale * (double) width) * Math.sin(startAngle + (double) j * angleDiff / 5)
+                double startX = centerX + (scale * (double) width)
+                        * Math.sin(startAngle + (double) j * angleDiff / pieParts)
                         + (double) shift * Math.sin(shiftAngle);
-                double startY = centerY - (scale * (double) height) * Math.cos(startAngle + (double) j * angleDiff / 5)
+                double startY = centerY - (scale * (double) height)
+                        * Math.cos(startAngle + (double) j * angleDiff / pieParts)
                         - (double) shift * Math.cos(shiftAngle);
-                double endX = centerX + (scale * (double) width) * Math.sin(startAngle + (double) (j + 1) * angleDiff / 5)
+                double endX = centerX + (scale * (double) width)
+                        * Math.sin(startAngle + (double) (j + 1) * angleDiff / pieParts)
                         + (double) shift * Math.sin(shiftAngle);
-                double endY = centerY - (scale * (double) height) * Math.cos(startAngle + (double) (j + 1) * angleDiff / 5)
+                double endY = centerY - (scale * (double) height)
+                        * Math.cos(startAngle + (double) (j + 1) * angleDiff / pieParts)
                         - (double) shift * Math.cos(shiftAngle);
-    
+
                 /*int largeArcFlag = 0;
                 if (values[i] * 2 > sum) {
                     largeArcFlag = 1;

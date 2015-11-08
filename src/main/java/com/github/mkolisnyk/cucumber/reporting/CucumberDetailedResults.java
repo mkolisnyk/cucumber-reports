@@ -470,4 +470,10 @@ public class CucumberDetailedResults extends CucumberResultsCommon {
             os.close();
         }
     }
+
+    @Override
+    public int[][] getStatuses(CucumberFeatureResult[] results) {
+        // TODO Auto-generated method stub
+        return null;
+    }
 }

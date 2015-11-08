@@ -10,13 +10,15 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Map.Entry;
 
+import javax.xml.bind.JAXB;
+
 import org.apache.commons.io.IOUtils;
 
 import com.cedarsoftware.util.io.JsonObject;
 import com.cedarsoftware.util.io.JsonReader;
 import com.github.mkolisnyk.cucumber.reporting.types.result.CucumberFeatureResult;
 
-public class CucumberResultsCommon {
+public abstract class CucumberResultsCommon {
     public static final int CHART_WIDTH = 450;
     public static final int CHART_HEIGHT = 300;
     public static final int CHART_THICKNESS = 20;
@@ -281,4 +283,11 @@ public class CucumberResultsCommon {
         result = result.replaceAll("__WIDTH__", String.valueOf(width));
         return result;
     }
+
+    public void dumpOverviewStats(File outFile, CucumberFeatureResult[] results) {
+        int[][] stats = getStatuses(results);
+        JAXB.marshal(stats, outFile);
+    }
+
+    public abstract int[][] getStatuses(CucumberFeatureResult[] results);
 }

@@ -52,7 +52,7 @@ public class CucumberCoverageOverview extends CucumberResultsOverview {
             return "passed";
         }
     }
-    private int[][] getStatuses(CucumberFeatureResult[] results) {
+    public int[][] getStatuses(CucumberFeatureResult[] results) {
         int[][] statuses = {{0, 0}, {0, 0}};
         for (CucumberFeatureResult result : results) {
             result.setIncludeCoverageTags(includeCoverageTags);
@@ -164,7 +164,6 @@ public class CucumberCoverageOverview extends CucumberResultsOverview {
                 2));
         return content;
     }
-
     public void executeCoverageReport() throws Exception {
         executeOverviewReport("coverage", false);
     }

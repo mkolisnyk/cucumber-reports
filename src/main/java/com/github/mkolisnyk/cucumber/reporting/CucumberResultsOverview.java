@@ -49,7 +49,8 @@ public class CucumberResultsOverview extends CucumberResultsCommon {
         return result;
     }
 
-    private int[][] getStatuses(CucumberFeatureResult[] results) {
+    @Override
+    public int[][] getStatuses(CucumberFeatureResult[] results) {
         int[][] statuses = {{0, 0, 0}, {0, 0, 0}};
         for (CucumberFeatureResult result : results) {
             if (result.getStatus().trim().equalsIgnoreCase("passed")) {
@@ -153,10 +154,18 @@ public class CucumberResultsOverview extends CucumberResultsCommon {
                 + "-" + reportSuffix + ".html");
         FileUtils.writeStringToFile(outFile, generateFeatureOverview(features));
         if (toPdf) {
-            String url = outFile.toURI().toURL().toString();
             String outputFile = this.getOutputDirectory() + File.separator + this.getOutputName()
                     + "-" + reportSuffix + ".pdf";
             PDFRenderer.renderToPDF(outFile, outputFile);
+        }
+        try {
+            outFile = new File(
+                    this.getOutputDirectory() + File.separator + this.getOutputName()
+                    + "-" + reportSuffix + "-dump.xml");
+            this.dumpOverviewStats(outFile, features);
+        } catch (Throwable e) {
+            e.printStackTrace();
+            return;
         }
     }
     public void executeFeaturesOverviewReport() throws Exception {

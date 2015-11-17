@@ -1,0 +1,55 @@
+[
+ {
+ "line": 1,
+ "elements": [
+ {
+ "line": 10,
+ "name": "change valid price",
+ "description": "",
+ "id": "change-price;change-valid-price;;2",
+ "type": "scenario",
+ "keyword": "Scenario Outline",
+ "steps": [
+ {
+ "result": {
+ "duration": 2599010981,
+ "status": "passed"
+ },
+ "line": 5,
+ "name": "login as admin",
+ "match": {
+ "location": "ChangePriceStepdefs.login_as_admin()"
+ },
+ "keyword": "Given "
+ },
+ {
+ "result": {
+ "duration": 452540223,
+ "status": "passed"
+ },
+ "line": 6,
+ "name": "change oderItem price:5e7f901622a449f49c8d3035b174e8f2",
+ "match": {
+ "arguments": [
+ {
+ "val": "5e7f901622a449f49c8d3035b174e8f2",
+ "offset": 22
+ }
+ ],
+ "location": "ChangePriceStepdefs.change_oderItem_price(String)"
+ },
+ "matchedColumns": [
+ 0
+ ],
+ "keyword": "Then "
+ }
+ ]
+ }
+ ],
+ "name": "change price",
+ "description": "",
+ "id": "change-price",
+ "keyword": "Feature",
+ "uri": "cukes/resources/ChangePrice.feature"
+ }
+ ]

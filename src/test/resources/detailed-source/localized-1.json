@@ -1,0 +1,40 @@
+[
+  {
+    "comments": [
+      {
+        "line": 1,
+        "value": "# language: zh-CN"
+      }
+    ],
+    "line": 2,
+    "elements": [
+      {
+        "line": 6,
+        "name": "不支付的订单",
+        "description": "",
+        "id": "购买流程;不支付的订单",
+        "type": "scenario",
+        "keyword": "场景",
+        "steps": [
+          {
+            "result": {
+              "duration": 5422182740,
+              "status": "passed"
+            },
+            "line": 8,
+            "name": "普通用户登录商城",
+            "match": {
+              "location": "OrderStepdefs.LoginAsUser()"
+            },
+            "keyword": "假如"
+          }
+        ]
+      }
+    ],
+    "name": "购买流程",
+    "description": "新用户登录购买商品",
+    "id": "购买流程",
+    "keyword": "功能",
+    "uri": "cukes/resources/Order.feature"
+  }
+]

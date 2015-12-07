@@ -267,14 +267,14 @@ public class CucumberDetailedResults extends CucumberResultsCommon {
             reportContent += String.format(
                     "<li> <span class=\"%s\"><a href=\"#feature-%s\">%s</a></span><ol>",
                     result.getStatus(),
-                    result.getId(),
+                    escapeHtml(result.getId()),
                     escapeHtml(result.getName()));
             for (CucumberScenarioResult scenario : result.getElements()) {
                 if (scenario.getKeyword().contains("Scenario")) {
                     reportContent += String.format(
                             "<li> <span class=\"%s\"><a href=\"#sc-%s\">%s</a></span></li>",
                             scenario.getStatus(),
-                            scenario.getId(),
+                            escapeHtml(scenario.getId()),
                             escapeHtml(scenario.getName()));
                 }
             }
@@ -380,7 +380,7 @@ public class CucumberDetailedResults extends CucumberResultsCommon {
                     + "<tr class=\"%s\">"
                     + "<td colspan=\"4\" style=\"padding-left:20px\"> <table width=\"100%%\">",
                     result.getStatus(),
-                    result.getId(),
+                    escapeHtml(result.getId()),
                     escapeHtml(result.getName()),
                     result.getStatus(),
                     escapeHtml(result.getDescription()).replaceAll(System.lineSeparator(),
@@ -403,7 +403,7 @@ public class CucumberDetailedResults extends CucumberResultsCommon {
                         + "<td colspan=\"4\" style=\"padding-left:20px\"> <table width=\"100%%\">",
                         scenario.getStatus(),
                         scenario.getKeyword(),
-                        scenario.getId(),
+                        escapeHtml(scenario.getId()),
                         escapeHtml(scenario.getName()),
                         scenario.getStatus(),
                         escapeHtml(scenario.getDescription()).replaceAll(System.lineSeparator(),

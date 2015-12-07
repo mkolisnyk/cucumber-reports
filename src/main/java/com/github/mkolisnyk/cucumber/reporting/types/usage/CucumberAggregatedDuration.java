@@ -31,7 +31,15 @@ public class CucumberAggregatedDuration {
     }
 
     public CucumberAggregatedDuration(JsonObject<String, Object> json) {
-        this.average = (Double) json.get("average");
-        this.median = (Double) json.get("median");
+        try {
+            this.average = (Double) json.get("average");
+        } catch (ClassCastException e) {
+            this.average = ((Long) json.get("average")).doubleValue();
+        }
+        try {
+            this.median = (Double) json.get("median");
+        } catch (ClassCastException e) {
+            this.median = ((Long) json.get("median")).doubleValue();
+        }
     }
 }

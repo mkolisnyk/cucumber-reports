@@ -18,4 +18,11 @@ public class CucumberUsageReportingTest {
         report.setJsonUsageFile("./src/test/resources/cucumber-usage-large.json");
         report.executeReport();
     }
+    @Test
+    public void testGenerateReportWithBackRef() throws Exception {
+        CucumberUsageReporting report = new CucumberUsageReporting();
+        report.setOutputDirectory("target/large");
+        report.setJsonUsageFile("./src/test/resources/usage-source/sample5.json");
+        report.executeReport();
+    }
 }

@@ -102,4 +102,12 @@ public class CucumberResultsReportTest {
         results.setSourceFile("./src/test/resources/detailed-source/localized-1.json");
         results.executeDetailedResultsReport(true, false);
     }
+    @Test
+    public void testLocalizedDetailedReportIssue44() throws Exception {
+        CucumberDetailedResults results = new CucumberDetailedResults();
+        results.setOutputDirectory("target/");
+        results.setOutputName("issue44-results");
+        results.setSourceFile("./src/test/resources/detailed-source/cucumber-2.json");
+        results.executeDetailedResultsReport(true, false);
+    }
 }

@@ -3,8 +3,6 @@ package com.github.mkolisnyk.cucumber.runner;
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Method;
 
-import org.testng.IHookCallBack;
-import org.testng.ITestResult;
 import org.testng.annotations.Test;
 
 import cucumber.api.testng.AbstractTestNGCucumberTests;
@@ -14,15 +12,6 @@ import cucumber.api.testng.TestNGCucumberRunner;
 public class ExtendedTestNGRunner extends AbstractTestNGCucumberTests {
     private Class<?> clazz;
     private ExtendedRuntimeOptions extendedOptions;
-
-    /* (non-Javadoc)
-     * @see cucumber.api.testng.AbstractTestNGCucumberTests#run(org.testng.IHookCallBack, org.testng.ITestResult)
-     */
-    @Override
-    public void run(IHookCallBack iHookCallBack,
-            ITestResult iTestResult) {
-        super.run(iHookCallBack, iTestResult);
-    }
 
     private void runPredefinedMethods(Class<?> annotation) throws Exception {
         if (!annotation.isAnnotation()) {
@@ -73,10 +62,5 @@ public class ExtendedTestNGRunner extends AbstractTestNGCucumberTests {
         if (extendedOptions.isCoverageReport()) {
             ReportRunner.runCoverageReport(extendedOptions);
         }
-    }
-
-    @Override
-    @Test(enabled = false)
-    public void run_cukes() {
     }
 }

@@ -1,7 +1,5 @@
 package com.github.mkolisnyk.cucumber.runner;
 
-import java.util.Set;
-
 import gherkin.formatter.Formatter;
 import gherkin.formatter.Reporter;
 import gherkin.formatter.model.BasicStatement;
@@ -9,8 +7,10 @@ import gherkin.formatter.model.Row;
 import gherkin.formatter.model.Scenario;
 import gherkin.formatter.model.Step;
 import gherkin.formatter.model.Tag;
+
+import java.util.Set;
+
 import cucumber.runtime.Runtime;
-import cucumber.runtime.model.CucumberBackground;
 import cucumber.runtime.model.CucumberFeature;
 import cucumber.runtime.model.CucumberScenario;
 
@@ -47,7 +47,7 @@ public class ExtendedCucumberScenario extends CucumberScenario {
         try {
             formatter.startOfScenarioLifeCycle((Scenario) getGherkinModel());
         } catch (Throwable ignore) {
-            // IntelliJ has its own formatter which doesn't yet implement this.
+            System.out.println("Ignore");
         }
         runtime.runBeforeHooks(reporter, tags);
 
@@ -59,15 +59,15 @@ public class ExtendedCucumberScenario extends CucumberScenario {
         try {
             formatter.endOfScenarioLifeCycle((Scenario) getGherkinModel());
         } catch (Throwable ignore) {
-            // IntelliJ has its own formatter which doesn't yet implement this.
+            System.out.println("Ignore");
         }
-        runtime.disposeBackendWorlds();
+        //runtime.disposeBackendWorlds(createScenarioDesignation());
     }
-/*
+
     private String createScenarioDesignation() {
-        return cucumberFeature.getPath() + ":" + Integer.toString(scenario.getLine()) + " # " +
-                scenario.getKeyword() + ": " + scenario.getName();
-    }*/
+        return cucumberFeature.getPath() + ":" + Integer.toString(scenario.getLine()) + " # "
+                + scenario.getKeyword() + ": " + scenario.getName();
+    }
 
     private void runBackground(Formatter formatter, Reporter reporter, Runtime runtime) {
         if (cucumberBackground != null) {

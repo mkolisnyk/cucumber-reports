@@ -6,6 +6,7 @@ import com.cedarsoftware.util.io.JsonObject;
 
 public class CucumberScenarioResult {
 
+    private CucumberFeatureResult feature;
     private String id;
     private CucumberTagResults[] tags;
     private String description;
@@ -331,5 +332,13 @@ public class CucumberScenarioResult {
 
     public final void setExcludeCoverageTags(String[] excludeCoverageTagsValue) {
         this.excludeCoverageTags = excludeCoverageTagsValue;
+    }
+
+    public CucumberFeatureResult getFeature() {
+        return feature;
+    }
+
+    public void setFeature(CucumberFeatureResult featureValue) {
+        this.feature = featureValue;
     }
 }

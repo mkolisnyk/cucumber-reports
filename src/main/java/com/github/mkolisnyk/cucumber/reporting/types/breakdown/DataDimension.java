@@ -6,6 +6,20 @@ public class DataDimension {
     private DimensionValue dimensionValue;
     private String expression;
     private DataDimension[] subElements;
+
+    public static DataDimension allFeatures() {
+        return new DataDimension("Features", DimensionValue.FEATURE);
+    }
+    public static DataDimension allScenarios() {
+        return new DataDimension("Scenarios", DimensionValue.SCENARIO);
+    }
+    public static DataDimension allSteps() {
+        return new DataDimension("Steps", DimensionValue.STEP);
+    }
+    public static DataDimension allTags() {
+        return new DataDimension("Tags", DimensionValue.TAG);
+    }
+
     public DataDimension(DimensionValue dimensionValueParam) {
         this(dimensionValueParam, "(.*)");
     }
@@ -15,6 +29,13 @@ public class DataDimension {
     public DataDimension(DimensionValue dimensionValueParam, String expressionParam,
             DataDimension[] subElementsParam) {
         this(expressionParam, dimensionValueParam, expressionParam, subElementsParam);
+    }
+    public DataDimension(String aliasParam, DimensionValue dimensionValueParam) {
+        this(aliasParam, dimensionValueParam, "(.*)");
+    }
+    public DataDimension(String aliasParam, DimensionValue dimensionValueParam,
+            String expressionParam) {
+        this(aliasParam, dimensionValueParam, expressionParam, new DataDimension[]{});
     }
     public DataDimension(String aliasParam, DimensionValue dimensionValueParam,
             String expressionParam, DataDimension[] subElementsParam) {

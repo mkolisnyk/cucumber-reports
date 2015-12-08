@@ -43,6 +43,7 @@ public class CucumberFeatureResult {
         for (int i = 0; i < objs.length; i++) {
             this.elements[i] = new CucumberScenarioResult(
                     (JsonObject<String, Object>) objs[i]);
+            this.elements[i].setFeature(this);
         }
         this.uri = (String) json.get("uri");
     }

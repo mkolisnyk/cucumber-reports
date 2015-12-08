@@ -341,4 +341,7 @@ public class CucumberScenarioResult {
     public void setFeature(CucumberFeatureResult featureValue) {
         this.feature = featureValue;
     }
+    public boolean isSameAs(CucumberScenarioResult another) {
+        return another != null && this.getId().equals(another.getId());
+    }
 }

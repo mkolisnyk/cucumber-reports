@@ -96,4 +96,12 @@ public class DataDimensionDepthTest {
     public void testDimensionDepth() {
         Assert.assertEquals(dimension.depth(), expectedDepth);
     }
+    @Test
+    public void testExpandShouldReturnArraysWithLengthLessOrEqualToDepth() {
+        DataDimension[][] dimensions = dimension.expand();
+        for (DataDimension[] line : dimensions) {
+            Assert.assertTrue(line.length > 0);
+            Assert.assertTrue(line.length <= dimension.depth());
+        }
+    }
 }

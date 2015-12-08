@@ -1,5 +1,7 @@
 package com.github.mkolisnyk.cucumber.reporting.types.breakdown;
 
+import org.apache.commons.lang.ArrayUtils;
+
 public class DataDimension {
 
     private String alias;
@@ -57,9 +59,12 @@ public class DataDimension {
     public DataDimension[] getSubElements() {
         return subElements;
     }
+    public boolean hasSubElements() {
+        return this.subElements != null && this.subElements.length > 0;
+    }
     public int depth() {
         int depth = 1;
-        if (this.subElements == null || this.subElements.length == 0) {
+        if (!hasSubElements()) {
             return depth;
         }
         int subDepth = 0;
@@ -68,5 +73,23 @@ public class DataDimension {
         }
         depth += subDepth;
         return depth;
+    }
+    public DataDimension[][] expand() {
+        if (!hasSubElements()) {
+            return new DataDimension[][] {{this}};
+        }
+        DataDimension[][] result = {};
+        for (DataDimension item : this.getSubElements()) {
+            DataDimension[][] subTree = item.expand();
+            for (DataDimension[] subTreeLine : subTree) {
+                DataDimension[] line = new DataDimension[subTreeLine.length + 1];
+                line[0] = this;
+                for (int i = 0; i < subTreeLine.length; i++) {
+                    line[i + 1] = subTreeLine[i];
+                }
+                ArrayUtils.add(result, line);
+            }
+        }
+        return result;
     }
 }

@@ -58,9 +58,15 @@ public class CucumberBreakdownReport extends CucumberResultsCommon {
         for (int i = 0; i < rowOffset; i++) {
             DataDimension[] line = table.getCols().getRow(i);
             for (DataDimension item : line) {
-                content = content.concat(
-                        String.format("<th colspan=\"%d\" rowspan=\"%d\">%s</th>",
-                                item.width(), rowOffset - item.depth() - i + 1, item.getAlias()));
+                if (item.depth() == 1) {
+                    content = content.concat(
+                            String.format("<th colspan=\"%d\" rowspan=\"%d\">%s</th>",
+                                    item.width(), rowOffset - item.depth() - i + 1, item.getAlias()));
+                } else {
+                    content = content.concat(
+                            String.format("<th colspan=\"%d\" rowspan=\"%d\">%s</th>",
+                                    item.width(), 1, item.getAlias()));
+                }
             }
             content = content.concat("</tr><tr>");
         }
@@ -137,14 +143,14 @@ public class CucumberBreakdownReport extends CucumberResultsCommon {
                 failedRatio++;
             }
             return String.format("<td>"
-                    + "<table><tr>"
+                    + "<table width=\"100%%\"><tr>"
                         + "<td>"
-                        + "<svg xmlns=\"http://www.w3.org/2000/svg\" version=\"1.1\" width=\"60\" height=\"60\">"
-                        + "<rect y=\"%d\" width=\"50\" height=\"%d\""
+                        + "<svg xmlns=\"http://www.w3.org/2000/svg\" version=\"1.1\" width=\"100%%\" height=\"50\">"
+                        + "<rect y=\"%d\" width=\"100%%\" height=\"%d\""
                             + " stroke=\"black\" stroke-width=\"1\" fill=\"green\"></rect>"
-                        + "<rect y=\"%d\" width=\"50\" height=\"%d\""
+                        + "<rect y=\"%d\" width=\"100%%\" height=\"%d\""
                             + " stroke=\"red\" stroke-width=\"1\" fill=\"red\"></rect>"
-                        + "<rect y=\"%d\" width=\"50\" height=\"%d\""
+                        + "<rect y=\"%d\" width=\"100%%\" height=\"%d\""
                             + " stroke=\"silver\" stroke-width=\"1\" fill=\"silver\"></rect>"
                         + "</svg>"
                         + "</td></tr>"
@@ -155,6 +161,6 @@ public class CucumberBreakdownReport extends CucumberResultsCommon {
                     drawCellValues(stats.getPassed(), stats.getFailed(), stats.getSkipped())
              );
         }
-        return String.format("<td bgcolor=silver>N/A</td>");
+        return String.format("<td bgcolor=silver><center><b>N/A</b></center></td>");
     }
 }

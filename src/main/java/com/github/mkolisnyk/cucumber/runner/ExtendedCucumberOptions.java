@@ -36,4 +36,7 @@ public @interface ExtendedCucumberOptions {
 
     String[] includeCoverageTags() default { };
     String[] excludeCoverageTags() default { };
+
+    boolean breakdownReport() default false;
+    String breakdownConfig() default "";
 }

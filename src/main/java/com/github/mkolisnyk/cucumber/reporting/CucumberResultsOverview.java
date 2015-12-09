@@ -12,36 +12,6 @@ import com.github.mkolisnyk.cucumber.reporting.types.result.CucumberFeatureResul
 import com.github.mkolisnyk.cucumber.reporting.types.result.CucumberScenarioResult;
 
 public class CucumberResultsOverview extends CucumberResultsCommon {
-    private String outputDirectory;
-    private String outputName;
-
-    /**
-     * @return the outputDirectory
-     */
-    public final String getOutputDirectory() {
-        return outputDirectory;
-    }
-
-    /**
-     * @param outputDirectoryValue the outputDirectory to set
-     */
-    public final void setOutputDirectory(String outputDirectoryValue) {
-        this.outputDirectory = outputDirectoryValue;
-    }
-
-    /**
-     * @return the outputName
-     */
-    public final String getOutputName() {
-        return outputName;
-    }
-
-    /**
-     * @param outputNameValue the outputName to set
-     */
-    public final void setOutputName(String outputNameValue) {
-        this.outputName = outputNameValue;
-    }
 
     protected String getReportBase() throws IOException {
         InputStream is = this.getClass().getResourceAsStream("/feature-overview-tmpl.html");

@@ -21,38 +21,8 @@ import com.github.mkolisnyk.cucumber.reporting.types.result.CucumberStepResult;
  * @author Myk Kolisnyk
  */
 public class CucumberDetailedResults extends CucumberResultsCommon {
-    private String outputDirectory;
-    private String outputName;
     private String screenShotLocation;
     private String screenShotWidth;
-
-    /**
-     * @return the outputDirectory
-     */
-    public final String getOutputDirectory() {
-        return outputDirectory;
-    }
-
-    /**
-     * @param outputDirectoryValue the outputDirectory to set
-     */
-    public final void setOutputDirectory(String outputDirectoryValue) {
-        this.outputDirectory = outputDirectoryValue;
-    }
-
-    /**
-     * @return the outputName
-     */
-    public final String getOutputName() {
-        return outputName;
-    }
-
-    /**
-     * @param outputNameValue the outputName to set
-     */
-    public final void setOutputName(String outputNameValue) {
-        this.outputName = outputNameValue;
-    }
 
     /**
      * @return the screenShotLocation
@@ -329,7 +299,7 @@ public class CucumberDetailedResults extends CucumberResultsCommon {
             }
             String filePath = this.getScreenShotLocation()
                     + this.generateNameFromId(scenarioId) + ".png";
-            File shot = new File(this.outputDirectory + filePath);
+            File shot = new File(this.getOutputDirectory() + filePath);
             if (shot.exists()) {
                 String widthString = "";
                 if (StringUtils.isNotBlank(this.getScreenShotWidth())) {

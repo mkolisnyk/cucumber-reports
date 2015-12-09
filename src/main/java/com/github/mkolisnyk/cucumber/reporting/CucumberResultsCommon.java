@@ -24,7 +24,36 @@ public abstract class CucumberResultsCommon {
     public static final int CHART_THICKNESS = 20;
 
     private String sourceFile;
+    private String outputDirectory;
+    private String outputName;
 
+    /**
+     * @return the outputDirectory
+     */
+    public final String getOutputDirectory() {
+        return outputDirectory;
+    }
+
+    /**
+     * @param outputDirectoryValue the outputDirectory to set
+     */
+    public final void setOutputDirectory(String outputDirectoryValue) {
+        this.outputDirectory = outputDirectoryValue;
+    }
+
+    /**
+     * @return the outputName
+     */
+    public final String getOutputName() {
+        return outputName;
+    }
+
+    /**
+     * @param outputNameValue the outputName to set
+     */
+    public final void setOutputName(String outputNameValue) {
+        this.outputName = outputNameValue;
+    }
     /**
      * @return the sourceFile
      */

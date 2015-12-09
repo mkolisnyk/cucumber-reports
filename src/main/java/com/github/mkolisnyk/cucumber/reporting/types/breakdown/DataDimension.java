@@ -74,6 +74,16 @@ public class DataDimension {
         depth += subDepth;
         return depth;
     }
+    public int width() {
+        int width = 0;
+        if (!hasSubElements()) {
+            return 1;
+        }
+        for (DataDimension dimension : this.subElements) {
+            width += dimension.width();
+        }
+        return width;
+    }
     public DataDimension[][] expand() {
         if (!hasSubElements()) {
             return new DataDimension[][] {{this}};
@@ -87,8 +97,21 @@ public class DataDimension {
                 for (int i = 0; i < subTreeLine.length; i++) {
                     line[i + 1] = subTreeLine[i];
                 }
-                ArrayUtils.add(result, line);
+                result = (DataDimension[][]) ArrayUtils.add(result, line);
             }
+        }
+        return result;
+    }
+    public DataDimension[] getRow(int level) {
+        if (level == 0) {
+            return new DataDimension[] {this};
+        }
+        if (!this.hasSubElements()) {
+            return new DataDimension[] {};
+        }
+        DataDimension[] result = new DataDimension[] {};
+        for (DataDimension subItem : this.getSubElements()) {
+            result = (DataDimension[]) ArrayUtils.addAll(result, subItem.getRow(level - 1));
         }
         return result;
     }

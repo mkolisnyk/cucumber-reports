@@ -85,7 +85,7 @@ public class BreakdownTable {
                 }
             }
             if (matches) {
-                ArrayUtils.add(result, item);
+                result = ArrayUtils.add(result, item);
             }
         }
         return result;
@@ -104,7 +104,7 @@ public class BreakdownTable {
     }
     public BreakdownStats[][] valuate(CucumberScenarioResult[] array) {
         DataDimension[][] rowData = this.getRows().expand();
-        DataDimension[][] colData = this.getRows().expand();
+        DataDimension[][] colData = this.getCols().expand();
         BreakdownStats[][] stats = new BreakdownStats[rowData.length][colData.length];
         for (int i = 0; i < rowData.length; i++) {
             for (int j = 0; j < colData.length; j++) {

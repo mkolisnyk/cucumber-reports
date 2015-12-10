@@ -118,6 +118,9 @@ public class ExtendedCucumber extends ParentRunner<ExtendedFeatureRunner> {
         if (extendedOptions.isCoverageReport()) {
             ReportRunner.runCoverageReport(extendedOptions);
         }
+        if (extendedOptions.isBreakdownReport()) {
+            ReportRunner.runBreakdownReport(extendedOptions);
+        }
     }
 
     private void addChildren(List<CucumberFeature> cucumberFeatures) throws InitializationError {

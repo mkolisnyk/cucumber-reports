@@ -17,6 +17,8 @@ public class ExtendedRuntimeOptions {
     private String screenShotLocation = "";
     private String[] includeCoverageTags = {};
     private String[] excludeCoverageTags = {};
+    private boolean breakdownReport = false;
+    private String breakdownConfig = "";
 
     public ExtendedRuntimeOptions(Class<?> clazz) {
         ExtendedCucumberOptions options = clazz
@@ -38,6 +40,8 @@ public class ExtendedRuntimeOptions {
             this.screenShotLocation = options.screenShotLocation();
             this.includeCoverageTags = options.includeCoverageTags();
             this.excludeCoverageTags = options.excludeCoverageTags();
+            this.breakdownReport = options.breakdownReport();
+            this.breakdownConfig = options.breakdownConfig();
         }
     }
 
@@ -107,5 +111,13 @@ public class ExtendedRuntimeOptions {
 
     public final void setExcludeCoverageTags(String[] excludeCoverageTagsValue) {
         this.excludeCoverageTags = excludeCoverageTagsValue;
+    }
+
+    public boolean isBreakdownReport() {
+        return breakdownReport;
+    }
+
+    public String getBreakdownConfig() {
+        return breakdownConfig;
     }
 }

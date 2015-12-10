@@ -1,5 +1,8 @@
 package com.github.mkolisnyk.cucumber.runner;
 
+import java.io.File;
+
+import com.github.mkolisnyk.cucumber.reporting.CucumberBreakdownReport;
 import com.github.mkolisnyk.cucumber.reporting.CucumberCoverageOverview;
 import com.github.mkolisnyk.cucumber.reporting.CucumberDetailedResults;
 import com.github.mkolisnyk.cucumber.reporting.CucumberResultsOverview;
@@ -69,6 +72,17 @@ public final class ReportRunner {
         results.setIncludeCoverageTags(extendedOptions.getIncludeCoverageTags());
         try {
             results.executeCoverageReport();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+    public static void runBreakdownReport(ExtendedRuntimeOptions extendedOptions) {
+        CucumberBreakdownReport report = new CucumberBreakdownReport();
+        report.setOutputDirectory(extendedOptions.getOutputFolder());
+        report.setOutputName(extendedOptions.getReportPrefix());
+        report.setSourceFile(extendedOptions.getJsonReportPath());
+        try {
+            report.executeReport(new File(extendedOptions.getBreakdownConfig()));
         } catch (Exception e) {
             e.printStackTrace();
         }

@@ -7,8 +7,12 @@ import java.io.InputStream;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.IOUtils;
 import org.apache.commons.lang3.ArrayUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.testng.Assert;
 
+import com.cedarsoftware.util.io.JsonReader;
+import com.github.mkolisnyk.cucumber.reporting.types.breakdown.BreakdownReportInfo;
+import com.github.mkolisnyk.cucumber.reporting.types.breakdown.BreakdownReportModel;
 import com.github.mkolisnyk.cucumber.reporting.types.breakdown.BreakdownStats;
 import com.github.mkolisnyk.cucumber.reporting.types.breakdown.BreakdownTable;
 import com.github.mkolisnyk.cucumber.reporting.types.breakdown.DataDimension;
@@ -29,20 +33,39 @@ public class CucumberBreakdownReport extends CucumberResultsCommon {
         String result = IOUtils.toString(is);
         return result;
     }
-    public void executeReport(String reportSuffix, BreakdownTable table) throws Exception {
+    public void executeReport(BreakdownReportInfo info, BreakdownTable table) throws Exception {
         CucumberFeatureResult[] features = readFileContent(true);
         File outFile = new File(
                 this.getOutputDirectory() + File.separator + this.getOutputName()
-                + "-" + reportSuffix + ".html");
-        FileUtils.writeStringToFile(outFile, generateBreakdownReport(features, table));
+                + "-" + info.getReportSuffix() + ".html");
+        FileUtils.writeStringToFile(outFile, generateBreakdownReport(features, info, table));
     }
     public void executeReport(BreakdownTable table) throws Exception {
-        executeReport("breakdown", table);
+        executeReport(new BreakdownReportInfo(table), table);
+    }
+    public void executeReport(BreakdownReportModel model) throws Exception {
+        model.initRedirectSequence("./" + this.getOutputName() + "-");
+        for (BreakdownReportInfo info : model.getReportsInfo()) {
+            this.executeReport(info, info.getTable());
+        }
+    }
+    public void executeReport(File config) throws Exception {
+        BreakdownReportModel model = (BreakdownReportModel) JsonReader.jsonToJava(
+                FileUtils.readFileToString(config));
+        this.executeReport(model);
     }
     private String generateBreakdownReport(CucumberFeatureResult[] features,
-            BreakdownTable table) throws IOException {
+            BreakdownReportInfo info, BreakdownTable table) throws IOException {
         String content = getReportBase();
-        content = content.replaceAll("__TITLE__", "Breakdown Report");
+        content = content.replaceAll("__TITLE__", info.getTitle());
+        if (info.getRefreshTimeout() > 0 && StringUtils.isNotBlank(info.getNextFile())) {
+            String refreshHeader
+                = String.format("<meta http-equiv=\"Refresh\" content=\"%d; url=%s\">",
+                        info.getRefreshTimeout(), info.getNextFile());
+            content = content.replaceAll("__REFRESH__", refreshHeader);
+        } else {
+            content = content.replaceAll("__REFRESH__", "");
+        }
         content = content.replaceAll("__REPORT__", generateBreakdownTable(features, table));
         return content;
     }
@@ -134,11 +157,12 @@ public class CucumberBreakdownReport extends CucumberResultsCommon {
         return "<b>" + output + "</b>";
     }
     private String drawCell(BreakdownStats stats) {
+        final int cellSize = 50;
         double total = stats.getFailed() + stats.getPassed() + stats.getSkipped();
         if (total > 0) {
-            int passedRatio = (int) (50 * ((double) stats.getPassed() / total));
-            int failedRatio = (int) (50 * ((double) stats.getFailed() / total));
-            int skippedRatio = (int) (50 * ((double) stats.getSkipped() / total));
+            int passedRatio = (int) (cellSize * ((double) stats.getPassed() / total));
+            int failedRatio = (int) (cellSize * ((double) stats.getFailed() / total));
+            int skippedRatio = (int) (cellSize * ((double) stats.getSkipped() / total));
             if (stats.getFailed() > 0) {
                 failedRatio++;
             }
@@ -155,9 +179,9 @@ public class CucumberBreakdownReport extends CucumberResultsCommon {
                         + "</svg>"
                         + "</td></tr>"
                         + "<tr><td colspan=3><center>%s</center></td></tr></table></td>",
-                    0,passedRatio,
-                    passedRatio,failedRatio,
-                    failedRatio + passedRatio,skippedRatio,
+                    0, passedRatio,
+                    passedRatio, failedRatio,
+                    failedRatio + passedRatio, skippedRatio,
                     drawCellValues(stats.getPassed(), stats.getFailed(), stats.getSkipped())
              );
         }

@@ -10,6 +10,7 @@ import com.github.mkolisnyk.cucumber.reporting.types.breakdown.matchers.FeatureM
 import com.github.mkolisnyk.cucumber.reporting.types.breakdown.matchers.Matcher;
 import com.github.mkolisnyk.cucumber.reporting.types.breakdown.matchers.ScenarioMatcher;
 import com.github.mkolisnyk.cucumber.reporting.types.breakdown.matchers.StepMatcher;
+import com.github.mkolisnyk.cucumber.reporting.types.breakdown.matchers.StepParamMatcher;
 import com.github.mkolisnyk.cucumber.reporting.types.breakdown.matchers.TagMatcher;
 import com.github.mkolisnyk.cucumber.reporting.types.breakdown.valuators.ScenarioValuator;
 import com.github.mkolisnyk.cucumber.reporting.types.breakdown.valuators.StepsValuator;
@@ -27,6 +28,7 @@ public class BreakdownTable {
             put(DimensionValue.TAG, new TagMatcher());
             put(DimensionValue.STEP, new StepMatcher());
             put(DimensionValue.CONTAINER, new ContainerMatcher());
+            put(DimensionValue.STEP_PARAM, new StepParamMatcher());
         }
     };
     private static final Map<BreakdownCellValue, Valuator> VALUATORS_MAP

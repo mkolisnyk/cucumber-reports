@@ -5,32 +5,14 @@ import java.util.Map;
 
 import org.apache.commons.lang3.ArrayUtils;
 
-import com.github.mkolisnyk.cucumber.reporting.types.breakdown.matchers.ContainerMatcher;
-import com.github.mkolisnyk.cucumber.reporting.types.breakdown.matchers.FeatureMatcher;
+import com.github.mkolisnyk.cucumber.reporting.types.breakdown.matchers.BaseMatcher;
 import com.github.mkolisnyk.cucumber.reporting.types.breakdown.matchers.Matcher;
-import com.github.mkolisnyk.cucumber.reporting.types.breakdown.matchers.ScenarioMatcher;
-import com.github.mkolisnyk.cucumber.reporting.types.breakdown.matchers.StepMatcher;
-import com.github.mkolisnyk.cucumber.reporting.types.breakdown.matchers.StepParamMatcher;
-import com.github.mkolisnyk.cucumber.reporting.types.breakdown.matchers.TagMatcher;
 import com.github.mkolisnyk.cucumber.reporting.types.breakdown.valuators.ScenarioValuator;
 import com.github.mkolisnyk.cucumber.reporting.types.breakdown.valuators.StepsValuator;
 import com.github.mkolisnyk.cucumber.reporting.types.breakdown.valuators.Valuator;
 import com.github.mkolisnyk.cucumber.reporting.types.result.CucumberScenarioResult;
 
 public class BreakdownTable {
-    private static final Map<DimensionValue, Matcher> DIMENSION_MATCHER_MAP
-        = new HashMap<DimensionValue, Matcher>() {
-            private static final long serialVersionUID = 1L;
-
-        {
-            put(DimensionValue.FEATURE, new FeatureMatcher());
-            put(DimensionValue.SCENARIO, new ScenarioMatcher());
-            put(DimensionValue.TAG, new TagMatcher());
-            put(DimensionValue.STEP, new StepMatcher());
-            put(DimensionValue.CONTAINER, new ContainerMatcher());
-            put(DimensionValue.STEP_PARAM, new StepParamMatcher());
-        }
-    };
     private static final Map<BreakdownCellValue, Valuator> VALUATORS_MAP
         = new HashMap<BreakdownCellValue, Valuator>() {
             private static final long serialVersionUID = 1L;
@@ -80,8 +62,8 @@ public class BreakdownTable {
         for (CucumberScenarioResult item : array) {
             boolean matches = true;
             for (DataDimension filter : filters) {
-                Matcher matcher = DIMENSION_MATCHER_MAP.get(filter.getDimensionValue());
-                if (!matcher.matches(item, filter.getExpression())) {
+                Matcher matcher = BaseMatcher.create(filter.getDimensionValue());
+                if (!matcher.matches(item, filter)) {
                     matches = false;
                     break;
                 }

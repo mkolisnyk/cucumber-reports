@@ -6,5 +6,5 @@ import com.github.mkolisnyk.cucumber.reporting.types.result.CucumberScenarioResu
 public interface Matcher {
     boolean isComplex();
     boolean matches(CucumberScenarioResult result, String expression);
-    boolean matches(CucumberScenarioResult result, DataDimension[] filters);
+    boolean matches(CucumberScenarioResult result, DataDimension filter);
 }

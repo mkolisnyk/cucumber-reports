@@ -19,6 +19,7 @@ public abstract class BaseMatcher implements Matcher {
             put(DimensionValue.NOT, new NotMatcher());
             put(DimensionValue.AND, new AndMatcher());
             put(DimensionValue.OR, new OrMatcher());
+            put(DimensionValue.STEP_SEQUENCE, new StepSequenceMatcher());
         }
     };
     public static Matcher create(DimensionValue value) {

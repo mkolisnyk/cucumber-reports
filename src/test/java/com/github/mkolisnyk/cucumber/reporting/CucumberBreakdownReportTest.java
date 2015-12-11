@@ -21,7 +21,7 @@ public class CucumberBreakdownReportTest {
         CucumberBreakdownReport report = new CucumberBreakdownReport();
         report.setOutputDirectory("target");
         report.setOutputName("cucumber-results");
-        report.setSourceFile("./src/test/resources/breakdown-source/cucumber.json");
+        report.setSourceFile("./src/test/resources/breakdown-source/cucumber-2.json");
         BreakdownTable table = new BreakdownTable();
         table.setCols(new DataDimension("Screens", DimensionValue.CONTAINER, "(.*)",
                 new DataDimension[] {
@@ -98,14 +98,207 @@ public class CucumberBreakdownReportTest {
                           }));
         table.setRows(new DataDimension("Booking", DimensionValue.CONTAINER, "(.*)",
                 new DataDimension[] {
-                    new DataDimension("Kiosk", DimensionValue.FEATURE, "(.*)[Kk]iosk(.*)", new DataDimension[] {}),
-                    //new DataDimension("Mobile", DimensionValue.FEATURE, "(.*)[Mm]obile(.*)", new DataDimension[] {}),
-                    new DataDimension("Web", DimensionValue.STEP, "(.*)make a web booking(.*)", new DataDimension[] {}),
+                    new DataDimension("Kiosk", DimensionValue.FEATURE, "(.*)[Kk]iosk(.*)",
+                        new DataDimension[] {
+                            new DataDimension("Registered", DimensionValue.FEATURE, "(.*)",
+                                new DataDimension[] {
+                                    new DataDimension("Payment Types", DimensionValue.CONTAINER, "(.*)",
+                                        new DataDimension[] {
+                                            new DataDimension("By Card", DimensionValue.FEATURE, "(.*)",
+                                                new DataDimension[] {
+                                                    new DataDimension("Visa Credit", DimensionValue.FEATURE, "(.*)", new DataDimension[] {}),
+                                                    new DataDimension("Mastercard", DimensionValue.FEATURE, "(.*)", new DataDimension[] {}),
+                                                    new DataDimension("Maestro", DimensionValue.FEATURE, "(.*)", new DataDimension[] {}),
+                                                    new DataDimension("Visa Debit", DimensionValue.FEATURE, "(.*)", new DataDimension[] {}),
+                                                    new DataDimension("Amex", DimensionValue.FEATURE, "(.*)", new DataDimension[] {}),
+                                                    new DataDimension("Diners", DimensionValue.FEATURE, "(.*)", new DataDimension[] {}),
+                                                    new DataDimension("Mastercard Debit", DimensionValue.FEATURE, "(.*)", new DataDimension[] {}),
+                                                }
+                                            ),
+                                            new DataDimension("By PayPal", DimensionValue.FEATURE, "(.*)", new DataDimension[] {}),
+                                }),
+                                    new DataDimension("Journey Types", DimensionValue.CONTAINER, "(.*)",
+                                        new DataDimension[] {
+                                            new DataDimension("Within an hour", DimensionValue.FEATURE, "(.*)", new DataDimension[] {}),
+                                            new DataDimension("Within 3 hours", DimensionValue.FEATURE, "(.*)", new DataDimension[] {}),
+                                            new DataDimension("Far into the future", DimensionValue.FEATURE, "(.*)", new DataDimension[] {}),
+                                            new DataDimension("Each way fare", DimensionValue.FEATURE, "(.*)", new DataDimension[] {}),
+                                        }
+                                    ),
+                                    new DataDimension("Actions", DimensionValue.CONTAINER, "(.*)",
+                                        new DataDimension[] {
+                                            new DataDimension("View Details", DimensionValue.FEATURE, "(.*)", new DataDimension[] {}),
+                                            new DataDimension("Share trip details", DimensionValue.FEATURE, "(.*)", new DataDimension[] {}),
+                                        }
+                                    )
+                                }
+                            ),
+                            new DataDimension("Guest", DimensionValue.FEATURE, "(.*)", new DataDimension[] {
+                                new DataDimension("Payment Types", DimensionValue.CONTAINER, "(.*)",
+                                        new DataDimension[] {
+                                            new DataDimension("By Card", DimensionValue.FEATURE, "(.*)",
+                                                new DataDimension[] {
+                                                    new DataDimension("Visa Credit", DimensionValue.FEATURE, "(.*)", new DataDimension[] {}),
+                                                    new DataDimension("Mastercard", DimensionValue.FEATURE, "(.*)", new DataDimension[] {}),
+                                                    new DataDimension("Maestro", DimensionValue.FEATURE, "(.*)", new DataDimension[] {}),
+                                                    new DataDimension("Visa Debit", DimensionValue.FEATURE, "(.*)", new DataDimension[] {}),
+                                                    new DataDimension("Amex", DimensionValue.FEATURE, "(.*)", new DataDimension[] {}),
+                                                    new DataDimension("Diners", DimensionValue.FEATURE, "(.*)", new DataDimension[] {}),
+                                                    new DataDimension("Mastercard Debit", DimensionValue.FEATURE, "(.*)", new DataDimension[] {}),
+                                                }
+                                            ),
+                                            new DataDimension("By PayPal", DimensionValue.FEATURE, "(.*)", new DataDimension[] {}),
+                                }),
+                                    new DataDimension("Journey Types", DimensionValue.CONTAINER, "(.*)",
+                                        new DataDimension[] {
+                                            new DataDimension("Within an hour", DimensionValue.FEATURE, "(.*)", new DataDimension[] {}),
+                                            new DataDimension("Within 3 hours", DimensionValue.FEATURE, "(.*)", new DataDimension[] {}),
+                                            new DataDimension("Far into the future", DimensionValue.FEATURE, "(.*)", new DataDimension[] {}),
+                                            new DataDimension("Each way fare", DimensionValue.FEATURE, "(.*)", new DataDimension[] {}),
+                                        }
+                                    ),
+                                    new DataDimension("Actions", DimensionValue.CONTAINER, "(.*)",
+                                        new DataDimension[] {
+                                            new DataDimension("View Details", DimensionValue.FEATURE, "(.*)", new DataDimension[] {}),
+                                            new DataDimension("Share trip details", DimensionValue.FEATURE, "(.*)", new DataDimension[] {}),
+                                        }
+                                    )
+                                }
+                            ),
+                        }),
+                    new DataDimension("Mobile", DimensionValue.FEATURE, "(.*)[Mm]obile(.*)",
+                        new DataDimension[] {
+                            new DataDimension("Registered", DimensionValue.FEATURE, "(.*)",
+                                    new DataDimension[] {
+                                        new DataDimension("Payment Types", DimensionValue.CONTAINER, "(.*)",
+                                            new DataDimension[] {
+                                                new DataDimension("By Card", DimensionValue.FEATURE, "(.*)",
+                                                    new DataDimension[] {
+                                                        new DataDimension("Visa Credit", DimensionValue.FEATURE, "(.*)", new DataDimension[] {}),
+                                                        new DataDimension("Mastercard", DimensionValue.FEATURE, "(.*)", new DataDimension[] {}),
+                                                        new DataDimension("Maestro", DimensionValue.FEATURE, "(.*)", new DataDimension[] {}),
+                                                        new DataDimension("Visa Debit", DimensionValue.FEATURE, "(.*)", new DataDimension[] {}),
+                                                        new DataDimension("Amex", DimensionValue.FEATURE, "(.*)", new DataDimension[] {}),
+                                                        new DataDimension("Diners", DimensionValue.FEATURE, "(.*)", new DataDimension[] {}),
+                                                        new DataDimension("Mastercard Debit", DimensionValue.FEATURE, "(.*)", new DataDimension[] {}),
+                                                    }
+                                                ),
+                                                new DataDimension("By PayPal", DimensionValue.FEATURE, "(.*)", new DataDimension[] {}),
+                                    }),
+                                        new DataDimension("Journey Types", DimensionValue.CONTAINER, "(.*)",
+                                            new DataDimension[] {
+                                                new DataDimension("Within an hour", DimensionValue.FEATURE, "(.*)", new DataDimension[] {}),
+                                                new DataDimension("Within 3 hours", DimensionValue.FEATURE, "(.*)", new DataDimension[] {}),
+                                                new DataDimension("Far into the future", DimensionValue.FEATURE, "(.*)", new DataDimension[] {}),
+                                                new DataDimension("Each way fare", DimensionValue.FEATURE, "(.*)", new DataDimension[] {}),
+                                            }
+                                        ),
+                                        new DataDimension("Actions", DimensionValue.CONTAINER, "(.*)",
+                                            new DataDimension[] {
+                                                new DataDimension("View Details", DimensionValue.FEATURE, "(.*)", new DataDimension[] {}),
+                                                new DataDimension("Share trip details", DimensionValue.FEATURE, "(.*)", new DataDimension[] {}),
+                                            }
+                                        )
+                                    }
+                                ),
+                                new DataDimension("Guest", DimensionValue.FEATURE, "(.*)", new DataDimension[] {
+                                    new DataDimension("Payment Types", DimensionValue.CONTAINER, "(.*)",
+                                            new DataDimension[] {
+                                                new DataDimension("By Card", DimensionValue.FEATURE, "(.*)",
+                                                    new DataDimension[] {
+                                                        new DataDimension("Visa Credit", DimensionValue.FEATURE, "(.*)", new DataDimension[] {}),
+                                                        new DataDimension("Mastercard", DimensionValue.FEATURE, "(.*)", new DataDimension[] {}),
+                                                        new DataDimension("Maestro", DimensionValue.FEATURE, "(.*)", new DataDimension[] {}),
+                                                        new DataDimension("Visa Debit", DimensionValue.FEATURE, "(.*)", new DataDimension[] {}),
+                                                        new DataDimension("Amex", DimensionValue.FEATURE, "(.*)", new DataDimension[] {}),
+                                                        new DataDimension("Diners", DimensionValue.FEATURE, "(.*)", new DataDimension[] {}),
+                                                        new DataDimension("Mastercard Debit", DimensionValue.FEATURE, "(.*)", new DataDimension[] {}),
+                                                    }
+                                                ),
+                                                new DataDimension("By PayPal", DimensionValue.FEATURE, "(.*)", new DataDimension[] {}),
+                                    }),
+                                        new DataDimension("Journey Types", DimensionValue.CONTAINER, "(.*)",
+                                            new DataDimension[] {
+                                                new DataDimension("Within an hour", DimensionValue.FEATURE, "(.*)", new DataDimension[] {}),
+                                                new DataDimension("Within 3 hours", DimensionValue.FEATURE, "(.*)", new DataDimension[] {}),
+                                                new DataDimension("Far into the future", DimensionValue.FEATURE, "(.*)", new DataDimension[] {}),
+                                                new DataDimension("Each way fare", DimensionValue.FEATURE, "(.*)", new DataDimension[] {}),
+                                            }
+                                        ),
+                                        new DataDimension("Actions", DimensionValue.CONTAINER, "(.*)",
+                                            new DataDimension[] {
+                                                new DataDimension("View Details", DimensionValue.FEATURE, "(.*)", new DataDimension[] {}),
+                                                new DataDimension("Share trip details", DimensionValue.FEATURE, "(.*)", new DataDimension[] {}),
+                                                new DataDimension("Download", DimensionValue.FEATURE, "(.*)", new DataDimension[] {}),
+                                                new DataDimension("Activate", DimensionValue.FEATURE, "(.*)", new DataDimension[] {}),
+                                                new DataDimension("Refund", DimensionValue.FEATURE, "(.*)", new DataDimension[] {}),
+                                                new DataDimension("Move", DimensionValue.FEATURE, "(.*)", new DataDimension[] {}),
+                                            }
+                                        )
+                                    }
+                                ),
+                            }),
+                    new DataDimension("Web", DimensionValue.STEP, "(.*)make a web booking(.*)",
+                        new DataDimension[] {
+                            new DataDimension("Leisure", DimensionValue.CONTAINER, "(.*)",
+                                new DataDimension[] {
+                                    new DataDimension("Ticket Type", DimensionValue.CONTAINER, "(.*)",
+                                        new DataDimension[] {
+                                            new DataDimension("Anytime Day Single", DimensionValue.STEP, "(.*)", new DataDimension[] {}),
+                                            new DataDimension("Cheapest Standard Single", DimensionValue.STEP, "(.*)", new DataDimension[] {}),
+                                            new DataDimension("Anytime Single", DimensionValue.STEP, "(.*)", new DataDimension[] {}),
+                                            new DataDimension("Advance Single", DimensionValue.STEP, "(.*)", new DataDimension[] {}),
+                                            new DataDimension("Cheapest First Class Single", DimensionValue.STEP, "(.*)", new DataDimension[] {}),
+                                            new DataDimension("First Advance Single", DimensionValue.STEP, "(.*)", new DataDimension[] {}),
+                                            new DataDimension("Off-Peak Day Single", DimensionValue.STEP, "(.*)", new DataDimension[] {}),
+                                            new DataDimension("First Anytime Single", DimensionValue.STEP, "(.*)", new DataDimension[] {}),
+                                        }
+                                    ),
+                                    new DataDimension("Delivery Option", DimensionValue.CONTAINER, "(.*)",
+                                        new DataDimension[] {
+                                            new DataDimension("Kiosk", DimensionValue.STEP, "(.*)", new DataDimension[] {}),
+                                            new DataDimension("First class post", DimensionValue.STEP, "(.*)", new DataDimension[] {}),
+                                            new DataDimension("PYO", DimensionValue.STEP, "(.*)", new DataDimension[] {}),
+                                            new DataDimension("Royal Mail", DimensionValue.STEP, "(.*)", new DataDimension[] {}),
+                                            new DataDimension("International post", DimensionValue.STEP, "(.*)", new DataDimension[] {}),
+                                            new DataDimension("Mobile", DimensionValue.STEP, "(.*)", new DataDimension[] {}),
+                                        }
+                                    ),
+                                }
+                            ),
+                            new DataDimension("Business", DimensionValue.CONTAINER, "(.*)",
+                                new DataDimension[] {
+                                    new DataDimension("Ticket Type", DimensionValue.CONTAINER, "(.*)", 
+                                        new DataDimension[] {
+                                            new DataDimension("Anytime Day Single", DimensionValue.STEP, "(.*)", new DataDimension[] {}),
+                                            new DataDimension("Cheapest Standard Single", DimensionValue.STEP, "(.*)", new DataDimension[] {}),
+                                            new DataDimension("Anytime Single", DimensionValue.STEP, "(.*)", new DataDimension[] {}),
+                                            new DataDimension("Advance Single", DimensionValue.STEP, "(.*)", new DataDimension[] {}),
+                                            new DataDimension("Cheapest First Class Single", DimensionValue.STEP, "(.*)", new DataDimension[] {}),
+                                            new DataDimension("First Advance Single", DimensionValue.STEP, "(.*)", new DataDimension[] {}),
+                                            new DataDimension("Off-Peak Day Single", DimensionValue.STEP, "(.*)", new DataDimension[] {}),
+                                            new DataDimension("First Anytime Single", DimensionValue.STEP, "(.*)", new DataDimension[] {}),
+                                        }
+                                    ),
+                                    new DataDimension("Delivery Option", DimensionValue.CONTAINER, "(.*)",
+                                        new DataDimension[] {
+                                            new DataDimension("Kiosk", DimensionValue.STEP, "(.*)", new DataDimension[] {}),
+                                            new DataDimension("First class post", DimensionValue.STEP, "(.*)", new DataDimension[] {}),
+                                            new DataDimension("Next day delivery", DimensionValue.STEP, "(.*)", new DataDimension[] {}),
+                                            new DataDimension("Office delivery", DimensionValue.STEP, "(.*)", new DataDimension[] {}),
+                                            new DataDimension("PYO", DimensionValue.STEP, "(.*)", new DataDimension[] {}),
+                                        }
+                                    ),
+                                }
+                            ),
+                        }
+                    ),
                     new DataDimension("Walkup", DimensionValue.FEATURE, "(.*)Walk-up(.*)", new DataDimension[] {}),
             }));
+
         //table.setCols(new DataDimension("All Features", DimensionValue.SCENARIO, "(.*)"));
         //table.setRows(new DataDimension("All Features", DimensionValue.SCENARIO, "(.*)"));
-        table.setCell(BreakdownCellValue.SCENARIOS);
+        table.setCell(BreakdownCellValue.STEPS);
         report.executeReport(table);
     }
     @Test

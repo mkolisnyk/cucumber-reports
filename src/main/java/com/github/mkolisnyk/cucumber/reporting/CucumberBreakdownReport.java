@@ -71,7 +71,8 @@ public class CucumberBreakdownReport extends CucumberResultsCommon {
     }
     private String generateBreakdownTable(CucumberFeatureResult[] features,
             BreakdownTable table) {
-        String content = String.format("<table>%s%s</table>", generateHeader(table), generateBody(table, features));
+        String content = String.format("<table class=\"hoverTable\"><thead>%s</thead><tbody>%s</tbody></table>",
+                generateHeader(table), generateBody(table, features));
         return content;
     }
     private String generateHeader(BreakdownTable table) {
@@ -96,14 +97,19 @@ public class CucumberBreakdownReport extends CucumberResultsCommon {
         content = content.concat("</tr>");
         return content;
     }
-    private String generateRowHeading(DataDimension data, int maxDepth) {
+    private String generateRowHeading(DataDimension data, int maxDepth, int level) {
+        int cellDepth = 1;
+        String aliasText = data.getAlias();
+        if (data.depth() == 1) {
+            cellDepth = maxDepth - level + 1;
+        }
         String content = String.format("<th colspan=\"%d\" rowspan=\"%d\">%s</th>",
-                maxDepth - data.depth() + 1,
+                cellDepth,
                 data.width(),
-                data.getAlias());
+                aliasText);
         if (data.hasSubElements()) {
             for (DataDimension item : data.getSubElements()) {
-                content = content.concat(generateRowHeading(item, maxDepth - 1));
+                content = content.concat(generateRowHeading(item, maxDepth, level + 1));
             }
         } else {
             content = content.concat("</tr><tr>");
@@ -112,7 +118,7 @@ public class CucumberBreakdownReport extends CucumberResultsCommon {
     }
     private String generateRowHeading(BreakdownTable table) {
         DataDimension rows = table.getRows();
-        String content = "<tr>" + generateRowHeading(rows, rows.depth()) + "</tr>";
+        String content = "<tr>" + generateRowHeading(rows, rows.depth(), 1) + "</tr>";
         /*DataDimension[][] data = table.getRows().expand();
         for (int i = 0; i < data.length; i++) {
             content = content.concat("<tr>");

@@ -8,6 +8,7 @@ public class DataDimension {
     private DimensionValue dimensionValue;
     private String expression;
     private DataDimension[] subElements;
+    private boolean isFinal = false;
 
     public static DataDimension allFeatures() {
         return new DataDimension("Features", DimensionValue.FEATURE);
@@ -25,27 +26,49 @@ public class DataDimension {
     public DataDimension(DimensionValue dimensionValueParam) {
         this(dimensionValueParam, "(.*)");
     }
+    public DataDimension(DimensionValue dimensionValueParam, boolean isFinalValue) {
+        this(dimensionValueParam, "(.*)", isFinalValue);
+    }
     public DataDimension(DimensionValue dimensionValueParam, String expressionParam) {
         this(dimensionValueParam, expressionParam, new DataDimension[]{});
+    }
+    public DataDimension(DimensionValue dimensionValueParam, String expressionParam, boolean isFinalValue) {
+        this(dimensionValueParam, expressionParam, new DataDimension[]{}, isFinalValue);
     }
     public DataDimension(DimensionValue dimensionValueParam, String expressionParam,
             DataDimension[] subElementsParam) {
         this(expressionParam, dimensionValueParam, expressionParam, subElementsParam);
     }
+    public DataDimension(DimensionValue dimensionValueParam, String expressionParam,
+            DataDimension[] subElementsParam, boolean isFinalValue) {
+        this(expressionParam, dimensionValueParam, expressionParam, subElementsParam, isFinalValue);
+    }
     public DataDimension(String aliasParam, DimensionValue dimensionValueParam) {
         this(aliasParam, dimensionValueParam, "(.*)");
+    }
+    public DataDimension(String aliasParam, DimensionValue dimensionValueParam, boolean isFinalValue) {
+        this(aliasParam, dimensionValueParam, "(.*)", isFinalValue);
     }
     public DataDimension(String aliasParam, DimensionValue dimensionValueParam,
             String expressionParam) {
         this(aliasParam, dimensionValueParam, expressionParam, new DataDimension[]{});
     }
     public DataDimension(String aliasParam, DimensionValue dimensionValueParam,
+            String expressionParam, boolean isFinalValue) {
+        this(aliasParam, dimensionValueParam, expressionParam, new DataDimension[]{}, isFinalValue);
+    }
+    public DataDimension(String aliasParam, DimensionValue dimensionValueParam,
             String expressionParam, DataDimension[] subElementsParam) {
+        this(aliasParam, dimensionValueParam, expressionParam, subElementsParam, false);
+    }
+    public DataDimension(String aliasParam, DimensionValue dimensionValueParam,
+            String expressionParam, DataDimension[] subElementsParam, boolean isFinalValue) {
         super();
         this.alias = aliasParam;
         this.dimensionValue = dimensionValueParam;
         this.expression = expressionParam;
         this.subElements = subElementsParam;
+        this.isFinal = isFinalValue;
     }
     public String getAlias() {
         return alias;
@@ -60,7 +83,7 @@ public class DataDimension {
         return subElements;
     }
     public boolean hasSubElements() {
-        return this.subElements != null && this.subElements.length > 0;
+        return !isFinal() && this.subElements != null && this.subElements.length > 0;
     }
     public int depth() {
         int depth = 1;
@@ -114,5 +137,8 @@ public class DataDimension {
             result = (DataDimension[]) ArrayUtils.addAll(result, subItem.getRow(level - 1));
         }
         return result;
+    }
+    public boolean isFinal() {
+        return isFinal;
     }
 }

@@ -102,6 +102,16 @@ public class DataDimensionDepthTest {
                           }),
                           2, 4
                        },
+                       {
+                           new DataDimension(DimensionValue.NOT, "(.*)Payment(.*)",
+                               new DataDimension[] {
+                                   DataDimension.allFeatures(),
+                                   DataDimension.allScenarios(),
+                                   DataDimension.allSteps(),
+                                   DataDimension.allTags()
+                           }, true),
+                           1, 1
+                        },
         });
     }
     @Test

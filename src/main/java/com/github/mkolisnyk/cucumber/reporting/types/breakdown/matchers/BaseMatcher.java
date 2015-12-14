@@ -3,6 +3,8 @@ package com.github.mkolisnyk.cucumber.reporting.types.breakdown.matchers;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.apache.commons.lang3.StringUtils;
+
 import com.github.mkolisnyk.cucumber.reporting.types.breakdown.DimensionValue;
 
 public abstract class BaseMatcher implements Matcher {
@@ -22,6 +24,10 @@ public abstract class BaseMatcher implements Matcher {
             put(DimensionValue.STEP_SEQUENCE, new StepSequenceMatcher());
         }
     };
+    protected boolean stringMatches(String expected, String expression) {
+        return StringUtils.isNotEmpty(expected)
+                && (expected.equals(expression) || expected.matches(expression));
+    }
     public static Matcher create(DimensionValue value) {
         return DIMENSION_MATCHER_MAP.get(value);
     }

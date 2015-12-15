@@ -74,15 +74,15 @@ public class BreakdownTable {
         }
         return result;
     }
-    public BreakdownStats valuateCell(CucumberScenarioResult[] array, DataDimension[] filters) {
+    public BreakdownStats valuateCell(CucumberScenarioResult[] array, DataDimension[] filters, Matcher[] matchers) {
         BreakdownStats stats = new BreakdownStats();
         Valuator valuator = VALUATORS_MAP.get(this.getCell());
         if (filters != null && filters.length > 0) {
             for (DataDimension filter : filters) {
-                stats.add(valuator.valuate(array, filter.getExpression()));
+                stats.add(valuator.valuate(array, filter.getExpression(), matchers));
             }
         } else {
-            stats.add(valuator.valuate(array, "(.*)"));
+            stats.add(valuator.valuate(array, "(.*)", matchers));
         }
         return stats;
     }
@@ -95,13 +95,18 @@ public class BreakdownTable {
                 CucumberScenarioResult[] filteredData = this.filter(array, rowData[i]);
                 filteredData = this.filter(filteredData, colData[j]);
                 DataDimension[] stepFilters = {};
-                if (rowData[i][rowData[i].length - 1].getDimensionValue().equals(DimensionValue.STEP)) {
-                    stepFilters = ArrayUtils.add(stepFilters, rowData[i][rowData[i].length - 1]);
-                }
-                if (colData[j][colData[j].length - 1].getDimensionValue().equals(DimensionValue.STEP)) {
+                Matcher[] matchers = {};
+                if (colData[j][colData[j].length - 1].getDimensionValue().isStep()) {
                     stepFilters = ArrayUtils.add(stepFilters, colData[j][colData[j].length - 1]);
+                    //matchers = ArrayUtils.add(matchers,
+                    //        BaseMatcher.create(colData[j][colData[j].length - 1].getDimensionValue()));
                 }
-                stats[i][j] = this.valuateCell(filteredData, stepFilters);
+                if (stepFilters.length <= 0 && rowData[i][rowData[i].length - 1].getDimensionValue().isStep()) {
+                    stepFilters = ArrayUtils.add(stepFilters, rowData[i][rowData[i].length - 1]);
+                    //matchers = ArrayUtils.add(matchers,
+                    //        BaseMatcher.create(rowData[i][rowData[i].length - 1].getDimensionValue()));
+                }
+                stats[i][j] = this.valuateCell(filteredData, stepFilters, matchers);
             }
         }
         return stats;

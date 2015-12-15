@@ -152,15 +152,18 @@ public class CucumberBreakdownReport extends CucumberResultsCommon {
     private String drawCellValues(int passed, int failed, int skipped) {
         String output = "";
         if (passed > 0) {
-            output = output.concat(String.format("<font color=green>%d</font>&nbsp;", passed));
+            //output = output.concat(String.format("<font color=green>%d</font>&nbsp;", passed));
+            output = output.concat(String.format("Passed: %d ", passed));
         }
         if (failed > 0) {
-            output = output.concat(String.format("<font color=red>%d</font>&nbsp;", failed));
+            //output = output.concat(String.format("<font color=red>%d</font>&nbsp;", failed));
+            output = output.concat(String.format("Failed: %d ", failed));
         }
         if (skipped > 0) {
-            output = output.concat(String.format("<font color=silver>%d</font>&nbsp;", skipped));
+            //output = output.concat(String.format("<font color=silver>%d</font>&nbsp;", skipped));
+            output = output.concat(String.format("Skipped: %d ", skipped));
         }
-        return "<b>" + output + "</b>";
+        return output;
     }
     private String drawCell(BreakdownStats stats) {
         final int cellSize = 50;
@@ -174,21 +177,23 @@ public class CucumberBreakdownReport extends CucumberResultsCommon {
             }
             return String.format("<td>"
                     + "<table width=\"100%%\"><tr>"
-                        + "<td>"
-                        + "<svg xmlns=\"http://www.w3.org/2000/svg\" version=\"1.1\" width=\"100%%\" height=\"50\">"
+                        + "<td><a title=\"%s\">"
+                        + "<svg xmlns=\"http://www.w3.org/2000/svg\" version=\"1.1\" width=\"100%%\" height=\"30\">"
                         + "<rect y=\"%d\" width=\"100%%\" height=\"%d\""
                             + " stroke=\"black\" stroke-width=\"1\" fill=\"green\"></rect>"
                         + "<rect y=\"%d\" width=\"100%%\" height=\"%d\""
                             + " stroke=\"red\" stroke-width=\"1\" fill=\"red\"></rect>"
                         + "<rect y=\"%d\" width=\"100%%\" height=\"%d\""
                             + " stroke=\"silver\" stroke-width=\"1\" fill=\"silver\"></rect>"
-                        + "</svg>"
+                        + "</svg></a>"
                         + "</td></tr>"
-                        + "<tr><td colspan=3><center>%s</center></td></tr></table></td>",
+                        //+ "<tr><td colspan=3><center>%s</center></td></tr>"
+                        + "</table></td>",
+                    drawCellValues(stats.getPassed(), stats.getFailed(), stats.getSkipped()),
                     0, passedRatio,
                     passedRatio, failedRatio,
-                    failedRatio + passedRatio, skippedRatio,
-                    drawCellValues(stats.getPassed(), stats.getFailed(), stats.getSkipped())
+                    failedRatio + passedRatio, skippedRatio//,
+                    //drawCellValues(stats.getPassed(), stats.getFailed(), stats.getSkipped())
              );
         }
         return String.format("<td bgcolor=silver><center><b>N/A</b></center></td>");

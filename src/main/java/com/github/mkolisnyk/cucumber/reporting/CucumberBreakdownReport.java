@@ -166,7 +166,7 @@ public class CucumberBreakdownReport extends CucumberResultsCommon {
         return output;
     }
     private String drawCell(BreakdownStats stats) {
-        final int cellSize = 50;
+        final int cellSize = 30;
         double total = stats.getFailed() + stats.getPassed() + stats.getSkipped();
         if (total > 0) {
             int passedRatio = (int) (cellSize * ((double) stats.getPassed() / total));

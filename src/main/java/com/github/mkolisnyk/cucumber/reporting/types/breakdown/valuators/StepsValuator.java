@@ -1,6 +1,6 @@
 package com.github.mkolisnyk.cucumber.reporting.types.breakdown.valuators;
 
-import org.apache.maven.artifact.ant.shaded.StringUtils;
+import org.apache.commons.lang.StringUtils;
 
 import com.github.mkolisnyk.cucumber.reporting.types.breakdown.BreakdownStats;
 import com.github.mkolisnyk.cucumber.reporting.types.breakdown.matchers.Matcher;

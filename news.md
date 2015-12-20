@@ -2,6 +2,13 @@
 title: Cucumber Reports News
 ---
 
+## 20.12.2015 1.0.1 Version Release
+
+* [#47](https://github.com/mkolisnyk/cucumber-reports/issues/47) Enhancement: Breakdown Report: add complex matchers enhancement
+* [#46](https://github.com/mkolisnyk/cucumber-reports/issues/46) Enhancement: New Report: Multi-dimensional breakdown report enhancement  
+* [#44](https://github.com/mkolisnyk/cucumber-reports/issues/44) Bug fix: Small Fixes for reports generation bug  
+* [#42](https://github.com/mkolisnyk/cucumber-reports/issues/42) Enhancement: Update library dependencies to the latest versions enhancement  
+
 ## 08.11.2015 1.0.0 Version Release
 
 New 1.0.0 version was released. Changes:

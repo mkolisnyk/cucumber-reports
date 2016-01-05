@@ -22,6 +22,8 @@ public abstract class BaseMatcher implements Matcher {
             put(DimensionValue.AND, new AndMatcher());
             put(DimensionValue.OR, new OrMatcher());
             put(DimensionValue.STEP_SEQUENCE, new StepSequenceMatcher());
+            put(DimensionValue.ERROR_MESSAGE, new ErrorMessageMatcher());
+            put(DimensionValue.FAILED_STEP, new FailedStepMatcher());
         }
     };
     protected boolean stringMatches(String expected, String expression) {

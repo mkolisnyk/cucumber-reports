@@ -44,8 +44,13 @@ public class CucumberBreakdownReport extends CucumberResultsCommon {
         executeReport(new BreakdownReportInfo(table), table);
     }
     public void executeReport(BreakdownReportModel model) throws Exception {
+        boolean frameGenerated = false;
         model.initRedirectSequence("./" + this.getOutputName() + "-");
         for (BreakdownReportInfo info : model.getReportsInfo()) {
+            if (info.getRefreshTimeout() > 0 && !frameGenerated) {
+                frameGenerated = true;
+                generateFrameFile(model);
+            }
             this.executeReport(info, info.getTable());
         }
     }
@@ -53,6 +58,30 @@ public class CucumberBreakdownReport extends CucumberResultsCommon {
         BreakdownReportModel model = (BreakdownReportModel) JsonReader.jsonToJava(
                 FileUtils.readFileToString(config));
         this.executeReport(model);
+    }
+    private void generateFrameFile(BreakdownReportModel model) throws Exception {
+        InputStream is = this.getClass().getResourceAsStream("/breakdown-frame.html");
+        String content = IOUtils.toString(is);
+        File outFile = new File(
+                this.getOutputDirectory() + File.separator + this.getOutputName()
+                + "-frame.html");
+        content = content.replaceAll("__THIS__", outFile.getName());
+        for (BreakdownReportInfo item : model.getReportsInfo()) {
+            if (item.getRefreshTimeout() > 0) {
+                content = content.replaceAll("__FIRST__",
+                        "./" + this.getOutputName() + "-" + item.getReportSuffix() + ".html");
+                break;
+            }
+        }
+        int totalTimeout = 0;
+        for (BreakdownReportInfo item : model.getReportsInfo()) {
+            if (item.getRefreshTimeout() > 0) {
+                totalTimeout += item.getRefreshTimeout();
+            }
+        }
+        totalTimeout *= 3;
+        content = content.replaceAll("__TIMEOUT__", "" + totalTimeout);
+        FileUtils.writeStringToFile(outFile, content);
     }
     private String generateBreakdownReport(CucumberFeatureResult[] features,
             BreakdownReportInfo info, BreakdownTable table) throws IOException {

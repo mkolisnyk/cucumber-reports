@@ -19,6 +19,7 @@ public class ExtendedRuntimeOptions {
     private String[] excludeCoverageTags = {};
     private boolean breakdownReport = false;
     private String breakdownConfig = "";
+    private boolean featureOverviewChart = false;
 
     public ExtendedRuntimeOptions(Class<?> clazz) {
         ExtendedCucumberOptions options = clazz
@@ -42,6 +43,7 @@ public class ExtendedRuntimeOptions {
             this.excludeCoverageTags = options.excludeCoverageTags();
             this.breakdownReport = options.breakdownReport();
             this.breakdownConfig = options.breakdownConfig();
+            this.featureOverviewChart = options.featureOverviewChart();
         }
     }
 
@@ -119,5 +121,9 @@ public class ExtendedRuntimeOptions {
 
     public String getBreakdownConfig() {
         return breakdownConfig;
+    }
+
+    public boolean isFeatureOverviewChart() {
+        return featureOverviewChart;
     }
 }

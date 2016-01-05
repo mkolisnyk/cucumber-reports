@@ -5,6 +5,7 @@ import java.io.File;
 import com.github.mkolisnyk.cucumber.reporting.CucumberBreakdownReport;
 import com.github.mkolisnyk.cucumber.reporting.CucumberCoverageOverview;
 import com.github.mkolisnyk.cucumber.reporting.CucumberDetailedResults;
+import com.github.mkolisnyk.cucumber.reporting.CucumberFeatureOverview;
 import com.github.mkolisnyk.cucumber.reporting.CucumberResultsOverview;
 import com.github.mkolisnyk.cucumber.reporting.CucumberUsageReporting;
 
@@ -35,6 +36,18 @@ public final class ReportRunner {
         }
     }
 
+    public static void runFeatureOverviewChartReport(ExtendedRuntimeOptions extendedOptions) {
+        CucumberFeatureOverview results = new CucumberFeatureOverview();
+        results.setOutputDirectory(extendedOptions.getOutputFolder());
+        results.setOutputName(extendedOptions.getReportPrefix());
+        results.setSourceFile(extendedOptions.getJsonReportPath());
+        try {
+            results.executeFeatureOverviewChartReport();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+ 
     public static void runDetailedReport(ExtendedRuntimeOptions extendedOptions) {
         CucumberDetailedResults results = new CucumberDetailedResults();
         results.setOutputDirectory(extendedOptions.getOutputFolder());

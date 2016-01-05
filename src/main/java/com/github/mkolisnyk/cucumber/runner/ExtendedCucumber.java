@@ -109,6 +109,9 @@ public class ExtendedCucumber extends ParentRunner<ExtendedFeatureRunner> {
         if (extendedOptions.isOverviewReport()) {
             ReportRunner.runOverviewReport(extendedOptions);
         }
+        if (extendedOptions.isFeatureOverviewChart()) {
+            ReportRunner.runFeatureOverviewChartReport(extendedOptions);
+        }
         if (extendedOptions.isDetailedReport()) {
             ReportRunner.runDetailedReport(extendedOptions);
         }

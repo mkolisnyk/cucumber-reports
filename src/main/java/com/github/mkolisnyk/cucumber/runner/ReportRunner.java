@@ -6,6 +6,7 @@ import com.github.mkolisnyk.cucumber.reporting.CucumberBreakdownReport;
 import com.github.mkolisnyk.cucumber.reporting.CucumberCoverageOverview;
 import com.github.mkolisnyk.cucumber.reporting.CucumberDetailedResults;
 import com.github.mkolisnyk.cucumber.reporting.CucumberFeatureOverview;
+import com.github.mkolisnyk.cucumber.reporting.CucumberKnownErrorsReport;
 import com.github.mkolisnyk.cucumber.reporting.CucumberResultsOverview;
 import com.github.mkolisnyk.cucumber.reporting.CucumberUsageReporting;
 
@@ -96,6 +97,17 @@ public final class ReportRunner {
         report.setSourceFile(extendedOptions.getJsonReportPath());
         try {
             report.executeReport(new File(extendedOptions.getBreakdownConfig()));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+    public static void runKnownErrorsReport(ExtendedRuntimeOptions extendedOptions) {
+        CucumberKnownErrorsReport report = new CucumberKnownErrorsReport();
+        report.setOutputDirectory(extendedOptions.getOutputFolder());
+        report.setOutputName(extendedOptions.getReportPrefix());
+        report.setSourceFile(extendedOptions.getJsonReportPath());
+        try {
+            report.executeKnownErrorsReport(new File(extendedOptions.getKnownErrorsConfig()));
         } catch (Exception e) {
             e.printStackTrace();
         }

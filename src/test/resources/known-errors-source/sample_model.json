@@ -1,0 +1,62 @@
+{
+  "@type": "com.github.mkolisnyk.cucumber.reporting.types.knownerrors.KnownErrorsModel", 
+  "errorDescriptions": [
+    {
+      "description": "Select ticket isn't shown", 
+      "filter": {
+        "alias": "(.*)see the \"Select Ticket\" screen", 
+        "dimensionValue": {
+          "@id": 11, 
+          "name": "FAILED_STEP", 
+          "ordinal": 11
+        }, 
+        "expression": "(.*)see the \"Select Ticket\" screen", 
+        "isFinal": false, 
+        "subElements": []
+      }, 
+      "priority": {
+        "name": "HIGHEST", 
+        "ordinal": 4
+      }, 
+      "title": "Unable to reach Select Ticket screen"
+    }, 
+    {
+      "description": "Some search parameters do not bring results", 
+      "filter": {
+        "alias": "(.*)the \"Out Search Results\" screen", 
+        "dimensionValue": {
+          "@ref": 11
+        }, 
+        "expression": "(.*)the \"Out Search Results\" screen", 
+        "isFinal": false, 
+        "subElements": []
+      }, 
+      "priority": {
+        "name": "HIGH", 
+        "ordinal": 3
+      }, 
+      "title": "Search Fails"
+    }, 
+    {
+      "description": "Message box shows unexpected content", 
+      "filter": {
+        "alias": "(.*)message is shown", 
+        "dimensionValue": {
+          "@ref": 11
+        }, 
+        "expression": "(.*)message is shown", 
+        "isFinal": false, 
+        "subElements": []
+      }, 
+      "priority": {
+        "name": "LOW", 
+        "ordinal": 1
+      }, 
+      "title": "Unexpected message"
+    }
+  ], 
+  "orderBy": {
+    "name": "FREQUENCY", 
+    "ordinal": 1
+  }
+}

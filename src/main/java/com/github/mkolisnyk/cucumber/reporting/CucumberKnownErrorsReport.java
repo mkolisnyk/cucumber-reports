@@ -8,6 +8,8 @@ import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.IOUtils;
 import org.apache.commons.lang3.ArrayUtils;
 
+import com.cedarsoftware.util.io.JsonReader;
+import com.github.mkolisnyk.cucumber.reporting.types.breakdown.BreakdownReportModel;
 import com.github.mkolisnyk.cucumber.reporting.types.knownerrors.KnownErrorsModel;
 import com.github.mkolisnyk.cucumber.reporting.types.knownerrors.KnownErrorsResult;
 import com.github.mkolisnyk.cucumber.reporting.types.knownerrors.KnownErrorsResultSet;
@@ -57,5 +59,10 @@ public class CucumberKnownErrorsReport extends CucumberResultsCommon {
                 this.getOutputDirectory() + File.separator + this.getOutputName()
                 + "-known-errors.html");
         FileUtils.writeStringToFile(outFile, generateKnownErrorsReport(features, model));
+    }
+    public void executeKnownErrorsReport(File config) throws Exception {
+        KnownErrorsModel model = (KnownErrorsModel) JsonReader.jsonToJava(
+                FileUtils.readFileToString(config));
+        this.executeKnownErrorsReport(model);
     }
 }

@@ -1,5 +1,7 @@
 package com.github.mkolisnyk.cucumber.reporting;
 
+import java.io.File;
+
 import org.junit.Test;
 
 import com.github.mkolisnyk.cucumber.reporting.types.breakdown.DataDimension;
@@ -36,21 +38,15 @@ public class CucumberKnownErrorsTest {
             },
             KnownErrorOrderBy.FREQUENCY);
         results.executeKnownErrorsReport(model);
+        //String json = JsonWriter.objectToJson(model);
+        //FileUtils.writeStringToFile(new File("./src/test/resources/known-errors-source/sample_model.json"), json);
     }
-/*    @Test
+    @Test
     public void testGenerateReportBigger() throws Exception {
-        CucumberFeatureOverview results = new CucumberFeatureOverview();
+        CucumberKnownErrorsReport results = new CucumberKnownErrorsReport();
         results.setOutputDirectory("target");
         results.setOutputName("cucumber-results-2");
         results.setSourceFile("./src/test/resources/detailed-source/cucumber-2.json");
-        results.executeFeatureOverviewChartReport();
+        results.executeKnownErrorsReport(new File("./src/test/resources/known-errors-source/sample_model.json"));
     }
-    @Test
-    public void testGenerateReportDry() throws Exception {
-        CucumberFeatureOverview results = new CucumberFeatureOverview();
-        results.setOutputDirectory("target");
-        results.setOutputName("cucumber-results-dry");
-        results.setSourceFile("./src/test/resources/cucumber-dry.json");
-        results.executeFeatureOverviewChartReport();
-    }*/
 }

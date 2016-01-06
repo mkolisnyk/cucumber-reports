@@ -9,7 +9,6 @@ import org.apache.commons.io.IOUtils;
 import org.apache.commons.lang3.ArrayUtils;
 
 import com.cedarsoftware.util.io.JsonReader;
-import com.github.mkolisnyk.cucumber.reporting.types.breakdown.BreakdownReportModel;
 import com.github.mkolisnyk.cucumber.reporting.types.knownerrors.KnownErrorsModel;
 import com.github.mkolisnyk.cucumber.reporting.types.knownerrors.KnownErrorsResult;
 import com.github.mkolisnyk.cucumber.reporting.types.knownerrors.KnownErrorsResultSet;

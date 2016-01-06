@@ -22,6 +22,8 @@ public class ExtendedRuntimeOptions {
     private boolean featureOverviewChart = false;
     private boolean knownErrorsReport = false;
     private String knownErrorsConfig = "";
+    private boolean consolidatedReport = false;
+    private String[] consolidatedReportOptions = {};
 
     public ExtendedRuntimeOptions(Class<?> clazz) {
         ExtendedCucumberOptions options = clazz
@@ -48,6 +50,8 @@ public class ExtendedRuntimeOptions {
             this.featureOverviewChart = options.featureOverviewChart();
             this.knownErrorsReport = options.knownErrorsReport();
             this.knownErrorsConfig = options.knownErrorsConfig();
+            this.consolidatedReport = options.consolidatedReport();
+            this.consolidatedReportOptions = options.consolidatedReportOptions();
         }
     }
 
@@ -137,5 +141,13 @@ public class ExtendedRuntimeOptions {
 
     public String getKnownErrorsConfig() {
         return knownErrorsConfig;
+    }
+
+    public boolean isConsolidatedReport() {
+        return consolidatedReport;
+    }
+
+    public String[] getConsolidatedReportOptions() {
+        return consolidatedReportOptions;
     }
 }

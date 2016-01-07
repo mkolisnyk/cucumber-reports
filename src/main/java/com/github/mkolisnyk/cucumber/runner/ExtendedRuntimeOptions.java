@@ -23,7 +23,7 @@ public class ExtendedRuntimeOptions {
     private boolean knownErrorsReport = false;
     private String knownErrorsConfig = "";
     private boolean consolidatedReport = false;
-    private String[] consolidatedReportOptions = {};
+    private String consolidatedReportConfig = "";
 
     public ExtendedRuntimeOptions(Class<?> clazz) {
         ExtendedCucumberOptions options = clazz
@@ -51,7 +51,7 @@ public class ExtendedRuntimeOptions {
             this.knownErrorsReport = options.knownErrorsReport();
             this.knownErrorsConfig = options.knownErrorsConfig();
             this.consolidatedReport = options.consolidatedReport();
-            this.consolidatedReportOptions = options.consolidatedReportOptions();
+            this.consolidatedReportConfig = options.consolidatedReportConfig();
         }
     }
 
@@ -147,7 +147,7 @@ public class ExtendedRuntimeOptions {
         return consolidatedReport;
     }
 
-    public String[] getConsolidatedReportOptions() {
-        return consolidatedReportOptions;
+    public String getConsolidatedReportConfig() {
+        return consolidatedReportConfig;
     }
 }

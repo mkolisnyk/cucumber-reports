@@ -3,6 +3,7 @@ package com.github.mkolisnyk.cucumber.runner;
 import java.io.File;
 
 import com.github.mkolisnyk.cucumber.reporting.CucumberBreakdownReport;
+import com.github.mkolisnyk.cucumber.reporting.CucumberConsolidatedReport;
 import com.github.mkolisnyk.cucumber.reporting.CucumberCoverageOverview;
 import com.github.mkolisnyk.cucumber.reporting.CucumberDetailedResults;
 import com.github.mkolisnyk.cucumber.reporting.CucumberFeatureOverview;
@@ -108,6 +109,17 @@ public final class ReportRunner {
         report.setSourceFile(extendedOptions.getJsonReportPath());
         try {
             report.executeKnownErrorsReport(new File(extendedOptions.getKnownErrorsConfig()));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+    public static void runConsolidatedReport(ExtendedRuntimeOptions extendedOptions) {
+        CucumberConsolidatedReport report = new CucumberConsolidatedReport();
+        report.setOutputDirectory(extendedOptions.getOutputFolder());
+        report.setOutputName(extendedOptions.getReportPrefix());
+        report.setSourceFile(extendedOptions.getJsonReportPath());
+        try {
+            report.executeConsolidatedReport(new File(extendedOptions.getConsolidatedReportConfig()));
         } catch (Exception e) {
             e.printStackTrace();
         }

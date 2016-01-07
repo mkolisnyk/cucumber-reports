@@ -127,6 +127,9 @@ public class ExtendedCucumber extends ParentRunner<ExtendedFeatureRunner> {
         if (extendedOptions.isKnownErrorsReport()) {
             ReportRunner.runKnownErrorsReport(extendedOptions);
         }
+        if (extendedOptions.isConsolidatedReport()) {
+            ReportRunner.runConsolidatedReport(extendedOptions);
+        }
     }
 
     private void addChildren(List<CucumberFeature> cucumberFeatures) throws InitializationError {

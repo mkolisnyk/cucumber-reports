@@ -46,5 +46,5 @@ public @interface ExtendedCucumberOptions {
     String knownErrorsConfig() default "";
 
     boolean consolidatedReport() default false;
-    String[] consolidatedReportOptions() default {};
+    String consolidatedReportConfig() default "";
 }

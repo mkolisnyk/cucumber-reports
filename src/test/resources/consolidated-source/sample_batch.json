@@ -1,0 +1,39 @@
+{
+  "@type": "com.github.mkolisnyk.cucumber.reporting.types.consolidated.ConsolidatedReportBatch", 
+  "models": [
+    {
+      "items": [
+        {
+          "path": "target/cucumber-results-feature-overview-chart.html", 
+          "title": "Overview Chart"
+        }, 
+        {
+          "path": "target/cucumber-results-known-errors.html", 
+          "title": "Known Errors"
+        }, 
+        {
+          "path": "target/cucumber-results-feature-overview.html", 
+          "title": "Feature Overview"
+        }
+      ], 
+      "reportSuffix": "batch-config1", 
+      "title": "Overall Results Batch 1", 
+      "useTableOfContents": true
+    }, 
+    {
+      "items": [
+        {
+          "path": "target/cucumber-results-2-feature-overview-chart.html", 
+          "title": "Overview Chart"
+        }, 
+        {
+          "path": "target/cucumber-results-coverage-filtered.html", 
+          "title": "Test Coverage"
+        }
+      ], 
+      "reportSuffix": "batch-config2", 
+      "title": "Overall Results Batch 2", 
+      "useTableOfContents": false
+    }
+  ]
+}

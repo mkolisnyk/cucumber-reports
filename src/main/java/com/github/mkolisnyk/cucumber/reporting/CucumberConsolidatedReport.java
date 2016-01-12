@@ -32,15 +32,34 @@ public class CucumberConsolidatedReport extends CucumberResultsCommon {
         }
         return content;
     }
-
+    private String generateLocalLink(String title) {
+        String result = title.toLowerCase();
+        return result.replaceAll("[^a-z0-9]", "-");
+    }
+    private String generateTableOfContents(ConsolidatedReportModel model) throws Exception {
+        String contents = "<ol>";
+        for (ConsolidatedItemInfo item : model.getItems()) {
+            contents = contents.concat(
+                String.format("<li><a href=\"#%s\">%s</a>",
+                        generateLocalLink(item.getTitle()), item.getTitle()));
+        }
+        contents += "</ol>";
+        return contents;
+    }
     private String generateConsolidatedReport(ConsolidatedReportModel model) throws Exception {
         String result = getReportBase();
         result = result.replaceAll("__TITLE__", model.getTitle());
         String reportContent = "";
+        if (model.isUseTableOfContents()) {
+            reportContent = reportContent.concat(
+                    String.format("<h1>Table of Contents</h1>%s", generateTableOfContents(model)));
+        }
         for (ConsolidatedItemInfo item : model.getItems()) {
             String content = FileUtils.readFileToString(new File(item.getPath()));
             content = this.amendHtmlHeaders(content);
-            reportContent = reportContent.concat(String.format("<h1>%s</h1>%s", item.getTitle(), content));
+            reportContent = reportContent.concat(
+                String.format("<a id=\"%s\"><h1>%s</h1></a>%s",
+                    generateLocalLink(item.getTitle()), item.getTitle(), content));
         }
         result = result.replaceAll("__REPORT__", reportContent);
         return result;

@@ -194,13 +194,16 @@ public class CucumberBreakdownReport extends CucumberResultsCommon {
         if (total <= 0) {
             return String.format("<td bgcolor=silver><center><b>N/A</b></center></td>");
         }
-        CellDrawer drawer = (CellDrawer) drawCellMap.get(type).newInstance();
+        CellDrawer drawer = (CellDrawer) (drawCellMap.get(type).getConstructor(this.getClass()).newInstance(this));
         return drawer.drawCell(stats);
     }
     private interface CellDrawer {
         String drawCell(BreakdownStats stats);
     }
     private class BarCellDrawer implements CellDrawer {
+        public BarCellDrawer() {
+            super();
+        }
         private String drawCellValues(int passed, int failed, int skipped) {
             String output = "";
             if (passed > 0) {
@@ -250,6 +253,9 @@ public class CucumberBreakdownReport extends CucumberResultsCommon {
         }
     }
     private class BarNumberCellDrawer implements CellDrawer {
+        public BarNumberCellDrawer() {
+            super();
+        }
 
         @Override
         public String drawCell(BreakdownStats stats) {
@@ -258,6 +264,9 @@ public class CucumberBreakdownReport extends CucumberResultsCommon {
         }
     }
     private class NumberOnlyCellDrawer implements CellDrawer {
+        public NumberOnlyCellDrawer() {
+            super();
+        }
 
         @Override
         public String drawCell(BreakdownStats stats) {
@@ -266,6 +275,9 @@ public class CucumberBreakdownReport extends CucumberResultsCommon {
         }
     }
     private class PieChartCellDrawer implements CellDrawer {
+        public PieChartCellDrawer() {
+            super();
+        }
 
         @Override
         public String drawCell(BreakdownStats stats) {

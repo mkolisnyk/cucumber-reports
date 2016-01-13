@@ -26,8 +26,9 @@ public class ExtendedCucumber extends ParentRunner<ExtendedFeatureRunner> {
     private final JUnitReporter jUnitReporter;
     private final List<ExtendedFeatureRunner> children = new ArrayList<ExtendedFeatureRunner>();
     private final Runtime runtime;
-    private final ExtendedRuntimeOptions extendedOptions;
+    private final ExtendedRuntimeOptions[] extendedOptions;
     private Class clazzValue;
+    private int retryCount = 0;
 
     public ExtendedCucumber(Class clazz) throws InitializationError, IOException {
         super(clazz);
@@ -40,7 +41,10 @@ public class ExtendedCucumber extends ParentRunner<ExtendedFeatureRunner> {
 
         ResourceLoader resourceLoader = new MultiLoader(classLoader);
         runtime = createRuntime(resourceLoader, classLoader, runtimeOptions);
-        extendedOptions = new ExtendedRuntimeOptions(clazz);
+        extendedOptions = ExtendedRuntimeOptions.init(clazz);
+        for (ExtendedRuntimeOptions option : extendedOptions) {
+            retryCount = Math.max(retryCount, option.getRetryCount());
+        }
 
         final List<CucumberFeature> cucumberFeatures = runtimeOptions.cucumberFeatures(resourceLoader);
         jUnitReporter = new JUnitReporter(
@@ -103,32 +107,34 @@ public class ExtendedCucumber extends ParentRunner<ExtendedFeatureRunner> {
         runtime.printSummary();
         jUnitReporter.done();
         jUnitReporter.close();
-        if (extendedOptions.isUsageReport()) {
-            ReportRunner.runUsageReport(extendedOptions);
-        }
-        if (extendedOptions.isOverviewReport()) {
-            ReportRunner.runOverviewReport(extendedOptions);
-        }
-        if (extendedOptions.isFeatureOverviewChart()) {
-            ReportRunner.runFeatureOverviewChartReport(extendedOptions);
-        }
-        if (extendedOptions.isDetailedReport()) {
-            ReportRunner.runDetailedReport(extendedOptions);
-        }
-        if (extendedOptions.isDetailedAggregatedReport()) {
-            ReportRunner.runDetailedAggregatedReport(extendedOptions);
-        }
-        if (extendedOptions.isCoverageReport()) {
-            ReportRunner.runCoverageReport(extendedOptions);
-        }
-        if (extendedOptions.isBreakdownReport()) {
-            ReportRunner.runBreakdownReport(extendedOptions);
-        }
-        if (extendedOptions.isKnownErrorsReport()) {
-            ReportRunner.runKnownErrorsReport(extendedOptions);
-        }
-        if (extendedOptions.isConsolidatedReport()) {
-            ReportRunner.runConsolidatedReport(extendedOptions);
+        for (ExtendedRuntimeOptions extendedOption : extendedOptions) {
+            if (extendedOption.isUsageReport()) {
+                ReportRunner.runUsageReport(extendedOption);
+            }
+            if (extendedOption.isOverviewReport()) {
+                ReportRunner.runOverviewReport(extendedOption);
+            }
+            if (extendedOption.isFeatureOverviewChart()) {
+                ReportRunner.runFeatureOverviewChartReport(extendedOption);
+            }
+            if (extendedOption.isDetailedReport()) {
+                ReportRunner.runDetailedReport(extendedOption);
+            }
+            if (extendedOption.isDetailedAggregatedReport()) {
+                ReportRunner.runDetailedAggregatedReport(extendedOption);
+            }
+            if (extendedOption.isCoverageReport()) {
+                ReportRunner.runCoverageReport(extendedOption);
+            }
+            if (extendedOption.isBreakdownReport()) {
+                ReportRunner.runBreakdownReport(extendedOption);
+            }
+            if (extendedOption.isKnownErrorsReport()) {
+                ReportRunner.runKnownErrorsReport(extendedOption);
+            }
+            if (extendedOption.isConsolidatedReport()) {
+                ReportRunner.runConsolidatedReport(extendedOption);
+            }
         }
     }
 
@@ -136,7 +142,7 @@ public class ExtendedCucumber extends ParentRunner<ExtendedFeatureRunner> {
         for (CucumberFeature cucumberFeature : cucumberFeatures) {
             children.add(
                     new ExtendedFeatureRunner(cucumberFeature, runtime,
-                            jUnitReporter, this.extendedOptions.getRetryCount()));
+                            jUnitReporter, this.retryCount));
         }
     }
 }

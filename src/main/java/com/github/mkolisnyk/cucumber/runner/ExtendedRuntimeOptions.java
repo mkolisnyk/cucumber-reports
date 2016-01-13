@@ -1,5 +1,7 @@
 package com.github.mkolisnyk.cucumber.runner;
 
+import org.apache.commons.lang3.ArrayUtils;
+
 public class ExtendedRuntimeOptions {
 
     private boolean isOverviewReport = false;
@@ -25,9 +27,7 @@ public class ExtendedRuntimeOptions {
     private boolean consolidatedReport = false;
     private String consolidatedReportConfig = "";
 
-    public ExtendedRuntimeOptions(Class<?> clazz) {
-        ExtendedCucumberOptions options = clazz
-                .getAnnotation(ExtendedCucumberOptions.class);
+    public ExtendedRuntimeOptions(ExtendedCucumberOptions options) {
         if (options != null) {
             this.isOverviewReport = options.overviewReport();
             this.isUsageReport = options.usageReport();
@@ -149,5 +149,13 @@ public class ExtendedRuntimeOptions {
 
     public String getConsolidatedReportConfig() {
         return consolidatedReportConfig;
+    }
+    public static ExtendedRuntimeOptions[] init(Class<?> clazz) {
+        ExtendedCucumberOptions[] options = clazz.getAnnotationsByType(ExtendedCucumberOptions.class);
+        ExtendedRuntimeOptions[] result = {};
+        for (ExtendedCucumberOptions option : options) {
+            result = ArrayUtils.add(result, new ExtendedRuntimeOptions(option));
+        }
+        return result;
     }
 }

@@ -22,6 +22,13 @@ import cucumber.api.CucumberOptions;
         excludeCoverageTags = {"@flaky" },
         includeCoverageTags = {"@passed" },
         outputFolder = "target")
+@ExtendedCucumberOptions(jsonReport = "target/cucumber.json",
+        retryCount = 3,
+        coverageReport = true,
+        jsonUsageReport = "target/cucumber-usage.json",
+        excludeCoverageTags = {"@flaky" },
+        includeCoverageTags = {"@passed" },
+        outputFolder = "target")
 @CucumberOptions(plugin = { "html:target/cucumber-html-report",
         "json:target/cucumber.json", "pretty:target/cucumber-pretty.txt",
         "usage:target/cucumber-usage.json", "junit:target/cucumber-results.xml" },

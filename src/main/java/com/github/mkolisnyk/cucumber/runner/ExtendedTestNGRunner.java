@@ -11,7 +11,7 @@ import cucumber.api.testng.TestNGCucumberRunner;
 
 public class ExtendedTestNGRunner extends AbstractTestNGCucumberTests {
     private Class<?> clazz;
-    private ExtendedRuntimeOptions extendedOptions;
+    private ExtendedRuntimeOptions[] extendedOptions;
 
     private void runPredefinedMethods(Class<?> annotation) throws Exception {
         if (!annotation.isAnnotation()) {
@@ -34,7 +34,7 @@ public class ExtendedTestNGRunner extends AbstractTestNGCucumberTests {
      */
     @Test(groups = "cucumber", description = "Runs Cucumber Features")
     public void runCukes() throws Exception {
-        extendedOptions = new ExtendedRuntimeOptions(clazz);
+        extendedOptions = ExtendedRuntimeOptions.init(clazz);
         clazz = this.getClass();
         try {
             runPredefinedMethods(BeforeSuite.class);
@@ -47,20 +47,34 @@ public class ExtendedTestNGRunner extends AbstractTestNGCucumberTests {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        if (extendedOptions.isUsageReport()) {
-            ReportRunner.runUsageReport(extendedOptions);
-        }
-        if (extendedOptions.isOverviewReport()) {
-            ReportRunner.runOverviewReport(extendedOptions);
-        }
-        if (extendedOptions.isDetailedReport()) {
-            ReportRunner.runDetailedReport(extendedOptions);
-        }
-        if (extendedOptions.isDetailedAggregatedReport()) {
-            ReportRunner.runDetailedAggregatedReport(extendedOptions);
-        }
-        if (extendedOptions.isCoverageReport()) {
-            ReportRunner.runCoverageReport(extendedOptions);
+        for (ExtendedRuntimeOptions extendedOption : extendedOptions) {
+            if (extendedOption.isUsageReport()) {
+                ReportRunner.runUsageReport(extendedOption);
+            }
+            if (extendedOption.isOverviewReport()) {
+                ReportRunner.runOverviewReport(extendedOption);
+            }
+            if (extendedOption.isFeatureOverviewChart()) {
+                ReportRunner.runFeatureOverviewChartReport(extendedOption);
+            }
+            if (extendedOption.isDetailedReport()) {
+                ReportRunner.runDetailedReport(extendedOption);
+            }
+            if (extendedOption.isDetailedAggregatedReport()) {
+                ReportRunner.runDetailedAggregatedReport(extendedOption);
+            }
+            if (extendedOption.isCoverageReport()) {
+                ReportRunner.runCoverageReport(extendedOption);
+            }
+            if (extendedOption.isBreakdownReport()) {
+                ReportRunner.runBreakdownReport(extendedOption);
+            }
+            if (extendedOption.isKnownErrorsReport()) {
+                ReportRunner.runKnownErrorsReport(extendedOption);
+            }
+            if (extendedOption.isConsolidatedReport()) {
+                ReportRunner.runConsolidatedReport(extendedOption);
+            }
         }
     }
 }

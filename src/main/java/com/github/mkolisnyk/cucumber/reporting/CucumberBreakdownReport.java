@@ -270,8 +270,17 @@ public class CucumberBreakdownReport extends CucumberResultsCommon {
 
         @Override
         public String drawCell(BreakdownStats stats) {
-            // TODO Auto-generated method stub
-            return null;
+            String output = "<td><center><b>";
+            if (stats.getPassed() > 0) {
+                output = output.concat(String.format("<font color=green>%d</font> ", stats.getPassed()));
+            }
+            if (stats.getFailed() > 0) {
+                output = output.concat(String.format("<font color=red>%d</font> ", stats.getFailed()));
+            }
+            if (stats.getSkipped() > 0) {
+                output = output.concat(String.format("<font color=silver>%d</font> ", stats.getSkipped()));
+            }
+            return output + "</b></center></td>";
         }
     }
     private class PieChartCellDrawer implements CellDrawer {

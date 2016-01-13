@@ -3,6 +3,8 @@ package com.github.mkolisnyk.cucumber.reporting;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.HashMap;
+import java.util.Map;
 
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.IOUtils;
@@ -11,6 +13,7 @@ import org.apache.commons.lang3.StringUtils;
 import org.testng.Assert;
 
 import com.cedarsoftware.util.io.JsonReader;
+import com.github.mkolisnyk.cucumber.reporting.types.breakdown.BreakdownCellDisplayType;
 import com.github.mkolisnyk.cucumber.reporting.types.breakdown.BreakdownReportInfo;
 import com.github.mkolisnyk.cucumber.reporting.types.breakdown.BreakdownReportModel;
 import com.github.mkolisnyk.cucumber.reporting.types.breakdown.BreakdownStats;
@@ -84,7 +87,7 @@ public class CucumberBreakdownReport extends CucumberResultsCommon {
         FileUtils.writeStringToFile(outFile, content);
     }
     private String generateBreakdownReport(CucumberFeatureResult[] features,
-            BreakdownReportInfo info, BreakdownTable table) throws IOException {
+            BreakdownReportInfo info, BreakdownTable table) throws Exception {
         String content = getReportBase();
         content = content.replaceAll("__TITLE__", info.getTitle());
         if (info.getRefreshTimeout() > 0 && StringUtils.isNotBlank(info.getNextFile())) {
@@ -99,7 +102,7 @@ public class CucumberBreakdownReport extends CucumberResultsCommon {
         return content;
     }
     private String generateBreakdownTable(CucumberFeatureResult[] features,
-            BreakdownTable table) {
+            BreakdownTable table) throws Exception {
         String content = String.format("<table class=\"hoverTable\"><thead>%s</thead><tbody>%s</tbody></table>",
                 generateHeader(table), generateBody(table, features));
         return content;
@@ -158,7 +161,7 @@ public class CucumberBreakdownReport extends CucumberResultsCommon {
         }*/
         return content;
     }
-    private String generateBody(BreakdownTable table, CucumberFeatureResult[] features) {
+    private String generateBody(BreakdownTable table, CucumberFeatureResult[] features) throws Exception {
         CucumberScenarioResult[] scenarios = new CucumberScenarioResult[] {};
         for (CucumberFeatureResult feature : features) {
             scenarios = ArrayUtils.addAll(scenarios, feature.getElements());
@@ -171,60 +174,103 @@ public class CucumberBreakdownReport extends CucumberResultsCommon {
         for (int i = 0; i < results.length; i++) {
             String row = headingRows[i];
             for (int j = 0; j < results[i].length; j++) {
-                row = row.concat(drawCell(results[i][j]));
+                row = row.concat(drawCell(results[i][j], table.getDisplayType()));
             }
             row = row.concat("</tr>");
             content = content.concat(row);
         }
         return content;
     }
-    private String drawCellValues(int passed, int failed, int skipped) {
-        String output = "";
-        if (passed > 0) {
-            //output = output.concat(String.format("<font color=green>%d</font>&nbsp;", passed));
-            output = output.concat(String.format("Passed: %d ", passed));
-        }
-        if (failed > 0) {
-            //output = output.concat(String.format("<font color=red>%d</font>&nbsp;", failed));
-            output = output.concat(String.format("Failed: %d ", failed));
-        }
-        if (skipped > 0) {
-            //output = output.concat(String.format("<font color=silver>%d</font>&nbsp;", skipped));
-            output = output.concat(String.format("Skipped: %d ", skipped));
-        }
-        return output;
-    }
-    private String drawCell(BreakdownStats stats) {
-        final int cellSize = 30;
-        double total = stats.getFailed() + stats.getPassed() + stats.getSkipped();
-        if (total > 0) {
-            int passedRatio = (int) (cellSize * ((double) stats.getPassed() / total));
-            int failedRatio = (int) (cellSize * ((double) stats.getFailed() / total));
-            int skippedRatio = (int) (cellSize * ((double) stats.getSkipped() / total));
-            if (stats.getFailed() > 0) {
-                failedRatio++;
+    private String drawCell(BreakdownStats stats, BreakdownCellDisplayType type) throws Exception {
+        Map<BreakdownCellDisplayType, Class<?>> drawCellMap = new HashMap<BreakdownCellDisplayType, Class<?>>() {
+            {
+                put(BreakdownCellDisplayType.BARS_ONLY, BarCellDrawer.class);
+                put(BreakdownCellDisplayType.BARS_WITH_NUMBERS, BarNumberCellDrawer.class);
+                put(BreakdownCellDisplayType.NUMBERS_ONLY, NumberOnlyCellDrawer.class);
+                put(BreakdownCellDisplayType.PIE_CHART, PieChartCellDrawer.class);
             }
-            return String.format("<td>"
-                    + "<table width=\"100%%\"><tr>"
-                        + "<td><a title=\"%s\">"
-                        + "<svg xmlns=\"http://www.w3.org/2000/svg\" version=\"1.1\" width=\"100%%\" height=\"30\">"
-                        + "<rect y=\"%d\" width=\"100%%\" height=\"%d\""
-                            + " stroke=\"black\" stroke-width=\"1\" fill=\"green\"></rect>"
-                        + "<rect y=\"%d\" width=\"100%%\" height=\"%d\""
-                            + " stroke=\"red\" stroke-width=\"1\" fill=\"red\"></rect>"
-                        + "<rect y=\"%d\" width=\"100%%\" height=\"%d\""
-                            + " stroke=\"silver\" stroke-width=\"1\" fill=\"silver\"></rect>"
-                        + "</svg></a>"
-                        + "</td></tr>"
-                        //+ "<tr><td colspan=3><center>%s</center></td></tr>"
-                        + "</table></td>",
-                    drawCellValues(stats.getPassed(), stats.getFailed(), stats.getSkipped()),
-                    0, passedRatio,
-                    passedRatio, failedRatio,
-                    failedRatio + passedRatio, skippedRatio//,
-                    //drawCellValues(stats.getPassed(), stats.getFailed(), stats.getSkipped())
-             );
+        };
+        double total = stats.getFailed() + stats.getPassed() + stats.getSkipped();
+        if (total <= 0) {
+            return String.format("<td bgcolor=silver><center><b>N/A</b></center></td>");
         }
-        return String.format("<td bgcolor=silver><center><b>N/A</b></center></td>");
+        CellDrawer drawer = (CellDrawer) drawCellMap.get(type).newInstance();
+        return drawer.drawCell(stats);
+    }
+    private interface CellDrawer {
+        String drawCell(BreakdownStats stats);
+    }
+    private class BarCellDrawer implements CellDrawer {
+        private String drawCellValues(int passed, int failed, int skipped) {
+            String output = "";
+            if (passed > 0) {
+                output = output.concat(String.format("Passed: %d ", passed));
+            }
+            if (failed > 0) {
+                output = output.concat(String.format("Failed: %d ", failed));
+            }
+            if (skipped > 0) {
+                output = output.concat(String.format("Skipped: %d ", skipped));
+            }
+            return output;
+        }
+        @Override
+        public String drawCell(BreakdownStats stats) {
+            final int cellSize = 30;
+            double total = stats.getFailed() + stats.getPassed() + stats.getSkipped();
+            if (total > 0) {
+                int passedRatio = (int) (cellSize * ((double) stats.getPassed() / total));
+                int failedRatio = (int) (cellSize * ((double) stats.getFailed() / total));
+                int skippedRatio = (int) (cellSize * ((double) stats.getSkipped() / total));
+                if (stats.getFailed() > 0) {
+                    failedRatio++;
+                }
+                return String.format("<td>"
+                        + "<table width=\"100%%\"><tr>"
+                            + "<td><a title=\"%s\">"
+                            + "<svg xmlns=\"http://www.w3.org/2000/svg\" version=\"1.1\" width=\"100%%\" height=\"30\">"
+                            + "<rect y=\"%d\" width=\"100%%\" height=\"%d\""
+                                + " stroke=\"black\" stroke-width=\"1\" fill=\"green\"></rect>"
+                            + "<rect y=\"%d\" width=\"100%%\" height=\"%d\""
+                                + " stroke=\"red\" stroke-width=\"1\" fill=\"red\"></rect>"
+                            + "<rect y=\"%d\" width=\"100%%\" height=\"%d\""
+                                + " stroke=\"silver\" stroke-width=\"1\" fill=\"silver\"></rect>"
+                            + "</svg></a>"
+                            + "</td></tr>"
+                            //+ "<tr><td colspan=3><center>%s</center></td></tr>"
+                            + "</table></td>",
+                        drawCellValues(stats.getPassed(), stats.getFailed(), stats.getSkipped()),
+                        0, passedRatio,
+                        passedRatio, failedRatio,
+                        failedRatio + passedRatio, skippedRatio//,
+                        //drawCellValues(stats.getPassed(), stats.getFailed(), stats.getSkipped())
+                 );
+            }
+            return String.format("<td bgcolor=silver><center><b>N/A</b></center></td>");
+        }
+    }
+    private class BarNumberCellDrawer implements CellDrawer {
+
+        @Override
+        public String drawCell(BreakdownStats stats) {
+            // TODO Auto-generated method stub
+            return null;
+        }
+    }
+    private class NumberOnlyCellDrawer implements CellDrawer {
+
+        @Override
+        public String drawCell(BreakdownStats stats) {
+            // TODO Auto-generated method stub
+            return null;
+        }
+    }
+    private class PieChartCellDrawer implements CellDrawer {
+
+        @Override
+        public String drawCell(BreakdownStats stats) {
+            // TODO Auto-generated method stub
+            return null;
+        }
     }
 }

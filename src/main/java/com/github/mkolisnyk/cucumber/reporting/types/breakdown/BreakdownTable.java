@@ -26,6 +26,7 @@ public class BreakdownTable {
     private DataDimension rows;
     private DataDimension cols;
     private BreakdownCellValue cell;
+    private BreakdownCellDisplayType displayType;
     public BreakdownTable() {
         this(DataDimension.allFeatures(), DataDimension.allScenarios(), BreakdownCellValue.STEPS);
     }
@@ -34,10 +35,15 @@ public class BreakdownTable {
     }
     public BreakdownTable(DataDimension rowsValue, DataDimension colsValue,
             BreakdownCellValue cellValue) {
+        this(rowsValue, colsValue, cellValue, BreakdownCellDisplayType.BARS_ONLY);
+    }
+    public BreakdownTable(DataDimension rowsValue, DataDimension colsValue,
+            BreakdownCellValue cellValue, BreakdownCellDisplayType displayTypeValue) {
         super();
         this.rows = rowsValue;
         this.cols = colsValue;
         this.cell = cellValue;
+        this.displayType = displayTypeValue;
     }
     public DataDimension getRows() {
         return rows;
@@ -56,6 +62,12 @@ public class BreakdownTable {
     }
     public void setCell(BreakdownCellValue cellValue) {
         this.cell = cellValue;
+    }
+    public BreakdownCellDisplayType getDisplayType() {
+        return displayType;
+    }
+    public void setDisplayType(BreakdownCellDisplayType displayType) {
+        this.displayType = displayType;
     }
     public CucumberScenarioResult[] filter(CucumberScenarioResult[] array, DataDimension[] filters) {
         CucumberScenarioResult[] result = {};

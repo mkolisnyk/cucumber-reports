@@ -198,7 +198,7 @@ public class CucumberBreakdownReport extends CucumberResultsCommon {
         return drawer.drawCell(stats);
     }
     private interface CellDrawer {
-        String drawCell(BreakdownStats stats);
+        String drawCell(BreakdownStats stats) throws Exception;
     }
     private class BarCellDrawer implements CellDrawer {
         public BarCellDrawer() {
@@ -259,8 +259,12 @@ public class CucumberBreakdownReport extends CucumberResultsCommon {
 
         @Override
         public String drawCell(BreakdownStats stats) {
-            // TODO Auto-generated method stub
-            return null;
+            BarCellDrawer barDrawer = new BarCellDrawer();
+            String barHtml = barDrawer.drawCell(stats);
+            NumberOnlyCellDrawer numberDrawer = new NumberOnlyCellDrawer();
+            String numberHtml = numberDrawer.drawCell(stats);
+            barHtml = barHtml.replaceAll("</tr></table>", "</tr>" + numberHtml + "</table>");
+            return barHtml;
         }
     }
     private class NumberOnlyCellDrawer implements CellDrawer {
@@ -289,9 +293,20 @@ public class CucumberBreakdownReport extends CucumberResultsCommon {
         }
 
         @Override
-        public String drawCell(BreakdownStats stats) {
-            // TODO Auto-generated method stub
-            return null;
+        public String drawCell(BreakdownStats stats) throws Exception {
+            CucumberResultsOverview generator = new CucumberResultsOverview();
+            String chartHtml = "";
+            double total = stats.getFailed() + stats.getPassed() + stats.getSkipped();
+            if (total > 0) {
+                chartHtml = "<td>" + generator.generatePieChart(450, 300,
+                    new int[] {stats.getPassed(), stats.getFailed(), stats.getSkipped()},
+                    new String[] {"Passed", "Failed", "Skipped"},
+                    new String[] {"green", "red", "silver"},
+                    new String[] {"darkgreen", "darkred", "darkgray"},
+                    20, 3) + "</td>";
+                return chartHtml;
+            }
+            return String.format("<td bgcolor=silver><center><b>N/A</b></center></td>");
         }
     }
 }

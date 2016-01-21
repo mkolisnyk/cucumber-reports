@@ -30,12 +30,19 @@ public class BreakdownTable {
     public BreakdownTable() {
         this(DataDimension.allFeatures(), DataDimension.allScenarios(), BreakdownCellValue.STEPS);
     }
+    public BreakdownTable(BreakdownCellDisplayType displayTypeValue) {
+        this(DataDimension.allFeatures(), DataDimension.allScenarios(), BreakdownCellValue.STEPS, displayTypeValue);
+    }
     public BreakdownTable(DataDimension rowsValue, DataDimension colsValue) {
         this(rowsValue, colsValue, BreakdownCellValue.STEPS);
     }
     public BreakdownTable(DataDimension rowsValue, DataDimension colsValue,
             BreakdownCellValue cellValue) {
         this(rowsValue, colsValue, cellValue, BreakdownCellDisplayType.BARS_ONLY);
+    }
+    public BreakdownTable(DataDimension rowsValue, DataDimension colsValue,
+            BreakdownCellDisplayType displayTypeValue) {
+        this(rowsValue, colsValue, BreakdownCellValue.STEPS, displayTypeValue);
     }
     public BreakdownTable(DataDimension rowsValue, DataDimension colsValue,
             BreakdownCellValue cellValue, BreakdownCellDisplayType displayTypeValue) {

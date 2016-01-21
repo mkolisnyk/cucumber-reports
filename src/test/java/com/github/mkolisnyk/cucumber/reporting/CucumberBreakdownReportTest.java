@@ -8,6 +8,7 @@ import org.junit.Test;
 
 import com.cedarsoftware.util.io.JsonReader;
 import com.cedarsoftware.util.io.JsonWriter;
+import com.github.mkolisnyk.cucumber.reporting.types.breakdown.BreakdownCellDisplayType;
 import com.github.mkolisnyk.cucumber.reporting.types.breakdown.BreakdownCellValue;
 import com.github.mkolisnyk.cucumber.reporting.types.breakdown.BreakdownReportInfo;
 import com.github.mkolisnyk.cucumber.reporting.types.breakdown.BreakdownReportModel;
@@ -85,7 +86,7 @@ public class CucumberBreakdownReportTest {
                                 new DataDimension("Mobile", DimensionValue.FEATURE, "(.*)[Mm]obile(.*)", new DataDimension[] {}),
                                 new DataDimension("Web", DimensionValue.STEP, "(.*)make a web booking(.*)", new DataDimension[] {}),
                                 new DataDimension("Walkup", DimensionValue.FEATURE, "(.*)Walk-up(.*)", new DataDimension[] {}),
-                        })
+                        }), BreakdownCellDisplayType.BARS_WITH_NUMBERS
                         ), "report3", "Third Breakdown", 10, ""),
             }
         );
@@ -99,10 +100,13 @@ public class CucumberBreakdownReportTest {
     public void testGenerateMultipleReportsSkipFirstRedirect() throws Exception {
         BreakdownReportModel model = new BreakdownReportModel(
             new BreakdownReportInfo[] {
-                new BreakdownReportInfo(new BreakdownTable(), "report1", "First Breakdown", 0, ""),
+                new BreakdownReportInfo(new BreakdownTable(BreakdownCellDisplayType.BARS_WITH_NUMBERS),
+                        "report1", "First Breakdown", 0, ""),
                 new BreakdownReportInfo(new BreakdownTable(), "report2", "Second Breakdown", 10, ""),
-                new BreakdownReportInfo(new BreakdownTable(), "report3", "Third Breakdown", 10, ""),
-                new BreakdownReportInfo(new BreakdownTable(), "report4", "Fourth Breakdown", 10, ""),
+                new BreakdownReportInfo(new BreakdownTable(BreakdownCellDisplayType.NUMBERS_ONLY),
+                        "report3", "Third Breakdown", 10, ""),
+                new BreakdownReportInfo(new BreakdownTable(BreakdownCellDisplayType.PIE_CHART),
+                        "report4", "Fourth Breakdown", 10, ""),
             }
         );
         CucumberBreakdownReport report = new CucumberBreakdownReport();

@@ -23,11 +23,46 @@ table {border:1px solid black;border-collapse: collapse;}
 OL { counter-reset: item }
 OL>LI { display: block }
 OL>LI:before { content: counters(item, ".") " "; counter-increment: item }
+
+div.header {
+    display: block; text-align: center;
+    position: running(header);
+}
+div.footer {
+    display: block; text-align: center;
+    position: running(footer);
+}
+div.content {page-break-after: always;}
+@page {
+     @top-center {
+     	content: "__TITLE__";
+	    color: silver;
+	    font-size: 14px;
+     }
+     @top-right {
+     	content: date("dd MMM, yyyy hh:mm");
+	    color: silver;
+	    font-size: 8px;
+     }
+}
+@page {
+    @bottom-right {
+    	content: "Page " counter(page) " of " counter(pages) ;
+	    color: silver;
+	    font-size: 8px;
+    }
+}
+ol a::after {
+  content: leader('.') target-counter(attr(href), page);
+}
 </style>
 <title>__TITLE__</title>
 <meta charset="UTF-8">
 </head>
   <body>
+    <div class='header'></div>
+    <div class='footer'></div>
+  
 __REPORT__	
 	</body>
 </html>

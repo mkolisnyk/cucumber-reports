@@ -10,11 +10,44 @@ table {border:1px solid black;border-collapse: collapse;}
 .skipped {background-color:silver;font-weight:bold;color:darkgray}
 .failed {background-color:tomato;font-weight:bold;color:darkred}
 .undefined {background-color:gold;font-weight:bold;color:goldenrod}
+
+
+div.header {
+    display: block; text-align: center;
+    position: running(header);
+}
+div.footer {
+    display: block; text-align: center;
+    position: running(footer);
+}
+div.content {page-break-after: always;}
+@page {
+     @top-center {
+     	content: "__TITLE__";
+	    color: silver;
+	    font-size: 14px;
+     }
+     @top-right {
+     	content: date("dd MMM, yyyy hh:mm");
+	    color: silver;
+	    font-size: 8px;
+     }
+}
+@page {
+    @bottom-right {
+    	content: "Page " counter(page) " of " counter(pages) ;
+	    color: silver;
+	    font-size: 8px;
+    }
+}
 </style>
 <title>__TITLE__</title>
 <meta charset="UTF-8">
 </head>
   <body>
+    <div class='header'></div>
+    <div class='footer'></div>
+  
   <h1>Overview Chart</h1>
 	<table class="chart">
 	<tr>

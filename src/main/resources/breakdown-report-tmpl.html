@@ -51,11 +51,44 @@ OL>LI:before { content: counters(item, ".") " "; counter-increment: item }
           background-color: #ffff99;
           border:3px solid #ffff99;
     }
+    
+div.header {
+    display: block; text-align: center;
+    position: running(header);
+}
+div.footer {
+    display: block; text-align: center;
+    position: running(footer);
+}
+div.content {page-break-after: always;}
+@page {
+     @top-center {
+     	content: "__TITLE__";
+	    color: silver;
+	    font-size: 14px;
+     }
+     @top-right {
+     	content: date("dd MMM, yyyy hh:mm");
+	    color: silver;
+	    font-size: 8px;
+     }
+}
+@page {
+    @bottom-right {
+    	content: "Page " counter(page) " of " counter(pages) ;
+	    color: silver;
+	    font-size: 8px;
+    }
+}
+
 </style>
 __REFRESH__
 <title>__TITLE__</title>
   </head>
   <body>
+    <div class='header'></div>
+    <div class='footer'></div>
+  
   <h1>__TITLE__</h1>
 __REPORT__
 	</body>

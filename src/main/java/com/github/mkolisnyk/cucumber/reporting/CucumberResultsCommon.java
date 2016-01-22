@@ -372,6 +372,7 @@ public abstract class CucumberResultsCommon {
         String outputFile = this.getOutputDirectory() + File.separator + this.getOutputName()
                 + "-" + suffix + ".pdf";
         String updatedContent = replaceSvgWithPng(htmlFile);
+        updatedContent = updatedContent.replaceAll("\"hoverTable\"", "\"_hoverTable\"");
         FileUtils.writeStringToFile(bakupFile, updatedContent);
         OutputStream os = new FileOutputStream(outputFile);
 

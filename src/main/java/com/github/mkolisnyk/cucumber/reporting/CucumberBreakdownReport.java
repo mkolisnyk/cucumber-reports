@@ -287,13 +287,13 @@ public class CucumberBreakdownReport extends CucumberResultsCommon {
         public String drawCell(BreakdownStats stats) {
             String output = "<td><center><b>";
             if (stats.getPassed() > 0) {
-                output = output.concat(String.format("<font color=\"green\">%d</font> ", stats.getPassed()));
+                output = output.concat(String.format("<span class=\"passed\">%d</span> ", stats.getPassed()));
             }
             if (stats.getFailed() > 0) {
-                output = output.concat(String.format("<font color=\"red\">%d</font> ", stats.getFailed()));
+                output = output.concat(String.format("<span class=\"failed\">%d</span> ", stats.getFailed()));
             }
             if (stats.getSkipped() > 0) {
-                output = output.concat(String.format("<font color=\"silver\">%d</font> ", stats.getSkipped()));
+                output = output.concat(String.format("<span class=\"skipped\">%d</span> ", stats.getSkipped()));
             }
             return output + "</b></center></td>";
         }

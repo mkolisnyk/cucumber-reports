@@ -24,7 +24,9 @@ public class CucumberConsolidatedReport extends CucumberResultsCommon {
         // TODO Auto-generated method stub
         return null;
     }
-
+    private String retrieveBody(String content) {
+        return content.split("<body>")[1].split("</body>")[0];
+    }
     private String amendHtmlHeaders(String content) {
         for (int i = 6; i > 0; i--) {
             content = content.replaceAll("<h" + i + ">", "<h" + (i + 1) + ">");
@@ -57,8 +59,9 @@ public class CucumberConsolidatedReport extends CucumberResultsCommon {
         for (ConsolidatedItemInfo item : model.getItems()) {
             String content = FileUtils.readFileToString(new File(item.getPath()));
             content = this.amendHtmlHeaders(content);
+            content = this.retrieveBody(content);
             reportContent = reportContent.concat(
-                String.format("<a id=\"%s\"><h1>%s</h1></a>%s",
+                String.format("<div class=\"content\"><a id=\"%s\"><h1>%s</h1></a>%s</div>",
                     generateLocalLink(item.getTitle()), item.getTitle(), content));
         }
         reportContent = this.replaceHtmlEntitiesWithCodes(reportContent);

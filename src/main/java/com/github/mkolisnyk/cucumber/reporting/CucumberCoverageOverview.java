@@ -164,7 +164,10 @@ public class CucumberCoverageOverview extends CucumberResultsOverview {
                 2));
         return content;
     }
+    public void executeCoverageReport(boolean toPDF) throws Exception {
+        executeOverviewReport("coverage", toPDF);
+    }
     public void executeCoverageReport() throws Exception {
-        executeOverviewReport("coverage", false);
+        executeCoverageReport(false);
     }
 }

@@ -124,9 +124,7 @@ public class CucumberResultsOverview extends CucumberResultsCommon {
                 + "-" + reportSuffix + ".html");
         FileUtils.writeStringToFile(outFile, generateFeatureOverview(features));
         if (toPdf) {
-            String outputFile = this.getOutputDirectory() + File.separator + this.getOutputName()
-                    + "-" + reportSuffix + ".pdf";
-            PDFRenderer.renderToPDF(outFile, outputFile);
+            this.exportToPDF(outFile, reportSuffix);
         }
         try {
             outFile = new File(
@@ -139,6 +137,9 @@ public class CucumberResultsOverview extends CucumberResultsCommon {
         }
     }
     public void executeFeaturesOverviewReport() throws Exception {
-        executeOverviewReport("feature-overview", false);
+        executeFeaturesOverviewReport(false);
+    }
+    public void executeFeaturesOverviewReport(boolean toPDF) throws Exception {
+        executeOverviewReport("feature-overview", toPDF);
     }
 }

@@ -128,6 +128,16 @@
     </plugins>
   </build>
   <dependencies>
+<dependency>
+	<groupId>batik</groupId>
+	<artifactId>batik-transcoder</artifactId>
+	<version>1.6-1</version>
+</dependency>
+<dependency>
+    <groupId>com.itextpdf</groupId>
+    <artifactId>itextpdf</artifactId>
+    <version>5.5.8</version>
+</dependency>
       <dependency>
       <groupId>com.cedarsoftware</groupId>
       <artifactId>json-io</artifactId>

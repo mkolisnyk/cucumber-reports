@@ -113,7 +113,7 @@ public class CucumberBreakdownReportTest {
         report.setOutputDirectory("target/multi-breakdown/1");
         report.setOutputName("cucumber-results");
         report.setSourceFile("./src/test/resources/breakdown-source/cucumber.json");
-        report.executeReport(model);
+        report.executeReport(model, true);
     }
     @Test
     public void testGenerateMultipleReportsSkipLastRedirect() throws Exception {

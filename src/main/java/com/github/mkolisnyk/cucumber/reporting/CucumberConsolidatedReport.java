@@ -40,7 +40,7 @@ public class CucumberConsolidatedReport extends CucumberResultsCommon {
         String contents = "<ol>";
         for (ConsolidatedItemInfo item : model.getItems()) {
             contents = contents.concat(
-                String.format("<li><a href=\"#%s\">%s</a>",
+                String.format("<li><a href=\"#%s\">%s</a></li>",
                         generateLocalLink(item.getTitle()), item.getTitle()));
         }
         contents += "</ol>";
@@ -61,24 +61,38 @@ public class CucumberConsolidatedReport extends CucumberResultsCommon {
                 String.format("<a id=\"%s\"><h1>%s</h1></a>%s",
                     generateLocalLink(item.getTitle()), item.getTitle(), content));
         }
+        reportContent = this.replaceHtmlEntitiesWithCodes(reportContent);
+        reportContent = reportContent.replaceAll("[$]", "&#36;");
         result = result.replaceAll("__REPORT__", reportContent);
         return result;
     }
 
-    public void executeConsolidatedReport(ConsolidatedReportModel model) throws Exception {
+    public void executeConsolidatedReport(ConsolidatedReportModel model, boolean toPDF) throws Exception {
         File outFile = new File(
                 this.getOutputDirectory() + File.separator + this.getOutputName()
                 + "-" + model.getReportSuffix() + ".html");
         FileUtils.writeStringToFile(outFile, generateConsolidatedReport(model));
-    }
-    public void executeConsolidatedReport(ConsolidatedReportBatch batch) throws Exception {
-        for (ConsolidatedReportModel model : batch.getModels()) {
-            executeConsolidatedReport(model);
+        if (toPDF) {
+            this.exportToPDF(outFile, model.getReportSuffix());
         }
     }
-    public void executeConsolidatedReport(File config) throws Exception {
+    public void executeConsolidatedReport(ConsolidatedReportModel model) throws Exception {
+        executeConsolidatedReport(model, false);
+    }
+    public void executeConsolidatedReport(ConsolidatedReportBatch batch, boolean toPDF) throws Exception {
+        for (ConsolidatedReportModel model : batch.getModels()) {
+            executeConsolidatedReport(model, toPDF);
+        }
+    }
+    public void executeConsolidatedReport(ConsolidatedReportBatch batch) throws Exception {
+        executeConsolidatedReport(batch, false);
+    }
+    public void executeConsolidatedReport(File config, boolean toPDF) throws Exception {
         ConsolidatedReportBatch model = (ConsolidatedReportBatch) JsonReader.jsonToJava(
                 FileUtils.readFileToString(config));
-        this.executeConsolidatedReport(model);
+        this.executeConsolidatedReport(model, toPDF);
+    }
+    public void executeConsolidatedReport(File config) throws Exception {
+        this.executeConsolidatedReport(config, false);
     }
 }

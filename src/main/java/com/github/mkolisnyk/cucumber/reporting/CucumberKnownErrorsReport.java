@@ -51,17 +51,25 @@ public class CucumberKnownErrorsReport extends CucumberResultsCommon {
         content = content.replaceAll("__REPORT__", reportContent);
         return content;
     }
-
     public void executeKnownErrorsReport(KnownErrorsModel model) throws Exception {
+        executeKnownErrorsReport(model, false);
+    }
+    public void executeKnownErrorsReport(KnownErrorsModel model, boolean toPDF) throws Exception {
         CucumberFeatureResult[] features = readFileContent(true);
         File outFile = new File(
                 this.getOutputDirectory() + File.separator + this.getOutputName()
                 + "-known-errors.html");
         FileUtils.writeStringToFile(outFile, generateKnownErrorsReport(features, model));
+        if (toPDF) {
+            this.exportToPDF(outFile, "known-errors");
+        }
     }
     public void executeKnownErrorsReport(File config) throws Exception {
+        executeKnownErrorsReport(config, false);
+    }
+    public void executeKnownErrorsReport(File config, boolean toPDF) throws Exception {
         KnownErrorsModel model = (KnownErrorsModel) JsonReader.jsonToJava(
                 FileUtils.readFileToString(config));
-        this.executeKnownErrorsReport(model);
+        this.executeKnownErrorsReport(model, toPDF);
     }
 }

@@ -19,7 +19,7 @@ public class CucumberResultsReportTest {
         results.setOutputDirectory("target");
         results.setOutputName("cucumber-100-results");
         results.setSourceFile("./src/test/resources/overview-sources/all-passed.json");
-        results.executeFeaturesOverviewReport();
+        results.executeOverviewReport("feature-overview-2", true);
     }
     @Test
     public void testGenerateOverviewReportIssue41() throws Exception {

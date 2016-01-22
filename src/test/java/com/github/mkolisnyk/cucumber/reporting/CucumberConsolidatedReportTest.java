@@ -67,6 +67,6 @@ public class CucumberConsolidatedReportTest {
         results.setOutputDirectory("target");
         results.setOutputName("cucumber-results");
         results.setSourceFile("./src/test/resources/cucumber.json");
-        results.executeConsolidatedReport(new File("./src/test/resources/consolidated-source/sample_batch.json"));
+        results.executeConsolidatedReport(new File("./src/test/resources/consolidated-source/sample_batch.json"), true);
     }
 }

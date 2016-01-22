@@ -32,7 +32,7 @@ public final class ReportRunner {
         results.setOutputName(extendedOptions.getReportPrefix());
         results.setSourceFile(extendedOptions.getJsonReportPath());
         try {
-            results.executeFeaturesOverviewReport();
+            results.executeFeaturesOverviewReport(extendedOptions.isToPDF());
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -86,7 +86,7 @@ public final class ReportRunner {
         results.setExcludeCoverageTags(extendedOptions.getExcludeCoverageTags());
         results.setIncludeCoverageTags(extendedOptions.getIncludeCoverageTags());
         try {
-            results.executeCoverageReport();
+            results.executeCoverageReport(extendedOptions.isToPDF());
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -97,7 +97,7 @@ public final class ReportRunner {
         report.setOutputName(extendedOptions.getReportPrefix());
         report.setSourceFile(extendedOptions.getJsonReportPath());
         try {
-            report.executeReport(new File(extendedOptions.getBreakdownConfig()));
+            report.executeReport(new File(extendedOptions.getBreakdownConfig()), extendedOptions.isToPDF());
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -108,7 +108,8 @@ public final class ReportRunner {
         report.setOutputName(extendedOptions.getReportPrefix());
         report.setSourceFile(extendedOptions.getJsonReportPath());
         try {
-            report.executeKnownErrorsReport(new File(extendedOptions.getKnownErrorsConfig()));
+            report.executeKnownErrorsReport(new File(extendedOptions.getKnownErrorsConfig()),
+                    extendedOptions.isToPDF());
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -119,7 +120,8 @@ public final class ReportRunner {
         report.setOutputName(extendedOptions.getReportPrefix());
         report.setSourceFile(extendedOptions.getJsonReportPath());
         try {
-            report.executeConsolidatedReport(new File(extendedOptions.getConsolidatedReportConfig()));
+            report.executeConsolidatedReport(new File(extendedOptions.getConsolidatedReportConfig()),
+                    extendedOptions.isToPDF());
         } catch (Exception e) {
             e.printStackTrace();
         }

@@ -36,17 +36,20 @@ public class CucumberBreakdownReport extends CucumberResultsCommon {
         String result = IOUtils.toString(is);
         return result;
     }
-    public void executeReport(BreakdownReportInfo info, BreakdownTable table) throws Exception {
+    public void executeReport(BreakdownReportInfo info, BreakdownTable table, boolean toPDF) throws Exception {
         CucumberFeatureResult[] features = readFileContent(true);
         File outFile = new File(
                 this.getOutputDirectory() + File.separator + this.getOutputName()
                 + "-" + info.getReportSuffix() + ".html");
         FileUtils.writeStringToFile(outFile, generateBreakdownReport(features, info, table));
+        if (toPDF) {
+            this.exportToPDF(outFile, info.getReportSuffix());
+        }
     }
-    public void executeReport(BreakdownTable table) throws Exception {
-        executeReport(new BreakdownReportInfo(table), table);
+    public void executeReport(BreakdownTable table, boolean toPDF) throws Exception {
+        executeReport(new BreakdownReportInfo(table), table, toPDF);
     }
-    public void executeReport(BreakdownReportModel model) throws Exception {
+    public void executeReport(BreakdownReportModel model, boolean toPDF) throws Exception {
         boolean frameGenerated = false;
         model.initRedirectSequence("./" + this.getOutputName() + "-");
         for (BreakdownReportInfo info : model.getReportsInfo()) {
@@ -54,13 +57,19 @@ public class CucumberBreakdownReport extends CucumberResultsCommon {
                 frameGenerated = true;
                 generateFrameFile(model);
             }
-            this.executeReport(info, info.getTable());
+            this.executeReport(info, info.getTable(), toPDF);
         }
     }
-    public void executeReport(File config) throws Exception {
+    public void executeReport(BreakdownReportModel model) throws Exception {
+        executeReport(model, false);
+    }
+    public void executeReport(File config, boolean toPDF) throws Exception {
         BreakdownReportModel model = (BreakdownReportModel) JsonReader.jsonToJava(
                 FileUtils.readFileToString(config));
-        this.executeReport(model);
+        this.executeReport(model, toPDF);
+    }
+    public void executeReport(File config) throws Exception {
+        executeReport(config, false);
     }
     private void generateFrameFile(BreakdownReportModel model) throws Exception {
         InputStream is = this.getClass().getResourceAsStream("/breakdown-frame.html");
@@ -92,13 +101,15 @@ public class CucumberBreakdownReport extends CucumberResultsCommon {
         content = content.replaceAll("__TITLE__", info.getTitle());
         if (info.getRefreshTimeout() > 0 && StringUtils.isNotBlank(info.getNextFile())) {
             String refreshHeader
-                = String.format("<meta http-equiv=\"Refresh\" content=\"%d; url=%s\">",
+                = String.format("<meta http-equiv=\"Refresh\" content=\"%d; url=%s\" />",
                         info.getRefreshTimeout(), info.getNextFile());
             content = content.replaceAll("__REFRESH__", refreshHeader);
         } else {
             content = content.replaceAll("__REFRESH__", "");
         }
         content = content.replaceAll("__REPORT__", generateBreakdownTable(features, table));
+        content = this.replaceHtmlEntitiesWithCodes(content);
+        content = content.replaceAll("[$]", "&#36;");
         return content;
     }
     private String generateBreakdownTable(CucumberFeatureResult[] features,
@@ -276,13 +287,13 @@ public class CucumberBreakdownReport extends CucumberResultsCommon {
         public String drawCell(BreakdownStats stats) {
             String output = "<td><center><b>";
             if (stats.getPassed() > 0) {
-                output = output.concat(String.format("<font color=green>%d</font> ", stats.getPassed()));
+                output = output.concat(String.format("<font color=\"green\">%d</font> ", stats.getPassed()));
             }
             if (stats.getFailed() > 0) {
-                output = output.concat(String.format("<font color=red>%d</font> ", stats.getFailed()));
+                output = output.concat(String.format("<font color=\"red\">%d</font> ", stats.getFailed()));
             }
             if (stats.getSkipped() > 0) {
-                output = output.concat(String.format("<font color=silver>%d</font> ", stats.getSkipped()));
+                output = output.concat(String.format("<font color=\"silver\">%d</font> ", stats.getSkipped()));
             }
             return output + "</b></center></td>";
         }

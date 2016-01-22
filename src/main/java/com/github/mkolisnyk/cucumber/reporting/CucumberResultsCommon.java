@@ -3,20 +3,31 @@ package com.github.mkolisnyk.cucumber.reporting;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.OutputStream;
 import java.lang.reflect.Array;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Map.Entry;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import javax.xml.bind.JAXB;
 
+import org.apache.batik.transcoder.TranscoderInput;
+import org.apache.batik.transcoder.TranscoderOutput;
+import org.apache.batik.transcoder.image.PNGTranscoder;
+import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.IOUtils;
+import org.xhtmlrenderer.pdf.ITextRenderer;
 
 import com.cedarsoftware.util.io.JsonObject;
 import com.cedarsoftware.util.io.JsonReader;
 import com.github.mkolisnyk.cucumber.reporting.types.result.CucumberFeatureResult;
+import com.google.common.io.Files;
+import com.itextpdf.text.pdf.parser.clipper.Paths;
 
 public abstract class CucumberResultsCommon {
     public static final int CHART_WIDTH = 450;
@@ -322,6 +333,54 @@ public abstract class CucumberResultsCommon {
     public void dumpOverviewStats(File outFile, CucumberFeatureResult[] results) {
         int[][] stats = getStatuses(results);
         JAXB.marshal(stats, outFile);
+    }
+
+    private void convertSvgToPng(File svg, File png) throws Exception {
+        String svgUriInput = svg.toURI().toURL().toString();
+        TranscoderInput inputSvgImage = new TranscoderInput(svgUriInput);
+        //Step-2: Define OutputStream to PNG Image and attach to TranscoderOutput
+        OutputStream pngOStream = new FileOutputStream(png);
+        TranscoderOutput outputPngImage = new TranscoderOutput(pngOStream);
+        // Step-3: Create PNGTranscoder and define hints if required
+        PNGTranscoder myConverter = new PNGTranscoder();
+        // Step-4: Convert and Write output
+        myConverter.transcode(inputSvgImage, outputPngImage);
+        // Step 5- close / flush Output Stream
+        pngOStream.flush();
+        pngOStream.close();
+    }
+    public String replaceSvgWithPng(File htmlFile) throws Exception {
+        File folder = Files.createTempDir();
+        String htmlText = FileUtils.readFileToString(htmlFile);
+        Pattern p = Pattern.compile("<svg(.*?)</svg>", Pattern.MULTILINE | Pattern.DOTALL | Pattern.CASE_INSENSITIVE);
+        Matcher m = p.matcher(htmlText);
+        int index = 0;
+        while (m.find()) {
+            String svg = m.group(0);
+            FileUtils.writeStringToFile(new File(folder.getAbsolutePath() + "/" + index + ".svg"), svg);
+            File png = new File(folder.getAbsolutePath() + "/" + index + ".png");
+            convertSvgToPng(new File(folder.getAbsolutePath() + "/" + index + ".svg"), png);
+            index++;
+            htmlText = m.replaceFirst(String.format("<img src=\"%s\"></img>", png.getAbsolutePath()));
+            m = p.matcher(htmlText);
+        }
+        return htmlText;
+    }
+    public void exportToPDF(File htmlFile, String suffix) throws Exception {
+        File bakupFile = new File(htmlFile.getAbsolutePath() + ".bak");
+        String url = bakupFile.toURI().toURL().toString();
+        String outputFile = this.getOutputDirectory() + File.separator + this.getOutputName()
+                + "-" + suffix + ".pdf";
+        String updatedContent = replaceSvgWithPng(htmlFile);
+        FileUtils.writeStringToFile(bakupFile, updatedContent);
+        OutputStream os = new FileOutputStream(outputFile);
+
+        ITextRenderer renderer = new ITextRenderer();
+        renderer.setDocument(url);
+        renderer.layout();
+        renderer.createPDF(os);
+
+        os.close();
     }
 
     public abstract int[][] getStatuses(CucumberFeatureResult[] results);

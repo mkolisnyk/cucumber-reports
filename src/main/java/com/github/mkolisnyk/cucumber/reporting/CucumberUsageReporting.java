@@ -611,7 +611,7 @@ public class CucumberUsageReporting {
             }
             content += "</table></p>";
             content += "<p><table class=\"none\"><tr><td class=\"none\">" + this.getHystogram(source) + "</td>"
-                    + "<td valign=top class=\"none\">" + generateSourceDurationOverview(source) + "</td></tr>"
+                    + "<td valign=\"top\" class=\"none\">" + generateSourceDurationOverview(source) + "</td></tr>"
                     + "</table></p><p><a href=\"#top\">To Overview Table</a></p>";
         }
         return content;

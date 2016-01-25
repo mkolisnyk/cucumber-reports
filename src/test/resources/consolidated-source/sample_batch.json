@@ -14,6 +14,14 @@
         {
           "path": "target/cucumber-results-feature-overview.html", 
           "title": "Feature Overview"
+        },
+        {
+          "path": "target/cucumber-results-agg-test-results.html", 
+          "title": "Detailed Results"
+        },
+        {
+          "path": "target/cucumber-usage-report.html", 
+          "title": "Usage Report"
         }
       ], 
       "reportSuffix": "batch-config1", 

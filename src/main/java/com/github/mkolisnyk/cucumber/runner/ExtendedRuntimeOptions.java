@@ -15,6 +15,7 @@ public class ExtendedRuntimeOptions {
     private int retryCount = 0;
     private String screenShotSize = "";
     private boolean toPDF = false;
+    private String pdfPageSize = "auto";
     private String jsonUsageReportPath;
     private String screenShotLocation = "";
     private String[] includeCoverageTags = {};
@@ -41,6 +42,7 @@ public class ExtendedRuntimeOptions {
             this.retryCount = options.retryCount();
             this.screenShotSize = options.screenShotSize();
             this.toPDF = options.toPDF();
+            this.pdfPageSize = options.pdfPageSize();
             this.jsonUsageReportPath = options.jsonUsageReport();
             this.screenShotLocation = options.screenShotLocation();
             this.includeCoverageTags = options.includeCoverageTags();
@@ -97,6 +99,10 @@ public class ExtendedRuntimeOptions {
 
     public final boolean isToPDF() {
         return toPDF;
+    }
+
+    public String getPdfPageSize() {
+        return pdfPageSize;
     }
 
     public final String getJsonUsageReportPath() {

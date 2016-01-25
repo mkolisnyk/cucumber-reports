@@ -35,6 +35,7 @@ div.footer {
 div.content {page-break-after: always;}
 div.content:last-child {page-break-after: avoid;}
 @page {
+	 size: __PAGESIZE__;
      @top-center {
      	content: "__TITLE__";
 	    color: silver;
@@ -45,8 +46,6 @@ div.content:last-child {page-break-after: avoid;}
 	    color: silver;
 	    font-size: 8px;
      }
-}
-@page {
     @bottom-right {
     	content: "Page " counter(page) " of " counter(pages) ;
 	    color: silver;

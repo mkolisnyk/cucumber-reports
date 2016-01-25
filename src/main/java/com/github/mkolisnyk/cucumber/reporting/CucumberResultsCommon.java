@@ -37,7 +37,8 @@ public abstract class CucumberResultsCommon {
     private String sourceFile;
     private String outputDirectory;
     private String outputName;
-
+    private String pdfPageSize;
+    
     /**
      * @return the outputDirectory
      */
@@ -77,6 +78,14 @@ public abstract class CucumberResultsCommon {
      */
     public final void setSourceFile(String sourceFileValue) {
         this.sourceFile = sourceFileValue;
+    }
+
+    public String getPdfPageSize() {
+        return pdfPageSize;
+    }
+
+    public void setPdfPageSize(String pdfPageSizeValue) {
+        this.pdfPageSize = pdfPageSizeValue;
     }
 
     public CucumberFeatureResult[] aggregateResults(CucumberFeatureResult[] input, boolean collapse) {
@@ -373,6 +382,7 @@ public abstract class CucumberResultsCommon {
                 + "-" + suffix + ".pdf";
         String updatedContent = replaceSvgWithPng(htmlFile);
         updatedContent = updatedContent.replaceAll("\"hoverTable\"", "\"_hoverTable\"");
+        updatedContent = updatedContent.replaceAll("__PAGESIZE__", this.getPdfPageSize());
         FileUtils.writeStringToFile(bakupFile, updatedContent);
         OutputStream os = new FileOutputStream(outputFile);
 

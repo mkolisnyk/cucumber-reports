@@ -33,6 +33,7 @@ public @interface ExtendedCucumberOptions {
     String screenShotSize() default "";
 
     boolean toPDF() default false;
+    String pdfPageSize() default "auto";
 
     String screenShotLocation() default "";
 

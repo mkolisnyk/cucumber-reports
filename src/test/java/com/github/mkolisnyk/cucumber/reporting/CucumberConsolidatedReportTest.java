@@ -66,6 +66,7 @@ public class CucumberConsolidatedReportTest {
         CucumberConsolidatedReport results = new CucumberConsolidatedReport();
         results.setOutputDirectory("target");
         results.setOutputName("cucumber-results");
+        results.setPdfPageSize("A4 landscape");
         results.setSourceFile("./src/test/resources/cucumber.json");
         results.executeConsolidatedReport(new File("./src/test/resources/consolidated-source/sample_batch.json"), true);
     }

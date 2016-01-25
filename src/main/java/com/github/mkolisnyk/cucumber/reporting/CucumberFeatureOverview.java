@@ -71,11 +71,16 @@ public class CucumberFeatureOverview extends CucumberResultsOverview {
     }
 
     public void executeFeatureOverviewChartReport() throws Exception {
+        executeFeatureOverviewChartReport(false);
+    }
+    public void executeFeatureOverviewChartReport(boolean toPdf) throws Exception {
         CucumberFeatureResult[] features = readFileContent(true);
         File outFile = new File(
                 this.getOutputDirectory() + File.separator + this.getOutputName()
                 + "-feature-overview-chart.html");
         FileUtils.writeStringToFile(outFile, generateFeatureOverviewChart(features));
+        if (toPdf) {
+            this.exportToPDF(outFile, "feature-overview-chart");
+        }
     }
-
 }

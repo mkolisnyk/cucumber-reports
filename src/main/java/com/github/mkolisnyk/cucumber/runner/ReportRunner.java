@@ -44,7 +44,7 @@ public final class ReportRunner {
         results.setOutputName(extendedOptions.getReportPrefix());
         results.setSourceFile(extendedOptions.getJsonReportPath());
         try {
-            results.executeFeatureOverviewChartReport();
+            results.executeFeatureOverviewChartReport(extendedOptions.isToPDF());
         } catch (Exception e) {
             e.printStackTrace();
         }

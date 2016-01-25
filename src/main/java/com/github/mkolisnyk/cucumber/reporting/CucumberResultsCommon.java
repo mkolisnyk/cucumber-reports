@@ -37,8 +37,8 @@ public abstract class CucumberResultsCommon {
     private String sourceFile;
     private String outputDirectory;
     private String outputName;
-    private String pdfPageSize;
-    
+    private String pdfPageSize = "auto";
+
     /**
      * @return the outputDirectory
      */

@@ -31,6 +31,7 @@ public final class ReportRunner {
         results.setOutputDirectory(extendedOptions.getOutputFolder());
         results.setOutputName(extendedOptions.getReportPrefix());
         results.setSourceFile(extendedOptions.getJsonReportPath());
+        results.setPdfPageSize(extendedOptions.getPdfPageSize());
         try {
             results.executeFeaturesOverviewReport(extendedOptions.isToPDF());
         } catch (Exception e) {
@@ -43,13 +44,14 @@ public final class ReportRunner {
         results.setOutputDirectory(extendedOptions.getOutputFolder());
         results.setOutputName(extendedOptions.getReportPrefix());
         results.setSourceFile(extendedOptions.getJsonReportPath());
+        results.setPdfPageSize(extendedOptions.getPdfPageSize());
         try {
             results.executeFeatureOverviewChartReport(extendedOptions.isToPDF());
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
- 
+
     public static void runDetailedReport(ExtendedRuntimeOptions extendedOptions) {
         CucumberDetailedResults results = new CucumberDetailedResults();
         results.setOutputDirectory(extendedOptions.getOutputFolder());
@@ -57,6 +59,7 @@ public final class ReportRunner {
         results.setSourceFile(extendedOptions.getJsonReportPath());
         results.setScreenShotLocation(extendedOptions.getScreenShotLocation());
         results.setScreenShotWidth(extendedOptions.getScreenShotSize());
+        results.setPdfPageSize(extendedOptions.getPdfPageSize());
         try {
             results.executeDetailedResultsReport(
                     extendedOptions.isToPDF(), false);
@@ -71,6 +74,7 @@ public final class ReportRunner {
         results.setSourceFile(extendedOptions.getJsonReportPath());
         results.setScreenShotLocation(extendedOptions.getScreenShotLocation());
         results.setScreenShotWidth(extendedOptions.getScreenShotSize());
+        results.setPdfPageSize(extendedOptions.getPdfPageSize());
         try {
             results.executeDetailedResultsReport(
                     extendedOptions.isToPDF(), true);
@@ -85,6 +89,7 @@ public final class ReportRunner {
         results.setSourceFile(extendedOptions.getJsonReportPath());
         results.setExcludeCoverageTags(extendedOptions.getExcludeCoverageTags());
         results.setIncludeCoverageTags(extendedOptions.getIncludeCoverageTags());
+        results.setPdfPageSize(extendedOptions.getPdfPageSize());
         try {
             results.executeCoverageReport(extendedOptions.isToPDF());
         } catch (Exception e) {
@@ -96,6 +101,7 @@ public final class ReportRunner {
         report.setOutputDirectory(extendedOptions.getOutputFolder());
         report.setOutputName(extendedOptions.getReportPrefix());
         report.setSourceFile(extendedOptions.getJsonReportPath());
+        report.setPdfPageSize(extendedOptions.getPdfPageSize());
         try {
             report.executeReport(new File(extendedOptions.getBreakdownConfig()), extendedOptions.isToPDF());
         } catch (Exception e) {
@@ -107,6 +113,7 @@ public final class ReportRunner {
         report.setOutputDirectory(extendedOptions.getOutputFolder());
         report.setOutputName(extendedOptions.getReportPrefix());
         report.setSourceFile(extendedOptions.getJsonReportPath());
+        report.setPdfPageSize(extendedOptions.getPdfPageSize());
         try {
             report.executeKnownErrorsReport(new File(extendedOptions.getKnownErrorsConfig()),
                     extendedOptions.isToPDF());
@@ -119,6 +126,7 @@ public final class ReportRunner {
         report.setOutputDirectory(extendedOptions.getOutputFolder());
         report.setOutputName(extendedOptions.getReportPrefix());
         report.setSourceFile(extendedOptions.getJsonReportPath());
+        report.setPdfPageSize(extendedOptions.getPdfPageSize());
         try {
             report.executeConsolidatedReport(new File(extendedOptions.getConsolidatedReportConfig()),
                     extendedOptions.isToPDF());

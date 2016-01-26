@@ -28,7 +28,8 @@ public class CucumberConsolidatedReport extends CucumberResultsCommon {
         return content.split("<body>")[1].split("</body>")[0];
     }
     private String amendHtmlHeaders(String content) {
-        for (int i = 6; i > 0; i--) {
+        final int totalHeadingTypes = 6;
+        for (int i = totalHeadingTypes; i > 0; i--) {
             content = content.replaceAll("<h" + i + ">", "<h" + (i + 1) + ">");
             content = content.replaceAll("</h" + i + ">", "</h" + (i + 1) + ">");
         }

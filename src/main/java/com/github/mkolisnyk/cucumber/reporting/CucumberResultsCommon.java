@@ -8,6 +8,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.lang.reflect.Array;
+import java.nio.file.Files;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Map.Entry;
@@ -26,8 +27,7 @@ import org.xhtmlrenderer.pdf.ITextRenderer;
 import com.cedarsoftware.util.io.JsonObject;
 import com.cedarsoftware.util.io.JsonReader;
 import com.github.mkolisnyk.cucumber.reporting.types.result.CucumberFeatureResult;
-import com.google.common.io.Files;
-import com.itextpdf.text.pdf.parser.clipper.Paths;
+//import com.google.common.io.Files;
 
 public abstract class CucumberResultsCommon {
     public static final int CHART_WIDTH = 450;
@@ -323,13 +323,18 @@ public abstract class CucumberResultsCommon {
         drawing = drawing.concat(this.drawPieBorders(width, height, values, labels, shadowColors, pieThickness, shift));
         drawing = drawing.concat(this.drawPieLayer(width, height, values, labels, colors, 0, shift));
         for (int i = 0; i < values.length; i++) {
+            final double xShiftScale = 0.6;
+            final double yShiftScale = 0.15;
+            final int xOffset = 10;
+            final int yHeight = 30;
+            final double maxRate = 100.;
             drawing = drawing.concat(String.format("<text x=\"%d\" y=\"%d\" font-weight = \"bold\" "
                     + "font-size = \"14\">%.0f%% (%d) %s</text>",
-                    (int) (0.6 * width) + 10, (int) (0.15 * width) + 30 * i,
-                    100. * (double) values[i] / (double) sum, values[i], labels[i]));
+                    (int) (xShiftScale * width) + xOffset, (int) (yShiftScale * width) + yHeight * i,
+                    maxRate * (double) values[i] / (double) sum, values[i], labels[i]));
             drawing = drawing.concat(String.format(
                     "<circle cx=\"%d\" cy=\"%d\" r=\"5\" stroke=\"%s\" stroke-width=\"1\" fill=\"%s\" />",
-                    (int) (0.6 * width), (int) (0.15 * width) + 30 * i - 5,
+                    (int) (xShiftScale * width), (int) (yShiftScale * width) + yHeight * i - xOffset / 2,
                     shadowColors[i], colors[i]
                     ));
         }
@@ -359,7 +364,7 @@ public abstract class CucumberResultsCommon {
         pngOStream.close();
     }
     public String replaceSvgWithPng(File htmlFile) throws Exception {
-        File folder = Files.createTempDir();
+        File folder = Files.createTempDirectory("temp").toFile();
         String htmlText = FileUtils.readFileToString(htmlFile);
         Pattern p = Pattern.compile("<svg(.*?)</svg>", Pattern.MULTILINE | Pattern.DOTALL | Pattern.CASE_INSENSITIVE);
         Matcher m = p.matcher(htmlText);

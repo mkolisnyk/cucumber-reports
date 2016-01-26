@@ -73,8 +73,8 @@ public class BreakdownTable {
     public BreakdownCellDisplayType getDisplayType() {
         return displayType;
     }
-    public void setDisplayType(BreakdownCellDisplayType displayType) {
-        this.displayType = displayType;
+    public void setDisplayType(BreakdownCellDisplayType displayTypeValue) {
+        this.displayType = displayTypeValue;
     }
     public CucumberScenarioResult[] filter(CucumberScenarioResult[] array, DataDimension[] filters) {
         CucumberScenarioResult[] result = {};

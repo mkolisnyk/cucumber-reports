@@ -18,9 +18,9 @@ public class CucumberConsolidatedReportTest {
 
         ConsolidatedReportModel batch = new ConsolidatedReportModel(
                 new ConsolidatedItemInfo[] {
-                    new ConsolidatedItemInfo("Overview Chart", "target/cucumber-results-feature-overview-chart.html"),
-                    new ConsolidatedItemInfo("Known Errors", "target/cucumber-results-known-errors.html"),
-                    new ConsolidatedItemInfo("Feature Overview", "target/cucumber-results-feature-overview.html"),
+                    new ConsolidatedItemInfo("Overview Chart", "src/test/resources/consolidated-source/cucumber-results-feature-overview-chart.html"),
+                    new ConsolidatedItemInfo("Known Errors", "src/test/resources/consolidated-source/cucumber-results-known-errors.html"),
+                    new ConsolidatedItemInfo("Feature Overview", "src/test/resources/consolidated-source/cucumber-results-feature-overview.html"),
                 },
                 "consolidated",
                 "Overall Results",
@@ -40,17 +40,17 @@ public class CucumberConsolidatedReportTest {
             new ConsolidatedReportModel[] {
                 new ConsolidatedReportModel(
                     new ConsolidatedItemInfo[] {
-                        new ConsolidatedItemInfo("Overview Chart", "target/cucumber-results-feature-overview-chart.html"),
-                        new ConsolidatedItemInfo("Known Errors", "target/cucumber-results-known-errors.html"),
-                        new ConsolidatedItemInfo("Feature Overview", "target/cucumber-results-feature-overview.html"),
+                        new ConsolidatedItemInfo("Overview Chart", "src/test/resources/consolidated-source/cucumber-results-feature-overview-chart.html"),
+                        new ConsolidatedItemInfo("Known Errors", "src/test/resources/consolidated-source/cucumber-results-known-errors.html"),
+                        new ConsolidatedItemInfo("Feature Overview", "src/test/resources/consolidated-source/cucumber-results-feature-overview.html"),
                     },
                 "batch1",
                 "Overall Results Batch 1",
                 true),
                 new ConsolidatedReportModel(
                     new ConsolidatedItemInfo[] {
-                        new ConsolidatedItemInfo("Overview Chart", "target/cucumber-results-2-feature-overview-chart.html"),
-                        new ConsolidatedItemInfo("Test Coverage", "target/cucumber-results-coverage-filtered.html"),
+                        new ConsolidatedItemInfo("Overview Chart", "src/test/resources/consolidated-source/cucumber-results-2-feature-overview-chart.html"),
+                        new ConsolidatedItemInfo("Test Coverage", "src/test/resources/consolidated-source/cucumber-results-coverage-filtered.html"),
                     },
                 "batch2",
                 "Overall Results Batch 2",

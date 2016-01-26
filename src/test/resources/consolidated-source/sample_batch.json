@@ -4,23 +4,23 @@
     {
       "items": [
         {
-          "path": "target/cucumber-results-feature-overview-chart.html", 
+          "path": "src/test/resources/consolidated-source/cucumber-results-feature-overview-chart.html", 
           "title": "Overview Chart"
         }, 
         {
-          "path": "target/cucumber-results-known-errors.html", 
+          "path": "src/test/resources/consolidated-source/cucumber-results-known-errors.html", 
           "title": "Known Errors"
         }, 
         {
-          "path": "target/cucumber-results-feature-overview.html", 
+          "path": "src/test/resources/consolidated-source/cucumber-results-feature-overview.html", 
           "title": "Feature Overview"
         },
         {
-          "path": "target/cucumber-results-agg-test-results.html", 
+          "path": "src/test/resources/consolidated-source/cucumber-results-agg-test-results.html", 
           "title": "Detailed Results"
         },
         {
-          "path": "target/cucumber-usage-report.html", 
+          "path": "src/test/resources/consolidated-source/cucumber-usage-report.html", 
           "title": "Usage Report"
         }
       ], 
@@ -31,11 +31,11 @@
     {
       "items": [
         {
-          "path": "target/cucumber-results-2-feature-overview-chart.html", 
+          "path": "src/test/resources/consolidated-source/cucumber-results-2-feature-overview-chart.html", 
           "title": "Overview Chart"
         }, 
         {
-          "path": "target/cucumber-results-coverage-filtered.html", 
+          "path": "src/test/resources/consolidated-source/cucumber-results-coverage-filtered.html", 
           "title": "Test Coverage"
         }
       ], 

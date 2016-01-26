@@ -59,12 +59,13 @@ public class CucumberFeatureOverview extends CucumberResultsOverview {
     }
 
     public String generateFeatureOverviewChart(CucumberFeatureResult[] features) throws Exception {
+        final double maxRate = 100.;
         String content = this.getReportBase();
         content = content.replaceAll("__TITLE__", "Features Overview Chart");
         double rate = getOverallRate(features);
         String grade = getStatusLetter(rate);
         content = content.replaceAll("__GRADE__", grade);
-        content = content.replaceAll("__RATE__", String.format("%.0f%%", rate * 100.));
+        content = content.replaceAll("__RATE__", String.format("%.0f%%", rate * maxRate));
         String featuresTable = generateFeaturesTable(features);
         content = content.replaceAll("__FEATURES__", featuresTable);
         return content;

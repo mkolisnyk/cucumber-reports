@@ -27,6 +27,8 @@ public class CucumberBreakdownReport extends CucumberResultsCommon {
     private static final int GREEN = 0x00FF00;
     private static final int GRAY = 0xBBBBBB;
 
+    private static final int TIMEOUT_MULTIPLIER = 3;
+
     @Override
     public int[][] getStatuses(CucumberFeatureResult[] results) {
         return null;
@@ -91,7 +93,7 @@ public class CucumberBreakdownReport extends CucumberResultsCommon {
                 totalTimeout += item.getRefreshTimeout();
             }
         }
-        totalTimeout *= 3;
+        totalTimeout *= TIMEOUT_MULTIPLIER;
         content = content.replaceAll("__TIMEOUT__", "" + totalTimeout);
         FileUtils.writeStringToFile(outFile, content);
     }
@@ -162,14 +164,6 @@ public class CucumberBreakdownReport extends CucumberResultsCommon {
     private String generateRowHeading(BreakdownTable table) {
         DataDimension rows = table.getRows();
         String content = "<tr>" + generateRowHeading(rows, rows.depth(), 1) + "</tr>";
-        /*DataDimension[][] data = table.getRows().expand();
-        for (int i = 0; i < data.length; i++) {
-            content = content.concat("<tr>");
-            for (int j = 0; j < data[i].length; j++) {
-                content = content.concat(String.format("<th>%s</th>", data[i][j].getAlias()));
-            }
-            content = content.concat("</tr>");
-        }*/
         return content;
     }
     private String generateBody(BreakdownTable table, CucumberFeatureResult[] features) throws Exception {
@@ -309,12 +303,12 @@ public class CucumberBreakdownReport extends CucumberResultsCommon {
             String chartHtml = "";
             double total = stats.getFailed() + stats.getPassed() + stats.getSkipped();
             if (total > 0) {
-                chartHtml = "<td>" + generator.generatePieChart(450, 300,
+                chartHtml = "<td>" + generator.generatePieChart(CHART_HEIGHT, CHART_WIDTH,
                     new int[] {stats.getPassed(), stats.getFailed(), stats.getSkipped()},
                     new String[] {"Passed", "Failed", "Skipped"},
                     new String[] {"green", "red", "silver"},
                     new String[] {"darkgreen", "darkred", "darkgray"},
-                    20, 3) + "</td>";
+                    CHART_THICKNESS, 2) + "</td>";
                 return chartHtml;
             }
             return String.format("<td bgcolor=silver><center><b>N/A</b></center></td>");

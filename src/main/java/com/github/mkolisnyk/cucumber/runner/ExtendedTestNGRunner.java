@@ -48,33 +48,7 @@ public class ExtendedTestNGRunner extends AbstractTestNGCucumberTests {
             e.printStackTrace();
         }
         for (ExtendedRuntimeOptions extendedOption : extendedOptions) {
-            if (extendedOption.isUsageReport()) {
-                ReportRunner.runUsageReport(extendedOption);
-            }
-            if (extendedOption.isOverviewReport()) {
-                ReportRunner.runOverviewReport(extendedOption);
-            }
-            if (extendedOption.isFeatureOverviewChart()) {
-                ReportRunner.runFeatureOverviewChartReport(extendedOption);
-            }
-            if (extendedOption.isDetailedReport()) {
-                ReportRunner.runDetailedReport(extendedOption);
-            }
-            if (extendedOption.isDetailedAggregatedReport()) {
-                ReportRunner.runDetailedAggregatedReport(extendedOption);
-            }
-            if (extendedOption.isCoverageReport()) {
-                ReportRunner.runCoverageReport(extendedOption);
-            }
-            if (extendedOption.isBreakdownReport()) {
-                ReportRunner.runBreakdownReport(extendedOption);
-            }
-            if (extendedOption.isKnownErrorsReport()) {
-                ReportRunner.runKnownErrorsReport(extendedOption);
-            }
-            if (extendedOption.isConsolidatedReport()) {
-                ReportRunner.runConsolidatedReport(extendedOption);
-            }
+            ReportRunner.run(extendedOption);
         }
     }
 }

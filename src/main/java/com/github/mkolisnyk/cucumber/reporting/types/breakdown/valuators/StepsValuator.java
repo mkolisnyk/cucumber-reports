@@ -33,16 +33,6 @@ public class StepsValuator implements Valuator {
             String expression, Matcher[] matchers) {
         BreakdownStats stats = new BreakdownStats();
         for (CucumberScenarioResult result : results) {
-            /*boolean fits = false;
-            for (Matcher matcher : matchers) {
-                if (matcher.matches(result, expression)) {
-                    fits = true;
-                    break;
-                }
-            }
-            if (!fits) {
-                continue;
-            }*/
             for (CucumberStepResult step : result.getSteps()) {
                 if (step.getName().equals(expression)
                         || step.getName().matches(expression)

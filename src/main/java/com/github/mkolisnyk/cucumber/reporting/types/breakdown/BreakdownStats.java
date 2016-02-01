@@ -27,6 +27,15 @@ public class BreakdownStats {
     public void addSkipped() {
         this.skipped++;
     }
+    public void addPassed(int value) {
+        this.passed += value;
+    }
+    public void addFailed(int value) {
+        this.failed += value;
+    }
+    public void addSkipped(int value) {
+        this.skipped += value;
+    }
     public BreakdownStats add(BreakdownStats another) {
         this.passed += another.getPassed();
         this.failed += another.getFailed();

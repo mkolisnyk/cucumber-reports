@@ -96,10 +96,10 @@ public abstract class CucumberResultsCommon {
     }
 
     @SuppressWarnings("unchecked")
-    public CucumberFeatureResult[] readFileContent(boolean aggregate) throws Exception {
+    public CucumberFeatureResult[] readFileContent(String sourceFileValue, boolean aggregate) throws Exception {
         FileInputStream fis = null;
         JsonReader jr = null;
-        File file = new File(this.getSourceFile());
+        File file = new File(sourceFileValue);
 
         if (!(file.exists() && file.isFile())) {
             throw new FileNotFoundException();
@@ -118,6 +118,11 @@ public abstract class CucumberResultsCommon {
         fis.close();
            sources = aggregateResults(sources, aggregate);
         return sources;
+    }
+
+    @SuppressWarnings("unchecked")
+    public CucumberFeatureResult[] readFileContent(boolean aggregate) throws Exception {
+        return readFileContent(this.getSourceFile(), aggregate);
     }
 
     @SuppressWarnings("unchecked")

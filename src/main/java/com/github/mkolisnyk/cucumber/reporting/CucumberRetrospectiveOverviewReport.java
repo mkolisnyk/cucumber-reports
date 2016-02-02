@@ -7,6 +7,7 @@ import java.io.InputStream;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.IOUtils;
 import org.apache.commons.lang.ArrayUtils;
+import org.apache.commons.lang3.StringUtils;
 
 import com.cedarsoftware.util.io.JsonReader;
 import com.github.mkolisnyk.cucumber.reporting.types.breakdown.BreakdownStats;
@@ -122,6 +123,14 @@ public class CucumberRetrospectiveOverviewReport extends CucumberResultsCommon {
     private String generateRetrospectiveReport(RetrospectiveModel model, BreakdownStats[] stats) throws Exception {
         String result = getReportBase();
         result = result.replaceAll("__TITLE__", model.getTitle());
+        if (model.getRefreshTimeout() > 0 && StringUtils.isNotBlank(model.getRedirectTo())) {
+            String refreshHeader
+                = String.format("<meta http-equiv=\"Refresh\" content=\"%d; url=%s\" />",
+                        model.getRefreshTimeout(), model.getRedirectTo());
+            result = result.replaceAll("__REFRESH__", refreshHeader);
+        } else {
+            result = result.replaceAll("__REFRESH__", "");
+        }
         String reportContent = "<h1>" + model.getTitle() + "</h1>" + drawGraph(model, stats);
         reportContent = this.replaceHtmlEntitiesWithCodes(reportContent);
         reportContent = reportContent.replaceAll("[$]", "&#36;");

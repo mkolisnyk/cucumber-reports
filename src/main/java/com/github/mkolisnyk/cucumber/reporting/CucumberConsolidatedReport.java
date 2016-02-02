@@ -52,6 +52,7 @@ public class CucumberConsolidatedReport extends CucumberResultsCommon {
     private String generateConsolidatedReport(ConsolidatedReportModel model) throws Exception {
         String result = getReportBase();
         result = result.replaceAll("__TITLE__", model.getTitle());
+        result = result.replaceAll("__REFRESH__", "");
         String reportContent = "";
         if (model.isUseTableOfContents()) {
             reportContent = reportContent.concat(

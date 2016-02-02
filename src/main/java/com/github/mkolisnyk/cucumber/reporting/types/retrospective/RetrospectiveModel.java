@@ -10,7 +10,8 @@ public class RetrospectiveModel {
     private int width;
     private int height;
     public RetrospectiveModel(String reportSuffixValue, String titleValue, String maskValue,
-            RetrospectiveOrderBy orderByValue, String redirectToValue, int refreshTimeoutValue) {
+            RetrospectiveOrderBy orderByValue, String redirectToValue, int refreshTimeoutValue,
+            int widthValue, int heightValue) {
         super();
         this.reportSuffix = reportSuffixValue;
         this.title = titleValue;
@@ -18,6 +19,21 @@ public class RetrospectiveModel {
         this.orderBy = orderByValue;
         this.redirectTo = redirectToValue;
         this.refreshTimeout = refreshTimeoutValue;
+        this.height = heightValue;
+        this.width = widthValue;
+    }
+    public RetrospectiveModel(String reportSuffixValue, String titleValue, String maskValue,
+            RetrospectiveOrderBy orderByValue, String redirectToValue, int refreshTimeoutValue) {
+        this(reportSuffixValue, titleValue, maskValue, orderByValue, redirectToValue, refreshTimeoutValue, 450, 300);
+    }
+    public RetrospectiveModel(String reportSuffixValue, String titleValue, String maskValue,
+            RetrospectiveOrderBy orderByValue, int widthValue, int heightValue) {
+        this(reportSuffixValue, titleValue, maskValue, orderByValue, "", 0, widthValue, heightValue);
+    }
+    public RetrospectiveModel(String reportSuffixValue, String titleValue, String maskValue,
+            int widthValue, int heightValue) {
+        this(reportSuffixValue, titleValue, maskValue,
+                RetrospectiveOrderBy.DATE_CREATED, "", 0, widthValue, heightValue);
     }
     public RetrospectiveModel(String reportSuffixValue, String titleValue, String maskValue,
             RetrospectiveOrderBy orderByValue) {

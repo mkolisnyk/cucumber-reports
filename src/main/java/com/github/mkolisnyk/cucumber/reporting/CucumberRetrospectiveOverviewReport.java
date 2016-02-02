@@ -8,8 +8,8 @@ import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.IOUtils;
 import org.apache.commons.lang.ArrayUtils;
 
+import com.cedarsoftware.util.io.JsonReader;
 import com.github.mkolisnyk.cucumber.reporting.types.breakdown.BreakdownStats;
-import com.github.mkolisnyk.cucumber.reporting.types.consolidated.ConsolidatedItemInfo;
 import com.github.mkolisnyk.cucumber.reporting.types.result.CucumberFeatureResult;
 import com.github.mkolisnyk.cucumber.reporting.types.retrospective.RetrospectiveBatch;
 import com.github.mkolisnyk.cucumber.reporting.types.retrospective.RetrospectiveModel;
@@ -50,44 +50,71 @@ public class CucumberRetrospectiveOverviewReport extends CucumberResultsCommon {
     private BreakdownStats[] calculateStats(String[] files) throws Exception {
         BreakdownStats[] result = {};
         for (String file : files) {
+            BreakdownStats stat = new BreakdownStats();
             CucumberFeatureResult[] features = this.readFileContent(file, true);
             for (CucumberFeatureResult feature : features) {
                 feature.valuate();
-                BreakdownStats stat = new BreakdownStats();
                 stat.addPassed(feature.getPassed());
                 stat.addFailed(feature.getFailed());
                 stat.addSkipped(feature.getSkipped() + feature.getUndefined());
-                result = (BreakdownStats[]) ArrayUtils.add(result, stat);
             }
+            result = (BreakdownStats[]) ArrayUtils.add(result, stat);
         }
         return result;
     }
     private String drawBarChart(RetrospectiveModel model, BreakdownStats stats, int offset, int barSize) {
         double total = stats.getFailed() + stats.getPassed() + stats.getSkipped();
+        final double scale = 0.9;
         if (total > 0) {
-            int passedRatio = (int) (model.getHeight() * ((double) stats.getPassed() / total));
-            int failedRatio = (int) (model.getHeight() * ((double) stats.getFailed() / total));
-            int skippedRatio = (int) (model.getHeight() * ((double) stats.getSkipped() / total));
-            return String.format("<rect x=\"%d\" y=\"%d\" width=\"%d\" height=\"%d\""
-                            + " stroke=\"black\" stroke-width=\"1\" fill=\"green\"></rect>"
+            int passedRatio = (int) (scale * model.getHeight() * ((double) stats.getPassed() / total));
+            int failedRatio = (int) (scale * model.getHeight() * ((double) stats.getFailed() / total));
+            int skippedRatio = (int) (scale * model.getHeight() * ((double) stats.getSkipped() / total));
+            String content = String.format("<rect x=\"%d\" y=\"%d\" width=\"%d\" height=\"%d\""
+                            + " stroke=\"black\" stroke-width=\"1\" fill=\"silver\"></rect>"
                         + "<rect x=\"%d\" y=\"%d\" width=\"%d\" height=\"%d\""
                             + " stroke=\"red\" stroke-width=\"1\" fill=\"red\"></rect>"
                         + "<rect x=\"%d\" y=\"%d\" width=\"%d\" height=\"%d\""
-                            + " stroke=\"silver\" stroke-width=\"1\" fill=\"silver\"></rect>",
-                    offset, 0, barSize, passedRatio,
-                    offset, passedRatio, barSize , failedRatio,
-                    offset, failedRatio + passedRatio, barSize, skippedRatio
+                            + " stroke=\"silver\" stroke-width=\"1\" fill=\"green\"></rect>",
+                    (int) (offset * scale * barSize), 0, (int) (scale * barSize), skippedRatio,
+                    (int) (offset * scale * barSize), skippedRatio, (int) (scale * barSize), failedRatio,
+                    (int) (offset * scale * barSize), failedRatio + skippedRatio, (int) (scale * barSize), passedRatio
              );
+            // Right scale
+            for (int i = 0; i <= 5; i++) {
+                content = content.concat(
+                    String.format("<text x=\"%d\" y=\"%d\" font-size=\"12\">%d%%</text>",
+                       (int) (model.getWidth() * scale), (int) (i * scale * model.getHeight() / 5) + 10, 100 - i * 20)
+                );
+                content = content.concat(
+                    String.format("<line stroke-dasharray=\"10,10\""
+                        + " x1=\"0\" y1=\"%d\" x2=\"%d\" y2=\"%d\" style=\"stroke:darkgray;stroke-width:1\" />",
+                        (int) (i * scale * model.getHeight() / 5),
+                        (int) (model.getWidth() * scale),
+                        (int) (i * scale * model.getHeight() / 5)
+                    )
+                );
+            }
+            // Bottom scale
+            content = content.concat(
+                String.format("<text x=\"%d\" y=\"%d\" font-size=\"12\">%d</text>",
+                    (int) (offset * scale * barSize) + barSize / 2,
+                    (int) (scale * model.getHeight()) + 10,
+                    offset + 1
+                )
+            );
+            return content;
         }
         return "";
     }
     private String drawGraph(RetrospectiveModel model, BreakdownStats[] stats) {
+        final double scale = 0.9;
         String content = String.format("<svg xmlns=\"http://www.w3.org/2000/svg\""
                 + " version=\"1.1\" width=\"%d\" height=\"%d\">", model.getWidth(), model.getHeight());
         int offset = 0;
         final int barSize = model.getWidth() / stats.length;
         for (BreakdownStats stat : stats) {
-            content = content.concat(this.drawBarChart(model, stat, offset * barSize, barSize));
+            content = content.concat(this.drawBarChart(model, stat, offset, barSize));
+            offset++;
         }
         content = content + "</svg>";
         return content;
@@ -104,7 +131,6 @@ public class CucumberRetrospectiveOverviewReport extends CucumberResultsCommon {
     public void executeReport(RetrospectiveModel model, boolean aggregate, boolean toPDF) throws Exception {
         String[] files = getFilesByMask(model.getMask());
         BreakdownStats[] stats = calculateStats(files);
-
         File outFile = new File(
                 this.getOutputDirectory() + File.separator + this.getOutputName()
                 + "-" + model.getReportSuffix() + ".html");
@@ -112,12 +138,15 @@ public class CucumberRetrospectiveOverviewReport extends CucumberResultsCommon {
         if (toPDF) {
             this.exportToPDF(outFile, model.getReportSuffix());
         }
-        return;
     }
     public void executeReport(RetrospectiveBatch batch, boolean aggregate, boolean toPDF) throws Exception {
         for (RetrospectiveModel model : batch.getModels()) {
             this.executeReport(model, aggregate, toPDF);
         }
-        return;
+    }
+    public void executeReport(File config, boolean aggregate, boolean toPDF) throws Exception {
+        RetrospectiveBatch batch = (RetrospectiveBatch) JsonReader.jsonToJava(
+                FileUtils.readFileToString(config));
+        this.executeReport(batch, aggregate, toPDF);
     }
 }

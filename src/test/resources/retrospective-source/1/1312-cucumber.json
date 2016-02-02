@@ -1,0 +1,3886 @@
+[
+  {
+    "line": 2,
+    "elements": [
+      {
+        "before": [
+          {
+            "result": {
+              "duration": 55953404676,
+              "status": "passed"
+            },
+            "match": {
+              "location": "Hooks.setUp(Scenario)"
+            }
+          }
+        ],
+        "line": 53,
+        "name": "Journey search from Me screen should show consistent results",
+        "description": "",
+        "id": "walk-up-booking;journey-search-from-me-screen-should-show-consistent-results;;2",
+        "after": [
+          {
+            "result": {
+              "duration": 1059433115,
+              "status": "passed"
+            },
+            "match": {
+              "location": "Hooks.tearDown(Scenario)"
+            }
+          }
+        ],
+        "type": "scenario",
+        "keyword": "Scenario Outline",
+        "steps": [
+          {
+            "result": {
+              "duration": 8329053512,
+              "status": "passed"
+            },
+            "line": 6,
+            "name": "I am not logged into the system",
+            "match": {
+              "location": "LoginActions.openHomePageNotLogged()"
+            },
+            "keyword": "Given "
+          },
+          {
+            "result": {
+              "duration": 15000289897,
+              "status": "passed"
+            },
+            "line": 7,
+            "name": "I am on the \"Journey Search\" screen",
+            "match": {
+              "arguments": [
+                {
+                  "val": "Journey Search",
+                  "offset": 13
+                }
+              ],
+              "location": "NavigationActions.navigateToPage(String)"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 76054655181,
+              "status": "passed"
+            },
+            "line": 8,
+            "name": "I search for journey using the following criteria:",
+            "match": {
+              "location": "JourneySearchActions.searchJourneyByCriteria(DataTable)"
+            },
+            "matchedColumns": [
+              0,
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8
+            ],
+            "rows": [
+              {
+                "cells": [
+                  "From",
+                  "To",
+                  "Via",
+                  "Type",
+                  "Out Date",
+                  "Return Date",
+                  "Adults",
+                  "Children",
+                  "Railcards"
+                ],
+                "line": 9
+              },
+              {
+                "cells": [
+                  "EUS",
+                  "MAN",
+                  "",
+                  "Single",
+                  "tomorrow",
+                  "",
+                  "1",
+                  "1",
+                  "Senior Railcard"
+                ],
+                "line": 10
+              }
+            ],
+            "keyword": "When "
+          },
+          {
+            "result": {
+              "duration": 3844802988,
+              "status": "passed"
+            },
+            "line": 11,
+            "name": "accept the alert message",
+            "match": {
+              "location": "PageActions.acceptMessage()"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 4592574367,
+              "status": "passed"
+            },
+            "line": 12,
+            "name": "I should see the \"Out Search Results\" screen",
+            "match": {
+              "arguments": [
+                {
+                  "val": "Out Search Results",
+                  "offset": 18
+                }
+              ],
+              "location": "PageActions.shouldSeeTheScreen(String)"
+            },
+            "keyword": "Then "
+          },
+          {
+            "result": {
+              "duration": 14023415998,
+              "status": "passed"
+            },
+            "line": 13,
+            "name": "I go to the \"Recents and Favourites\" screen",
+            "match": {
+              "arguments": [
+                {
+                  "val": "Recents and Favourites",
+                  "offset": 13
+                }
+              ],
+              "location": "NavigationActions.navigateToPage(String)"
+            },
+            "keyword": "When "
+          },
+          {
+            "result": {
+              "duration": 505165245,
+              "status": "passed"
+            },
+            "line": 14,
+            "name": "I should see the following labels are shown:",
+            "match": {
+              "location": "LabelActions.labelsAreShown(String\u003e)"
+            },
+            "matchedColumns": [
+              10,
+              11,
+              12
+            ],
+            "rows": [
+              {
+                "cells": [
+                  "London Euston"
+                ],
+                "line": 15
+              },
+              {
+                "cells": [
+                  "Manchester"
+                ],
+                "line": 16
+              },
+              {
+                "cells": [
+                  ""
+                ],
+                "line": 17
+              }
+            ],
+            "keyword": "Then "
+          },
+          {
+            "result": {
+              "duration": 1324555765,
+              "status": "passed"
+            },
+            "line": 18,
+            "name": "I click on the \"Manchester\" text",
+            "match": {
+              "arguments": [
+                {
+                  "val": "Manchester",
+                  "offset": 16
+                }
+              ],
+              "location": "FieldActions.clickOnText(String)"
+            },
+            "matchedColumns": [
+              13
+            ],
+            "keyword": "When "
+          },
+          {
+            "result": {
+              "duration": 5814111126,
+              "status": "passed"
+            },
+            "line": 19,
+            "name": "I should see the \"Out Search Results\" screen",
+            "match": {
+              "arguments": [
+                {
+                  "val": "Out Search Results",
+                  "offset": 18
+                }
+              ],
+              "location": "PageActions.shouldSeeTheScreen(String)"
+            },
+            "keyword": "Then "
+          },
+          {
+            "result": {
+              "duration": 1008972059,
+              "status": "passed"
+            },
+            "line": 20,
+            "name": "the \"Single from\" label is shown",
+            "match": {
+              "arguments": [
+                {
+                  "val": "Single from",
+                  "offset": 5
+                }
+              ],
+              "location": "LabelActions.messageIsShown(String)"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 545492312,
+              "status": "passed"
+            },
+            "line": 21,
+            "name": "the \"Passengers\" field has \"1 Adult\" text",
+            "match": {
+              "arguments": [
+                {
+                  "val": "Passengers",
+                  "offset": 5
+                },
+                {
+                  "val": "has",
+                  "offset": 23
+                },
+                {
+                  "val": "1 Adult",
+                  "offset": 28
+                }
+              ],
+              "location": "FieldActions.fieldShouldContainText(String,String,String)"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 504008002,
+              "status": "passed"
+            },
+            "line": 22,
+            "name": "the \"Railcards\" field has \"1\" text",
+            "match": {
+              "arguments": [
+                {
+                  "val": "Railcards",
+                  "offset": 5
+                },
+                {
+                  "val": "has",
+                  "offset": 22
+                },
+                {
+                  "val": "1",
+                  "offset": 27
+                }
+              ],
+              "location": "FieldActions.fieldShouldContainText(String,String,String)"
+            },
+            "matchedColumns": [
+              9
+            ],
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 491823314,
+              "status": "passed"
+            },
+            "line": 23,
+            "name": "the \"Journey Changes\" element on row No.1 of the \"Search Results\" table contains the \"Direct\" text",
+            "match": {
+              "arguments": [
+                {
+                  "val": "Journey Changes",
+                  "offset": 5
+                },
+                {
+                  "val": "1",
+                  "offset": 40
+                },
+                {
+                  "val": "Search Results",
+                  "offset": 50
+                },
+                {
+                  "val": "Direct",
+                  "offset": 86
+                }
+              ],
+              "location": "ListActions.rowElementContainsText(String,int,String,String)"
+            },
+            "matchedColumns": [
+              14
+            ],
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 639721363,
+              "status": "passed"
+            },
+            "line": 24,
+            "name": "the \"Departure Status\" element on row No.1 of the \"Search Results\" table contains one of the following labels:",
+            "match": {
+              "arguments": [
+                {
+                  "val": "Departure Status",
+                  "offset": 5
+                },
+                {
+                  "val": "1",
+                  "offset": 41
+                },
+                {
+                  "val": "Search Results",
+                  "offset": 51
+                }
+              ],
+              "location": "ListActions.rowElementContainsOneOfTheLabels(String,int,String,String\u003e)"
+            },
+            "rows": [
+              {
+                "cells": [
+                  "On time"
+                ],
+                "line": 25
+              },
+              {
+                "cells": [
+                  "Delayed"
+                ],
+                "line": 26
+              },
+              {
+                "cells": [
+                  "Exp"
+                ],
+                "line": 27
+              }
+            ],
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 548209839,
+              "status": "passed"
+            },
+            "line": 28,
+            "name": "the \"Arrival Status\" element on row No.1 of the \"Search Results\" table contains one of the following labels:",
+            "match": {
+              "arguments": [
+                {
+                  "val": "Arrival Status",
+                  "offset": 5
+                },
+                {
+                  "val": "1",
+                  "offset": 39
+                },
+                {
+                  "val": "Search Results",
+                  "offset": 49
+                }
+              ],
+              "location": "ListActions.rowElementContainsOneOfTheLabels(String,int,String,String\u003e)"
+            },
+            "rows": [
+              {
+                "cells": [
+                  "On time"
+                ],
+                "line": 29
+              },
+              {
+                "cells": [
+                  "Delayed"
+                ],
+                "line": 30
+              },
+              {
+                "cells": [
+                  "Exp"
+                ],
+                "line": 31
+              }
+            ],
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 513810250,
+              "status": "passed"
+            },
+            "line": 32,
+            "name": "the \"Platform\" element value on row No.1 of the \"Search Results\" table matches one of the following patterns:",
+            "match": {
+              "arguments": [
+                {
+                  "val": "Platform",
+                  "offset": 5
+                },
+                {
+                  "val": "1",
+                  "offset": 39
+                },
+                {
+                  "val": "Search Results",
+                  "offset": 49
+                }
+              ],
+              "location": "ListActions.rowElementShouldMatchPatternList(String,int,String,String\u003e)"
+            },
+            "rows": [
+              {
+                "cells": [
+                  "Plat\\. (\\d+)"
+                ],
+                "line": 33
+              },
+              {
+                "cells": [
+                  "-"
+                ],
+                "line": 34
+              }
+            ],
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 2064663302,
+              "status": "passed"
+            },
+            "line": 35,
+            "name": "the \"Journey Duration\" element on row No.1 of the \"Search Results\" table is calculated using the following formula:",
+            "match": {
+              "arguments": [
+                {
+                  "val": "Journey Duration",
+                  "offset": 5
+                },
+                {
+                  "val": "1",
+                  "offset": 41
+                },
+                {
+                  "val": "Search Results",
+                  "offset": 51
+                }
+              ],
+              "location": "CalculationActions.rowElementValueMatchesFormula(String,int,String,String)"
+            },
+            "keyword": "And ",
+            "doc_string": {
+              "content_type": "",
+              "line": 36,
+              "value": "\"Arrival Time\" - \"Departure Time\""
+            }
+          },
+          {
+            "result": {
+              "duration": 2201611235,
+              "status": "passed"
+            },
+            "line": 39,
+            "name": "I swipe screen top till the end",
+            "match": {
+              "arguments": [
+                {
+                  "val": "top",
+                  "offset": 15
+                },
+                {
+                  "val": "till the end",
+                  "offset": 19
+                }
+              ],
+              "location": "ScrollActions.swipeScreen(String,String)"
+            },
+            "keyword": "When "
+          },
+          {
+            "result": {
+              "duration": 1315767150,
+              "status": "passed"
+            },
+            "line": 40,
+            "name": "click on the \"Earlier Trains\" button",
+            "match": {
+              "arguments": [
+                {
+                  "val": "Earlier Trains",
+                  "offset": 14
+                }
+              ],
+              "location": "FieldActions.clickOnTheField(String)"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 3562679888,
+              "status": "passed"
+            },
+            "line": 41,
+            "name": "I should see the \"Out Search Results\" screen",
+            "match": {
+              "arguments": [
+                {
+                  "val": "Out Search Results",
+                  "offset": 18
+                }
+              ],
+              "location": "PageActions.shouldSeeTheScreen(String)"
+            },
+            "keyword": "Then "
+          },
+          {
+            "result": {
+              "duration": 272650584,
+              "status": "passed"
+            },
+            "line": 42,
+            "name": "the \"Search Results\" list is not empty",
+            "match": {
+              "arguments": [
+                {
+                  "val": "Search Results",
+                  "offset": 5
+                }
+              ],
+              "location": "ListActions.listIsNotEmpty(String)"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 933867801,
+              "status": "passed"
+            },
+            "line": 43,
+            "name": "the \"Not available\" text is shown",
+            "match": {
+              "arguments": [
+                {
+                  "val": "Not available",
+                  "offset": 5
+                }
+              ],
+              "location": "LabelActions.messageIsShown(String)"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 3623339875,
+              "status": "passed"
+            },
+            "line": 44,
+            "name": "I swipe screen bottom till the end",
+            "match": {
+              "arguments": [
+                {
+                  "val": "bottom",
+                  "offset": 15
+                },
+                {
+                  "val": "till the end",
+                  "offset": 22
+                }
+              ],
+              "location": "ScrollActions.swipeScreen(String,String)"
+            },
+            "keyword": "When "
+          },
+          {
+            "result": {
+              "duration": 214566525,
+              "status": "passed"
+            },
+            "line": 45,
+            "name": "note the current page content as \"Original Content\"",
+            "match": {
+              "arguments": [
+                {
+                  "val": "Original Content",
+                  "offset": 34
+                }
+              ],
+              "location": "PageActions.notePageContent(String)"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 1420010350,
+              "status": "passed"
+            },
+            "line": 46,
+            "name": "click on the \"Later Trains\" button",
+            "match": {
+              "arguments": [
+                {
+                  "val": "Later Trains",
+                  "offset": 14
+                }
+              ],
+              "location": "FieldActions.clickOnTheField(String)"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 3701778947,
+              "status": "passed"
+            },
+            "line": 47,
+            "name": "I should see the \"Out Search Results\" screen",
+            "match": {
+              "arguments": [
+                {
+                  "val": "Out Search Results",
+                  "offset": 18
+                }
+              ],
+              "location": "PageActions.shouldSeeTheScreen(String)"
+            },
+            "keyword": "Then "
+          },
+          {
+            "result": {
+              "duration": 272968934,
+              "status": "passed"
+            },
+            "line": 48,
+            "name": "the \"Search Results\" list is not empty",
+            "match": {
+              "arguments": [
+                {
+                  "val": "Search Results",
+                  "offset": 5
+                }
+              ],
+              "location": "ListActions.listIsNotEmpty(String)"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 265639844,
+              "status": "passed"
+            },
+            "line": 49,
+            "name": "the current page content is different from \"Original Content\"",
+            "match": {
+              "arguments": [
+                {
+                  "val": "Original Content",
+                  "offset": 44
+                }
+              ],
+              "location": "PageActions.comparePageContent(String)"
+            },
+            "keyword": "And "
+          }
+        ],
+        "tags": [
+          {
+            "line": 1,
+            "name": "@search"
+          },
+          {
+            "line": 1,
+            "name": "@payment"
+          },
+          {
+            "line": 1,
+            "name": "@search_results"
+          },
+          {
+            "line": 4,
+            "name": "@android"
+          },
+          {
+            "line": 4,
+            "name": "@android_live"
+          },
+          {
+            "line": 4,
+            "name": "@test"
+          }
+        ]
+      },
+      {
+        "before": [
+          {
+            "result": {
+              "duration": 16988198940,
+              "status": "passed"
+            },
+            "match": {
+              "location": "Hooks.setUp(Scenario)"
+            }
+          }
+        ],
+        "line": 54,
+        "name": "Journey search from Me screen should show consistent results",
+        "description": "",
+        "id": "walk-up-booking;journey-search-from-me-screen-should-show-consistent-results;;3",
+        "after": [
+          {
+            "result": {
+              "duration": 1104353334,
+              "status": "passed"
+            },
+            "match": {
+              "location": "Hooks.tearDown(Scenario)"
+            }
+          }
+        ],
+        "type": "scenario",
+        "keyword": "Scenario Outline",
+        "steps": [
+          {
+            "result": {
+              "duration": 6237473697,
+              "status": "passed"
+            },
+            "line": 6,
+            "name": "I am not logged into the system",
+            "match": {
+              "location": "LoginActions.openHomePageNotLogged()"
+            },
+            "keyword": "Given "
+          },
+          {
+            "result": {
+              "duration": 12624609929,
+              "status": "passed"
+            },
+            "line": 7,
+            "name": "I am on the \"Journey Search\" screen",
+            "match": {
+              "arguments": [
+                {
+                  "val": "Journey Search",
+                  "offset": 13
+                }
+              ],
+              "location": "NavigationActions.navigateToPage(String)"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 82619540089,
+              "status": "passed"
+            },
+            "line": 8,
+            "name": "I search for journey using the following criteria:",
+            "match": {
+              "location": "JourneySearchActions.searchJourneyByCriteria(DataTable)"
+            },
+            "matchedColumns": [
+              0,
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8
+            ],
+            "rows": [
+              {
+                "cells": [
+                  "From",
+                  "To",
+                  "Via",
+                  "Type",
+                  "Out Date",
+                  "Return Date",
+                  "Adults",
+                  "Children",
+                  "Railcards"
+                ],
+                "line": 9
+              },
+              {
+                "cells": [
+                  "London",
+                  "Manchester",
+                  "~Aberdeen",
+                  "Return",
+                  "tomorrow",
+                  "+2 days",
+                  "3",
+                  "0",
+                  ""
+                ],
+                "line": 10
+              }
+            ],
+            "keyword": "When "
+          },
+          {
+            "result": {
+              "duration": 3567095620,
+              "status": "passed"
+            },
+            "line": 11,
+            "name": "accept the alert message",
+            "match": {
+              "location": "PageActions.acceptMessage()"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 5805339248,
+              "status": "passed"
+            },
+            "line": 12,
+            "name": "I should see the \"Out Search Results\" screen",
+            "match": {
+              "arguments": [
+                {
+                  "val": "Out Search Results",
+                  "offset": 18
+                }
+              ],
+              "location": "PageActions.shouldSeeTheScreen(String)"
+            },
+            "keyword": "Then "
+          },
+          {
+            "result": {
+              "duration": 11345075812,
+              "status": "passed"
+            },
+            "line": 13,
+            "name": "I go to the \"Recents and Favourites\" screen",
+            "match": {
+              "arguments": [
+                {
+                  "val": "Recents and Favourites",
+                  "offset": 13
+                }
+              ],
+              "location": "NavigationActions.navigateToPage(String)"
+            },
+            "keyword": "When "
+          },
+          {
+            "result": {
+              "duration": 544466962,
+              "status": "passed"
+            },
+            "line": 14,
+            "name": "I should see the following labels are shown:",
+            "match": {
+              "location": "LabelActions.labelsAreShown(String\u003e)"
+            },
+            "matchedColumns": [
+              10,
+              11,
+              12
+            ],
+            "rows": [
+              {
+                "cells": [
+                  "London (Any)"
+                ],
+                "line": 15
+              },
+              {
+                "cells": [
+                  "Manchester"
+                ],
+                "line": 16
+              },
+              {
+                "cells": [
+                  "Aberdeen"
+                ],
+                "line": 17
+              }
+            ],
+            "keyword": "Then "
+          },
+          {
+            "result": {
+              "duration": 1317666542,
+              "status": "passed"
+            },
+            "line": 18,
+            "name": "I click on the \"Aberdeen\" text",
+            "match": {
+              "arguments": [
+                {
+                  "val": "Aberdeen",
+                  "offset": 16
+                }
+              ],
+              "location": "FieldActions.clickOnText(String)"
+            },
+            "matchedColumns": [
+              13
+            ],
+            "keyword": "When "
+          },
+          {
+            "result": {
+              "duration": 5557550462,
+              "status": "passed"
+            },
+            "line": 19,
+            "name": "I should see the \"Out Search Results\" screen",
+            "match": {
+              "arguments": [
+                {
+                  "val": "Out Search Results",
+                  "offset": 18
+                }
+              ],
+              "location": "PageActions.shouldSeeTheScreen(String)"
+            },
+            "keyword": "Then "
+          },
+          {
+            "result": {
+              "duration": 1029626342,
+              "status": "passed"
+            },
+            "line": 20,
+            "name": "the \"Single from\" label is shown",
+            "match": {
+              "arguments": [
+                {
+                  "val": "Single from",
+                  "offset": 5
+                }
+              ],
+              "location": "LabelActions.messageIsShown(String)"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 531228805,
+              "status": "passed"
+            },
+            "line": 21,
+            "name": "the \"Passengers\" field has \"1 Adult\" text",
+            "match": {
+              "arguments": [
+                {
+                  "val": "Passengers",
+                  "offset": 5
+                },
+                {
+                  "val": "has",
+                  "offset": 23
+                },
+                {
+                  "val": "1 Adult",
+                  "offset": 28
+                }
+              ],
+              "location": "FieldActions.fieldShouldContainText(String,String,String)"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 451058054,
+              "status": "passed"
+            },
+            "line": 22,
+            "name": "the \"Railcards\" field has \"0\" text",
+            "match": {
+              "arguments": [
+                {
+                  "val": "Railcards",
+                  "offset": 5
+                },
+                {
+                  "val": "has",
+                  "offset": 22
+                },
+                {
+                  "val": "0",
+                  "offset": 27
+                }
+              ],
+              "location": "FieldActions.fieldShouldContainText(String,String,String)"
+            },
+            "matchedColumns": [
+              9
+            ],
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 568318139,
+              "status": "passed"
+            },
+            "line": 23,
+            "name": "the \"Journey Changes\" element on row No.1 of the \"Search Results\" table contains the \"Direct\" text",
+            "match": {
+              "arguments": [
+                {
+                  "val": "Journey Changes",
+                  "offset": 5
+                },
+                {
+                  "val": "1",
+                  "offset": 40
+                },
+                {
+                  "val": "Search Results",
+                  "offset": 50
+                },
+                {
+                  "val": "Direct",
+                  "offset": 86
+                }
+              ],
+              "location": "ListActions.rowElementContainsText(String,int,String,String)"
+            },
+            "matchedColumns": [
+              14
+            ],
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 517840346,
+              "status": "passed"
+            },
+            "line": 24,
+            "name": "the \"Departure Status\" element on row No.1 of the \"Search Results\" table contains one of the following labels:",
+            "match": {
+              "arguments": [
+                {
+                  "val": "Departure Status",
+                  "offset": 5
+                },
+                {
+                  "val": "1",
+                  "offset": 41
+                },
+                {
+                  "val": "Search Results",
+                  "offset": 51
+                }
+              ],
+              "location": "ListActions.rowElementContainsOneOfTheLabels(String,int,String,String\u003e)"
+            },
+            "rows": [
+              {
+                "cells": [
+                  "On time"
+                ],
+                "line": 25
+              },
+              {
+                "cells": [
+                  "Delayed"
+                ],
+                "line": 26
+              },
+              {
+                "cells": [
+                  "Exp"
+                ],
+                "line": 27
+              }
+            ],
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 486096354,
+              "status": "passed"
+            },
+            "line": 28,
+            "name": "the \"Arrival Status\" element on row No.1 of the \"Search Results\" table contains one of the following labels:",
+            "match": {
+              "arguments": [
+                {
+                  "val": "Arrival Status",
+                  "offset": 5
+                },
+                {
+                  "val": "1",
+                  "offset": 39
+                },
+                {
+                  "val": "Search Results",
+                  "offset": 49
+                }
+              ],
+              "location": "ListActions.rowElementContainsOneOfTheLabels(String,int,String,String\u003e)"
+            },
+            "rows": [
+              {
+                "cells": [
+                  "On time"
+                ],
+                "line": 29
+              },
+              {
+                "cells": [
+                  "Delayed"
+                ],
+                "line": 30
+              },
+              {
+                "cells": [
+                  "Exp"
+                ],
+                "line": 31
+              }
+            ],
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 455859423,
+              "status": "passed"
+            },
+            "line": 32,
+            "name": "the \"Platform\" element value on row No.1 of the \"Search Results\" table matches one of the following patterns:",
+            "match": {
+              "arguments": [
+                {
+                  "val": "Platform",
+                  "offset": 5
+                },
+                {
+                  "val": "1",
+                  "offset": 39
+                },
+                {
+                  "val": "Search Results",
+                  "offset": 49
+                }
+              ],
+              "location": "ListActions.rowElementShouldMatchPatternList(String,int,String,String\u003e)"
+            },
+            "rows": [
+              {
+                "cells": [
+                  "Plat\\. (\\d+)"
+                ],
+                "line": 33
+              },
+              {
+                "cells": [
+                  "-"
+                ],
+                "line": 34
+              }
+            ],
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 1667866757,
+              "status": "passed"
+            },
+            "line": 35,
+            "name": "the \"Journey Duration\" element on row No.1 of the \"Search Results\" table is calculated using the following formula:",
+            "match": {
+              "arguments": [
+                {
+                  "val": "Journey Duration",
+                  "offset": 5
+                },
+                {
+                  "val": "1",
+                  "offset": 41
+                },
+                {
+                  "val": "Search Results",
+                  "offset": 51
+                }
+              ],
+              "location": "CalculationActions.rowElementValueMatchesFormula(String,int,String,String)"
+            },
+            "keyword": "And ",
+            "doc_string": {
+              "content_type": "",
+              "line": 36,
+              "value": "\"Arrival Time\" - \"Departure Time\""
+            }
+          },
+          {
+            "result": {
+              "duration": 2140312874,
+              "status": "passed"
+            },
+            "line": 39,
+            "name": "I swipe screen top till the end",
+            "match": {
+              "arguments": [
+                {
+                  "val": "top",
+                  "offset": 15
+                },
+                {
+                  "val": "till the end",
+                  "offset": 19
+                }
+              ],
+              "location": "ScrollActions.swipeScreen(String,String)"
+            },
+            "keyword": "When "
+          },
+          {
+            "result": {
+              "duration": 1256916506,
+              "status": "passed"
+            },
+            "line": 40,
+            "name": "click on the \"Earlier Trains\" button",
+            "match": {
+              "arguments": [
+                {
+                  "val": "Earlier Trains",
+                  "offset": 14
+                }
+              ],
+              "location": "FieldActions.clickOnTheField(String)"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 3687897394,
+              "status": "passed"
+            },
+            "line": 41,
+            "name": "I should see the \"Out Search Results\" screen",
+            "match": {
+              "arguments": [
+                {
+                  "val": "Out Search Results",
+                  "offset": 18
+                }
+              ],
+              "location": "PageActions.shouldSeeTheScreen(String)"
+            },
+            "keyword": "Then "
+          },
+          {
+            "result": {
+              "duration": 233784046,
+              "status": "passed"
+            },
+            "line": 42,
+            "name": "the \"Search Results\" list is not empty",
+            "match": {
+              "arguments": [
+                {
+                  "val": "Search Results",
+                  "offset": 5
+                }
+              ],
+              "location": "ListActions.listIsNotEmpty(String)"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 913249337,
+              "status": "passed"
+            },
+            "line": 43,
+            "name": "the \"Not available\" text is shown",
+            "match": {
+              "arguments": [
+                {
+                  "val": "Not available",
+                  "offset": 5
+                }
+              ],
+              "location": "LabelActions.messageIsShown(String)"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 4352250245,
+              "status": "passed"
+            },
+            "line": 44,
+            "name": "I swipe screen bottom till the end",
+            "match": {
+              "arguments": [
+                {
+                  "val": "bottom",
+                  "offset": 15
+                },
+                {
+                  "val": "till the end",
+                  "offset": 22
+                }
+              ],
+              "location": "ScrollActions.swipeScreen(String,String)"
+            },
+            "keyword": "When "
+          },
+          {
+            "result": {
+              "duration": 196749277,
+              "status": "passed"
+            },
+            "line": 45,
+            "name": "note the current page content as \"Original Content\"",
+            "match": {
+              "arguments": [
+                {
+                  "val": "Original Content",
+                  "offset": 34
+                }
+              ],
+              "location": "PageActions.notePageContent(String)"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 1360126323,
+              "status": "passed"
+            },
+            "line": 46,
+            "name": "click on the \"Later Trains\" button",
+            "match": {
+              "arguments": [
+                {
+                  "val": "Later Trains",
+                  "offset": 14
+                }
+              ],
+              "location": "FieldActions.clickOnTheField(String)"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 3657429817,
+              "status": "passed"
+            },
+            "line": 47,
+            "name": "I should see the \"Out Search Results\" screen",
+            "match": {
+              "arguments": [
+                {
+                  "val": "Out Search Results",
+                  "offset": 18
+                }
+              ],
+              "location": "PageActions.shouldSeeTheScreen(String)"
+            },
+            "keyword": "Then "
+          },
+          {
+            "result": {
+              "duration": 256990821,
+              "status": "passed"
+            },
+            "line": 48,
+            "name": "the \"Search Results\" list is not empty",
+            "match": {
+              "arguments": [
+                {
+                  "val": "Search Results",
+                  "offset": 5
+                }
+              ],
+              "location": "ListActions.listIsNotEmpty(String)"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 230868679,
+              "status": "passed"
+            },
+            "line": 49,
+            "name": "the current page content is different from \"Original Content\"",
+            "match": {
+              "arguments": [
+                {
+                  "val": "Original Content",
+                  "offset": 44
+                }
+              ],
+              "location": "PageActions.comparePageContent(String)"
+            },
+            "keyword": "And "
+          }
+        ],
+        "tags": [
+          {
+            "line": 1,
+            "name": "@search"
+          },
+          {
+            "line": 1,
+            "name": "@payment"
+          },
+          {
+            "line": 1,
+            "name": "@search_results"
+          },
+          {
+            "line": 4,
+            "name": "@android"
+          },
+          {
+            "line": 4,
+            "name": "@android_live"
+          },
+          {
+            "line": 4,
+            "name": "@test"
+          }
+        ]
+      },
+      {
+        "before": [
+          {
+            "result": {
+              "duration": 16238761157,
+              "status": "passed"
+            },
+            "match": {
+              "location": "Hooks.setUp(Scenario)"
+            }
+          }
+        ],
+        "line": 55,
+        "name": "Journey search from Me screen should show consistent results",
+        "description": "",
+        "id": "walk-up-booking;journey-search-from-me-screen-should-show-consistent-results;;4",
+        "after": [
+          {
+            "result": {
+              "duration": 1007809795,
+              "status": "passed"
+            },
+            "match": {
+              "location": "Hooks.tearDown(Scenario)"
+            }
+          }
+        ],
+        "type": "scenario",
+        "keyword": "Scenario Outline",
+        "steps": [
+          {
+            "result": {
+              "duration": 6265496235,
+              "status": "passed"
+            },
+            "line": 6,
+            "name": "I am not logged into the system",
+            "match": {
+              "location": "LoginActions.openHomePageNotLogged()"
+            },
+            "keyword": "Given "
+          },
+          {
+            "result": {
+              "duration": 12473394472,
+              "status": "passed"
+            },
+            "line": 7,
+            "name": "I am on the \"Journey Search\" screen",
+            "match": {
+              "arguments": [
+                {
+                  "val": "Journey Search",
+                  "offset": 13
+                }
+              ],
+              "location": "NavigationActions.navigateToPage(String)"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 73480013885,
+              "status": "passed"
+            },
+            "line": 8,
+            "name": "I search for journey using the following criteria:",
+            "match": {
+              "location": "JourneySearchActions.searchJourneyByCriteria(DataTable)"
+            },
+            "matchedColumns": [
+              0,
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8
+            ],
+            "rows": [
+              {
+                "cells": [
+                  "From",
+                  "To",
+                  "Via",
+                  "Type",
+                  "Out Date",
+                  "Return Date",
+                  "Adults",
+                  "Children",
+                  "Railcards"
+                ],
+                "line": 9
+              },
+              {
+                "cells": [
+                  "NEH",
+                  "ESD",
+                  "Grove Park",
+                  "Open Return",
+                  "tomorrow",
+                  "",
+                  "3",
+                  "2",
+                  ""
+                ],
+                "line": 10
+              }
+            ],
+            "keyword": "When "
+          },
+          {
+            "result": {
+              "duration": 3585918801,
+              "status": "passed"
+            },
+            "line": 11,
+            "name": "accept the alert message",
+            "match": {
+              "location": "PageActions.acceptMessage()"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 3533369888,
+              "status": "passed"
+            },
+            "line": 12,
+            "name": "I should see the \"Out Search Results\" screen",
+            "match": {
+              "arguments": [
+                {
+                  "val": "Out Search Results",
+                  "offset": 18
+                }
+              ],
+              "location": "PageActions.shouldSeeTheScreen(String)"
+            },
+            "keyword": "Then "
+          },
+          {
+            "result": {
+              "duration": 11207994982,
+              "status": "passed"
+            },
+            "line": 13,
+            "name": "I go to the \"Recents and Favourites\" screen",
+            "match": {
+              "arguments": [
+                {
+                  "val": "Recents and Favourites",
+                  "offset": 13
+                }
+              ],
+              "location": "NavigationActions.navigateToPage(String)"
+            },
+            "keyword": "When "
+          },
+          {
+            "result": {
+              "duration": 526839855,
+              "status": "passed"
+            },
+            "line": 14,
+            "name": "I should see the following labels are shown:",
+            "match": {
+              "location": "LabelActions.labelsAreShown(String\u003e)"
+            },
+            "matchedColumns": [
+              10,
+              11,
+              12
+            ],
+            "rows": [
+              {
+                "cells": [
+                  "New Eltham"
+                ],
+                "line": 15
+              },
+              {
+                "cells": [
+                  "Elmstead Woods"
+                ],
+                "line": 16
+              },
+              {
+                "cells": [
+                  "Grove Park"
+                ],
+                "line": 17
+              }
+            ],
+            "keyword": "Then "
+          },
+          {
+            "result": {
+              "duration": 1286057122,
+              "status": "passed"
+            },
+            "line": 18,
+            "name": "I click on the \"New Eltham\" text",
+            "match": {
+              "arguments": [
+                {
+                  "val": "New Eltham",
+                  "offset": 16
+                }
+              ],
+              "location": "FieldActions.clickOnText(String)"
+            },
+            "matchedColumns": [
+              13
+            ],
+            "keyword": "When "
+          },
+          {
+            "result": {
+              "duration": 4998695131,
+              "status": "passed"
+            },
+            "line": 19,
+            "name": "I should see the \"Out Search Results\" screen",
+            "match": {
+              "arguments": [
+                {
+                  "val": "Out Search Results",
+                  "offset": 18
+                }
+              ],
+              "location": "PageActions.shouldSeeTheScreen(String)"
+            },
+            "keyword": "Then "
+          },
+          {
+            "result": {
+              "duration": 945407753,
+              "status": "passed"
+            },
+            "line": 20,
+            "name": "the \"Single from\" label is shown",
+            "match": {
+              "arguments": [
+                {
+                  "val": "Single from",
+                  "offset": 5
+                }
+              ],
+              "location": "LabelActions.messageIsShown(String)"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 453128504,
+              "status": "passed"
+            },
+            "line": 21,
+            "name": "the \"Passengers\" field has \"1 Adult\" text",
+            "match": {
+              "arguments": [
+                {
+                  "val": "Passengers",
+                  "offset": 5
+                },
+                {
+                  "val": "has",
+                  "offset": 23
+                },
+                {
+                  "val": "1 Adult",
+                  "offset": 28
+                }
+              ],
+              "location": "FieldActions.fieldShouldContainText(String,String,String)"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 462843046,
+              "status": "passed"
+            },
+            "line": 22,
+            "name": "the \"Railcards\" field has \"0\" text",
+            "match": {
+              "arguments": [
+                {
+                  "val": "Railcards",
+                  "offset": 5
+                },
+                {
+                  "val": "has",
+                  "offset": 22
+                },
+                {
+                  "val": "0",
+                  "offset": 27
+                }
+              ],
+              "location": "FieldActions.fieldShouldContainText(String,String,String)"
+            },
+            "matchedColumns": [
+              9
+            ],
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 471289208,
+              "status": "passed"
+            },
+            "line": 23,
+            "name": "the \"Journey Changes\" element on row No.1 of the \"Search Results\" table contains the \"1 change\" text",
+            "match": {
+              "arguments": [
+                {
+                  "val": "Journey Changes",
+                  "offset": 5
+                },
+                {
+                  "val": "1",
+                  "offset": 40
+                },
+                {
+                  "val": "Search Results",
+                  "offset": 50
+                },
+                {
+                  "val": "1 change",
+                  "offset": 86
+                }
+              ],
+              "location": "ListActions.rowElementContainsText(String,int,String,String)"
+            },
+            "matchedColumns": [
+              14
+            ],
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 515875344,
+              "status": "passed"
+            },
+            "line": 24,
+            "name": "the \"Departure Status\" element on row No.1 of the \"Search Results\" table contains one of the following labels:",
+            "match": {
+              "arguments": [
+                {
+                  "val": "Departure Status",
+                  "offset": 5
+                },
+                {
+                  "val": "1",
+                  "offset": 41
+                },
+                {
+                  "val": "Search Results",
+                  "offset": 51
+                }
+              ],
+              "location": "ListActions.rowElementContainsOneOfTheLabels(String,int,String,String\u003e)"
+            },
+            "rows": [
+              {
+                "cells": [
+                  "On time"
+                ],
+                "line": 25
+              },
+              {
+                "cells": [
+                  "Delayed"
+                ],
+                "line": 26
+              },
+              {
+                "cells": [
+                  "Exp"
+                ],
+                "line": 27
+              }
+            ],
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 492421184,
+              "status": "passed"
+            },
+            "line": 28,
+            "name": "the \"Arrival Status\" element on row No.1 of the \"Search Results\" table contains one of the following labels:",
+            "match": {
+              "arguments": [
+                {
+                  "val": "Arrival Status",
+                  "offset": 5
+                },
+                {
+                  "val": "1",
+                  "offset": 39
+                },
+                {
+                  "val": "Search Results",
+                  "offset": 49
+                }
+              ],
+              "location": "ListActions.rowElementContainsOneOfTheLabels(String,int,String,String\u003e)"
+            },
+            "rows": [
+              {
+                "cells": [
+                  "On time"
+                ],
+                "line": 29
+              },
+              {
+                "cells": [
+                  "Delayed"
+                ],
+                "line": 30
+              },
+              {
+                "cells": [
+                  "Exp"
+                ],
+                "line": 31
+              }
+            ],
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 491690417,
+              "status": "passed"
+            },
+            "line": 32,
+            "name": "the \"Platform\" element value on row No.1 of the \"Search Results\" table matches one of the following patterns:",
+            "match": {
+              "arguments": [
+                {
+                  "val": "Platform",
+                  "offset": 5
+                },
+                {
+                  "val": "1",
+                  "offset": 39
+                },
+                {
+                  "val": "Search Results",
+                  "offset": 49
+                }
+              ],
+              "location": "ListActions.rowElementShouldMatchPatternList(String,int,String,String\u003e)"
+            },
+            "rows": [
+              {
+                "cells": [
+                  "Plat\\. (\\d+)"
+                ],
+                "line": 33
+              },
+              {
+                "cells": [
+                  "-"
+                ],
+                "line": 34
+              }
+            ],
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 1390969494,
+              "status": "passed"
+            },
+            "line": 35,
+            "name": "the \"Journey Duration\" element on row No.1 of the \"Search Results\" table is calculated using the following formula:",
+            "match": {
+              "arguments": [
+                {
+                  "val": "Journey Duration",
+                  "offset": 5
+                },
+                {
+                  "val": "1",
+                  "offset": 41
+                },
+                {
+                  "val": "Search Results",
+                  "offset": 51
+                }
+              ],
+              "location": "CalculationActions.rowElementValueMatchesFormula(String,int,String,String)"
+            },
+            "keyword": "And ",
+            "doc_string": {
+              "content_type": "",
+              "line": 36,
+              "value": "\"Arrival Time\" - \"Departure Time\""
+            }
+          },
+          {
+            "result": {
+              "duration": 2095059911,
+              "status": "passed"
+            },
+            "line": 39,
+            "name": "I swipe screen top till the end",
+            "match": {
+              "arguments": [
+                {
+                  "val": "top",
+                  "offset": 15
+                },
+                {
+                  "val": "till the end",
+                  "offset": 19
+                }
+              ],
+              "location": "ScrollActions.swipeScreen(String,String)"
+            },
+            "keyword": "When "
+          },
+          {
+            "result": {
+              "duration": 1238756137,
+              "status": "passed"
+            },
+            "line": 40,
+            "name": "click on the \"Earlier Trains\" button",
+            "match": {
+              "arguments": [
+                {
+                  "val": "Earlier Trains",
+                  "offset": 14
+                }
+              ],
+              "location": "FieldActions.clickOnTheField(String)"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 3617973444,
+              "status": "passed"
+            },
+            "line": 41,
+            "name": "I should see the \"Out Search Results\" screen",
+            "match": {
+              "arguments": [
+                {
+                  "val": "Out Search Results",
+                  "offset": 18
+                }
+              ],
+              "location": "PageActions.shouldSeeTheScreen(String)"
+            },
+            "keyword": "Then "
+          },
+          {
+            "result": {
+              "duration": 238467246,
+              "status": "passed"
+            },
+            "line": 42,
+            "name": "the \"Search Results\" list is not empty",
+            "match": {
+              "arguments": [
+                {
+                  "val": "Search Results",
+                  "offset": 5
+                }
+              ],
+              "location": "ListActions.listIsNotEmpty(String)"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 942639342,
+              "status": "passed"
+            },
+            "line": 43,
+            "name": "the \"Not available\" text is shown",
+            "match": {
+              "arguments": [
+                {
+                  "val": "Not available",
+                  "offset": 5
+                }
+              ],
+              "location": "LabelActions.messageIsShown(String)"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 3713749727,
+              "status": "passed"
+            },
+            "line": 44,
+            "name": "I swipe screen bottom till the end",
+            "match": {
+              "arguments": [
+                {
+                  "val": "bottom",
+                  "offset": 15
+                },
+                {
+                  "val": "till the end",
+                  "offset": 22
+                }
+              ],
+              "location": "ScrollActions.swipeScreen(String,String)"
+            },
+            "keyword": "When "
+          },
+          {
+            "result": {
+              "duration": 172571047,
+              "status": "passed"
+            },
+            "line": 45,
+            "name": "note the current page content as \"Original Content\"",
+            "match": {
+              "arguments": [
+                {
+                  "val": "Original Content",
+                  "offset": 34
+                }
+              ],
+              "location": "PageActions.notePageContent(String)"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 1350548024,
+              "status": "passed"
+            },
+            "line": 46,
+            "name": "click on the \"Later Trains\" button",
+            "match": {
+              "arguments": [
+                {
+                  "val": "Later Trains",
+                  "offset": 14
+                }
+              ],
+              "location": "FieldActions.clickOnTheField(String)"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 3586908332,
+              "status": "passed"
+            },
+            "line": 47,
+            "name": "I should see the \"Out Search Results\" screen",
+            "match": {
+              "arguments": [
+                {
+                  "val": "Out Search Results",
+                  "offset": 18
+                }
+              ],
+              "location": "PageActions.shouldSeeTheScreen(String)"
+            },
+            "keyword": "Then "
+          },
+          {
+            "result": {
+              "duration": 239949867,
+              "status": "passed"
+            },
+            "line": 48,
+            "name": "the \"Search Results\" list is not empty",
+            "match": {
+              "arguments": [
+                {
+                  "val": "Search Results",
+                  "offset": 5
+                }
+              ],
+              "location": "ListActions.listIsNotEmpty(String)"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 235173606,
+              "status": "passed"
+            },
+            "line": 49,
+            "name": "the current page content is different from \"Original Content\"",
+            "match": {
+              "arguments": [
+                {
+                  "val": "Original Content",
+                  "offset": 44
+                }
+              ],
+              "location": "PageActions.comparePageContent(String)"
+            },
+            "keyword": "And "
+          }
+        ],
+        "tags": [
+          {
+            "line": 1,
+            "name": "@search"
+          },
+          {
+            "line": 1,
+            "name": "@payment"
+          },
+          {
+            "line": 1,
+            "name": "@search_results"
+          },
+          {
+            "line": 4,
+            "name": "@android"
+          },
+          {
+            "line": 4,
+            "name": "@android_live"
+          },
+          {
+            "line": 4,
+            "name": "@test"
+          }
+        ]
+      }
+    ],
+    "name": "Walk-up booking",
+    "description": "",
+    "id": "walk-up-booking",
+    "keyword": "Feature",
+    "uri": "booking/WalkUpBooking.feature",
+    "tags": [
+      {
+        "line": 1,
+        "name": "@search"
+      },
+      {
+        "line": 1,
+        "name": "@search_results"
+      },
+      {
+        "line": 1,
+        "name": "@payment"
+      }
+    ]
+  },
+  {
+    "line": 2,
+    "elements": [
+      {
+        "before": [
+          {
+            "result": {
+              "duration": 13625718967,
+              "status": "passed"
+            },
+            "match": {
+              "location": "Hooks.setUp(Scenario)"
+            }
+          }
+        ],
+        "line": 6,
+        "name": "Mobile Promotion icon should be visible throughout the flow if a mobile ticket is available",
+        "description": "",
+        "id": "mobile-promotion;mobile-promotion-icon-should-be-visible-throughout-the-flow-if-a-mobile-ticket-is-available",
+        "after": [
+          {
+            "result": {
+              "duration": 1019656717,
+              "status": "passed"
+            },
+            "match": {
+              "location": "Hooks.tearDown(Scenario)"
+            }
+          }
+        ],
+        "type": "scenario",
+        "keyword": "Scenario",
+        "steps": [
+          {
+            "result": {
+              "duration": 6452284257,
+              "status": "passed"
+            },
+            "line": 7,
+            "name": "I am not logged into the system",
+            "match": {
+              "location": "LoginActions.openHomePageNotLogged()"
+            },
+            "keyword": "Given "
+          },
+          {
+            "result": {
+              "duration": 1009791871,
+              "status": "passed"
+            },
+            "line": 8,
+            "name": "I go to the search results for the following journey:",
+            "match": {
+              "location": "JourneySearchActions.goToSearchResults(DataTable)"
+            },
+            "rows": [
+              {
+                "cells": [
+                  "From",
+                  "To",
+                  "Type",
+                  "Out Date",
+                  "Return Date",
+                  "Adults"
+                ],
+                "line": 9
+              },
+              {
+                "cells": [
+                  "EUS",
+                  "MAN",
+                  "Return",
+                  "today",
+                  "+1 days",
+                  "1"
+                ],
+                "line": 10
+              }
+            ],
+            "keyword": "When "
+          },
+          {
+            "result": {
+              "duration": 3589245245,
+              "status": "passed"
+            },
+            "line": 11,
+            "name": "accept the alert message",
+            "match": {
+              "location": "PageActions.acceptMessage()"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 5244431210,
+              "status": "passed"
+            },
+            "line": 12,
+            "name": "I should see the \"Out Search Results\" screen",
+            "match": {
+              "arguments": [
+                {
+                  "val": "Out Search Results",
+                  "offset": 18
+                }
+              ],
+              "location": "PageActions.shouldSeeTheScreen(String)"
+            },
+            "keyword": "Then "
+          },
+          {
+            "result": {
+              "duration": 5748106468,
+              "status": "passed"
+            },
+            "line": 13,
+            "name": "I should see the \"Mobile icon\" field is visible",
+            "match": {
+              "arguments": [
+                {
+                  "val": "Mobile icon",
+                  "offset": 18
+                }
+              ],
+              "location": "FieldActions.shouldSeeFieldIsVisible(String)"
+            },
+            "keyword": "Then "
+          },
+          {
+            "result": {
+              "duration": 11033772931,
+              "status": "passed"
+            },
+            "line": 14,
+            "name": "I select first available train",
+            "match": {
+              "location": "JourneySearchActions.selectFirstAvailableTrain()"
+            },
+            "keyword": "When "
+          },
+          {
+            "result": {
+              "duration": 1199694437,
+              "status": "passed"
+            },
+            "line": 15,
+            "name": "I should see the \"Return Search Results\" screen",
+            "match": {
+              "arguments": [
+                {
+                  "val": "Return Search Results",
+                  "offset": 18
+                }
+              ],
+              "location": "PageActions.shouldSeeTheScreen(String)"
+            },
+            "keyword": "Then "
+          },
+          {
+            "result": {
+              "duration": 6411425601,
+              "status": "passed"
+            },
+            "line": 16,
+            "name": "I should see the \"Mobile icon\" field is visible",
+            "match": {
+              "arguments": [
+                {
+                  "val": "Mobile icon",
+                  "offset": 18
+                }
+              ],
+              "location": "FieldActions.shouldSeeFieldIsVisible(String)"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 13755803786,
+              "status": "passed"
+            },
+            "line": 17,
+            "name": "I select first available train",
+            "match": {
+              "location": "JourneySearchActions.selectFirstAvailableTrain()"
+            },
+            "keyword": "When "
+          },
+          {
+            "result": {
+              "duration": 271812027,
+              "status": "passed"
+            },
+            "line": 18,
+            "name": "I should see the \"Select Ticket\" screen",
+            "match": {
+              "arguments": [
+                {
+                  "val": "Select Ticket",
+                  "offset": 18
+                }
+              ],
+              "location": "PageActions.shouldSeeTheScreen(String)"
+            },
+            "keyword": "Then "
+          },
+          {
+            "result": {
+              "duration": 271050128,
+              "status": "passed"
+            },
+            "line": 19,
+            "name": "I should see the \"Mobile icon\" field is visible",
+            "match": {
+              "arguments": [
+                {
+                  "val": "Mobile icon",
+                  "offset": 18
+                }
+              ],
+              "location": "FieldActions.shouldSeeFieldIsVisible(String)"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 1215376294,
+              "status": "passed"
+            },
+            "line": 20,
+            "name": "I click on the \"Anytime Return\" text",
+            "match": {
+              "arguments": [
+                {
+                  "val": "Anytime Return",
+                  "offset": 16
+                }
+              ],
+              "location": "FieldActions.clickOnText(String)"
+            },
+            "keyword": "When "
+          },
+          {
+            "result": {
+              "duration": 320784769,
+              "status": "passed"
+            },
+            "line": 21,
+            "name": "I should see the \"Payment\" screen",
+            "match": {
+              "arguments": [
+                {
+                  "val": "Payment",
+                  "offset": 18
+                }
+              ],
+              "location": "PageActions.shouldSeeTheScreen(String)"
+            },
+            "keyword": "Then "
+          },
+          {
+            "result": {
+              "duration": 299532618,
+              "status": "passed"
+            },
+            "line": 22,
+            "name": "I scroll to the \"Mobile ticket\" text",
+            "match": {
+              "arguments": [
+                {
+                  "val": "Mobile ticket",
+                  "offset": 17
+                }
+              ],
+              "location": "ScrollActions.scrollToText(String)"
+            },
+            "keyword": "When "
+          },
+          {
+            "result": {
+              "duration": 148467131,
+              "status": "passed"
+            },
+            "line": 23,
+            "name": "I should see the \"Instant Download. Non-transferable\" text is shown",
+            "match": {
+              "arguments": [
+                {
+                  "val": "Instant Download. Non-transferable",
+                  "offset": 18
+                }
+              ],
+              "location": "LabelActions.messageIsShown(String)"
+            },
+            "keyword": "Then "
+          }
+        ],
+        "tags": [
+          {
+            "line": 5,
+            "name": "@android"
+          },
+          {
+            "line": 5,
+            "name": "@android_live"
+          },
+          {
+            "line": 5,
+            "name": "@test"
+          }
+        ]
+      }
+    ],
+    "name": "Mobile Promotion",
+    "description": "As a user I want to know which journey and which tickets offer mobile delivery before I get to the payment screen",
+    "id": "mobile-promotion",
+    "keyword": "Feature",
+    "uri": "booking/mobile/MobilePromotion.feature",
+    "tags": [
+      {
+        "line": 1,
+        "name": "@search"
+      },
+      {
+        "line": 1,
+        "name": "@search_results"
+      },
+      {
+        "line": 1,
+        "name": "@ticket_selection"
+      },
+      {
+        "line": 1,
+        "name": "@payment"
+      }
+    ]
+  },
+  {
+    "line": 2,
+    "elements": [
+      {
+        "before": [
+          {
+            "result": {
+              "duration": 16814235321,
+              "status": "passed"
+            },
+            "match": {
+              "location": "Hooks.setUp(Scenario)"
+            }
+          }
+        ],
+        "line": 20,
+        "name": "Booking flow for not logged user",
+        "description": "",
+        "id": "journey-search;booking-flow-for-not-logged-user",
+        "after": [
+          {
+            "result": {
+              "duration": 1065828578,
+              "status": "passed"
+            },
+            "match": {
+              "location": "Hooks.tearDown(Scenario)"
+            }
+          }
+        ],
+        "type": "scenario",
+        "keyword": "Scenario",
+        "steps": [
+          {
+            "result": {
+              "duration": 6334224447,
+              "status": "passed"
+            },
+            "line": 21,
+            "name": "I am not logged into the system",
+            "match": {
+              "location": "LoginActions.openHomePageNotLogged()"
+            },
+            "keyword": "Given "
+          },
+          {
+            "result": {
+              "duration": 12393517969,
+              "status": "passed"
+            },
+            "line": 22,
+            "name": "I am on the \"Journey Search\" screen",
+            "match": {
+              "arguments": [
+                {
+                  "val": "Journey Search",
+                  "offset": 13
+                }
+              ],
+              "location": "NavigationActions.navigateToPage(String)"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 61253562947,
+              "status": "passed"
+            },
+            "line": 23,
+            "name": "I search for journey using the following criteria:",
+            "match": {
+              "location": "JourneySearchActions.searchJourneyByCriteria(DataTable)"
+            },
+            "rows": [
+              {
+                "cells": [
+                  "From",
+                  "To",
+                  "Type",
+                  "Out Date",
+                  "Adults",
+                  "Children"
+                ],
+                "line": 24
+              },
+              {
+                "cells": [
+                  "YRK",
+                  "NCL",
+                  "Single",
+                  "tomorrow",
+                  "2",
+                  "2"
+                ],
+                "line": 25
+              }
+            ],
+            "keyword": "When "
+          },
+          {
+            "result": {
+              "duration": 6343543980,
+              "status": "passed"
+            },
+            "line": 26,
+            "name": "accept the alert message",
+            "match": {
+              "location": "PageActions.acceptMessage()"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 11418486553,
+              "status": "passed"
+            },
+            "line": 27,
+            "name": "proceed search results to the payment screen",
+            "match": {
+              "location": "JourneySearchActions.proceedFromSearchResultsToPayment()"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 379150357,
+              "status": "passed"
+            },
+            "line": 28,
+            "name": "I should see the \"Payment\" screen",
+            "match": {
+              "arguments": [
+                {
+                  "val": "Payment",
+                  "offset": 18
+                }
+              ],
+              "location": "PageActions.shouldSeeTheScreen(String)"
+            },
+            "keyword": "Then "
+          },
+          {
+            "result": {
+              "duration": 3137365036,
+              "status": "passed"
+            },
+            "line": 29,
+            "name": "at least one of the following labels is shown:",
+            "match": {
+              "location": "LabelActions.atLeastOneLabelIsShown(String\u003e)"
+            },
+            "rows": [
+              {
+                "cells": [
+                  "Collect from station"
+                ],
+                "line": 30
+              },
+              {
+                "cells": [
+                  "Collect from 1000s of stations"
+                ],
+                "line": 31
+              },
+              {
+                "cells": [
+                  "Self-service ticket machine"
+                ],
+                "line": 32
+              },
+              {
+                "cells": [
+                  "Instant download"
+                ],
+                "line": 33
+              }
+            ],
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 5983495990,
+              "status": "passed"
+            },
+            "line": 34,
+            "name": "at least one of the following elements is shown:",
+            "match": {
+              "location": "FieldActions.atLeastOneElementIsShown(String\u003e)"
+            },
+            "rows": [
+              {
+                "cells": [
+                  "Login or register"
+                ],
+                "line": 35
+              },
+              {
+                "cells": [
+                  "Create an account"
+                ],
+                "line": 36
+              },
+              {
+                "cells": [
+                  "Pay with paypal"
+                ],
+                "line": 37
+              },
+              {
+                "cells": [
+                  "Change payment method"
+                ],
+                "line": 38
+              }
+            ],
+            "keyword": "And "
+          }
+        ],
+        "tags": [
+          {
+            "line": 19,
+            "name": "@android"
+          },
+          {
+            "line": 19,
+            "name": "@system"
+          },
+          {
+            "line": 19,
+            "name": "@android_acceptance"
+          },
+          {
+            "line": 19,
+            "name": "@ios"
+          },
+          {
+            "line": 19,
+            "name": "@ios_live"
+          },
+          {
+            "line": 19,
+            "name": "@android_live"
+          },
+          {
+            "line": 19,
+            "name": "@ticket_selection"
+          },
+          {
+            "line": 19,
+            "name": "@payment"
+          },
+          {
+            "line": 19,
+            "name": "@pre_prod"
+          },
+          {
+            "line": 19,
+            "name": "@test"
+          },
+          {
+            "line": 19,
+            "name": "@ios_acceptance"
+          }
+        ]
+      },
+      {
+        "before": [
+          {
+            "result": {
+              "duration": 17089034685,
+              "status": "passed"
+            },
+            "match": {
+              "location": "Hooks.setUp(Scenario)"
+            }
+          }
+        ],
+        "line": 129,
+        "name": "Search for current day should return results with real-time information",
+        "description": "",
+        "id": "journey-search;search-for-current-day-should-return-results-with-real-time-information",
+        "after": [
+          {
+            "result": {
+              "duration": 1026510123,
+              "status": "passed"
+            },
+            "match": {
+              "location": "Hooks.tearDown(Scenario)"
+            }
+          }
+        ],
+        "type": "scenario",
+        "keyword": "Scenario",
+        "steps": [
+          {
+            "result": {
+              "duration": 6601851387,
+              "status": "passed"
+            },
+            "line": 130,
+            "name": "I am not logged into the system",
+            "match": {
+              "location": "LoginActions.openHomePageNotLogged()"
+            },
+            "keyword": "Given "
+          },
+          {
+            "result": {
+              "duration": 12603709269,
+              "status": "passed"
+            },
+            "line": 131,
+            "name": "I am on the \"Journey Search\" screen",
+            "match": {
+              "arguments": [
+                {
+                  "val": "Journey Search",
+                  "offset": 13
+                }
+              ],
+              "location": "NavigationActions.navigateToPage(String)"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 38919505208,
+              "status": "passed"
+            },
+            "line": 132,
+            "name": "I search for journey using the following criteria:",
+            "match": {
+              "location": "JourneySearchActions.searchJourneyByCriteria(DataTable)"
+            },
+            "rows": [
+              {
+                "cells": [
+                  "From",
+                  "To",
+                  "Type",
+                  "Out Date"
+                ],
+                "line": 133
+              },
+              {
+                "cells": [
+                  "LON",
+                  "Sevenoaks",
+                  "Single",
+                  "today"
+                ],
+                "line": 134
+              }
+            ],
+            "keyword": "When "
+          },
+          {
+            "result": {
+              "duration": 5316900626,
+              "status": "passed"
+            },
+            "line": 135,
+            "name": "accept the alert message",
+            "match": {
+              "location": "PageActions.acceptMessage()"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 3595187453,
+              "status": "passed"
+            },
+            "line": 136,
+            "name": "I should see the \"Out Search Results\" screen",
+            "match": {
+              "arguments": [
+                {
+                  "val": "Out Search Results",
+                  "offset": 18
+                }
+              ],
+              "location": "PageActions.shouldSeeTheScreen(String)"
+            },
+            "keyword": "Then "
+          },
+          {
+            "result": {
+              "duration": 914433025,
+              "status": "passed"
+            },
+            "comments": [
+              {
+                "line": 137,
+                "value": "#    And all \"Search Results\" list items contain the \"Plat\" text"
+              }
+            ],
+            "line": 138,
+            "name": "the \"Plat\" text is shown",
+            "match": {
+              "arguments": [
+                {
+                  "val": "Plat",
+                  "offset": 5
+                }
+              ],
+              "location": "LabelActions.messageIsShown(String)"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 1525793082,
+              "status": "passed"
+            },
+            "line": 139,
+            "name": "all \"Search Results\" list items contain one of the following labels:",
+            "match": {
+              "arguments": [
+                {
+                  "val": "Search Results",
+                  "offset": 5
+                }
+              ],
+              "location": "ListActions.allListItemsContainOneOfTheLabels(String,String\u003e)"
+            },
+            "rows": [
+              {
+                "cells": [
+                  "Exp"
+                ],
+                "line": 140
+              },
+              {
+                "cells": [
+                  "On time"
+                ],
+                "line": 141
+              },
+              {
+                "cells": [
+                  "Delayed"
+                ],
+                "line": 142
+              }
+            ],
+            "keyword": "And "
+          }
+        ],
+        "tags": [
+          {
+            "line": 128,
+            "name": "@search"
+          },
+          {
+            "line": 128,
+            "name": "@system"
+          },
+          {
+            "line": 128,
+            "name": "@positive"
+          },
+          {
+            "line": 128,
+            "name": "@android"
+          },
+          {
+            "line": 128,
+            "name": "@ios"
+          },
+          {
+            "line": 128,
+            "name": "@ios_live"
+          },
+          {
+            "line": 128,
+            "name": "@android_live"
+          },
+          {
+            "line": 128,
+            "name": "@pre_prod"
+          },
+          {
+            "line": 128,
+            "name": "@test"
+          }
+        ]
+      },
+      {
+        "comments": [
+          {
+            "line": 157,
+            "value": "#    And at least one \"Search Results\" list item contains the \"Platform\" text"
+          }
+        ],
+        "before": [
+          {
+            "result": {
+              "duration": 17009851792,
+              "status": "passed"
+            },
+            "match": {
+              "location": "Hooks.setUp(Scenario)"
+            }
+          }
+        ],
+        "line": 159,
+        "name": "Earlier trains button shows Not available to buy tickets",
+        "description": "",
+        "id": "journey-search;earlier-trains-button-shows-not-available-to-buy-tickets",
+        "after": [
+          {
+            "result": {
+              "duration": 1104236839,
+              "status": "passed"
+            },
+            "match": {
+              "location": "Hooks.tearDown(Scenario)"
+            }
+          }
+        ],
+        "type": "scenario",
+        "keyword": "Scenario",
+        "steps": [
+          {
+            "result": {
+              "duration": 6457531849,
+              "status": "passed"
+            },
+            "line": 160,
+            "name": "I am not logged into the system",
+            "match": {
+              "location": "LoginActions.openHomePageNotLogged()"
+            },
+            "keyword": "Given "
+          },
+          {
+            "result": {
+              "duration": 12393992651,
+              "status": "passed"
+            },
+            "line": 161,
+            "name": "I am on the \"Journey Search\" screen",
+            "match": {
+              "arguments": [
+                {
+                  "val": "Journey Search",
+                  "offset": 13
+                }
+              ],
+              "location": "NavigationActions.navigateToPage(String)"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 49857287615,
+              "status": "passed"
+            },
+            "line": 162,
+            "name": "I search for journey using the following criteria:",
+            "match": {
+              "location": "JourneySearchActions.searchJourneyByCriteria(DataTable)"
+            },
+            "rows": [
+              {
+                "cells": [
+                  "From",
+                  "To",
+                  "Via",
+                  "Type",
+                  "Out Date"
+                ],
+                "line": 163
+              },
+              {
+                "cells": [
+                  "ZFD",
+                  "NCL",
+                  "YRK",
+                  "Single",
+                  "today"
+                ],
+                "line": 164
+              }
+            ],
+            "keyword": "When "
+          },
+          {
+            "result": {
+              "duration": 5917997144,
+              "status": "passed"
+            },
+            "line": 165,
+            "name": "accept the alert message",
+            "match": {
+              "location": "PageActions.acceptMessage()"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 3615460450,
+              "status": "passed"
+            },
+            "line": 166,
+            "name": "I should see the \"Out Search Results\" screen",
+            "match": {
+              "arguments": [
+                {
+                  "val": "Out Search Results",
+                  "offset": 18
+                }
+              ],
+              "location": "PageActions.shouldSeeTheScreen(String)"
+            },
+            "keyword": "Then "
+          },
+          {
+            "result": {
+              "duration": 227938247,
+              "status": "passed"
+            },
+            "line": 167,
+            "name": "the \"Search Results\" list is not empty",
+            "match": {
+              "arguments": [
+                {
+                  "val": "Search Results",
+                  "offset": 5
+                }
+              ],
+              "location": "ListActions.listIsNotEmpty(String)"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 953141225,
+              "status": "passed"
+            },
+            "line": 168,
+            "name": "the \"Newcastle\" text is shown",
+            "match": {
+              "arguments": [
+                {
+                  "val": "Newcastle",
+                  "offset": 5
+                }
+              ],
+              "location": "LabelActions.messageIsShown(String)"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 227178692,
+              "status": "passed"
+            },
+            "line": 169,
+            "name": "the \"Farringdon\" text is shown",
+            "match": {
+              "arguments": [
+                {
+                  "val": "Farringdon",
+                  "offset": 5
+                }
+              ],
+              "location": "LabelActions.messageIsShown(String)"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 2133437040,
+              "status": "passed"
+            },
+            "line": 170,
+            "name": "I swipe screen top till the end",
+            "match": {
+              "arguments": [
+                {
+                  "val": "top",
+                  "offset": 15
+                },
+                {
+                  "val": "till the end",
+                  "offset": 19
+                }
+              ],
+              "location": "ScrollActions.swipeScreen(String,String)"
+            },
+            "keyword": "When "
+          },
+          {
+            "result": {
+              "duration": 1317370285,
+              "status": "passed"
+            },
+            "line": 171,
+            "name": "click on the \"Earlier Trains\" button",
+            "match": {
+              "arguments": [
+                {
+                  "val": "Earlier Trains",
+                  "offset": 14
+                }
+              ],
+              "location": "FieldActions.clickOnTheField(String)"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 3659179907,
+              "status": "passed"
+            },
+            "line": 172,
+            "name": "I should see the \"Out Search Results\" screen",
+            "match": {
+              "arguments": [
+                {
+                  "val": "Out Search Results",
+                  "offset": 18
+                }
+              ],
+              "location": "PageActions.shouldSeeTheScreen(String)"
+            },
+            "keyword": "Then "
+          },
+          {
+            "result": {
+              "duration": 293950605,
+              "status": "passed"
+            },
+            "line": 173,
+            "name": "the \"Search Results\" list is not empty",
+            "match": {
+              "arguments": [
+                {
+                  "val": "Search Results",
+                  "offset": 5
+                }
+              ],
+              "location": "ListActions.listIsNotEmpty(String)"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 1009818316,
+              "status": "passed"
+            },
+            "line": 174,
+            "name": "the \"Newcastle\" text is shown",
+            "match": {
+              "arguments": [
+                {
+                  "val": "Newcastle",
+                  "offset": 5
+                }
+              ],
+              "location": "LabelActions.messageIsShown(String)"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 194792979,
+              "status": "passed"
+            },
+            "line": 175,
+            "name": "the \"Farringdon\" text is shown",
+            "match": {
+              "arguments": [
+                {
+                  "val": "Farringdon",
+                  "offset": 5
+                }
+              ],
+              "location": "LabelActions.messageIsShown(String)"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 210753349,
+              "status": "passed"
+            },
+            "line": 176,
+            "name": "the \"Not available\" text is shown",
+            "match": {
+              "arguments": [
+                {
+                  "val": "Not available",
+                  "offset": 5
+                }
+              ],
+              "location": "LabelActions.messageIsShown(String)"
+            },
+            "keyword": "And "
+          }
+        ],
+        "tags": [
+          {
+            "line": 158,
+            "name": "@search"
+          },
+          {
+            "line": 158,
+            "name": "@system"
+          },
+          {
+            "line": 158,
+            "name": "@positive"
+          },
+          {
+            "line": 158,
+            "name": "@android"
+          },
+          {
+            "line": 158,
+            "name": "@ios"
+          },
+          {
+            "line": 158,
+            "name": "@ios_live"
+          },
+          {
+            "line": 158,
+            "name": "@android_live"
+          },
+          {
+            "line": 158,
+            "name": "@test"
+          }
+        ]
+      },
+      {
+        "before": [
+          {
+            "result": {
+              "duration": 13592934562,
+              "status": "passed"
+            },
+            "match": {
+              "location": "Hooks.setUp(Scenario)"
+            }
+          }
+        ],
+        "line": 191,
+        "name": "Return ticket show only single tickets available for travels planned in 1 month",
+        "description": "",
+        "id": "journey-search;return-ticket-show-only-single-tickets-available-for-travels-planned-in-1-month",
+        "after": [
+          {
+            "result": {
+              "duration": 1101698070,
+              "status": "passed"
+            },
+            "match": {
+              "location": "Hooks.tearDown(Scenario)"
+            }
+          }
+        ],
+        "type": "scenario",
+        "keyword": "Scenario",
+        "steps": [
+          {
+            "result": {
+              "duration": 6405969790,
+              "status": "passed"
+            },
+            "line": 192,
+            "name": "I am not logged into the system",
+            "match": {
+              "location": "LoginActions.openHomePageNotLogged()"
+            },
+            "keyword": "Given "
+          },
+          {
+            "result": {
+              "duration": 12489624989,
+              "status": "passed"
+            },
+            "line": 193,
+            "name": "I am on the \"Journey Search\" screen",
+            "match": {
+              "arguments": [
+                {
+                  "val": "Journey Search",
+                  "offset": 13
+                }
+              ],
+              "location": "NavigationActions.navigateToPage(String)"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 1213093609,
+              "status": "passed"
+            },
+            "line": 194,
+            "name": "I go to the search results for the following journey:",
+            "match": {
+              "location": "JourneySearchActions.goToSearchResults(DataTable)"
+            },
+            "rows": [
+              {
+                "cells": [
+                  "From",
+                  "To",
+                  "Via",
+                  "Type",
+                  "Out Date",
+                  "Out Time",
+                  "Return Date"
+                ],
+                "line": 195
+              },
+              {
+                "cells": [
+                  "ZFD",
+                  "NCL",
+                  "YRK",
+                  "Return",
+                  "next FRI",
+                  "14:00",
+                  "+40 days"
+                ],
+                "line": 196
+              }
+            ],
+            "keyword": "When "
+          },
+          {
+            "result": {
+              "duration": 5982071613,
+              "status": "passed"
+            },
+            "line": 197,
+            "name": "I should see the \"Out Search Results\" screen",
+            "match": {
+              "arguments": [
+                {
+                  "val": "Out Search Results",
+                  "offset": 18
+                }
+              ],
+              "location": "PageActions.shouldSeeTheScreen(String)"
+            },
+            "keyword": "Then "
+          },
+          {
+            "result": {
+              "duration": 1076619687,
+              "status": "passed"
+            },
+            "line": 198,
+            "name": "I select item No.1 from the \"Search Results\" table",
+            "match": {
+              "arguments": [
+                {
+                  "val": "1",
+                  "offset": 17
+                },
+                {
+                  "val": "Search Results",
+                  "offset": 29
+                }
+              ],
+              "location": "ListActions.selectItemItemNumberFromTheTable(int,String)"
+            },
+            "keyword": "When "
+          },
+          {
+            "result": {
+              "duration": 1142359556,
+              "status": "passed"
+            },
+            "line": 199,
+            "name": "I should see the \"Return Search Results\" screen",
+            "match": {
+              "arguments": [
+                {
+                  "val": "Return Search Results",
+                  "offset": 18
+                }
+              ],
+              "location": "PageActions.shouldSeeTheScreen(String)"
+            },
+            "keyword": "Then "
+          },
+          {
+            "result": {
+              "duration": 1025485443,
+              "status": "passed"
+            },
+            "line": 200,
+            "name": "I select item No.1 from the \"Search Results\" table",
+            "match": {
+              "arguments": [
+                {
+                  "val": "1",
+                  "offset": 17
+                },
+                {
+                  "val": "Search Results",
+                  "offset": 29
+                }
+              ],
+              "location": "ListActions.selectItemItemNumberFromTheTable(int,String)"
+            },
+            "keyword": "When "
+          },
+          {
+            "result": {
+              "duration": 211354231,
+              "status": "passed"
+            },
+            "line": 201,
+            "name": "I should see the \"Select Ticket\" screen",
+            "match": {
+              "arguments": [
+                {
+                  "val": "Select Ticket",
+                  "offset": 18
+                }
+              ],
+              "location": "PageActions.shouldSeeTheScreen(String)"
+            },
+            "keyword": "Then "
+          },
+          {
+            "result": {
+              "duration": 311569009,
+              "status": "passed"
+            },
+            "line": 202,
+            "name": "the \"Tickets\" list contains only 1 item",
+            "match": {
+              "arguments": [
+                {
+                  "val": "Tickets",
+                  "offset": 5
+                },
+                {
+                  "val": "1",
+                  "offset": 33
+                }
+              ],
+              "location": "ListActions.listCountEquals(String,int)"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 102942348,
+              "status": "passed"
+            },
+            "line": 203,
+            "name": "the \"Single\" text is shown",
+            "match": {
+              "arguments": [
+                {
+                  "val": "Single",
+                  "offset": 5
+                }
+              ],
+              "location": "LabelActions.messageIsShown(String)"
+            },
+            "keyword": "And "
+          }
+        ],
+        "tags": [
+          {
+            "line": 190,
+            "name": "@search"
+          },
+          {
+            "line": 190,
+            "name": "@system"
+          },
+          {
+            "line": 190,
+            "name": "@positive"
+          },
+          {
+            "line": 190,
+            "name": "@android"
+          },
+          {
+            "line": 190,
+            "name": "@ios"
+          },
+          {
+            "line": 190,
+            "name": "@ios_live"
+          },
+          {
+            "line": 190,
+            "name": "@android_live"
+          },
+          {
+            "line": 190,
+            "name": "@ticket_selection"
+          },
+          {
+            "line": 190,
+            "name": "@test"
+          }
+        ]
+      },
+      {
+        "before": [
+          {
+            "result": {
+              "duration": 17212907822,
+              "status": "passed"
+            },
+            "match": {
+              "location": "Hooks.setUp(Scenario)"
+            }
+          }
+        ],
+        "line": 255,
+        "name": "Route restrictions are shown on the Select Ticket screen",
+        "description": "",
+        "id": "journey-search;route-restrictions-are-shown-on-the-select-ticket-screen",
+        "after": [
+          {
+            "result": {
+              "duration": 1034781209,
+              "status": "passed"
+            },
+            "match": {
+              "location": "Hooks.tearDown(Scenario)"
+            }
+          }
+        ],
+        "type": "scenario",
+        "keyword": "Scenario",
+        "steps": [
+          {
+            "result": {
+              "duration": 6270048880,
+              "status": "passed"
+            },
+            "line": 256,
+            "name": "I am not logged into the system",
+            "match": {
+              "location": "LoginActions.openHomePageNotLogged()"
+            },
+            "keyword": "Given "
+          },
+          {
+            "result": {
+              "duration": 12300306902,
+              "status": "passed"
+            },
+            "line": 257,
+            "name": "I am on the \"Journey Search\" screen",
+            "match": {
+              "arguments": [
+                {
+                  "val": "Journey Search",
+                  "offset": 13
+                }
+              ],
+              "location": "NavigationActions.navigateToPage(String)"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 1007943697,
+              "status": "passed"
+            },
+            "line": 258,
+            "name": "I go to the search results for the following journey:",
+            "match": {
+              "location": "JourneySearchActions.goToSearchResults(DataTable)"
+            },
+            "rows": [
+              {
+                "cells": [
+                  "From",
+                  "To",
+                  "Type",
+                  "Out Date",
+                  "Adults"
+                ],
+                "line": 259
+              },
+              {
+                "cells": [
+                  "OTF",
+                  "182",
+                  "Single",
+                  "today",
+                  "1"
+                ],
+                "line": 260
+              }
+            ],
+            "keyword": "When "
+          },
+          {
+            "result": {
+              "duration": 5688419275,
+              "status": "passed"
+            },
+            "line": 261,
+            "name": "accept the alert message",
+            "match": {
+              "location": "PageActions.acceptMessage()"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 5499204625,
+              "status": "passed"
+            },
+            "line": 262,
+            "name": "I select first available train",
+            "match": {
+              "location": "JourneySearchActions.selectFirstAvailableTrain()"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 234277472,
+              "status": "passed"
+            },
+            "line": 263,
+            "name": "I should see the \"Select Ticket\" screen",
+            "match": {
+              "arguments": [
+                {
+                  "val": "Select Ticket",
+                  "offset": 18
+                }
+              ],
+              "location": "PageActions.shouldSeeTheScreen(String)"
+            },
+            "keyword": "Then "
+          },
+          {
+            "result": {
+              "duration": 272342946,
+              "status": "passed"
+            },
+            "line": 264,
+            "name": "I should see the \"Not valid for travel on the Southeastern Highspeed services, but valid on all other permitted routes between the named origin and destination.\" text is shown",
+            "match": {
+              "arguments": [
+                {
+                  "val": "Not valid for travel on the Southeastern Highspeed services, but valid on all other permitted routes between the named origin and destination.",
+                  "offset": 18
+                }
+              ],
+              "location": "LabelActions.messageIsShown(String)"
+            },
+            "keyword": "And "
+          }
+        ],
+        "tags": [
+          {
+            "line": 254,
+            "name": "@test"
+          },
+          {
+            "line": 254,
+            "name": "@android"
+          },
+          {
+            "line": 254,
+            "name": "@android_live"
+          }
+        ]
+      }
+    ],
+    "name": "Journey Search",
+    "description": "",
+    "id": "journey-search",
+    "keyword": "Feature",
+    "uri": "journeysearch/BasicJourneySearch.feature",
+    "tags": [
+      {
+        "line": 1,
+        "name": "@search"
+      },
+      {
+        "line": 1,
+        "name": "@search_results"
+      }
+    ]
+  }
+]

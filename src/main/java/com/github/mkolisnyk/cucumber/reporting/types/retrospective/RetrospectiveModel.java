@@ -1,6 +1,8 @@
 package com.github.mkolisnyk.cucumber.reporting.types.retrospective;
 
 public class RetrospectiveModel {
+    private static final int DEFAULT_WIDTH = 450;
+    private static final int DEFAULT_HEIGHT = 300;
     private String reportSuffix;
     private String title;
     private String mask;
@@ -24,7 +26,8 @@ public class RetrospectiveModel {
     }
     public RetrospectiveModel(String reportSuffixValue, String titleValue, String maskValue,
             RetrospectiveOrderBy orderByValue, String redirectToValue, int refreshTimeoutValue) {
-        this(reportSuffixValue, titleValue, maskValue, orderByValue, redirectToValue, refreshTimeoutValue, 450, 300);
+        this(reportSuffixValue, titleValue, maskValue, orderByValue, redirectToValue, refreshTimeoutValue,
+                DEFAULT_WIDTH, DEFAULT_HEIGHT);
     }
     public RetrospectiveModel(String reportSuffixValue, String titleValue, String maskValue,
             RetrospectiveOrderBy orderByValue, int widthValue, int heightValue) {

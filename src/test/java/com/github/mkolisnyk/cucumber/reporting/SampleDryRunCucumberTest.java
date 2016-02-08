@@ -1,6 +1,5 @@
 package com.github.mkolisnyk.cucumber.reporting;
 
-import org.junit.Ignore;
 import org.junit.runner.RunWith;
 
 import com.github.mkolisnyk.cucumber.runner.ExtendedCucumber;
@@ -8,7 +7,6 @@ import com.github.mkolisnyk.cucumber.runner.ExtendedCucumberOptions;
 
 import cucumber.api.CucumberOptions;
 
-@Ignore
 @RunWith(ExtendedCucumber.class)
 @ExtendedCucumberOptions(
         jsonReport = "target/cucumber-dry.json",

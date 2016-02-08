@@ -13,7 +13,10 @@
               lines="80"/>
     <suppress checks="ParameterNumber"
               files="CucumberResultsCommon.java"
-              lines="1-313"/>
+              lines="1-330"/>
+    <suppress checks="ParameterNumber"
+              files="RetrospectiveModel.java"
+              lines="1-50"/>
     <suppress checks="RegexpSingleline"
               files="jbehave.properties"
               lines="13-21"/>

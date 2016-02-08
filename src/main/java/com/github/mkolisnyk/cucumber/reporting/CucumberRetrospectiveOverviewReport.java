@@ -81,17 +81,22 @@ public class CucumberRetrospectiveOverviewReport extends CucumberResultsCommon {
                     (int) (offset * scale * barSize), failedRatio + skippedRatio, (int) (scale * barSize), passedRatio
              );
             // Right scale
-            for (int i = 0; i <= 5; i++) {
+            final int scaleTicksCount = 5;
+            final int maxScaleValue = 100;
+            final int vOffset = 10;
+            for (int i = 0; i <= scaleTicksCount; i++) {
                 content = content.concat(
                     String.format("<text x=\"%d\" y=\"%d\" font-size=\"12\">%d%%</text>",
-                       (int) (model.getWidth() * scale), (int) (i * scale * model.getHeight() / 5) + 10, 100 - i * 20)
+                       (int) (model.getWidth() * scale),
+                       (int) (i * scale * model.getHeight() / scaleTicksCount) + vOffset,
+                       maxScaleValue - i * maxScaleValue / scaleTicksCount)
                 );
                 content = content.concat(
                     String.format("<line stroke-dasharray=\"10,10\""
                         + " x1=\"0\" y1=\"%d\" x2=\"%d\" y2=\"%d\" style=\"stroke:darkgray;stroke-width:1\" />",
-                        (int) (i * scale * model.getHeight() / 5),
+                        (int) (i * scale * model.getHeight() / scaleTicksCount),
                         (int) (model.getWidth() * scale),
-                        (int) (i * scale * model.getHeight() / 5)
+                        (int) (i * scale * model.getHeight() / scaleTicksCount)
                     )
                 );
             }
@@ -99,7 +104,7 @@ public class CucumberRetrospectiveOverviewReport extends CucumberResultsCommon {
             content = content.concat(
                 String.format("<text x=\"%d\" y=\"%d\" font-size=\"12\">%d</text>",
                     (int) (offset * scale * barSize) + barSize / 2,
-                    (int) (scale * model.getHeight()) + 10,
+                    (int) (scale * model.getHeight()) + vOffset,
                     offset + 1
                 )
             );

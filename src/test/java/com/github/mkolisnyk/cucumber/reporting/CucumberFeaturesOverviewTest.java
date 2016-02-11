@@ -9,7 +9,7 @@ public class CucumberFeaturesOverviewTest {
         results.setOutputDirectory("target");
         results.setOutputName("cucumber-results");
         results.setSourceFile("./src/test/resources/cucumber.json");
-        results.executeFeatureOverviewChartReport();
+        results.executeFeatureOverviewChartReport(true);
     }
     @Test
     public void testGenerateReportBigger() throws Exception {

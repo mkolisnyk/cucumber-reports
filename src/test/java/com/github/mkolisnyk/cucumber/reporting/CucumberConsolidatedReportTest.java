@@ -44,7 +44,7 @@ public class CucumberConsolidatedReportTest {
                         new ConsolidatedItemInfo("Known Errors", "src/test/resources/consolidated-source/cucumber-results-known-errors.html"),
                         new ConsolidatedItemInfo("Feature Overview", "src/test/resources/consolidated-source/cucumber-results-feature-overview.html"),
                     },
-                "batch1",
+                "batch01",
                 "Overall Results Batch 1",
                 true),
                 new ConsolidatedReportModel(
@@ -52,12 +52,12 @@ public class CucumberConsolidatedReportTest {
                         new ConsolidatedItemInfo("Overview Chart", "src/test/resources/consolidated-source/cucumber-results-2-feature-overview-chart.html"),
                         new ConsolidatedItemInfo("Test Coverage", "src/test/resources/consolidated-source/cucumber-results-coverage-filtered.html"),
                     },
-                "batch2",
+                "batch02",
                 "Overall Results Batch 2",
                 false)
             }
         );
-        results.executeConsolidatedReport(batch);
+        results.executeConsolidatedReport(batch, true);
         //String json = JsonWriter.objectToJson(batch);
         //FileUtils.writeStringToFile(new File("./src/test/resources/consolidated-source/sample_batch.json"), json);
     }

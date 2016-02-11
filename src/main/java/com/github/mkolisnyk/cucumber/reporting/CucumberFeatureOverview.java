@@ -68,6 +68,8 @@ public class CucumberFeatureOverview extends CucumberResultsOverview {
         content = content.replaceAll("__RATE__", String.format("%.0f%%", rate * maxRate));
         String featuresTable = generateFeaturesTable(features);
         content = content.replaceAll("__FEATURES__", featuresTable);
+        content = this.replaceHtmlEntitiesWithCodes(content);
+        content = content.replaceAll("[$]", "&#36;");
         return content;
     }
 

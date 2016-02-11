@@ -370,17 +370,21 @@ public abstract class CucumberResultsCommon {
     }
     public String replaceSvgWithPng(File htmlFile) throws Exception {
         File folder = Files.createTempDirectory("temp").toFile();
+        //folder.deleteOnExit();
         String htmlText = FileUtils.readFileToString(htmlFile);
         Pattern p = Pattern.compile("<svg(.*?)</svg>", Pattern.MULTILINE | Pattern.DOTALL | Pattern.CASE_INSENSITIVE);
         Matcher m = p.matcher(htmlText);
         int index = 0;
         while (m.find()) {
             String svg = m.group(0);
-            FileUtils.writeStringToFile(new File(folder.getAbsolutePath() + "/" + index + ".svg"), svg);
-            File png = new File(folder.getAbsolutePath() + "/" + index + ".png");
-            convertSvgToPng(new File(folder.getAbsolutePath() + "/" + index + ".svg"), png);
+            File svgOutput = new File(folder.getAbsolutePath() + File.separator + index + ".svg");
+            svgOutput.deleteOnExit();
+            FileUtils.writeStringToFile(svgOutput, svg);
+            File png = new File(folder.getAbsolutePath() + File.separator + index + ".png");
+            //png.deleteOnExit();
+            convertSvgToPng(svgOutput, png);
             index++;
-            htmlText = m.replaceFirst(String.format("<img src=\"%s\"></img>", png.getAbsolutePath()));
+            htmlText = m.replaceFirst(Matcher.quoteReplacement(String.format("<img src=\"%s\"></img>", png.getAbsolutePath())));
             m = p.matcher(htmlText);
         }
         return htmlText;

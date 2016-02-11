@@ -8,7 +8,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.lang.reflect.Array;
-import java.nio.file.Files;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Map.Entry;
@@ -369,23 +369,28 @@ public abstract class CucumberResultsCommon {
         pngOStream.close();
     }
     public String replaceSvgWithPng(File htmlFile) throws Exception {
-        File folder = Files.createTempDirectory("temp").toFile();
-        //folder.deleteOnExit();
+        String tempPath = this.getOutputDirectory() + File.separator + "temp" + (new Date()).getTime();
+        File folder = new File(tempPath);
+        //Files.createTempDirectory("temp").toFile();
+        folder.mkdirs();
+        folder.deleteOnExit();
         String htmlText = FileUtils.readFileToString(htmlFile);
         Pattern p = Pattern.compile("<svg(.*?)</svg>", Pattern.MULTILINE | Pattern.DOTALL | Pattern.CASE_INSENSITIVE);
         Matcher m = p.matcher(htmlText);
         int index = 0;
         while (m.find()) {
             String svg = m.group(0);
-            File svgOutput = new File(folder.getAbsolutePath() + File.separator + index + ".svg");
+            File svgOutput = new File(tempPath + File.separator + index + ".svg");
             svgOutput.deleteOnExit();
             FileUtils.writeStringToFile(svgOutput, svg);
-            File png = new File(folder.getAbsolutePath() + File.separator + index + ".png");
-            //png.deleteOnExit();
+            File png = new File(tempPath + File.separator + index + ".png");
+            png.deleteOnExit();
             convertSvgToPng(svgOutput, png);
-            index++;
-            htmlText = m.replaceFirst(Matcher.quoteReplacement(String.format("<img src=\"%s\"></img>", png.getAbsolutePath())));
+            htmlText = m.replaceFirst(
+                Matcher.quoteReplacement(String.format("<img src=\"%s\"></img>",
+                    folder.getName() + File.separator + index + ".png")));
             m = p.matcher(htmlText);
+            index++;
         }
         return htmlText;
     }

@@ -22,7 +22,7 @@ public class CucumberBreakdownReportTest {
     public void testGenerateMultipleReports() throws Exception {
         BreakdownReportModel model = new BreakdownReportModel(
             new BreakdownReportInfo[] {
-                new BreakdownReportInfo(new BreakdownTable(), "report1", "First Breakdown", 10, ""),
+                new BreakdownReportInfo(new BreakdownTable(), "report1", "First Breakdown", 3, ""),
                 new BreakdownReportInfo(new BreakdownTable(
                         new DataDimension("Screens", DimensionValue.CONTAINER, "(.*)",
                                 new DataDimension[] {
@@ -59,7 +59,7 @@ public class CucumberBreakdownReportTest {
                                 new DataDimension("Web", DimensionValue.STEP, "(.*)make a web booking(.*)", new DataDimension[] {}),
                                 new DataDimension("Walkup", DimensionValue.FEATURE, "(.*)Walk-up(.*)", new DataDimension[] {}),
                         })
-                        ), "report2", "Second Breakdown", 10, ""),
+                        ), "report2", "Second Breakdown", 3, ""),
                 new BreakdownReportInfo(new BreakdownTable(
                         new DataDimension("Payments", DimensionValue.CONTAINER, "(.*)",
                                 new DataDimension[] {
@@ -87,7 +87,7 @@ public class CucumberBreakdownReportTest {
                                 new DataDimension("Web", DimensionValue.STEP, "(.*)make a web booking(.*)", new DataDimension[] {}),
                                 new DataDimension("Walkup", DimensionValue.FEATURE, "(.*)Walk-up(.*)", new DataDimension[] {}),
                         }), BreakdownCellDisplayType.BARS_WITH_NUMBERS
-                        ), "report3", "Third Breakdown", 10, ""),
+                        ), "report3", "Third Breakdown", 3, ""),
             }
         );
         CucumberBreakdownReport report = new CucumberBreakdownReport();
@@ -102,11 +102,11 @@ public class CucumberBreakdownReportTest {
             new BreakdownReportInfo[] {
                 new BreakdownReportInfo(new BreakdownTable(BreakdownCellDisplayType.BARS_WITH_NUMBERS),
                         "report1", "First Breakdown", 0, ""),
-                new BreakdownReportInfo(new BreakdownTable(), "report2", "Second Breakdown", 10, ""),
+                new BreakdownReportInfo(new BreakdownTable(), "report2", "Second Breakdown", 3, ""),
                 new BreakdownReportInfo(new BreakdownTable(BreakdownCellDisplayType.NUMBERS_ONLY),
-                        "report3", "Third Breakdown", 10, ""),
+                        "report3", "Third Breakdown", 3, ""),
                 new BreakdownReportInfo(new BreakdownTable(BreakdownCellDisplayType.PIE_CHART),
-                        "report4", "Fourth Breakdown", 10, ""),
+                        "report4", "Fourth Breakdown", 3, ""),
             }
         );
         CucumberBreakdownReport report = new CucumberBreakdownReport();
@@ -119,9 +119,9 @@ public class CucumberBreakdownReportTest {
     public void testGenerateMultipleReportsSkipLastRedirect() throws Exception {
         BreakdownReportModel model = new BreakdownReportModel(
             new BreakdownReportInfo[] {
-                new BreakdownReportInfo(new BreakdownTable(), "report1", "First Breakdown", 10, ""),
-                new BreakdownReportInfo(new BreakdownTable(), "report2", "Second Breakdown", 10, ""),
-                new BreakdownReportInfo(new BreakdownTable(), "report3", "Third Breakdown", 10, ""),
+                new BreakdownReportInfo(new BreakdownTable(), "report1", "First Breakdown", 3, ""),
+                new BreakdownReportInfo(new BreakdownTable(), "report2", "Second Breakdown", 3, ""),
+                new BreakdownReportInfo(new BreakdownTable(), "report3", "Third Breakdown", 3, ""),
                 new BreakdownReportInfo(new BreakdownTable(), "report4", "Fourth Breakdown", 0, ""),
             }
         );
@@ -135,10 +135,10 @@ public class CucumberBreakdownReportTest {
     public void testGenerateMultipleReportsSkipMidRedirect() throws Exception {
         BreakdownReportModel model = new BreakdownReportModel(
             new BreakdownReportInfo[] {
-                new BreakdownReportInfo(new BreakdownTable(), "report1", "First Breakdown", 5, ""),
-                new BreakdownReportInfo(new BreakdownTable(), "report2", "Second Breakdown", 5, ""),
+                new BreakdownReportInfo(new BreakdownTable(), "report1", "First Breakdown", 3, ""),
+                new BreakdownReportInfo(new BreakdownTable(), "report2", "Second Breakdown", 3, ""),
                 new BreakdownReportInfo(new BreakdownTable(), "report3", "Third Breakdown", 0, ""),
-                new BreakdownReportInfo(new BreakdownTable(), "report4", "Fourth Breakdown", 5, ""),
+                new BreakdownReportInfo(new BreakdownTable(), "report4", "Fourth Breakdown", 3, ""),
             }
         );
         CucumberBreakdownReport report = new CucumberBreakdownReport();

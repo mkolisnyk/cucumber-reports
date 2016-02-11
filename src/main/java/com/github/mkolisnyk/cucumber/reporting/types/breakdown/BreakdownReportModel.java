@@ -12,29 +12,28 @@ public class BreakdownReportModel {
     public BreakdownReportInfo[] getReportsInfo() {
         return reportsInfo;
     }
-    public void initRedirectSequence(String fileBaseName) {
-        int next = 0;
-        int firstRedirected = -1;
-        for (int i = 0; i < reportsInfo.length; i++) {
-            next = i + 1;
-            while (next <= reportsInfo.length) {
-                if (next < reportsInfo.length) {
-                    if (reportsInfo[next].getRefreshTimeout() > 0) {
-                        if (firstRedirected < 0) {
-                            firstRedirected = i;
-                        }
-                        reportsInfo[i].setNextFile(fileBaseName + reportsInfo[next].getReportSuffix() + ".html");
-                        break;
-                    }
-                } else {
-                    if (firstRedirected >= 0 && reportsInfo[firstRedirected].getRefreshTimeout() > 0) {
-                        reportsInfo[i].setNextFile(fileBaseName
-                                + reportsInfo[firstRedirected].getReportSuffix() + ".html");
-                        break;
-                    }
-                }
-                next++;
+    private int nextAvailableRedirect(int currentIndex) {
+        int result = -1;
+        for (int i = currentIndex + 1; i < reportsInfo.length; i++) {
+            if (reportsInfo[i].getRefreshTimeout() > 0) {
+                result = i;
+                break;
             }
         }
+        return result;
+    }
+    public void initRedirectSequence(String fileBaseName) {
+        //reportsInfo[i].setNextFile(fileBaseName + reportsInfo[firstRedirected].getReportSuffix() + ".html");
+        int firstRedirect = nextAvailableRedirect(-1);
+        if (firstRedirect < 0) {
+            return;
+        }
+        int currentRedirect = firstRedirect;
+        while (nextAvailableRedirect(currentRedirect) > 0) {
+            int nextRedirect = nextAvailableRedirect(currentRedirect);
+            reportsInfo[currentRedirect].setNextFile(fileBaseName + reportsInfo[nextRedirect].getReportSuffix() + ".html");
+            currentRedirect = nextRedirect;
+        }
+        reportsInfo[currentRedirect].setNextFile(fileBaseName + reportsInfo[firstRedirect].getReportSuffix() + ".html");
     }
 }

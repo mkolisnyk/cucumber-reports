@@ -303,7 +303,7 @@ public class CucumberBreakdownReport extends CucumberResultsCommon {
             String chartHtml = "";
             double total = stats.getFailed() + stats.getPassed() + stats.getSkipped();
             if (total > 0) {
-                chartHtml = "<td>" + generator.generatePieChart(CHART_HEIGHT, CHART_WIDTH,
+                chartHtml = "<td>" + generator.generatePieChart(CHART_WIDTH, CHART_HEIGHT,
                     new int[] {stats.getPassed(), stats.getFailed(), stats.getSkipped()},
                     new String[] {"Passed", "Failed", "Skipped"},
                     new String[] {"green", "red", "silver"},

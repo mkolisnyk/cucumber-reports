@@ -23,7 +23,6 @@ public class BreakdownReportModel {
         return result;
     }
     public void initRedirectSequence(String fileBaseName) {
-        //reportsInfo[i].setNextFile(fileBaseName + reportsInfo[firstRedirected].getReportSuffix() + ".html");
         int firstRedirect = nextAvailableRedirect(-1);
         if (firstRedirect < 0) {
             return;
@@ -31,9 +30,11 @@ public class BreakdownReportModel {
         int currentRedirect = firstRedirect;
         while (nextAvailableRedirect(currentRedirect) > 0) {
             int nextRedirect = nextAvailableRedirect(currentRedirect);
-            reportsInfo[currentRedirect].setNextFile(fileBaseName + reportsInfo[nextRedirect].getReportSuffix() + ".html");
+            reportsInfo[currentRedirect].setNextFile(fileBaseName
+                + reportsInfo[nextRedirect].getReportSuffix() + ".html");
             currentRedirect = nextRedirect;
         }
-        reportsInfo[currentRedirect].setNextFile(fileBaseName + reportsInfo[firstRedirect].getReportSuffix() + ".html");
+        reportsInfo[currentRedirect].setNextFile(fileBaseName
+                + reportsInfo[firstRedirect].getReportSuffix() + ".html");
     }
 }

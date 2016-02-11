@@ -15,7 +15,7 @@ public final class ReportRunner {
 
     private ReportRunner() { }
 
-    public static void runUsageReport(ExtendedRuntimeOptions extendedOptions) {
+    public void runUsageReport(ExtendedRuntimeOptions extendedOptions) {
         if (!extendedOptions.isUsageReport()) {
             return;
         }
@@ -29,7 +29,7 @@ public final class ReportRunner {
         }
     }
 
-    public static void runOverviewReport(ExtendedRuntimeOptions extendedOptions) {
+    public void runOverviewReport(ExtendedRuntimeOptions extendedOptions) {
         if (!extendedOptions.isOverviewReport()) {
             return;
         }
@@ -45,7 +45,7 @@ public final class ReportRunner {
         }
     }
 
-    public static void runFeatureOverviewChartReport(ExtendedRuntimeOptions extendedOptions) {
+    public void runFeatureOverviewChartReport(ExtendedRuntimeOptions extendedOptions) {
         if (!extendedOptions.isFeatureOverviewChart()) {
             return;
         }
@@ -61,7 +61,7 @@ public final class ReportRunner {
         }
     }
 
-    public static void runDetailedReport(ExtendedRuntimeOptions extendedOptions) {
+    public void runDetailedReport(ExtendedRuntimeOptions extendedOptions) {
         if (!extendedOptions.isDetailedReport()) {
             return;
         }
@@ -79,7 +79,7 @@ public final class ReportRunner {
             e.printStackTrace();
         }
     }
-    public static void runDetailedAggregatedReport(ExtendedRuntimeOptions extendedOptions) {
+    public void runDetailedAggregatedReport(ExtendedRuntimeOptions extendedOptions) {
         if (!extendedOptions.isDetailedAggregatedReport()) {
             return;
         }
@@ -97,7 +97,7 @@ public final class ReportRunner {
             e.printStackTrace();
         }
     }
-    public static void runCoverageReport(ExtendedRuntimeOptions extendedOptions) {
+    public void runCoverageReport(ExtendedRuntimeOptions extendedOptions) {
         if (!extendedOptions.isCoverageReport()) {
             return;
         }
@@ -114,7 +114,7 @@ public final class ReportRunner {
             e.printStackTrace();
         }
     }
-    public static void runBreakdownReport(ExtendedRuntimeOptions extendedOptions) {
+    public void runBreakdownReport(ExtendedRuntimeOptions extendedOptions) {
         if (!extendedOptions.isBreakdownReport()) {
             return;
         }
@@ -129,7 +129,7 @@ public final class ReportRunner {
             e.printStackTrace();
         }
     }
-    public static void runKnownErrorsReport(ExtendedRuntimeOptions extendedOptions) {
+    public void runKnownErrorsReport(ExtendedRuntimeOptions extendedOptions) {
         if (!extendedOptions.isKnownErrorsReport()) {
             return;
         }
@@ -145,7 +145,7 @@ public final class ReportRunner {
             e.printStackTrace();
         }
     }
-    public static void runConsolidatedReport(ExtendedRuntimeOptions extendedOptions) {
+    public void runConsolidatedReport(ExtendedRuntimeOptions extendedOptions) {
         if (!extendedOptions.isConsolidatedReport()) {
             return;
         }
@@ -162,14 +162,15 @@ public final class ReportRunner {
         }
     }
     public static void run(ExtendedRuntimeOptions extendedOption) {
-        ReportRunner.runUsageReport(extendedOption);
-        ReportRunner.runOverviewReport(extendedOption);
-        ReportRunner.runFeatureOverviewChartReport(extendedOption);
-        ReportRunner.runDetailedReport(extendedOption);
-        ReportRunner.runDetailedAggregatedReport(extendedOption);
-        ReportRunner.runCoverageReport(extendedOption);
-        ReportRunner.runBreakdownReport(extendedOption);
-        ReportRunner.runKnownErrorsReport(extendedOption);
-        ReportRunner.runConsolidatedReport(extendedOption);
+        ReportRunner runner = new ReportRunner();
+        runner.runUsageReport(extendedOption);
+        runner.runOverviewReport(extendedOption);
+        runner.runFeatureOverviewChartReport(extendedOption);
+        runner.runDetailedReport(extendedOption);
+        runner.runDetailedAggregatedReport(extendedOption);
+        runner.runCoverageReport(extendedOption);
+        runner.runBreakdownReport(extendedOption);
+        runner.runKnownErrorsReport(extendedOption);
+        runner.runConsolidatedReport(extendedOption);
     }
 }

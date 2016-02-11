@@ -11,18 +11,12 @@ import com.cedarsoftware.util.io.JsonReader;
 import com.github.mkolisnyk.cucumber.reporting.types.consolidated.ConsolidatedItemInfo;
 import com.github.mkolisnyk.cucumber.reporting.types.consolidated.ConsolidatedReportBatch;
 import com.github.mkolisnyk.cucumber.reporting.types.consolidated.ConsolidatedReportModel;
-import com.github.mkolisnyk.cucumber.reporting.types.result.CucumberFeatureResult;
 
 public class CucumberConsolidatedReport extends CucumberResultsCommon {
     protected String getReportBase() throws IOException {
         InputStream is = this.getClass().getResourceAsStream("/consolidated-tmpl.html");
         String result = IOUtils.toString(is);
         return result;
-    }
-    @Override
-    public int[][] getStatuses(CucumberFeatureResult[] results) {
-        // TODO Auto-generated method stub
-        return null;
     }
     private String retrieveBody(String content) {
         return content.split("<body>")[1].split("</body>")[0];

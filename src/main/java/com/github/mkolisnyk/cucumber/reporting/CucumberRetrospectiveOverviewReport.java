@@ -17,11 +17,6 @@ import com.github.mkolisnyk.cucumber.reporting.types.retrospective.Retrospective
 
 public class CucumberRetrospectiveOverviewReport extends CucumberResultsCommon {
 
-    @Override
-    public int[][] getStatuses(CucumberFeatureResult[] results) {
-        // TODO Auto-generated method stub
-        return null;
-    }
     protected String getReportBase() throws IOException {
         InputStream is = this.getClass().getResourceAsStream("/consolidated-tmpl.html");
         String result = IOUtils.toString(is);

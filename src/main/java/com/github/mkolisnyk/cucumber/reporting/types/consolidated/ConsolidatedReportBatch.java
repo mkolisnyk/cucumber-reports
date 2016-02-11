@@ -11,8 +11,4 @@ public class ConsolidatedReportBatch {
     public ConsolidatedReportModel[] getModels() {
         return models;
     }
-
-    public void setModels(ConsolidatedReportModel[] modelsValue) {
-        this.models = modelsValue;
-    }
 }

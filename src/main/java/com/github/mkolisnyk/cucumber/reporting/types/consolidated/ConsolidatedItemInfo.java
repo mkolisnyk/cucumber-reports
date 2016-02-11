@@ -15,13 +15,7 @@ public class ConsolidatedItemInfo {
     public String getTitle() {
         return title;
     }
-    public void setTitle(String titleValue) {
-        this.title = titleValue;
-    }
     public String getPath() {
         return path;
-    }
-    public void setPath(String pathValue) {
-        this.path = pathValue;
     }
 }

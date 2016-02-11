@@ -54,49 +54,25 @@ public class RetrospectiveModel {
     public String getTitle() {
         return title;
     }
-    public void setTitle(String titleValue) {
-        this.title = titleValue;
-    }
     public String getMask() {
         return mask;
-    }
-    public void setMask(String maskValue) {
-        this.mask = maskValue;
     }
     public RetrospectiveOrderBy getOrderBy() {
         return orderBy;
     }
-    public void setOrderBy(RetrospectiveOrderBy orderByValue) {
-        this.orderBy = orderByValue;
-    }
     public String getReportSuffix() {
         return reportSuffix;
-    }
-    public void setReportSuffix(String reportSuffixValue) {
-        this.reportSuffix = reportSuffixValue;
     }
     public String getRedirectTo() {
         return redirectTo;
     }
-    public void setRedirectTo(String redirectToValue) {
-        this.redirectTo = redirectToValue;
-    }
     public int getRefreshTimeout() {
         return refreshTimeout;
-    }
-    public void setRefreshTimeout(int refreshTimeoutValue) {
-        this.refreshTimeout = refreshTimeoutValue;
     }
     public int getWidth() {
         return width;
     }
-    public void setWidth(int widthValue) {
-        this.width = widthValue;
-    }
     public int getHeight() {
         return height;
-    }
-    public void setHeight(int heightValue) {
-        this.height = heightValue;
     }
 }

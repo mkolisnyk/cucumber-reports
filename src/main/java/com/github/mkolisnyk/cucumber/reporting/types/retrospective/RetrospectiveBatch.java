@@ -11,8 +11,4 @@ public class RetrospectiveBatch {
     public RetrospectiveModel[] getModels() {
         return models;
     }
-
-    public void setModels(RetrospectiveModel[] modelsValue) {
-        this.models = modelsValue;
-    }
 }

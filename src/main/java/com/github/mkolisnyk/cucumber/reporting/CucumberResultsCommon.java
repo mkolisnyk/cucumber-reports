@@ -413,5 +413,7 @@ public abstract class CucumberResultsCommon {
         os.close();
     }
 
-    public abstract int[][] getStatuses(CucumberFeatureResult[] results);
+    public int[][] getStatuses(CucumberFeatureResult[] results) {
+        return null;
+    }
 }

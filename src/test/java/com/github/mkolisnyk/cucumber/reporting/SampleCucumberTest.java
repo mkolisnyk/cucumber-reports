@@ -1,6 +1,5 @@
 package com.github.mkolisnyk.cucumber.reporting;
 
-import org.junit.Ignore;
 import org.junit.runner.RunWith;
 
 import com.github.mkolisnyk.cucumber.runner.ExtendedCucumber;
@@ -8,10 +7,27 @@ import com.github.mkolisnyk.cucumber.runner.ExtendedCucumberOptions;
 
 import cucumber.api.CucumberOptions;
 
-@Ignore
 @RunWith(ExtendedCucumber.class)
+@ExtendedCucumberOptions(jsonReport = "target/cucumber-u.json",
+        retryCount = 0,
+        featureOverviewChart = true,
+        detailedReport = true,
+        detailedAggregatedReport = true,
+        overviewReport = true,
+        coverageReport = true,
+        jsonUsageReport = "target/cucumber-usage-u.json",
+        usageReport = true,
+        toPDF = true,
+        breakdownReport = true,
+        breakdownConfig = "src/test/resources/breakdown-source/simple.json",
+        knownErrorsReport = true,
+        knownErrorsConfig = "src/test/resources/known-errors-source/sample_model.json",
+        consolidatedReport = true,
+        consolidatedReportConfig = "src/test/resources/consolidated-source/s_ample_batch.json",
+        outputFolder = "target")
 @ExtendedCucumberOptions(jsonReport = "target/cucumber.json",
         retryCount = 3,
+        featureOverviewChart = true,
         detailedReport = true,
         detailedAggregatedReport = true,
         overviewReport = true,
@@ -19,6 +35,12 @@ import cucumber.api.CucumberOptions;
         jsonUsageReport = "target/cucumber-usage.json",
         usageReport = true,
         toPDF = true,
+        breakdownReport = true,
+        breakdownConfig = "src/test/resources/breakdown-source/simple.json",
+        knownErrorsReport = true,
+        knownErrorsConfig = "src/test/resources/known-errors-source/sample_model.json",
+        consolidatedReport = true,
+        consolidatedReportConfig = "src/test/resources/consolidated-source/sample_batch.json",
         excludeCoverageTags = {"@flaky" },
         includeCoverageTags = {"@passed" },
         outputFolder = "target")

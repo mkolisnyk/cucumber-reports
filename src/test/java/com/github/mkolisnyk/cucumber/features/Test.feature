@@ -7,19 +7,18 @@ Feature: Sample re-run feature
     When I do nothing
     Then I should see nothing
 
-  @failed @consistent
+  @failed
   Scenario: Always failed test
     Given I am in the system
     When I do wrong
     Then I should see nothing
 
-  @flaky @consistent
+  @flaky
   Scenario: Flaky test
     Given I am in the system
     When I do something
     Then I should see nothing
 
-  @consistent
   Scenario Outline: outlining test
     Given I am in the system
     When I do some <Value> things

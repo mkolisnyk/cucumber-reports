@@ -18,13 +18,7 @@ public class KnownErrorsModel {
     public KnownErrorsInfo[] getErrorDescriptions() {
         return errorDescriptions;
     }
-    public void setErrorDescriptions(KnownErrorsInfo[] errorDescriptionsValue) {
-        this.errorDescriptions = errorDescriptionsValue;
-    }
     public KnownErrorOrderBy getOrderBy() {
         return orderBy;
-    }
-    public void setOrderBy(KnownErrorOrderBy orderByValue) {
-        this.orderBy = orderByValue;
     }
 }

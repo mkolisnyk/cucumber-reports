@@ -18,25 +18,13 @@ public class ConsolidatedReportModel {
     public ConsolidatedItemInfo[] getItems() {
         return items;
     }
-    public void setItems(ConsolidatedItemInfo[] itemsValue) {
-        this.items = itemsValue;
-    }
     public String getTitle() {
         return title;
-    }
-    public void setTitle(String titleValue) {
-        this.title = titleValue;
     }
     public String getReportSuffix() {
         return reportSuffix;
     }
-    public void setReportSuffix(String reportSuffixValue) {
-        this.reportSuffix = reportSuffixValue;
-    }
     public boolean isUseTableOfContents() {
         return useTableOfContents;
-    }
-    public void setUseTableOfContents(boolean useTableOfContentsValue) {
-        this.useTableOfContents = useTableOfContentsValue;
     }
 }

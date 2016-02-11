@@ -197,7 +197,7 @@ public class CucumberBreakdownReport extends CucumberResultsCommon {
         };
         double total = stats.getFailed() + stats.getPassed() + stats.getSkipped();
         if (total <= 0) {
-            return String.format("<td bgcolor=silver><center><b>N/A</b></center></td>");
+            return String.format("<td bgcolor=\"silver\"><center><b>N/A</b></center></td>");
         }
         CellDrawer drawer = (CellDrawer) (drawCellMap.get(type).getConstructor(this.getClass()).newInstance(this));
         return drawer.drawCell(stats);
@@ -254,7 +254,7 @@ public class CucumberBreakdownReport extends CucumberResultsCommon {
                         //drawCellValues(stats.getPassed(), stats.getFailed(), stats.getSkipped())
                  );
             }
-            return String.format("<td bgcolor=silver><center><b>N/A</b></center></td>");
+            return String.format("<td bgcolor=\"silver\"><center><b>N/A</b></center></td>");
         }
     }
     private class BarNumberCellDrawer implements CellDrawer {
@@ -311,7 +311,7 @@ public class CucumberBreakdownReport extends CucumberResultsCommon {
                     CHART_THICKNESS, 2) + "</td>";
                 return chartHtml;
             }
-            return String.format("<td bgcolor=silver><center><b>N/A</b></center></td>");
+            return String.format("<td bgcolor=\"silver\"><center><b>N/A</b></center></td>");
         }
     }
 }

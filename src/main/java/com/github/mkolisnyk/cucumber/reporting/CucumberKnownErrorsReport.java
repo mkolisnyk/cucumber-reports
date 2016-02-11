@@ -21,11 +21,6 @@ public class CucumberKnownErrorsReport extends CucumberResultsCommon {
         String result = IOUtils.toString(is);
         return result;
     }
-    @Override
-    public int[][] getStatuses(CucumberFeatureResult[] results) {
-        // TODO Auto-generated method stub
-        return null;
-    }
 
     public String generateKnownErrorsReport(CucumberFeatureResult[] features, KnownErrorsModel model) throws Exception {
         String content = this.getReportBase();

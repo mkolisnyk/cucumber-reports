@@ -1,0 +1,209 @@
+  {
+    "before": [
+      {
+        "result": {
+          "duration": 12917881039,
+          "status": "passed"
+        },
+        "match": {
+          "location": "Hooks.setUp(Scenario)"
+        }
+      }
+    ],
+    "line": 27,
+    "name": "Add card",
+    "description": "",
+    "id": "payments;add-card;;3",
+    "after": [
+      {
+        "result": {
+          "duration": 3786436205,
+          "status": "passed"
+        },
+        "match": {
+          "location": "Hooks.tearDown(Scenario)"
+        }
+      }
+    ],
+    "type": "scenario",
+    "keyword": "Scenario Outline",
+    "steps": [
+      {
+        "result": {
+          "duration": 32945934022,
+          "status": "passed"
+        },
+        "line": 11,
+        "name": "I am logged into the system",
+        "match": {
+          "location": "LoginActions.openHomePageLogged()"
+        },
+        "keyword": "Given "
+      },
+      {
+        "result": {
+          "duration": 36111767376,
+          "status": "passed"
+        },
+        "line": 12,
+        "name": "I have no payment cards stored",
+        "match": {
+          "location": "CardManipulationActions.removeAllCards()"
+        },
+        "keyword": "And "
+      },
+      {
+        "result": {
+          "duration": 71485330114,
+          "error_message": "java.lang.AssertionError: Home page i$n\u0027t current\r\n\tat org.junit.Assert.fail(Assert.java:88)\r\n\tat org.junit.Assert.assertTrue(Assert.java:41)\r\n\tat com.thetrainline.common.steps.NavigationActions.navigateToHomePage(NavigationActions.java:47)\r\n\tat com.thetrainline.common.steps.NavigationActions.navigateToPaymetsCardsPage(NavigationActions.java:68)\r\n\tat ✽.And I am on the Payment cards screen(Payments.feature:13)\r\n",
+          "status": "failed"
+        },
+        "line": 13,
+        "name": "I am on the Payment cards screen",
+        "match": {
+          "location": "NavigationActions.navigateToPaymetsCardsPage()"
+        },
+        "keyword": "And "
+      },
+      {
+        "result": {
+          "status": "skipped"
+        },
+        "line": 14,
+        "name": "user account has billing address with the following parameters:",
+        "match": {
+          "location": "CardManipulationActions.userHasBillingAddress(DataTable)"
+        },
+        "rows": [
+          {
+            "cells": [
+              "Country",
+              "Postcode",
+              "Address line 1",
+              "Address line 2"
+            ],
+            "line": 15
+          },
+          {
+            "cells": [
+              "UK",
+              "EC1M 3HE",
+              "50, Farringdon Road",
+              "London"
+            ],
+            "line": 16
+          }
+        ],
+        "keyword": "And "
+      },
+      {
+        "result": {
+          "status": "skipped"
+        },
+        "line": 17,
+        "name": "I add the card with the following criteria:",
+        "match": {
+          "location": "CardManipulationActions.addCards(DataTable)"
+        },
+        "matchedColumns": [
+          0,
+          1,
+          2,
+          3,
+          4
+        ],
+        "rows": [
+          {
+            "cells": [
+              "Card type",
+              "Card number",
+              "Expiry month",
+              "Expiry year",
+              "Card holder name"
+            ],
+            "line": 18
+          },
+          {
+            "cells": [
+              "Mastercard",
+              "5200000000000056",
+              "12",
+              "20",
+              "Joe Public"
+            ],
+            "line": 19
+          }
+        ],
+        "keyword": "When "
+      },
+      {
+        "result": {
+          "status": "skipped"
+        },
+        "line": 20,
+        "name": "go to the Payment cards screen",
+        "match": {
+          "location": "NavigationActions.navigateToPaymetsCardsPage()"
+        },
+        "keyword": "And "
+      },
+      {
+        "result": {
+          "status": "skipped"
+        },
+        "line": 21,
+        "name": "I should see the \"Joe Public\" text is shown",
+        "match": {
+          "arguments": [
+            {
+              "val": "Joe Public",
+              "offset": 18
+            }
+          ],
+          "location": "OnCurrentPageGenericStep.I_should_see_the_message_is_shown(String)"
+        },
+        "matchedColumns": [
+          4
+        ],
+        "keyword": "Then "
+      },
+      {
+        "result": {
+          "status": "skipped"
+        },
+        "line": 22,
+        "name": "the \"0056\" text is shown",
+        "match": {
+          "arguments": [
+            {
+              "val": "0056",
+              "offset": 5
+            }
+          ],
+          "location": "OnCurrentPageGenericStep.I_should_see_the_message_is_shown(String)"
+        },
+        "matchedColumns": [
+          5
+        ],
+        "keyword": "And "
+      }
+    ],
+    "tags": [
+      {
+        "line": 9,
+        "name": "@payment"
+      },
+      {
+        "line": 9,
+        "name": "@ios"
+      },
+      {
+        "line": 9,
+        "name": "@positive"
+      },
+      {
+        "line": 9,
+        "name": "@android"
+      }
+    ]
+  }

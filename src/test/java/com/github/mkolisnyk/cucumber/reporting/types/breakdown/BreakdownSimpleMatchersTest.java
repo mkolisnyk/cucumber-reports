@@ -33,6 +33,7 @@ public class BreakdownSimpleMatchersTest {
             {DimensionValue.STEP, "(.*)", true},
             {DimensionValue.STEP, "Non-existing step name", false},
             {DimensionValue.STEP_PARAM, "(.*)", true},
+            {DimensionValue.STEP_PARAM, "London", true},
             {DimensionValue.STEP_PARAM, "Non-existing param", false},
             {DimensionValue.TAG, "(.*)", true},
             {DimensionValue.TAG, "Non-existing tag", false},

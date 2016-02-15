@@ -52,6 +52,17 @@ public class BreakdownComplexMatchersTest {
             {
                 new DataDimension(DimensionValue.AND, "(.*)", new DataDimension[] {
                     new DataDimension(DimensionValue.SCENARIO, "Add(.*)"),
+                }),
+                true
+            },
+            {
+                new DataDimension(DimensionValue.AND, "Add(.*)", new DataDimension[] {
+                }),
+                true
+            },
+            {
+                new DataDimension(DimensionValue.AND, "(.*)", new DataDimension[] {
+                    new DataDimension(DimensionValue.SCENARIO, "Add(.*)"),
                     new DataDimension(DimensionValue.SCENARIO, "card"),
                 }),
                 false
@@ -95,6 +106,36 @@ public class BreakdownComplexMatchersTest {
                     new DataDimension(DimensionValue.SCENARIO, "Add"),
                     new DataDimension(DimensionValue.SCENARIO, "card"),
                 }),
+                false
+            },
+            {
+                new DataDimension(DimensionValue.STEP_SEQUENCE, "(.*)", new DataDimension[] {
+                    new DataDimension(DimensionValue.STEP, "(.*)logged(.*)"),
+                    new DataDimension(DimensionValue.STEP, "I have no payment cards stored"),
+                }),
+                true
+            },
+            {
+                new DataDimension(DimensionValue.STEP_SEQUENCE, "(.*)", new DataDimension[] {
+                    new DataDimension(DimensionValue.STEP, "I am logged into the system"),
+                    new DataDimension(DimensionValue.STEP, "I have no payment cards stored"),
+                }),
+                true
+            },
+            {
+                new DataDimension(DimensionValue.STEP_SEQUENCE, "(.*)", new DataDimension[] {
+                    new DataDimension(DimensionValue.STEP, "(.*)not logged into the system"),
+                    new DataDimension(DimensionValue.STEP, "I have no payment cards stored"),
+                }),
+                false
+            },
+            {
+                new DataDimension(DimensionValue.STEP_SEQUENCE, "(.*)", new DataDimension[] {
+                }),
+                true
+            },
+            {
+                new DataDimension(DimensionValue.STEP_SEQUENCE, "(.*)", null),
                 false
             },
         });

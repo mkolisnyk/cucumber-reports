@@ -98,8 +98,7 @@ public class ExtendedExamplesRunner extends Suite {
                 featureElementRunner = new ExtendedExecutionUnitRunner(
                         runtime,
                         ((ExtendedExecutionUnitRunner) runner).getCucumberScenario(),
-                        jUnitReporter/*,
-                        retryCount*/);
+                        jUnitReporter);
                 featureElementRunner.run(notifier);
                 Assert.assertEquals(0, this.getRuntime().exitStatus());
                 break;

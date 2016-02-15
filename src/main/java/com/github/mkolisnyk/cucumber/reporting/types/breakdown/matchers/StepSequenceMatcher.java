@@ -8,6 +8,9 @@ public class StepSequenceMatcher extends ComplexMatcher {
     @Override
     public boolean matches(CucumberScenarioResult result, DataDimension filter) {
         int start = 0;
+        if (filter.getSubElements() == null) {
+            return false;
+        }
         for (DataDimension filterItem : filter.getSubElements()) {
             boolean found = false;
             for (int i = start; i < result.getSteps().length; i++) {

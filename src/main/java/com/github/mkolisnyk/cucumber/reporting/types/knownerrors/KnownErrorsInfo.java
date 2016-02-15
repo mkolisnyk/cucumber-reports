@@ -34,35 +34,15 @@ public class KnownErrorsInfo {
     public String getTitle() {
         return title;
     }
-
-    public void setTitle(String titleValue) {
-        this.title = titleValue;
-    }
-
     public String getDescription() {
         return description;
     }
-
-    public void setDescription(String descriptionValue) {
-        this.description = descriptionValue;
-    }
-
     public DataDimension getFilter() {
         return filter;
     }
-
-    public void setFilter(DataDimension filterValue) {
-        this.filter = filterValue;
-    }
-
     public KnownErrorPriority getPriority() {
         return priority;
     }
-
-    public void setPriority(KnownErrorPriority priorityValue) {
-        this.priority = priorityValue;
-    }
-
     @Override
     public int hashCode() {
         return this.toString().hashCode();

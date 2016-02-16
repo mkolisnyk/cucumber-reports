@@ -20,7 +20,7 @@ public class CucumberRetrospectiveOverviewTest {
             = new RetrospectiveModel(
                     "retro1",
                     "Nightly Runs Retrospective",
-                    "(.*)src[\\/]test[\\/]resources[\\/]retrospective-source[\\/]1[\\/](.*)json", 600, 200);
+                    "(.*)retrospective-source.1(.*)json", 600, 200);
         report.executeReport(model, true, true);
     }
     @Test
@@ -33,16 +33,16 @@ public class CucumberRetrospectiveOverviewTest {
                 new RetrospectiveModel(
                         "retro2",
                         "Nightly Runs Retrospective",
-                        "(.*)src[\\/]test[\\/]resources[\\/]retrospective-source[\\/]1[\\/](.*)json", 600, 200),
+                        "(.*)retrospective-source.1(.*)json", 600, 200),
                 new RetrospectiveModel(
                         "retro3",
                         "Restricted Runs Retrospective",
-                        "(.*)src[\\/]test[\\/]resources[\\/]retrospective-source[\\/]1[\\/]131(.*)json", 300, 400)
+                        "(.*)retrospective-source.1.131(.*)json", 300, 400)
             }
         );
         report.executeReport(batch, true, false);
-        //String json = JsonWriter.objectToJson(batch);
-        //FileUtils.writeStringToFile(new File("./src/test/resources/retrospective-source/sample_batch.json"), json);
+        String json = JsonWriter.objectToJson(batch);
+        FileUtils.writeStringToFile(new File("./src/test/resources/retrospective-source/sample_batch.json"), json);
     }
     @Test
     public void testGenerateReportFromConfigFile() throws Exception {

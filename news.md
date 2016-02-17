@@ -2,12 +2,23 @@
 title: Cucumber Reports News
 ---
 
+## 16.02.2016 1.0.2 Version Release
+
+ * [#57](https://github.com/mkolisnyk/cucumber-reports/issues/57) Enhancement:	New Report: retrospective run status overview
+ * [#55](https://github.com/mkolisnyk/cucumber-reports/issues/55) Enhancement: PDF Reports: enhance PDF generation with headers/footers and flexible page sizes
+ * [#54](https://github.com/mkolisnyk/cucumber-reports/issues/54) Enhancement: New Report: feature overview report
+ * [#53](https://github.com/mkolisnyk/cucumber-reports/issues/53) Enhancement: New Report: known errors report
+ * [#52](https://github.com/mkolisnyk/cucumber-reports/issues/52) Enhancement: New Report: consolidated report
+ * [#51](https://github.com/mkolisnyk/cucumber-reports/issues/51) Enhancement: Breakdown Report: add frame file generation for series of reports
+ * [#49](https://github.com/mkolisnyk/cucumber-reports/issues/49) Enhancement: Extended Cucumber Runner: add ability to use multiple Extended Options
+ * [#48](https://github.com/mkolisnyk/cucumber-reports/issues/48) Breakdown Report: add ability to specify the cell display type
+
 ## 20.12.2015 1.0.1 Version Release
 
-* [#47](https://github.com/mkolisnyk/cucumber-reports/issues/47) Enhancement: Breakdown Report: add complex matchers enhancement
-* [#46](https://github.com/mkolisnyk/cucumber-reports/issues/46) Enhancement: New Report: Multi-dimensional breakdown report enhancement  
-* [#44](https://github.com/mkolisnyk/cucumber-reports/issues/44) Bug fix: Small Fixes for reports generation bug  
-* [#42](https://github.com/mkolisnyk/cucumber-reports/issues/42) Enhancement: Update library dependencies to the latest versions enhancement  
+* [#47](https://github.com/mkolisnyk/cucumber-reports/issues/47) Enhancement: Breakdown Report: add complex matchers
+* [#46](https://github.com/mkolisnyk/cucumber-reports/issues/46) Enhancement: New Report: Multi-dimensional breakdown report  
+* [#44](https://github.com/mkolisnyk/cucumber-reports/issues/44) Bug fix: Small Fixes for reports generation
+* [#42](https://github.com/mkolisnyk/cucumber-reports/issues/42) Enhancement: Update library dependencies to the latest versions  
 
 ## 08.11.2015 1.0.0 Version Release
 

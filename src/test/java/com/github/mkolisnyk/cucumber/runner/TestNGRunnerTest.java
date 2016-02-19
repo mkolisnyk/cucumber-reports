@@ -11,22 +11,42 @@ import cucumber.api.CucumberOptions;
 
 public class TestNGRunnerTest {
 
+    @ExtendedCucumberOptions(jsonReport = "target/cucumber.json",
+            retryCount = 0,
+            featureOverviewChart = true,
+            detailedReport = true,
+            detailedAggregatedReport = true,
+            overviewReport = true,
+            coverageReport = true,
+            jsonUsageReport = "target/cucumber-usage.json",
+            usageReport = true,
+            toPDF = true,
+            breakdownReport = true,
+            breakdownConfig = "src/test/resources/breakdown-source/simple.json",
+            knownErrorsReport = true,
+            knownErrorsConfig = "src/test/resources/known-errors-source/sample_model.json",
+            consolidatedReport = true,
+            reportPrefix = "testng-result",
+            consolidatedReportConfig = "src/test/resources/consolidated-source/s_ample_batch.json",
+            outputFolder = "target")
     @CucumberOptions(
-            format = {"html:target/cucumber-html-report",
+            plugin = {"html:target/cucumber-html-report",
                       "json:target/cucumber.json",
                       "pretty:target/cucumber-pretty.txt",
                       "usage:target/cucumber-usage.json"
                      },
-            features = {"output/" },
-            glue = {"com/github/mkolisnyk/aerial" },
-            tags = { }
+            features = {"src/test/java/com/github/mkolisnyk/cucumber/features/" },
+            glue = {"com/github/mkolisnyk/cucumber/steps" },
+            tags = {"@passed"}
     )
-    public static class TestSubClass extends ExtendedTestNGRunner {
+    public class TestSubClass extends ExtendedTestNGRunner {
         @BeforeSuite
-        public static void setUp() {
+        public void setUp() {
+            System.out.println("Setup");
         }
         @AfterSuite
-        public static void tearDown() {
+        public void tearDown() {
+            System.out.println("Teardown");
         }
     }
 

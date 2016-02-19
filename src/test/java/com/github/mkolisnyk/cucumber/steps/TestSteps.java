@@ -2,8 +2,6 @@ package com.github.mkolisnyk.cucumber.steps;
 
 import org.junit.Assert;
 
-import com.github.mkolisnyk.cucumber.runner.assertion.LazyAssert;
-
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
@@ -53,7 +51,6 @@ public class TestSteps {
     @When("^I do a bit wrong$")
     public void i_do_a_bit_wrong() throws Throwable {
         //Assert.assertTrue(false);
-        LazyAssert.fail("Test");
     }
     @When("^I do some (\\d+) things$")
     public void i_do_some_things(int value) throws Throwable {

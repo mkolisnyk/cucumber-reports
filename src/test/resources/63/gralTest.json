@@ -1,0 +1,3315 @@
+[
+  {
+    "line": 1,
+    "elements": [
+      {
+        "line": 3,
+        "name": "",
+        "description": "",
+        "type": "background",
+        "keyword": "Background",
+        "steps": [
+          {
+            "result": {
+              "duration": 3073218672,
+              "status": "passed"
+            },
+            "line": 4,
+            "name": "The app is clear",
+            "match": {
+              "location": "UploadComunicationStepDenition.the_app_is_clear()"
+            },
+            "keyword": "Given "
+          },
+          {
+            "result": {
+              "duration": 3870082378,
+              "status": "passed"
+            },
+            "line": 5,
+            "name": "The wi-fi status is true and data status is true",
+            "match": {
+              "location": "GralStepDefinitions.the_wi_fi_status_is_true_and_data_status_is_true()"
+            },
+            "keyword": "When "
+          },
+          {
+            "result": {
+              "duration": 589784431,
+              "status": "passed"
+            },
+            "line": 6,
+            "name": "I see the Litigando logo",
+            "match": {
+              "location": "LoginTestStepDefinition.i_see_the_litigando_logo()"
+            },
+            "keyword": "Then "
+          },
+          {
+            "result": {
+              "duration": 131115177,
+              "status": "passed"
+            },
+            "line": 7,
+            "name": "I see the \".activity.LoginActivity\" activity in the page \"Login\"",
+            "match": {
+              "arguments": [
+                {
+                  "val": ".activity.LoginActivity",
+                  "offset": 11
+                },
+                {
+                  "val": "Login",
+                  "offset": 58
+                }
+              ],
+              "location": "GralStepDefinitions.i_see_the_activity_in_the_page(String,String)"
+            },
+            "keyword": "And "
+          }
+        ]
+      },
+      {
+        "before": [
+          {
+            "result": {
+              "duration": 8124646836,
+              "status": "passed"
+            },
+            "match": {
+              "location": "LoginTestStepDefinition.setUpEnviromentFeature()"
+            }
+          }
+        ],
+        "line": 9,
+        "name": "SLogin_001-No conection to internet",
+        "description": "",
+        "id": "login;slogin-001-no-conection-to-internet",
+        "after": [
+          {
+            "result": {
+              "duration": 825566224,
+              "status": "passed"
+            },
+            "match": {
+              "location": "LoginTestStepDefinition.afterScenario(Scenario)"
+            }
+          }
+        ],
+        "type": "scenario",
+        "keyword": "Scenario",
+        "steps": [
+          {
+            "result": {
+              "duration": 6931739971,
+              "status": "passed"
+            },
+            "line": 10,
+            "name": "The wi-fi status is false and data status is false",
+            "match": {
+              "location": "GralStepDefinitions.the_wi_fi_status_is_false_and_data_status_is_false()"
+            },
+            "keyword": "Given "
+          },
+          {
+            "result": {
+              "duration": 484220208,
+              "status": "passed"
+            },
+            "line": 11,
+            "name": "I press on the Acceder button",
+            "match": {
+              "location": "LoginTestStepDefinition.i_press_on_the_acceder_button()"
+            },
+            "keyword": "When "
+          },
+          {
+            "result": {
+              "duration": 1325328670,
+              "status": "passed"
+            },
+            "line": 12,
+            "name": "I must see a alert that has a title \"Verifique su conexión a Internet\" and the message \"Debe tener una conexión a Internet para Iniciar Sesión\"",
+            "match": {
+              "arguments": [
+                {
+                  "val": "Verifique su conexión a Internet",
+                  "offset": 37
+                },
+                {
+                  "val": "Debe tener una conexión a Internet para Iniciar Sesión",
+                  "offset": 88
+                }
+              ],
+              "location": "LoginTestStepDefinition.i_must_see_a_alert_that_has_a_title_and_the_text(String,String)"
+            },
+            "keyword": "Then "
+          }
+        ]
+      },
+      {
+        "line": 3,
+        "name": "",
+        "description": "",
+        "type": "background",
+        "keyword": "Background",
+        "steps": [
+          {
+            "result": {
+              "duration": 2883437707,
+              "status": "passed"
+            },
+            "line": 4,
+            "name": "The app is clear",
+            "match": {
+              "location": "UploadComunicationStepDenition.the_app_is_clear()"
+            },
+            "keyword": "Given "
+          },
+          {
+            "result": {
+              "duration": 4150644669,
+              "status": "passed"
+            },
+            "line": 5,
+            "name": "The wi-fi status is true and data status is true",
+            "match": {
+              "location": "GralStepDefinitions.the_wi_fi_status_is_true_and_data_status_is_true()"
+            },
+            "keyword": "When "
+          },
+          {
+            "result": {
+              "duration": 590453304,
+              "status": "passed"
+            },
+            "line": 6,
+            "name": "I see the Litigando logo",
+            "match": {
+              "location": "LoginTestStepDefinition.i_see_the_litigando_logo()"
+            },
+            "keyword": "Then "
+          },
+          {
+            "result": {
+              "duration": 119435400,
+              "status": "passed"
+            },
+            "line": 7,
+            "name": "I see the \".activity.LoginActivity\" activity in the page \"Login\"",
+            "match": {
+              "arguments": [
+                {
+                  "val": ".activity.LoginActivity",
+                  "offset": 11
+                },
+                {
+                  "val": "Login",
+                  "offset": 58
+                }
+              ],
+              "location": "GralStepDefinitions.i_see_the_activity_in_the_page(String,String)"
+            },
+            "keyword": "And "
+          }
+        ]
+      },
+      {
+        "before": [
+          {
+            "result": {
+              "duration": 7342505397,
+              "status": "passed"
+            },
+            "match": {
+              "location": "LoginTestStepDefinition.setUpEnviromentFeature()"
+            }
+          }
+        ],
+        "line": 21,
+        "name": "SLogin_002-The alert to select an account only displayed if device has conection to internet",
+        "description": "",
+        "id": "login;slogin-\u003cnum\u003e-the-alert-to-select-an-account-only-displayed-if-device-has-conection-to-internet;;2",
+        "after": [
+          {
+            "result": {
+              "duration": 808273688,
+              "status": "passed"
+            },
+            "match": {
+              "location": "LoginTestStepDefinition.afterScenario(Scenario)"
+            }
+          }
+        ],
+        "type": "scenario",
+        "keyword": "Scenario Outline",
+        "steps": [
+          {
+            "result": {
+              "duration": 2679915167,
+              "status": "passed"
+            },
+            "line": 15,
+            "name": "The wi-fi status is true and data status is false",
+            "match": {
+              "location": "GralStepDefinitions.the_wi_fi_status_is_true_and_data_status_is_false()"
+            },
+            "matchedColumns": [
+              1,
+              2
+            ],
+            "keyword": "Given "
+          },
+          {
+            "result": {
+              "duration": 1851205400,
+              "status": "passed"
+            },
+            "line": 16,
+            "name": "I press on the Acceder button",
+            "match": {
+              "location": "LoginTestStepDefinition.i_press_on_the_acceder_button()"
+            },
+            "keyword": "When "
+          },
+          {
+            "result": {
+              "duration": 1386470092,
+              "status": "passed"
+            },
+            "line": 17,
+            "name": "I must see a dialog that has a title \"Elegir una cuenta para Litimovil\"",
+            "match": {
+              "arguments": [
+                {
+                  "val": "Elegir una cuenta para Litimovil",
+                  "offset": 38
+                }
+              ],
+              "location": "LoginTestStepDefinition.i_must_see_a_dialog_that_has_a_title(String)"
+            },
+            "matchedColumns": [
+              3
+            ],
+            "keyword": "Then "
+          }
+        ]
+      },
+      {
+        "line": 3,
+        "name": "",
+        "description": "",
+        "type": "background",
+        "keyword": "Background",
+        "steps": [
+          {
+            "result": {
+              "duration": 2827957165,
+              "status": "passed"
+            },
+            "line": 4,
+            "name": "The app is clear",
+            "match": {
+              "location": "UploadComunicationStepDenition.the_app_is_clear()"
+            },
+            "keyword": "Given "
+          },
+          {
+            "result": {
+              "duration": 3732050381,
+              "status": "passed"
+            },
+            "line": 5,
+            "name": "The wi-fi status is true and data status is true",
+            "match": {
+              "location": "GralStepDefinitions.the_wi_fi_status_is_true_and_data_status_is_true()"
+            },
+            "keyword": "When "
+          },
+          {
+            "result": {
+              "duration": 585408043,
+              "status": "passed"
+            },
+            "line": 6,
+            "name": "I see the Litigando logo",
+            "match": {
+              "location": "LoginTestStepDefinition.i_see_the_litigando_logo()"
+            },
+            "keyword": "Then "
+          },
+          {
+            "result": {
+              "duration": 117192029,
+              "status": "passed"
+            },
+            "line": 7,
+            "name": "I see the \".activity.LoginActivity\" activity in the page \"Login\"",
+            "match": {
+              "arguments": [
+                {
+                  "val": ".activity.LoginActivity",
+                  "offset": 11
+                },
+                {
+                  "val": "Login",
+                  "offset": 58
+                }
+              ],
+              "location": "GralStepDefinitions.i_see_the_activity_in_the_page(String,String)"
+            },
+            "keyword": "And "
+          }
+        ]
+      },
+      {
+        "comments": [
+          {
+            "line": 22,
+            "value": "#|003| false      | true       | Elegir una cuenta para Litimovil |"
+          }
+        ],
+        "before": [
+          {
+            "result": {
+              "duration": 7298527228,
+              "status": "passed"
+            },
+            "match": {
+              "location": "LoginTestStepDefinition.setUpEnviromentFeature()"
+            }
+          }
+        ],
+        "line": 23,
+        "name": "SLogin_003-The alert to select an account only displayed if device has conection to internet",
+        "description": "",
+        "id": "login;slogin-\u003cnum\u003e-the-alert-to-select-an-account-only-displayed-if-device-has-conection-to-internet;;3",
+        "after": [
+          {
+            "result": {
+              "duration": 799811561,
+              "status": "passed"
+            },
+            "match": {
+              "location": "LoginTestStepDefinition.afterScenario(Scenario)"
+            }
+          }
+        ],
+        "type": "scenario",
+        "keyword": "Scenario Outline",
+        "steps": [
+          {
+            "result": {
+              "duration": 3644809111,
+              "status": "passed"
+            },
+            "line": 15,
+            "name": "The wi-fi status is true and data status is true",
+            "match": {
+              "location": "GralStepDefinitions.the_wi_fi_status_is_true_and_data_status_is_true()"
+            },
+            "matchedColumns": [
+              1,
+              2
+            ],
+            "keyword": "Given "
+          },
+          {
+            "result": {
+              "duration": 1275124687,
+              "status": "passed"
+            },
+            "line": 16,
+            "name": "I press on the Acceder button",
+            "match": {
+              "location": "LoginTestStepDefinition.i_press_on_the_acceder_button()"
+            },
+            "keyword": "When "
+          },
+          {
+            "result": {
+              "duration": 1422999548,
+              "status": "passed"
+            },
+            "line": 17,
+            "name": "I must see a dialog that has a title \"Elegir una cuenta para Litimovil\"",
+            "match": {
+              "arguments": [
+                {
+                  "val": "Elegir una cuenta para Litimovil",
+                  "offset": 38
+                }
+              ],
+              "location": "LoginTestStepDefinition.i_must_see_a_dialog_that_has_a_title(String)"
+            },
+            "matchedColumns": [
+              3
+            ],
+            "keyword": "Then "
+          }
+        ]
+      },
+      {
+        "line": 3,
+        "name": "",
+        "description": "",
+        "type": "background",
+        "keyword": "Background",
+        "steps": [
+          {
+            "result": {
+              "duration": 2751341837,
+              "status": "passed"
+            },
+            "line": 4,
+            "name": "The app is clear",
+            "match": {
+              "location": "UploadComunicationStepDenition.the_app_is_clear()"
+            },
+            "keyword": "Given "
+          },
+          {
+            "result": {
+              "duration": 3953590469,
+              "status": "passed"
+            },
+            "line": 5,
+            "name": "The wi-fi status is true and data status is true",
+            "match": {
+              "location": "GralStepDefinitions.the_wi_fi_status_is_true_and_data_status_is_true()"
+            },
+            "keyword": "When "
+          },
+          {
+            "result": {
+              "duration": 584381155,
+              "status": "passed"
+            },
+            "line": 6,
+            "name": "I see the Litigando logo",
+            "match": {
+              "location": "LoginTestStepDefinition.i_see_the_litigando_logo()"
+            },
+            "keyword": "Then "
+          },
+          {
+            "result": {
+              "duration": 114428637,
+              "status": "passed"
+            },
+            "line": 7,
+            "name": "I see the \".activity.LoginActivity\" activity in the page \"Login\"",
+            "match": {
+              "arguments": [
+                {
+                  "val": ".activity.LoginActivity",
+                  "offset": 11
+                },
+                {
+                  "val": "Login",
+                  "offset": 58
+                }
+              ],
+              "location": "GralStepDefinitions.i_see_the_activity_in_the_page(String,String)"
+            },
+            "keyword": "And "
+          }
+        ]
+      },
+      {
+        "before": [
+          {
+            "result": {
+              "duration": 6962127665,
+              "status": "passed"
+            },
+            "match": {
+              "location": "LoginTestStepDefinition.setUpEnviromentFeature()"
+            }
+          }
+        ],
+        "line": 25,
+        "name": "SLogin_004-Login invalid Account",
+        "description": "",
+        "id": "login;slogin-004-login-invalid-account",
+        "after": [
+          {
+            "result": {
+              "duration": 834450207,
+              "status": "passed"
+            },
+            "match": {
+              "location": "LoginTestStepDefinition.afterScenario(Scenario)"
+            }
+          }
+        ],
+        "type": "scenario",
+        "keyword": "Scenario",
+        "steps": [
+          {
+            "result": {
+              "duration": 1762287937,
+              "status": "passed"
+            },
+            "line": 26,
+            "name": "I press on the Acceder button",
+            "match": {
+              "location": "LoginTestStepDefinition.i_press_on_the_acceder_button()"
+            },
+            "keyword": "Given "
+          },
+          {
+            "result": {
+              "duration": 4344261149,
+              "status": "passed"
+            },
+            "line": 27,
+            "name": "I select a different account of \"@litigando.com\"",
+            "match": {
+              "arguments": [
+                {
+                  "val": "@litigando.com",
+                  "offset": 33
+                }
+              ],
+              "location": "LoginTestStepDefinition.i_select_a_different_account_of(String)"
+            },
+            "keyword": "When "
+          },
+          {
+            "result": {
+              "duration": 1568809403,
+              "status": "passed"
+            },
+            "line": 28,
+            "name": "I must see a alert that has a title \"Cuenta seleccionada no es válida\" and the message \"Debe seleccionar una cuenta de Litigando.com\"",
+            "match": {
+              "arguments": [
+                {
+                  "val": "Cuenta seleccionada no es válida",
+                  "offset": 37
+                },
+                {
+                  "val": "Debe seleccionar una cuenta de Litigando.com",
+                  "offset": 88
+                }
+              ],
+              "location": "LoginTestStepDefinition.i_must_see_a_alert_that_has_a_title_and_the_text(String,String)"
+            },
+            "keyword": "Then "
+          },
+          {
+            "result": {
+              "duration": 1059188055,
+              "status": "passed"
+            },
+            "line": 29,
+            "name": "I press back button device",
+            "match": {
+              "location": "OfficeTestStepDefinition.i_press_back_button_device()"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 136800438,
+              "status": "passed"
+            },
+            "line": 30,
+            "name": "I see the \".activity.LoginActivity\" activity in the page \"Login\"",
+            "match": {
+              "arguments": [
+                {
+                  "val": ".activity.LoginActivity",
+                  "offset": 11
+                },
+                {
+                  "val": "Login",
+                  "offset": 58
+                }
+              ],
+              "location": "GralStepDefinitions.i_see_the_activity_in_the_page(String,String)"
+            },
+            "keyword": "And "
+          }
+        ]
+      },
+      {
+        "line": 3,
+        "name": "",
+        "description": "",
+        "type": "background",
+        "keyword": "Background",
+        "steps": [
+          {
+            "result": {
+              "duration": 2734541090,
+              "status": "passed"
+            },
+            "line": 4,
+            "name": "The app is clear",
+            "match": {
+              "location": "UploadComunicationStepDenition.the_app_is_clear()"
+            },
+            "keyword": "Given "
+          },
+          {
+            "result": {
+              "duration": 3349568184,
+              "status": "passed"
+            },
+            "line": 5,
+            "name": "The wi-fi status is true and data status is true",
+            "match": {
+              "location": "GralStepDefinitions.the_wi_fi_status_is_true_and_data_status_is_true()"
+            },
+            "keyword": "When "
+          },
+          {
+            "result": {
+              "duration": 557720544,
+              "status": "passed"
+            },
+            "line": 6,
+            "name": "I see the Litigando logo",
+            "match": {
+              "location": "LoginTestStepDefinition.i_see_the_litigando_logo()"
+            },
+            "keyword": "Then "
+          },
+          {
+            "result": {
+              "duration": 116994094,
+              "status": "passed"
+            },
+            "line": 7,
+            "name": "I see the \".activity.LoginActivity\" activity in the page \"Login\"",
+            "match": {
+              "arguments": [
+                {
+                  "val": ".activity.LoginActivity",
+                  "offset": 11
+                },
+                {
+                  "val": "Login",
+                  "offset": 58
+                }
+              ],
+              "location": "GralStepDefinitions.i_see_the_activity_in_the_page(String,String)"
+            },
+            "keyword": "And "
+          }
+        ]
+      },
+      {
+        "before": [
+          {
+            "result": {
+              "duration": 6766209427,
+              "status": "passed"
+            },
+            "match": {
+              "location": "LoginTestStepDefinition.setUpEnviromentFeature()"
+            }
+          }
+        ],
+        "line": 32,
+        "name": "SLogin_005-Login Succesful Dependiente",
+        "description": "",
+        "id": "login;slogin-005-login-succesful-dependiente",
+        "after": [
+          {
+            "result": {
+              "duration": 780035051,
+              "status": "passed"
+            },
+            "match": {
+              "location": "LoginTestStepDefinition.afterScenario(Scenario)"
+            }
+          }
+        ],
+        "type": "scenario",
+        "keyword": "Scenario",
+        "steps": [
+          {
+            "result": {
+              "duration": 1662183132,
+              "status": "passed"
+            },
+            "line": 33,
+            "name": "I press on the Acceder button",
+            "match": {
+              "location": "LoginTestStepDefinition.i_press_on_the_acceder_button()"
+            },
+            "keyword": "Given "
+          },
+          {
+            "result": {
+              "duration": 3872160537,
+              "status": "passed"
+            },
+            "line": 34,
+            "name": "I select an account of \"civilesbogota5@litigando.com\"",
+            "match": {
+              "arguments": [
+                {
+                  "val": "civilesbogota5@litigando.com",
+                  "offset": 24
+                }
+              ],
+              "location": "LoginTestStepDefinition.i_select_an_account_of(String)"
+            },
+            "keyword": "When "
+          },
+          {
+            "result": {
+              "duration": 6531790081,
+              "status": "passed"
+            },
+            "line": 35,
+            "name": "I must see the \"Mis despachos\" view",
+            "match": {
+              "arguments": [
+                {
+                  "val": "Mis despachos",
+                  "offset": 16
+                }
+              ],
+              "location": "GralStepDefinitions.i_must_see_the_view(String)"
+            },
+            "keyword": "Then "
+          },
+          {
+            "result": {
+              "duration": 737703562,
+              "status": "passed"
+            },
+            "line": 36,
+            "name": "I see the label \"Seleccione un despacho\"",
+            "match": {
+              "arguments": [
+                {
+                  "val": "Seleccione un despacho",
+                  "offset": 17
+                }
+              ],
+              "location": "GralStepDefinitions.i_see_the_label(String)"
+            },
+            "keyword": "And "
+          }
+        ]
+      },
+      {
+        "line": 3,
+        "name": "",
+        "description": "",
+        "type": "background",
+        "keyword": "Background",
+        "steps": [
+          {
+            "result": {
+              "duration": 2907919747,
+              "status": "passed"
+            },
+            "line": 4,
+            "name": "The app is clear",
+            "match": {
+              "location": "UploadComunicationStepDenition.the_app_is_clear()"
+            },
+            "keyword": "Given "
+          },
+          {
+            "result": {
+              "duration": 1829160495,
+              "status": "passed"
+            },
+            "line": 5,
+            "name": "The wi-fi status is true and data status is true",
+            "match": {
+              "location": "GralStepDefinitions.the_wi_fi_status_is_true_and_data_status_is_true()"
+            },
+            "keyword": "When "
+          },
+          {
+            "result": {
+              "duration": 1813541586,
+              "status": "passed"
+            },
+            "line": 6,
+            "name": "I see the Litigando logo",
+            "match": {
+              "location": "LoginTestStepDefinition.i_see_the_litigando_logo()"
+            },
+            "keyword": "Then "
+          },
+          {
+            "result": {
+              "duration": 129646223,
+              "status": "passed"
+            },
+            "line": 7,
+            "name": "I see the \".activity.LoginActivity\" activity in the page \"Login\"",
+            "match": {
+              "arguments": [
+                {
+                  "val": ".activity.LoginActivity",
+                  "offset": 11
+                },
+                {
+                  "val": "Login",
+                  "offset": 58
+                }
+              ],
+              "location": "GralStepDefinitions.i_see_the_activity_in_the_page(String,String)"
+            },
+            "keyword": "And "
+          }
+        ]
+      },
+      {
+        "before": [
+          {
+            "result": {
+              "duration": 7070241946,
+              "status": "passed"
+            },
+            "match": {
+              "location": "LoginTestStepDefinition.setUpEnviromentFeature()"
+            }
+          }
+        ],
+        "line": 38,
+        "name": "SLogin_006-Login Succesful Recorredor",
+        "description": "",
+        "id": "login;slogin-006-login-succesful-recorredor",
+        "after": [
+          {
+            "result": {
+              "duration": 821273566,
+              "status": "passed"
+            },
+            "match": {
+              "location": "LoginTestStepDefinition.afterScenario(Scenario)"
+            }
+          }
+        ],
+        "type": "scenario",
+        "keyword": "Scenario",
+        "steps": [
+          {
+            "result": {
+              "duration": 1519757743,
+              "status": "passed"
+            },
+            "line": 39,
+            "name": "I press on the Acceder button",
+            "match": {
+              "location": "LoginTestStepDefinition.i_press_on_the_acceder_button()"
+            },
+            "keyword": "Given "
+          },
+          {
+            "result": {
+              "duration": 4432332333,
+              "status": "passed"
+            },
+            "line": 40,
+            "name": "I select an account of \"civilesbogota2@litigando.com\"",
+            "match": {
+              "arguments": [
+                {
+                  "val": "civilesbogota2@litigando.com",
+                  "offset": 24
+                }
+              ],
+              "location": "LoginTestStepDefinition.i_select_an_account_of(String)"
+            },
+            "keyword": "When "
+          },
+          {
+            "result": {
+              "duration": 6142145970,
+              "status": "passed"
+            },
+            "line": 41,
+            "name": "I must see the \"Mis despachos\" view",
+            "match": {
+              "arguments": [
+                {
+                  "val": "Mis despachos",
+                  "offset": 16
+                }
+              ],
+              "location": "GralStepDefinitions.i_must_see_the_view(String)"
+            },
+            "keyword": "Then "
+          },
+          {
+            "result": {
+              "duration": 877399242,
+              "status": "passed"
+            },
+            "line": 42,
+            "name": "I see the label \"Seleccione un despacho\"",
+            "match": {
+              "arguments": [
+                {
+                  "val": "Seleccione un despacho",
+                  "offset": 17
+                }
+              ],
+              "location": "GralStepDefinitions.i_see_the_label(String)"
+            },
+            "keyword": "And "
+          }
+        ]
+      }
+    ],
+    "name": "Login",
+    "description": "",
+    "id": "login",
+    "keyword": "Feature",
+    "uri": "Feature/001_Login.feature"
+  },
+  {
+    "line": 1,
+    "elements": [
+      {
+        "line": 4,
+        "name": "",
+        "description": "",
+        "type": "background",
+        "keyword": "Background",
+        "steps": [
+          {
+            "result": {
+              "duration": 2874440801,
+              "status": "passed"
+            },
+            "line": 5,
+            "name": "The app is clear",
+            "match": {
+              "location": "UploadComunicationStepDenition.the_app_is_clear()"
+            },
+            "keyword": "Given "
+          },
+          {
+            "result": {
+              "duration": 2861026446,
+              "status": "passed"
+            },
+            "line": 6,
+            "name": "The wi-fi status is true and data status is true",
+            "match": {
+              "location": "GralStepDefinitions.the_wi_fi_status_is_true_and_data_status_is_true()"
+            },
+            "keyword": "When "
+          },
+          {
+            "result": {
+              "duration": 243092561,
+              "status": "passed"
+            },
+            "line": 7,
+            "name": "I see the Litigando logo",
+            "match": {
+              "location": "LoginTestStepDefinition.i_see_the_litigando_logo()"
+            },
+            "keyword": "Then "
+          },
+          {
+            "result": {
+              "duration": 125575881,
+              "status": "passed"
+            },
+            "line": 8,
+            "name": "I see the \".activity.LoginActivity\" activity in the page \"Login\"",
+            "match": {
+              "arguments": [
+                {
+                  "val": ".activity.LoginActivity",
+                  "offset": 11
+                },
+                {
+                  "val": "Login",
+                  "offset": 58
+                }
+              ],
+              "location": "GralStepDefinitions.i_see_the_activity_in_the_page(String,String)"
+            },
+            "keyword": "And "
+          }
+        ]
+      },
+      {
+        "before": [
+          {
+            "result": {
+              "duration": 7058869498,
+              "status": "passed"
+            },
+            "match": {
+              "location": "LoginTestStepDefinition.setUpEnviromentFeature()"
+            }
+          }
+        ],
+        "line": 10,
+        "name": "SPermission_001-Permissions and visibility to Dependiente User",
+        "description": "",
+        "id": "validation-and-permissions-according-the-user-role;spermission-001-permissions-and-visibility-to-dependiente-user",
+        "after": [
+          {
+            "result": {
+              "duration": 1112398278,
+              "status": "passed"
+            },
+            "match": {
+              "location": "LoginTestStepDefinition.afterScenario(Scenario)"
+            }
+          }
+        ],
+        "type": "scenario",
+        "keyword": "Scenario",
+        "steps": [
+          {
+            "result": {
+              "duration": 1505753752,
+              "status": "passed"
+            },
+            "line": 11,
+            "name": "I press on the Acceder button",
+            "match": {
+              "location": "LoginTestStepDefinition.i_press_on_the_acceder_button()"
+            },
+            "keyword": "Given "
+          },
+          {
+            "result": {
+              "duration": 3986939169,
+              "status": "passed"
+            },
+            "line": 12,
+            "name": "I select an account of \"civilesbogota5@litigando.com\"",
+            "match": {
+              "arguments": [
+                {
+                  "val": "civilesbogota5@litigando.com",
+                  "offset": 24
+                }
+              ],
+              "location": "LoginTestStepDefinition.i_select_an_account_of(String)"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 30526612650,
+              "status": "passed"
+            },
+            "line": 13,
+            "name": "I do check in the office \"PROMISCUO MUNICIPAL No. 1\"",
+            "match": {
+              "arguments": [
+                {
+                  "val": "PROMISCUO MUNICIPAL No. 1",
+                  "offset": 26
+                }
+              ],
+              "location": "OfficeTestStepDefinition.i_do_check_in_the_office(String)"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 1735624761,
+              "status": "passed"
+            },
+            "line": 14,
+            "name": "I must see the \"PROMISCUO MUNICIPAL No. 1\" view",
+            "match": {
+              "arguments": [
+                {
+                  "val": "PROMISCUO MUNICIPAL No. 1",
+                  "offset": 16
+                }
+              ],
+              "location": "GralStepDefinitions.i_must_see_the_view(String)"
+            },
+            "keyword": "When "
+          },
+          {
+            "result": {
+              "duration": 1523547382,
+              "status": "passed"
+            },
+            "line": 15,
+            "name": "I see the tabs \"Incidentes\"",
+            "match": {
+              "arguments": [
+                {
+                  "val": "Incidentes",
+                  "offset": 16
+                }
+              ],
+              "location": "LoginTestStepDefinition.i_see_the_tabs(String)"
+            },
+            "keyword": "Then "
+          },
+          {
+            "result": {
+              "duration": 1579427964,
+              "status": "passed"
+            },
+            "line": 16,
+            "name": "I see the tabs \"Comunicaciones\"",
+            "match": {
+              "arguments": [
+                {
+                  "val": "Comunicaciones",
+                  "offset": 16
+                }
+              ],
+              "location": "LoginTestStepDefinition.i_see_the_tabs(String)"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 1721877733,
+              "status": "passed"
+            },
+            "line": 17,
+            "name": "I see the tabs \"Procesos\"",
+            "match": {
+              "arguments": [
+                {
+                  "val": "Procesos",
+                  "offset": 16
+                }
+              ],
+              "location": "LoginTestStepDefinition.i_see_the_tabs(String)"
+            },
+            "keyword": "And "
+          }
+        ]
+      },
+      {
+        "line": 4,
+        "name": "",
+        "description": "",
+        "type": "background",
+        "keyword": "Background",
+        "steps": [
+          {
+            "result": {
+              "duration": 2824861422,
+              "status": "passed"
+            },
+            "line": 5,
+            "name": "The app is clear",
+            "match": {
+              "location": "UploadComunicationStepDenition.the_app_is_clear()"
+            },
+            "keyword": "Given "
+          },
+          {
+            "result": {
+              "duration": 1629951466,
+              "status": "passed"
+            },
+            "line": 6,
+            "name": "The wi-fi status is true and data status is true",
+            "match": {
+              "location": "GralStepDefinitions.the_wi_fi_status_is_true_and_data_status_is_true()"
+            },
+            "keyword": "When "
+          },
+          {
+            "result": {
+              "duration": 2196487020,
+              "status": "passed"
+            },
+            "line": 7,
+            "name": "I see the Litigando logo",
+            "match": {
+              "location": "LoginTestStepDefinition.i_see_the_litigando_logo()"
+            },
+            "keyword": "Then "
+          },
+          {
+            "result": {
+              "duration": 128508336,
+              "status": "passed"
+            },
+            "line": 8,
+            "name": "I see the \".activity.LoginActivity\" activity in the page \"Login\"",
+            "match": {
+              "arguments": [
+                {
+                  "val": ".activity.LoginActivity",
+                  "offset": 11
+                },
+                {
+                  "val": "Login",
+                  "offset": 58
+                }
+              ],
+              "location": "GralStepDefinitions.i_see_the_activity_in_the_page(String,String)"
+            },
+            "keyword": "And "
+          }
+        ]
+      },
+      {
+        "before": [
+          {
+            "result": {
+              "duration": 7043888665,
+              "status": "passed"
+            },
+            "match": {
+              "location": "LoginTestStepDefinition.setUpEnviromentFeature()"
+            }
+          }
+        ],
+        "line": 19,
+        "name": "SPermission_002-Permissions and visibility to Recorredor User",
+        "description": "",
+        "id": "validation-and-permissions-according-the-user-role;spermission-002-permissions-and-visibility-to-recorredor-user",
+        "after": [
+          {
+            "result": {
+              "duration": 818559899,
+              "status": "passed"
+            },
+            "match": {
+              "location": "LoginTestStepDefinition.afterScenario(Scenario)"
+            }
+          }
+        ],
+        "type": "scenario",
+        "keyword": "Scenario",
+        "steps": [
+          {
+            "result": {
+              "duration": 1604571500,
+              "status": "passed"
+            },
+            "line": 20,
+            "name": "I press on the Acceder button",
+            "match": {
+              "location": "LoginTestStepDefinition.i_press_on_the_acceder_button()"
+            },
+            "keyword": "Given "
+          },
+          {
+            "result": {
+              "duration": 3655361909,
+              "status": "passed"
+            },
+            "line": 21,
+            "name": "I select an account of \"civilesbogota2@litigando.com\"",
+            "match": {
+              "arguments": [
+                {
+                  "val": "civilesbogota2@litigando.com",
+                  "offset": 24
+                }
+              ],
+              "location": "LoginTestStepDefinition.i_select_an_account_of(String)"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 26680356270,
+              "status": "passed"
+            },
+            "line": 22,
+            "name": "I do check in the office \"JUZGADO DE FAMILIA DEL CIRCUITO No. 11\"",
+            "match": {
+              "arguments": [
+                {
+                  "val": "JUZGADO DE FAMILIA DEL CIRCUITO No. 11",
+                  "offset": 26
+                }
+              ],
+              "location": "OfficeTestStepDefinition.i_do_check_in_the_office(String)"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 1710456845,
+              "status": "passed"
+            },
+            "line": 23,
+            "name": "I must see the \"JUZGADO DE FAMILIA DEL CIRCUITO No. 11\" view",
+            "match": {
+              "arguments": [
+                {
+                  "val": "JUZGADO DE FAMILIA DEL CIRCUITO No. 11",
+                  "offset": 16
+                }
+              ],
+              "location": "GralStepDefinitions.i_must_see_the_view(String)"
+            },
+            "keyword": "When "
+          },
+          {
+            "result": {
+              "duration": 1630353752,
+              "status": "passed"
+            },
+            "line": 24,
+            "name": "I see the tabs \"Incidentes\"",
+            "match": {
+              "arguments": [
+                {
+                  "val": "Incidentes",
+                  "offset": 16
+                }
+              ],
+              "location": "LoginTestStepDefinition.i_see_the_tabs(String)"
+            },
+            "keyword": "Then "
+          },
+          {
+            "result": {
+              "duration": 1441258983,
+              "status": "passed"
+            },
+            "line": 25,
+            "name": "I see the tabs \"Comunicaciones\"",
+            "match": {
+              "arguments": [
+                {
+                  "val": "Comunicaciones",
+                  "offset": 16
+                }
+              ],
+              "location": "LoginTestStepDefinition.i_see_the_tabs(String)"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 3089646325,
+              "status": "passed"
+            },
+            "line": 26,
+            "name": "I not see the tabs \"Procesos\"",
+            "match": {
+              "arguments": [
+                {
+                  "val": "Procesos",
+                  "offset": 20
+                }
+              ],
+              "location": "LoginTestStepDefinition.i_not_see_the_tabs(String)"
+            },
+            "keyword": "And "
+          }
+        ]
+      }
+    ],
+    "name": "Validation and Permissions according the user role",
+    "description": "This feature validate the permissions and the visibility in the app, that has an user according their rol.",
+    "id": "validation-and-permissions-according-the-user-role",
+    "keyword": "Feature",
+    "uri": "Feature/002_ViewByRoles.feature"
+  },
+  {
+    "line": 1,
+    "elements": [
+      {
+        "line": 3,
+        "name": "",
+        "description": "",
+        "type": "background",
+        "keyword": "Background",
+        "steps": [
+          {
+            "result": {
+              "duration": 17478065933,
+              "status": "passed"
+            },
+            "line": 4,
+            "name": "I set the enviroment",
+            "match": {
+              "location": "GralStepDefinitions.i_set_the_enviroment()"
+            },
+            "keyword": "Given "
+          }
+        ]
+      },
+      {
+        "before": [
+          {
+            "result": {
+              "duration": 6911279832,
+              "status": "passed"
+            },
+            "match": {
+              "location": "LoginTestStepDefinition.setUpEnviromentFeature()"
+            }
+          }
+        ],
+        "line": 41,
+        "name": "SCheckIn_005-Cancel CheckIn in step dialog",
+        "description": "",
+        "id": "check-in-office;scheckin-005-cancel-checkin-in-step-dialog",
+        "after": [
+          {
+            "result": {
+              "duration": 768795737,
+              "status": "passed"
+            },
+            "match": {
+              "location": "LoginTestStepDefinition.afterScenario(Scenario)"
+            }
+          }
+        ],
+        "type": "scenario",
+        "keyword": "Scenario",
+        "steps": [
+          {
+            "result": {
+              "duration": 586394190,
+              "status": "passed"
+            },
+            "line": 42,
+            "name": "That exist the office \"JUZGADO CIVIL DEL CIRCUITO No. 2\"",
+            "match": {
+              "arguments": [
+                {
+                  "val": "JUZGADO CIVIL DEL CIRCUITO No. 2",
+                  "offset": 23
+                }
+              ],
+              "location": "OfficeTestStepDefinition.that_exist_the_office(String)"
+            },
+            "keyword": "Given "
+          },
+          {
+            "result": {
+              "duration": 1092180344,
+              "status": "passed"
+            },
+            "line": 43,
+            "name": "I select the officer \"JUZGADO CIVIL DEL CIRCUITO No. 2\"",
+            "match": {
+              "arguments": [
+                {
+                  "val": "JUZGADO CIVIL DEL CIRCUITO No. 2",
+                  "offset": 22
+                }
+              ],
+              "location": "GralStepDefinitions.i_select_the_officer(String)"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 1369123340,
+              "status": "passed"
+            },
+            "line": 44,
+            "name": "I see a following message \"No ha realizado check-in para este despacho\" and \"¿Desea realizar el check-in ahora?\"",
+            "match": {
+              "arguments": [
+                {
+                  "val": "No ha realizado check-in para este despacho",
+                  "offset": 27
+                },
+                {
+                  "val": "¿Desea realizar el check-in ahora?",
+                  "offset": 77
+                }
+              ],
+              "location": "GralStepDefinitions.i_see_a_following_message(String,String)"
+            },
+            "keyword": "When "
+          },
+          {
+            "result": {
+              "duration": 3499825644,
+              "status": "passed"
+            },
+            "line": 45,
+            "name": "I touch the Cancelar button",
+            "match": {
+              "location": "OfficeTestStepDefinition.i_touch_the_cancel_btn()"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 140717757,
+              "status": "passed"
+            },
+            "line": 46,
+            "name": "I see the \".activity.MainActivity\" activity in the page \"Office\"",
+            "match": {
+              "arguments": [
+                {
+                  "val": ".activity.MainActivity",
+                  "offset": 11
+                },
+                {
+                  "val": "Office",
+                  "offset": 57
+                }
+              ],
+              "location": "GralStepDefinitions.i_see_the_activity_in_the_page(String,String)"
+            },
+            "keyword": "Then "
+          }
+        ]
+      },
+      {
+        "line": 3,
+        "name": "",
+        "description": "",
+        "type": "background",
+        "keyword": "Background",
+        "steps": [
+          {
+            "result": {
+              "duration": 19693917874,
+              "status": "passed"
+            },
+            "line": 4,
+            "name": "I set the enviroment",
+            "match": {
+              "location": "GralStepDefinitions.i_set_the_enviroment()"
+            },
+            "keyword": "Given "
+          }
+        ]
+      },
+      {
+        "before": [
+          {
+            "result": {
+              "duration": 6885279112,
+              "status": "passed"
+            },
+            "match": {
+              "location": "LoginTestStepDefinition.setUpEnviromentFeature()"
+            }
+          }
+        ],
+        "line": 48,
+        "name": "SCheckIn_006-Cancel CheckIn in step that take video",
+        "description": "",
+        "id": "check-in-office;scheckin-006-cancel-checkin-in-step-that-take-video",
+        "after": [
+          {
+            "result": {
+              "duration": 780425467,
+              "status": "passed"
+            },
+            "match": {
+              "location": "LoginTestStepDefinition.afterScenario(Scenario)"
+            }
+          }
+        ],
+        "type": "scenario",
+        "keyword": "Scenario",
+        "steps": [
+          {
+            "result": {
+              "duration": 5577877526,
+              "status": "passed"
+            },
+            "line": 49,
+            "name": "That exist the office \"JUZGADO LABORAL DEL CIRCUITO No. 1\"",
+            "match": {
+              "arguments": [
+                {
+                  "val": "JUZGADO LABORAL DEL CIRCUITO No. 1",
+                  "offset": 23
+                }
+              ],
+              "location": "OfficeTestStepDefinition.that_exist_the_office(String)"
+            },
+            "keyword": "Given "
+          },
+          {
+            "result": {
+              "duration": 1543032283,
+              "status": "passed"
+            },
+            "line": 50,
+            "name": "I select the officer \"JUZGADO LABORAL DEL CIRCUITO No. 1\"",
+            "match": {
+              "arguments": [
+                {
+                  "val": "JUZGADO LABORAL DEL CIRCUITO No. 1",
+                  "offset": 22
+                }
+              ],
+              "location": "GralStepDefinitions.i_select_the_officer(String)"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 1334118337,
+              "status": "passed"
+            },
+            "line": 51,
+            "name": "I see a following message \"No ha realizado check-in para este despacho\" and \"¿Desea realizar el check-in ahora?\"",
+            "match": {
+              "arguments": [
+                {
+                  "val": "No ha realizado check-in para este despacho",
+                  "offset": 27
+                },
+                {
+                  "val": "¿Desea realizar el check-in ahora?",
+                  "offset": 77
+                }
+              ],
+              "location": "GralStepDefinitions.i_see_a_following_message(String,String)"
+            },
+            "keyword": "When "
+          },
+          {
+            "result": {
+              "duration": 572127783,
+              "status": "passed"
+            },
+            "line": 52,
+            "name": "I touch the Check-in button",
+            "match": {
+              "location": "OfficeTestStepDefinition.i_touch_the_checkin_btn()"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 9964906776,
+              "status": "passed"
+            },
+            "line": 53,
+            "name": "I take a video of 5 seconds",
+            "match": {
+              "arguments": [
+                {
+                  "val": "5",
+                  "offset": 18
+                }
+              ],
+              "location": "OfficeTestStepDefinition.i_take_a_video_of_seconds(int)"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 3258399010,
+              "status": "passed"
+            },
+            "line": 54,
+            "name": "I touch the Cancelar button view camera",
+            "match": {
+              "location": "OfficeTestStepDefinition.i_touch_the_button_cancelar_view_camera()"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 1056035209,
+              "status": "passed"
+            },
+            "line": 55,
+            "name": "I press back button device",
+            "match": {
+              "location": "OfficeTestStepDefinition.i_press_back_button_device()"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 118956121,
+              "status": "passed"
+            },
+            "line": 56,
+            "name": "I see the \".activity.MainActivity\" activity in the page \"Office\"",
+            "match": {
+              "arguments": [
+                {
+                  "val": ".activity.MainActivity",
+                  "offset": 11
+                },
+                {
+                  "val": "Office",
+                  "offset": 57
+                }
+              ],
+              "location": "GralStepDefinitions.i_see_the_activity_in_the_page(String,String)"
+            },
+            "keyword": "Then "
+          }
+        ]
+      },
+      {
+        "line": 3,
+        "name": "",
+        "description": "",
+        "type": "background",
+        "keyword": "Background",
+        "steps": [
+          {
+            "result": {
+              "duration": 18502437297,
+              "status": "passed"
+            },
+            "line": 4,
+            "name": "I set the enviroment",
+            "match": {
+              "location": "GralStepDefinitions.i_set_the_enviroment()"
+            },
+            "keyword": "Given "
+          }
+        ]
+      },
+      {
+        "before": [
+          {
+            "result": {
+              "duration": 7026458505,
+              "status": "passed"
+            },
+            "match": {
+              "location": "LoginTestStepDefinition.setUpEnviromentFeature()"
+            }
+          }
+        ],
+        "line": 70,
+        "name": "SCheckIn_007-Status CheckIn according  internet device connection",
+        "description": "",
+        "id": "check-in-office;scheckin-\u003cnum\u003e-status-checkin-according--internet-device-connection;checkin-succesful;2",
+        "after": [
+          {
+            "result": {
+              "duration": 818448901,
+              "status": "passed"
+            },
+            "match": {
+              "location": "LoginTestStepDefinition.afterScenario(Scenario)"
+            }
+          }
+        ],
+        "type": "scenario",
+        "keyword": "Scenario Outline",
+        "steps": [
+          {
+            "result": {
+              "duration": 2703504093,
+              "status": "passed"
+            },
+            "line": 59,
+            "name": "The wi-fi status is true and data status is false",
+            "match": {
+              "location": "GralStepDefinitions.the_wi_fi_status_is_true_and_data_status_is_false()"
+            },
+            "matchedColumns": [
+              1,
+              2
+            ],
+            "keyword": "Given "
+          },
+          {
+            "result": {
+              "duration": 1007933124,
+              "status": "passed"
+            },
+            "line": 60,
+            "name": "That exist the office \"JUZGADO CIVIL DEL CIRCUITO No. 2\"",
+            "match": {
+              "arguments": [
+                {
+                  "val": "JUZGADO CIVIL DEL CIRCUITO No. 2",
+                  "offset": 23
+                }
+              ],
+              "location": "OfficeTestStepDefinition.that_exist_the_office(String)"
+            },
+            "matchedColumns": [
+              3
+            ],
+            "keyword": "When "
+          },
+          {
+            "result": {
+              "duration": 1373464759,
+              "status": "passed"
+            },
+            "line": 61,
+            "name": "I select the officer \"JUZGADO CIVIL DEL CIRCUITO No. 2\"",
+            "match": {
+              "arguments": [
+                {
+                  "val": "JUZGADO CIVIL DEL CIRCUITO No. 2",
+                  "offset": 22
+                }
+              ],
+              "location": "GralStepDefinitions.i_select_the_officer(String)"
+            },
+            "matchedColumns": [
+              3
+            ],
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 1373446795,
+              "status": "passed"
+            },
+            "line": 62,
+            "name": "I see a following message \"No ha realizado check-in para este despacho\" and \"¿Desea realizar el check-in ahora?\"",
+            "match": {
+              "arguments": [
+                {
+                  "val": "No ha realizado check-in para este despacho",
+                  "offset": 27
+                },
+                {
+                  "val": "¿Desea realizar el check-in ahora?",
+                  "offset": 77
+                }
+              ],
+              "location": "GralStepDefinitions.i_see_a_following_message(String,String)"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 744236062,
+              "status": "passed"
+            },
+            "line": 63,
+            "name": "I touch the Check-in button",
+            "match": {
+              "location": "OfficeTestStepDefinition.i_touch_the_checkin_btn()"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 8980888514,
+              "status": "passed"
+            },
+            "line": 64,
+            "name": "I take a video of 4 seconds",
+            "match": {
+              "arguments": [
+                {
+                  "val": "4",
+                  "offset": 18
+                }
+              ],
+              "location": "OfficeTestStepDefinition.i_take_a_video_of_seconds(int)"
+            },
+            "matchedColumns": [
+              4
+            ],
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 602136929,
+              "status": "passed"
+            },
+            "line": 65,
+            "name": "I touch the Aceptar button view camera",
+            "match": {
+              "location": "OfficeTestStepDefinition.i_touch_the_button_aceptar_view_camera()"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 4884522981,
+              "status": "passed"
+            },
+            "line": 66,
+            "name": "I must see the \"JUZGADO CIVIL DEL CIRCUITO No. 2\" view",
+            "match": {
+              "arguments": [
+                {
+                  "val": "JUZGADO CIVIL DEL CIRCUITO No. 2",
+                  "offset": 16
+                }
+              ],
+              "location": "GralStepDefinitions.i_must_see_the_view(String)"
+            },
+            "matchedColumns": [
+              3
+            ],
+            "keyword": "Then "
+          }
+        ]
+      },
+      {
+        "line": 3,
+        "name": "",
+        "description": "",
+        "type": "background",
+        "keyword": "Background",
+        "steps": [
+          {
+            "result": {
+              "duration": 18777032982,
+              "status": "passed"
+            },
+            "line": 4,
+            "name": "I set the enviroment",
+            "match": {
+              "location": "GralStepDefinitions.i_set_the_enviroment()"
+            },
+            "keyword": "Given "
+          }
+        ]
+      },
+      {
+        "comments": [
+          {
+            "line": 71,
+            "value": "#|008| false      | true       | JUZGADO CIVIL DEL CIRCUITO No.  3 | 00:09  |"
+          }
+        ],
+        "before": [
+          {
+            "result": {
+              "duration": 6917266647,
+              "status": "passed"
+            },
+            "match": {
+              "location": "LoginTestStepDefinition.setUpEnviromentFeature()"
+            }
+          }
+        ],
+        "line": 72,
+        "name": "SCheckIn_009-Status CheckIn according  internet device connection",
+        "description": "",
+        "id": "check-in-office;scheckin-\u003cnum\u003e-status-checkin-according--internet-device-connection;checkin-succesful;3",
+        "after": [
+          {
+            "result": {
+              "duration": 777539529,
+              "status": "passed"
+            },
+            "match": {
+              "location": "LoginTestStepDefinition.afterScenario(Scenario)"
+            }
+          }
+        ],
+        "type": "scenario",
+        "keyword": "Scenario Outline",
+        "steps": [
+          {
+            "result": {
+              "duration": 2685357260,
+              "status": "passed"
+            },
+            "line": 59,
+            "name": "The wi-fi status is true and data status is true",
+            "match": {
+              "location": "GralStepDefinitions.the_wi_fi_status_is_true_and_data_status_is_true()"
+            },
+            "matchedColumns": [
+              1,
+              2
+            ],
+            "keyword": "Given "
+          },
+          {
+            "result": {
+              "duration": 6098481866,
+              "status": "passed"
+            },
+            "line": 60,
+            "name": "That exist the office \"JUZGADO LABORAL DEL CIRCUITO No. 1\"",
+            "match": {
+              "arguments": [
+                {
+                  "val": "JUZGADO LABORAL DEL CIRCUITO No. 1",
+                  "offset": 23
+                }
+              ],
+              "location": "OfficeTestStepDefinition.that_exist_the_office(String)"
+            },
+            "matchedColumns": [
+              3
+            ],
+            "keyword": "When "
+          },
+          {
+            "result": {
+              "duration": 2385676105,
+              "status": "passed"
+            },
+            "line": 61,
+            "name": "I select the officer \"JUZGADO LABORAL DEL CIRCUITO No. 1\"",
+            "match": {
+              "arguments": [
+                {
+                  "val": "JUZGADO LABORAL DEL CIRCUITO No. 1",
+                  "offset": 22
+                }
+              ],
+              "location": "GralStepDefinitions.i_select_the_officer(String)"
+            },
+            "matchedColumns": [
+              3
+            ],
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 1285744853,
+              "status": "passed"
+            },
+            "line": 62,
+            "name": "I see a following message \"No ha realizado check-in para este despacho\" and \"¿Desea realizar el check-in ahora?\"",
+            "match": {
+              "arguments": [
+                {
+                  "val": "No ha realizado check-in para este despacho",
+                  "offset": 27
+                },
+                {
+                  "val": "¿Desea realizar el check-in ahora?",
+                  "offset": 77
+                }
+              ],
+              "location": "GralStepDefinitions.i_see_a_following_message(String,String)"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 646691901,
+              "status": "passed"
+            },
+            "line": 63,
+            "name": "I touch the Check-in button",
+            "match": {
+              "location": "OfficeTestStepDefinition.i_touch_the_checkin_btn()"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 11059796296,
+              "status": "passed"
+            },
+            "line": 64,
+            "name": "I take a video of 6 seconds",
+            "match": {
+              "arguments": [
+                {
+                  "val": "6",
+                  "offset": 18
+                }
+              ],
+              "location": "OfficeTestStepDefinition.i_take_a_video_of_seconds(int)"
+            },
+            "matchedColumns": [
+              4
+            ],
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 675534289,
+              "status": "passed"
+            },
+            "line": 65,
+            "name": "I touch the Aceptar button view camera",
+            "match": {
+              "location": "OfficeTestStepDefinition.i_touch_the_button_aceptar_view_camera()"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 4136257319,
+              "status": "passed"
+            },
+            "line": 66,
+            "name": "I must see the \"JUZGADO LABORAL DEL CIRCUITO No. 1\" view",
+            "match": {
+              "arguments": [
+                {
+                  "val": "JUZGADO LABORAL DEL CIRCUITO No. 1",
+                  "offset": 16
+                }
+              ],
+              "location": "GralStepDefinitions.i_must_see_the_view(String)"
+            },
+            "matchedColumns": [
+              3
+            ],
+            "keyword": "Then "
+          }
+        ]
+      },
+      {
+        "line": 3,
+        "name": "",
+        "description": "",
+        "type": "background",
+        "keyword": "Background",
+        "steps": [
+          {
+            "result": {
+              "duration": 18015709376,
+              "status": "passed"
+            },
+            "line": 4,
+            "name": "I set the enviroment",
+            "match": {
+              "location": "GralStepDefinitions.i_set_the_enviroment()"
+            },
+            "keyword": "Given "
+          }
+        ]
+      },
+      {
+        "before": [
+          {
+            "result": {
+              "duration": 6860792261,
+              "status": "passed"
+            },
+            "match": {
+              "location": "LoginTestStepDefinition.setUpEnviromentFeature()"
+            }
+          }
+        ],
+        "line": 86,
+        "name": "SCheckIn_010-Failed CheckIn",
+        "description": "",
+        "id": "check-in-office;scheckin-010-failed-checkin;pending-checkin;2",
+        "after": [
+          {
+            "result": {
+              "duration": 964719428,
+              "status": "passed"
+            },
+            "match": {
+              "location": "LoginTestStepDefinition.afterScenario(Scenario)"
+            }
+          }
+        ],
+        "type": "scenario",
+        "keyword": "Scenario Outline",
+        "steps": [
+          {
+            "result": {
+              "duration": 3513379548,
+              "status": "passed"
+            },
+            "line": 75,
+            "name": "The wi-fi status is false and data status is false",
+            "match": {
+              "location": "GralStepDefinitions.the_wi_fi_status_is_false_and_data_status_is_false()"
+            },
+            "matchedColumns": [
+              0,
+              1
+            ],
+            "keyword": "Given "
+          },
+          {
+            "result": {
+              "duration": 6272589066,
+              "status": "passed"
+            },
+            "line": 76,
+            "name": "That exist the office \"JUZGADO LABORAL DEL CIRCUITO No. 1\"",
+            "match": {
+              "arguments": [
+                {
+                  "val": "JUZGADO LABORAL DEL CIRCUITO No. 1",
+                  "offset": 23
+                }
+              ],
+              "location": "OfficeTestStepDefinition.that_exist_the_office(String)"
+            },
+            "matchedColumns": [
+              2
+            ],
+            "keyword": "When "
+          },
+          {
+            "result": {
+              "duration": 1898443242,
+              "status": "passed"
+            },
+            "line": 77,
+            "name": "I select the officer \"JUZGADO LABORAL DEL CIRCUITO No. 1\"",
+            "match": {
+              "arguments": [
+                {
+                  "val": "JUZGADO LABORAL DEL CIRCUITO No. 1",
+                  "offset": 22
+                }
+              ],
+              "location": "GralStepDefinitions.i_select_the_officer(String)"
+            },
+            "matchedColumns": [
+              2
+            ],
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 1315426781,
+              "status": "passed"
+            },
+            "line": 78,
+            "name": "I see a following message \"No ha realizado check-in para este despacho\" and \"¿Desea realizar el check-in ahora?\"",
+            "match": {
+              "arguments": [
+                {
+                  "val": "No ha realizado check-in para este despacho",
+                  "offset": 27
+                },
+                {
+                  "val": "¿Desea realizar el check-in ahora?",
+                  "offset": 77
+                }
+              ],
+              "location": "GralStepDefinitions.i_see_a_following_message(String,String)"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 590821585,
+              "status": "passed"
+            },
+            "line": 79,
+            "name": "I touch the Check-in button",
+            "match": {
+              "location": "OfficeTestStepDefinition.i_touch_the_checkin_btn()"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 13063848994,
+              "status": "passed"
+            },
+            "line": 80,
+            "name": "I take a video of 8 seconds",
+            "match": {
+              "arguments": [
+                {
+                  "val": "8",
+                  "offset": 18
+                }
+              ],
+              "location": "OfficeTestStepDefinition.i_take_a_video_of_seconds(int)"
+            },
+            "matchedColumns": [
+              3
+            ],
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 572019352,
+              "status": "passed"
+            },
+            "line": 81,
+            "name": "I touch the Aceptar button view camera",
+            "match": {
+              "location": "OfficeTestStepDefinition.i_touch_the_button_aceptar_view_camera()"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 18368857073,
+              "status": "passed"
+            },
+            "line": 82,
+            "name": "I must see a alert that has a title \"Checkin\" and the message \"No se pudo realizar el Checkin\"",
+            "match": {
+              "arguments": [
+                {
+                  "val": "Checkin",
+                  "offset": 37
+                },
+                {
+                  "val": "No se pudo realizar el Checkin",
+                  "offset": 63
+                }
+              ],
+              "location": "LoginTestStepDefinition.i_must_see_a_alert_that_has_a_title_and_the_text(String,String)"
+            },
+            "keyword": "Then "
+          }
+        ]
+      },
+      {
+        "line": 3,
+        "name": "",
+        "description": "",
+        "type": "background",
+        "keyword": "Background",
+        "steps": [
+          {
+            "result": {
+              "duration": 23858147886,
+              "status": "passed"
+            },
+            "line": 4,
+            "name": "I set the enviroment",
+            "match": {
+              "location": "GralStepDefinitions.i_set_the_enviroment()"
+            },
+            "keyword": "Given "
+          }
+        ]
+      },
+      {
+        "before": [
+          {
+            "result": {
+              "duration": 7206939086,
+              "status": "passed"
+            },
+            "match": {
+              "location": "LoginTestStepDefinition.setUpEnviromentFeature()"
+            }
+          }
+        ],
+        "line": 88,
+        "name": "SCheckIn_011-Checkin Succes when device lost and recovery the conection in the checkin process",
+        "description": "",
+        "id": "check-in-office;scheckin-011-checkin-succes-when-device-lost-and-recovery-the-conection-in-the-checkin-process",
+        "after": [
+          {
+            "result": {
+              "duration": 836962732,
+              "status": "passed"
+            },
+            "match": {
+              "location": "LoginTestStepDefinition.afterScenario(Scenario)"
+            }
+          }
+        ],
+        "type": "scenario",
+        "keyword": "Scenario",
+        "steps": [
+          {
+            "result": {
+              "duration": 11835272103,
+              "status": "passed"
+            },
+            "line": 89,
+            "name": "The wi-fi status is false and data status is false",
+            "match": {
+              "location": "GralStepDefinitions.the_wi_fi_status_is_false_and_data_status_is_false()"
+            },
+            "keyword": "Given "
+          },
+          {
+            "result": {
+              "duration": 625494878,
+              "status": "passed"
+            },
+            "line": 90,
+            "name": "That exist the office \"JUZGADO CIVIL DEL CIRCUITO No. 2\"",
+            "match": {
+              "arguments": [
+                {
+                  "val": "JUZGADO CIVIL DEL CIRCUITO No. 2",
+                  "offset": 23
+                }
+              ],
+              "location": "OfficeTestStepDefinition.that_exist_the_office(String)"
+            },
+            "keyword": "When "
+          },
+          {
+            "result": {
+              "duration": 1008582429,
+              "status": "passed"
+            },
+            "line": 91,
+            "name": "I select the officer \"JUZGADO CIVIL DEL CIRCUITO No. 2\"",
+            "match": {
+              "arguments": [
+                {
+                  "val": "JUZGADO CIVIL DEL CIRCUITO No. 2",
+                  "offset": 22
+                }
+              ],
+              "location": "GralStepDefinitions.i_select_the_officer(String)"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 1411970359,
+              "status": "passed"
+            },
+            "line": 92,
+            "name": "I see a following message \"No ha realizado check-in para este despacho\" and \"¿Desea realizar el check-in ahora?\"",
+            "match": {
+              "arguments": [
+                {
+                  "val": "No ha realizado check-in para este despacho",
+                  "offset": 27
+                },
+                {
+                  "val": "¿Desea realizar el check-in ahora?",
+                  "offset": 77
+                }
+              ],
+              "location": "GralStepDefinitions.i_see_a_following_message(String,String)"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 621734110,
+              "status": "passed"
+            },
+            "line": 93,
+            "name": "I touch the Check-in button",
+            "match": {
+              "location": "OfficeTestStepDefinition.i_touch_the_checkin_btn()"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 10031979836,
+              "status": "passed"
+            },
+            "line": 94,
+            "name": "I take a video of 5 seconds",
+            "match": {
+              "arguments": [
+                {
+                  "val": "5",
+                  "offset": 18
+                }
+              ],
+              "location": "OfficeTestStepDefinition.i_take_a_video_of_seconds(int)"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 665781893,
+              "status": "passed"
+            },
+            "line": 95,
+            "name": "I touch the Aceptar button view camera",
+            "match": {
+              "location": "OfficeTestStepDefinition.i_touch_the_button_aceptar_view_camera()"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 1254990483,
+              "status": "passed"
+            },
+            "line": 96,
+            "name": "I see the progressbar of checkin",
+            "match": {
+              "location": "OfficeTestStepDefinition.i_see_the_progressbar_of_checkin()"
+            },
+            "keyword": "Then "
+          },
+          {
+            "result": {
+              "duration": 4819784402,
+              "status": "passed"
+            },
+            "line": 97,
+            "name": "The wi-fi status is true and data status is true",
+            "match": {
+              "location": "GralStepDefinitions.the_wi_fi_status_is_true_and_data_status_is_true()"
+            },
+            "keyword": "Given "
+          },
+          {
+            "result": {
+              "duration": 7031984969,
+              "status": "passed"
+            },
+            "line": 98,
+            "name": "I must see the \"JUZGADO CIVIL DEL CIRCUITO No. 2\" view",
+            "match": {
+              "arguments": [
+                {
+                  "val": "JUZGADO CIVIL DEL CIRCUITO No. 2",
+                  "offset": 16
+                }
+              ],
+              "location": "GralStepDefinitions.i_must_see_the_view(String)"
+            },
+            "keyword": "Then "
+          }
+        ]
+      },
+      {
+        "line": 3,
+        "name": "",
+        "description": "",
+        "type": "background",
+        "keyword": "Background",
+        "steps": [
+          {
+            "result": {
+              "duration": 18749217161,
+              "status": "passed"
+            },
+            "line": 4,
+            "name": "I set the enviroment",
+            "match": {
+              "location": "GralStepDefinitions.i_set_the_enviroment()"
+            },
+            "keyword": "Given "
+          }
+        ]
+      },
+      {
+        "before": [
+          {
+            "result": {
+              "duration": 7683469658,
+              "status": "passed"
+            },
+            "match": {
+              "location": "LoginTestStepDefinition.setUpEnviromentFeature()"
+            }
+          }
+        ],
+        "line": 100,
+        "name": "SCheckIn_012-Correct navegation when the Accept button of failed checkin dialod is apper",
+        "description": "",
+        "id": "check-in-office;scheckin-012-correct-navegation-when-the-accept-button-of-failed-checkin-dialod-is-apper",
+        "after": [
+          {
+            "result": {
+              "duration": 931772693,
+              "status": "passed"
+            },
+            "match": {
+              "location": "LoginTestStepDefinition.afterScenario(Scenario)"
+            }
+          }
+        ],
+        "type": "scenario",
+        "keyword": "Scenario",
+        "steps": [
+          {
+            "result": {
+              "duration": 11756399287,
+              "status": "passed"
+            },
+            "line": 101,
+            "name": "The wi-fi status is false and data status is false",
+            "match": {
+              "location": "GralStepDefinitions.the_wi_fi_status_is_false_and_data_status_is_false()"
+            },
+            "keyword": "Given "
+          },
+          {
+            "result": {
+              "duration": 5639002587,
+              "status": "passed"
+            },
+            "line": 102,
+            "name": "That exist the office \"JUZGADO LABORAL DEL CIRCUITO No. 1\"",
+            "match": {
+              "arguments": [
+                {
+                  "val": "JUZGADO LABORAL DEL CIRCUITO No. 1",
+                  "offset": 23
+                }
+              ],
+              "location": "OfficeTestStepDefinition.that_exist_the_office(String)"
+            },
+            "keyword": "When "
+          },
+          {
+            "result": {
+              "duration": 1955075784,
+              "status": "passed"
+            },
+            "line": 103,
+            "name": "I select the officer \"JUZGADO LABORAL DEL CIRCUITO No. 1\"",
+            "match": {
+              "arguments": [
+                {
+                  "val": "JUZGADO LABORAL DEL CIRCUITO No. 1",
+                  "offset": 22
+                }
+              ],
+              "location": "GralStepDefinitions.i_select_the_officer(String)"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 1684357961,
+              "status": "passed"
+            },
+            "line": 104,
+            "name": "I see a following message \"No ha realizado check-in para este despacho\" and \"¿Desea realizar el check-in ahora?\"",
+            "match": {
+              "arguments": [
+                {
+                  "val": "No ha realizado check-in para este despacho",
+                  "offset": 27
+                },
+                {
+                  "val": "¿Desea realizar el check-in ahora?",
+                  "offset": 77
+                }
+              ],
+              "location": "GralStepDefinitions.i_see_a_following_message(String,String)"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 852944790,
+              "status": "passed"
+            },
+            "line": 105,
+            "name": "I touch the Check-in button",
+            "match": {
+              "location": "OfficeTestStepDefinition.i_touch_the_checkin_btn()"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 11025383495,
+              "status": "passed"
+            },
+            "line": 106,
+            "name": "I take a video of 6 seconds",
+            "match": {
+              "arguments": [
+                {
+                  "val": "6",
+                  "offset": 18
+                }
+              ],
+              "location": "OfficeTestStepDefinition.i_take_a_video_of_seconds(int)"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 676969237,
+              "status": "passed"
+            },
+            "line": 107,
+            "name": "I touch the Aceptar button view camera",
+            "match": {
+              "location": "OfficeTestStepDefinition.i_touch_the_button_aceptar_view_camera()"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 31102514033,
+              "status": "passed"
+            },
+            "line": 108,
+            "name": "I must see a alert that has a title \"Checkin\" and the message \"No se pudo realizar el Checkin\"",
+            "match": {
+              "arguments": [
+                {
+                  "val": "Checkin",
+                  "offset": 37
+                },
+                {
+                  "val": "No se pudo realizar el Checkin",
+                  "offset": 63
+                }
+              ],
+              "location": "LoginTestStepDefinition.i_must_see_a_alert_that_has_a_title_and_the_text(String,String)"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 3347650426,
+              "status": "passed"
+            },
+            "line": 109,
+            "name": "I touch the Aceptar button the failed checkin dialog",
+            "match": {
+              "location": "OfficeTestStepDefinition.i_touch_the_acceptat_btn_the_failed_checkin_dialog()"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 134498360,
+              "status": "passed"
+            },
+            "line": 110,
+            "name": "I see the \".activity.MainActivity\" activity in the page \"Office\"",
+            "match": {
+              "arguments": [
+                {
+                  "val": ".activity.MainActivity",
+                  "offset": 11
+                },
+                {
+                  "val": "Office",
+                  "offset": 57
+                }
+              ],
+              "location": "GralStepDefinitions.i_see_the_activity_in_the_page(String,String)"
+            },
+            "keyword": "Then "
+          }
+        ]
+      },
+      {
+        "line": 3,
+        "name": "",
+        "description": "",
+        "type": "background",
+        "keyword": "Background",
+        "steps": [
+          {
+            "result": {
+              "duration": 19983161078,
+              "status": "passed"
+            },
+            "line": 4,
+            "name": "I set the enviroment",
+            "match": {
+              "location": "GralStepDefinitions.i_set_the_enviroment()"
+            },
+            "keyword": "Given "
+          }
+        ]
+      },
+      {
+        "before": [
+          {
+            "result": {
+              "duration": 7135588767,
+              "status": "passed"
+            },
+            "match": {
+              "location": "LoginTestStepDefinition.setUpEnviromentFeature()"
+            }
+          }
+        ],
+        "line": 112,
+        "name": "SCheckIn_013-Message when GPS is disable",
+        "description": "",
+        "id": "check-in-office;scheckin-013-message-when-gps-is-disable",
+        "after": [
+          {
+            "result": {
+              "duration": 854091338,
+              "status": "passed"
+            },
+            "match": {
+              "location": "LoginTestStepDefinition.afterScenario(Scenario)"
+            }
+          }
+        ],
+        "type": "scenario",
+        "keyword": "Scenario",
+        "steps": [
+          {
+            "result": {
+              "duration": 6076005163,
+              "status": "passed"
+            },
+            "line": 113,
+            "name": "GPS is disable",
+            "match": {
+              "location": "OfficeTestStepDefinition.gps_is_disable()"
+            },
+            "keyword": "Given "
+          },
+          {
+            "result": {
+              "duration": 9328698379,
+              "status": "passed"
+            },
+            "line": 114,
+            "name": "That exist the office \"JUZGADO PROMISCUO MUNICIPAL No. 1\"",
+            "match": {
+              "arguments": [
+                {
+                  "val": "JUZGADO PROMISCUO MUNICIPAL No. 1",
+                  "offset": 23
+                }
+              ],
+              "location": "OfficeTestStepDefinition.that_exist_the_office(String)"
+            },
+            "keyword": "When "
+          },
+          {
+            "result": {
+              "duration": 1879814884,
+              "status": "passed"
+            },
+            "line": 115,
+            "name": "I select the officer \"JUZGADO PROMISCUO MUNICIPAL No. 1\"",
+            "match": {
+              "arguments": [
+                {
+                  "val": "JUZGADO PROMISCUO MUNICIPAL No. 1",
+                  "offset": 22
+                }
+              ],
+              "location": "GralStepDefinitions.i_select_the_officer(String)"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 1321126479,
+              "status": "passed"
+            },
+            "line": 116,
+            "name": "I see a following message \"El GPS se encuentra deshabilitado\" and \"¿Desea habilitarlo?\"",
+            "match": {
+              "arguments": [
+                {
+                  "val": "El GPS se encuentra deshabilitado",
+                  "offset": 27
+                },
+                {
+                  "val": "¿Desea habilitarlo?",
+                  "offset": 67
+                }
+              ],
+              "location": "GralStepDefinitions.i_see_a_following_message(String,String)"
+            },
+            "keyword": "Then "
+          }
+        ]
+      },
+      {
+        "line": 3,
+        "name": "",
+        "description": "",
+        "type": "background",
+        "keyword": "Background",
+        "steps": [
+          {
+            "result": {
+              "duration": 17507609274,
+              "status": "passed"
+            },
+            "line": 4,
+            "name": "I set the enviroment",
+            "match": {
+              "location": "GralStepDefinitions.i_set_the_enviroment()"
+            },
+            "keyword": "Given "
+          }
+        ]
+      },
+      {
+        "before": [
+          {
+            "result": {
+              "duration": 7144081050,
+              "status": "passed"
+            },
+            "match": {
+              "location": "LoginTestStepDefinition.setUpEnviromentFeature()"
+            }
+          }
+        ],
+        "line": 118,
+        "name": "SCheckIn_014-CheckIn Succes after a checkin failed attempt because GPS disabled",
+        "description": "",
+        "id": "check-in-office;scheckin-014-checkin-succes-after-a-checkin-failed-attempt-because-gps-disabled",
+        "after": [
+          {
+            "result": {
+              "duration": 884427382,
+              "status": "passed"
+            },
+            "match": {
+              "location": "LoginTestStepDefinition.afterScenario(Scenario)"
+            }
+          }
+        ],
+        "type": "scenario",
+        "keyword": "Scenario",
+        "steps": [
+          {
+            "result": {
+              "duration": 3933617949,
+              "status": "passed"
+            },
+            "line": 119,
+            "name": "GPS is disable",
+            "match": {
+              "location": "OfficeTestStepDefinition.gps_is_disable()"
+            },
+            "keyword": "Given "
+          },
+          {
+            "result": {
+              "duration": 8365225269,
+              "status": "passed"
+            },
+            "line": 120,
+            "name": "That exist the office \"JUZGADO PROMISCUO MUNICIPAL No. 1\"",
+            "match": {
+              "arguments": [
+                {
+                  "val": "JUZGADO PROMISCUO MUNICIPAL No. 1",
+                  "offset": 23
+                }
+              ],
+              "location": "OfficeTestStepDefinition.that_exist_the_office(String)"
+            },
+            "keyword": "When "
+          },
+          {
+            "result": {
+              "duration": 1334639641,
+              "status": "passed"
+            },
+            "line": 121,
+            "name": "I select the officer \"JUZGADO PROMISCUO MUNICIPAL No. 1\"",
+            "match": {
+              "arguments": [
+                {
+                  "val": "JUZGADO PROMISCUO MUNICIPAL No. 1",
+                  "offset": 22
+                }
+              ],
+              "location": "GralStepDefinitions.i_select_the_officer(String)"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 1410917806,
+              "status": "passed"
+            },
+            "line": 122,
+            "name": "I see a following message \"El GPS se encuentra deshabilitado\" and \"¿Desea habilitarlo?\"",
+            "match": {
+              "arguments": [
+                {
+                  "val": "El GPS se encuentra deshabilitado",
+                  "offset": 27
+                },
+                {
+                  "val": "¿Desea habilitarlo?",
+                  "offset": 67
+                }
+              ],
+              "location": "GralStepDefinitions.i_see_a_following_message(String,String)"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 3289727617,
+              "status": "passed"
+            },
+            "line": 123,
+            "name": "I touch the Cancelar button",
+            "match": {
+              "location": "OfficeTestStepDefinition.i_touch_the_cancel_btn()"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 3038169078,
+              "status": "passed"
+            },
+            "line": 124,
+            "name": "GPS is enable",
+            "match": {
+              "location": "GralStepDefinitions.gps_is_enable()"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 1331743757,
+              "status": "passed"
+            },
+            "line": 125,
+            "name": "I select the officer \"JUZGADO PROMISCUO MUNICIPAL No. 1\"",
+            "match": {
+              "arguments": [
+                {
+                  "val": "JUZGADO PROMISCUO MUNICIPAL No. 1",
+                  "offset": 22
+                }
+              ],
+              "location": "GralStepDefinitions.i_select_the_officer(String)"
+            },
+            "keyword": "When "
+          },
+          {
+            "result": {
+              "duration": 1761502613,
+              "status": "passed"
+            },
+            "line": 126,
+            "name": "I touch the Check-in button",
+            "match": {
+              "location": "OfficeTestStepDefinition.i_touch_the_checkin_btn()"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 10055925495,
+              "status": "passed"
+            },
+            "line": 127,
+            "name": "I take a video of 5 seconds",
+            "match": {
+              "arguments": [
+                {
+                  "val": "5",
+                  "offset": 18
+                }
+              ],
+              "location": "OfficeTestStepDefinition.i_take_a_video_of_seconds(int)"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 826098115,
+              "status": "passed"
+            },
+            "line": 128,
+            "name": "I touch the Aceptar button view camera",
+            "match": {
+              "location": "OfficeTestStepDefinition.i_touch_the_button_aceptar_view_camera()"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 5088355737,
+              "status": "passed"
+            },
+            "line": 129,
+            "name": "I must see the \"JUZGADO PROMISCUO MUNICIPAL No. 1\" view",
+            "match": {
+              "arguments": [
+                {
+                  "val": "JUZGADO PROMISCUO MUNICIPAL No. 1",
+                  "offset": 16
+                }
+              ],
+              "location": "GralStepDefinitions.i_must_see_the_view(String)"
+            },
+            "keyword": "Then "
+          }
+        ]
+      },
+      {
+        "line": 3,
+        "name": "",
+        "description": "",
+        "type": "background",
+        "keyword": "Background",
+        "steps": [
+          {
+            "result": {
+              "duration": 17530512004,
+              "status": "passed"
+            },
+            "line": 4,
+            "name": "I set the enviroment",
+            "match": {
+              "location": "GralStepDefinitions.i_set_the_enviroment()"
+            },
+            "keyword": "Given "
+          }
+        ]
+      },
+      {
+        "before": [
+          {
+            "result": {
+              "duration": 7178362643,
+              "status": "passed"
+            },
+            "match": {
+              "location": "LoginTestStepDefinition.setUpEnviromentFeature()"
+            }
+          }
+        ],
+        "line": 131,
+        "name": "SCheckIn_15-Succes CheckIn",
+        "description": "",
+        "id": "check-in-office;scheckin-15-succes-checkin",
+        "after": [
+          {
+            "result": {
+              "duration": 836082129,
+              "status": "passed"
+            },
+            "match": {
+              "location": "LoginTestStepDefinition.afterScenario(Scenario)"
+            }
+          }
+        ],
+        "type": "scenario",
+        "keyword": "Scenario",
+        "steps": [
+          {
+            "result": {
+              "duration": 8850859574,
+              "status": "passed"
+            },
+            "line": 132,
+            "name": "That exist the office \"JUZGADO PROMISCUO MUNICIPAL No. 1\"",
+            "match": {
+              "arguments": [
+                {
+                  "val": "JUZGADO PROMISCUO MUNICIPAL No. 1",
+                  "offset": 23
+                }
+              ],
+              "location": "OfficeTestStepDefinition.that_exist_the_office(String)"
+            },
+            "keyword": "Given "
+          },
+          {
+            "result": {
+              "duration": 1552697740,
+              "status": "passed"
+            },
+            "line": 133,
+            "name": "I select the officer \"JUZGADO PROMISCUO MUNICIPAL No. 1\"",
+            "match": {
+              "arguments": [
+                {
+                  "val": "JUZGADO PROMISCUO MUNICIPAL No. 1",
+                  "offset": 22
+                }
+              ],
+              "location": "GralStepDefinitions.i_select_the_officer(String)"
+            },
+            "keyword": "When "
+          },
+          {
+            "result": {
+              "duration": 1325296269,
+              "status": "passed"
+            },
+            "line": 134,
+            "name": "I see a following message \"No ha realizado check-in para este despacho\" and \"¿Desea realizar el check-in ahora?\"",
+            "match": {
+              "arguments": [
+                {
+                  "val": "No ha realizado check-in para este despacho",
+                  "offset": 27
+                },
+                {
+                  "val": "¿Desea realizar el check-in ahora?",
+                  "offset": 77
+                }
+              ],
+              "location": "GralStepDefinitions.i_see_a_following_message(String,String)"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 828953577,
+              "status": "passed"
+            },
+            "line": 135,
+            "name": "I touch the Check-in button",
+            "match": {
+              "location": "OfficeTestStepDefinition.i_touch_the_checkin_btn()"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 10010915945,
+              "status": "passed"
+            },
+            "line": 136,
+            "name": "I take a video of 5 seconds",
+            "match": {
+              "arguments": [
+                {
+                  "val": "5",
+                  "offset": 18
+                }
+              ],
+              "location": "OfficeTestStepDefinition.i_take_a_video_of_seconds(int)"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 633288453,
+              "status": "passed"
+            },
+            "line": 137,
+            "name": "I touch the Aceptar button view camera",
+            "match": {
+              "location": "OfficeTestStepDefinition.i_touch_the_button_aceptar_view_camera()"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 5198654683,
+              "status": "passed"
+            },
+            "line": 138,
+            "name": "I must see the \"JUZGADO PROMISCUO MUNICIPAL No. 1\" view",
+            "match": {
+              "arguments": [
+                {
+                  "val": "JUZGADO PROMISCUO MUNICIPAL No. 1",
+                  "offset": 16
+                }
+              ],
+              "location": "GralStepDefinitions.i_must_see_the_view(String)"
+            },
+            "keyword": "Then "
+          }
+        ]
+      }
+    ],
+    "name": "Check-In Office",
+    "description": "",
+    "id": "check-in-office",
+    "keyword": "Feature",
+    "uri": "Feature/003_CheckIn.feature"
+  }
+]

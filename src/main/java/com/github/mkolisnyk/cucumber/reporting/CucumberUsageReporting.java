@@ -284,12 +284,13 @@ public class CucumberUsageReporting {
                 + " stroke-width=\"1\" fill=\"white\" filter=\"url(#f1)\" />"
                 + "<line x1=\"62%\" y1=\"29%\" x2=\"67%\" y2=\"29%\" stroke-dasharray=\"5,5\""
                 + " style=\"stroke:red;stroke-width:3\" /><text x=\"69%\" y=\"30%\""
-                + " font-weight = \"bold\" font-size = \"12\">Average: " + String.format("%.1f", average) + "</text>"
+                + " font-weight = \"bold\" font-size = \"12\">Average: " + String.format(Locale.US, "%.1f", average)
+                + "</text>"
                 + "<line x1=\"62%\" y1=\"34%\" x2=\"67%\" y2=\"34%\" stroke-dasharray=\"5,5\""
                 + " style=\"stroke:yellow;stroke-width:3\" /><text x=\"69%\" y=\"35%\""
                 + " font-weight = \"bold\" font-size = \"12\">Median: " + median + "</text>"
                 + "<text x=\"60%\" y=\"55%\" font-weight = \"bold\" font-size = \"40\" fill=\""
-                + statusColor + "\">" + String.format("%.1f", usage)
+                + statusColor + "\">" + String.format(Locale.US, "%.1f", usage)
                 + "%</text>"
                 + "<text x=\"66%\" y=\"60%\" font-weight = \"bold\" font-size = \"16\" fill=\""
                 + statusColor
@@ -362,6 +363,7 @@ public class CucumberUsageReporting {
                 Double min = Collections.min(durations);
                 Double max = Collections.max(durations);
                 content += String.format(
+                        Locale.US,
                         "<td>%.2fs</td><td>%.2fs</td><td>%.2fs</td><td>%.2fs</td><td>%.2fs</td>",
                         average, median, min, max, total);
             }
@@ -429,7 +431,7 @@ public class CucumberUsageReporting {
         String result = "";
         for (int i = 0; i < data.length; i++) {
             result = result.concat(
-                String.format("%d,%d %d,%d %d,%d %d,%d ",
+                String.format(Locale.US, "%d,%d %d,%d %d,%d %d,%d ",
                     startX + i * stepX, bottomY,
                     startX + i * stepX, bottomY - (int) (data[i] * stepY),
                     startX + (i + 1) * stepX, bottomY - (int) (data[i] * stepY),
@@ -474,14 +476,16 @@ public class CucumberUsageReporting {
         String result = "";
         for (int i = 0; i < data.length; i++) {
             result = result.concat(
-                String.format("<text x=\"%d\" y=\"%d\" font-weight=\"bold\" font-size=\"14\">%d</text>",
+                String.format(Locale.US,
+                        "<text x=\"%d\" y=\"%d\" font-weight=\"bold\" font-size=\"14\">%d</text>",
                     startX + i * stepX + stepX / 2 - (int) (Math.log10(data[i])) * shiftX,
                     bottomY - (int) ((float) data[i] * stepY) - 2,
                     data[i])
             );
             double step = (this.getMaxDuration(source) - this.getMinDuration(source)) / (double) data.length;
             result = result.concat(
-                    String.format("<line x1=\"%d\" y1=\"%d\" x2=\"%d\""
+                    String.format(Locale.US,
+                            "<line x1=\"%d\" y1=\"%d\" x2=\"%d\""
                             + " y2=\"%d\" style=\"stroke:black;stroke-width:1\" />"
                             + "<text x=\"%d\" y=\"%d\" font-size=\"8\">%.2f</text>"
                             ,
@@ -491,7 +495,8 @@ public class CucumberUsageReporting {
                 );
         }
         result = result.concat(
-                String.format("<line x1=\"%d\" y1=\"%d\" x2=\"%d\""
+                String.format(Locale.US,
+                        "<line x1=\"%d\" y1=\"%d\" x2=\"%d\""
                         + " y2=\"%d\" style=\"stroke:black;stroke-width:1\" />"
                         + "<text x=\"%d\" y=\"%d\" font-size=\"8\">%.2f</text>"
                         ,
@@ -569,7 +574,8 @@ public class CucumberUsageReporting {
         Double average = total / durations.size();
         Double min = Collections.min(durations);
         Double max = Collections.max(durations);
-        return String.format("<p><table>"
+        return String.format(Locale.US,
+                "<p><table>"
                 + "<tr><th colspan=\"2\">Duration Characteristic</th></tr>"
                 + "<tr><th>Average</th><td>%.2fs</td></tr>"
                 + "<tr><th>Median</th><td>%.2fs</td></tr>"

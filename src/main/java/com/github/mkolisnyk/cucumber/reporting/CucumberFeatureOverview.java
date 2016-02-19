@@ -3,6 +3,7 @@ package com.github.mkolisnyk.cucumber.reporting;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.Locale;
 
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.IOUtils;
@@ -49,6 +50,7 @@ public class CucumberFeatureOverview extends CucumberResultsOverview {
         for (CucumberFeatureResult feature : features) {
             tableContent = tableContent.concat(
                 String.format(
+                    Locale.US,
                     "<tr><td><b>&nbsp;&nbsp;&nbsp;&nbsp;%s</b></td>"
                     + "<td><center><font size=\"3\">%s</font></center></td></tr>",
                     feature.getName(), getGradeString(feature)
@@ -65,7 +67,7 @@ public class CucumberFeatureOverview extends CucumberResultsOverview {
         double rate = getOverallRate(features);
         String grade = getStatusLetter(rate);
         content = content.replaceAll("__GRADE__", grade);
-        content = content.replaceAll("__RATE__", String.format("%.0f%%", rate * maxRate));
+        content = content.replaceAll("__RATE__", String.format(Locale.US, "%.0f%%", rate * maxRate));
         String featuresTable = generateFeaturesTable(features);
         content = content.replaceAll("__FEATURES__", featuresTable);
         content = this.replaceHtmlEntitiesWithCodes(content);

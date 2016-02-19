@@ -2,6 +2,7 @@ package com.github.mkolisnyk.cucumber.reporting;
 
 import java.io.IOException;
 import java.util.HashSet;
+import java.util.Locale;
 import java.util.Set;
 
 import org.apache.commons.lang3.StringUtils;
@@ -92,6 +93,7 @@ public class CucumberCoverageOverview extends CucumberResultsOverview {
 
             String status = getFeatureStatus(result);
             reportContent += String.format(
+                    Locale.US,
                     "<tr class=\"%s\"><td>%s</td><td>%s</td><td>%d</td><td>%d</td><td>%s</td></tr>",
                     status,
                     result.getName(),
@@ -131,6 +133,7 @@ public class CucumberCoverageOverview extends CucumberResultsOverview {
                     }
                 }
                 reportContent += String.format(
+                        Locale.US,
                         "<tr class=\"%s\">"
                         + "<td>%s</td><td>%s</td><td>%s</td>"
                         + "<td>%d</td><td>%d</td><td>%s</td></tr>",

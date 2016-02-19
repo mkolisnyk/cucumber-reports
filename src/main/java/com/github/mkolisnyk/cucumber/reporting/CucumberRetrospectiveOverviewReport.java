@@ -3,6 +3,7 @@ package com.github.mkolisnyk.cucumber.reporting;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.Locale;
 
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.IOUtils;
@@ -65,7 +66,9 @@ public class CucumberRetrospectiveOverviewReport extends CucumberResultsCommon {
             int passedRatio = (int) (scale * model.getHeight() * ((double) stats.getPassed() / total));
             int failedRatio = (int) (scale * model.getHeight() * ((double) stats.getFailed() / total));
             int skippedRatio = (int) (scale * model.getHeight() * ((double) stats.getSkipped() / total));
-            String content = String.format("<rect x=\"%d\" y=\"%d\" width=\"%d\" height=\"%d\""
+            String content = String.format(
+                    Locale.US,
+                    "<rect x=\"%d\" y=\"%d\" width=\"%d\" height=\"%d\""
                             + " stroke=\"black\" stroke-width=\"1\" fill=\"silver\"></rect>"
                         + "<rect x=\"%d\" y=\"%d\" width=\"%d\" height=\"%d\""
                             + " stroke=\"red\" stroke-width=\"1\" fill=\"red\"></rect>"
@@ -81,13 +84,17 @@ public class CucumberRetrospectiveOverviewReport extends CucumberResultsCommon {
             final int vOffset = 10;
             for (int i = 0; i <= scaleTicksCount; i++) {
                 content = content.concat(
-                    String.format("<text x=\"%d\" y=\"%d\" font-size=\"12\">%d%%</text>",
+                    String.format(
+                            Locale.US,
+                            "<text x=\"%d\" y=\"%d\" font-size=\"12\">%d%%</text>",
                        (int) (model.getWidth() * scale),
                        (int) (i * scale * model.getHeight() / scaleTicksCount) + vOffset,
                        maxScaleValue - i * maxScaleValue / scaleTicksCount)
                 );
                 content = content.concat(
-                    String.format("<line stroke-dasharray=\"10,10\""
+                    String.format(
+                            Locale.US,
+                            "<line stroke-dasharray=\"10,10\""
                         + " x1=\"0\" y1=\"%d\" x2=\"%d\" y2=\"%d\" style=\"stroke:darkgray;stroke-width:1\" />",
                         (int) (i * scale * model.getHeight() / scaleTicksCount),
                         (int) (model.getWidth() * scale),
@@ -97,7 +104,7 @@ public class CucumberRetrospectiveOverviewReport extends CucumberResultsCommon {
             }
             // Bottom scale
             content = content.concat(
-                String.format("<text x=\"%d\" y=\"%d\" font-size=\"12\">%d</text>",
+                String.format(Locale.US, "<text x=\"%d\" y=\"%d\" font-size=\"12\">%d</text>",
                     (int) (offset * scale * barSize) + barSize / 2,
                     (int) (scale * model.getHeight()) + vOffset,
                     offset + 1
@@ -109,7 +116,7 @@ public class CucumberRetrospectiveOverviewReport extends CucumberResultsCommon {
     }
     private String drawGraph(RetrospectiveModel model, BreakdownStats[] stats) {
         final double scale = 0.9;
-        String content = String.format("<svg xmlns=\"http://www.w3.org/2000/svg\""
+        String content = String.format(Locale.US, "<svg xmlns=\"http://www.w3.org/2000/svg\""
                 + " version=\"1.1\" width=\"%d\" height=\"%d\">", model.getWidth(), model.getHeight());
         int offset = 0;
         final int barSize = model.getWidth() / stats.length;
@@ -125,7 +132,7 @@ public class CucumberRetrospectiveOverviewReport extends CucumberResultsCommon {
         result = result.replaceAll("__TITLE__", model.getTitle());
         if (model.getRefreshTimeout() > 0 && StringUtils.isNotBlank(model.getRedirectTo())) {
             String refreshHeader
-                = String.format("<meta http-equiv=\"Refresh\" content=\"%d; url=%s\" />",
+                = String.format(Locale.US, "<meta http-equiv=\"Refresh\" content=\"%d; url=%s\" />",
                         model.getRefreshTimeout(), model.getRedirectTo());
             result = result.replaceAll("__REFRESH__", refreshHeader);
         } else {

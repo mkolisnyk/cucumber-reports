@@ -1,5 +1,7 @@
 package com.github.mkolisnyk.cucumber.reporting;
 
+import java.util.Locale;
+
 import org.junit.Test;
 
 public class CucumberResultsReportTest {
@@ -36,6 +38,15 @@ public class CucumberResultsReportTest {
         results.setOutputName("cucumber-issue41-localized");
         results.setSourceFile("./src/test/resources/detailed-source/localized-1.json");
         results.executeFeaturesOverviewReport();
+    }
+    @Test
+    public void testGenerateOverviewReportIssue63() throws Exception {
+        Locale.setDefault(Locale.FRANCE);
+        CucumberResultsOverview results = new CucumberResultsOverview();
+        results.setOutputDirectory("target");
+        results.setOutputName("cucumber-issue63-results");
+        results.setSourceFile("./src/test/resources/63/gralTest.json");
+        results.executeFeaturesOverviewReport(true);
     }
     @Test
     public void testGenerateOverview100FailedReport() throws Exception {

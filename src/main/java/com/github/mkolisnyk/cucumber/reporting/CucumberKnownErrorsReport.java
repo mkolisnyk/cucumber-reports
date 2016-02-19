@@ -3,6 +3,7 @@ package com.github.mkolisnyk.cucumber.reporting;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.Locale;
 
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.IOUtils;
@@ -34,7 +35,9 @@ public class CucumberKnownErrorsReport extends CucumberResultsCommon {
         results.valuate(scenarios, model);
         for (KnownErrorsResult result : results.getResults()) {
             reportContent = reportContent.concat(
-                String.format("<tr class=\"%s\"><td><p><b>%s</b></p><p>%s</p></td><td>%s</td><td>%d</td></tr>",
+                String.format(
+                        Locale.US,
+                        "<tr class=\"%s\"><td><p><b>%s</b></p><p>%s</p></td><td>%s</td><td>%d</td></tr>",
                     result.getInfo().getPriority().toString().toLowerCase(),
                     result.getInfo().getTitle(),
                     result.getInfo().getDescription(),

@@ -10,6 +10,7 @@ import java.io.OutputStream;
 import java.lang.reflect.Array;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.Locale;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.regex.Matcher;
@@ -193,7 +194,9 @@ public abstract class CucumberResultsCommon {
             double startY = centerY - (scale * (double) height) * Math.cos(startAngle)
                     - (double) shift * Math.cos(shiftAngle);
 
-            drawing = drawing.concat(String.format("<path fill=\"%s\" stroke-width=\"1\" stroke=\"%s\""
+            drawing = drawing.concat(String.format(
+                    Locale.US,
+                    "<path fill=\"%s\" stroke-width=\"1\" stroke=\"%s\""
                     + " d=\"M%.8f,%.8f L%.8f,%.8f "
                     + "L%.8f,%.8f "
                     + "L%.8f,%.8f "
@@ -227,7 +230,8 @@ public abstract class CucumberResultsCommon {
                 endX = centerX + (double) shift * Math.sin(shiftAngle);
                 endY = centerY - (scale * (double) height) - (double) shift * Math.cos(shiftAngle);
             }
-            drawing = drawing.concat(String.format("<path fill=\"%s\" stroke-width=\"1\" stroke=\"%s\""
+            drawing = drawing.concat(String.format(Locale.US,
+                    "<path fill=\"%s\" stroke-width=\"1\" stroke=\"%s\""
                     + " d=\"M%.8f,%.8f L%.8f,%.8f "
                     + "L%.8f,%.8f "
                     + "L%.8f,%.8f "
@@ -294,7 +298,8 @@ public abstract class CucumberResultsCommon {
                 if (values[i] * 2 > sum) {
                     largeArcFlag = 1;
                 }*/
-                drawing = drawing.concat(String.format("<path fill=\"%s\" stroke-width=\"1\" stroke=\"%s\""
+                drawing = drawing.concat(String.format(Locale.US,
+                        "<path fill=\"%s\" stroke-width=\"1\" stroke=\"%s\""
                         + " d=\"M%.8f,%.8f L%.8f,%.8f A%.8f,%.8f,0,%d,1,%.8f,%.8f M%.8f,%.8f L%.8f,%.8f" + "\"></path>",
                         colors[i], colors[i],
                         centerX, centerY + pieVOffset,
@@ -333,11 +338,14 @@ public abstract class CucumberResultsCommon {
             final int xOffset = 10;
             final int yHeight = 30;
             final double maxRate = 100.;
-            drawing = drawing.concat(String.format("<text x=\"%d\" y=\"%d\" font-weight = \"bold\" "
+            drawing = drawing.concat(String.format(
+                    Locale.US,
+                    "<text x=\"%d\" y=\"%d\" font-weight = \"bold\" "
                     + "font-size = \"14\">%.0f%% (%d) %s</text>",
                     (int) (xShiftScale * width) + xOffset, (int) (yShiftScale * width) + yHeight * i,
                     maxRate * (double) values[i] / (double) sum, values[i], labels[i]));
             drawing = drawing.concat(String.format(
+                    Locale.US,
                     "<circle cx=\"%d\" cy=\"%d\" r=\"5\" stroke=\"%s\" stroke-width=\"1\" fill=\"%s\" />",
                     (int) (xShiftScale * width), (int) (yShiftScale * width) + yHeight * i - xOffset / 2,
                     shadowColors[i], colors[i]
@@ -387,7 +395,8 @@ public abstract class CucumberResultsCommon {
             png.deleteOnExit();
             convertSvgToPng(svgOutput, png);
             htmlText = m.replaceFirst(
-                Matcher.quoteReplacement(String.format("<img src=\"%s\"></img>",
+                Matcher.quoteReplacement(String.format(Locale.US,
+                        "<img src=\"%s\"></img>",
                     folder.getName() + File.separator + index + ".png")));
             m = p.matcher(htmlText);
             index++;

@@ -3,6 +3,7 @@ package com.github.mkolisnyk.cucumber.reporting;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.Locale;
 
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.IOUtils;
@@ -195,7 +196,9 @@ public class CucumberDetailedResults extends CucumberResultsCommon {
         float overallDuration = 0.f;
         OverviewStats stats = valuateOverviewStats(results);
         overallDuration = stats.getOverallDuration();
-        return String.format("<table>"
+        return String.format(
+                Locale.US,
+                "<table>"
                 + "<tr><th></th><th>Passed</th><th>Failed</th><th>Undefined</th><th>%%Passed</th></tr>"
                 + "<tr><th>Features</th><td class=\"passed\">%d</td><td class=\"failed\">%d</td>"
                     + "<td class=\"undefined\">%d</td><td>%.2f</td></tr>"
@@ -232,6 +235,7 @@ public class CucumberDetailedResults extends CucumberResultsCommon {
         reportContent += "<a id=\"top\"></a><h1>Table of Contents</h1><ol>";
         for (CucumberFeatureResult result : results) {
             reportContent += String.format(
+                    Locale.US,
                     "<li> <span class=\"%s\"><a href=\"#feature-%s\">%s</a></span><ol>",
                     result.getStatus(),
                     escapeHtml(result.getId()),
@@ -239,6 +243,7 @@ public class CucumberDetailedResults extends CucumberResultsCommon {
             for (CucumberScenarioResult scenario : result.getElements()) {
                 if (scenario.getKeyword().contains("Scenario")) {
                     reportContent += String.format(
+                            Locale.US,
                             "<li> <span class=\"%s\"><a href=\"#sc-%s\">%s</a></span></li>",
                             scenario.getStatus(),
                             escapeHtml(scenario.getId()),
@@ -254,12 +259,14 @@ public class CucumberDetailedResults extends CucumberResultsCommon {
         String reportContent = "";
         if (step.getRows() != null) {
             reportContent += String.format(
+                    Locale.US,
                     "<tr class=\"%s\"><td style=\"padding-left:20px\" colspan=\"2\"><table>",
                     step.getResult().getStatus());
             for (int i = 0; i < step.getRows().length; i++) {
                 reportContent += "<tr>";
                 for (int j = 0; j < step.getRows()[i].length; j++) {
-                    reportContent += String.format("<td>%s</td>", escapeHtml(step.getRows()[i][j]));
+                    reportContent += String.format(Locale.US,
+                            "<td>%s</td>", escapeHtml(step.getRows()[i][j]));
                 }
                 reportContent += "</tr>";
             }
@@ -271,9 +278,12 @@ public class CucumberDetailedResults extends CucumberResultsCommon {
         String reportContent = "";
         if (StringUtils.isNotBlank(step.getDocString())) {
             reportContent += String.format(
+                    Locale.US,
                     "<tr class=\"%s_description\"><td style=\"padding-left:20px\" colspan=\"2\">",
                     step.getResult().getStatus());
-            reportContent += String.format("<br>%s</br>",
+            reportContent += String.format(
+                    Locale.US,
+                    "<br>%s</br>",
                     escapeHtml(step.getDocString()).replaceAll("\n", "</br><br>"));
             reportContent += "</td></tr>";
         }
@@ -283,6 +293,7 @@ public class CucumberDetailedResults extends CucumberResultsCommon {
         String reportContent = "";
         if (step.getResult().getStatus().trim().equalsIgnoreCase("failed")) {
             reportContent += String.format(
+                    Locale.US,
                     "<tr class=\"%s\"><td colspan=\"2\"><div>%s%s</br></div></td></tr>",
                     step.getResult().getStatus(),
                     "<br>",
@@ -300,9 +311,9 @@ public class CucumberDetailedResults extends CucumberResultsCommon {
             if (shot.exists()) {
                 String widthString = "";
                 if (StringUtils.isNotBlank(this.getScreenShotWidth())) {
-                    widthString = String.format("width=\"%s\"", this.getScreenShotWidth());
+                    widthString = String.format(Locale.US, "width=\"%s\"", this.getScreenShotWidth());
                 }
-                reportContent += String.format(
+                reportContent += String.format(Locale.US,
                         "<tr class=\"%s\"><td colspan=\"2\"><img src=\"%s\" %s /></td></tr>",
                         step.getResult().getStatus(),
                         filePath,
@@ -319,6 +330,7 @@ public class CucumberDetailedResults extends CucumberResultsCommon {
                 error = "";
             }
             return String.format(
+                    Locale.US,
                     "<tr class=\"%s\"><td>%s</td><td colspan=\"2\"></td><td width=\"100\">%s</td></tr>"
                     + "<tr class=\"%s\"><td colspan=\"4\">%s</td></tr>",
                     results.getResult().getStatus(),
@@ -339,6 +351,7 @@ public class CucumberDetailedResults extends CucumberResultsCommon {
         reportContent += "<h1>Detailed Results Report</h1><table width=\"700px\">";
         for (CucumberFeatureResult result : results) {
             reportContent += String.format(
+                    Locale.US,
                     "<tr class=\"%s\"><td colspan=\"4\"><b>Feature:</b> <a id=\"feature-%s\">%s</a></td></tr>"
                     + "<tr class=\"%s_description\"><td colspan=\"4\"><br>%s</br></td></tr>"
                     + "<tr class=\"%s\"><td><small><b>Passed:</b> %d</small></td>"
@@ -360,6 +373,7 @@ public class CucumberDetailedResults extends CucumberResultsCommon {
                     result.getStatus());
             for (CucumberScenarioResult scenario : result.getElements()) {
                 reportContent += String.format(
+                        Locale.US,
                         "<tr class=\"%s\"><td colspan=\"4\"><b>%s:</b> <a id=\"sc-%s\">%s</a></td></tr>"
                         + "<tr class=\"%s_description\"><td colspan=\"4\"><br>%s</br></td></tr>"
                            + "<tr class=\"%s\">"
@@ -384,6 +398,7 @@ public class CucumberDetailedResults extends CucumberResultsCommon {
                         scenario.getStatus());
                 for (CucumberStepResult step : scenario.getSteps()) {
                     reportContent += String.format(
+                            Locale.US,
                             "<tr class=\"%s\"><td><b>%s</b> %s</td><td width=\"100\">%s</td></tr>",
                             step.getResult().getStatus(),
                             step.getKeyword(),
@@ -419,7 +434,8 @@ public class CucumberDetailedResults extends CucumberResultsCommon {
             formatName = "%s%s%s-test-results.html";
         }
         File outFile = new File(
-                String.format(formatName,
+                String.format(Locale.US,
+                        formatName,
                         this.getOutputDirectory(), File.separator, this.getOutputName()));
         String content = generateStepsReport(features);
         FileUtils.writeStringToFile(outFile, content, "UTF-8");

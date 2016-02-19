@@ -3,6 +3,7 @@ package com.github.mkolisnyk.cucumber.reporting;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.Locale;
 
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.IOUtils;
@@ -50,7 +51,7 @@ public class CucumberResultsOverview extends CucumberResultsCommon {
                 + "<th>Passed</th><th>Failed</th><th>Undefined</th><th>Duration</th></tr>";
 
         for (CucumberFeatureResult result : results) {
-            reportContent += String.format(
+            reportContent += String.format(Locale.US,
                     "<tr class=\"%s\"><td>%s</td><td>%s</td><td>%d</td><td>%d</td><td>%d</td><td>%.2fs</td></tr>",
                     result.getStatus(),
                     result.getName(),
@@ -76,7 +77,7 @@ public class CucumberResultsOverview extends CucumberResultsCommon {
         int[] scenarioStatuses = statuses[1];
         for (CucumberFeatureResult result : results) {
             for (CucumberScenarioResult element : result.getElements()) {
-                reportContent += String.format(
+                reportContent += String.format(Locale.US,
                         "<tr class=\"%s\">"
                         + "<td>%s</td><td>%s</td><td>%s</td>"
                         + "<td>%d</td><td>%d</td><td>%d</td><td>%d</td>"

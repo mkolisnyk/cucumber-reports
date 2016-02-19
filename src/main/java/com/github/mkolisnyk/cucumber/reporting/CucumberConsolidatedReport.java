@@ -3,6 +3,7 @@ package com.github.mkolisnyk.cucumber.reporting;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.Locale;
 
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.IOUtils;
@@ -37,7 +38,7 @@ public class CucumberConsolidatedReport extends CucumberResultsCommon {
         String contents = "<ol>";
         for (ConsolidatedItemInfo item : model.getItems()) {
             contents = contents.concat(
-                String.format("<li><a href=\"#%s\">%s</a></li>",
+                String.format(Locale.US, "<li><a href=\"#%s\">%s</a></li>",
                         generateLocalLink(item.getTitle()), item.getTitle()));
         }
         contents += "</ol>";
@@ -50,14 +51,14 @@ public class CucumberConsolidatedReport extends CucumberResultsCommon {
         String reportContent = "";
         if (model.isUseTableOfContents()) {
             reportContent = reportContent.concat(
-                    String.format("<h1>Table of Contents</h1>%s", generateTableOfContents(model)));
+                    String.format(Locale.US, "<h1>Table of Contents</h1>%s", generateTableOfContents(model)));
         }
         for (ConsolidatedItemInfo item : model.getItems()) {
             String content = FileUtils.readFileToString(new File(item.getPath()));
             content = this.amendHtmlHeaders(content);
             content = this.retrieveBody(content);
             reportContent = reportContent.concat(
-                String.format("<div class=\"content\"><a id=\"%s\"><h1>%s</h1></a>%s</div>",
+                String.format(Locale.US, "<div class=\"content\"><a id=\"%s\"><h1>%s</h1></a>%s</div>",
                     generateLocalLink(item.getTitle()), item.getTitle(), content));
         }
         reportContent = this.replaceHtmlEntitiesWithCodes(reportContent);

@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.HashMap;
+import java.util.Locale;
 import java.util.Map;
 
 import org.apache.commons.io.FileUtils;
@@ -103,7 +104,7 @@ public class CucumberBreakdownReport extends CucumberResultsCommon {
         content = content.replaceAll("__TITLE__", info.getTitle());
         if (info.getRefreshTimeout() > 0 && StringUtils.isNotBlank(info.getNextFile())) {
             String refreshHeader
-                = String.format("<meta http-equiv=\"Refresh\" content=\"%d; url=%s\" />",
+                = String.format(Locale.US, "<meta http-equiv=\"Refresh\" content=\"%d; url=%s\" />",
                         info.getRefreshTimeout(), info.getNextFile());
             content = content.replaceAll("__REFRESH__", refreshHeader);
         } else {
@@ -116,24 +117,28 @@ public class CucumberBreakdownReport extends CucumberResultsCommon {
     }
     private String generateBreakdownTable(CucumberFeatureResult[] features,
             BreakdownTable table) throws Exception {
-        String content = String.format("<table class=\"hoverTable\"><thead>%s</thead><tbody>%s</tbody></table>",
+        String content = String.format(Locale.US,
+                "<table class=\"hoverTable\"><thead>%s</thead><tbody>%s</tbody></table>",
                 generateHeader(table), generateBody(table, features));
         return content;
     }
     private String generateHeader(BreakdownTable table) {
         int colOffset = table.getRows().depth();
         int rowOffset = table.getCols().depth();
-        String content = String.format("<tr><th colspan=\"%d\" rowspan=\"%d\">&nbsp;</th>", colOffset, rowOffset);
+        String content = String.format(Locale.US,
+                "<tr><th colspan=\"%d\" rowspan=\"%d\">&nbsp;</th>", colOffset, rowOffset);
         for (int i = 0; i < rowOffset; i++) {
             DataDimension[] line = table.getCols().getRow(i);
             for (DataDimension item : line) {
                 if (item.depth() == 1) {
                     content = content.concat(
-                            String.format("<th colspan=\"%d\" rowspan=\"%d\">%s</th>",
+                            String.format(Locale.US,
+                                    "<th colspan=\"%d\" rowspan=\"%d\">%s</th>",
                                     item.width(), rowOffset - item.depth() - i + 1, item.getAlias()));
                 } else {
                     content = content.concat(
-                            String.format("<th colspan=\"%d\" rowspan=\"%d\">%s</th>",
+                            String.format(Locale.US,
+                                    "<th colspan=\"%d\" rowspan=\"%d\">%s</th>",
                                     item.width(), 1, item.getAlias()));
                 }
             }
@@ -148,7 +153,8 @@ public class CucumberBreakdownReport extends CucumberResultsCommon {
         if (data.depth() == 1) {
             cellDepth = maxDepth - level + 1;
         }
-        String content = String.format("<th colspan=\"%d\" rowspan=\"%d\">%s</th>",
+        String content = String.format(Locale.US,
+                "<th colspan=\"%d\" rowspan=\"%d\">%s</th>",
                 cellDepth,
                 data.width(),
                 aliasText);
@@ -197,7 +203,8 @@ public class CucumberBreakdownReport extends CucumberResultsCommon {
         };
         double total = stats.getFailed() + stats.getPassed() + stats.getSkipped();
         if (total <= 0) {
-            return String.format("<td bgcolor=\"silver\"><center><b>N/A</b></center></td>");
+            return String.format(Locale.US,
+                    "<td bgcolor=\"silver\"><center><b>N/A</b></center></td>");
         }
         CellDrawer drawer = (CellDrawer) (drawCellMap.get(type).getConstructor(this.getClass()).newInstance(this));
         return drawer.drawCell(stats);
@@ -212,13 +219,13 @@ public class CucumberBreakdownReport extends CucumberResultsCommon {
         private String drawCellValues(int passed, int failed, int skipped) {
             String output = "";
             if (passed > 0) {
-                output = output.concat(String.format("Passed: %d ", passed));
+                output = output.concat(String.format(Locale.US, "Passed: %d ", passed));
             }
             if (failed > 0) {
-                output = output.concat(String.format("Failed: %d ", failed));
+                output = output.concat(String.format(Locale.US, "Failed: %d ", failed));
             }
             if (skipped > 0) {
-                output = output.concat(String.format("Skipped: %d ", skipped));
+                output = output.concat(String.format(Locale.US, "Skipped: %d ", skipped));
             }
             return output;
         }
@@ -233,7 +240,7 @@ public class CucumberBreakdownReport extends CucumberResultsCommon {
                 if (stats.getFailed() > 0) {
                     failedRatio++;
                 }
-                return String.format("<td>"
+                return String.format(Locale.US, "<td>"
                         + "<table width=\"100%%\"><tr>"
                             + "<td><a title=\"%s\">"
                             + "<svg xmlns=\"http://www.w3.org/2000/svg\" version=\"1.1\" width=\"100%%\" height=\"30\">"
@@ -254,7 +261,7 @@ public class CucumberBreakdownReport extends CucumberResultsCommon {
                         //drawCellValues(stats.getPassed(), stats.getFailed(), stats.getSkipped())
                  );
             }
-            return String.format("<td bgcolor=\"silver\"><center><b>N/A</b></center></td>");
+            return String.format(Locale.US, "<td bgcolor=\"silver\"><center><b>N/A</b></center></td>");
         }
     }
     private class BarNumberCellDrawer implements CellDrawer {
@@ -281,13 +288,16 @@ public class CucumberBreakdownReport extends CucumberResultsCommon {
         public String drawCell(BreakdownStats stats) {
             String output = "<td><center><b>";
             if (stats.getPassed() > 0) {
-                output = output.concat(String.format("<span class=\"passed\">%d</span> ", stats.getPassed()));
+                output = output.concat(String.format(Locale.US,
+                        "<span class=\"passed\">%d</span> ", stats.getPassed()));
             }
             if (stats.getFailed() > 0) {
-                output = output.concat(String.format("<span class=\"failed\">%d</span> ", stats.getFailed()));
+                output = output.concat(String.format(Locale.US,
+                        "<span class=\"failed\">%d</span> ", stats.getFailed()));
             }
             if (stats.getSkipped() > 0) {
-                output = output.concat(String.format("<span class=\"skipped\">%d</span> ", stats.getSkipped()));
+                output = output.concat(String.format(Locale.US,
+                        "<span class=\"skipped\">%d</span> ", stats.getSkipped()));
             }
             return output + "</b></center></td>";
         }
@@ -311,7 +321,8 @@ public class CucumberBreakdownReport extends CucumberResultsCommon {
                     CHART_THICKNESS, 2) + "</td>";
                 return chartHtml;
             }
-            return String.format("<td bgcolor=\"silver\"><center><b>N/A</b></center></td>");
+            return String.format(Locale.US,
+                    "<td bgcolor=\"silver\"><center><b>N/A</b></center></td>");
         }
     }
 }

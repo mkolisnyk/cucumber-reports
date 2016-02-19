@@ -56,6 +56,6 @@ import cucumber.api.CucumberOptions;
         "usage:target/cucumber-usage.json", "junit:target/cucumber-results.xml" },
         features = { "./src/test/java/com/github/mkolisnyk/cucumber/features" },
         glue = { "com/github/mkolisnyk/cucumber/steps" },
-        tags = {"@consistent"})
+        tags = {"@passed"})
 public class SampleCucumberTest {
 }

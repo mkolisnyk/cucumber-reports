@@ -275,25 +275,27 @@ public class CucumberFeatureResult {
             if (this.elements[i].getKeyword().equalsIgnoreCase("Background")) {
                 continue;
             }
-            if (this.elements[i].getId().equals(prevId)) {
+            String currentId = "" + this.elements[i].getLine() + "-" + this.elements[i].getId();
+            if (currentId.equals(prevId)) {
                 this.elements[i].addRerunAttempts(this.elements[i - 1]
                         .getRerunAttempts() + 1);
                 if (collapse) {
                     this.elements = (CucumberScenarioResult[]) ArrayUtils
                             .remove(this.elements, i - 1);
                     i--;
-                    prevId = this.elements[i].getId();
+                    prevId = currentId;
                 } else {
-                    prevId = this.elements[i].getId();
+                    prevId = currentId;
                     this.elements[i].setId(String.format("%s-retry%d",
-                            this.elements[i].getId(),
+                            currentId,
                             this.elements[i].getRerunAttempts()));
                     this.elements[i].setName(String.format("%s (retry %d)",
                             this.elements[i].getName(),
                             this.elements[i].getRerunAttempts()));
                 }
             } else {
-                prevId = this.elements[i].getId();
+                prevId = currentId;
+                this.elements[i].setId(currentId);
             }
         }
     }

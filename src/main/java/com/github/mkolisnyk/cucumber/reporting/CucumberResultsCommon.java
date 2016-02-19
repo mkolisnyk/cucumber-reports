@@ -91,6 +91,7 @@ public abstract class CucumberResultsCommon {
 
     public CucumberFeatureResult[] aggregateResults(CucumberFeatureResult[] input, boolean collapse) {
         for (int i = 0; i < input.length; i++) {
+            input[i].setId("" + input[i].getLine() + "" + input[i].getId());
             input[i].aggregateScenarioResults(collapse);
         }
         return input;

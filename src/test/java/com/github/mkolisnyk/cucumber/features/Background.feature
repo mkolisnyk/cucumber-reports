@@ -18,4 +18,35 @@ Feature: Tests with backgrounds
   @passed_background
   Scenario: Always failing test 2
     When I do wrong
-    Then I should see nothing 
+    Then I should see nothing
+
+  @passed
+  Scenario Outline: Portfolio Positions - Sort
+    Given I log into FSAI with any user
+    When I navigate to PortFolio Positions
+    And I select <allocation> for the Portfolio Positions grid
+    Then I verify sort Portfolio Positions
+    @RT-01503
+    Examples:
+        | allocation   |
+        | Counterparty |    
+    @RT-01508
+    Examples:
+        | allocation   |
+        | Industry     |
+    @RT-01509
+    Examples:
+        | allocation   |
+        | Issuer       | 
+    @RT-01505
+    Examples:
+        | allocation   |
+        | Product      |
+    @RT-01507
+    Examples:
+        | allocation   |
+        | Sector       |   
+    @RT-01506
+    Examples:
+        | allocation   |
+        | Strategy     |   

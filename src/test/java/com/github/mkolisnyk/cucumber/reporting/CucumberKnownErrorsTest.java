@@ -49,4 +49,12 @@ public class CucumberKnownErrorsTest {
         results.setSourceFile("./src/test/resources/detailed-source/cucumber-2.json");
         results.executeKnownErrorsReport(new File("./src/test/resources/known-errors-source/sample_model.json"));
     }
+    @Test
+    public void testGenerateReportIssue67() throws Exception {
+        CucumberKnownErrorsReport results = new CucumberKnownErrorsReport();
+        results.setOutputDirectory("target");
+        results.setOutputName("cucumber-results-67");
+        results.setSourceFile("./src/test/resources/67/cucumber.json");
+        results.executeKnownErrorsReport(new File("./src/test/resources/67/known_errors.json"));
+    }
 }

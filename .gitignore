@@ -13,3 +13,4 @@ buildNumber.properties
 /db/DBReporter/*.refactorlog
 
 
+/test-output/

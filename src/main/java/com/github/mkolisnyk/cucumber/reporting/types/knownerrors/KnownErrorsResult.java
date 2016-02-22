@@ -55,7 +55,7 @@ public class KnownErrorsResult implements Comparable<KnownErrorsResult> {
     }
     @Override
     public String toString() {
-        return "KnownErrorsResult [info=" + info + ", frequency=" + frequency
+        return "KnownErrorsResult [info=" + info //+ ", frequency=" + frequency
                 + ", orderBy=" + orderBy + "]";
     }
 }

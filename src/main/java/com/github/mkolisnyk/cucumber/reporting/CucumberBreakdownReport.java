@@ -74,7 +74,7 @@ public class CucumberBreakdownReport extends CucumberResultsCommon {
     public void executeReport(File config) throws Exception {
         executeReport(config, false);
     }
-    private void generateFrameFile(BreakdownReportModel model) throws Exception {
+    protected void generateFrameFile(BreakdownReportModel model) throws Exception {
         InputStream is = this.getClass().getResourceAsStream("/breakdown-frame.html");
         String content = IOUtils.toString(is);
         File outFile = new File(
@@ -98,7 +98,7 @@ public class CucumberBreakdownReport extends CucumberResultsCommon {
         content = content.replaceAll("__TIMEOUT__", "" + totalTimeout);
         FileUtils.writeStringToFile(outFile, content);
     }
-    private String generateBreakdownReport(CucumberFeatureResult[] features,
+    protected String generateBreakdownReport(CucumberFeatureResult[] features,
             BreakdownReportInfo info, BreakdownTable table) throws Exception {
         String content = getReportBase();
         content = content.replaceAll("__TITLE__", info.getTitle());
@@ -115,14 +115,14 @@ public class CucumberBreakdownReport extends CucumberResultsCommon {
         content = content.replaceAll("[$]", "&#36;");
         return content;
     }
-    private String generateBreakdownTable(CucumberFeatureResult[] features,
+    protected String generateBreakdownTable(CucumberFeatureResult[] features,
             BreakdownTable table) throws Exception {
         String content = String.format(Locale.US,
                 "<table class=\"hoverTable\"><thead>%s</thead><tbody>%s</tbody></table>",
                 generateHeader(table), generateBody(table, features));
         return content;
     }
-    private String generateHeader(BreakdownTable table) {
+    protected String generateHeader(BreakdownTable table) {
         int colOffset = table.getRows().depth();
         int rowOffset = table.getCols().depth();
         String content = String.format(Locale.US,
@@ -147,7 +147,7 @@ public class CucumberBreakdownReport extends CucumberResultsCommon {
         content = content.concat("</tr>");
         return content;
     }
-    private String generateRowHeading(DataDimension data, int maxDepth, int level) {
+    protected String generateRowHeading(DataDimension data, int maxDepth, int level) {
         int cellDepth = 1;
         String aliasText = data.getAlias();
         if (data.depth() == 1) {
@@ -167,12 +167,12 @@ public class CucumberBreakdownReport extends CucumberResultsCommon {
         }
         return content;
     }
-    private String generateRowHeading(BreakdownTable table) {
+    protected String generateRowHeading(BreakdownTable table) {
         DataDimension rows = table.getRows();
         String content = "<tr>" + generateRowHeading(rows, rows.depth(), 1) + "</tr>";
         return content;
     }
-    private String generateBody(BreakdownTable table, CucumberFeatureResult[] features) throws Exception {
+    protected String generateBody(BreakdownTable table, CucumberFeatureResult[] features) throws Exception {
         CucumberScenarioResult[] scenarios = new CucumberScenarioResult[] {};
         for (CucumberFeatureResult feature : features) {
             scenarios = ArrayUtils.addAll(scenarios, feature.getElements());

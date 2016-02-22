@@ -130,4 +130,17 @@ public class BreakdownTable {
         }
         return stats;
     }
+    public CucumberScenarioResult[][][] valuateScenarios(CucumberScenarioResult[] array) {
+        DataDimension[][] rowData = this.getRows().expand();
+        DataDimension[][] colData = this.getCols().expand();
+        CucumberScenarioResult[][][] scenarios = new CucumberScenarioResult[rowData.length][colData.length][];
+        for (int i = 0; i < rowData.length; i++) {
+            for (int j = 0; j < colData.length; j++) {
+                CucumberScenarioResult[] filteredData = this.filter(array, rowData[i]);
+                filteredData = this.filter(filteredData, colData[j]);
+                scenarios[i][j] = filteredData;
+            }
+        }
+        return scenarios;
+    }
 }

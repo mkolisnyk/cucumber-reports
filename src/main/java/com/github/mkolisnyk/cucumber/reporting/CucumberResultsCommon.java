@@ -398,14 +398,14 @@ public abstract class CucumberResultsCommon {
             htmlText = m.replaceFirst(
                 Matcher.quoteReplacement(String.format(Locale.US,
                         "<img src=\"%s\"></img>",
-                    folder.getName() + File.separator + index + ".png")));
+                    folder.getName() + "/" + index + ".png")));
             m = p.matcher(htmlText);
             index++;
         }
         return htmlText;
     }
     public void exportToPDF(File htmlFile, String suffix) throws Exception {
-        File bakupFile = new File(htmlFile.getAbsolutePath() + ".bak");
+        File bakupFile = new File(htmlFile.getAbsolutePath() + ".bak.html");
         String url = bakupFile.toURI().toURL().toString();
         String outputFile = this.getOutputDirectory() + File.separator + this.getOutputName()
                 + "-" + suffix + ".pdf";

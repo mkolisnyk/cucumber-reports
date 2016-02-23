@@ -69,12 +69,12 @@ public class CucumberFeatureMapReport extends CucumberBreakdownReport {
                 output = output.concat(String.format("<li> <a onclick=\"toggle('scenario%d')\"><b>Scenario:</b> %s</a>",
                         index,
                         scenario.getName()));
-                output = output.concat(String.format("<div id=\"scenario%d\" style=\"display:none\">%s</div>",
+                output = output.concat(String.format("<div id=\"scenario%d\" style=\"display:none\">%s</div></li>",
                         index,
                         drawScenario(scenario)));
                 index++;
             }
-            output = output.concat("</ul>");
+            output = output.concat("</ul></li>");
         }
         output += "</ul></td>";
         return output;

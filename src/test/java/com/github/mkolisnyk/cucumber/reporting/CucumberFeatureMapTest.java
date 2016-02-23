@@ -11,6 +11,6 @@ public class CucumberFeatureMapTest {
         report.setOutputDirectory("target/feature-map/1");
         report.setOutputName("cucumber-results-feature-map");
         report.setSourceFile("./src/test/resources/breakdown-source/cucumber.json");
-        report.executeReport(new File("src/test/resources/breakdown-source/simple.json"));
+        report.executeReport(new File("src/test/resources/breakdown-source/simple.json"), true);
     }
 }

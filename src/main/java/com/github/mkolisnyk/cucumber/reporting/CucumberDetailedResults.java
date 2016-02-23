@@ -3,13 +3,13 @@ package com.github.mkolisnyk.cucumber.reporting;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.Date;
 import java.util.Locale;
 
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.IOUtils;
 import org.apache.commons.lang.StringEscapeUtils;
 import org.apache.commons.lang.StringUtils;
-import org.joda.time.DateTime;
 
 import com.github.mkolisnyk.cucumber.reporting.types.result.CucumberBeforeAfterResult;
 import com.github.mkolisnyk.cucumber.reporting.types.result.CucumberEmbedding;
@@ -309,7 +309,7 @@ public class CucumberDetailedResults extends CucumberResultsCommon {
         }
         if (step.getEmbeddings() != null) {
             int index = 0;
-            long base = DateTime.now().getMillis();
+            long base = (new Date()).getTime();
             for (CucumberEmbedding embedding : step.getEmbeddings()) {
                 String embedPath = this.getScreenShotLocation()
                         + this.generateNameFromId(scenarioId) + (base + index) + "."

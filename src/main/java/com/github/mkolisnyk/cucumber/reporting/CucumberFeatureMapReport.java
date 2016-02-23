@@ -1,17 +1,52 @@
 package com.github.mkolisnyk.cucumber.reporting;
 
+import java.io.File;
 import java.util.HashMap;
+import java.util.Locale;
 import java.util.Map;
 
+import org.apache.commons.io.FileUtils;
+import org.apache.commons.lang.StringEscapeUtils;
 import org.apache.commons.lang3.ArrayUtils;
+import org.codehaus.plexus.util.StringUtils;
 import org.testng.Assert;
 
+import com.github.mkolisnyk.cucumber.reporting.types.breakdown.BreakdownReportInfo;
 import com.github.mkolisnyk.cucumber.reporting.types.breakdown.BreakdownTable;
 import com.github.mkolisnyk.cucumber.reporting.types.result.CucumberFeatureResult;
 import com.github.mkolisnyk.cucumber.reporting.types.result.CucumberScenarioResult;
+import com.github.mkolisnyk.cucumber.reporting.types.result.CucumberStepResult;
 
 public class CucumberFeatureMapReport extends CucumberBreakdownReport {
 
+    private String drawScenario(CucumberScenarioResult scenario) {
+        String output = String.format("<table><tr><td>%s</td></tr><tr><td><table>", scenario.getDescription());
+        for (CucumberStepResult step : scenario.getSteps()) {
+            output = output.concat(String.format("<tr><td><b>%s</b> %s</td></tr>",
+                    step.getKeyword(),
+                    step.getName()));
+            if (StringUtils.isNotBlank(step.getDocString())) {
+                output = output.concat(String.format("<tr><td><i>%s</i></td></tr>",
+                        step.getDocString()));
+            }
+            if (step.getRows() != null) {
+                output += String.format(
+                        Locale.US,
+                        "<tr><td style=\"padding-left:20px\"><table>",
+                        step.getResult().getStatus());
+                for (int i = 0; i < step.getRows().length; i++) {
+                    output += "<tr>";
+                    for (int j = 0; j < step.getRows()[i].length; j++) {
+                        output += String.format(Locale.US,
+                                "<td>%s</td>", StringEscapeUtils.escapeHtml(step.getRows()[i][j]));
+                    }
+                    output += "</tr>";
+                }
+                output += "</table></td></tr>";
+            }
+        }
+        return output + "</table></td></tr></table>";
+    }
     private Map<String, CucumberScenarioResult[]> splitScenariosByFeatures(CucumberScenarioResult[] scenarios) {
         Map<String, CucumberScenarioResult[]> result = new HashMap<String, CucumberScenarioResult[]>();
         for (CucumberScenarioResult scenario : scenarios) {
@@ -26,19 +61,36 @@ public class CucumberFeatureMapReport extends CucumberBreakdownReport {
     }
     private String drawCell(CucumberScenarioResult[] scenarios) {
         String output = "<td><ul>";
+        int index = 0;
         Map<String, CucumberScenarioResult[]> resultsMap = splitScenariosByFeatures(scenarios);
-        /*for (CucumberScenarioResult scenario : scenarios) {
-            output = output.concat(String.format("<li> %s", scenario.getName()));
-        }*/
         for (String featureName : resultsMap.keySet()) {
-            output = output.concat(String.format("<li> %s <ul>", featureName));
+            output = output.concat(String.format("<li> <b>Feature:</b> %s <ul>", featureName));
             for (CucumberScenarioResult scenario : resultsMap.get(featureName)) {
-                output = output.concat(String.format("<li> %s", scenario.getName()));
+                output = output.concat(String.format("<li> <a onclick=\"toggle('scenario%d')\"><b>Scenario:</b> %s</a>",
+                        index,
+                        scenario.getName()));
+                output = output.concat(String.format("<div id=\"scenario%d\" style=\"display:none\">%s</div>",
+                        index,
+                        drawScenario(scenario)));
+                index++;
             }
             output = output.concat("</ul>");
         }
         output += "</ul></td>";
         return output;
+    }
+
+    @Override
+    public void executeReport(BreakdownReportInfo info, BreakdownTable table, boolean toPDF) throws Exception {
+        CucumberFeatureResult[] features = readFileContent(true);
+        File outFile = new File(
+                this.getOutputDirectory() + File.separator + this.getOutputName()
+                + "-" + info.getReportSuffix() + ".html");
+        FileUtils.writeStringToFile(outFile, generateBreakdownReport(features, info, table)
+                .replaceAll("\"hoverTable\"", "\"_hoverTable\""));
+        if (toPDF) {
+            this.exportToPDF(outFile, info.getReportSuffix());
+        }
     }
 
     @Override
@@ -52,7 +104,6 @@ public class CucumberFeatureMapReport extends CucumberBreakdownReport {
             }
             scenarios = ArrayUtils.addAll(scenarios, elements);
         }
-        //BreakdownStats[][] results = table.valuate(scenarios);
         CucumberScenarioResult[][][] results = table.valuateScenarios(scenarios);
         String rowHeadings = generateRowHeading(table);
         String[] headingRows = rowHeadings.split("</tr>");
@@ -68,5 +119,5 @@ public class CucumberFeatureMapReport extends CucumberBreakdownReport {
         }
         return content;
     }
-
+//updatedContent = updatedContent.replaceAll("\"hoverTable\"", "\"_hoverTable\"");
 }

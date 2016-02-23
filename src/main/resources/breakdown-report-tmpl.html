@@ -83,6 +83,15 @@ div.content {page-break-after: always;}
 </style>
 __REFRESH__
 <title>__TITLE__</title>
+<script>
+  var toggle = function(id) {
+  var mydiv = document.getElementById(id);
+  if (mydiv.style.display === 'block' || mydiv.style.display === '')
+    mydiv.style.display = 'none';
+  else
+    mydiv.style.display = 'block'
+  }
+</script>
   </head>
   <body>
     <div class='header'></div>

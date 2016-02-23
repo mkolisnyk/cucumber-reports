@@ -22,6 +22,8 @@ public class ExtendedRuntimeOptions {
     private String[] excludeCoverageTags = {};
     private boolean breakdownReport = false;
     private String breakdownConfig = "";
+    private boolean featureMapReport = false;
+    private String featureMapConfig = "";
     private boolean featureOverviewChart = false;
     private boolean knownErrorsReport = false;
     private String knownErrorsConfig = "";
@@ -49,6 +51,8 @@ public class ExtendedRuntimeOptions {
             this.excludeCoverageTags = options.excludeCoverageTags();
             this.breakdownReport = options.breakdownReport();
             this.breakdownConfig = options.breakdownConfig();
+            this.featureMapReport = options.featureMapReport();
+            this.featureMapConfig = options.featureMapConfig();
             this.featureOverviewChart = options.featureOverviewChart();
             this.knownErrorsReport = options.knownErrorsReport();
             this.knownErrorsConfig = options.knownErrorsConfig();
@@ -135,6 +139,14 @@ public class ExtendedRuntimeOptions {
 
     public String getBreakdownConfig() {
         return breakdownConfig;
+    }
+
+    public boolean isFeatureMapReport() {
+        return featureMapReport;
+    }
+
+    public String getFeatureMapConfig() {
+        return featureMapConfig;
     }
 
     public boolean isFeatureOverviewChart() {

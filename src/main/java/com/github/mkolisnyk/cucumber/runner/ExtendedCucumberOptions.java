@@ -43,6 +43,9 @@ public @interface ExtendedCucumberOptions {
     boolean breakdownReport() default false;
     String breakdownConfig() default "";
 
+    boolean featureMapReport() default false;
+    String featureMapConfig() default "";
+
     boolean featureOverviewChart() default false;
 
     boolean knownErrorsReport() default false;

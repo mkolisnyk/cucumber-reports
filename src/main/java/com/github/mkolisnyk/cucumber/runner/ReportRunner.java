@@ -6,6 +6,7 @@ import com.github.mkolisnyk.cucumber.reporting.CucumberBreakdownReport;
 import com.github.mkolisnyk.cucumber.reporting.CucumberConsolidatedReport;
 import com.github.mkolisnyk.cucumber.reporting.CucumberCoverageOverview;
 import com.github.mkolisnyk.cucumber.reporting.CucumberDetailedResults;
+import com.github.mkolisnyk.cucumber.reporting.CucumberFeatureMapReport;
 import com.github.mkolisnyk.cucumber.reporting.CucumberFeatureOverview;
 import com.github.mkolisnyk.cucumber.reporting.CucumberKnownErrorsReport;
 import com.github.mkolisnyk.cucumber.reporting.CucumberResultsOverview;
@@ -129,6 +130,21 @@ public final class ReportRunner {
             e.printStackTrace();
         }
     }
+    public void runFeatureMapReport(ExtendedRuntimeOptions extendedOptions) {
+        if (!extendedOptions.isFeatureMapReport()) {
+            return;
+        }
+        CucumberFeatureMapReport report = new CucumberFeatureMapReport();
+        report.setOutputDirectory(extendedOptions.getOutputFolder());
+        report.setOutputName(extendedOptions.getReportPrefix());
+        report.setSourceFile(extendedOptions.getJsonReportPath());
+        report.setPdfPageSize(extendedOptions.getPdfPageSize());
+        try {
+            report.executeReport(new File(extendedOptions.getFeatureMapConfig()), extendedOptions.isToPDF());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
     public void runKnownErrorsReport(ExtendedRuntimeOptions extendedOptions) {
         if (!extendedOptions.isKnownErrorsReport()) {
             return;
@@ -170,6 +186,7 @@ public final class ReportRunner {
         runner.runDetailedAggregatedReport(extendedOption);
         runner.runCoverageReport(extendedOption);
         runner.runBreakdownReport(extendedOption);
+        runner.runFeatureMapReport(extendedOption);
         runner.runKnownErrorsReport(extendedOption);
         runner.runConsolidatedReport(extendedOption);
     }

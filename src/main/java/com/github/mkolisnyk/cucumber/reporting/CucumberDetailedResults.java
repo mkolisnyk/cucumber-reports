@@ -9,8 +9,10 @@ import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.IOUtils;
 import org.apache.commons.lang.StringEscapeUtils;
 import org.apache.commons.lang.StringUtils;
+import org.joda.time.DateTime;
 
 import com.github.mkolisnyk.cucumber.reporting.types.result.CucumberBeforeAfterResult;
+import com.github.mkolisnyk.cucumber.reporting.types.result.CucumberEmbedding;
 import com.github.mkolisnyk.cucumber.reporting.types.result.CucumberFeatureResult;
 import com.github.mkolisnyk.cucumber.reporting.types.result.CucumberScenarioResult;
 import com.github.mkolisnyk.cucumber.reporting.types.result.CucumberStepResult;
@@ -289,7 +291,47 @@ public class CucumberDetailedResults extends CucumberResultsCommon {
         }
         return reportContent;
     }
-    private String generateScreenShot(CucumberScenarioResult scenario, CucumberStepResult step) {
+    private String getExtensionFromMime(String mime) {
+        if (mime.contains("png")) {
+            return "png";
+        }
+        if (mime.contains("jpg") || mime.contains("jpeg")) {
+            return "jpg";
+        }
+        return "txt";
+    }
+    private String embeddingScreenShots(CucumberScenarioResult scenario, CucumberStepResult step) throws IOException {
+        String reportContent = "";
+        String scenarioId = scenario.getId();
+        if (StringUtils.isBlank(scenarioId)) {
+            scenarioId = "background";
+            // Add more precise background generation
+        }
+        if (step.getEmbeddings() != null) {
+            int index = 0;
+            long base = DateTime.now().getMillis();
+            for (CucumberEmbedding embedding : step.getEmbeddings()) {
+                String embedPath = this.getScreenShotLocation()
+                        + this.generateNameFromId(scenarioId) + (base + index) + "."
+                        + getExtensionFromMime(embedding.getMimeType());
+                File embedShot = new File(this.getOutputDirectory() + embedPath);
+                FileUtils.writeByteArrayToFile(embedShot, embedding.getData());
+                String widthString = "";
+                if (StringUtils.isNotBlank(this.getScreenShotWidth())) {
+                    widthString = String.format(Locale.US, "width=\"%s\"", this.getScreenShotWidth());
+                }
+                reportContent += String.format(Locale.US,
+                        "<tr class=\"%s\"><td colspan=\"2\"><img src=\"%s\" %s /></td></tr>",
+                        step.getResult().getStatus(),
+                        embedPath,
+                        widthString
+                );
+                index++;
+            }
+        }
+        return reportContent;
+    }
+    private String generateScreenShot(CucumberScenarioResult scenario, CucumberStepResult step) throws IOException {
         String reportContent = "";
         if (step.getResult().getStatus().trim().equalsIgnoreCase("failed")) {
             reportContent += String.format(
@@ -408,6 +450,7 @@ public class CucumberDetailedResults extends CucumberResultsCommon {
                     reportContent += this.generateStepRows(step);
                     reportContent += this.generateDocString(step);
                     reportContent += this.generateScreenShot(scenario, step);
+                    reportContent += this.embeddingScreenShots(scenario, step);
                 }
                 reportContent += "</table></td></tr>"
                         + this.generateBeforeAfterRow(scenario.getAfter(), "After")

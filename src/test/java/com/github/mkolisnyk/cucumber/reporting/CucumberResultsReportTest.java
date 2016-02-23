@@ -121,4 +121,23 @@ public class CucumberResultsReportTest {
         results.setSourceFile("./src/test/resources/detailed-source/cucumber-2.json");
         results.executeDetailedResultsReport(true, false);
     }
+    @Test
+    public void testEmbedScreenshotDetailedReportIssue56() throws Exception {
+        CucumberDetailedResults results = new CucumberDetailedResults();
+        results.setScreenShotLocation("screenshots/");
+        results.setOutputDirectory("target/");
+        results.setOutputName("issue56-results");
+        results.setSourceFile("./src/test/resources/56/embed-screenshot.json");
+        results.executeDetailedResultsReport(true, false);
+    }
+    @Test
+    public void testEmbedScreenshotDetailedReportWith2ImagesIssue56() throws Exception {
+        CucumberDetailedResults results = new CucumberDetailedResults();
+        results.setScreenShotLocation("screenshots/");
+        results.setScreenShotWidth("300");
+        results.setOutputDirectory("target/");
+        results.setOutputName("issue56-2-results");
+        results.setSourceFile("./src/test/resources/56/embed-screenshot-2images.json");
+        results.executeDetailedResultsReport(true, false);
+    }
 }

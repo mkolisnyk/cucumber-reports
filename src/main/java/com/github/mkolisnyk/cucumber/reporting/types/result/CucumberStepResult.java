@@ -12,6 +12,7 @@ public class CucumberStepResult {
     private Long           line;
     private String[][] rows;
     private String docString;
+    private CucumberEmbedding[] embeddings;
 
     @SuppressWarnings("unchecked")
     public CucumberStepResult(JsonObject<String, Object> json) {
@@ -20,6 +21,14 @@ public class CucumberStepResult {
         this.line = (Long) json.get("line");
         this.result = new CucumberResult(
                 (JsonObject<String, Object>) json.get("result"));
+        if (json.containsKey("embeddings")) {
+            Object[] objs = (Object[]) ((JsonObject<String, Object>) json
+                    .get("embeddings")).get("@items");
+            this.embeddings = new CucumberEmbedding[objs.length];
+            for (int i = 0; i < objs.length; i++) {
+                this.embeddings[i] = new CucumberEmbedding((JsonObject<String, Object>) objs[i]);
+            }
+        }
         if (json.containsKey("rows")) {
             Object[] objs = (Object[]) ((JsonObject<String, Object>) json
                     .get("rows")).get("@items");
@@ -113,5 +122,9 @@ public class CucumberStepResult {
     }
     public final String getDocString() {
         return docString;
+    }
+
+    public CucumberEmbedding[] getEmbeddings() {
+        return embeddings;
     }
 }

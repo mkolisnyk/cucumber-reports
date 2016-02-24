@@ -85,8 +85,8 @@ public class ExtendedFeatureRunner extends FeatureRunner {
             System.out.println("Scenario completed..." + this.getRuntime().exitStatus());
             //notifier.fireTestFinished(child.getDescription());
         }
-        scenarioCount++;
-        failedAttempts = 0;
+        this.setScenarioCount(this.getScenarioCount() + 1);
+        this.setFailedAttempts(0);
     }
 
     public void retry(RunNotifier notifier, ParentRunner child, Throwable currentThrowable) {
@@ -95,12 +95,13 @@ public class ExtendedFeatureRunner extends FeatureRunner {
         //boolean failed = true;
         Class<? extends ParentRunner> clazz = child.getClass();
         System.out.println("Current class is: " + clazz.getCanonicalName());
-        CucumberTagStatement cucumberTagStatement = this.cucumberFeature.getFeatureElements().get(scenarioCount);
+        CucumberTagStatement cucumberTagStatement
+        = this.cucumberFeature.getFeatureElements().get(this.getScenarioCount());
 
         if (cucumberTagStatement instanceof CucumberScenarioOutline) {
             return;
         }
-        while (retryCount > failedAttempts) {
+        while (this.getRetryCount() > this.getFailedAttempts()) {
             try {
                 featureElementRunner = new ExtendedExecutionUnitRunner(
                         runtime,
@@ -112,8 +113,7 @@ public class ExtendedFeatureRunner extends FeatureRunner {
                 //failed = false;
                 break;
             } catch (Throwable t) {
-                failedAttempts++;
-                //caughtThrowable = t;
+                this.setFailedAttempts(this.getFailedAttempts() + 1);
                 this.getRuntime().getErrors().clear();
             }
         }
@@ -127,5 +127,25 @@ public class ExtendedFeatureRunner extends FeatureRunner {
     @Override
     protected Description describeChild(ParentRunner child) {
         return child.getDescription();
+    }
+
+    public int getRetryCount() {
+        return retryCount;
+    }
+
+    public int getFailedAttempts() {
+        return failedAttempts;
+    }
+
+    public void setFailedAttempts(int failedAttemptsValue) {
+        this.failedAttempts = failedAttemptsValue;
+    }
+
+    public int getScenarioCount() {
+        return scenarioCount;
+    }
+
+    public void setScenarioCount(int scenarioCountValue) {
+        this.scenarioCount = scenarioCountValue;
     }
 }

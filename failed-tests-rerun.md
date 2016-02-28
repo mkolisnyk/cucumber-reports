@@ -10,3 +10,6 @@ layout: default
 # Generation sample
 
 # Related links
+
+* [Extended Cucumber Runner](/cucumber-reports/extended-cucumber-runner)
+* [Cucumber JVM + JUnit: Re-run failed tests](http://mkolisnyk.blogspot.com/2015/05/cucumber-jvm-junit-re-run-failed-tests.html)

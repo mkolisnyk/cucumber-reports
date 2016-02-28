@@ -2,6 +2,16 @@
 title: Cucumber Reports News
 ---
 
+## 28.02.2016 1.0.3 Version Release
+
+ * [#67](https://github.com/mkolisnyk/cucumber-reports/issues/67): Bug fix: Known Errors Report: multiple instances of the same error
+ * [#66](https://github.com/mkolisnyk/cucumber-reports/issues/66): Enhancement: New Report: feature map report
+ * [#65](https://github.com/mkolisnyk/cucumber-reports/issues/65): Bug fix: Maven dependencies: add exclusions
+ * [#64](https://github.com/mkolisnyk/cucumber-reports/issues/64): Bug fix: PDF Reports: images are not included into generated reports on Windows
+ * [#63](https://github.com/mkolisnyk/cucumber-reports/issues/63): Bug fix: Charts is not show
+ * [#59](https://github.com/mkolisnyk/cucumber-reports/issues/59): Bug fix: Scenario outlines: each scenario shows up as a retry
+ * [#56](https://github.com/mkolisnyk/cucumber-reports/issues/56): Enhancement: Losing embedded screenshots from json
+
 ## 16.02.2016 1.0.2 Version Release
 
  * [#57](https://github.com/mkolisnyk/cucumber-reports/issues/57) Enhancement:	New Report: retrospective run status overview

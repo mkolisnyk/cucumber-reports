@@ -11,6 +11,8 @@ import org.junit.runner.notification.RunNotifier;
 import org.junit.runners.ParentRunner;
 import org.junit.runners.model.InitializationError;
 
+import com.github.mkolisnyk.cucumber.runner.parallel.FeatureThreadPool;
+
 import cucumber.runtime.ClassFinder;
 import cucumber.runtime.Runtime;
 import cucumber.runtime.RuntimeOptions;
@@ -99,6 +101,7 @@ public class ExtendedCucumber extends ParentRunner<ExtendedFeatureRunner> {
             e.printStackTrace();
         }
         super.run(notifier);
+        FeatureThreadPool.get().waitEmpty();
         try {
             runPredefinedMethods(AfterSuite.class);
         } catch (Exception e) {

@@ -10,6 +10,9 @@ import org.junit.runner.notification.RunNotifier;
 import org.junit.runners.ParentRunner;
 import org.junit.runners.model.InitializationError;
 
+import com.github.mkolisnyk.cucumber.runner.parallel.FeatureRunnerThread;
+import com.github.mkolisnyk.cucumber.runner.parallel.FeatureThreadPool;
+
 import cucumber.runtime.CucumberException;
 import cucumber.runtime.Runtime;
 import cucumber.runtime.junit.FeatureRunner;
@@ -69,7 +72,7 @@ public class ExtendedFeatureRunner extends FeatureRunner {
 
     @Override
     protected void runChild(ParentRunner child, RunNotifier notifier) {
-        System.out.println("Running Feature child (scenario)...");
+        /*System.out.println("Running Feature child (scenario)...");
         //notifier.fireTestStarted(child.getDescription());
         try {
             System.out.println("Begin scenario run...");
@@ -84,7 +87,12 @@ public class ExtendedFeatureRunner extends FeatureRunner {
         } finally {
             System.out.println("Scenario completed..." + this.getRuntime().exitStatus());
             //notifier.fireTestFinished(child.getDescription());
-        }
+        }*/
+        Thread thread = new Thread(new FeatureRunnerThread(this, child, notifier));
+        FeatureThreadPool.get().push(thread);
+        System.out.println("Wait for thread to stop");
+        FeatureThreadPool.get().waitAvailable();
+
         this.setScenarioCount(this.getScenarioCount() + 1);
         this.setFailedAttempts(0);
     }

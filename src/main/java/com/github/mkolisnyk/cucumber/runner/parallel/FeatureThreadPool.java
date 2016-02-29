@@ -11,9 +11,7 @@ public final class FeatureThreadPool {
         threadList = new ArrayList<Thread>();
     }
     public boolean push(Thread thread) {
-        while (!this.isAvailable()) {
-            ;
-        }
+        waitAvailable();
         thread.start();
         this.getThreadList().add(thread);
         return true;
@@ -24,11 +22,18 @@ public final class FeatureThreadPool {
     public boolean isAvailable() {
         for (int i = 0; i < this.getThreadList().size(); i++) {
             if (!this.getThreadList().get(i).isAlive()) {
-                //Thread thread = this.getThreadList().remove(i);
+                System.out.println("Removing thread from pool");
+                Thread thread = this.getThreadList().remove(i);
                 i--;
             }
         }
         return this.getThreadList().size() < this.getMaxCapacity();
+    }
+    public void waitAvailable() {
+        while (!this.isAvailable()) {}
+    }
+    public void waitEmpty() {
+        while (!this.isEmpty()) {}
     }
     public List<Thread> getThreadList() {
         return threadList;

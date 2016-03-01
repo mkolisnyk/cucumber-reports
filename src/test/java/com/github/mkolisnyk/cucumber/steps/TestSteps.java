@@ -11,36 +11,36 @@ public class TestSteps {
     
     @Given("^I am out of the system$")
     public void i_am_out_of_the_system() throws Throwable {
-        System.out.println("[Step] I'm out of the system");
+        System.out.println("" + Thread.currentThread().getId() + "[Step] I'm out of the system");
         retry = 0;
     }
     
     @Given("^I am in the system$")
     public void i_am_in_the_system() throws Throwable {
-        System.out.println("[Step] I'm in the system");
+        System.out.println("" + Thread.currentThread().getId() + "[Step] I'm in the system");
     }
 
     @When("^I do nothing$")
     public void i_do_nothing() throws Throwable {
-        System.out.println("[Step] I do nothing");
+        System.out.println("" + Thread.currentThread().getId() + "[Step] I do nothing");
     }
 
     @Then("^I should see nothing$")
     public void i_should_see_nothing() throws Throwable {
-        System.out.println("[Step] I see nothing");
+        System.out.println("" + Thread.currentThread().getId() + "[Step] I see nothing");
     }
 
     @When("^I do something$")
     public void i_do_something() throws Throwable {
-        System.out.println("[Step] Doing something...");
+        System.out.println("" + Thread.currentThread().getId() + "[Step] Doing something...");
         Assert.assertTrue(retry++ > 1);
         retry = 0;
-        System.out.println("[Step] DONE!!!");
+        System.out.println("" + Thread.currentThread().getId() + "[Step] DONE!!!");
     }
 
     @When("^I do wrong$")
     public void i_do_wrong() throws Throwable {
-        System.out.println("This gonna fail");
+        System.out.println("" + Thread.currentThread().getId() + "This gonna fail");
         try {
         Assert.assertTrue(false);
         } catch (Throwable e) {
@@ -55,10 +55,10 @@ public class TestSteps {
     @When("^I do some (\\d+) things$")
     public void i_do_some_things(int value) throws Throwable {
         if (value > 1) {
-            System.out.println("[Step] Doing some value...");
+            System.out.println("" + Thread.currentThread().getId() + "[Step] Doing some value...");
             Assert.assertTrue(retry++ > value);
             retry = 0;
-            System.out.println("[Step] DONE!!!");
+            System.out.println("" + Thread.currentThread().getId() + "[Step] DONE!!!");
         }
     }
     @When("I use the following text:")

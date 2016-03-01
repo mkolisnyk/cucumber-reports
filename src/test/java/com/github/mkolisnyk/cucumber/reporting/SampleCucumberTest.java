@@ -8,7 +8,7 @@ import com.github.mkolisnyk.cucumber.runner.ExtendedCucumberOptions;
 import cucumber.api.CucumberOptions;
 
 @RunWith(ExtendedCucumber.class)
-@ExtendedCucumberOptions(jsonReport = "target/cucumber-u.json",
+/*@ExtendedCucumberOptions(jsonReport = "target/cucumber-u.json",
         retryCount = 0,
         featureOverviewChart = true,
         detailedReport = true,
@@ -24,9 +24,10 @@ import cucumber.api.CucumberOptions;
         knownErrorsConfig = "src/test/resources/known-errors-source/sample_model.json",
         consolidatedReport = true,
         consolidatedReportConfig = "src/test/resources/consolidated-source/s_ample_batch.json",
-        outputFolder = "target")
+        outputFolder = "target")*/
 @ExtendedCucumberOptions(jsonReport = "target/cucumber.json",
         retryCount = 3,
+        threadsCount = 3,
         featureOverviewChart = true,
         detailedReport = true,
         detailedAggregatedReport = true,
@@ -44,13 +45,13 @@ import cucumber.api.CucumberOptions;
         excludeCoverageTags = {"@flaky" },
         includeCoverageTags = {"@passed" },
         outputFolder = "target")
-@ExtendedCucumberOptions(jsonReport = "target/cucumber.json",
+/*@ExtendedCucumberOptions(jsonReport = "target/cucumber.json",
         retryCount = 3,
         coverageReport = true,
         jsonUsageReport = "target/cucumber-usage.json",
         excludeCoverageTags = {"@flaky" },
         includeCoverageTags = {"@passed" },
-        outputFolder = "target")
+        outputFolder = "target")*/
 @CucumberOptions(plugin = { "html:target/cucumber-html-report",
         "json:target/cucumber.json", "pretty:target/cucumber-pretty.txt",
         "usage:target/cucumber-usage.json", "junit:target/cucumber-results.xml" },

@@ -102,9 +102,7 @@ public class ExtendedCucumber extends ParentRunner<ExtendedFeatureRunner> {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        FeatureThreadPool.get().setMaxCapacity(threadsCount);
         super.run(notifier);
-        FeatureThreadPool.get().waitEmpty();
         try {
             runPredefinedMethods(AfterSuite.class);
         } catch (Exception e) {

@@ -23,6 +23,7 @@ import org.apache.batik.transcoder.TranscoderOutput;
 import org.apache.batik.transcoder.image.PNGTranscoder;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.IOUtils;
+import org.apache.commons.lang.ArrayUtils;
 import org.xhtmlrenderer.pdf.ITextRenderer;
 
 import com.cedarsoftware.util.io.JsonObject;
@@ -35,7 +36,7 @@ public abstract class CucumberResultsCommon {
     public static final int CHART_HEIGHT = 300;
     public static final int CHART_THICKNESS = 20;
 
-    private String sourceFile;
+    private String[] sourceFiles;
     private String outputDirectory;
     private String outputName;
     private String pdfPageSize = "auto";
@@ -71,14 +72,22 @@ public abstract class CucumberResultsCommon {
      * @return the sourceFile
      */
     public final String getSourceFile() {
-        return sourceFile;
+        return sourceFiles[0];
     }
 
     /**
      * @param sourceFileValue the sourceFile to set
      */
     public final void setSourceFile(String sourceFileValue) {
-        this.sourceFile = sourceFileValue;
+        this.sourceFiles = new String[] {sourceFileValue};
+    }
+
+    public String[] getSourceFiles() {
+        return sourceFiles;
+    }
+
+    public void setSourceFiles(String[] sourceFiles) {
+        this.sourceFiles = sourceFiles;
     }
 
     public String getPdfPageSize() {
@@ -124,10 +133,19 @@ public abstract class CucumberResultsCommon {
 
     @SuppressWarnings("unchecked")
     public CucumberFeatureResult[] readFileContent(boolean aggregate) throws Exception {
-        return readFileContent(this.getSourceFile(), aggregate);
+        return readFileContent(this.getSourceFiles(), aggregate);
     }
 
-    @SuppressWarnings("unchecked")
+    private CucumberFeatureResult[] readFileContent(String[] sourceFilesValue,
+            boolean aggregate) throws Exception {
+        CucumberFeatureResult[] output = {};
+        for (String sourceFile : sourceFilesValue) {
+            output = (CucumberFeatureResult[]) ArrayUtils.addAll(output, readFileContent(sourceFile, aggregate));
+        }
+        return output;
+    }
+
+    /*@SuppressWarnings("unchecked")
     public <T extends CucumberFeatureResult> T[] readFileContent(Class<T> param) throws Exception {
         FileInputStream fis = null;
         JsonReader jr = null;
@@ -149,7 +167,7 @@ public abstract class CucumberResultsCommon {
         jr.close();
         fis.close();
         return sources;
-    }
+    }*/
     public String replaceHtmlEntitiesWithCodes(String input) throws IOException {
         String output = input;
         Map<String, String> entitiesMap = new HashMap<String, String>();

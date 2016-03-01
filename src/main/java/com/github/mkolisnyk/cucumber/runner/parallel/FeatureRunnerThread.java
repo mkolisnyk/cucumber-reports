@@ -36,6 +36,7 @@ public class FeatureRunnerThread implements Runnable {
             System.out.println(prefix + "Scenario AssumptionViolatedException...");
         } catch (Throwable e) {
             System.out.println(prefix + "Initiating retry...");
+            e.printStackTrace();
             runner.retry(notifier, child, e);
         } finally {
             System.out.println(prefix + "Scenario completed..." + runner.getRuntime().exitStatus());

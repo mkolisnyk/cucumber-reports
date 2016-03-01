@@ -31,6 +31,7 @@ public class ExtendedCucumber extends ParentRunner<ExtendedFeatureRunner> {
     private final ExtendedRuntimeOptions[] extendedOptions;
     private Class clazzValue;
     private int retryCount = 0;
+    private int threadsCount = 1;
 
     public ExtendedCucumber(Class clazz) throws InitializationError, IOException {
         super(clazz);
@@ -46,6 +47,7 @@ public class ExtendedCucumber extends ParentRunner<ExtendedFeatureRunner> {
         extendedOptions = ExtendedRuntimeOptions.init(clazz);
         for (ExtendedRuntimeOptions option : extendedOptions) {
             retryCount = Math.max(retryCount, option.getRetryCount());
+            threadsCount = Math.max(threadsCount, option.getThreadsCount());
         }
 
         final List<CucumberFeature> cucumberFeatures = runtimeOptions.cucumberFeatures(resourceLoader);
@@ -100,6 +102,7 @@ public class ExtendedCucumber extends ParentRunner<ExtendedFeatureRunner> {
         } catch (Exception e) {
             e.printStackTrace();
         }
+        FeatureThreadPool.get().setMaxCapacity(threadsCount);
         super.run(notifier);
         FeatureThreadPool.get().waitEmpty();
         try {

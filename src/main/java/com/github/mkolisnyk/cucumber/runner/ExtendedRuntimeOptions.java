@@ -29,6 +29,7 @@ public class ExtendedRuntimeOptions {
     private String knownErrorsConfig = "";
     private boolean consolidatedReport = false;
     private String consolidatedReportConfig = "";
+    private int threadsCount;
 
     public ExtendedRuntimeOptions(ExtendedCucumberOptions options) {
         if (options != null) {
@@ -58,6 +59,7 @@ public class ExtendedRuntimeOptions {
             this.knownErrorsConfig = options.knownErrorsConfig();
             this.consolidatedReport = options.consolidatedReport();
             this.consolidatedReportConfig = options.consolidatedReportConfig();
+            this.threadsCount = options.threadsCount();
         }
     }
 
@@ -168,6 +170,10 @@ public class ExtendedRuntimeOptions {
     public String getConsolidatedReportConfig() {
         return consolidatedReportConfig;
     }
+    public int getThreadsCount() {
+        return threadsCount;
+    }
+
     public static ExtendedRuntimeOptions[] init(Class<?> clazz) {
         ExtendedCucumberOptions[] options = clazz.getAnnotationsByType(ExtendedCucumberOptions.class);
         ExtendedRuntimeOptions[] result = {};

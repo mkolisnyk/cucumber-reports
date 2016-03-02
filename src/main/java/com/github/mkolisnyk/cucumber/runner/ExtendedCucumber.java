@@ -57,7 +57,9 @@ public class ExtendedCucumber extends ParentRunner<ExtendedFeatureRunner> {
                 runtimeOptions.isStrict());
         addChildren(cucumberFeatures);
     }
-
+    /*public ExtendedCucumber(Class clazz, RuntimeOptions runtimeOptionsValue, ExtendedRuntimeOptions extendedOptionsValue) throws InitializationError, IOException {
+        super(clazz);
+    }*/
     protected Runtime createRuntime(ResourceLoader resourceLoader, ClassLoader classLoader,
                                     RuntimeOptions runtimeOptions) throws InitializationError, IOException {
         ClassFinder classFinder = new ResourceLoaderClassFinder(resourceLoader, classLoader);

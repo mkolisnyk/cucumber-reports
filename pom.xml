@@ -218,9 +218,9 @@
 			<version>1.10</version>
 		</dependency>
 		<dependency>
-		    <groupId>javassist</groupId>
+		    <groupId>org.javassist</groupId>
 		    <artifactId>javassist</artifactId>
-		    <version>3.12.0.SP1</version>
+		    <version>3.20.0-GA</version>
 		</dependency>
 	</dependencies>
 </project>

@@ -13,12 +13,13 @@ Feature: Sample re-run feature
     When I do wrong
     Then I should see nothing
 
-  @flaky
+  @flaky @passed
   Scenario: Flaky test
     Given I am in the system
     When I do something
     Then I should see nothing
 
+   @passed
   Scenario Outline: outlining test
     Given I am in the system
     When I do some <Value> things

@@ -1,4 +1,4 @@
-@63
+@passed @63
 Feature: Overview chart check
 
   Background:

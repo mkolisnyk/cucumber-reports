@@ -20,7 +20,8 @@ public class CucumberRunnerThread implements Runnable {
 
     @Override
     public void run() {
-        //String prefix = "[thread" + this.runId + "] ";
+        String prefix = "[thread" + this.runId + "] ";
+        System.out.println("Running thread: " + prefix);
         runner.run(notifier);
     }
 

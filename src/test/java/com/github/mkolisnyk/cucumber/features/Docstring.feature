@@ -1,4 +1,4 @@
-@docstring
+@docstring @passed
 Feature: Tests with docstrings
 
   Scenario: Sample

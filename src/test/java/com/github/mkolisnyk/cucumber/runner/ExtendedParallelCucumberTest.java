@@ -1,5 +1,7 @@
 package com.github.mkolisnyk.cucumber.runner;
 
+import java.io.File;
+
 import javassist.bytecode.annotation.Annotation;
 import javassist.bytecode.annotation.ArrayMemberValue;
 
@@ -86,6 +88,14 @@ public class ExtendedParallelCucumberTest {
         ExtendedCucumberOptions[][] results = cucumber.splitExtendedCucumberOptions(
                 extendedOptions, cucumberOptions.length);
         Assert.assertEquals(results.length, cucumberOptions.length);
+        for (int i = 0; i < cucumberOptions.length; i++) {
+            for (int j = 0; j < results[i].length; j++) {
+                String expectedLocation = new File(
+                    cucumberOptions[i].plugin()[1].replaceFirst("json:", "")).getParent();
+                String actualLocation = new File(results[i][j].jsonReport()).getParent();
+                Assert.assertEquals(actualLocation, expectedLocation);
+            }
+        }
     }
     @Test
     public void testGenerateClasses() throws Exception {

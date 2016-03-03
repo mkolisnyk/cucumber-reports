@@ -5,6 +5,8 @@ import java.lang.reflect.Method;
 
 import org.testng.annotations.Test;
 
+import com.github.mkolisnyk.cucumber.runner.runtime.ExtendedRuntimeOptions;
+
 import cucumber.api.testng.AbstractTestNGCucumberTests;
 import cucumber.api.testng.TestNGCucumberRunner;
 

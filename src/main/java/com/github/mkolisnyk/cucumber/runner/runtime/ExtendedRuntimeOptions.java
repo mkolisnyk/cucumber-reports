@@ -1,7 +1,9 @@
-package com.github.mkolisnyk.cucumber.runner;
+package com.github.mkolisnyk.cucumber.runner.runtime;
 
 import org.apache.commons.lang3.ArrayUtils;
 import org.apache.commons.lang3.StringUtils;
+
+import com.github.mkolisnyk.cucumber.runner.ExtendedCucumberOptions;
 
 public class ExtendedRuntimeOptions {
 
@@ -187,6 +189,13 @@ public class ExtendedRuntimeOptions {
 
     public static ExtendedRuntimeOptions[] init(Class<?> clazz) {
         ExtendedCucumberOptions[] options = clazz.getAnnotationsByType(ExtendedCucumberOptions.class);
+        ExtendedRuntimeOptions[] result = {};
+        for (ExtendedCucumberOptions option : options) {
+            result = ArrayUtils.add(result, new ExtendedRuntimeOptions(option));
+        }
+        return result;
+    }
+    public static ExtendedRuntimeOptions[] init(ExtendedCucumberOptions[] options) {
         ExtendedRuntimeOptions[] result = {};
         for (ExtendedCucumberOptions option : options) {
             result = ArrayUtils.add(result, new ExtendedRuntimeOptions(option));

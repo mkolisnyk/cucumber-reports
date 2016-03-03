@@ -68,10 +68,10 @@ public class ExtendedParallelCucumberTest {
     public void testGetAnnotations() throws Exception {
         CucumberOptions[] option = this.getClass().getAnnotationsByType(CucumberOptions.class);
         ExtendedParallelCucumber cucumber = new ExtendedParallelCucumber(this.getClass());
-        Annotation[] results = cucumber.splitCucumberOption(option[0]);
-        for (Annotation result : results) {
+        CucumberOptions[] results = cucumber.splitCucumberOption(option[0]);
+        for (CucumberOptions result : results) {
             //System.out.println("" + result.features()[0]);
-            Assert.assertEquals(((ArrayMemberValue) result.getMemberValue("features")).getValue().length, 1);
+            Assert.assertEquals(result.features().length, 1);
         }
     }
     @Test
@@ -80,10 +80,10 @@ public class ExtendedParallelCucumberTest {
             = this.getClass().getAnnotationsByType(ExtendedCucumberOptions.class);
         ExtendedParallelCucumber cucumber = new ExtendedParallelCucumber(this.getClass());
         CucumberOptions[] option = this.getClass().getAnnotationsByType(CucumberOptions.class);
-        Annotation[] cucumberOptions = cucumber.splitCucumberOption(option[0]);
+        CucumberOptions[] cucumberOptions = cucumber.splitCucumberOption(option[0]);
 
         Assert.assertEquals(extendedOptions.length, 3);
-        Annotation[][] results = cucumber.splitExtendedCucumberOptions(
+        ExtendedCucumberOptions[][] results = cucumber.splitExtendedCucumberOptions(
                 extendedOptions, cucumberOptions.length);
         Assert.assertEquals(results.length, cucumberOptions.length);
     }
@@ -93,16 +93,11 @@ public class ExtendedParallelCucumberTest {
             = this.getClass().getAnnotationsByType(ExtendedCucumberOptions.class);
         ExtendedParallelCucumber cucumber = new ExtendedParallelCucumber(this.getClass());
         CucumberOptions[] option = this.getClass().getAnnotationsByType(CucumberOptions.class);
-        Annotation[] cucumberOptions = cucumber.splitCucumberOption(option[0]);
-        Annotation[][] results = cucumber.splitExtendedCucumberOptions(
+        CucumberOptions[] cucumberOptions = cucumber.splitCucumberOption(option[0]);
+        ExtendedCucumberOptions[][] results = cucumber.splitExtendedCucumberOptions(
                 extendedOptions, cucumberOptions.length);
-        Class<?>[] classes = cucumber.generateTestClasses(cucumberOptions, results);
+        ExtendedCucumber[] classes = cucumber.generateTestClasses(cucumberOptions, results);
         Assert.assertEquals(classes.length, cucumberOptions.length);
-        for (int i = 0; i < classes.length; i++) {
-            Assert.assertEquals(classes[i].getAnnotations().length, 4);
-            Assert.assertEquals(classes[i].getAnnotationsByType(ExtendedCucumberOptions.class).length, 1);
-            Assert.assertEquals(classes[i].getAnnotationsByType(CucumberOptions.class).length, 1);
-        }
     }
     @Test
     public void testConvertPaths() throws Exception {
@@ -115,17 +110,17 @@ public class ExtendedParallelCucumberTest {
         };
         ExtendedParallelCucumber cucumber = new ExtendedParallelCucumber(this.getClass());
         String[] output = cucumber.convertPluginPaths(input, 1);
-        Assert.assertEquals(output[0], "target/1/cucumber-html-report");
-        Assert.assertEquals(output[1], "target/1/cucumber-dry.json");
-        Assert.assertEquals(output[2], "target/1/cucumber-pretty-dry.txt");
-        Assert.assertEquals(output[3], "target/1/cucumber-usage-dry.json");
-        Assert.assertEquals(output[4], "target/1/cucumber-results-dry.xml");
+        Assert.assertEquals(output[0], "html:target/1/cucumber-html-report");
+        Assert.assertEquals(output[1], "json:target/1/cucumber-dry.json");
+        Assert.assertEquals(output[2], "pretty:target/1/cucumber-pretty-dry.txt");
+        Assert.assertEquals(output[3], "usage:target/1/cucumber-usage-dry.json");
+        Assert.assertEquals(output[4], "junit:target/1/cucumber-results-dry.xml");
         
         output = cucumber.convertPluginPaths(input, 3);
-        Assert.assertEquals(output[0], "target/3/cucumber-html-report");
-        Assert.assertEquals(output[1], "target/3/cucumber-dry.json");
-        Assert.assertEquals(output[2], "target/3/cucumber-pretty-dry.txt");
-        Assert.assertEquals(output[3], "target/3/cucumber-usage-dry.json");
-        Assert.assertEquals(output[4], "target/3/cucumber-results-dry.xml");
+        Assert.assertEquals(output[0], "html:target/3/cucumber-html-report");
+        Assert.assertEquals(output[1], "json:target/3/cucumber-dry.json");
+        Assert.assertEquals(output[2], "pretty:target/3/cucumber-pretty-dry.txt");
+        Assert.assertEquals(output[3], "usage:target/3/cucumber-usage-dry.json");
+        Assert.assertEquals(output[4], "junit:target/3/cucumber-results-dry.xml");
     }
 }

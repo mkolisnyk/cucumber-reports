@@ -3,11 +3,11 @@ package com.github.mkolisnyk.cucumber.runner.parallel;
 import java.util.ArrayList;
 import java.util.List;
 
-public final class FeatureThreadPool {
-    private static FeatureThreadPool instance;
+public final class CucumberRunnerThreadPool {
+    private static CucumberRunnerThreadPool instance;
     private int maxCapacity = 1;
     private List<Thread> threadList;
-    private FeatureThreadPool() {
+    private CucumberRunnerThreadPool() {
         threadList = new ArrayList<Thread>();
     }
     public boolean push(Thread thread) {
@@ -23,7 +23,7 @@ public final class FeatureThreadPool {
         for (int i = 0; i < this.getThreadList().size(); i++) {
             if (!this.getThreadList().get(i).isAlive()) {
                 System.out.println("Removing thread from pool");
-                Thread thread = this.getThreadList().remove(i);
+                this.getThreadList().remove(i);
                 i--;
             }
         }
@@ -44,9 +44,9 @@ public final class FeatureThreadPool {
     public void setMaxCapacity(int maxCapacityValue) {
         this.maxCapacity = maxCapacityValue;
     }
-    public static FeatureThreadPool get() {
+    public static CucumberRunnerThreadPool get() {
         if (instance == null) {
-            instance = new FeatureThreadPool();
+            instance = new CucumberRunnerThreadPool();
         }
         return instance;
     }

@@ -1,15 +1,19 @@
 package com.github.mkolisnyk.cucumber.runner;
 
-import java.io.DataOutputStream;
 import java.io.File;
-import java.io.FileOutputStream;
 import java.lang.reflect.Method;
 
+import org.apache.commons.lang.ArrayUtils;
+import org.junit.runner.Description;
+import org.junit.runner.Runner;
+import org.junit.runner.notification.RunNotifier;
+
+import com.github.mkolisnyk.cucumber.runner.parallel.CucumberRunnerThread;
+import com.github.mkolisnyk.cucumber.runner.parallel.CucumberRunnerThreadPool;
+
+import cucumber.api.CucumberOptions;
+import cucumber.api.SnippetType;
 import javassist.ClassPool;
-import javassist.CtClass;
-import javassist.bytecode.AccessFlag;
-import javassist.bytecode.AnnotationsAttribute;
-import javassist.bytecode.ClassFile;
 import javassist.bytecode.ConstPool;
 import javassist.bytecode.annotation.Annotation;
 import javassist.bytecode.annotation.ArrayMemberValue;
@@ -19,24 +23,31 @@ import javassist.bytecode.annotation.IntegerMemberValue;
 import javassist.bytecode.annotation.MemberValue;
 import javassist.bytecode.annotation.StringMemberValue;
 
-import org.apache.commons.lang.ArrayUtils;
-import org.junit.runner.Description;
-import org.junit.runner.Runner;
-import org.junit.runner.notification.RunNotifier;
-
-import cucumber.api.CucumberOptions;
-import cucumber.api.SnippetType;
-
 public class ExtendedParallelCucumber extends Runner {
     private Class<?> clazz;
     private ExtendedCucumberOptions[] options;
     private CucumberOptions cucumberOption;
+    private int threadsCount = 1;
+    private ExtendedCucumber[] runners;
 
-    public ExtendedParallelCucumber(Class<?> clazzValue) {
+    public ExtendedParallelCucumber(Class<?> clazzValue) throws Exception {
         super();
         this.clazz = clazzValue;
         this.options = clazz.getAnnotationsByType(ExtendedCucumberOptions.class);
         this.cucumberOption = clazz.getAnnotation(CucumberOptions.class);
+        for (ExtendedCucumberOptions option : options) {
+            threadsCount = Math.max(threadsCount , option.threadsCount());
+        }
+        this.runners = buildRunners();
+    }
+    private ExtendedCucumber[] buildRunners() throws Exception {
+        CucumberOptions[] cucumberOptions = this.splitCucumberOption(this.cucumberOption);
+        ExtendedCucumberOptions[][] extendedOptions = this.splitExtendedCucumberOptions(this.options, cucumberOptions.length);
+        return generateTestClasses(cucumberOptions, extendedOptions);
+    }
+
+    public final ExtendedCucumber[] getRunners() {
+        return runners;
     }
     private String[] getFileNames(String rootFolder) throws Exception {
         String[] fileNames = {};
@@ -61,7 +72,6 @@ public class ExtendedParallelCucumber extends Runner {
     }
 
     public MemberValue getFieldMemberValue(Object object, Method field) throws Exception {
-        System.out.println("Field: " + field.getName() + "; Type: " + field.getReturnType().getCanonicalName());
         ConstPool cp = new ConstPool(this.getClass().getCanonicalName());
         if (field.getReturnType().isArray()) {
             if (field.getReturnType().getComponentType().equals(String.class)) {
@@ -95,12 +105,13 @@ public class ExtendedParallelCucumber extends Runner {
             File path = new File(original[i].replaceFirst("^(usage|junit|json|html|pretty):", ""));
             String name = path.getName();
             String location = path.getParent();
-            result[i] = location + File.separator + index + File.separator + name;
+            result[i] = location + "/" + index + "/" + name;
+            result[i] = original[i].replaceFirst("^(usage|junit|json|html|pretty):(.*)$", "$1:" + result[i]);
         }
         return result;
     }
-    public Annotation[] splitCucumberOption(CucumberOptions option) throws Exception {
-        Annotation[] result = {};
+    public CucumberOptions[] splitCucumberOption(CucumberOptions option) throws Exception {
+        CucumberOptions[] result = {};
         String[] featurePaths = option.features();
         String[] featureFiles = new String[] {};
         for (String featurePath : featurePaths) {
@@ -115,10 +126,8 @@ public class ExtendedParallelCucumber extends Runner {
         for (String file : featureFiles) {
             ConstPool cp = new ConstPool(ExtendedParallelCucumber.class.getCanonicalName());
             Annotation anno = new Annotation(CucumberOptions.class.getCanonicalName(), cp);
-            System.out.println("Processing fields");
             int index = 0;
             for (Method field : CucumberOptions.class.getDeclaredMethods()) {
-                System.out.println("Processing field: " + field.getName());
                 String name = field.getName();
                 if (name.equals("features")) {
                     ArrayMemberValue array = new ArrayMemberValue(new StringMemberValue(cp), cp);
@@ -135,6 +144,7 @@ public class ExtendedParallelCucumber extends Runner {
                     anno.addMemberValue(name, array);
                 } else if (name.equals("snippets")) {
                     EnumMemberValue value = new EnumMemberValue(cp);
+                    value.setType(SnippetType.class.getCanonicalName());
                     value.setValue(SnippetType.UNDERSCORE.name());
                     anno.addMemberValue(name, value);
                 } else {
@@ -145,22 +155,21 @@ public class ExtendedParallelCucumber extends Runner {
                 }
                 index++;
             }
-            //CucumberOptions newOption = (CucumberOptions) anno.toAnnotationType(
-            //        this.getClass().getClassLoader(), ClassPool.getDefault());
-            result = (Annotation[]) ArrayUtils.add(result, anno);
+            CucumberOptions newOption = (CucumberOptions) anno.toAnnotationType(
+                    this.getClass().getClassLoader(), ClassPool.getDefault());
+            result = (CucumberOptions[]) ArrayUtils.add(result, newOption);
         }
         return result;
     }
-    public Annotation[][] splitExtendedCucumberOptions(
+    public ExtendedCucumberOptions[][] splitExtendedCucumberOptions(
             ExtendedCucumberOptions[] extendedOptions,
             int suitesCount) throws Exception {
-        Annotation[][] result = new Annotation[suitesCount][extendedOptions.length];
+        ExtendedCucumberOptions[][] result = new ExtendedCucumberOptions[suitesCount][extendedOptions.length];
         for (int i = 0; i < suitesCount; i++) {
             ConstPool cp = new ConstPool(ExtendedParallelCucumber.class.getCanonicalName());
             for (int j = 0; j < extendedOptions.length; j++) {
                 Annotation anno = new Annotation(ExtendedCucumberOptions.class.getCanonicalName(), cp);
                 for (Method field : ExtendedCucumberOptions.class.getDeclaredMethods()) {
-                    System.out.println("Processing field: " + field.getName());
                     String name = field.getName();
                     if (name.equals("outputFolder")) {
                         anno.addMemberValue(name,
@@ -186,53 +195,39 @@ public class ExtendedParallelCucumber extends Runner {
                         }
                     }
                 }
-                //result[i][j] = (ExtendedCucumberOptions) anno.toAnnotationType(
-                //        this.getClass().getClassLoader(), ClassPool.getDefault());
-                result[i][j] = anno;
+                result[i][j] = (ExtendedCucumberOptions) anno.toAnnotationType(
+                        this.getClass().getClassLoader(), ClassPool.getDefault());
+                //result[i][j] = anno;
             }
 
         }
         return result;
     }
-    public Class<?>[] generateTestClasses(Annotation[] cucumberOptions,
-            Annotation[][] extendedOptions) throws Exception {
-        Class<?>[] classes = new Class<?>[cucumberOptions.length];
+    public ExtendedCucumber[] generateTestClasses(CucumberOptions[] cucumberOptions,
+            ExtendedCucumberOptions[][] extendedOptions) throws Exception {
+        ExtendedCucumber[] classes = new ExtendedCucumber[cucumberOptions.length];
         for (int i = 0; i < cucumberOptions.length; i++) {
-            String className = this.clazz.getCanonicalName() + i;
-            ClassFile cf = new ClassFile(false, className, null);
-            ClassPool pool = ClassPool.getDefault();
-            ConstPool cp = new ConstPool(className);
-            cf.setAccessFlags(AccessFlag.PUBLIC);
-            cf.setMajorVersion(ClassFile.JAVA_8);
-            AnnotationsAttribute attr = new AnnotationsAttribute(cp, AnnotationsAttribute.visibleTag);
-            //attr.addAnnotation(cucumberOptions[i]);
-            Annotation annoWebService = new Annotation(cp, pool.get(ExtendedCucumberOptions.class.getCanonicalName()));
-            //for (int j = 0; j < extendedOptions[i].length; j++) {
-            //    System.out.println("Adding: " + i + "-" + j + ": " + extendedOptions[i][j].toString());
-            //    attr.addAnnotation(extendedOptions[i][j]);
-            //}
-            System.out.println(annoWebService.getMemberNames());
-            for (Object member : annoWebService.getMemberNames()) {
-                annoWebService.addMemberValue((String) member, extendedOptions[i][0].getMemberValue((String) member));
-            }
-            attr.setAnnotation(annoWebService);
-            cf.addAttribute(attr);
-            cf.write(new DataOutputStream(new FileOutputStream(className + ".class")));
-            CtClass newClass = pool.makeClass(cf);
-            //Object[] objs = newClass.getAvailableAnnotations();
-            classes[i] = newClass.toClass();
-            
+            classes[i] = new ExtendedCucumber(this.clazz, cucumberOptions[i], extendedOptions[i]);
         }
         return classes;
     }
     @Override
     public Description getDescription() {
-        // TODO Auto-generated method stub
         return null;
     }
 
     @Override
     public void run(RunNotifier notifier) {
+        CucumberRunnerThreadPool.setCapacity(this.threadsCount);
+        try {
+            for (ExtendedCucumber runner : this.getRunners()) {
+                Thread thread = new Thread(new CucumberRunnerThread(runner, notifier));
+                CucumberRunnerThreadPool.get().push(thread);
+            }
+            CucumberRunnerThreadPool.get().waitEmpty();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
 }

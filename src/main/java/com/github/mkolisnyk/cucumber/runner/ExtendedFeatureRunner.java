@@ -10,8 +10,8 @@ import org.junit.runner.notification.RunNotifier;
 import org.junit.runners.ParentRunner;
 import org.junit.runners.model.InitializationError;
 
-import com.github.mkolisnyk.cucumber.runner.parallel.FeatureRunnerThread;
-import com.github.mkolisnyk.cucumber.runner.parallel.FeatureThreadPool;
+import com.github.mkolisnyk.cucumber.runner.parallel.CucumberRunnerThread;
+import com.github.mkolisnyk.cucumber.runner.parallel.CucumberRunnerThreadPool;
 
 import cucumber.runtime.CucumberException;
 import cucumber.runtime.Runtime;

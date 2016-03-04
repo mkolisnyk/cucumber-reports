@@ -13,10 +13,10 @@ public @interface ExtendedCucumberOptions {
     int retryCount() default 0;
 
     String jsonReport() default "";
-    String[] jsonReports() default {};
+    String[] jsonReports() default { };
 
     String jsonUsageReport() default "";
-    String[] jsonUsageReports() default {};
+    String[] jsonUsageReports() default { };
 
     String outputFolder() default ".";
 

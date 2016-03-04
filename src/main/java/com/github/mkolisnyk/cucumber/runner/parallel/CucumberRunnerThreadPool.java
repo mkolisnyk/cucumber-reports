@@ -4,13 +4,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 public final class CucumberRunnerThreadPool {
+    private static final int MILLS_PER_SECOND = 1000;
     private static CucumberRunnerThreadPool instance;
     private int maxCapacity = 1;
     private List<Thread> threadList;
     private CucumberRunnerThreadPool() {
         threadList = new ArrayList<Thread>();
     }
-    public boolean push(Thread thread) {
+    public boolean push(Thread thread) throws Exception {
         waitAvailable();
         thread.start();
         this.getThreadList().add(thread);
@@ -22,18 +23,21 @@ public final class CucumberRunnerThreadPool {
     public boolean isAvailable() {
         for (int i = 0; i < this.getThreadList().size(); i++) {
             if (!this.getThreadList().get(i).isAlive()) {
-                System.out.println("Removing thread from pool");
                 this.getThreadList().remove(i);
                 i--;
             }
         }
         return this.getThreadList().size() < this.getMaxCapacity();
     }
-    public void waitAvailable() {
-        while (!this.isAvailable()) {}
+    public void waitAvailable() throws InterruptedException {
+        while (!this.isAvailable()) {
+            Thread.sleep(MILLS_PER_SECOND);
+        }
     }
-    public void waitEmpty() {
-        while (!this.isEmpty()) {}
+    public void waitEmpty() throws InterruptedException {
+        while (!this.isEmpty()) {
+            Thread.sleep(MILLS_PER_SECOND);
+        }
     }
     public List<Thread> getThreadList() {
         return threadList;

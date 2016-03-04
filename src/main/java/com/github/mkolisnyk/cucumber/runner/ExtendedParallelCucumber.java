@@ -5,6 +5,16 @@ import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.List;
 
+import javassist.ClassPool;
+import javassist.bytecode.ConstPool;
+import javassist.bytecode.annotation.Annotation;
+import javassist.bytecode.annotation.ArrayMemberValue;
+import javassist.bytecode.annotation.BooleanMemberValue;
+import javassist.bytecode.annotation.EnumMemberValue;
+import javassist.bytecode.annotation.IntegerMemberValue;
+import javassist.bytecode.annotation.MemberValue;
+import javassist.bytecode.annotation.StringMemberValue;
+
 import org.apache.commons.lang.ArrayUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.junit.runner.Description;
@@ -18,15 +28,6 @@ import com.github.mkolisnyk.cucumber.runner.runtime.ExtendedRuntimeOptions;
 
 import cucumber.api.CucumberOptions;
 import cucumber.api.SnippetType;
-import javassist.ClassPool;
-import javassist.bytecode.ConstPool;
-import javassist.bytecode.annotation.Annotation;
-import javassist.bytecode.annotation.ArrayMemberValue;
-import javassist.bytecode.annotation.BooleanMemberValue;
-import javassist.bytecode.annotation.EnumMemberValue;
-import javassist.bytecode.annotation.IntegerMemberValue;
-import javassist.bytecode.annotation.MemberValue;
-import javassist.bytecode.annotation.StringMemberValue;
 
 public class ExtendedParallelCucumber extends ParentRunner<Runner> {
     private Class<?> clazz;
@@ -76,23 +77,25 @@ public class ExtendedParallelCucumber extends ParentRunner<Runner> {
         }
         return result;
     }
-
+    private MemberValue getArrayMemberValue(Object object, Method field, ConstPool cp) throws Exception {
+        if (field.getReturnType().getComponentType().equals(String.class)) {
+            ArrayMemberValue array = new ArrayMemberValue(new StringMemberValue(cp), cp);
+            String[] annoValues = (String[]) field.invoke(object);
+            StringMemberValue[] values = new StringMemberValue[annoValues.length];
+            for (int i = 0; i < annoValues.length; i++) {
+                values[i] = new StringMemberValue(annoValues[i], cp);
+            }
+            array.setValue(values);
+            return array;
+        } else {
+            ArrayMemberValue array = new ArrayMemberValue(new StringMemberValue(cp), cp);
+            return array;
+        }
+    }
     public MemberValue getFieldMemberValue(Object object, Method field) throws Exception {
         ConstPool cp = new ConstPool(this.getClass().getCanonicalName());
         if (field.getReturnType().isArray()) {
-            if (field.getReturnType().getComponentType().equals(String.class)) {
-                ArrayMemberValue array = new ArrayMemberValue(new StringMemberValue(cp), cp);
-                String[] annoValues = (String[]) field.invoke(object);
-                StringMemberValue[] values = new StringMemberValue[annoValues.length];
-                for (int i = 0; i < annoValues.length; i++) {
-                    values[i] = new StringMemberValue(annoValues[i], cp);
-                }
-                array.setValue(values);
-                return array;
-            } else {
-                ArrayMemberValue array = new ArrayMemberValue(new StringMemberValue(cp), cp);
-                return array;
-            }
+            return getArrayMemberValue(object, field, cp);
         }
         if (field.getReturnType().equals(boolean.class)) {
             return new BooleanMemberValue((Boolean) field.invoke(object), cp);
@@ -169,6 +172,38 @@ public class ExtendedParallelCucumber extends ParentRunner<Runner> {
         }
         return result;
     }
+    private ExtendedCucumberOptions generateExtendedOption(
+            ExtendedCucumberOptions extendedOption, ConstPool cp, int i, int j)  throws Exception {
+        Annotation anno = new Annotation(ExtendedCucumberOptions.class.getCanonicalName(), cp);
+        for (Method field : ExtendedCucumberOptions.class.getDeclaredMethods()) {
+            String name = field.getName();
+            if (name.equals("outputFolder")) {
+                anno.addMemberValue(name,
+                    new StringMemberValue(extendedOption.outputFolder() + "/" + i + "_" + j, cp));
+            } else if (name.equals("jsonReport") || name.equals("jsonUsageReport")) {
+                String newName = this.convertPluginPaths(
+                    new String[] {(String) field.invoke(extendedOption)}, i)[0];
+                anno.addMemberValue(name,
+                        new StringMemberValue(newName, cp));
+            } else if (name.equals("jsonReports") || name.equals("jsonUsageReports")) {
+                String[] reports = convertPluginPaths((String[]) field.invoke(extendedOption), i);
+                ArrayMemberValue array = new ArrayMemberValue(new StringMemberValue(cp), cp);
+                StringMemberValue[] values = new StringMemberValue[reports.length];
+                for (int k = 0; k < reports.length; k++) {
+                    values[k] = new StringMemberValue(reports[k], cp);
+                }
+                array.setValue(values);
+                anno.addMemberValue(name, array);
+            } else {
+                MemberValue value = getFieldMemberValue(extendedOption, field);
+                if (value != null) {
+                    anno.addMemberValue(name, getFieldMemberValue(extendedOption, field));
+                }
+            }
+        }
+        return (ExtendedCucumberOptions) anno.toAnnotationType(
+                this.getClass().getClassLoader(), ClassPool.getDefault());
+    }
     public ExtendedCucumberOptions[][] splitExtendedCucumberOptions(
             ExtendedCucumberOptions[] extendedOptions,
             int suitesCount) throws Exception {
@@ -176,35 +211,7 @@ public class ExtendedParallelCucumber extends ParentRunner<Runner> {
         for (int i = 0; i < suitesCount; i++) {
             ConstPool cp = new ConstPool(ExtendedParallelCucumber.class.getCanonicalName());
             for (int j = 0; j < extendedOptions.length; j++) {
-                Annotation anno = new Annotation(ExtendedCucumberOptions.class.getCanonicalName(), cp);
-                for (Method field : ExtendedCucumberOptions.class.getDeclaredMethods()) {
-                    String name = field.getName();
-                    if (name.equals("outputFolder")) {
-                        anno.addMemberValue(name,
-                            new StringMemberValue(extendedOptions[j].outputFolder() + "/" + i + "_" + j, cp));
-                    } else if (name.equals("jsonReport") || name.equals("jsonUsageReport")) {
-                        String newName = this.convertPluginPaths(
-                            new String[] {(String) field.invoke(extendedOptions[j])}, i)[0];
-                        anno.addMemberValue(name,
-                                new StringMemberValue(newName, cp));
-                    } else if (name.equals("jsonReports") || name.equals("jsonUsageReports")) {
-                        String[] reports = convertPluginPaths((String[]) field.invoke(extendedOptions[j]), i);
-                        ArrayMemberValue array = new ArrayMemberValue(new StringMemberValue(cp), cp);
-                        StringMemberValue[] values = new StringMemberValue[reports.length];
-                        for (int k = 0; k < reports.length; k++) {
-                            values[k] = new StringMemberValue(reports[k], cp);
-                        }
-                        array.setValue(values);
-                        anno.addMemberValue(name, array);
-                    } else {
-                        MemberValue value = getFieldMemberValue(extendedOptions[j], field);
-                        if (value != null) {
-                            anno.addMemberValue(name, getFieldMemberValue(extendedOptions[j], field));
-                        }
-                    }
-                }
-                result[i][j] = (ExtendedCucumberOptions) anno.toAnnotationType(
-                        this.getClass().getClassLoader(), ClassPool.getDefault());
+                result[i][j] = generateExtendedOption(extendedOptions[j], cp, i, j);
             }
 
         }
@@ -267,7 +274,11 @@ public class ExtendedParallelCucumber extends ParentRunner<Runner> {
     public void run(RunNotifier notifier) {
         CucumberRunnerThreadPool.setCapacity(this.threadsCount);
         super.run(notifier);
-        CucumberRunnerThreadPool.get().waitEmpty();
+        try {
+            CucumberRunnerThreadPool.get().waitEmpty();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         runReports();
     }
     @Override
@@ -287,7 +298,11 @@ public class ExtendedParallelCucumber extends ParentRunner<Runner> {
             return;
         }
         Thread thread = new Thread(new CucumberRunnerThread(cucumber, notifier));
-        CucumberRunnerThreadPool.get().push(thread);
+        try {
+            CucumberRunnerThreadPool.get().push(thread);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
     @Override
     protected List<Runner> getChildren() {

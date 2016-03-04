@@ -7,7 +7,6 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
-import java.lang.reflect.Array;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Locale;
@@ -86,8 +85,8 @@ public abstract class CucumberResultsCommon {
         return sourceFiles;
     }
 
-    public void setSourceFiles(String[] sourceFiles) {
-        this.sourceFiles = sourceFiles;
+    public void setSourceFiles(String[] sourceFilesValue) {
+        this.sourceFiles = sourceFilesValue;
     }
 
     public String getPdfPageSize() {

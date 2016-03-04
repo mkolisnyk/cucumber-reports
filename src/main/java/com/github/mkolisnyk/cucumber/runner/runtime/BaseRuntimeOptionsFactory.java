@@ -16,8 +16,8 @@ public class BaseRuntimeOptionsFactory {
     private boolean glueSpecified = false;
     private boolean pluginSpecified = false;
 
-    public BaseRuntimeOptionsFactory(Class clazz) {
-        this.clazz = clazz;
+    public BaseRuntimeOptionsFactory(Class clazzValue) {
+        this.clazz = clazzValue;
     }
 
     public RuntimeOptions create() {
@@ -31,7 +31,9 @@ public class BaseRuntimeOptionsFactory {
     private List<String> buildArgsFromOptions() {
         List<String> args = new ArrayList<String>();
 
-        for (Class classWithOptions = clazz; hasSuperClass(classWithOptions); classWithOptions = classWithOptions.getSuperclass()) {
+        for (Class classWithOptions = clazz;
+                hasSuperClass(classWithOptions);
+                classWithOptions = classWithOptions.getSuperclass()) {
             CucumberOptions options = getOptions(classWithOptions);
             if (options != null) {
                 addDryRun(options, args);
@@ -124,9 +126,9 @@ public class BaseRuntimeOptionsFactory {
         }
     }
 
-    private void addDefaultFeaturePathIfNoFeaturePathIsSpecified(List<String> args, Class clazz) {
+    private void addDefaultFeaturePathIfNoFeaturePathIsSpecified(List<String> args, Class clazzValue) {
         if (!featuresSpecified) {
-            args.add(MultiLoader.CLASSPATH_SCHEME + packagePath(clazz));
+            args.add(MultiLoader.CLASSPATH_SCHEME + packagePath(clazzValue));
         }
     }
 
@@ -138,10 +140,10 @@ public class BaseRuntimeOptionsFactory {
         }
     }
 
-    private void addDefaultGlueIfNoGlueIsSpecified(List<String> args, Class clazz) {
+    private void addDefaultGlueIfNoGlueIsSpecified(List<String> args, Class clazzValue) {
         if (!glueSpecified) {
             args.add("--glue");
-            args.add(MultiLoader.CLASSPATH_SCHEME + packagePath(clazz));
+            args.add(MultiLoader.CLASSPATH_SCHEME + packagePath(clazzValue));
         }
     }
 
@@ -166,7 +168,6 @@ public class BaseRuntimeOptionsFactory {
 
     private boolean runningInEnvironmentWithoutAnsiSupport() {
         boolean intelliJidea = System.getProperty("idea.launcher.bin.path") != null;
-        // TODO: What does Eclipse use?
         return intelliJidea;
     }
 
@@ -174,7 +175,7 @@ public class BaseRuntimeOptionsFactory {
         return classWithOptions != Object.class;
     }
 
-    private CucumberOptions getOptions(Class<?> clazz) {
-        return clazz.getAnnotation(CucumberOptions.class);
+    private CucumberOptions getOptions(Class<?> clazzValue) {
+        return clazzValue.getAnnotation(CucumberOptions.class);
     }
 }

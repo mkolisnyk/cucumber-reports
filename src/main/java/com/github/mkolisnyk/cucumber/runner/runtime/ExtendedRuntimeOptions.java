@@ -1,6 +1,9 @@
-package com.github.mkolisnyk.cucumber.runner;
+package com.github.mkolisnyk.cucumber.runner.runtime;
 
 import org.apache.commons.lang3.ArrayUtils;
+import org.apache.commons.lang3.StringUtils;
+
+import com.github.mkolisnyk.cucumber.runner.ExtendedCucumberOptions;
 
 public class ExtendedRuntimeOptions {
 
@@ -9,14 +12,14 @@ public class ExtendedRuntimeOptions {
     private boolean isDetailedReport = false;
     private boolean isDetailedAggregatedReport = false;
     private boolean isCoverageReport = false;
-    private String jsonReportPath;
+    private String[] jsonReportPaths;
     private String outputFolder;
     private String reportPrefix;
     private int retryCount = 0;
     private String screenShotSize = "";
     private boolean toPDF = false;
     private String pdfPageSize = "auto";
-    private String jsonUsageReportPath;
+    private String[] jsonUsageReportPaths;
     private String screenShotLocation = "";
     private String[] includeCoverageTags = {};
     private String[] excludeCoverageTags = {};
@@ -29,7 +32,18 @@ public class ExtendedRuntimeOptions {
     private String knownErrorsConfig = "";
     private boolean consolidatedReport = false;
     private String consolidatedReportConfig = "";
+    private int threadsCount;
 
+    private String[] joinPaths(String singlePath, String[] arrayPath) {
+        String[] result = {};
+        if (StringUtils.isNotBlank(singlePath)) {
+            result = ArrayUtils.add(result, singlePath);
+        }
+        if (arrayPath != null && arrayPath.length > 0) {
+            result = ArrayUtils.addAll(result, arrayPath);
+        }
+        return result;
+    }
     public ExtendedRuntimeOptions(ExtendedCucumberOptions options) {
         if (options != null) {
             this.isOverviewReport = options.overviewReport();
@@ -38,14 +52,14 @@ public class ExtendedRuntimeOptions {
             this.isDetailedAggregatedReport = options
                     .detailedAggregatedReport();
             this.isCoverageReport = options.coverageReport();
-            this.jsonReportPath = options.jsonReport();
+            this.jsonReportPaths = joinPaths(options.jsonReport(), options.jsonReports());
             this.outputFolder = options.outputFolder();
             this.reportPrefix = options.reportPrefix();
             this.retryCount = options.retryCount();
             this.screenShotSize = options.screenShotSize();
             this.toPDF = options.toPDF();
             this.pdfPageSize = options.pdfPageSize();
-            this.jsonUsageReportPath = options.jsonUsageReport();
+            this.jsonUsageReportPaths = joinPaths(options.jsonUsageReport(), options.jsonUsageReports());
             this.screenShotLocation = options.screenShotLocation();
             this.includeCoverageTags = options.includeCoverageTags();
             this.excludeCoverageTags = options.excludeCoverageTags();
@@ -58,6 +72,7 @@ public class ExtendedRuntimeOptions {
             this.knownErrorsConfig = options.knownErrorsConfig();
             this.consolidatedReport = options.consolidatedReport();
             this.consolidatedReportConfig = options.consolidatedReportConfig();
+            this.threadsCount = options.threadsCount();
         }
     }
 
@@ -81,10 +96,12 @@ public class ExtendedRuntimeOptions {
         return isCoverageReport;
     }
 
-    public final String getJsonReportPath() {
-        return jsonReportPath;
+    public final String[] getJsonReportPaths() {
+        return jsonReportPaths;
     }
-
+    public final void setJsonReportPaths(String[] newPaths) {
+        this.jsonReportPaths = newPaths;
+    }
     public final String getOutputFolder() {
         return outputFolder;
     }
@@ -109,10 +126,12 @@ public class ExtendedRuntimeOptions {
         return pdfPageSize;
     }
 
-    public final String getJsonUsageReportPath() {
-        return jsonUsageReportPath;
+    public final String[] getJsonUsageReportPaths() {
+        return jsonUsageReportPaths;
     }
-
+    public final void setJsonUsageReportPaths(String[] newPaths) {
+        this.jsonUsageReportPaths = newPaths;
+    }
     public final String getScreenShotLocation() {
         return screenShotLocation;
     }
@@ -168,8 +187,19 @@ public class ExtendedRuntimeOptions {
     public String getConsolidatedReportConfig() {
         return consolidatedReportConfig;
     }
+    public int getThreadsCount() {
+        return threadsCount;
+    }
+
     public static ExtendedRuntimeOptions[] init(Class<?> clazz) {
         ExtendedCucumberOptions[] options = clazz.getAnnotationsByType(ExtendedCucumberOptions.class);
+        ExtendedRuntimeOptions[] result = {};
+        for (ExtendedCucumberOptions option : options) {
+            result = ArrayUtils.add(result, new ExtendedRuntimeOptions(option));
+        }
+        return result;
+    }
+    public static ExtendedRuntimeOptions[] init(ExtendedCucumberOptions[] options) {
         ExtendedRuntimeOptions[] result = {};
         for (ExtendedCucumberOptions option : options) {
             result = ArrayUtils.add(result, new ExtendedRuntimeOptions(option));

@@ -11,6 +11,10 @@ import org.junit.runner.notification.RunNotifier;
 import org.junit.runners.ParentRunner;
 import org.junit.runners.model.InitializationError;
 
+import com.github.mkolisnyk.cucumber.runner.runtime.BaseRuntimeOptionsFactory;
+import com.github.mkolisnyk.cucumber.runner.runtime.ExtendedRuntimeOptions;
+
+import cucumber.api.CucumberOptions;
 import cucumber.runtime.ClassFinder;
 import cucumber.runtime.Runtime;
 import cucumber.runtime.RuntimeOptions;
@@ -29,6 +33,7 @@ public class ExtendedCucumber extends ParentRunner<ExtendedFeatureRunner> {
     private final ExtendedRuntimeOptions[] extendedOptions;
     private Class clazzValue;
     private int retryCount = 0;
+    private int threadsCount = 1;
 
     public ExtendedCucumber(Class clazz) throws InitializationError, IOException {
         super(clazz);
@@ -44,6 +49,7 @@ public class ExtendedCucumber extends ParentRunner<ExtendedFeatureRunner> {
         extendedOptions = ExtendedRuntimeOptions.init(clazz);
         for (ExtendedRuntimeOptions option : extendedOptions) {
             retryCount = Math.max(retryCount, option.getRetryCount());
+            threadsCount = Math.max(threadsCount, option.getThreadsCount());
         }
 
         final List<CucumberFeature> cucumberFeatures = runtimeOptions.cucumberFeatures(resourceLoader);
@@ -53,7 +59,32 @@ public class ExtendedCucumber extends ParentRunner<ExtendedFeatureRunner> {
                 runtimeOptions.isStrict());
         addChildren(cucumberFeatures);
     }
+    public ExtendedCucumber(
+            Class clazz, CucumberOptions baseOptions,
+            ExtendedCucumberOptions[] extendedOptionsValue) throws Exception {
+        super(clazz);
+        this.clazzValue = clazz;
+        ClassLoader classLoader = clazz.getClassLoader();
+        Assertions.assertNoCucumberAnnotatedMethods(clazz);
+        BaseRuntimeOptionsFactory runtimeOptionsFactory = new BaseRuntimeOptionsFactory(clazz);
+        RuntimeOptions runtimeOptions = runtimeOptionsFactory.create(baseOptions);
 
+        ResourceLoader resourceLoader = new MultiLoader(classLoader);
+        runtime = createRuntime(resourceLoader, classLoader, runtimeOptions);
+
+        extendedOptions = ExtendedRuntimeOptions.init(extendedOptionsValue);
+        for (ExtendedRuntimeOptions option : extendedOptions) {
+            retryCount = Math.max(retryCount, option.getRetryCount());
+            threadsCount = Math.max(threadsCount, option.getThreadsCount());
+        }
+
+        final List<CucumberFeature> cucumberFeatures = runtimeOptions.cucumberFeatures(resourceLoader);
+        jUnitReporter = new JUnitReporter(
+                runtimeOptions.reporter(classLoader),
+                runtimeOptions.formatter(classLoader),
+                runtimeOptions.isStrict());
+        addChildren(cucumberFeatures);
+    }
     protected Runtime createRuntime(ResourceLoader resourceLoader, ClassLoader classLoader,
                                     RuntimeOptions runtimeOptions) throws InitializationError, IOException {
         ClassFinder classFinder = new ResourceLoaderClassFinder(resourceLoader, classLoader);

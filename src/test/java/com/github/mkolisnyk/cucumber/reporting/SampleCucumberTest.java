@@ -1,5 +1,6 @@
 package com.github.mkolisnyk.cucumber.reporting;
 
+import org.junit.Ignore;
 import org.junit.runner.RunWith;
 
 import com.github.mkolisnyk.cucumber.runner.ExtendedCucumber;
@@ -7,6 +8,7 @@ import com.github.mkolisnyk.cucumber.runner.ExtendedCucumberOptions;
 
 import cucumber.api.CucumberOptions;
 
+@Ignore
 @RunWith(ExtendedCucumber.class)
 @ExtendedCucumberOptions(jsonReport = "target/cucumber-u.json",
         retryCount = 0,
@@ -27,6 +29,7 @@ import cucumber.api.CucumberOptions;
         outputFolder = "target")
 @ExtendedCucumberOptions(jsonReport = "target/cucumber.json",
         retryCount = 3,
+        threadsCount = 3,
         featureOverviewChart = true,
         detailedReport = true,
         detailedAggregatedReport = true,

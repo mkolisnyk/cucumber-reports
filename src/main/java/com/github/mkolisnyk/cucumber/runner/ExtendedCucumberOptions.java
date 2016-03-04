@@ -12,9 +12,11 @@ import java.lang.annotation.Target;
 public @interface ExtendedCucumberOptions {
     int retryCount() default 0;
 
-    String jsonReport();
+    String jsonReport() default "";
+    String[] jsonReports() default { };
 
-    String jsonUsageReport() default "cucumber-usage.json";
+    String jsonUsageReport() default "";
+    String[] jsonUsageReports() default { };
 
     String outputFolder() default ".";
 
@@ -53,4 +55,6 @@ public @interface ExtendedCucumberOptions {
 
     boolean consolidatedReport() default false;
     String consolidatedReportConfig() default "";
+
+    int threadsCount() default 1;
 }

@@ -11,6 +11,7 @@ import com.github.mkolisnyk.cucumber.reporting.CucumberFeatureOverview;
 import com.github.mkolisnyk.cucumber.reporting.CucumberKnownErrorsReport;
 import com.github.mkolisnyk.cucumber.reporting.CucumberResultsOverview;
 import com.github.mkolisnyk.cucumber.reporting.CucumberUsageReporting;
+import com.github.mkolisnyk.cucumber.runner.runtime.ExtendedRuntimeOptions;
 
 public final class ReportRunner {
 
@@ -22,7 +23,7 @@ public final class ReportRunner {
         }
         CucumberUsageReporting report = new CucumberUsageReporting();
         report.setOutputDirectory(extendedOptions.getOutputFolder());
-        report.setJsonUsageFile(extendedOptions.getJsonUsageReportPath());
+        report.setJsonUsageFiles(extendedOptions.getJsonUsageReportPaths());
         try {
             report.executeReport();
         } catch (Exception e) {
@@ -37,7 +38,7 @@ public final class ReportRunner {
         CucumberResultsOverview results = new CucumberResultsOverview();
         results.setOutputDirectory(extendedOptions.getOutputFolder());
         results.setOutputName(extendedOptions.getReportPrefix());
-        results.setSourceFile(extendedOptions.getJsonReportPath());
+        results.setSourceFiles(extendedOptions.getJsonReportPaths());
         results.setPdfPageSize(extendedOptions.getPdfPageSize());
         try {
             results.executeFeaturesOverviewReport(extendedOptions.isToPDF());
@@ -53,7 +54,7 @@ public final class ReportRunner {
         CucumberFeatureOverview results = new CucumberFeatureOverview();
         results.setOutputDirectory(extendedOptions.getOutputFolder());
         results.setOutputName(extendedOptions.getReportPrefix());
-        results.setSourceFile(extendedOptions.getJsonReportPath());
+        results.setSourceFiles(extendedOptions.getJsonReportPaths());
         results.setPdfPageSize(extendedOptions.getPdfPageSize());
         try {
             results.executeFeatureOverviewChartReport(extendedOptions.isToPDF());
@@ -69,7 +70,7 @@ public final class ReportRunner {
         CucumberDetailedResults results = new CucumberDetailedResults();
         results.setOutputDirectory(extendedOptions.getOutputFolder());
         results.setOutputName(extendedOptions.getReportPrefix());
-        results.setSourceFile(extendedOptions.getJsonReportPath());
+        results.setSourceFiles(extendedOptions.getJsonReportPaths());
         results.setScreenShotLocation(extendedOptions.getScreenShotLocation());
         results.setScreenShotWidth(extendedOptions.getScreenShotSize());
         results.setPdfPageSize(extendedOptions.getPdfPageSize());
@@ -87,7 +88,7 @@ public final class ReportRunner {
         CucumberDetailedResults results = new CucumberDetailedResults();
         results.setOutputDirectory(extendedOptions.getOutputFolder());
         results.setOutputName(extendedOptions.getReportPrefix());
-        results.setSourceFile(extendedOptions.getJsonReportPath());
+        results.setSourceFiles(extendedOptions.getJsonReportPaths());
         results.setScreenShotLocation(extendedOptions.getScreenShotLocation());
         results.setScreenShotWidth(extendedOptions.getScreenShotSize());
         results.setPdfPageSize(extendedOptions.getPdfPageSize());
@@ -105,7 +106,7 @@ public final class ReportRunner {
         CucumberCoverageOverview results = new CucumberCoverageOverview();
         results.setOutputDirectory(extendedOptions.getOutputFolder());
         results.setOutputName(extendedOptions.getReportPrefix());
-        results.setSourceFile(extendedOptions.getJsonReportPath());
+        results.setSourceFiles(extendedOptions.getJsonReportPaths());
         results.setExcludeCoverageTags(extendedOptions.getExcludeCoverageTags());
         results.setIncludeCoverageTags(extendedOptions.getIncludeCoverageTags());
         results.setPdfPageSize(extendedOptions.getPdfPageSize());
@@ -122,7 +123,7 @@ public final class ReportRunner {
         CucumberBreakdownReport report = new CucumberBreakdownReport();
         report.setOutputDirectory(extendedOptions.getOutputFolder());
         report.setOutputName(extendedOptions.getReportPrefix());
-        report.setSourceFile(extendedOptions.getJsonReportPath());
+        report.setSourceFiles(extendedOptions.getJsonReportPaths());
         report.setPdfPageSize(extendedOptions.getPdfPageSize());
         try {
             report.executeReport(new File(extendedOptions.getBreakdownConfig()), extendedOptions.isToPDF());
@@ -137,7 +138,7 @@ public final class ReportRunner {
         CucumberFeatureMapReport report = new CucumberFeatureMapReport();
         report.setOutputDirectory(extendedOptions.getOutputFolder());
         report.setOutputName(extendedOptions.getReportPrefix());
-        report.setSourceFile(extendedOptions.getJsonReportPath());
+        report.setSourceFiles(extendedOptions.getJsonReportPaths());
         report.setPdfPageSize(extendedOptions.getPdfPageSize());
         try {
             report.executeReport(new File(extendedOptions.getFeatureMapConfig()), extendedOptions.isToPDF());
@@ -152,7 +153,7 @@ public final class ReportRunner {
         CucumberKnownErrorsReport report = new CucumberKnownErrorsReport();
         report.setOutputDirectory(extendedOptions.getOutputFolder());
         report.setOutputName(extendedOptions.getReportPrefix());
-        report.setSourceFile(extendedOptions.getJsonReportPath());
+        report.setSourceFiles(extendedOptions.getJsonReportPaths());
         report.setPdfPageSize(extendedOptions.getPdfPageSize());
         try {
             report.executeKnownErrorsReport(new File(extendedOptions.getKnownErrorsConfig()),
@@ -168,7 +169,7 @@ public final class ReportRunner {
         CucumberConsolidatedReport report = new CucumberConsolidatedReport();
         report.setOutputDirectory(extendedOptions.getOutputFolder());
         report.setOutputName(extendedOptions.getReportPrefix());
-        report.setSourceFile(extendedOptions.getJsonReportPath());
+        report.setSourceFiles(extendedOptions.getJsonReportPaths());
         report.setPdfPageSize(extendedOptions.getPdfPageSize());
         try {
             report.executeConsolidatedReport(new File(extendedOptions.getConsolidatedReportConfig()),

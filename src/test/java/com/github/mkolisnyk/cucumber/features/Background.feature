@@ -20,7 +20,6 @@ Feature: Tests with backgrounds
     When I do wrong
     Then I should see nothing
 
-  @passed
   Scenario Outline: Portfolio Positions - Sort
     Given I log into FSAI with any user
     When I navigate to PortFolio Positions

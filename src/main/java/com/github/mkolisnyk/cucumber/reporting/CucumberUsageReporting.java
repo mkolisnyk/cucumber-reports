@@ -19,6 +19,7 @@ import java.util.TreeMap;
 
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.IOUtils;
+import org.apache.commons.lang.ArrayUtils;
 
 import com.cedarsoftware.util.io.JsonObject;
 import com.cedarsoftware.util.io.JsonReader;
@@ -29,7 +30,7 @@ import com.github.mkolisnyk.cucumber.reporting.utils.helpers.MapUtils;
 
 public class CucumberUsageReporting {
 
-    private String       jsonUsageFile;
+    private String[]       jsonUsageFiles;
 
     private String       outputDirectory;
 
@@ -50,11 +51,19 @@ public class CucumberUsageReporting {
     }
 
     public String getJsonUsageFile() {
-        return jsonUsageFile;
+        return jsonUsageFiles[0];
     }
 
     public void setJsonUsageFile(String jsonUsageFileValue) {
-        this.jsonUsageFile = jsonUsageFileValue;
+        this.jsonUsageFiles = new String[] {jsonUsageFileValue};
+    }
+
+    public String[] getJsonUsageFiles() {
+        return jsonUsageFiles;
+    }
+
+    public void setJsonUsageFiles(String[] jsonUsageFilesValue) {
+        this.jsonUsageFiles = jsonUsageFilesValue;
     }
 
     public void setOutputDirectory(String outputDirectoryValue) {
@@ -662,8 +671,10 @@ public class CucumberUsageReporting {
     public void executeReport() throws Exception {
         try {
 
-            CucumberStepSource[] sources = getStepSources(jsonUsageFile);
-
+            CucumberStepSource[] sources = {}; //getStepSources(jsonUsageFile);
+            for (String jsonUsageFile : this.getJsonUsageFiles()) {
+                sources = (CucumberStepSource[]) ArrayUtils.addAll(sources, getStepSources(jsonUsageFile));
+            }
             String output = "<html><head><style type=\"text/css\">"
                     + generateStyle()
                     + "</style>"

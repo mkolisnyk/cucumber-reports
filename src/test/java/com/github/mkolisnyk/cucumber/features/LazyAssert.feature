@@ -1,3 +1,4 @@
+@passed
 Feature: Lazy assert feature
 
   @lazy

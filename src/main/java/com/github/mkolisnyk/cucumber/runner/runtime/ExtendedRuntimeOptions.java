@@ -99,7 +99,9 @@ public class ExtendedRuntimeOptions {
     public final String[] getJsonReportPaths() {
         return jsonReportPaths;
     }
-
+    public final void setJsonReportPaths(String[] newPaths) {
+        this.jsonReportPaths = newPaths;
+    }
     public final String getOutputFolder() {
         return outputFolder;
     }
@@ -127,7 +129,9 @@ public class ExtendedRuntimeOptions {
     public final String[] getJsonUsageReportPaths() {
         return jsonUsageReportPaths;
     }
-
+    public final void setJsonUsageReportPaths(String[] newPaths) {
+        this.jsonUsageReportPaths = newPaths;
+    }
     public final String getScreenShotLocation() {
         return screenShotLocation;
     }

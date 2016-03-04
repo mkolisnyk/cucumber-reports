@@ -108,6 +108,12 @@ public class ExtendedParallelCucumberTest {
                 extendedOptions, cucumberOptions.length);
         ExtendedCucumber[] classes = cucumber.generateTestClasses(cucumberOptions, results);
         Assert.assertEquals(classes.length, cucumberOptions.length);
+        String[] jsonReports = cucumber.getOutputJsonPaths(false);
+        String[] jsonUsageReports = cucumber.getOutputJsonPaths(true);
+        /*for (int i = 0; i < cucumberOptions.length; i++) {
+            Assert.assertEquals(jsonReports[i], cucumberOptions[i].plugin()[1].split(":")[1]);
+            Assert.assertEquals(jsonUsageReports[i], cucumberOptions[i].plugin()[3].split(":")[1]);
+        }*/
     }
     @Test
     public void testConvertPaths() throws Exception {

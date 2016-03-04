@@ -1,11 +1,14 @@
 package com.github.mkolisnyk.cucumber.runner;
 
+import org.junit.Ignore;
 import org.junit.runner.RunWith;
 
 import cucumber.api.CucumberOptions;
 
+@Ignore
 @RunWith(ExtendedParallelCucumber.class)
 @ExtendedCucumberOptions(
+    reportPrefix = "cucumber-parallel",
     jsonReport = "target/cucumber.json",
     retryCount = 3,
     threadsCount = 3,
@@ -25,7 +28,7 @@ import cucumber.api.CucumberOptions;
     consolidatedReportConfig = "src/test/resources/consolidated-source/sample_batch.json",
     excludeCoverageTags = { "@flaky" },
     includeCoverageTags = { "@passed" },
-    outputFolder = "target")
+    outputFolder = "target/parallel")
 @CucumberOptions(
         plugin = {
             "html:target/cucumber-html-report",

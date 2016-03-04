@@ -14,6 +14,7 @@ import org.junit.runners.ParentRunner;
 
 import com.github.mkolisnyk.cucumber.runner.parallel.CucumberRunnerThread;
 import com.github.mkolisnyk.cucumber.runner.parallel.CucumberRunnerThreadPool;
+import com.github.mkolisnyk.cucumber.runner.runtime.ExtendedRuntimeOptions;
 
 import cucumber.api.CucumberOptions;
 import cucumber.api.SnippetType;
@@ -246,6 +247,17 @@ public class ExtendedParallelCucumber extends ParentRunner<Runner> {
         }
         return results;
     }
+    public void runReports() {
+        ExtendedRuntimeOptions[] runtimeOptions = new ExtendedRuntimeOptions[this.options.length];
+        for (int i = 0; i < runtimeOptions.length; i++) {
+            runtimeOptions[i] = new ExtendedRuntimeOptions(this.options[i]);
+            runtimeOptions[i].setJsonReportPaths(getOutputJsonPaths(false));
+            runtimeOptions[i].setJsonUsageReportPaths(getOutputJsonPaths(true));
+        }
+        for (ExtendedRuntimeOptions option : runtimeOptions) {
+            ReportRunner.run(option);
+        }
+    }
     @Override
     public Description getDescription() {
         return Description.createSuiteDescription(getClass());
@@ -256,6 +268,7 @@ public class ExtendedParallelCucumber extends ParentRunner<Runner> {
         CucumberRunnerThreadPool.setCapacity(this.threadsCount);
         super.run(notifier);
         CucumberRunnerThreadPool.get().waitEmpty();
+        runReports();
     }
     @Override
     public int testCount() {

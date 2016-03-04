@@ -24,7 +24,7 @@ public class ExtendedTestNGRunner extends AbstractTestNGCucumberTests {
             Annotation[] annotations = method.getAnnotations();
             for (Annotation item : annotations) {
                 if (item.annotationType().equals(annotation)) {
-                    method.invoke(null);
+                    method.invoke(this);
                     break;
                 }
             }
@@ -36,6 +36,7 @@ public class ExtendedTestNGRunner extends AbstractTestNGCucumberTests {
      */
     @Test(groups = "cucumber", description = "Runs Cucumber Features")
     public void runCukes() throws Exception {
+        this.clazz = this.getClass();
         extendedOptions = ExtendedRuntimeOptions.init(clazz);
         clazz = this.getClass();
         try {

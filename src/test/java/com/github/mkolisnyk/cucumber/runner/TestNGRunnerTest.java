@@ -27,8 +27,8 @@ public class TestNGRunnerTest {
             knownErrorsConfig = "src/test/resources/known-errors-source/sample_model.json",
             consolidatedReport = true,
             reportPrefix = "testng-result",
-            consolidatedReportConfig = "src/test/resources/consolidated-source/s_ample_batch.json",
-            outputFolder = "target")
+            consolidatedReportConfig = "src/test/resources/consolidated-source/sample_batch.json",
+            outputFolder = "target/testng")
     @CucumberOptions(
             plugin = {"html:target/cucumber-html-report",
                       "json:target/cucumber.json",
@@ -36,12 +36,12 @@ public class TestNGRunnerTest {
                       "usage:target/cucumber-usage.json"
                      },
             features = {"src/test/java/com/github/mkolisnyk/cucumber/features/" },
-            glue = {"com/github/mkolisnyk/cucumber/steps" },
+            //glue = {"com/github/mkolisnyk/cucumber/steps" },
             tags = {"@passed"}
     )
     public class TestSubClass extends ExtendedTestNGRunner {
         @BeforeSuite
-        public void setUp() {
+        public void beforeRun() {
             System.out.println("Setup");
         }
         @AfterSuite

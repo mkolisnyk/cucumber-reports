@@ -21,6 +21,9 @@ public final class CucumberRunnerThreadPool {
         return this.isAvailable() && this.getThreadList().size() <= 0;
     }
     public boolean isAvailable() {
+        if (maxCapacity < 1) {
+            return false;
+        }
         for (int i = 0; i < this.getThreadList().size(); i++) {
             if (!this.getThreadList().get(i).isAlive()) {
                 this.getThreadList().remove(i);

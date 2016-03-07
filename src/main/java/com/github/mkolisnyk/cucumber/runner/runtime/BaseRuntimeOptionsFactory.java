@@ -20,15 +20,15 @@ public class BaseRuntimeOptionsFactory {
         this.clazz = clazzValue;
     }
 
-    public RuntimeOptions create() {
+    /*public RuntimeOptions create() {
         List<String> args = buildArgsFromOptions();
         return new RuntimeOptions(args);
-    }
+    }*/
     public RuntimeOptions create(CucumberOptions options) {
         List<String> args = buildArgsFromOptions(options);
         return new RuntimeOptions(args);
     }
-    private List<String> buildArgsFromOptions() {
+    /*private List<String> buildArgsFromOptions() {
         List<String> args = new ArrayList<String>();
 
         for (Class classWithOptions = clazz;
@@ -51,7 +51,7 @@ public class BaseRuntimeOptionsFactory {
         addDefaultGlueIfNoGlueIsSpecified(args, clazz);
         addNullFormatIfNoPluginIsSpecified(args);
         return args;
-    }
+    }*/
     private List<String> buildArgsFromOptions(CucumberOptions options) {
         List<String> args = new ArrayList<String>();
         if (options != null) {

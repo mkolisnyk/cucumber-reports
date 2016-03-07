@@ -1,5 +1,7 @@
 package com.github.mkolisnyk.cucumber.reporting.types.breakdown;
 
+import java.util.Arrays;
+
 import org.apache.commons.lang.ArrayUtils;
 
 public class DataDimension {
@@ -140,5 +142,30 @@ public class DataDimension {
     }
     public boolean isFinal() {
         return isFinal;
+    }
+    @Override
+    public String toString() {
+        return "DataDimension [alias=" + alias + ", dimensionValue="
+                + dimensionValue + ", expression=" + expression
+                + ", subElements=" + Arrays.toString(subElements)
+                + ", isFinal=" + isFinal + "]";
+    }
+    @Override
+    public int hashCode() {
+        return this.toString().hashCode();
+    }
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        DataDimension other = (DataDimension) obj;
+        return other.toString().equals(this.toString());
     }
 }

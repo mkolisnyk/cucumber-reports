@@ -165,26 +165,10 @@ public class CucumberFeatureResult {
     }
 
     /**
-     * @param tagsValue
-     *            the tags to set
-     */
-    public final void setTags(CucumberTagResults[] tagsValue) {
-        this.tags = tagsValue;
-    }
-
-    /**
      * @return the description
      */
     public final String getDescription() {
         return description;
-    }
-
-    /**
-     * @param descriptionValue
-     *            the description to set
-     */
-    public final void setDescription(String descriptionValue) {
-        this.description = descriptionValue;
     }
 
     /**
@@ -195,29 +179,6 @@ public class CucumberFeatureResult {
     }
 
     /**
-     * @param nameValue
-     *            the name to set
-     */
-    public final void setName(String nameValue) {
-        this.name = nameValue;
-    }
-
-    /**
-     * @return the keyword
-     */
-    public final String getKeyword() {
-        return keyword;
-    }
-
-    /**
-     * @param keywordValue
-     *            the keyword to set
-     */
-    public final void setKeyword(String keywordValue) {
-        this.keyword = keywordValue;
-    }
-
-    /**
      * @return the line
      */
     public final Long getLine() {
@@ -225,41 +186,10 @@ public class CucumberFeatureResult {
     }
 
     /**
-     * @param lineValue
-     *            the line to set
-     */
-    public final void setLine(Long lineValue) {
-        this.line = lineValue;
-    }
-
-    /**
      * @return the elements
      */
     public final CucumberScenarioResult[] getElements() {
         return elements;
-    }
-
-    /**
-     * @param elementsValue
-     *            the elements to set
-     */
-    public final void setElements(CucumberScenarioResult[] elementsValue) {
-        this.elements = elementsValue;
-    }
-
-    /**
-     * @return the uri
-     */
-    public final String getUri() {
-        return uri;
-    }
-
-    /**
-     * @param uriValue
-     *            the uri to set
-     */
-    public final void setUri(String uriValue) {
-        this.uri = uriValue;
     }
 
     /**

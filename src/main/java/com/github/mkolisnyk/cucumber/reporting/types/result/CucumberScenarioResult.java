@@ -212,53 +212,12 @@ public class CucumberScenarioResult {
     }
 
     /**
-     * @param descriptionValue
-     *            the description to set
-     */
-    public final void setDescription(String descriptionValue) {
-        this.description = descriptionValue;
-    }
-
-    /**
      * @param nameValue
      *            the name to set
      */
     public final void setName(String nameValue) {
         this.name = nameValue;
     }
-
-    /**
-     * @param keywordValue
-     *            the keyword to set
-     */
-    public final void setKeyword(String keywordValue) {
-        this.keyword = keywordValue;
-    }
-
-    /**
-     * @param lineValue
-     *            the line to set
-     */
-    public final void setLine(Long lineValue) {
-        this.line = lineValue;
-    }
-
-    /**
-     * @param stepsValue
-     *            the steps to set
-     */
-    public final void setSteps(CucumberStepResult[] stepsValue) {
-        this.steps = stepsValue;
-    }
-
-    /**
-     * @param typeValue
-     *            the type to set
-     */
-    public final void setType(String typeValue) {
-        this.type = typeValue;
-    }
-
     /**
      * @return the tags
      */

@@ -110,7 +110,10 @@ public class CucumberBreakdownReport extends CucumberResultsCommon {
         } else {
             content = content.replaceAll("__REFRESH__", "");
         }
-        content = content.replaceAll("__REPORT__", generateBreakdownTable(features, table));
+        String tableContent = generateBreakdownTable(features, table);
+        tableContent = this.replaceHtmlEntitiesWithCodes(tableContent);
+        tableContent = tableContent.replaceAll("[$]", "&#36;");
+        content = content.replaceAll("__REPORT__", tableContent);
         content = this.replaceHtmlEntitiesWithCodes(content);
         content = content.replaceAll("[$]", "&#36;");
         return content;
@@ -120,6 +123,7 @@ public class CucumberBreakdownReport extends CucumberResultsCommon {
         String content = String.format(Locale.US,
                 "<table class=\"hoverTable\"><thead>%s</thead><tbody>%s</tbody></table>",
                 generateHeader(table), generateBody(table, features));
+        content = replaceHtmlEntitiesWithCodes(content);
         return content;
     }
     protected String generateHeader(BreakdownTable table) {

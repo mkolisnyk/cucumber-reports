@@ -16,29 +16,6 @@ public class CucumberTagResults {
         return name;
     }
 
-    /**
-     * @param nameValue
-     *            the name to set
-     */
-    public final void setName(String nameValue) {
-        this.name = nameValue;
-    }
-
-    /**
-     * @return the line
-     */
-    public final Long getLine() {
-        return line;
-    }
-
-    /**
-     * @param lineValue
-     *            the line to set
-     */
-    public final void setLine(Long lineValue) {
-        this.line = lineValue;
-    }
-
     private String name;
     private Long    line;
     @Override

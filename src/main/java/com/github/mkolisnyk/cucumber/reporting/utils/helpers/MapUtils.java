@@ -18,6 +18,7 @@ public final class MapUtils {
     }
 
     public static <K, V extends Comparable<? super V>> Map<K, V> sortByValue(Map<K, V> map) {
+        MapUtils utils = new MapUtils();
         List<Map.Entry<K, V>> list = new LinkedList<Map.Entry<K, V>>(map.entrySet());
         Collections.sort(list, new Comparator<Map.Entry<K, V>>() {
             public int compare(Map.Entry<K, V> o1, Map.Entry<K, V> o2) {

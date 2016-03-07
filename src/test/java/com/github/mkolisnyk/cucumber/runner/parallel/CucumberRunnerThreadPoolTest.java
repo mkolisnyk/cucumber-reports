@@ -1,11 +1,16 @@
 package com.github.mkolisnyk.cucumber.runner.parallel;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
 import org.junit.Assert;
 import org.junit.Test;
+import org.junit.runner.notification.RunNotifier;
+import org.junit.runners.model.InitializationError;
+
+import com.github.mkolisnyk.cucumber.runner.ExtendedCucumber;
 
 public class CucumberRunnerThreadPoolTest {
 
@@ -44,5 +49,15 @@ public class CucumberRunnerThreadPoolTest {
     public void testPoolEmptyForNegativeCapacity() {
         CucumberRunnerThreadPool.setCapacity(1);
         Assert.assertTrue(CucumberRunnerThreadPool.get().isEmpty());
+    }
+    @Test
+    public void testPoolForDryRun() throws Exception {
+        CucumberRunnerThread thread = new CucumberRunnerThread(
+                new ExtendedCucumber(
+                        CucumberRunnerThreadTest.class),
+                new RunNotifier());
+        CucumberRunnerThreadPool.setCapacity(1);
+        CucumberRunnerThreadPool.get().push(new Thread(thread));
+        CucumberRunnerThreadPool.get().waitEmpty();
     }
 }

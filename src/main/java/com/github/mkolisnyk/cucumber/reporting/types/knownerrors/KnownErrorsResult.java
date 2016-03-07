@@ -25,7 +25,7 @@ public class KnownErrorsResult implements Comparable<KnownErrorsResult> {
     }
     @Override
     public int compareTo(KnownErrorsResult o) {
-        switch (this.orderBy) {
+        switch (this.getOrderBy()) {
         case PRIORITY:
             return o.getInfo().getPriority().compareTo(this.getInfo().getPriority());
         case NAME:

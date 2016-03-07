@@ -16,9 +16,6 @@ public class ExtendedTestNGRunner extends AbstractTestNGCucumberTests {
     private ExtendedRuntimeOptions[] extendedOptions;
 
     private void runPredefinedMethods(Class<?> annotation) throws Exception {
-        if (!annotation.isAnnotation()) {
-            return;
-        }
         Method[] methodList = this.clazz.getMethods();
         for (Method method : methodList) {
             Annotation[] annotations = method.getAnnotations();

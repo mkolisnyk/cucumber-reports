@@ -18,19 +18,8 @@ public class CucumberStepSource {
     public String getSource() {
         return source;
     }
-    public void setSource(String sourceValue) {
-        this.source = sourceValue;
-    }
     public CucumberStep[] getSteps() {
         return steps;
-    }
-    public void setSteps(CucumberStep[] stepsValue) {
-        this.steps = stepsValue;
-    }
-    public CucumberStepSource(String sourceValue, CucumberStep[] stepsValue) {
-        super();
-        this.source = sourceValue;
-        this.steps = stepsValue;
     }
     @SuppressWarnings("unchecked")
     public CucumberStepSource(JsonObject<String, Object> json) {

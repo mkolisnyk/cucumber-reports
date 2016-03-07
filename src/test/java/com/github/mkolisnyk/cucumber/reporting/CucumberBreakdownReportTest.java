@@ -152,7 +152,7 @@ public class CucumberBreakdownReportTest {
         CucumberBreakdownReport report = new CucumberBreakdownReport();
         report.setOutputDirectory("target/multi-breakdown/5");
         report.setOutputName("cucumber-results");
-        report.setSourceFile("./src/test/resources/breakdown-source/cucumber.json");
+        report.setSourceFile("./src/test/resources/breakdown-source/cucumber-2.json");
         report.executeReport(new File("src/test/resources/breakdown-source/simple.json"));
     }
 }

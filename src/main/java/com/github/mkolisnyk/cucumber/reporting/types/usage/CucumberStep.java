@@ -16,29 +16,11 @@ public class CucumberStep {
     public String getName() {
         return name;
     }
-    public void setName(String nameValue) {
-        this.name = nameValue;
-    }
     public CucumberAggregatedDuration getAggregatedDurations() {
         return aggregatedDurations;
     }
-    public void setAggregatedDurations(
-            CucumberAggregatedDuration aggregatedDurationsValue) {
-        this.aggregatedDurations = aggregatedDurationsValue;
-    }
     public CucumberStepDuration[] getDurations() {
         return durations;
-    }
-    public void setDurations(CucumberStepDuration[] durationsValue) {
-        this.durations = durationsValue;
-    }
-    public CucumberStep(String nameValue,
-            CucumberAggregatedDuration aggregatedDurationsValue,
-            CucumberStepDuration[] durationsValue) {
-        super();
-        this.name = nameValue;
-        this.aggregatedDurations = aggregatedDurationsValue;
-        this.durations = durationsValue;
     }
     @SuppressWarnings("unchecked")
     public CucumberStep(JsonObject<String, Object> json) {

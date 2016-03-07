@@ -12,6 +12,8 @@ import cucumber.api.CucumberOptions;
         jsonReport = "target/cucumber-dry.json",
         retryCount = 0,
         coverageReport = true,
+        featureMapReport = true,
+        featureMapConfig = "src/test/resources/breakdown-source/simple.json",
         excludeCoverageTags = {"@flaky" },
         includeCoverageTags = {"@passed" },
         reportPrefix = "dry-run",

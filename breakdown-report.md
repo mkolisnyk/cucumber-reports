@@ -5,7 +5,11 @@ layout: default
 
 # Where is it used?
 
+Every Cucumber scenario may have multiple checkpoints to make. They may cover different functional areas as well as different input parameter types. Main thing is that all those varying options may be applied to the same scenario or even the same step. In any case, sometimes there is a need to how different aspects of application functionality are covered and how they are crossing each other. E.g. we may need to see how different payment types work depending on payment methods or how search results work depending on different combination of search parameters.
 
+For this purpose the breakdown report was designed. The major purpose of the preakdown report is to **show the correspondence between multiple features and checkpoints with their execution status**. The below image shows an example of simple breakdown report:
+
+![Breakdown Report Sample](/cucumber-reports/images/breakdown-report/breakdown-sample.png)
 
 # Major sections
 

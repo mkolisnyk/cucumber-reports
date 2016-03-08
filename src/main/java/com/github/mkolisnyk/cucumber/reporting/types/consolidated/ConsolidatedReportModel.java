@@ -5,6 +5,8 @@ public class ConsolidatedReportModel {
     private String reportSuffix = "consolidated";
     private String title;
     private boolean useTableOfContents;
+    private int rows = 1;
+    private int cols = 1;
     public ConsolidatedReportModel(ConsolidatedItemInfo[] itemsValue,
             String reportSuffixValue,
             String titleValue,
@@ -26,5 +28,11 @@ public class ConsolidatedReportModel {
     }
     public boolean isUseTableOfContents() {
         return useTableOfContents;
+    }
+    public int getRows() {
+        return rows;
+    }
+    public int getCols() {
+        return cols;
     }
 }

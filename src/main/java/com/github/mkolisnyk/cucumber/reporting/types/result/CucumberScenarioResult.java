@@ -3,6 +3,7 @@ package com.github.mkolisnyk.cucumber.reporting.types.result;
 import org.apache.commons.lang.ArrayUtils;
 
 import com.cedarsoftware.util.io.JsonObject;
+import com.github.mkolisnyk.cucumber.reporting.utils.helpers.JsonUtils;
 
 public class CucumberScenarioResult {
 
@@ -74,6 +75,7 @@ public class CucumberScenarioResult {
             this.tags[i] = new CucumberTagResults(
                     (JsonObject<String, Object>) objs[i]);
         }
+        this.tags = JsonUtils.toTagArray((JsonObject<String, Object>) json);
     }
 
     public void valuate() {

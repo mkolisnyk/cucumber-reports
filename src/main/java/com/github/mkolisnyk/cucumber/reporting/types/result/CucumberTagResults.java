@@ -6,7 +6,7 @@ public class CucumberTagResults {
 
     public CucumberTagResults(JsonObject<String, Object> json) {
         this.name = (String) json.get("name");
-        this.line = (Long) json.get("line");
+        //this.line = (Long) json.get("line");
     }
 
     /**
@@ -17,9 +17,5 @@ public class CucumberTagResults {
     }
 
     private String name;
-    private Long    line;
-    @Override
-    public String toString() {
-        return name;
-    }
+    //private Long    line;
 }

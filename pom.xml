@@ -31,8 +31,8 @@
 	</scm>
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<fail.coverage>false</fail.coverage>
-		<fail.pmd>false</fail.pmd>
+		<fail.coverage>true</fail.coverage>
+		<fail.pmd>true</fail.pmd>
 	</properties>
 	<build>
 		<resources>

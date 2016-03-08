@@ -309,7 +309,7 @@ public class CucumberDetailedResults extends CucumberResultsCommon {
         }
         if (step.getEmbeddings() != null) {
             int index = 0;
-            long base = (new Date()).getTime();
+            long base = new Date().getTime();
             for (CucumberEmbedding embedding : step.getEmbeddings()) {
                 String embedPath = this.getScreenShotLocation()
                         + this.generateNameFromId(scenarioId) + (base + index) + "."

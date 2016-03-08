@@ -22,6 +22,7 @@ import org.junit.runner.Runner;
 import org.junit.runner.notification.RunNotifier;
 import org.junit.runners.ParentRunner;
 
+import com.github.mkolisnyk.cucumber.reporting.utils.helpers.FolderUtils;
 import com.github.mkolisnyk.cucumber.runner.parallel.CucumberRunnerThread;
 import com.github.mkolisnyk.cucumber.runner.parallel.CucumberRunnerThreadPool;
 import com.github.mkolisnyk.cucumber.runner.runtime.ExtendedRuntimeOptions;
@@ -55,27 +56,6 @@ public class ExtendedParallelCucumber extends ParentRunner<Runner> {
 
     public final ExtendedCucumber[] getRunners() {
         return runners;
-    }
-    private String[] getFileNames(String rootFolder) throws Exception {
-        String[] fileNames = {};
-        for (File file : (new File(rootFolder)).listFiles()) {
-            if (file.isDirectory()) {
-                fileNames = (String[]) ArrayUtils.addAll(fileNames, getFileNames(file.getAbsolutePath()));
-            } else {
-                fileNames = (String[]) ArrayUtils.add(fileNames, file.getAbsolutePath());
-            }
-        }
-        return fileNames;
-    }
-    private String[] getFilesByMask(String startFolder, String mask) throws Exception {
-        String[] result = {};
-        String[] input = getFileNames(startFolder);
-        for (String fileName : input) {
-            if (fileName.matches(mask)) {
-                result = (String[]) ArrayUtils.add(result, fileName);
-            }
-        }
-        return result;
     }
     private MemberValue getArrayMemberValue(Object object, Method field, ConstPool cp) throws Exception {
         if (field.getReturnType().getComponentType().equals(String.class)) {
@@ -129,7 +109,7 @@ public class ExtendedParallelCucumber extends ParentRunner<Runner> {
             File feature = new File(featurePath);
             if (feature.isDirectory()) {
                 featureFiles = (String[]) ArrayUtils.addAll(
-                        featureFiles, getFilesByMask(feature.getAbsolutePath(), "(.*).feature"));
+                        featureFiles, FolderUtils.getFilesByMask(feature.getAbsolutePath(), "(.*).feature"));
             } else {
                 featureFiles = (String[]) ArrayUtils.add(featureFiles, feature.getAbsolutePath());
             }

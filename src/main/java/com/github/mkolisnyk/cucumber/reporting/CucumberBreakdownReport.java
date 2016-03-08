@@ -22,11 +22,9 @@ import com.github.mkolisnyk.cucumber.reporting.types.breakdown.BreakdownTable;
 import com.github.mkolisnyk.cucumber.reporting.types.breakdown.DataDimension;
 import com.github.mkolisnyk.cucumber.reporting.types.result.CucumberFeatureResult;
 import com.github.mkolisnyk.cucumber.reporting.types.result.CucumberScenarioResult;
+import com.github.mkolisnyk.cucumber.reporting.utils.drawers.PieChartDrawer;
 
 public class CucumberBreakdownReport extends CucumberResultsCommon {
-    private static final int RED = 0xFF0000;
-    private static final int GREEN = 0x00FF00;
-    private static final int GRAY = 0xBBBBBB;
 
     private static final int TIMEOUT_MULTIPLIER = 3;
 
@@ -313,11 +311,11 @@ public class CucumberBreakdownReport extends CucumberResultsCommon {
 
         @Override
         public String drawCell(BreakdownStats stats) throws Exception {
-            CucumberResultsOverview generator = new CucumberResultsOverview();
             String chartHtml = "";
             double total = stats.getFailed() + stats.getPassed() + stats.getSkipped();
             if (total > 0) {
-                chartHtml = "<td>" + generator.generatePieChart(CHART_WIDTH, CHART_HEIGHT,
+                PieChartDrawer pieChart = new PieChartDrawer();
+                chartHtml = "<td>" + pieChart.generatePieChart(CHART_WIDTH, CHART_HEIGHT,
                     new int[] {stats.getPassed(), stats.getFailed(), stats.getSkipped()},
                     new String[] {"Passed", "Failed", "Skipped"},
                     new String[] {"green", "red", "silver"},

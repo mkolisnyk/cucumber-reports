@@ -170,12 +170,12 @@ public class BaseRuntimeOptionsFactory {
         boolean intelliJidea = System.getProperty("idea.launcher.bin.path") != null;
         return intelliJidea;
     }
-
+/*
     private boolean hasSuperClass(Class classWithOptions) {
         return classWithOptions != Object.class;
     }
 
     private CucumberOptions getOptions(Class<?> clazzValue) {
         return clazzValue.getAnnotation(CucumberOptions.class);
-    }
+    }*/
 }

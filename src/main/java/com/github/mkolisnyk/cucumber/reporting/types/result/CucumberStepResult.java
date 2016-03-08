@@ -9,7 +9,7 @@ public class CucumberStepResult {
     private CucumberResult result;
     private String         name;
     private String         keyword;
-    private Long           line;
+    //private Long           line;
     private String[][] rows;
     private String docString;
     private CucumberEmbedding[] embeddings;
@@ -18,7 +18,7 @@ public class CucumberStepResult {
     public CucumberStepResult(JsonObject<String, Object> json) {
         this.name = (String) json.get("name");
         this.keyword = (String) json.get("keyword");
-        this.line = (Long) json.get("line");
+        //this.line = (Long) json.get("line");
         this.result = new CucumberResult(
                 (JsonObject<String, Object>) json.get("result"));
         if (json.containsKey("embeddings")) {
@@ -56,26 +56,10 @@ public class CucumberStepResult {
     }
 
     /**
-     * @param resultValue
-     *            the result to set
-     */
-    public final void setResult(CucumberResult resultValue) {
-        this.result = resultValue;
-    }
-
-    /**
      * @return the name
      */
     public final String getName() {
         return name;
-    }
-
-    /**
-     * @param nameValue
-     *            the name to set
-     */
-    public final void setName(String nameValue) {
-        this.name = nameValue;
     }
 
     /**
@@ -86,27 +70,12 @@ public class CucumberStepResult {
     }
 
     /**
-     * @param keywordValue
-     *            the keyword to set
-     */
-    public final void setKeyword(String keywordValue) {
-        this.keyword = keywordValue;
-    }
-
-    /**
      * @return the line
      */
-    public final Long getLine() {
-        return line;
-    }
+    //public final Long getLine() {
+    //    return line;
+    //}
 
-    /**
-     * @param lineValue
-     *            the line to set
-     */
-    public final void setLine(Long lineValue) {
-        this.line = lineValue;
-    }
     /**
      * @return the rows
      */
@@ -114,12 +83,6 @@ public class CucumberStepResult {
         return rows;
     }
 
-    /**
-     * @param rowsValue the rows to set
-     */
-    public final void setRows(String[][] rowsValue) {
-        this.rows = rowsValue;
-    }
     public final String getDocString() {
         return docString;
     }

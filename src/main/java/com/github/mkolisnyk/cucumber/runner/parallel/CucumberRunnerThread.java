@@ -15,7 +15,7 @@ public class CucumberRunnerThread implements Runnable {
         super();
         this.runner = runnerValue;
         this.notifier = notifierValue;
-        this.runId = (new Date()).getTime();
+        this.runId = new Date().getTime();
     }
 
     @Override

@@ -22,25 +22,10 @@ public class CucumberResult {
     }
 
     /**
-     * @param statusValue
-     *            the status to set
-     */
-    public final void setStatus(String statusValue) {
-        this.status = statusValue;
-    }
-
-    /**
      * @return the errorMessage
      */
     public final String getErrorMessage() {
         return errorMessage;
-    }
-
-    /**
-     * @param errorMessageValue the errorMessage to set
-     */
-    public final void setErrorMessage(String errorMessageValue) {
-        this.errorMessage = errorMessageValue;
     }
 
     /**

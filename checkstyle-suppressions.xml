@@ -12,6 +12,9 @@
               files="ExtendedTestNGRunner.java"
               lines="80"/>
     <suppress checks="ParameterNumber"
+              files="PieChartDrawer.java"
+              lines="150-500"/>
+    <suppress checks="ParameterNumber"
               files="CucumberResultsCommon.java"
               lines="1-500"/>
     <suppress checks="ParameterNumber"

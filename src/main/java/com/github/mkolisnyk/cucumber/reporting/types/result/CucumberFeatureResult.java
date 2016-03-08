@@ -3,16 +3,17 @@ package com.github.mkolisnyk.cucumber.reporting.types.result;
 import org.apache.commons.lang.ArrayUtils;
 
 import com.cedarsoftware.util.io.JsonObject;
+import com.github.mkolisnyk.cucumber.reporting.utils.helpers.JsonUtils;
 
 public class CucumberFeatureResult {
     private String id;
     private CucumberTagResults[] tags;
     private String description;
     private String name;
-    private String keyword;
+    //private String keyword;
     private Long line;
     private CucumberScenarioResult[] elements;
-    private String uri;
+    //private String uri;
     private float duration;
 
     private String[] includeCoverageTags = {};
@@ -21,23 +22,12 @@ public class CucumberFeatureResult {
     @SuppressWarnings("unchecked")
     public CucumberFeatureResult(JsonObject<String, Object> json) {
         this.id = (String) json.get("id");
-        JsonObject<String, Object> tagEntry = (JsonObject<String, Object>) json
-                .get("tags");
-        Object[] objs = {};
-        if (tagEntry != null) {
-            objs = (Object[]) ((JsonObject<String, Object>) json.get("tags"))
-                    .get("@items");
-        }
-        this.tags = new CucumberTagResults[objs.length];
-        for (int i = 0; i < objs.length; i++) {
-            this.tags[i] = new CucumberTagResults(
-                    (JsonObject<String, Object>) objs[i]);
-        }
+        this.tags = JsonUtils.toTagArray((JsonObject<String, Object>) json);
         this.description = (String) json.get("description");
         this.name = (String) json.get("name");
-        this.keyword = (String) json.get("keyword");
+        //this.keyword = (String) json.get("keyword");
         this.line = (Long) json.get("line");
-        objs = (Object[]) ((JsonObject<String, Object>) json.get("elements"))
+        Object[] objs = (Object[]) ((JsonObject<String, Object>) json.get("elements"))
                 .get("@items");
         this.elements = new CucumberScenarioResult[objs.length];
         for (int i = 0; i < objs.length; i++) {
@@ -45,7 +35,7 @@ public class CucumberFeatureResult {
                     (JsonObject<String, Object>) objs[i]);
             this.elements[i].setFeature(this);
         }
-        this.uri = (String) json.get("uri");
+        //this.uri = (String) json.get("uri");
     }
 
     private int passed = 0;

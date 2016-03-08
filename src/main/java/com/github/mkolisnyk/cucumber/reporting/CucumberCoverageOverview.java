@@ -9,6 +9,7 @@ import org.apache.commons.lang3.StringUtils;
 
 import com.github.mkolisnyk.cucumber.reporting.types.result.CucumberFeatureResult;
 import com.github.mkolisnyk.cucumber.reporting.types.result.CucumberScenarioResult;
+import com.github.mkolisnyk.cucumber.reporting.utils.drawers.PieChartDrawer;
 
 public class CucumberCoverageOverview extends CucumberResultsOverview {
 
@@ -149,7 +150,8 @@ public class CucumberCoverageOverview extends CucumberResultsOverview {
         }
         reportContent += "</table>";
         content = content.replaceAll("__REPORT__", reportContent);
-        content = content.replaceAll("__FEATURE_DATA__", this.generatePieChart(
+        PieChartDrawer pieChart = new PieChartDrawer();
+        content = content.replaceAll("__FEATURE_DATA__", pieChart.generatePieChart(
                 CHART_WIDTH, CHART_HEIGHT,
                 featureStatuses,
                 new String[]{"Covered", "Not Covered"},
@@ -157,7 +159,7 @@ public class CucumberCoverageOverview extends CucumberResultsOverview {
                 new String[]{"darkgreen", "GoldenRod"},
                 CHART_THICKNESS,
                 2));
-        content = content.replaceAll("__SCENARIO_DATA__", this.generatePieChart(
+        content = content.replaceAll("__SCENARIO_DATA__", pieChart.generatePieChart(
                 CHART_WIDTH, CHART_HEIGHT,
                 scenarioStatuses,
                 new String[]{"Covered", "Not Covered"},

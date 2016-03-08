@@ -15,33 +15,13 @@ import com.github.mkolisnyk.cucumber.reporting.types.breakdown.BreakdownStats;
 import com.github.mkolisnyk.cucumber.reporting.types.result.CucumberFeatureResult;
 import com.github.mkolisnyk.cucumber.reporting.types.retrospective.RetrospectiveBatch;
 import com.github.mkolisnyk.cucumber.reporting.types.retrospective.RetrospectiveModel;
+import com.github.mkolisnyk.cucumber.reporting.utils.helpers.FolderUtils;
 
 public class CucumberRetrospectiveOverviewReport extends CucumberResultsCommon {
 
     protected String getReportBase() throws IOException {
         InputStream is = this.getClass().getResourceAsStream("/consolidated-tmpl.html");
         String result = IOUtils.toString(is);
-        return result;
-    }
-    private String[] getFileNames(String rootFolder) throws Exception {
-        String[] fileNames = {};
-        for (File file : (new File(rootFolder)).listFiles()) {
-            if (file.isDirectory()) {
-                fileNames = (String[]) ArrayUtils.addAll(fileNames, getFileNames(file.getAbsolutePath()));
-            } else {
-                fileNames = (String[]) ArrayUtils.add(fileNames, file.getAbsolutePath());
-            }
-        }
-        return fileNames;
-    }
-    private String[] getFilesByMask(String mask) throws Exception {
-        String[] result = {};
-        String[] input = getFileNames(".");
-        for (String fileName : input) {
-            if (fileName.matches(mask)) {
-                result = (String[]) ArrayUtils.add(result, fileName);
-            }
-        }
         return result;
     }
     private BreakdownStats[] calculateStats(String[] files) throws Exception {
@@ -115,7 +95,6 @@ public class CucumberRetrospectiveOverviewReport extends CucumberResultsCommon {
         return "";
     }
     private String drawGraph(RetrospectiveModel model, BreakdownStats[] stats) {
-        final double scale = 0.9;
         String content = String.format(Locale.US, "<svg xmlns=\"http://www.w3.org/2000/svg\""
                 + " version=\"1.1\" width=\"%d\" height=\"%d\">", model.getWidth(), model.getHeight());
         int offset = 0;
@@ -145,7 +124,7 @@ public class CucumberRetrospectiveOverviewReport extends CucumberResultsCommon {
         return result;
     }
     public void executeReport(RetrospectiveModel model, boolean aggregate, boolean toPDF) throws Exception {
-        String[] files = getFilesByMask(model.getMask());
+        String[] files = FolderUtils.getFilesByMask(".", model.getMask());
         BreakdownStats[] stats = calculateStats(files);
         File outFile = new File(
                 this.getOutputDirectory() + File.separator + this.getOutputName()

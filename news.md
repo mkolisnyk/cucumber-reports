@@ -2,6 +2,13 @@
 title: Cucumber Reports News
 ---
 
+## 10.03.2016 1.0.4 Version Release
+
+ * [#31](https://github.com/mkolisnyk/cucumber-reports/issues/31): Enhancement: Parallel JUnit Runner
+ * [#69](https://github.com/mkolisnyk/cucumber-reports/issues/69): Bug: NullPointerException in TestNG test runner
+ * [#68](https://github.com/mkolisnyk/cucumber-reports/issues/68): Enhancement: Reports: add ability to define either single or multiple source files for reporting
+ * [#61](https://github.com/mkolisnyk/cucumber-reports/issues/61):	Refactoring: provide > 80% code coverage by tests
+
 ## 28.02.2016 1.0.3 Version Release
 
  * [#67](https://github.com/mkolisnyk/cucumber-reports/issues/67): Bug fix: Known Errors Report: multiple instances of the same error

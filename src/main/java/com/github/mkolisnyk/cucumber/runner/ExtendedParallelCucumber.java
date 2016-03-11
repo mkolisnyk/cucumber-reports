@@ -250,13 +250,39 @@ public class ExtendedParallelCucumber extends ParentRunner<Runner> {
         return Description.createSuiteDescription(getClass());
     }
 
+    private void runPredefinedMethods(Class annotation) throws Exception {
+        if (!annotation.isAnnotation()) {
+            return;
+        }
+        Method[] methodList = this.clazz.getMethods();
+        for (Method method : methodList) {
+            java.lang.annotation.Annotation[] annotations = method.getAnnotations();
+            for (java.lang.annotation.Annotation item : annotations) {
+                if (item.annotationType().equals(annotation)) {
+                    method.invoke(null);
+                    break;
+                }
+            }
+        }
+    }
+
     @Override
     public void run(RunNotifier notifier) {
         CucumberRunnerThreadPool.setCapacity(this.threadsCount);
+        try {
+            runPredefinedMethods(BeforeSuite.class);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         super.run(notifier);
         try {
             CucumberRunnerThreadPool.get().waitEmpty();
         } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        try {
+            runPredefinedMethods(AfterSuite.class);
+        } catch (Exception e) {
             e.printStackTrace();
         }
         runReports();

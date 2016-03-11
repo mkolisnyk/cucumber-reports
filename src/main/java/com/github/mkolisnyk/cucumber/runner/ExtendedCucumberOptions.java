@@ -57,4 +57,5 @@ public @interface ExtendedCucumberOptions {
     String consolidatedReportConfig() default "";
 
     int threadsCount() default 1;
+    String threadsCountValue() default "";
 }

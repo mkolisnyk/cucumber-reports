@@ -33,6 +33,7 @@ public class ExtendedRuntimeOptions {
     private boolean consolidatedReport = false;
     private String consolidatedReportConfig = "";
     private int threadsCount;
+    private String threadsCountValue;
 
     private String[] joinPaths(String singlePath, String[] arrayPath) {
         String[] result = {};
@@ -73,6 +74,7 @@ public class ExtendedRuntimeOptions {
             this.consolidatedReport = options.consolidatedReport();
             this.consolidatedReportConfig = options.consolidatedReportConfig();
             this.threadsCount = options.threadsCount();
+            this.threadsCountValue = options.threadsCountValue();
         }
     }
 
@@ -191,6 +193,9 @@ public class ExtendedRuntimeOptions {
         return threadsCount;
     }
 
+    public String getThreadsCountValue() {
+        return threadsCountValue;
+    }
     public static ExtendedRuntimeOptions[] init(Class<?> clazz) {
         ExtendedCucumberOptions[] options = clazz.getAnnotationsByType(ExtendedCucumberOptions.class);
         ExtendedRuntimeOptions[] result = {};

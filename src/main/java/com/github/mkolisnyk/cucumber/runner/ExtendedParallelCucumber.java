@@ -37,13 +37,28 @@ public class ExtendedParallelCucumber extends ParentRunner<Runner> {
     private int threadsCount = 1;
     private ExtendedCucumber[] runners;
 
+    public static int getThreadsCount(int threadsCountNumber, String threadsCountValue) {
+        if (StringUtils.isBlank(threadsCountValue)) {
+            return threadsCountNumber;
+        }
+        if (threadsCountValue.matches("(\\d+)")) {
+            return Integer.valueOf(threadsCountValue);
+        }
+        if (System.getProperties().containsKey(threadsCountValue)
+                && System.getProperty(threadsCountValue).matches("(\\d+)")) {
+            return Integer.valueOf(System.getProperty(threadsCountValue));
+        }
+        return threadsCountNumber;
+    }
+
     public ExtendedParallelCucumber(Class<?> clazzValue) throws Exception {
         super(clazzValue);
         this.clazz = clazzValue;
         this.options = clazz.getAnnotationsByType(ExtendedCucumberOptions.class);
         this.cucumberOption = clazz.getAnnotation(CucumberOptions.class);
         for (ExtendedCucumberOptions option : options) {
-            threadsCount = Math.max(threadsCount , option.threadsCount());
+            threadsCount = Math.max(threadsCount,
+                getThreadsCount(option.threadsCount(), option.threadsCountValue()));
         }
         this.runners = buildRunners();
     }

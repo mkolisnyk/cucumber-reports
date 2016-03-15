@@ -216,7 +216,7 @@ public class ExtendedParallelCucumber extends ParentRunner<Runner> {
             ExtendedCucumberOptions[][] extendedOptions) throws Exception {
         ExtendedCucumber[] classes = new ExtendedCucumber[cucumberOptions.length];
         for (int i = 0; i < cucumberOptions.length; i++) {
-            classes[i] = new ExtendedCucumber(this.clazz, cucumberOptions[i], extendedOptions[i]);
+            classes[i] = new ExtendedCucumber(this.clazz, cucumberOptions[i], extendedOptions[i], false);
         }
         return classes;
     }

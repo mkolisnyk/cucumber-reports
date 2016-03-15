@@ -34,6 +34,7 @@ public class ExtendedCucumber extends ParentRunner<ExtendedFeatureRunner> {
     private Class clazzValue;
     private int retryCount = 0;
     private int threadsCount = 1;
+    private boolean runPreDefined = true;
 
     public ExtendedCucumber(Class clazz) throws InitializationError, IOException {
         super(clazz);
@@ -61,9 +62,10 @@ public class ExtendedCucumber extends ParentRunner<ExtendedFeatureRunner> {
     }
     public ExtendedCucumber(
             Class clazz, CucumberOptions baseOptions,
-            ExtendedCucumberOptions[] extendedOptionsValue) throws Exception {
+            ExtendedCucumberOptions[] extendedOptionsValue, boolean runPreDefinedValue) throws Exception {
         super(clazz);
         this.clazzValue = clazz;
+        this.runPreDefined = runPreDefinedValue;
         ClassLoader classLoader = clazz.getClassLoader();
         Assertions.assertNoCucumberAnnotatedMethods(clazz);
         BaseRuntimeOptionsFactory runtimeOptionsFactory = new BaseRuntimeOptionsFactory(clazz);
@@ -125,13 +127,17 @@ public class ExtendedCucumber extends ParentRunner<ExtendedFeatureRunner> {
     @Override
     public void run(RunNotifier notifier) {
         try {
-            runPredefinedMethods(BeforeSuite.class);
+            if (this.runPreDefined) {
+                runPredefinedMethods(BeforeSuite.class);
+            }
         } catch (Exception e) {
             e.printStackTrace();
         }
         super.run(notifier);
         try {
-            runPredefinedMethods(AfterSuite.class);
+            if (this.runPreDefined) {
+                runPredefinedMethods(AfterSuite.class);
+            }
         } catch (Exception e) {
             e.printStackTrace();
         }

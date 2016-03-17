@@ -130,6 +130,7 @@ public class ExtendedCucumber extends ParentRunner<ExtendedFeatureRunner> {
             if (this.runPreDefined) {
                 runPredefinedMethods(BeforeSuite.class);
             }
+            runPredefinedMethods(BeforeSubSuite.class);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -138,6 +139,7 @@ public class ExtendedCucumber extends ParentRunner<ExtendedFeatureRunner> {
             if (this.runPreDefined) {
                 runPredefinedMethods(AfterSuite.class);
             }
+            runPredefinedMethods(AfterSubSuite.class);
         } catch (Exception e) {
             e.printStackTrace();
         }

@@ -370,6 +370,8 @@ public class CucumberDetailedResults extends CucumberResultsCommon {
             String error = escapeHtml(results.getResult().getErrorMessage());
             if (StringUtils.isBlank(error)) {
                 error = "";
+            } else {
+                error = "<br>" + error.replaceAll(System.lineSeparator(), "</br><br>") + "</br>";
             }
             return String.format(
                     Locale.US,
@@ -379,7 +381,7 @@ public class CucumberDetailedResults extends CucumberResultsCommon {
                     name,
                     results.getResult().getDurationTimeString("HH:mm:ss:S"),
                     results.getResult().getStatus(),
-                    "<br>" + error.replaceAll(System.lineSeparator(), "</br><br>") + "</br>"
+                    error
             );
         }
         return "";
@@ -392,10 +394,17 @@ public class CucumberDetailedResults extends CucumberResultsCommon {
         reportContent += generateTableOfContents(results);
         reportContent += "<h1>Detailed Results Report</h1><table width=\"700px\">";
         for (CucumberFeatureResult result : results) {
+            String featureDescriptionHeading = "";
+            if (StringUtils.isNotBlank(result.getDescription())) {
+                featureDescriptionHeading = String.format("<tr class=\"%s_description\">"
+                        + "<td colspan=\"4\"><br>%s</br></td></tr>", result.getStatus(),
+                    escapeHtml(result.getDescription()).replaceAll(System.lineSeparator(),
+                            "</br><br>" + System.lineSeparator()));
+            }
             reportContent += String.format(
                     Locale.US,
                     "<tr class=\"%s\"><td colspan=\"4\"><b>Feature:</b> <a id=\"feature-%s\">%s</a></td></tr>"
-                    + "<tr class=\"%s_description\"><td colspan=\"4\"><br>%s</br></td></tr>"
+                    + "%s"
                     + "<tr class=\"%s\"><td><small><b>Passed:</b> %d</small></td>"
                         + "<td><small><b>Failed:</b> %d</small></td>"
                     + "<td><small><b>Undefined:</b> %d</small></td><td><small>Duration: %.2fs</small></td></tr>"
@@ -404,9 +413,7 @@ public class CucumberDetailedResults extends CucumberResultsCommon {
                     result.getStatus(),
                     escapeHtml(result.getId()),
                     escapeHtml(result.getName()),
-                    result.getStatus(),
-                    escapeHtml(result.getDescription()).replaceAll(System.lineSeparator(),
-                            "</br><br>" + System.lineSeparator()),
+                    featureDescriptionHeading,
                     result.getStatus(),
                     result.getPassed(),
                     result.getFailed(),
@@ -414,10 +421,17 @@ public class CucumberDetailedResults extends CucumberResultsCommon {
                     result.getDuration(),
                     result.getStatus());
             for (CucumberScenarioResult scenario : result.getElements()) {
+                String descriptionHeading = "";
+                if (StringUtils.isNotBlank(scenario.getDescription())) {
+                    descriptionHeading = String.format("<tr class=\"%s_description\">"
+                        + "<td colspan=\"4\"><br>%s</br></td></tr>", scenario.getStatus(),
+                        escapeHtml(scenario.getDescription()).replaceAll(System.lineSeparator(),
+                                "</br><br>" + System.lineSeparator()));
+                }
                 reportContent += String.format(
                         Locale.US,
                         "<tr class=\"%s\"><td colspan=\"4\"><b>%s:</b> <a id=\"sc-%s\">%s</a></td></tr>"
-                        + "<tr class=\"%s_description\"><td colspan=\"4\"><br>%s</br></td></tr>"
+                        + "%s"
                            + "<tr class=\"%s\">"
                         + "<td><small><b>Passed:</b> %d</small></td><td><small><b>Failed:</b> %d</small></td>"
                         + "<td><small><b>Undefined:</b> %d</small></td><td><small>Duration: %.2fs</small></td></tr>"
@@ -428,9 +442,7 @@ public class CucumberDetailedResults extends CucumberResultsCommon {
                         scenario.getKeyword(),
                         escapeHtml(scenario.getId()),
                         escapeHtml(scenario.getName()),
-                        scenario.getStatus(),
-                        escapeHtml(scenario.getDescription()).replaceAll(System.lineSeparator(),
-                                "</br><br>" + System.lineSeparator()),
+                        descriptionHeading,
                         scenario.getStatus(),
                         scenario.getPassed(),
                         scenario.getFailed(),

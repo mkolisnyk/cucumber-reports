@@ -24,6 +24,14 @@ public class CucumberResultsReportTest {
         results.executeOverviewReport("feature-overview-2", true);
     }
     @Test
+    public void testGenerateOverviewRubyReport() throws Exception {
+        CucumberResultsOverview results = new CucumberResultsOverview();
+        results.setOutputDirectory("target/ruby");
+        results.setOutputName("cucumber-ruby-results");
+        results.setSourceFile("./src/test/resources/ruby/cucumber.json");
+        results.executeOverviewReport("feature-overview", true);
+    }
+    @Test
     public void testGenerateOverviewReportIssue41() throws Exception {
         CucumberResultsOverview results = new CucumberResultsOverview();
         results.setOutputDirectory("target");
@@ -121,6 +129,15 @@ public class CucumberResultsReportTest {
         results.setSourceFile("./src/test/resources/detailed-source/cucumber-2.json");
         results.executeDetailedResultsReport(true, false);
     }
+    @Test
+    public void testRubyDetailedReport() throws Exception {
+        CucumberDetailedResults results = new CucumberDetailedResults();
+        results.setOutputDirectory("target/ruby");
+        results.setOutputName("cucumber-ruby-results");
+        results.setSourceFile("./src/test/resources/ruby/cucumber.json");
+        results.executeDetailedResultsReport(true, false);
+    }
+
     @Test
     public void testEmbedScreenshotDetailedReportIssue56() throws Exception {
         CucumberDetailedResults results = new CucumberDetailedResults();

@@ -1,0 +1,358 @@
+[
+  {
+    "uri": "features/scenarios/MyTicketsSection/kiosk_refunds.feature",
+    "id": "refunding-kiosk-tickets",
+    "keyword": "Feature",
+    "name": "Refunding kiosk tickets",
+    "description": "",
+    "line": 2,
+    "tags": [
+      {
+        "name": "@refunds",
+        "line": 1
+      }
+    ],
+    "elements": [
+      {
+        "id": "refunding-kiosk-tickets;refund-ticket-for-single-kiosk-ticket-with-one-adult",
+        "keyword": "Scenario",
+        "name": "Refund ticket for single kiosk ticket with one adult",
+        "description": "",
+        "line": 5,
+        "type": "scenario",
+        "tags": [
+          {
+            "name": "@refunds",
+            "line": 1
+          },
+          {
+            "name": "@scenario1",
+            "line": 4
+          },
+          {
+            "name": "@calabash-framework-refactor",
+            "line": 4
+          }
+        ],
+        "before": [
+          {
+            "match": {
+              "location": "features/support/01_launch.rb:46"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 31929713000
+            }
+          }
+        ],
+        "steps": [
+          {
+            "keyword": "Given ",
+            "name": "I have the following journey:",
+            "line": 6,
+            "rows": [
+              {
+                "cells": [
+                  "From",
+                  "To",
+                  "Adults",
+                  "Children",
+                  "Type"
+                ]
+              },
+              {
+                "cells": [
+                  "EUS",
+                  "MAN",
+                  "1",
+                  "0",
+                  "Single"
+                ]
+              }
+            ],
+            "match": {
+              "location": "features/step_definitions/stub_data_steps.rb:1"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 279000
+            }
+          },
+          {
+            "keyword": "And ",
+            "name": "the journey has the following legs:",
+            "line": 9,
+            "rows": [
+              {
+                "cells": [
+                  "Id",
+                  "From",
+                  "To"
+                ]
+              },
+              {
+                "cells": [
+                  "1",
+                  "EUS",
+                  "MAN"
+                ]
+              }
+            ],
+            "match": {
+              "location": "features/step_definitions/stub_data_steps.rb:7"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 88000
+            }
+          },
+          {
+            "keyword": "And ",
+            "name": "the journey has the following tickets:",
+            "line": 12,
+            "rows": [
+              {
+                "cells": [
+                  "Name",
+                  "Description",
+                  "Class",
+                  "Category",
+                  "Price",
+                  "Quantity"
+                ]
+              },
+              {
+                "cells": [
+                  "Anytime Day Single",
+                  "Travel any time of day.",
+                  "Standard",
+                  "OffPeak",
+                  "20.00",
+                  "10"
+                ]
+              }
+            ],
+            "match": {
+              "location": "features/step_definitions/stub_data_steps.rb:11"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 104000
+            }
+          },
+          {
+            "keyword": "And ",
+            "name": "I have the following bookings:",
+            "line": 15,
+            "rows": [
+              {
+                "cells": [
+                  "Transaction Id",
+                  "Delivery Method",
+                  "Valid For",
+                  "Valid From",
+                  "Status",
+                  "Ticket Price",
+                  "Total Price"
+                ]
+              },
+              {
+                "cells": [
+                  "00000000000000",
+                  "Kiosk",
+                  "1 month",
+                  "Today",
+                  "FUL",
+                  "120.00",
+                  "140.00"
+                ]
+              }
+            ],
+            "match": {
+              "location": "features/step_definitions/stub_data_steps.rb:15"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 103000
+            }
+          },
+          {
+            "keyword": "And ",
+            "name": "I request \"10.00\" admin fee refund with the following data:",
+            "line": 18,
+            "rows": [
+              {
+                "cells": [
+                  "Booking Id",
+                  "Ticket Id",
+                  "Price",
+                  "Refundable Price",
+                  "Passenger",
+                  "Refundable",
+                  "History Available",
+                  "Status"
+                ]
+              },
+              {
+                "cells": [
+                  "0",
+                  "0",
+                  "60.00",
+                  "25.00",
+                  "Adult",
+                  "Y",
+                  "N",
+                  ""
+                ]
+              }
+            ],
+            "match": {
+              "location": "features/step_definitions/stub_data_steps.rb:19"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 97000
+            }
+          },
+          {
+            "keyword": "And ",
+            "name": "the system has been started",
+            "line": 21,
+            "match": {
+              "location": "features/step_definitions/stub_data_steps.rb:24"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1432852000
+            }
+          },
+          {
+            "keyword": "And ",
+            "name": "I am logged in",
+            "line": 22,
+            "match": {
+              "location": "features/step_definitions/basic_navigation_steps.rb:49"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 21801901000
+            }
+          },
+          {
+            "keyword": "When ",
+            "name": "I navigate to the \"My Tickets\" screen",
+            "line": 24,
+            "comments": [
+              {
+                "value": "#      And   I have Single kiosk ticket for 1 adult and 0 children in My tickets",
+                "line": 23
+              }
+            ],
+            "match": {
+              "location": "features/step_definitions/basic_navigation_steps.rb:91"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 3698390000
+            }
+          },
+          {
+            "keyword": "Then ",
+            "name": "I should see the \"Manage my booking\" label is shown",
+            "line": 25,
+            "match": {
+              "location": "features/step_definitions/basic_validation_steps.rb:11"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 9327000
+            }
+          },
+          {
+            "keyword": "When ",
+            "name": "I tap on the \"Manage my booking\" label",
+            "line": 26,
+            "match": {
+              "location": "features/step_definitions/basic_navigation_steps.rb:81"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 768965000
+            }
+          },
+          {
+            "keyword": "Then ",
+            "name": "I should see the \"Refund Tickets\" label is shown",
+            "line": 27,
+            "match": {
+              "location": "features/step_definitions/basic_validation_steps.rb:11"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 15759000
+            }
+          },
+          {
+            "keyword": "When ",
+            "name": "I tap on the \"Refund Tickets\" label",
+            "line": 28,
+            "match": {
+              "location": "features/step_definitions/basic_navigation_steps.rb:81"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 824644000
+            }
+          },
+          {
+            "keyword": "Then ",
+            "name": "I should see the \"Refund Overview\" screen",
+            "line": 29,
+            "match": {
+              "location": "features/step_definitions/basic_validation_steps.rb:45"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 950225000
+            }
+          },
+          {
+            "keyword": "And ",
+            "name": "the following labels are shown:",
+            "line": 30,
+            "rows": [
+              {
+                "cells": [
+                  "We send refunds directly to the card used for bookings."
+                ]
+              },
+              {
+                "cells": [
+                  "It arrives within 5 working days."
+                ]
+              }
+            ],
+            "match": {
+              "location": "features/step_definitions/basic_validation_steps.rb:31"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 15343000
+            }
+          }
+        ],
+        "after": [
+          {
+            "match": {
+              "location": "features/support/01_launch.rb:66"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 546154000
+            }
+          }
+        ]
+      }
+    ]
+  }
+]

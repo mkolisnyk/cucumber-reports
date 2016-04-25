@@ -25,4 +25,11 @@ public class CucumberUsageReportingTest {
         report.setJsonUsageFile("./src/test/resources/usage-source/sample5.json");
         report.executeReport();
     }
+    @Test
+    public void testGenerateReportForNullFile() throws Exception {
+        CucumberUsageReporting report = new CucumberUsageReporting();
+        report.setOutputDirectory("target/none");
+        report.setJsonUsageFile("./src/test/resources/usage-source/cucumber-empty-usage.json");
+        report.executeReport();
+    }
 }

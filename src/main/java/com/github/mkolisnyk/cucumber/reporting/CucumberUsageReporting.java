@@ -182,11 +182,18 @@ public class CucumberUsageReporting {
         double average;
 
         SortedMap<Integer, Integer> map = calculateStepsUsageCounts(sources);
-        hscale = (double) (hend - 2 * hstart)
-                / ((double) map.lastKey() + 1);
-        vscale = (double) (vend - 2 * vstart)
-                / ((double) calculateStepsUsageMax(map) + 1);
 
+        int lastKey = 0;
+        if (map.isEmpty()) {
+            hscale = 1;
+            vscale = 1;
+        } else {
+            lastKey = map.lastKey();
+            hscale = (double) (hend - 2 * hstart)
+                    / ((double) map.lastKey() + 1);
+            vscale = (double) (vend - 2 * vstart)
+                    / ((double) calculateStepsUsageMax(map) + 1);
+        }
         final double stepScale = 30.f;
 
         hstep = (int) (stepScale / hscale) + 1;
@@ -233,7 +240,7 @@ public class CucumberUsageReporting {
                 + (vend + smallMargin) + " " + (hend - largeMargin) + "," + (vend - smallMargin)
                 + "\" style=\"fill:black;stroke:black;stroke-width:1\"/>"
                 + "<polygon points=\"" + hstart + "," + vend;
-        for (int i = 0; i <= map.lastKey() + 1; i++) {
+        for (int i = 0; i <= lastKey + 1; i++) {
             int value = 0;
             if (map.containsKey(i)) {
                 value = map.get(i);
@@ -243,7 +250,7 @@ public class CucumberUsageReporting {
         }
         htmlContent += "\" style=\"stroke:black;stroke-width:1\"  fill=\"url(#grad2)\" />";
 
-        for (int i = 0; i <= map.lastKey(); i += hstep) {
+        for (int i = 0; i <= lastKey; i += hstep) {
             htmlContent += "<line x1=\""
                     + (hstart + (int) (i * hscale)) + "\" y1=\""
                     + (vend) + "\" x2=\""

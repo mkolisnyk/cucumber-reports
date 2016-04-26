@@ -249,7 +249,7 @@ public class ExtendedParallelCucumber extends ParentRunner<Runner> {
         }
         return results;
     }
-    public void runReports() {
+    public void runReports() throws Exception {
         ExtendedRuntimeOptions[] runtimeOptions = new ExtendedRuntimeOptions[this.options.length];
         for (int i = 0; i < runtimeOptions.length; i++) {
             runtimeOptions[i] = new ExtendedRuntimeOptions(this.options[i]);
@@ -300,7 +300,11 @@ public class ExtendedParallelCucumber extends ParentRunner<Runner> {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        runReports();
+        try {
+            runReports();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
     @Override
     public int testCount() {

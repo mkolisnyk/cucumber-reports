@@ -36,7 +36,7 @@ public class ExtendedCucumber extends ParentRunner<ExtendedFeatureRunner> {
     private int threadsCount = 1;
     private boolean runPreDefined = true;
 
-    public ExtendedCucumber(Class clazz) throws InitializationError, IOException {
+    public ExtendedCucumber(Class clazz) throws Exception {
         super(clazz);
         this.clazzValue = clazz;
         ClassLoader classLoader = clazz.getClassLoader();

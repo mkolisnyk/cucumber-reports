@@ -29,6 +29,9 @@ import com.github.mkolisnyk.cucumber.reporting.types.usage.CucumberStepSource;
 import com.github.mkolisnyk.cucumber.reporting.utils.helpers.MapUtils;
 
 public class CucumberUsageReporting {
+    private static final float USAGE_30 = 30.f;
+    private static final float USAGE_70 = 70.f;
+    private static final float USAGE_100 = 100.f;
 
     private String[]       jsonUsageFiles;
 
@@ -275,16 +278,13 @@ public class CucumberUsageReporting {
                     + ")\" font-size = \"8\">" + i + "</text>";
         }
 
-        final float usage30 = 30.f;
-        final float usage70 = 70.f;
-        final float usage100 = 100.f;
-        float usage = usage100 * (1.f - (float) calculateUsedSteps(map)
+        float usage = USAGE_100 * (1.f - (float) calculateUsedSteps(map)
                 / (float) calculateTotalSteps(map));
         String statusColor = "silver";
 
-        if (usage <= usage30) {
+        if (usage <= USAGE_30) {
             statusColor = "red";
-        } else if (usage >= usage70) {
+        } else if (usage >= USAGE_70) {
             statusColor = "green";
         } else {
             statusColor = "#BBBB00";

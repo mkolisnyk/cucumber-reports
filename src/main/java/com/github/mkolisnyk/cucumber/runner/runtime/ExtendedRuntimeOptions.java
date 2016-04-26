@@ -1,5 +1,7 @@
 package com.github.mkolisnyk.cucumber.runner.runtime;
 
+import java.lang.reflect.Field;
+
 import org.apache.commons.lang3.ArrayUtils;
 import org.apache.commons.lang3.StringUtils;
 
@@ -45,7 +47,7 @@ public class ExtendedRuntimeOptions {
         }
         return result;
     }
-    public ExtendedRuntimeOptions(ExtendedCucumberOptions options) {
+    public ExtendedRuntimeOptions(ExtendedCucumberOptions options) throws Exception {
         if (options != null) {
             this.isOverviewReport = options.overviewReport();
             this.isUsageReport = options.usageReport();
@@ -75,6 +77,18 @@ public class ExtendedRuntimeOptions {
             this.consolidatedReportConfig = options.consolidatedReportConfig();
             this.threadsCount = options.threadsCount();
             this.threadsCountValue = options.threadsCountValue();
+        }
+        for (Field field : this.getClass().getDeclaredFields()) {
+            String propertyName = "cucumber.reports." + field.getName();
+            if (System.getProperties().containsKey(propertyName)) {
+                if (field.getType().equals(boolean.class)) {
+                    field.setBoolean(this, System.getProperty(propertyName).equalsIgnoreCase("true"));
+                } else if (field.getType().equals(int.class)) {
+                    field.setInt(this, Integer.valueOf(System.getProperty(propertyName)));
+                } else {
+                    field.set(this, System.getProperty(propertyName));
+                }
+            }
         }
     }
 
@@ -196,15 +210,11 @@ public class ExtendedRuntimeOptions {
     public String getThreadsCountValue() {
         return threadsCountValue;
     }
-    public static ExtendedRuntimeOptions[] init(Class<?> clazz) {
+    public static ExtendedRuntimeOptions[] init(Class<?> clazz) throws Exception {
         ExtendedCucumberOptions[] options = clazz.getAnnotationsByType(ExtendedCucumberOptions.class);
-        ExtendedRuntimeOptions[] result = {};
-        for (ExtendedCucumberOptions option : options) {
-            result = ArrayUtils.add(result, new ExtendedRuntimeOptions(option));
-        }
-        return result;
+        return init(options);
     }
-    public static ExtendedRuntimeOptions[] init(ExtendedCucumberOptions[] options) {
+    public static ExtendedRuntimeOptions[] init(ExtendedCucumberOptions[] options) throws Exception {
         ExtendedRuntimeOptions[] result = {};
         for (ExtendedCucumberOptions option : options) {
             result = ArrayUtils.add(result, new ExtendedRuntimeOptions(option));

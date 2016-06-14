@@ -27,6 +27,7 @@ import org.xhtmlrenderer.pdf.ITextRenderer;
 
 import com.cedarsoftware.util.io.JsonObject;
 import com.cedarsoftware.util.io.JsonReader;
+import com.github.mkolisnyk.cucumber.reporting.types.enums.CucumberReportTypes;
 import com.github.mkolisnyk.cucumber.reporting.types.result.CucumberFeatureResult;
 //import com.google.common.io.Files;
 
@@ -40,6 +41,8 @@ public abstract class CucumberResultsCommon {
     private String outputName;
     private String pdfPageSize = "auto";
 
+    public abstract CucumberReportTypes getReportType();
+    public abstract void validateParameters();
     /**
      * @return the outputDirectory
      */

@@ -10,6 +10,7 @@ import org.apache.commons.io.IOUtils;
 import org.apache.commons.lang3.ArrayUtils;
 
 import com.cedarsoftware.util.io.JsonReader;
+import com.github.mkolisnyk.cucumber.reporting.types.enums.CucumberReportTypes;
 import com.github.mkolisnyk.cucumber.reporting.types.knownerrors.KnownErrorsModel;
 import com.github.mkolisnyk.cucumber.reporting.types.knownerrors.KnownErrorsResult;
 import com.github.mkolisnyk.cucumber.reporting.types.knownerrors.KnownErrorsResultSet;
@@ -69,5 +70,16 @@ public class CucumberKnownErrorsReport extends CucumberResultsCommon {
         KnownErrorsModel model = (KnownErrorsModel) JsonReader.jsonToJava(
                 FileUtils.readFileToString(config));
         this.executeKnownErrorsReport(model, toPDF);
+    }
+
+    @Override
+    public CucumberReportTypes getReportType() {
+        return CucumberReportTypes.KNOWN_ERRORS;
+    }
+
+    @Override
+    public void validateParameters() {
+        // TODO Auto-generated method stub
+        
     }
 }

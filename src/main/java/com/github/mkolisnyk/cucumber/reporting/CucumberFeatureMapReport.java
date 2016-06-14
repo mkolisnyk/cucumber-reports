@@ -13,6 +13,7 @@ import org.testng.Assert;
 
 import com.github.mkolisnyk.cucumber.reporting.types.breakdown.BreakdownReportInfo;
 import com.github.mkolisnyk.cucumber.reporting.types.breakdown.BreakdownTable;
+import com.github.mkolisnyk.cucumber.reporting.types.enums.CucumberReportTypes;
 import com.github.mkolisnyk.cucumber.reporting.types.result.CucumberFeatureResult;
 import com.github.mkolisnyk.cucumber.reporting.types.result.CucumberScenarioResult;
 import com.github.mkolisnyk.cucumber.reporting.types.result.CucumberStepResult;
@@ -120,4 +121,8 @@ public class CucumberFeatureMapReport extends CucumberBreakdownReport {
         return content;
     }
 //updatedContent = updatedContent.replaceAll("\"hoverTable\"", "\"_hoverTable\"");
+    @Override
+    public CucumberReportTypes getReportType() {
+        return CucumberReportTypes.FEATURE_MAP_REPORT;
+    }
 }

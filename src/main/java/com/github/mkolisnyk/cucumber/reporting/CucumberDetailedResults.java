@@ -11,6 +11,7 @@ import org.apache.commons.io.IOUtils;
 import org.apache.commons.lang.StringEscapeUtils;
 import org.apache.commons.lang.StringUtils;
 
+import com.github.mkolisnyk.cucumber.reporting.types.enums.CucumberReportTypes;
 import com.github.mkolisnyk.cucumber.reporting.types.result.CucumberBeforeAfterResult;
 import com.github.mkolisnyk.cucumber.reporting.types.result.CucumberEmbedding;
 import com.github.mkolisnyk.cucumber.reporting.types.result.CucumberFeatureResult;
@@ -503,5 +504,16 @@ public class CucumberDetailedResults extends CucumberResultsCommon {
     public int[][] getStatuses(CucumberFeatureResult[] results) {
         // TODO Auto-generated method stub
         return null;
+    }
+
+    @Override
+    public CucumberReportTypes getReportType() {
+        return CucumberReportTypes.DETAILED_REPORT;
+    }
+
+    @Override
+    public void validateParameters() {
+        // TODO Auto-generated method stub
+        
     }
 }

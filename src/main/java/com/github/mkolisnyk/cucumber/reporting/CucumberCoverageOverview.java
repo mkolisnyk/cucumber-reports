@@ -7,6 +7,7 @@ import java.util.Set;
 
 import org.apache.commons.lang3.StringUtils;
 
+import com.github.mkolisnyk.cucumber.reporting.types.enums.CucumberReportTypes;
 import com.github.mkolisnyk.cucumber.reporting.types.result.CucumberFeatureResult;
 import com.github.mkolisnyk.cucumber.reporting.types.result.CucumberScenarioResult;
 import com.github.mkolisnyk.cucumber.reporting.utils.drawers.PieChartDrawer;
@@ -174,5 +175,10 @@ public class CucumberCoverageOverview extends CucumberResultsOverview {
     }
     public void executeCoverageReport() throws Exception {
         executeCoverageReport(false);
+    }
+
+    @Override
+    public CucumberReportTypes getReportType() {
+        return CucumberReportTypes.COVERAGE_OVERVIEW;
     }
 }

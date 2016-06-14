@@ -12,6 +12,7 @@ import org.apache.commons.lang3.StringUtils;
 
 import com.cedarsoftware.util.io.JsonReader;
 import com.github.mkolisnyk.cucumber.reporting.types.breakdown.BreakdownStats;
+import com.github.mkolisnyk.cucumber.reporting.types.enums.CucumberReportTypes;
 import com.github.mkolisnyk.cucumber.reporting.types.result.CucumberFeatureResult;
 import com.github.mkolisnyk.cucumber.reporting.types.retrospective.RetrospectiveBatch;
 import com.github.mkolisnyk.cucumber.reporting.types.retrospective.RetrospectiveModel;
@@ -143,5 +144,14 @@ public class CucumberRetrospectiveOverviewReport extends CucumberResultsCommon {
         RetrospectiveBatch batch = (RetrospectiveBatch) JsonReader.jsonToJava(
                 FileUtils.readFileToString(config));
         this.executeReport(batch, aggregate, toPDF);
+    }
+    @Override
+    public CucumberReportTypes getReportType() {
+        return CucumberReportTypes.RETROSPECTIVE_OVERVIEW;
+    }
+    @Override
+    public void validateParameters() {
+        // TODO Auto-generated method stub
+        
     }
 }

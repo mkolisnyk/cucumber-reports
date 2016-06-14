@@ -12,6 +12,7 @@ import com.cedarsoftware.util.io.JsonReader;
 import com.github.mkolisnyk.cucumber.reporting.types.consolidated.ConsolidatedItemInfo;
 import com.github.mkolisnyk.cucumber.reporting.types.consolidated.ConsolidatedReportBatch;
 import com.github.mkolisnyk.cucumber.reporting.types.consolidated.ConsolidatedReportModel;
+import com.github.mkolisnyk.cucumber.reporting.types.enums.CucumberReportTypes;
 
 public class CucumberConsolidatedReport extends CucumberResultsCommon {
     protected String getReportBase() throws IOException {
@@ -94,5 +95,14 @@ public class CucumberConsolidatedReport extends CucumberResultsCommon {
     }
     public void executeConsolidatedReport(File config) throws Exception {
         this.executeConsolidatedReport(config, false);
+    }
+    @Override
+    public CucumberReportTypes getReportType() {
+        return CucumberReportTypes.CONSOLIDATED_REPORT;
+    }
+    @Override
+    public void validateParameters() {
+        // TODO Auto-generated method stub
+        
     }
 }

@@ -8,9 +8,15 @@ import java.util.Locale;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.IOUtils;
 
+import com.github.mkolisnyk.cucumber.reporting.types.enums.CucumberReportTypes;
 import com.github.mkolisnyk.cucumber.reporting.types.result.CucumberFeatureResult;
 
 public class CucumberFeatureOverview extends CucumberResultsOverview {
+
+    @Override
+    public CucumberReportTypes getReportType() {
+        return CucumberReportTypes.FEATURE_OVERVIEW;
+    }
 
     @Override
     protected String getReportBase() throws IOException {

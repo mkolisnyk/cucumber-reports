@@ -8,6 +8,7 @@ import java.util.Locale;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.IOUtils;
 
+import com.github.mkolisnyk.cucumber.reporting.types.enums.CucumberReportTypes;
 import com.github.mkolisnyk.cucumber.reporting.types.result.CucumberFeatureResult;
 import com.github.mkolisnyk.cucumber.reporting.types.result.CucumberScenarioResult;
 import com.github.mkolisnyk.cucumber.reporting.utils.drawers.PieChartDrawer;
@@ -143,5 +144,16 @@ public class CucumberResultsOverview extends CucumberResultsCommon {
     }
     public void executeFeaturesOverviewReport(boolean toPDF) throws Exception {
         executeOverviewReport("feature-overview", toPDF);
+    }
+
+    @Override
+    public CucumberReportTypes getReportType() {
+        return CucumberReportTypes.RESULTS_OVERVIEW;
+    }
+
+    @Override
+    public void validateParameters() {
+        // TODO Auto-generated method stub
+        
     }
 }

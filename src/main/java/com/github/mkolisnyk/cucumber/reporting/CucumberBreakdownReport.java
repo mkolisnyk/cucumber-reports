@@ -20,6 +20,8 @@ import com.github.mkolisnyk.cucumber.reporting.types.breakdown.BreakdownReportMo
 import com.github.mkolisnyk.cucumber.reporting.types.breakdown.BreakdownStats;
 import com.github.mkolisnyk.cucumber.reporting.types.breakdown.BreakdownTable;
 import com.github.mkolisnyk.cucumber.reporting.types.breakdown.DataDimension;
+import com.github.mkolisnyk.cucumber.reporting.types.enums.CucumberReportError;
+import com.github.mkolisnyk.cucumber.reporting.types.enums.CucumberReportTypes;
 import com.github.mkolisnyk.cucumber.reporting.types.result.CucumberFeatureResult;
 import com.github.mkolisnyk.cucumber.reporting.types.result.CucumberScenarioResult;
 import com.github.mkolisnyk.cucumber.reporting.utils.drawers.PieChartDrawer;
@@ -52,6 +54,7 @@ public class CucumberBreakdownReport extends CucumberResultsCommon {
     }
     public void executeReport(BreakdownReportModel model, boolean toPDF) throws Exception {
         boolean frameGenerated = false;
+        validateParameters();
         model.initRedirectSequence("./" + this.getOutputName() + "-");
         for (BreakdownReportInfo info : model.getReportsInfo()) {
             if (info.getRefreshTimeout() > 0 && !frameGenerated) {
@@ -325,6 +328,25 @@ public class CucumberBreakdownReport extends CucumberResultsCommon {
             }
             return String.format(Locale.US,
                     "<td bgcolor=\"silver\"><center><b>N/A</b></center></td>");
+        }
+    }
+    @Override
+    public CucumberReportTypes getReportType() {
+        return CucumberReportTypes.BREAKDOWN_REPORT;
+    }
+    @Override
+    public void validateParameters() {
+        Assert.assertNotNull(this.getSourceFiles(),
+            CucumberReportTypes.BREAKDOWN_REPORT + ": " + CucumberReportError.NO_SOURCE_FILE);
+        Assert.assertNotNull(this.getOutputDirectory(),
+            CucumberReportTypes.BREAKDOWN_REPORT + ": " + CucumberReportError.NO_OUTPUT_DIRECTORY);
+        Assert.assertNotNull(this.getOutputName(),
+            CucumberReportTypes.BREAKDOWN_REPORT + ": " + CucumberReportError.NO_OUTPUT_NAME);
+        for (String sourceFile : this.getSourceFiles()) {
+            File path = new File(sourceFile);
+            Assert.assertTrue(path.exists(),
+                CucumberReportTypes.BREAKDOWN_REPORT + ": " + CucumberReportError.NON_EXISTING_SOURCE_FILE + "."
+                    + "Was looking for path: \"" + path.getAbsolutePath() + "\"");
         }
     }
 }

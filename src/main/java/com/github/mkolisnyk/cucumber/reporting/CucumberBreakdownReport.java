@@ -21,6 +21,7 @@ import com.github.mkolisnyk.cucumber.reporting.types.breakdown.BreakdownStats;
 import com.github.mkolisnyk.cucumber.reporting.types.breakdown.BreakdownTable;
 import com.github.mkolisnyk.cucumber.reporting.types.breakdown.DataDimension;
 import com.github.mkolisnyk.cucumber.reporting.types.enums.CucumberReportError;
+import com.github.mkolisnyk.cucumber.reporting.types.enums.CucumberReportLink;
 import com.github.mkolisnyk.cucumber.reporting.types.enums.CucumberReportTypes;
 import com.github.mkolisnyk.cucumber.reporting.types.result.CucumberFeatureResult;
 import com.github.mkolisnyk.cucumber.reporting.types.result.CucumberScenarioResult;
@@ -68,11 +69,18 @@ public class CucumberBreakdownReport extends CucumberResultsCommon {
         executeReport(model, false);
     }
     public void executeReport(File config, boolean toPDF) throws Exception {
-        BreakdownReportModel model = (BreakdownReportModel) JsonReader.jsonToJava(
-                FileUtils.readFileToString(config));
+        String content = FileUtils.readFileToString(config);
+        BreakdownReportModel model = null;
+        try {
+            model = (BreakdownReportModel) JsonReader.jsonToJava(content);
+        } catch (Throwable e) {
+            Assert.fail(this.constructErrorMessage(CucumberReportError.INVALID_CONFIG_FILE, ""), e);
+        }
         this.executeReport(model, toPDF);
     }
     public void executeReport(File config) throws Exception {
+        Assert.assertTrue(config.exists(),
+            this.constructErrorMessage(CucumberReportError.NON_EXISTING_CONFIG_FILE, ""));
         executeReport(config, false);
     }
     protected void generateFrameFile(BreakdownReportModel model) throws Exception {
@@ -337,16 +345,20 @@ public class CucumberBreakdownReport extends CucumberResultsCommon {
     @Override
     public void validateParameters() {
         Assert.assertNotNull(this.getSourceFiles(),
-            CucumberReportTypes.BREAKDOWN_REPORT + ": " + CucumberReportError.NO_SOURCE_FILE);
+            this.constructErrorMessage(CucumberReportError.NO_SOURCE_FILE, ""));
         Assert.assertNotNull(this.getOutputDirectory(),
-            CucumberReportTypes.BREAKDOWN_REPORT + ": " + CucumberReportError.NO_OUTPUT_DIRECTORY);
+                this.constructErrorMessage(CucumberReportError.NO_OUTPUT_DIRECTORY, ""));
         Assert.assertNotNull(this.getOutputName(),
-            CucumberReportTypes.BREAKDOWN_REPORT + ": " + CucumberReportError.NO_OUTPUT_NAME);
+                this.constructErrorMessage(CucumberReportError.NO_OUTPUT_NAME, ""));
         for (String sourceFile : this.getSourceFiles()) {
             File path = new File(sourceFile);
             Assert.assertTrue(path.exists(),
-                CucumberReportTypes.BREAKDOWN_REPORT + ": " + CucumberReportError.NON_EXISTING_SOURCE_FILE + "."
-                    + "Was looking for path: \"" + path.getAbsolutePath() + "\"");
+                    this.constructErrorMessage(CucumberReportError.NON_EXISTING_SOURCE_FILE, "")
+                    + ". Was looking for path: \"" + path.getAbsolutePath() + "\"");
         }
+    }
+    @Override
+    public CucumberReportLink getReportDocLink() {
+        return CucumberReportLink.BREAKDOWN_URL;
     }
 }

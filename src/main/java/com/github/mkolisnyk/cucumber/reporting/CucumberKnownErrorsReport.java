@@ -10,6 +10,7 @@ import org.apache.commons.io.IOUtils;
 import org.apache.commons.lang3.ArrayUtils;
 
 import com.cedarsoftware.util.io.JsonReader;
+import com.github.mkolisnyk.cucumber.reporting.types.enums.CucumberReportLink;
 import com.github.mkolisnyk.cucumber.reporting.types.enums.CucumberReportTypes;
 import com.github.mkolisnyk.cucumber.reporting.types.knownerrors.KnownErrorsModel;
 import com.github.mkolisnyk.cucumber.reporting.types.knownerrors.KnownErrorsResult;
@@ -80,6 +81,10 @@ public class CucumberKnownErrorsReport extends CucumberResultsCommon {
     @Override
     public void validateParameters() {
         // TODO Auto-generated method stub
-        
+    }
+
+    @Override
+    public CucumberReportLink getReportDocLink() {
+        return CucumberReportLink.KNOWN_ERRORS_URL;
     }
 }

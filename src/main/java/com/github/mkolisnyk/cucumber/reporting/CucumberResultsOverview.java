@@ -8,6 +8,7 @@ import java.util.Locale;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.IOUtils;
 
+import com.github.mkolisnyk.cucumber.reporting.types.enums.CucumberReportLink;
 import com.github.mkolisnyk.cucumber.reporting.types.enums.CucumberReportTypes;
 import com.github.mkolisnyk.cucumber.reporting.types.result.CucumberFeatureResult;
 import com.github.mkolisnyk.cucumber.reporting.types.result.CucumberScenarioResult;
@@ -154,6 +155,10 @@ public class CucumberResultsOverview extends CucumberResultsCommon {
     @Override
     public void validateParameters() {
         // TODO Auto-generated method stub
-        
+    }
+
+    @Override
+    public CucumberReportLink getReportDocLink() {
+        return CucumberReportLink.RESULTS_OVERVIEW_URL;
     }
 }

@@ -7,6 +7,7 @@ import java.util.Set;
 
 import org.apache.commons.lang3.StringUtils;
 
+import com.github.mkolisnyk.cucumber.reporting.types.enums.CucumberReportLink;
 import com.github.mkolisnyk.cucumber.reporting.types.enums.CucumberReportTypes;
 import com.github.mkolisnyk.cucumber.reporting.types.result.CucumberFeatureResult;
 import com.github.mkolisnyk.cucumber.reporting.types.result.CucumberScenarioResult;
@@ -180,5 +181,10 @@ public class CucumberCoverageOverview extends CucumberResultsOverview {
     @Override
     public CucumberReportTypes getReportType() {
         return CucumberReportTypes.COVERAGE_OVERVIEW;
+    }
+
+    @Override
+    public CucumberReportLink getReportDocLink() {
+        return CucumberReportLink.COVERAGE_OVERVIEW_URL;
     }
 }

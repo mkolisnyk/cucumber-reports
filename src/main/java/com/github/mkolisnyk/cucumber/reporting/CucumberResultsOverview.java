@@ -7,7 +7,9 @@ import java.util.Locale;
 
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.IOUtils;
+import org.testng.Assert;
 
+import com.github.mkolisnyk.cucumber.reporting.types.enums.CucumberReportError;
 import com.github.mkolisnyk.cucumber.reporting.types.enums.CucumberReportLink;
 import com.github.mkolisnyk.cucumber.reporting.types.enums.CucumberReportTypes;
 import com.github.mkolisnyk.cucumber.reporting.types.result.CucumberFeatureResult;
@@ -122,6 +124,7 @@ public class CucumberResultsOverview extends CucumberResultsCommon {
         executeOverviewReport(reportSuffix, false);
     }
     public void executeOverviewReport(String reportSuffix, boolean toPdf) throws Exception {
+        this.validateParameters();
         CucumberFeatureResult[] features = readFileContent(true);
         File outFile = new File(
                 this.getOutputDirectory() + File.separator + this.getOutputName()
@@ -154,7 +157,20 @@ public class CucumberResultsOverview extends CucumberResultsCommon {
 
     @Override
     public void validateParameters() {
-        // TODO Auto-generated method stub
+        Assert.assertNotNull(this.getSourceFiles(),
+                this.constructErrorMessage(CucumberReportError.NO_SOURCE_FILE, ""));
+        Assert.assertNotNull(this.getOutputDirectory(),
+                this.constructErrorMessage(CucumberReportError.NO_OUTPUT_DIRECTORY, ""));
+        Assert.assertNotNull(this.getOutputName(),
+                this.constructErrorMessage(CucumberReportError.NO_OUTPUT_NAME, ""));
+        for (String sourceFile : this.getSourceFiles()) {
+            Assert.assertNotNull(sourceFile,
+                    this.constructErrorMessage(CucumberReportError.NO_SOURCE_FILE, ""));
+            File path = new File(sourceFile);
+            Assert.assertTrue(path.exists(),
+                    this.constructErrorMessage(CucumberReportError.NON_EXISTING_SOURCE_FILE, "")
+                    + ". Was looking for path: \"" + path.getAbsolutePath() + "\"");
+        }
     }
 
     @Override

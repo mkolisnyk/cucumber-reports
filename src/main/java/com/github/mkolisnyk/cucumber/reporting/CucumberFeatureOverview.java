@@ -8,10 +8,16 @@ import java.util.Locale;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.IOUtils;
 
+import com.github.mkolisnyk.cucumber.reporting.types.enums.CucumberReportLink;
 import com.github.mkolisnyk.cucumber.reporting.types.enums.CucumberReportTypes;
 import com.github.mkolisnyk.cucumber.reporting.types.result.CucumberFeatureResult;
 
 public class CucumberFeatureOverview extends CucumberResultsOverview {
+
+    @Override
+    public CucumberReportLink getReportDocLink() {
+        return CucumberReportLink.FEATURE_OVERVIEW_URL;
+    }
 
     @Override
     public CucumberReportTypes getReportType() {
@@ -82,6 +88,7 @@ public class CucumberFeatureOverview extends CucumberResultsOverview {
     }
 
     public void executeFeatureOverviewChartReport() throws Exception {
+        this.validateParameters();
         executeFeatureOverviewChartReport(false);
     }
     public void executeFeatureOverviewChartReport(boolean toPdf) throws Exception {

@@ -13,6 +13,7 @@ import org.junit.Assert;
 import com.github.mkolisnyk.cucumber.reporting.CucumberCoverageOverview;
 import com.github.mkolisnyk.cucumber.reporting.CucumberFeatureOverview;
 import com.github.mkolisnyk.cucumber.reporting.CucumberResultsOverview;
+import com.github.mkolisnyk.cucumber.reporting.CucumberRetrospectiveOverviewReport;
 import com.github.mkolisnyk.cucumber.reporting.types.enums.CucumberReportError;
 import com.github.mkolisnyk.cucumber.reporting.types.enums.CucumberReportLink;
 import com.github.mkolisnyk.cucumber.reporting.types.enums.CucumberReportTypes;
@@ -108,5 +109,28 @@ public class CucumberCoverageAndOverviewReportTest {
                 actualMessage.contains(expectedMessage.toString()));
         Assert.assertTrue("Report URL wasn't found", actualMessage
                 .contains(CucumberReportLink.FEATURE_OVERVIEW_URL.toString()));
+    }
+    @Test
+    public void testVerifyErrorMessagesRetrospectiveReport() throws Exception {
+        CucumberRetrospectiveOverviewReport results = new CucumberRetrospectiveOverviewReport();
+        results.setOutputDirectory(outputDirectory);
+        results.setOutputName(outputName);
+        results.setSourceFile(sourceFile);
+        String actualMessage = "";
+        if (expectedMessage.equals(CucumberReportError.NO_SOURCE_FILE)
+            || expectedMessage.equals(CucumberReportError.NON_EXISTING_SOURCE_FILE)) {
+            return;
+        }
+        try {
+            results.executeReport(new File("./src/test/resources/retrospective-source/sample_batch.json"), true, true);
+        } catch (AssertionError e) {
+            actualMessage = e.getMessage();
+        }
+        Assert.assertTrue("Report name is unexpected", actualMessage
+                .startsWith(CucumberReportTypes.RETROSPECTIVE_OVERVIEW.toString()));
+        Assert.assertTrue("Incorrect error message is shown",
+                actualMessage.contains(expectedMessage.toString()));
+        Assert.assertTrue("Report URL wasn't found", actualMessage
+                .contains(CucumberReportLink.RETROSPECTIVE_OVERVIEW_URL.toString()));
     }
 }

@@ -8,8 +8,10 @@ import java.util.Locale;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.IOUtils;
 import org.apache.commons.lang3.ArrayUtils;
+import org.testng.Assert;
 
 import com.cedarsoftware.util.io.JsonReader;
+import com.github.mkolisnyk.cucumber.reporting.types.enums.CucumberReportError;
 import com.github.mkolisnyk.cucumber.reporting.types.enums.CucumberReportLink;
 import com.github.mkolisnyk.cucumber.reporting.types.enums.CucumberReportTypes;
 import com.github.mkolisnyk.cucumber.reporting.types.knownerrors.KnownErrorsModel;
@@ -18,7 +20,7 @@ import com.github.mkolisnyk.cucumber.reporting.types.knownerrors.KnownErrorsResu
 import com.github.mkolisnyk.cucumber.reporting.types.result.CucumberFeatureResult;
 import com.github.mkolisnyk.cucumber.reporting.types.result.CucumberScenarioResult;
 
-public class CucumberKnownErrorsReport extends CucumberResultsCommon {
+public class CucumberKnownErrorsReport extends CucumberResultsOverview {
     protected String getReportBase() throws IOException {
         InputStream is = this.getClass().getResourceAsStream("/known-errors-report-tmpl.html");
         String result = IOUtils.toString(is);
@@ -68,19 +70,21 @@ public class CucumberKnownErrorsReport extends CucumberResultsCommon {
         executeKnownErrorsReport(config, false);
     }
     public void executeKnownErrorsReport(File config, boolean toPDF) throws Exception {
-        KnownErrorsModel model = (KnownErrorsModel) JsonReader.jsonToJava(
-                FileUtils.readFileToString(config));
+        Assert.assertTrue(config.exists(),
+            this.constructErrorMessage(CucumberReportError.NON_EXISTING_CONFIG_FILE, ""));
+        String content = FileUtils.readFileToString(config);
+        KnownErrorsModel model = null;
+        try {
+            model = (KnownErrorsModel) JsonReader.jsonToJava(content);
+        } catch (Throwable e) {
+            Assert.fail(this.constructErrorMessage(CucumberReportError.INVALID_CONFIG_FILE, ""), e);
+        }
         this.executeKnownErrorsReport(model, toPDF);
     }
 
     @Override
     public CucumberReportTypes getReportType() {
         return CucumberReportTypes.KNOWN_ERRORS;
-    }
-
-    @Override
-    public void validateParameters() {
-        // TODO Auto-generated method stub
     }
 
     @Override

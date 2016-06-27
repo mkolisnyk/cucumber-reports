@@ -6,6 +6,7 @@ import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.commons.lang.ArrayUtils;
 import org.junit.runner.Description;
 import org.junit.runner.notification.RunNotifier;
 import org.junit.runners.ParentRunner;
@@ -108,19 +109,31 @@ public class ExtendedCucumber extends ParentRunner<ExtendedFeatureRunner> {
         child.run(notifier);
     }
 
-    private void runPredefinedMethods(Class annotation) throws Exception {
+    private Method[] getPredefinedMethods(Class annotation) {
         if (!annotation.isAnnotation()) {
-            return;
+            return new Method[] {};
         }
+        Method[] filteredMethodList = new Method[] {};
         Method[] methodList = this.clazzValue.getMethods();
         for (Method method : methodList) {
             Annotation[] annotations = method.getAnnotations();
             for (Annotation item : annotations) {
                 if (item.annotationType().equals(annotation)) {
-                    method.invoke(null);
-                    break;
+                    ArrayUtils.add(filteredMethodList, method);
                 }
             }
+        }
+        return filteredMethodList;
+    }
+
+    private void runPredefinedMethods(Class annotation) throws Exception {
+        if (!annotation.isAnnotation()) {
+            return;
+        }
+        Method[] methodList = getPredefinedMethods(annotation);
+        for (Method method : methodList) {
+            method.invoke(null);
+            break;
         }
     }
 

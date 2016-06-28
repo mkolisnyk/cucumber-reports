@@ -22,6 +22,7 @@ The report itself contains 2 major sections:
 # Configuration options
 
 | Option | Type | Description |
+| ------ | ---- | ----------- |
 | consolidatedReport | boolean | Identifies if consolidated report is to be generated |
 | consolidatedReportConfig | String | The path to consolidated report configuration file |
 
@@ -30,12 +31,14 @@ The report itself contains 2 major sections:
 The configuration file for current report is of JSON format.
 
 | Field | Type | Description |
+| ------ | ---- | ----------- |
 | @type | String | Should be **com.github.mkolisnyk.cucumber.reporting.types.consolidated.ConsolidatedReportBatch** |
 | models | Array of [Consolidated Report Model](#consolidated-report-model)s | Contains the configuration for all consolidated reports produced |
 
 ### Consolidated Report Model
 
 | Field | Type | Description |
+| ------ | ---- | ----------- |
 | items | Array of [Consolidated Report Item](#consolidated-report-item)s | Contains the list of report items |
 | reportSuffix | String | the suffix to be added at the end of generated report file name |
 | title | String | The entire report title | 
@@ -44,6 +47,7 @@ The configuration file for current report is of JSON format.
 ### Consolidated Report Item
 
 | Field | Type | Description |
+| ------ | ---- | ----------- |
 | title | String | The title text above the report section |
 | path  | String | Absolute or relative path to the generated report which is to be placed under current section |
 

@@ -11,6 +11,8 @@ import org.apache.commons.io.IOUtils;
 import org.apache.commons.lang.StringEscapeUtils;
 import org.apache.commons.lang.StringUtils;
 
+import com.github.mkolisnyk.cucumber.reporting.interfaces.AggragatedReport;
+import com.github.mkolisnyk.cucumber.reporting.interfaces.CucumberResultsCommon;
 import com.github.mkolisnyk.cucumber.reporting.types.enums.CucumberReportLink;
 import com.github.mkolisnyk.cucumber.reporting.types.enums.CucumberReportTypes;
 import com.github.mkolisnyk.cucumber.reporting.types.result.CucumberBeforeAfterResult;
@@ -22,7 +24,7 @@ import com.github.mkolisnyk.cucumber.reporting.types.result.CucumberStepResult;
 /**
  * @author Myk Kolisnyk
  */
-public class CucumberDetailedResults extends CucumberResultsCommon {
+public class CucumberDetailedResults extends AggragatedReport {
     private String screenShotLocation;
     private String screenShotWidth;
 
@@ -483,22 +485,7 @@ public class CucumberDetailedResults extends CucumberResultsCommon {
 
 
     public void executeDetailedResultsReport(boolean toPdf, boolean aggregate) throws Exception {
-        CucumberFeatureResult[] features = readFileContent(aggregate);
-        String formatName = "";
-        if (aggregate) {
-            formatName = "%s%s%s-agg-test-results.html";
-        } else {
-            formatName = "%s%s%s-test-results.html";
-        }
-        File outFile = new File(
-                String.format(Locale.US,
-                        formatName,
-                        this.getOutputDirectory(), File.separator, this.getOutputName()));
-        String content = generateStepsReport(features);
-        FileUtils.writeStringToFile(outFile, content, "UTF-8");
-        if (toPdf) {
-            this.exportToPDF(outFile, "test-results");
-        }
+        this.execute(aggregate, toPdf);
     }
 
     @Override
@@ -521,5 +508,25 @@ public class CucumberDetailedResults extends CucumberResultsCommon {
     public CucumberReportLink getReportDocLink() {
         // TODO Auto-generated method stub
         return CucumberReportLink.DETAILED_URL;
+    }
+
+    @Override
+    public void execute(boolean aggregate, boolean toPDF) throws Exception {
+        CucumberFeatureResult[] features = readFileContent(aggregate);
+        String formatName = "";
+        if (aggregate) {
+            formatName = "%s%s%s-agg-test-results.html";
+        } else {
+            formatName = "%s%s%s-test-results.html";
+        }
+        File outFile = new File(
+                String.format(Locale.US,
+                        formatName,
+                        this.getOutputDirectory(), File.separator, this.getOutputName()));
+        String content = generateStepsReport(features);
+        FileUtils.writeStringToFile(outFile, content, "UTF-8");
+        if (toPDF) {
+            this.exportToPDF(outFile, "test-results");
+        }
     }
 }

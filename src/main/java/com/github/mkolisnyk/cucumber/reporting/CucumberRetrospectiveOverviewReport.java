@@ -12,6 +12,8 @@ import org.apache.commons.lang3.StringUtils;
 import org.testng.Assert;
 
 import com.cedarsoftware.util.io.JsonReader;
+import com.github.mkolisnyk.cucumber.reporting.interfaces.ConfigurableReport;
+import com.github.mkolisnyk.cucumber.reporting.interfaces.CucumberResultsCommon;
 import com.github.mkolisnyk.cucumber.reporting.types.breakdown.BreakdownStats;
 import com.github.mkolisnyk.cucumber.reporting.types.enums.CucumberReportError;
 import com.github.mkolisnyk.cucumber.reporting.types.enums.CucumberReportLink;
@@ -21,7 +23,7 @@ import com.github.mkolisnyk.cucumber.reporting.types.retrospective.Retrospective
 import com.github.mkolisnyk.cucumber.reporting.types.retrospective.RetrospectiveModel;
 import com.github.mkolisnyk.cucumber.reporting.utils.helpers.FolderUtils;
 
-public class CucumberRetrospectiveOverviewReport extends CucumberResultsCommon {
+public class CucumberRetrospectiveOverviewReport extends ConfigurableReport<RetrospectiveBatch> {
 
     protected String getReportBase() throws IOException {
         InputStream is = this.getClass().getResourceAsStream("/consolidated-tmpl.html");
@@ -170,5 +172,17 @@ public class CucumberRetrospectiveOverviewReport extends CucumberResultsCommon {
     @Override
     public CucumberReportLink getReportDocLink() {
         return CucumberReportLink.RETROSPECTIVE_OVERVIEW_URL;
+    }
+    @Override
+    public void execute(RetrospectiveBatch batch, boolean toPDF) {
+        // TODO Auto-generated method stub
+    }
+    @Override
+    public void execute(File config, boolean toPDF) {
+        // TODO Auto-generated method stub
+    }
+    @Override
+    public void execute(boolean aggregate, boolean toPDF) throws Exception {
+        // TODO Auto-generated method stub
     }
 }

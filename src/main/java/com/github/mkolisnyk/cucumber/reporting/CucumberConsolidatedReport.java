@@ -9,6 +9,7 @@ import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.IOUtils;
 
 import com.cedarsoftware.util.io.JsonReader;
+import com.github.mkolisnyk.cucumber.reporting.interfaces.CucumberResultsCommon;
 import com.github.mkolisnyk.cucumber.reporting.types.consolidated.ConsolidatedItemInfo;
 import com.github.mkolisnyk.cucumber.reporting.types.consolidated.ConsolidatedReportBatch;
 import com.github.mkolisnyk.cucumber.reporting.types.consolidated.ConsolidatedReportModel;

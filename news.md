@@ -2,6 +2,11 @@
 title: Cucumber Reports News
 ---
 
+## 10.04.2016 1.0.5 Version Release
+
+* [#73](https://github.com/mkolisnyk/cucumber-reports/issues/73): Enhancement: Parallel Runner: add before and after methods handling
+* [#71](https://github.com/mkolisnyk/cucumber-reports/issues/71): Enhancement: Parallel Runner: add ability to define the number of threads via external variables
+
 ## 10.03.2016 1.0.4 Version Release
 
  * [#31](https://github.com/mkolisnyk/cucumber-reports/issues/31): Enhancement: Parallel JUnit Runner

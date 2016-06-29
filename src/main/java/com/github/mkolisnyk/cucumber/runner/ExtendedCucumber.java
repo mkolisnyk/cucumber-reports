@@ -133,7 +133,6 @@ public class ExtendedCucumber extends ParentRunner<ExtendedFeatureRunner> {
         Method[] methodList = getPredefinedMethods(annotation);
         for (Method method : methodList) {
             method.invoke(null);
-            break;
         }
     }
 

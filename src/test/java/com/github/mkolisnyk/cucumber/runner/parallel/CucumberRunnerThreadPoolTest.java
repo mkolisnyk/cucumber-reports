@@ -1,6 +1,5 @@
 package com.github.mkolisnyk.cucumber.runner.parallel;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -8,7 +7,6 @@ import java.util.List;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.notification.RunNotifier;
-import org.junit.runners.model.InitializationError;
 
 import com.github.mkolisnyk.cucumber.runner.ExtendedCucumber;
 

@@ -12,7 +12,6 @@ import org.apache.commons.lang.StringEscapeUtils;
 import org.apache.commons.lang.StringUtils;
 
 import com.github.mkolisnyk.cucumber.reporting.interfaces.AggragatedReport;
-import com.github.mkolisnyk.cucumber.reporting.interfaces.CucumberResultsCommon;
 import com.github.mkolisnyk.cucumber.reporting.types.enums.CucumberReportLink;
 import com.github.mkolisnyk.cucumber.reporting.types.enums.CucumberReportTypes;
 import com.github.mkolisnyk.cucumber.reporting.types.result.CucumberBeforeAfterResult;

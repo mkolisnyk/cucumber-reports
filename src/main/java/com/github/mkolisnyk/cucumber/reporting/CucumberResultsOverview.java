@@ -9,7 +9,7 @@ import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.IOUtils;
 import org.testng.Assert;
 
-import com.github.mkolisnyk.cucumber.reporting.interfaces.CucumberResultsCommon;
+import com.github.mkolisnyk.cucumber.reporting.interfaces.AggragatedReport;
 import com.github.mkolisnyk.cucumber.reporting.types.enums.CucumberReportError;
 import com.github.mkolisnyk.cucumber.reporting.types.enums.CucumberReportLink;
 import com.github.mkolisnyk.cucumber.reporting.types.enums.CucumberReportTypes;
@@ -17,7 +17,7 @@ import com.github.mkolisnyk.cucumber.reporting.types.result.CucumberFeatureResul
 import com.github.mkolisnyk.cucumber.reporting.types.result.CucumberScenarioResult;
 import com.github.mkolisnyk.cucumber.reporting.utils.drawers.PieChartDrawer;
 
-public class CucumberResultsOverview extends CucumberResultsCommon {
+public class CucumberResultsOverview extends AggragatedReport {
 
     protected String getReportBase() throws IOException {
         InputStream is = this.getClass().getResourceAsStream("/feature-overview-tmpl.html");
@@ -177,5 +177,15 @@ public class CucumberResultsOverview extends CucumberResultsCommon {
     @Override
     public CucumberReportLink getReportDocLink() {
         return CucumberReportLink.RESULTS_OVERVIEW_URL;
+    }
+
+    @Override
+    public void execute(boolean toPDF) throws Exception {
+        // TODO Auto-generated method stub
+    }
+
+    @Override
+    public void execute(boolean aggregate, boolean toPDF) throws Exception {
+        // TODO Auto-generated method stub
     }
 }

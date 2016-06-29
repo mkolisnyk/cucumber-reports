@@ -13,7 +13,6 @@ import org.testng.Assert;
 
 import com.cedarsoftware.util.io.JsonReader;
 import com.github.mkolisnyk.cucumber.reporting.interfaces.ConfigurableReport;
-import com.github.mkolisnyk.cucumber.reporting.interfaces.CucumberResultsCommon;
 import com.github.mkolisnyk.cucumber.reporting.types.breakdown.BreakdownStats;
 import com.github.mkolisnyk.cucumber.reporting.types.enums.CucumberReportError;
 import com.github.mkolisnyk.cucumber.reporting.types.enums.CucumberReportLink;

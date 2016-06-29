@@ -14,7 +14,7 @@ import org.apache.commons.lang3.StringUtils;
 import org.testng.Assert;
 
 import com.cedarsoftware.util.io.JsonReader;
-import com.github.mkolisnyk.cucumber.reporting.interfaces.CucumberResultsCommon;
+import com.github.mkolisnyk.cucumber.reporting.interfaces.ConfigurableReport;
 import com.github.mkolisnyk.cucumber.reporting.types.breakdown.BreakdownCellDisplayType;
 import com.github.mkolisnyk.cucumber.reporting.types.breakdown.BreakdownReportInfo;
 import com.github.mkolisnyk.cucumber.reporting.types.breakdown.BreakdownReportModel;
@@ -28,7 +28,7 @@ import com.github.mkolisnyk.cucumber.reporting.types.result.CucumberFeatureResul
 import com.github.mkolisnyk.cucumber.reporting.types.result.CucumberScenarioResult;
 import com.github.mkolisnyk.cucumber.reporting.utils.drawers.PieChartDrawer;
 
-public class CucumberBreakdownReport extends CucumberResultsCommon {
+public class CucumberBreakdownReport extends ConfigurableReport<BreakdownReportModel> {
 
     private static final int TIMEOUT_MULTIPLIER = 3;
 
@@ -54,34 +54,20 @@ public class CucumberBreakdownReport extends CucumberResultsCommon {
     public void executeReport(BreakdownTable table, boolean toPDF) throws Exception {
         executeReport(new BreakdownReportInfo(table), table, toPDF);
     }
+    @Deprecated
     public void executeReport(BreakdownReportModel model, boolean toPDF) throws Exception {
-        boolean frameGenerated = false;
-        validateParameters();
-        model.initRedirectSequence("./" + this.getOutputName() + "-");
-        for (BreakdownReportInfo info : model.getReportsInfo()) {
-            if (info.getRefreshTimeout() > 0 && !frameGenerated) {
-                frameGenerated = true;
-                generateFrameFile(model);
-            }
-            this.executeReport(info, info.getTable(), toPDF);
-        }
+        execute(model, toPDF);
     }
+    @Deprecated
     public void executeReport(BreakdownReportModel model) throws Exception {
         executeReport(model, false);
     }
+    @Deprecated
     public void executeReport(File config, boolean toPDF) throws Exception {
-        String content = FileUtils.readFileToString(config);
-        BreakdownReportModel model = null;
-        try {
-            model = (BreakdownReportModel) JsonReader.jsonToJava(content);
-        } catch (Throwable e) {
-            Assert.fail(this.constructErrorMessage(CucumberReportError.INVALID_CONFIG_FILE, ""), e);
-        }
-        this.executeReport(model, toPDF);
+        execute(config, toPDF);
     }
+    @Deprecated
     public void executeReport(File config) throws Exception {
-        Assert.assertTrue(config.exists(),
-            this.constructErrorMessage(CucumberReportError.NON_EXISTING_CONFIG_FILE, ""));
         executeReport(config, false);
     }
     protected void generateFrameFile(BreakdownReportModel model) throws Exception {
@@ -108,6 +94,38 @@ public class CucumberBreakdownReport extends CucumberResultsCommon {
         content = content.replaceAll("__TIMEOUT__", "" + totalTimeout);
         FileUtils.writeStringToFile(outFile, content);
     }
+
+    @Override
+    public void execute(BreakdownReportModel batch, boolean toPDF) throws Exception {
+        boolean frameGenerated = false;
+        validateParameters();
+        batch.initRedirectSequence("./" + this.getOutputName() + "-");
+        for (BreakdownReportInfo info : batch.getReportsInfo()) {
+            if (info.getRefreshTimeout() > 0 && !frameGenerated) {
+                frameGenerated = true;
+                generateFrameFile(batch);
+            }
+            this.executeReport(info, info.getTable(), toPDF);
+        }
+    }
+    @Override
+    public void execute(File config, boolean toPDF) throws Exception {
+        Assert.assertTrue(config.exists(),
+                this.constructErrorMessage(CucumberReportError.NON_EXISTING_CONFIG_FILE, ""));
+        String content = FileUtils.readFileToString(config);
+        BreakdownReportModel model = null;
+        try {
+            model = (BreakdownReportModel) JsonReader.jsonToJava(content);
+        } catch (Throwable e) {
+            Assert.fail(this.constructErrorMessage(CucumberReportError.INVALID_CONFIG_FILE, ""), e);
+        }
+        this.executeReport(model, toPDF);
+    }
+    @Deprecated
+    @Override
+    public void execute(boolean aggregate, boolean toPDF) throws Exception {
+    }
+
     protected String generateBreakdownReport(CucumberFeatureResult[] features,
             BreakdownReportInfo info, BreakdownTable table) throws Exception {
         String content = getReportBase();

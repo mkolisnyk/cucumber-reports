@@ -1,15 +1,10 @@
 package com.github.mkolisnyk.cucumber.reporting;
 
 import java.io.File;
-import java.io.FileOutputStream;
 
-import org.apache.commons.io.FileUtils;
 import org.junit.Test;
 
-import com.cedarsoftware.util.io.JsonReader;
-import com.cedarsoftware.util.io.JsonWriter;
 import com.github.mkolisnyk.cucumber.reporting.types.breakdown.BreakdownCellDisplayType;
-import com.github.mkolisnyk.cucumber.reporting.types.breakdown.BreakdownCellValue;
 import com.github.mkolisnyk.cucumber.reporting.types.breakdown.BreakdownReportInfo;
 import com.github.mkolisnyk.cucumber.reporting.types.breakdown.BreakdownReportModel;
 import com.github.mkolisnyk.cucumber.reporting.types.breakdown.BreakdownTable;

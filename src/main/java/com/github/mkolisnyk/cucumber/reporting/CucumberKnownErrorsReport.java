@@ -11,6 +11,7 @@ import org.apache.commons.lang3.ArrayUtils;
 import org.testng.Assert;
 
 import com.cedarsoftware.util.io.JsonReader;
+import com.github.mkolisnyk.cucumber.reporting.interfaces.ConfigurableReport;
 import com.github.mkolisnyk.cucumber.reporting.types.enums.CucumberReportError;
 import com.github.mkolisnyk.cucumber.reporting.types.enums.CucumberReportLink;
 import com.github.mkolisnyk.cucumber.reporting.types.enums.CucumberReportTypes;
@@ -20,7 +21,7 @@ import com.github.mkolisnyk.cucumber.reporting.types.knownerrors.KnownErrorsResu
 import com.github.mkolisnyk.cucumber.reporting.types.result.CucumberFeatureResult;
 import com.github.mkolisnyk.cucumber.reporting.types.result.CucumberScenarioResult;
 
-public class CucumberKnownErrorsReport extends CucumberResultsOverview {
+public class CucumberKnownErrorsReport extends ConfigurableReport<KnownErrorsModel> {
     protected String getReportBase() throws IOException {
         InputStream is = this.getClass().getResourceAsStream("/known-errors-report-tmpl.html");
         String result = IOUtils.toString(is);
@@ -90,5 +91,25 @@ public class CucumberKnownErrorsReport extends CucumberResultsOverview {
     @Override
     public CucumberReportLink getReportDocLink() {
         return CucumberReportLink.KNOWN_ERRORS_URL;
+    }
+
+    @Override
+    public void execute(KnownErrorsModel batch, boolean toPDF) {
+        // TODO Auto-generated method stub
+    }
+
+    @Override
+    public void execute(File config, boolean toPDF) {
+        // TODO Auto-generated method stub
+    }
+
+    @Override
+    public void execute(boolean aggregate, boolean toPDF) throws Exception {
+        // TODO Auto-generated method stub
+    }
+
+    @Override
+    public void validateParameters() {
+        // TODO Auto-generated method stub
     }
 }

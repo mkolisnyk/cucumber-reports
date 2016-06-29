@@ -9,14 +9,14 @@ import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.IOUtils;
 
 import com.cedarsoftware.util.io.JsonReader;
-import com.github.mkolisnyk.cucumber.reporting.interfaces.CucumberResultsCommon;
+import com.github.mkolisnyk.cucumber.reporting.interfaces.ConfigurableReport;
 import com.github.mkolisnyk.cucumber.reporting.types.consolidated.ConsolidatedItemInfo;
 import com.github.mkolisnyk.cucumber.reporting.types.consolidated.ConsolidatedReportBatch;
 import com.github.mkolisnyk.cucumber.reporting.types.consolidated.ConsolidatedReportModel;
 import com.github.mkolisnyk.cucumber.reporting.types.enums.CucumberReportLink;
 import com.github.mkolisnyk.cucumber.reporting.types.enums.CucumberReportTypes;
 
-public class CucumberConsolidatedReport extends CucumberResultsCommon {
+public class CucumberConsolidatedReport extends ConfigurableReport<ConsolidatedReportBatch> {
     protected String getReportBase() throws IOException {
         InputStream is = this.getClass().getResourceAsStream("/consolidated-tmpl.html");
         String result = IOUtils.toString(is);
@@ -82,19 +82,19 @@ public class CucumberConsolidatedReport extends CucumberResultsCommon {
     public void executeConsolidatedReport(ConsolidatedReportModel model) throws Exception {
         executeConsolidatedReport(model, false);
     }
+    @Deprecated
     public void executeConsolidatedReport(ConsolidatedReportBatch batch, boolean toPDF) throws Exception {
-        for (ConsolidatedReportModel model : batch.getModels()) {
-            executeConsolidatedReport(model, toPDF);
-        }
+        execute(batch, toPDF);
     }
+    @Deprecated
     public void executeConsolidatedReport(ConsolidatedReportBatch batch) throws Exception {
         executeConsolidatedReport(batch, false);
     }
+    @Deprecated
     public void executeConsolidatedReport(File config, boolean toPDF) throws Exception {
-        ConsolidatedReportBatch model = (ConsolidatedReportBatch) JsonReader.jsonToJava(
-                FileUtils.readFileToString(config));
-        this.executeConsolidatedReport(model, toPDF);
+        execute(config, toPDF);
     }
+    @Deprecated
     public void executeConsolidatedReport(File config) throws Exception {
         this.executeConsolidatedReport(config, false);
     }
@@ -104,10 +104,26 @@ public class CucumberConsolidatedReport extends CucumberResultsCommon {
     }
     @Override
     public void validateParameters() {
-        // TODO Auto-generated method stub
     }
     @Override
     public CucumberReportLink getReportDocLink() {
         return CucumberReportLink.CONSOLIDATED_URL;
+    }
+    @Override
+    public void execute(ConsolidatedReportBatch batch, boolean toPDF)
+            throws Exception {
+        for (ConsolidatedReportModel model : batch.getModels()) {
+            executeConsolidatedReport(model, toPDF);
+        }
+    }
+    @Override
+    public void execute(File config, boolean toPDF) throws Exception {
+        ConsolidatedReportBatch model = (ConsolidatedReportBatch) JsonReader.jsonToJava(
+                FileUtils.readFileToString(config));
+        this.execute(model, toPDF);
+    }
+    @Deprecated
+    @Override
+    public void execute(boolean aggregate, boolean toPDF) throws Exception {
     }
 }

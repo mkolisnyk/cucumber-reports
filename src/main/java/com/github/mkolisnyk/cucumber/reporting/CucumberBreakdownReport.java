@@ -27,9 +27,15 @@ import com.github.mkolisnyk.cucumber.reporting.types.enums.CucumberReportTypes;
 import com.github.mkolisnyk.cucumber.reporting.types.result.CucumberFeatureResult;
 import com.github.mkolisnyk.cucumber.reporting.types.result.CucumberScenarioResult;
 import com.github.mkolisnyk.cucumber.reporting.utils.drawers.PieChartDrawer;
+import com.github.mkolisnyk.cucumber.runner.runtime.ExtendedRuntimeOptions;
 
 public class CucumberBreakdownReport extends ConfigurableReport<BreakdownReportModel> {
-
+    public CucumberBreakdownReport() {
+        super();
+    }
+    public CucumberBreakdownReport(ExtendedRuntimeOptions extendedOptions) {
+        super(extendedOptions);
+    }
     private static final int TIMEOUT_MULTIPLIER = 3;
 
     @Override

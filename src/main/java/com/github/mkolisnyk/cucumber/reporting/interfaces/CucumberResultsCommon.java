@@ -32,6 +32,7 @@ import com.github.mkolisnyk.cucumber.reporting.types.enums.CucumberReportLink;
 import com.github.mkolisnyk.cucumber.reporting.types.enums.CucumberReportTypes;
 import com.github.mkolisnyk.cucumber.reporting.types.result.CucumberFeatureResult;
 //import com.google.common.io.Files;
+import com.github.mkolisnyk.cucumber.runner.runtime.ExtendedRuntimeOptions;
 
 public abstract class CucumberResultsCommon {
     public static final int CHART_WIDTH = 450;
@@ -46,6 +47,16 @@ public abstract class CucumberResultsCommon {
     public abstract CucumberReportTypes getReportType();
     public abstract CucumberReportLink getReportDocLink();
     public abstract void validateParameters();
+
+    public CucumberResultsCommon() {
+    }
+    public CucumberResultsCommon(ExtendedRuntimeOptions extendedOptions) {
+        this.setOutputDirectory(extendedOptions.getOutputFolder());
+        this.setOutputName(extendedOptions.getReportPrefix());
+        this.setSourceFiles(extendedOptions.getJsonReportPaths());
+        this.setPdfPageSize(extendedOptions.getPdfPageSize());
+    }
+
     public String constructErrorMessage(CucumberReportError error, String suffix) {
         return String.format("%s: %s. For more information, please, refer to: %s%s",
             this.getReportType(), error, this.getReportDocLink(), suffix);

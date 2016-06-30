@@ -19,11 +19,22 @@ import com.github.mkolisnyk.cucumber.reporting.types.result.CucumberEmbedding;
 import com.github.mkolisnyk.cucumber.reporting.types.result.CucumberFeatureResult;
 import com.github.mkolisnyk.cucumber.reporting.types.result.CucumberScenarioResult;
 import com.github.mkolisnyk.cucumber.reporting.types.result.CucumberStepResult;
+import com.github.mkolisnyk.cucumber.runner.runtime.ExtendedRuntimeOptions;
 
 /**
  * @author Myk Kolisnyk
  */
 public class CucumberDetailedResults extends AggragatedReport {
+    public CucumberDetailedResults() {
+        super();
+    }
+
+    public CucumberDetailedResults(ExtendedRuntimeOptions extendedOptions) {
+        super(extendedOptions);
+        this.setScreenShotLocation(extendedOptions.getScreenShotLocation());
+        this.setScreenShotWidth(extendedOptions.getScreenShotSize());
+    }
+
     private String screenShotLocation;
     private String screenShotWidth;
 

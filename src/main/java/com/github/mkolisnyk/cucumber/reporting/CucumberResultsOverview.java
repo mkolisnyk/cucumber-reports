@@ -16,8 +16,17 @@ import com.github.mkolisnyk.cucumber.reporting.types.enums.CucumberReportTypes;
 import com.github.mkolisnyk.cucumber.reporting.types.result.CucumberFeatureResult;
 import com.github.mkolisnyk.cucumber.reporting.types.result.CucumberScenarioResult;
 import com.github.mkolisnyk.cucumber.reporting.utils.drawers.PieChartDrawer;
+import com.github.mkolisnyk.cucumber.runner.runtime.ExtendedRuntimeOptions;
 
 public class CucumberResultsOverview extends AggragatedReport {
+
+    public CucumberResultsOverview() {
+        super();
+    }
+
+    public CucumberResultsOverview(ExtendedRuntimeOptions extendedOptions) {
+        super(extendedOptions);
+    }
 
     protected String getReportBase() throws IOException {
         InputStream is = this.getClass().getResourceAsStream("/feature-overview-tmpl.html");

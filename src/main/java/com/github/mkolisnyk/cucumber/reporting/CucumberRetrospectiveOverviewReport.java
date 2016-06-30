@@ -21,9 +21,17 @@ import com.github.mkolisnyk.cucumber.reporting.types.result.CucumberFeatureResul
 import com.github.mkolisnyk.cucumber.reporting.types.retrospective.RetrospectiveBatch;
 import com.github.mkolisnyk.cucumber.reporting.types.retrospective.RetrospectiveModel;
 import com.github.mkolisnyk.cucumber.reporting.utils.helpers.FolderUtils;
+import com.github.mkolisnyk.cucumber.runner.runtime.ExtendedRuntimeOptions;
 
 public class CucumberRetrospectiveOverviewReport extends ConfigurableReport<RetrospectiveBatch> {
 
+    public CucumberRetrospectiveOverviewReport() {
+        super();
+    }
+    public CucumberRetrospectiveOverviewReport(
+            ExtendedRuntimeOptions extendedOptions) {
+        super(extendedOptions);
+    }
     protected String getReportBase() throws IOException {
         InputStream is = this.getClass().getResourceAsStream("/consolidated-tmpl.html");
         String result = IOUtils.toString(is);

@@ -12,8 +12,19 @@ import com.github.mkolisnyk.cucumber.reporting.types.enums.CucumberReportTypes;
 import com.github.mkolisnyk.cucumber.reporting.types.result.CucumberFeatureResult;
 import com.github.mkolisnyk.cucumber.reporting.types.result.CucumberScenarioResult;
 import com.github.mkolisnyk.cucumber.reporting.utils.drawers.PieChartDrawer;
+import com.github.mkolisnyk.cucumber.runner.runtime.ExtendedRuntimeOptions;
 
 public class CucumberCoverageOverview extends CucumberResultsOverview {
+
+    public CucumberCoverageOverview() {
+        super();
+    }
+
+    public CucumberCoverageOverview(ExtendedRuntimeOptions extendedOptions) {
+        super(extendedOptions);
+        this.setExcludeCoverageTags(extendedOptions.getExcludeCoverageTags());
+        this.setIncludeCoverageTags(extendedOptions.getIncludeCoverageTags());
+    }
 
     private String[] includeCoverageTags = {};
     private String[] excludeCoverageTags = {};

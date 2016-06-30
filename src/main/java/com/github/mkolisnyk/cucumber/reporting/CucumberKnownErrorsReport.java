@@ -20,8 +20,17 @@ import com.github.mkolisnyk.cucumber.reporting.types.knownerrors.KnownErrorsResu
 import com.github.mkolisnyk.cucumber.reporting.types.knownerrors.KnownErrorsResultSet;
 import com.github.mkolisnyk.cucumber.reporting.types.result.CucumberFeatureResult;
 import com.github.mkolisnyk.cucumber.reporting.types.result.CucumberScenarioResult;
+import com.github.mkolisnyk.cucumber.runner.runtime.ExtendedRuntimeOptions;
 
 public class CucumberKnownErrorsReport extends ConfigurableReport<KnownErrorsModel> {
+    public CucumberKnownErrorsReport() {
+        super();
+    }
+
+    public CucumberKnownErrorsReport(ExtendedRuntimeOptions extendedOptions) {
+        super(extendedOptions);
+    }
+
     protected String getReportBase() throws IOException {
         InputStream is = this.getClass().getResourceAsStream("/known-errors-report-tmpl.html");
         String result = IOUtils.toString(is);

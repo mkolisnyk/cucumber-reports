@@ -35,11 +35,7 @@ public final class ReportRunner {
         if (!extendedOptions.isOverviewReport()) {
             return;
         }
-        CucumberResultsOverview results = new CucumberResultsOverview();
-        results.setOutputDirectory(extendedOptions.getOutputFolder());
-        results.setOutputName(extendedOptions.getReportPrefix());
-        results.setSourceFiles(extendedOptions.getJsonReportPaths());
-        results.setPdfPageSize(extendedOptions.getPdfPageSize());
+        CucumberResultsOverview results = new CucumberResultsOverview(extendedOptions);
         try {
             results.execute(extendedOptions.isToPDF());
         } catch (Exception e) {
@@ -51,11 +47,7 @@ public final class ReportRunner {
         if (!extendedOptions.isFeatureOverviewChart()) {
             return;
         }
-        CucumberFeatureOverview results = new CucumberFeatureOverview();
-        results.setOutputDirectory(extendedOptions.getOutputFolder());
-        results.setOutputName(extendedOptions.getReportPrefix());
-        results.setSourceFiles(extendedOptions.getJsonReportPaths());
-        results.setPdfPageSize(extendedOptions.getPdfPageSize());
+        CucumberFeatureOverview results = new CucumberFeatureOverview(extendedOptions);
         try {
             results.execute(extendedOptions.isToPDF());
         } catch (Exception e) {
@@ -67,13 +59,7 @@ public final class ReportRunner {
         if (!extendedOptions.isDetailedReport()) {
             return;
         }
-        CucumberDetailedResults results = new CucumberDetailedResults();
-        results.setOutputDirectory(extendedOptions.getOutputFolder());
-        results.setOutputName(extendedOptions.getReportPrefix());
-        results.setSourceFiles(extendedOptions.getJsonReportPaths());
-        results.setScreenShotLocation(extendedOptions.getScreenShotLocation());
-        results.setScreenShotWidth(extendedOptions.getScreenShotSize());
-        results.setPdfPageSize(extendedOptions.getPdfPageSize());
+        CucumberDetailedResults results = new CucumberDetailedResults(extendedOptions);
         try {
             results.execute(false, extendedOptions.isToPDF());
         } catch (Exception e) {
@@ -84,13 +70,7 @@ public final class ReportRunner {
         if (!extendedOptions.isDetailedAggregatedReport()) {
             return;
         }
-        CucumberDetailedResults results = new CucumberDetailedResults();
-        results.setOutputDirectory(extendedOptions.getOutputFolder());
-        results.setOutputName(extendedOptions.getReportPrefix());
-        results.setSourceFiles(extendedOptions.getJsonReportPaths());
-        results.setScreenShotLocation(extendedOptions.getScreenShotLocation());
-        results.setScreenShotWidth(extendedOptions.getScreenShotSize());
-        results.setPdfPageSize(extendedOptions.getPdfPageSize());
+        CucumberDetailedResults results = new CucumberDetailedResults(extendedOptions);
         try {
             results.execute(true, extendedOptions.isToPDF());
         } catch (Exception e) {
@@ -101,13 +81,7 @@ public final class ReportRunner {
         if (!extendedOptions.isCoverageReport()) {
             return;
         }
-        CucumberCoverageOverview results = new CucumberCoverageOverview();
-        results.setOutputDirectory(extendedOptions.getOutputFolder());
-        results.setOutputName(extendedOptions.getReportPrefix());
-        results.setSourceFiles(extendedOptions.getJsonReportPaths());
-        results.setExcludeCoverageTags(extendedOptions.getExcludeCoverageTags());
-        results.setIncludeCoverageTags(extendedOptions.getIncludeCoverageTags());
-        results.setPdfPageSize(extendedOptions.getPdfPageSize());
+        CucumberCoverageOverview results = new CucumberCoverageOverview(extendedOptions);
         try {
             results.execute(extendedOptions.isToPDF());
         } catch (Exception e) {
@@ -118,11 +92,7 @@ public final class ReportRunner {
         if (!extendedOptions.isBreakdownReport()) {
             return;
         }
-        CucumberBreakdownReport report = new CucumberBreakdownReport();
-        report.setOutputDirectory(extendedOptions.getOutputFolder());
-        report.setOutputName(extendedOptions.getReportPrefix());
-        report.setSourceFiles(extendedOptions.getJsonReportPaths());
-        report.setPdfPageSize(extendedOptions.getPdfPageSize());
+        CucumberBreakdownReport report = new CucumberBreakdownReport(extendedOptions);
         try {
             report.execute(new File(extendedOptions.getBreakdownConfig()), extendedOptions.isToPDF());
         } catch (Exception e) {
@@ -133,11 +103,7 @@ public final class ReportRunner {
         if (!extendedOptions.isFeatureMapReport()) {
             return;
         }
-        CucumberFeatureMapReport report = new CucumberFeatureMapReport();
-        report.setOutputDirectory(extendedOptions.getOutputFolder());
-        report.setOutputName(extendedOptions.getReportPrefix());
-        report.setSourceFiles(extendedOptions.getJsonReportPaths());
-        report.setPdfPageSize(extendedOptions.getPdfPageSize());
+        CucumberFeatureMapReport report = new CucumberFeatureMapReport(extendedOptions);
         try {
             report.execute(new File(extendedOptions.getFeatureMapConfig()), extendedOptions.isToPDF());
         } catch (Exception e) {
@@ -148,11 +114,7 @@ public final class ReportRunner {
         if (!extendedOptions.isKnownErrorsReport()) {
             return;
         }
-        CucumberKnownErrorsReport report = new CucumberKnownErrorsReport();
-        report.setOutputDirectory(extendedOptions.getOutputFolder());
-        report.setOutputName(extendedOptions.getReportPrefix());
-        report.setSourceFiles(extendedOptions.getJsonReportPaths());
-        report.setPdfPageSize(extendedOptions.getPdfPageSize());
+        CucumberKnownErrorsReport report = new CucumberKnownErrorsReport(extendedOptions);
         try {
             report.execute(new File(extendedOptions.getKnownErrorsConfig()),
                     extendedOptions.isToPDF());
@@ -164,11 +126,7 @@ public final class ReportRunner {
         if (!extendedOptions.isConsolidatedReport()) {
             return;
         }
-        CucumberConsolidatedReport report = new CucumberConsolidatedReport();
-        report.setOutputDirectory(extendedOptions.getOutputFolder());
-        report.setOutputName(extendedOptions.getReportPrefix());
-        report.setSourceFiles(extendedOptions.getJsonReportPaths());
-        report.setPdfPageSize(extendedOptions.getPdfPageSize());
+        CucumberConsolidatedReport report = new CucumberConsolidatedReport(extendedOptions);
         try {
             report.execute(new File(extendedOptions.getConsolidatedReportConfig()),
                     extendedOptions.isToPDF());

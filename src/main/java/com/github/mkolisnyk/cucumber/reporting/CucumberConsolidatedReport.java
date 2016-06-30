@@ -15,8 +15,15 @@ import com.github.mkolisnyk.cucumber.reporting.types.consolidated.ConsolidatedRe
 import com.github.mkolisnyk.cucumber.reporting.types.consolidated.ConsolidatedReportModel;
 import com.github.mkolisnyk.cucumber.reporting.types.enums.CucumberReportLink;
 import com.github.mkolisnyk.cucumber.reporting.types.enums.CucumberReportTypes;
+import com.github.mkolisnyk.cucumber.runner.runtime.ExtendedRuntimeOptions;
 
 public class CucumberConsolidatedReport extends ConfigurableReport<ConsolidatedReportBatch> {
+    public CucumberConsolidatedReport() {
+        super();
+    }
+    public CucumberConsolidatedReport(ExtendedRuntimeOptions extendedOptions) {
+        super(extendedOptions);
+    }
     protected String getReportBase() throws IOException {
         InputStream is = this.getClass().getResourceAsStream("/consolidated-tmpl.html");
         String result = IOUtils.toString(is);

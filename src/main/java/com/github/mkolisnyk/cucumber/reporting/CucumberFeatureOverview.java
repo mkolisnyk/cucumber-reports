@@ -11,8 +11,17 @@ import org.apache.commons.io.IOUtils;
 import com.github.mkolisnyk.cucumber.reporting.types.enums.CucumberReportLink;
 import com.github.mkolisnyk.cucumber.reporting.types.enums.CucumberReportTypes;
 import com.github.mkolisnyk.cucumber.reporting.types.result.CucumberFeatureResult;
+import com.github.mkolisnyk.cucumber.runner.runtime.ExtendedRuntimeOptions;
 
 public class CucumberFeatureOverview extends CucumberResultsOverview {
+
+    public CucumberFeatureOverview() {
+        super();
+    }
+
+    public CucumberFeatureOverview(ExtendedRuntimeOptions extendedOptions) {
+        super(extendedOptions);
+    }
 
     @Override
     public CucumberReportLink getReportDocLink() {

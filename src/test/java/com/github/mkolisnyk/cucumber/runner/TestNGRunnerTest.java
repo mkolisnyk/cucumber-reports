@@ -10,6 +10,24 @@ import cucumber.api.CucumberOptions;
 
 public class TestNGRunnerTest {
 
+    /*@ExtendedCucumberOptions(jsonReport = "target/cucumber.json",
+            retryCount = 0,
+            featureOverviewChart = true,
+            detailedReport = true,
+            detailedAggregatedReport = true,
+            overviewReport = true,
+            coverageReport = true,
+            jsonUsageReport = "target/cucumber-usage.json",
+            usageReport = true,
+            toPDF = true,
+            breakdownReport = true,
+            breakdownConfig = "src/test/resources/breakdown-source/simple.json",
+            knownErrorsReport = true,
+            knownErrorsConfig = "src/test/resources/known-errors-source/sample_model.json",
+            consolidatedReport = true,
+            reportPrefix = "testng-result",
+            consolidatedReportConfig = "src/test/resources/consolidated-source/sample_batch.json",
+            outputFolder = "target/testng")*/
     @ExtendedCucumberOptions(jsonReport = "target/cucumber.json",
             retryCount = 0,
             featureOverviewChart = true,

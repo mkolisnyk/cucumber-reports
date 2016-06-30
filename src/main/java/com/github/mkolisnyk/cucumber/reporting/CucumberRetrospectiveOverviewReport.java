@@ -139,23 +139,13 @@ public class CucumberRetrospectiveOverviewReport extends ConfigurableReport<Retr
             this.exportToPDF(outFile, model.getReportSuffix());
         }
     }
+    @Deprecated
     public void executeReport(RetrospectiveBatch batch, boolean aggregate, boolean toPDF) throws Exception {
-        for (RetrospectiveModel model : batch.getModels()) {
-            this.executeReport(model, aggregate, toPDF);
-        }
+        this.execute(batch, aggregate, toPDF);
     }
+    @Deprecated
     public void executeReport(File config, boolean aggregate, boolean toPDF) throws Exception {
-        Assert.assertTrue(config.exists(),
-                this.constructErrorMessage(CucumberReportError.NON_EXISTING_CONFIG_FILE, ""));
-        String content = FileUtils.readFileToString(config);
-        RetrospectiveBatch batch = null;
-        try {
-            batch = (RetrospectiveBatch) JsonReader.jsonToJava(content);
-        } catch (Throwable e) {
-            Assert.fail(this.constructErrorMessage(CucumberReportError.INVALID_CONFIG_FILE, ""), e);
-        }
-        validateParameters();
-        this.executeReport(batch, aggregate, toPDF);
+        this.execute(config, aggregate, toPDF);
     }
     @Override
     public CucumberReportTypes getReportType() {
@@ -183,5 +173,27 @@ public class CucumberRetrospectiveOverviewReport extends ConfigurableReport<Retr
     @Override
     public void execute(boolean aggregate, boolean toPDF) throws Exception {
         // TODO Auto-generated method stub
+    }
+    @Override
+    public void execute(RetrospectiveBatch batch, boolean aggregate,
+            boolean toPDF) throws Exception {
+        for (RetrospectiveModel model : batch.getModels()) {
+            this.executeReport(model, aggregate, toPDF);
+        }
+    }
+    @Override
+    public void execute(File config, boolean aggregate, boolean toPDF)
+            throws Exception {
+        Assert.assertTrue(config.exists(),
+                this.constructErrorMessage(CucumberReportError.NON_EXISTING_CONFIG_FILE, ""));
+        String content = FileUtils.readFileToString(config);
+        RetrospectiveBatch batch = null;
+        try {
+            batch = (RetrospectiveBatch) JsonReader.jsonToJava(content);
+        } catch (Throwable e) {
+            Assert.fail(this.constructErrorMessage(CucumberReportError.INVALID_CONFIG_FILE, ""), e);
+        }
+        validateParameters();
+        this.executeReport(batch, aggregate, toPDF);
     }
 }

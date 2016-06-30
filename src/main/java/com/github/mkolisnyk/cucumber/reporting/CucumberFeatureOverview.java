@@ -95,7 +95,7 @@ public class CucumberFeatureOverview extends CucumberResultsOverview {
      */
     @Deprecated
     public void executeFeatureOverviewChartReport() throws Exception {
-        executeFeatureOverviewChartReport(false);
+        execute(true, false);
     }
     /**
      * Generates feature overview chart report.
@@ -107,6 +107,18 @@ public class CucumberFeatureOverview extends CucumberResultsOverview {
     @Deprecated
     public void executeFeatureOverviewChartReport(boolean toPdf) throws Exception {
         execute(true, toPdf);
+    }
+
+    @Override
+    public void execute(boolean toPDF) throws Exception {
+        // TODO Auto-generated method stub
+        execute(true, toPDF);
+    }
+
+    @Override
+    public void execute() throws Exception {
+        // TODO Auto-generated method stub
+        execute(false);
     }
 
     @Override

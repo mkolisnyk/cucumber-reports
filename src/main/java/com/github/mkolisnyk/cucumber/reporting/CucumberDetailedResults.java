@@ -482,7 +482,7 @@ public class CucumberDetailedResults extends AggragatedReport {
         return content;
     }
 
-
+    @Deprecated
     public void executeDetailedResultsReport(boolean toPdf, boolean aggregate) throws Exception {
         this.execute(aggregate, toPdf);
     }

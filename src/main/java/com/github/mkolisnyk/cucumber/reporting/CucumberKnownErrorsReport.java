@@ -54,33 +54,21 @@ public class CucumberKnownErrorsReport extends ConfigurableReport<KnownErrorsMod
         content = content.replaceAll("__REPORT__", reportContent);
         return content;
     }
+    @Deprecated
     public void executeKnownErrorsReport(KnownErrorsModel model) throws Exception {
         executeKnownErrorsReport(model, false);
     }
+    @Deprecated
     public void executeKnownErrorsReport(KnownErrorsModel model, boolean toPDF) throws Exception {
-        CucumberFeatureResult[] features = readFileContent(true);
-        File outFile = new File(
-                this.getOutputDirectory() + File.separator + this.getOutputName()
-                + "-known-errors.html");
-        FileUtils.writeStringToFile(outFile, generateKnownErrorsReport(features, model));
-        if (toPDF) {
-            this.exportToPDF(outFile, "known-errors");
-        }
+        execute(model, toPDF);
     }
+    @Deprecated
     public void executeKnownErrorsReport(File config) throws Exception {
         executeKnownErrorsReport(config, false);
     }
+    @Deprecated
     public void executeKnownErrorsReport(File config, boolean toPDF) throws Exception {
-        Assert.assertTrue(config.exists(),
-            this.constructErrorMessage(CucumberReportError.NON_EXISTING_CONFIG_FILE, ""));
-        String content = FileUtils.readFileToString(config);
-        KnownErrorsModel model = null;
-        try {
-            model = (KnownErrorsModel) JsonReader.jsonToJava(content);
-        } catch (Throwable e) {
-            Assert.fail(this.constructErrorMessage(CucumberReportError.INVALID_CONFIG_FILE, ""), e);
-        }
-        this.executeKnownErrorsReport(model, toPDF);
+        execute(config, toPDF);
     }
 
     @Override
@@ -94,22 +82,50 @@ public class CucumberKnownErrorsReport extends ConfigurableReport<KnownErrorsMod
     }
 
     @Override
-    public void execute(KnownErrorsModel batch, boolean toPDF) {
-        // TODO Auto-generated method stub
+    public void execute(KnownErrorsModel batch, boolean toPDF) throws Exception {
+        CucumberFeatureResult[] features = readFileContent(true);
+        File outFile = new File(
+                this.getOutputDirectory() + File.separator + this.getOutputName()
+                + "-known-errors.html");
+        FileUtils.writeStringToFile(outFile, generateKnownErrorsReport(features, batch));
+        if (toPDF) {
+            this.exportToPDF(outFile, "known-errors");
+        }
     }
 
     @Override
-    public void execute(File config, boolean toPDF) {
-        // TODO Auto-generated method stub
+    public void execute(File config, boolean toPDF) throws Exception {
+        Assert.assertTrue(config.exists(),
+                this.constructErrorMessage(CucumberReportError.NON_EXISTING_CONFIG_FILE, ""));
+        String content = FileUtils.readFileToString(config);
+        KnownErrorsModel model = null;
+        try {
+            model = (KnownErrorsModel) JsonReader.jsonToJava(content);
+        } catch (Throwable e) {
+            Assert.fail(this.constructErrorMessage(CucumberReportError.INVALID_CONFIG_FILE, ""), e);
+        }
+        this.execute(model, toPDF);
     }
 
+    @Deprecated
     @Override
     public void execute(boolean aggregate, boolean toPDF) throws Exception {
-        // TODO Auto-generated method stub
     }
 
     @Override
     public void validateParameters() {
+    }
+
+    @Override
+    public void execute(KnownErrorsModel batch, boolean aggregate, boolean toPDF)
+            throws Exception {
         // TODO Auto-generated method stub
+        execute(batch, toPDF);
+    }
+
+    @Override
+    public void execute(File config, boolean aggregate, boolean toPDF)
+            throws Exception {
+        execute(config, toPDF);
     }
 }

@@ -41,7 +41,7 @@ public final class ReportRunner {
         results.setSourceFiles(extendedOptions.getJsonReportPaths());
         results.setPdfPageSize(extendedOptions.getPdfPageSize());
         try {
-            results.executeFeaturesOverviewReport(extendedOptions.isToPDF());
+            results.execute(extendedOptions.isToPDF());
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -57,7 +57,7 @@ public final class ReportRunner {
         results.setSourceFiles(extendedOptions.getJsonReportPaths());
         results.setPdfPageSize(extendedOptions.getPdfPageSize());
         try {
-            results.executeFeatureOverviewChartReport(extendedOptions.isToPDF());
+            results.execute(extendedOptions.isToPDF());
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -75,8 +75,7 @@ public final class ReportRunner {
         results.setScreenShotWidth(extendedOptions.getScreenShotSize());
         results.setPdfPageSize(extendedOptions.getPdfPageSize());
         try {
-            results.executeDetailedResultsReport(
-                    extendedOptions.isToPDF(), false);
+            results.execute(false, extendedOptions.isToPDF());
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -93,8 +92,7 @@ public final class ReportRunner {
         results.setScreenShotWidth(extendedOptions.getScreenShotSize());
         results.setPdfPageSize(extendedOptions.getPdfPageSize());
         try {
-            results.executeDetailedResultsReport(
-                    extendedOptions.isToPDF(), true);
+            results.execute(true, extendedOptions.isToPDF());
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -111,7 +109,7 @@ public final class ReportRunner {
         results.setIncludeCoverageTags(extendedOptions.getIncludeCoverageTags());
         results.setPdfPageSize(extendedOptions.getPdfPageSize());
         try {
-            results.executeCoverageReport(extendedOptions.isToPDF());
+            results.execute(extendedOptions.isToPDF());
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -126,7 +124,7 @@ public final class ReportRunner {
         report.setSourceFiles(extendedOptions.getJsonReportPaths());
         report.setPdfPageSize(extendedOptions.getPdfPageSize());
         try {
-            report.executeReport(new File(extendedOptions.getBreakdownConfig()), extendedOptions.isToPDF());
+            report.execute(new File(extendedOptions.getBreakdownConfig()), extendedOptions.isToPDF());
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -141,7 +139,7 @@ public final class ReportRunner {
         report.setSourceFiles(extendedOptions.getJsonReportPaths());
         report.setPdfPageSize(extendedOptions.getPdfPageSize());
         try {
-            report.executeReport(new File(extendedOptions.getFeatureMapConfig()), extendedOptions.isToPDF());
+            report.execute(new File(extendedOptions.getFeatureMapConfig()), extendedOptions.isToPDF());
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -156,7 +154,7 @@ public final class ReportRunner {
         report.setSourceFiles(extendedOptions.getJsonReportPaths());
         report.setPdfPageSize(extendedOptions.getPdfPageSize());
         try {
-            report.executeKnownErrorsReport(new File(extendedOptions.getKnownErrorsConfig()),
+            report.execute(new File(extendedOptions.getKnownErrorsConfig()),
                     extendedOptions.isToPDF());
         } catch (Exception e) {
             e.printStackTrace();
@@ -172,7 +170,7 @@ public final class ReportRunner {
         report.setSourceFiles(extendedOptions.getJsonReportPaths());
         report.setPdfPageSize(extendedOptions.getPdfPageSize());
         try {
-            report.executeConsolidatedReport(new File(extendedOptions.getConsolidatedReportConfig()),
+            report.execute(new File(extendedOptions.getConsolidatedReportConfig()),
                     extendedOptions.isToPDF());
         } catch (Exception e) {
             e.printStackTrace();

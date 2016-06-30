@@ -121,10 +121,10 @@ public class CucumberResultsOverview extends AggragatedReport {
         return content;
     }
 
-    public void executeOverviewReport(String reportSuffix) throws Exception {
+    protected void executeOverviewReport(String reportSuffix) throws Exception {
         executeOverviewReport(reportSuffix, false);
     }
-    public void executeOverviewReport(String reportSuffix, boolean toPdf) throws Exception {
+    protected void executeOverviewReport(String reportSuffix, boolean toPdf) throws Exception {
         this.validateParameters();
         CucumberFeatureResult[] features = readFileContent(true);
         File outFile = new File(
@@ -144,11 +144,13 @@ public class CucumberResultsOverview extends AggragatedReport {
             return;
         }
     }
+    @Deprecated
     public void executeFeaturesOverviewReport() throws Exception {
-        executeFeaturesOverviewReport(false);
+        this.execute(false);
     }
+    @Deprecated
     public void executeFeaturesOverviewReport(boolean toPDF) throws Exception {
-        executeOverviewReport("feature-overview", toPDF);
+        this.execute(toPDF);
     }
 
     @Override
@@ -181,11 +183,11 @@ public class CucumberResultsOverview extends AggragatedReport {
 
     @Override
     public void execute(boolean toPDF) throws Exception {
-        // TODO Auto-generated method stub
+        executeOverviewReport("feature-overview", toPDF);
     }
 
     @Override
     public void execute(boolean aggregate, boolean toPDF) throws Exception {
-        // TODO Auto-generated method stub
+        executeOverviewReport("feature-overview", toPDF);
     }
 }

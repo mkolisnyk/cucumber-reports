@@ -126,4 +126,14 @@ public class CucumberConsolidatedReport extends ConfigurableReport<ConsolidatedR
     @Override
     public void execute(boolean aggregate, boolean toPDF) throws Exception {
     }
+    @Override
+    public void execute(ConsolidatedReportBatch batch, boolean aggregate,
+            boolean toPDF) throws Exception {
+        execute(batch, toPDF);
+    }
+    @Override
+    public void execute(File config, boolean aggregate, boolean toPDF)
+            throws Exception {
+        execute(config, toPDF);
+    }
 }

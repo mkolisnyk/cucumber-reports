@@ -380,4 +380,14 @@ public class CucumberBreakdownReport extends ConfigurableReport<BreakdownReportM
     public CucumberReportLink getReportDocLink() {
         return CucumberReportLink.BREAKDOWN_URL;
     }
+    @Override
+    public void execute(BreakdownReportModel batch, boolean aggregate,
+            boolean toPDF) throws Exception {
+        execute(batch, toPDF);
+    }
+    @Override
+    public void execute(File config, boolean aggregate, boolean toPDF)
+            throws Exception {
+        execute(config, toPDF);
+    }
 }

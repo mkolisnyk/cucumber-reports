@@ -9,7 +9,7 @@ import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.IOUtils;
 import org.apache.commons.lang.ArrayUtils;
 import org.apache.commons.lang3.StringUtils;
-import org.testng.Assert;
+import org.junit.Assert;
 
 import com.cedarsoftware.util.io.JsonReader;
 import com.github.mkolisnyk.cucumber.reporting.interfaces.ConfigurableReport;
@@ -161,10 +161,10 @@ public class CucumberRetrospectiveOverviewReport extends ConfigurableReport<Retr
     }
     @Override
     public void validateParameters() {
-        Assert.assertNotNull(this.getOutputDirectory(),
-                this.constructErrorMessage(CucumberReportError.NO_OUTPUT_DIRECTORY, ""));
-        Assert.assertNotNull(this.getOutputName(),
-                this.constructErrorMessage(CucumberReportError.NO_OUTPUT_NAME, ""));
+        Assert.assertNotNull(this.constructErrorMessage(CucumberReportError.NO_OUTPUT_DIRECTORY, ""),
+            this.getOutputDirectory());
+        Assert.assertNotNull(this.constructErrorMessage(CucumberReportError.NO_OUTPUT_NAME, ""),
+            this.getOutputName());
     }
     @Override
     public CucumberReportLink getReportDocLink() {
@@ -192,16 +192,16 @@ public class CucumberRetrospectiveOverviewReport extends ConfigurableReport<Retr
     @Override
     public void execute(File config, boolean aggregate, boolean toPDF)
             throws Exception {
-        Assert.assertTrue(config.exists(),
-                this.constructErrorMessage(CucumberReportError.NON_EXISTING_CONFIG_FILE, ""));
+        Assert.assertTrue(this.constructErrorMessage(CucumberReportError.NON_EXISTING_CONFIG_FILE, ""),
+            config.exists());
+        validateParameters();
         String content = FileUtils.readFileToString(config);
         RetrospectiveBatch batch = null;
         try {
             batch = (RetrospectiveBatch) JsonReader.jsonToJava(content);
         } catch (Throwable e) {
-            Assert.fail(this.constructErrorMessage(CucumberReportError.INVALID_CONFIG_FILE, ""), e);
+            Assert.fail(this.constructErrorMessage(CucumberReportError.INVALID_CONFIG_FILE, ""));
         }
-        validateParameters();
-        this.executeReport(batch, aggregate, toPDF);
+        this.execute(batch, aggregate, toPDF);
     }
 }

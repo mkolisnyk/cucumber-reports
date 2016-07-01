@@ -7,7 +7,7 @@ import java.util.Locale;
 
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.IOUtils;
-import org.testng.Assert;
+import org.junit.Assert;
 
 import com.github.mkolisnyk.cucumber.reporting.interfaces.AggragatedReport;
 import com.github.mkolisnyk.cucumber.reporting.types.enums.CucumberReportError;
@@ -169,19 +169,18 @@ public class CucumberResultsOverview extends AggragatedReport {
 
     @Override
     public void validateParameters() {
-        Assert.assertNotNull(this.getSourceFiles(),
-                this.constructErrorMessage(CucumberReportError.NO_SOURCE_FILE, ""));
-        Assert.assertNotNull(this.getOutputDirectory(),
-                this.constructErrorMessage(CucumberReportError.NO_OUTPUT_DIRECTORY, ""));
-        Assert.assertNotNull(this.getOutputName(),
-                this.constructErrorMessage(CucumberReportError.NO_OUTPUT_NAME, ""));
+        Assert.assertNotNull(this.constructErrorMessage(CucumberReportError.NO_SOURCE_FILE, ""),
+                this.getSourceFiles());
+        Assert.assertNotNull(this.constructErrorMessage(CucumberReportError.NO_OUTPUT_DIRECTORY, ""),
+                this.getOutputDirectory());
+        Assert.assertNotNull(this.constructErrorMessage(CucumberReportError.NO_OUTPUT_NAME, ""),
+                this.getOutputName());
         for (String sourceFile : this.getSourceFiles()) {
-            Assert.assertNotNull(sourceFile,
-                    this.constructErrorMessage(CucumberReportError.NO_SOURCE_FILE, ""));
+            Assert.assertNotNull(
+                    this.constructErrorMessage(CucumberReportError.NO_SOURCE_FILE, ""), sourceFile);
             File path = new File(sourceFile);
-            Assert.assertTrue(path.exists(),
-                    this.constructErrorMessage(CucumberReportError.NON_EXISTING_SOURCE_FILE, "")
-                    + ". Was looking for path: \"" + path.getAbsolutePath() + "\"");
+            Assert.assertTrue(this.constructErrorMessage(CucumberReportError.NON_EXISTING_SOURCE_FILE, "")
+                    + ". Was looking for path: \"" + path.getAbsolutePath() + "\"", path.exists());
         }
     }
 

@@ -26,7 +26,7 @@ public final class ReportRunner {
         report.setJsonUsageFiles(extendedOptions.getJsonUsageReportPaths());
         try {
             report.executeReport();
-        } catch (Exception e) {
+        } catch (Throwable e) {
             e.printStackTrace();
         }
     }
@@ -38,7 +38,7 @@ public final class ReportRunner {
         CucumberResultsOverview results = new CucumberResultsOverview(extendedOptions);
         try {
             results.execute(extendedOptions.isToPDF());
-        } catch (Exception e) {
+        } catch (Throwable e) {
             e.printStackTrace();
         }
     }
@@ -50,7 +50,7 @@ public final class ReportRunner {
         CucumberFeatureOverview results = new CucumberFeatureOverview(extendedOptions);
         try {
             results.execute(extendedOptions.isToPDF());
-        } catch (Exception e) {
+        } catch (Throwable e) {
             e.printStackTrace();
         }
     }
@@ -62,7 +62,7 @@ public final class ReportRunner {
         CucumberDetailedResults results = new CucumberDetailedResults(extendedOptions);
         try {
             results.execute(false, extendedOptions.isToPDF());
-        } catch (Exception e) {
+        } catch (Throwable e) {
             e.printStackTrace();
         }
     }
@@ -73,7 +73,7 @@ public final class ReportRunner {
         CucumberDetailedResults results = new CucumberDetailedResults(extendedOptions);
         try {
             results.execute(true, extendedOptions.isToPDF());
-        } catch (Exception e) {
+        } catch (Throwable e) {
             e.printStackTrace();
         }
     }
@@ -84,7 +84,7 @@ public final class ReportRunner {
         CucumberCoverageOverview results = new CucumberCoverageOverview(extendedOptions);
         try {
             results.execute(extendedOptions.isToPDF());
-        } catch (Exception e) {
+        } catch (Throwable e) {
             e.printStackTrace();
         }
     }
@@ -95,7 +95,7 @@ public final class ReportRunner {
         CucumberBreakdownReport report = new CucumberBreakdownReport(extendedOptions);
         try {
             report.execute(new File(extendedOptions.getBreakdownConfig()), extendedOptions.isToPDF());
-        } catch (Exception e) {
+        } catch (Throwable e) {
             e.printStackTrace();
         }
     }
@@ -106,7 +106,7 @@ public final class ReportRunner {
         CucumberFeatureMapReport report = new CucumberFeatureMapReport(extendedOptions);
         try {
             report.execute(new File(extendedOptions.getFeatureMapConfig()), extendedOptions.isToPDF());
-        } catch (Exception e) {
+        } catch (Throwable e) {
             e.printStackTrace();
         }
     }
@@ -118,7 +118,7 @@ public final class ReportRunner {
         try {
             report.execute(new File(extendedOptions.getKnownErrorsConfig()),
                     extendedOptions.isToPDF());
-        } catch (Exception e) {
+        } catch (Throwable e) {
             e.printStackTrace();
         }
     }
@@ -130,7 +130,7 @@ public final class ReportRunner {
         try {
             report.execute(new File(extendedOptions.getConsolidatedReportConfig()),
                     extendedOptions.isToPDF());
-        } catch (Exception e) {
+        } catch (Throwable e) {
             e.printStackTrace();
         }
     }

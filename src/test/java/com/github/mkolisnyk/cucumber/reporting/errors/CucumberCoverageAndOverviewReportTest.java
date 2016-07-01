@@ -99,7 +99,7 @@ public class CucumberCoverageAndOverviewReportTest {
         results.setSourceFile(sourceFile);
         String actualMessage = "";
         try {
-            results.executeFeatureOverviewChartReport();
+            results.execute();
         } catch (AssertionError e) {
             actualMessage = e.getMessage();
         }
@@ -122,15 +122,15 @@ public class CucumberCoverageAndOverviewReportTest {
             return;
         }
         try {
-            results.executeReport(new File("./src/test/resources/retrospective-source/sample_batch.json"), true, true);
+            results.execute(new File("./src/test/resources/retrospective-source/sample_batch.json"), true, true);
         } catch (AssertionError e) {
             actualMessage = e.getMessage();
         }
-        Assert.assertTrue("Report name is unexpected", actualMessage
-                .startsWith(CucumberReportTypes.RETROSPECTIVE_OVERVIEW.toString()));
+        Assert.assertTrue("Report name is unexpected. Actual message is: " + actualMessage,
+            actualMessage.startsWith(CucumberReportTypes.RETROSPECTIVE_OVERVIEW.toString()));
         Assert.assertTrue("Incorrect error message is shown",
-                actualMessage.contains(expectedMessage.toString()));
-        Assert.assertTrue("Report URL wasn't found", actualMessage
-                .contains(CucumberReportLink.RETROSPECTIVE_OVERVIEW_URL.toString()));
+            actualMessage.contains(expectedMessage.toString()));
+        Assert.assertTrue("Report URL wasn't found",
+            actualMessage.contains(CucumberReportLink.RETROSPECTIVE_OVERVIEW_URL.toString()));
     }
 }

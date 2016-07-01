@@ -9,7 +9,7 @@ import org.apache.commons.io.FileUtils;
 import org.apache.commons.lang.StringEscapeUtils;
 import org.apache.commons.lang3.ArrayUtils;
 import org.codehaus.plexus.util.StringUtils;
-import org.testng.Assert;
+import org.junit.Assert;
 
 import com.github.mkolisnyk.cucumber.reporting.types.breakdown.BreakdownReportInfo;
 import com.github.mkolisnyk.cucumber.reporting.types.breakdown.BreakdownTable;

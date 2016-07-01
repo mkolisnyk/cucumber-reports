@@ -11,7 +11,7 @@ import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.IOUtils;
 import org.apache.commons.lang3.ArrayUtils;
 import org.apache.commons.lang3.StringUtils;
-import org.testng.Assert;
+import org.junit.Assert;
 
 import com.cedarsoftware.util.io.JsonReader;
 import com.github.mkolisnyk.cucumber.reporting.interfaces.ConfigurableReport;
@@ -116,14 +116,14 @@ public class CucumberBreakdownReport extends ConfigurableReport<BreakdownReportM
     }
     @Override
     public void execute(File config, boolean toPDF) throws Exception {
-        Assert.assertTrue(config.exists(),
-                this.constructErrorMessage(CucumberReportError.NON_EXISTING_CONFIG_FILE, ""));
+        Assert.assertTrue(this.constructErrorMessage(CucumberReportError.NON_EXISTING_CONFIG_FILE, ""),
+                config.exists());
         String content = FileUtils.readFileToString(config);
         BreakdownReportModel model = null;
         try {
             model = (BreakdownReportModel) JsonReader.jsonToJava(content);
         } catch (Throwable e) {
-            Assert.fail(this.constructErrorMessage(CucumberReportError.INVALID_CONFIG_FILE, ""), e);
+            Assert.fail(this.constructErrorMessage(CucumberReportError.INVALID_CONFIG_FILE, ""));
         }
         this.executeReport(model, toPDF);
     }
@@ -369,17 +369,21 @@ public class CucumberBreakdownReport extends ConfigurableReport<BreakdownReportM
     }
     @Override
     public void validateParameters() {
-        Assert.assertNotNull(this.getSourceFiles(),
-            this.constructErrorMessage(CucumberReportError.NO_SOURCE_FILE, ""));
-        Assert.assertNotNull(this.getOutputDirectory(),
-                this.constructErrorMessage(CucumberReportError.NO_OUTPUT_DIRECTORY, ""));
-        Assert.assertNotNull(this.getOutputName(),
-                this.constructErrorMessage(CucumberReportError.NO_OUTPUT_NAME, ""));
+        Assert.assertNotNull(
+            this.constructErrorMessage(CucumberReportError.NO_SOURCE_FILE, ""),
+            this.getSourceFiles());
+        Assert.assertNotNull(
+                this.constructErrorMessage(CucumberReportError.NO_OUTPUT_DIRECTORY, ""),
+                this.getOutputDirectory());
+        Assert.assertNotNull(
+                this.constructErrorMessage(CucumberReportError.NO_OUTPUT_NAME, ""),
+                this.getOutputName());
         for (String sourceFile : this.getSourceFiles()) {
             File path = new File(sourceFile);
-            Assert.assertTrue(path.exists(),
+            Assert.assertTrue(
                     this.constructErrorMessage(CucumberReportError.NON_EXISTING_SOURCE_FILE, "")
-                    + ". Was looking for path: \"" + path.getAbsolutePath() + "\"");
+                    + ". Was looking for path: \"" + path.getAbsolutePath() + "\"",
+                    path.exists());
         }
     }
     @Override

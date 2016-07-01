@@ -41,7 +41,11 @@ public class ExtendedTestNGRunner extends AbstractTestNGCucumberTests {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        new TestNGCucumberRunner(clazz).runCukes();
+        try {
+            new TestNGCucumberRunner(clazz).runCukes();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         try {
             runPredefinedMethods(AfterSuite.class);
         } catch (Exception e) {

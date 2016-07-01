@@ -8,7 +8,7 @@ import java.util.Locale;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.IOUtils;
 import org.apache.commons.lang3.ArrayUtils;
-import org.testng.Assert;
+import org.junit.Assert;
 
 import com.cedarsoftware.util.io.JsonReader;
 import com.github.mkolisnyk.cucumber.reporting.interfaces.ConfigurableReport;
@@ -104,14 +104,15 @@ public class CucumberKnownErrorsReport extends ConfigurableReport<KnownErrorsMod
 
     @Override
     public void execute(File config, boolean toPDF) throws Exception {
-        Assert.assertTrue(config.exists(),
-                this.constructErrorMessage(CucumberReportError.NON_EXISTING_CONFIG_FILE, ""));
+        Assert.assertTrue(
+                this.constructErrorMessage(CucumberReportError.NON_EXISTING_CONFIG_FILE, ""),
+                config.exists());
         String content = FileUtils.readFileToString(config);
         KnownErrorsModel model = null;
         try {
             model = (KnownErrorsModel) JsonReader.jsonToJava(content);
         } catch (Throwable e) {
-            Assert.fail(this.constructErrorMessage(CucumberReportError.INVALID_CONFIG_FILE, ""), e);
+            Assert.fail(this.constructErrorMessage(CucumberReportError.INVALID_CONFIG_FILE, ""));
         }
         this.execute(model, toPDF);
     }

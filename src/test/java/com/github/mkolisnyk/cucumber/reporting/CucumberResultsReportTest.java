@@ -12,7 +12,7 @@ public class CucumberResultsReportTest {
         results.setOutputDirectory("target");
         results.setOutputName("cucumber-results");
         results.setSourceFile("./src/test/resources/cucumber.json");
-        results.executeFeaturesOverviewReport();
+        results.execute();
     }
 
     @Test
@@ -37,7 +37,7 @@ public class CucumberResultsReportTest {
         results.setOutputDirectory("target");
         results.setOutputName("cucumber-issue41-results");
         results.setSourceFile("./src/test/resources/detailed-source/issue41-2.json");
-        results.executeFeaturesOverviewReport();
+        results.execute();
     }
     @Test
     public void testGenerateOverviewLocalizedReportIssue41() throws Exception {
@@ -45,7 +45,7 @@ public class CucumberResultsReportTest {
         results.setOutputDirectory("target");
         results.setOutputName("cucumber-issue41-localized");
         results.setSourceFile("./src/test/resources/detailed-source/localized-1.json");
-        results.executeFeaturesOverviewReport();
+        results.execute();
     }
     @Test
     public void testGenerateOverviewReportIssue63() throws Exception {
@@ -54,7 +54,7 @@ public class CucumberResultsReportTest {
         results.setOutputDirectory("target");
         results.setOutputName("cucumber-issue63-results");
         results.setSourceFile("./src/test/resources/63/gralTest.json");
-        results.executeFeaturesOverviewReport(true);
+        results.execute(true);
     }
     @Test
     public void testGenerateOverview100FailedReport() throws Exception {
@@ -62,7 +62,7 @@ public class CucumberResultsReportTest {
         results.setOutputDirectory("target");
         results.setOutputName("cucumber-100-f-results");
         results.setSourceFile("./src/test/resources/overview-sources/all-failed.json");
-        results.executeFeaturesOverviewReport();
+        results.execute();
     }
 
     @Test
@@ -71,7 +71,7 @@ public class CucumberResultsReportTest {
         results.setOutputDirectory("target");
         results.setOutputName("cucumber-0-results");
         results.setSourceFile("./src/test/resources/overview-sources/nothing.json");
-        results.executeFeaturesOverviewReport();
+        results.execute();
     }
 
     @Test
@@ -81,7 +81,7 @@ public class CucumberResultsReportTest {
         results.setOutputName("cucumber-results");
         results.setSourceFile("./src/test/resources/cucumber.json");
         results.setScreenShotLocation("../src/test/resources/");
-        results.executeDetailedResultsReport(true, false);
+        results.execute(true, false);
     }
 
     @Test
@@ -91,7 +91,7 @@ public class CucumberResultsReportTest {
         results.setOutputName("cucumber-results");
         results.setSourceFile("./src/test/resources/cucumber.json");
         results.setScreenShotLocation("../src/test/resources/");
-        results.executeDetailedResultsReport(true, true);
+        results.execute(true, true);
     }
 
     @Test
@@ -102,7 +102,7 @@ public class CucumberResultsReportTest {
         results.setSourceFile("./src/test/resources/cucumber.json");
         results.setScreenShotLocation("../src/test/resources/");
         results.setScreenShotWidth("200px");
-        results.executeDetailedResultsReport(true, false);
+        results.execute(true, false);
     }
 
     @Test
@@ -111,7 +111,7 @@ public class CucumberResultsReportTest {
         results.setOutputDirectory("target/");
         results.setOutputName("cucumber-results-27");
         results.setSourceFile("./src/test/resources/cucumber1.json");
-        results.executeDetailedResultsReport(true, false);
+        results.execute(true, false);
     }
     @Test
     public void testLocalizedDetailedReportIssue41() throws Exception {
@@ -119,7 +119,7 @@ public class CucumberResultsReportTest {
         results.setOutputDirectory("target/");
         results.setOutputName("localized-results");
         results.setSourceFile("./src/test/resources/detailed-source/localized-1.json");
-        results.executeDetailedResultsReport(true, false);
+        results.execute(true, false);
     }
     @Test
     public void testLocalizedDetailedReportIssue44() throws Exception {
@@ -127,7 +127,7 @@ public class CucumberResultsReportTest {
         results.setOutputDirectory("target/");
         results.setOutputName("issue44-results");
         results.setSourceFile("./src/test/resources/detailed-source/cucumber-2.json");
-        results.executeDetailedResultsReport(true, false);
+        results.execute(true, false);
     }
     @Test
     public void testRubyDetailedReport() throws Exception {
@@ -135,7 +135,7 @@ public class CucumberResultsReportTest {
         results.setOutputDirectory("target/ruby");
         results.setOutputName("cucumber-ruby-results");
         results.setSourceFile("./src/test/resources/ruby/cucumber.json");
-        results.executeDetailedResultsReport(true, false);
+        results.execute(true, false);
     }
 
     @Test
@@ -145,7 +145,7 @@ public class CucumberResultsReportTest {
         results.setOutputDirectory("target/");
         results.setOutputName("issue56-results");
         results.setSourceFile("./src/test/resources/56/embed-screenshot.json");
-        results.executeDetailedResultsReport(true, false);
+        results.execute(true, false);
     }
     @Test
     public void testEmbedScreenshotDetailedReportWith2ImagesIssue56() throws Exception {
@@ -155,6 +155,6 @@ public class CucumberResultsReportTest {
         results.setOutputDirectory("target/");
         results.setOutputName("issue56-2-results");
         results.setSourceFile("./src/test/resources/56/embed-screenshot-2images.json");
-        results.executeDetailedResultsReport(true, false);
+        results.execute(true, false);
     }
 }

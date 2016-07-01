@@ -37,7 +37,7 @@ public class CucumberKnownErrorsTest {
                    KnownErrorPriority.LOW),
             },
             KnownErrorOrderBy.FREQUENCY);
-        results.executeKnownErrorsReport(model);
+        results.execute(model, false);
         //String json = JsonWriter.objectToJson(model);
         //FileUtils.writeStringToFile(new File("./src/test/resources/known-errors-source/sample_model.json"), json);
     }
@@ -47,7 +47,7 @@ public class CucumberKnownErrorsTest {
         results.setOutputDirectory("target");
         results.setOutputName("cucumber-results-2");
         results.setSourceFile("./src/test/resources/detailed-source/cucumber-2.json");
-        results.executeKnownErrorsReport(new File("./src/test/resources/known-errors-source/sample_model.json"));
+        results.execute(new File("./src/test/resources/known-errors-source/sample_model.json"), false);
     }
     @Test
     public void testGenerateReportIssue67() throws Exception {
@@ -55,6 +55,6 @@ public class CucumberKnownErrorsTest {
         results.setOutputDirectory("target");
         results.setOutputName("cucumber-results-67");
         results.setSourceFile("./src/test/resources/67/cucumber.json");
-        results.executeKnownErrorsReport(new File("./src/test/resources/67/known_errors.json"));
+        results.execute(new File("./src/test/resources/67/known_errors.json"), false);
     }
 }

@@ -33,9 +33,7 @@ public abstract class AggragatedReport extends SimpleReport {
     @SuppressWarnings("unchecked")
     public CucumberFeatureResult[] readFileContent(String sourceFileValue, boolean aggregate) throws Exception {
         CucumberFeatureResult[] sources = readFileContent(sourceFileValue);
-        if (aggregate) {
-            sources = aggregateResults(sources, aggregate);
-        }
+        sources = aggregateResults(sources, aggregate);
         return sources;
     }
 

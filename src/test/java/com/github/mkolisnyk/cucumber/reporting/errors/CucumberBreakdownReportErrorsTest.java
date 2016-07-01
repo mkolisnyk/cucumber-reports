@@ -130,9 +130,9 @@ public class CucumberBreakdownReportErrorsTest {
             );
             try {
                 if (this.useConfigGile) {
-                    report.executeReport(new File(this.configFile));
+                    report.execute(new File(this.configFile), false);
                 } else {
-                    report.executeReport(model);
+                    report.execute(model, false);
                 }
             } catch (AssertionError e) {
                 actualMessage = e.getMessage();

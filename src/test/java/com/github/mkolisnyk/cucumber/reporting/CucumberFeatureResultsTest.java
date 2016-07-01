@@ -22,7 +22,7 @@ import com.github.mkolisnyk.cucumber.reporting.types.result.CucumberFeatureResul
 public class CucumberFeatureResultsTest {
 
     private CucumberFeatureResult result;
-    
+
     private String json;
     private int featuresPassed;
     private int featuresFailed;

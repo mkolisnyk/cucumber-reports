@@ -79,7 +79,7 @@ public class CucumberCoverageAndOverviewReportTest {
         results.setSourceFile(sourceFile);
         String actualMessage = "";
         try {
-            results.executeFeaturesOverviewReport();
+            results.execute();
         } catch (AssertionError e) {
             actualMessage = e.getMessage();
         }

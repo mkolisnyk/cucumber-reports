@@ -73,7 +73,7 @@ public class CucumberConsolidatedReportTest {
                 false)
             }
         );
-        results.executeConsolidatedReport(batch, true);
+        results.execute(batch, true);
         //String json = JsonWriter.objectToJson(batch);
         //FileUtils.writeStringToFile(new File("./src/test/resources/consolidated-source/sample_batch.json"), json);
     }
@@ -84,6 +84,6 @@ public class CucumberConsolidatedReportTest {
         results.setOutputName("cucumber-results");
         results.setPdfPageSize("A4 landscape");
         results.setSourceFile("./src/test/resources/cucumber.json");
-        results.executeConsolidatedReport(new File("./src/test/resources/consolidated-source/sample_batch.json"), true);
+        results.execute(new File("./src/test/resources/consolidated-source/sample_batch.json"), true);
     }
 }

@@ -1,10 +1,7 @@
 package com.github.mkolisnyk.cucumber.reporting;
 
-import java.io.BufferedInputStream;
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.IOException;
-import java.io.StringReader;
 import java.util.Arrays;
 import java.util.Collection;
 

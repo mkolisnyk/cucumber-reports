@@ -3,12 +3,11 @@ package com.github.mkolisnyk.cucumber.reporting.types.retrospective;
 import java.util.Arrays;
 import java.util.Collection;
 
+import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameters;
-
-import org.junit.Assert;
 
 @RunWith(Parameterized.class)
 public class RetrospectiveModelConstructorsTest {

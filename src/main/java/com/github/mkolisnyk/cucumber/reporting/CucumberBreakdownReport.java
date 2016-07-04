@@ -11,9 +11,10 @@ import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.IOUtils;
 import org.apache.commons.lang3.ArrayUtils;
 import org.apache.commons.lang3.StringUtils;
-import org.testng.Assert;
+import org.junit.Assert;
 
 import com.cedarsoftware.util.io.JsonReader;
+import com.github.mkolisnyk.cucumber.reporting.interfaces.ConfigurableReport;
 import com.github.mkolisnyk.cucumber.reporting.types.breakdown.BreakdownCellDisplayType;
 import com.github.mkolisnyk.cucumber.reporting.types.breakdown.BreakdownReportInfo;
 import com.github.mkolisnyk.cucumber.reporting.types.breakdown.BreakdownReportModel;
@@ -26,9 +27,15 @@ import com.github.mkolisnyk.cucumber.reporting.types.enums.CucumberReportTypes;
 import com.github.mkolisnyk.cucumber.reporting.types.result.CucumberFeatureResult;
 import com.github.mkolisnyk.cucumber.reporting.types.result.CucumberScenarioResult;
 import com.github.mkolisnyk.cucumber.reporting.utils.drawers.PieChartDrawer;
+import com.github.mkolisnyk.cucumber.runner.runtime.ExtendedRuntimeOptions;
 
-public class CucumberBreakdownReport extends CucumberResultsCommon {
-
+public class CucumberBreakdownReport extends ConfigurableReport<BreakdownReportModel> {
+    public CucumberBreakdownReport() {
+        super();
+    }
+    public CucumberBreakdownReport(ExtendedRuntimeOptions extendedOptions) {
+        super(extendedOptions);
+    }
     private static final int TIMEOUT_MULTIPLIER = 3;
 
     @Override
@@ -53,34 +60,20 @@ public class CucumberBreakdownReport extends CucumberResultsCommon {
     public void executeReport(BreakdownTable table, boolean toPDF) throws Exception {
         executeReport(new BreakdownReportInfo(table), table, toPDF);
     }
+    @Deprecated
     public void executeReport(BreakdownReportModel model, boolean toPDF) throws Exception {
-        boolean frameGenerated = false;
-        validateParameters();
-        model.initRedirectSequence("./" + this.getOutputName() + "-");
-        for (BreakdownReportInfo info : model.getReportsInfo()) {
-            if (info.getRefreshTimeout() > 0 && !frameGenerated) {
-                frameGenerated = true;
-                generateFrameFile(model);
-            }
-            this.executeReport(info, info.getTable(), toPDF);
-        }
+        execute(model, toPDF);
     }
+    @Deprecated
     public void executeReport(BreakdownReportModel model) throws Exception {
         executeReport(model, false);
     }
+    @Deprecated
     public void executeReport(File config, boolean toPDF) throws Exception {
-        String content = FileUtils.readFileToString(config);
-        BreakdownReportModel model = null;
-        try {
-            model = (BreakdownReportModel) JsonReader.jsonToJava(content);
-        } catch (Throwable e) {
-            Assert.fail(this.constructErrorMessage(CucumberReportError.INVALID_CONFIG_FILE, ""), e);
-        }
-        this.executeReport(model, toPDF);
+        execute(config, toPDF);
     }
+    @Deprecated
     public void executeReport(File config) throws Exception {
-        Assert.assertTrue(config.exists(),
-            this.constructErrorMessage(CucumberReportError.NON_EXISTING_CONFIG_FILE, ""));
         executeReport(config, false);
     }
     protected void generateFrameFile(BreakdownReportModel model) throws Exception {
@@ -107,6 +100,38 @@ public class CucumberBreakdownReport extends CucumberResultsCommon {
         content = content.replaceAll("__TIMEOUT__", "" + totalTimeout);
         FileUtils.writeStringToFile(outFile, content);
     }
+
+    @Override
+    public void execute(BreakdownReportModel batch, boolean toPDF) throws Exception {
+        boolean frameGenerated = false;
+        validateParameters();
+        batch.initRedirectSequence("./" + this.getOutputName() + "-");
+        for (BreakdownReportInfo info : batch.getReportsInfo()) {
+            if (info.getRefreshTimeout() > 0 && !frameGenerated) {
+                frameGenerated = true;
+                generateFrameFile(batch);
+            }
+            this.executeReport(info, info.getTable(), toPDF);
+        }
+    }
+    @Override
+    public void execute(File config, boolean toPDF) throws Exception {
+        Assert.assertTrue(this.constructErrorMessage(CucumberReportError.NON_EXISTING_CONFIG_FILE, ""),
+                config.exists());
+        String content = FileUtils.readFileToString(config);
+        BreakdownReportModel model = null;
+        try {
+            model = (BreakdownReportModel) JsonReader.jsonToJava(content);
+        } catch (Throwable e) {
+            Assert.fail(this.constructErrorMessage(CucumberReportError.INVALID_CONFIG_FILE, ""));
+        }
+        this.executeReport(model, toPDF);
+    }
+    @Deprecated
+    @Override
+    public void execute(boolean aggregate, boolean toPDF) throws Exception {
+    }
+
     protected String generateBreakdownReport(CucumberFeatureResult[] features,
             BreakdownReportInfo info, BreakdownTable table) throws Exception {
         String content = getReportBase();
@@ -344,21 +369,35 @@ public class CucumberBreakdownReport extends CucumberResultsCommon {
     }
     @Override
     public void validateParameters() {
-        Assert.assertNotNull(this.getSourceFiles(),
-            this.constructErrorMessage(CucumberReportError.NO_SOURCE_FILE, ""));
-        Assert.assertNotNull(this.getOutputDirectory(),
-                this.constructErrorMessage(CucumberReportError.NO_OUTPUT_DIRECTORY, ""));
-        Assert.assertNotNull(this.getOutputName(),
-                this.constructErrorMessage(CucumberReportError.NO_OUTPUT_NAME, ""));
+        Assert.assertNotNull(
+            this.constructErrorMessage(CucumberReportError.NO_SOURCE_FILE, ""),
+            this.getSourceFiles());
+        Assert.assertNotNull(
+                this.constructErrorMessage(CucumberReportError.NO_OUTPUT_DIRECTORY, ""),
+                this.getOutputDirectory());
+        Assert.assertNotNull(
+                this.constructErrorMessage(CucumberReportError.NO_OUTPUT_NAME, ""),
+                this.getOutputName());
         for (String sourceFile : this.getSourceFiles()) {
             File path = new File(sourceFile);
-            Assert.assertTrue(path.exists(),
+            Assert.assertTrue(
                     this.constructErrorMessage(CucumberReportError.NON_EXISTING_SOURCE_FILE, "")
-                    + ". Was looking for path: \"" + path.getAbsolutePath() + "\"");
+                    + ". Was looking for path: \"" + path.getAbsolutePath() + "\"",
+                    path.exists());
         }
     }
     @Override
     public CucumberReportLink getReportDocLink() {
         return CucumberReportLink.BREAKDOWN_URL;
+    }
+    @Override
+    public void execute(BreakdownReportModel batch, boolean aggregate,
+            boolean toPDF) throws Exception {
+        execute(batch, toPDF);
+    }
+    @Override
+    public void execute(File config, boolean aggregate, boolean toPDF)
+            throws Exception {
+        execute(config, toPDF);
     }
 }

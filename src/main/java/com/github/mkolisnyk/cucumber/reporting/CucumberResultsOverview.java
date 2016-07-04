@@ -7,16 +7,26 @@ import java.util.Locale;
 
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.IOUtils;
-import org.testng.Assert;
+import org.junit.Assert;
 
+import com.github.mkolisnyk.cucumber.reporting.interfaces.AggragatedReport;
 import com.github.mkolisnyk.cucumber.reporting.types.enums.CucumberReportError;
 import com.github.mkolisnyk.cucumber.reporting.types.enums.CucumberReportLink;
 import com.github.mkolisnyk.cucumber.reporting.types.enums.CucumberReportTypes;
 import com.github.mkolisnyk.cucumber.reporting.types.result.CucumberFeatureResult;
 import com.github.mkolisnyk.cucumber.reporting.types.result.CucumberScenarioResult;
 import com.github.mkolisnyk.cucumber.reporting.utils.drawers.PieChartDrawer;
+import com.github.mkolisnyk.cucumber.runner.runtime.ExtendedRuntimeOptions;
 
-public class CucumberResultsOverview extends CucumberResultsCommon {
+public class CucumberResultsOverview extends AggragatedReport {
+
+    public CucumberResultsOverview() {
+        super();
+    }
+
+    public CucumberResultsOverview(ExtendedRuntimeOptions extendedOptions) {
+        super(extendedOptions);
+    }
 
     protected String getReportBase() throws IOException {
         InputStream is = this.getClass().getResourceAsStream("/feature-overview-tmpl.html");
@@ -120,10 +130,10 @@ public class CucumberResultsOverview extends CucumberResultsCommon {
         return content;
     }
 
-    public void executeOverviewReport(String reportSuffix) throws Exception {
+    protected void executeOverviewReport(String reportSuffix) throws Exception {
         executeOverviewReport(reportSuffix, false);
     }
-    public void executeOverviewReport(String reportSuffix, boolean toPdf) throws Exception {
+    protected void executeOverviewReport(String reportSuffix, boolean toPdf) throws Exception {
         this.validateParameters();
         CucumberFeatureResult[] features = readFileContent(true);
         File outFile = new File(
@@ -143,11 +153,13 @@ public class CucumberResultsOverview extends CucumberResultsCommon {
             return;
         }
     }
+    @Deprecated
     public void executeFeaturesOverviewReport() throws Exception {
-        executeFeaturesOverviewReport(false);
+        this.execute(false);
     }
+    @Deprecated
     public void executeFeaturesOverviewReport(boolean toPDF) throws Exception {
-        executeOverviewReport("feature-overview", toPDF);
+        this.execute(toPDF);
     }
 
     @Override
@@ -157,24 +169,33 @@ public class CucumberResultsOverview extends CucumberResultsCommon {
 
     @Override
     public void validateParameters() {
-        Assert.assertNotNull(this.getSourceFiles(),
-                this.constructErrorMessage(CucumberReportError.NO_SOURCE_FILE, ""));
-        Assert.assertNotNull(this.getOutputDirectory(),
-                this.constructErrorMessage(CucumberReportError.NO_OUTPUT_DIRECTORY, ""));
-        Assert.assertNotNull(this.getOutputName(),
-                this.constructErrorMessage(CucumberReportError.NO_OUTPUT_NAME, ""));
+        Assert.assertNotNull(this.constructErrorMessage(CucumberReportError.NO_SOURCE_FILE, ""),
+                this.getSourceFiles());
+        Assert.assertNotNull(this.constructErrorMessage(CucumberReportError.NO_OUTPUT_DIRECTORY, ""),
+                this.getOutputDirectory());
+        Assert.assertNotNull(this.constructErrorMessage(CucumberReportError.NO_OUTPUT_NAME, ""),
+                this.getOutputName());
         for (String sourceFile : this.getSourceFiles()) {
-            Assert.assertNotNull(sourceFile,
-                    this.constructErrorMessage(CucumberReportError.NO_SOURCE_FILE, ""));
+            Assert.assertNotNull(
+                    this.constructErrorMessage(CucumberReportError.NO_SOURCE_FILE, ""), sourceFile);
             File path = new File(sourceFile);
-            Assert.assertTrue(path.exists(),
-                    this.constructErrorMessage(CucumberReportError.NON_EXISTING_SOURCE_FILE, "")
-                    + ". Was looking for path: \"" + path.getAbsolutePath() + "\"");
+            Assert.assertTrue(this.constructErrorMessage(CucumberReportError.NON_EXISTING_SOURCE_FILE, "")
+                    + ". Was looking for path: \"" + path.getAbsolutePath() + "\"", path.exists());
         }
     }
 
     @Override
     public CucumberReportLink getReportDocLink() {
         return CucumberReportLink.RESULTS_OVERVIEW_URL;
+    }
+
+    @Override
+    public void execute(boolean toPDF) throws Exception {
+        executeOverviewReport("feature-overview", toPDF);
+    }
+
+    @Override
+    public void execute(boolean aggregate, boolean toPDF) throws Exception {
+        executeOverviewReport("feature-overview", toPDF);
     }
 }

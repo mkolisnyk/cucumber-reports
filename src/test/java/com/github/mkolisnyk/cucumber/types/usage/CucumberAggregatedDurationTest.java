@@ -2,6 +2,7 @@ package com.github.mkolisnyk.cucumber.types.usage;
 
 import org.junit.Assert;
 import org.junit.Test;
+
 import com.cedarsoftware.util.io.JsonObject;
 import com.github.mkolisnyk.cucumber.reporting.types.usage.CucumberAggregatedDuration;
 

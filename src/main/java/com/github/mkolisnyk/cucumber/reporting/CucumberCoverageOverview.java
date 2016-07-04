@@ -12,8 +12,19 @@ import com.github.mkolisnyk.cucumber.reporting.types.enums.CucumberReportTypes;
 import com.github.mkolisnyk.cucumber.reporting.types.result.CucumberFeatureResult;
 import com.github.mkolisnyk.cucumber.reporting.types.result.CucumberScenarioResult;
 import com.github.mkolisnyk.cucumber.reporting.utils.drawers.PieChartDrawer;
+import com.github.mkolisnyk.cucumber.runner.runtime.ExtendedRuntimeOptions;
 
 public class CucumberCoverageOverview extends CucumberResultsOverview {
+
+    public CucumberCoverageOverview() {
+        super();
+    }
+
+    public CucumberCoverageOverview(ExtendedRuntimeOptions extendedOptions) {
+        super(extendedOptions);
+        this.setExcludeCoverageTags(extendedOptions.getExcludeCoverageTags());
+        this.setIncludeCoverageTags(extendedOptions.getIncludeCoverageTags());
+    }
 
     private String[] includeCoverageTags = {};
     private String[] excludeCoverageTags = {};
@@ -171,11 +182,24 @@ public class CucumberCoverageOverview extends CucumberResultsOverview {
                 2));
         return content;
     }
+    @Deprecated
     public void executeCoverageReport(boolean toPDF) throws Exception {
+        execute(toPDF);
+    }
+    @Deprecated
+    public void executeCoverageReport() throws Exception {
+        execute(false);
+    }
+
+    @Override
+    public void execute(boolean toPDF) throws Exception {
+        // TODO Auto-generated method stub
         executeOverviewReport("coverage", toPDF);
     }
-    public void executeCoverageReport() throws Exception {
-        executeCoverageReport(false);
+
+    @Override
+    public void execute() throws Exception {
+        executeOverviewReport("coverage");
     }
 
     @Override

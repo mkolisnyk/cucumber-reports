@@ -1,15 +1,10 @@
 package com.github.mkolisnyk.cucumber.reporting;
 
 import java.io.File;
-import java.io.FileOutputStream;
 
-import org.apache.commons.io.FileUtils;
 import org.junit.Test;
 
-import com.cedarsoftware.util.io.JsonReader;
-import com.cedarsoftware.util.io.JsonWriter;
 import com.github.mkolisnyk.cucumber.reporting.types.breakdown.BreakdownCellDisplayType;
-import com.github.mkolisnyk.cucumber.reporting.types.breakdown.BreakdownCellValue;
 import com.github.mkolisnyk.cucumber.reporting.types.breakdown.BreakdownReportInfo;
 import com.github.mkolisnyk.cucumber.reporting.types.breakdown.BreakdownReportModel;
 import com.github.mkolisnyk.cucumber.reporting.types.breakdown.BreakdownTable;
@@ -94,7 +89,7 @@ public class CucumberBreakdownReportTest {
         report.setOutputDirectory("target/multi-breakdown");
         report.setOutputName("cucumber-results");
         report.setSourceFile("./src/test/resources/breakdown-source/cucumber.json");
-        report.executeReport(model);
+        report.execute(model, false);
     }
     @Test
     public void testGenerateMultipleReportsSkipFirstRedirect() throws Exception {
@@ -113,7 +108,7 @@ public class CucumberBreakdownReportTest {
         report.setOutputDirectory("target/multi-breakdown/1");
         report.setOutputName("cucumber-results");
         report.setSourceFile("./src/test/resources/breakdown-source/cucumber.json");
-        report.executeReport(model, true);
+        report.execute(model, true);
     }
     @Test
     public void testGenerateMultipleReportsSkipLastRedirect() throws Exception {
@@ -129,7 +124,7 @@ public class CucumberBreakdownReportTest {
         report.setOutputDirectory("target/multi-breakdown/2");
         report.setOutputName("cucumber-results");
         report.setSourceFile("./src/test/resources/breakdown-source/cucumber.json");
-        report.executeReport(model);
+        report.execute(model, false);
     }
     @Test
     public void testGenerateMultipleReportsSkipMidRedirect() throws Exception {
@@ -145,7 +140,7 @@ public class CucumberBreakdownReportTest {
         report.setOutputDirectory("target/multi-breakdown/3");
         report.setOutputName("cucumber-results");
         report.setSourceFile("./src/test/resources/breakdown-source/cucumber.json");
-        report.executeReport(model);
+        report.execute(model, false);
     }
     @Test
     public void testGenerateMultipleReportsLoadFromJSON() throws Exception {
@@ -153,6 +148,6 @@ public class CucumberBreakdownReportTest {
         report.setOutputDirectory("target/multi-breakdown/5");
         report.setOutputName("cucumber-results");
         report.setSourceFile("./src/test/resources/breakdown-source/cucumber-2.json");
-        report.executeReport(new File("src/test/resources/breakdown-source/simple.json"));
+        report.execute(new File("src/test/resources/breakdown-source/simple.json"), false);
     }
 }

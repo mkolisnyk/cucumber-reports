@@ -5,10 +5,9 @@ import java.io.IOException;
 import java.util.Arrays;
 import java.util.Collection;
 
-import org.junit.Assert;
-
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.IOUtils;
+import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
@@ -18,13 +17,12 @@ import com.cedarsoftware.util.io.JsonObject;
 import com.cedarsoftware.util.io.JsonReader;
 import com.github.mkolisnyk.cucumber.reporting.CucumberDetailedResults.OverviewStats;
 import com.github.mkolisnyk.cucumber.reporting.types.result.CucumberFeatureResult;
-import com.github.mkolisnyk.cucumber.reporting.types.result.CucumberScenarioResult;
 
 @RunWith(Parameterized.class)
 public class CucumberFeatureResultsTest {
 
     private CucumberFeatureResult result;
-    
+
     private String json;
     private int featuresPassed;
     private int featuresFailed;

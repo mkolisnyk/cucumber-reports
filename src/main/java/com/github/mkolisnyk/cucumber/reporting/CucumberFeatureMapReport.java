@@ -9,7 +9,7 @@ import org.apache.commons.io.FileUtils;
 import org.apache.commons.lang.StringEscapeUtils;
 import org.apache.commons.lang3.ArrayUtils;
 import org.codehaus.plexus.util.StringUtils;
-import org.testng.Assert;
+import org.junit.Assert;
 
 import com.github.mkolisnyk.cucumber.reporting.types.breakdown.BreakdownReportInfo;
 import com.github.mkolisnyk.cucumber.reporting.types.breakdown.BreakdownTable;
@@ -17,9 +17,16 @@ import com.github.mkolisnyk.cucumber.reporting.types.enums.CucumberReportTypes;
 import com.github.mkolisnyk.cucumber.reporting.types.result.CucumberFeatureResult;
 import com.github.mkolisnyk.cucumber.reporting.types.result.CucumberScenarioResult;
 import com.github.mkolisnyk.cucumber.reporting.types.result.CucumberStepResult;
+import com.github.mkolisnyk.cucumber.runner.runtime.ExtendedRuntimeOptions;
 
 public class CucumberFeatureMapReport extends CucumberBreakdownReport {
 
+    public CucumberFeatureMapReport() {
+        super();
+    }
+    public CucumberFeatureMapReport(ExtendedRuntimeOptions extendedOptions) {
+        super(extendedOptions);
+    }
     private String drawScenario(CucumberScenarioResult scenario) {
         String output = String.format("<table><tr><td>%s</td></tr><tr><td><table>", scenario.getDescription());
         for (CucumberStepResult step : scenario.getSteps()) {

@@ -1,4 +1,4 @@
-package com.github.mkolisnyk.cucumber.reporting;
+package com.github.mkolisnyk.cucumber.reporting.interfaces;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -32,6 +32,7 @@ import com.github.mkolisnyk.cucumber.reporting.types.enums.CucumberReportLink;
 import com.github.mkolisnyk.cucumber.reporting.types.enums.CucumberReportTypes;
 import com.github.mkolisnyk.cucumber.reporting.types.result.CucumberFeatureResult;
 //import com.google.common.io.Files;
+import com.github.mkolisnyk.cucumber.runner.runtime.ExtendedRuntimeOptions;
 
 public abstract class CucumberResultsCommon {
     public static final int CHART_WIDTH = 450;
@@ -46,6 +47,16 @@ public abstract class CucumberResultsCommon {
     public abstract CucumberReportTypes getReportType();
     public abstract CucumberReportLink getReportDocLink();
     public abstract void validateParameters();
+
+    public CucumberResultsCommon() {
+    }
+    public CucumberResultsCommon(ExtendedRuntimeOptions extendedOptions) {
+        this.setOutputDirectory(extendedOptions.getOutputFolder());
+        this.setOutputName(extendedOptions.getReportPrefix());
+        this.setSourceFiles(extendedOptions.getJsonReportPaths());
+        this.setPdfPageSize(extendedOptions.getPdfPageSize());
+    }
+
     public String constructErrorMessage(CucumberReportError error, String suffix) {
         return String.format("%s: %s. For more information, please, refer to: %s%s",
             this.getReportType(), error, this.getReportDocLink(), suffix);
@@ -107,16 +118,8 @@ public abstract class CucumberResultsCommon {
         this.pdfPageSize = pdfPageSizeValue;
     }
 
-    public CucumberFeatureResult[] aggregateResults(CucumberFeatureResult[] input, boolean collapse) {
-        for (int i = 0; i < input.length; i++) {
-            input[i].setId("" + input[i].getLine() + "" + input[i].getId());
-            input[i].aggregateScenarioResults(collapse);
-        }
-        return input;
-    }
-
     @SuppressWarnings("unchecked")
-    public CucumberFeatureResult[] readFileContent(String sourceFileValue, boolean aggregate) throws Exception {
+    public CucumberFeatureResult[] readFileContent(String sourceFileValue) throws Exception {
         FileInputStream fis = null;
         JsonReader jr = null;
         File file = new File(sourceFileValue);
@@ -136,47 +139,22 @@ public abstract class CucumberResultsCommon {
         }
         jr.close();
         fis.close();
-           sources = aggregateResults(sources, aggregate);
         return sources;
     }
 
     @SuppressWarnings("unchecked")
-    public CucumberFeatureResult[] readFileContent(boolean aggregate) throws Exception {
-        return readFileContent(this.getSourceFiles(), aggregate);
+    public CucumberFeatureResult[] readFileContent() throws Exception {
+        return readFileContent(this.getSourceFiles());
     }
 
-    private CucumberFeatureResult[] readFileContent(String[] sourceFilesValue,
-            boolean aggregate) throws Exception {
+    private CucumberFeatureResult[] readFileContent(String[] sourceFilesValue) throws Exception {
         CucumberFeatureResult[] output = {};
         for (String sourceFile : sourceFilesValue) {
-            output = (CucumberFeatureResult[]) ArrayUtils.addAll(output, readFileContent(sourceFile, aggregate));
+            output = (CucumberFeatureResult[]) ArrayUtils.addAll(output, readFileContent(sourceFile));
         }
         return output;
     }
 
-    /*@SuppressWarnings("unchecked")
-    public <T extends CucumberFeatureResult> T[] readFileContent(Class<T> param) throws Exception {
-        FileInputStream fis = null;
-        JsonReader jr = null;
-        File file = new File(this.getSourceFile());
-
-        if (!(file.exists() && file.isFile())) {
-            throw new FileNotFoundException();
-        }
-
-        fis = new FileInputStream(file);
-        jr = new JsonReader(fis, true);
-        JsonObject<String, Object> source = (JsonObject<String, Object>) jr.readObject();
-        Object[] objs = (Object[]) source.get("@items");
-
-        T[] sources = (T[]) Array.newInstance(param, objs.length);
-        for (int i = 0; i < objs.length; i++) {
-            sources[i] = (T) param.getConstructors()[0].newInstance((JsonObject<String, Object>) objs[i]);
-        }
-        jr.close();
-        fis.close();
-        return sources;
-    }*/
     public String replaceHtmlEntitiesWithCodes(String input) throws IOException {
         String output = input;
         Map<String, String> entitiesMap = new HashMap<String, String>();

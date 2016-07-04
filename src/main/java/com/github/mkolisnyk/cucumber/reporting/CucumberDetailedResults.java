@@ -11,6 +11,7 @@ import org.apache.commons.io.IOUtils;
 import org.apache.commons.lang.StringEscapeUtils;
 import org.apache.commons.lang.StringUtils;
 
+import com.github.mkolisnyk.cucumber.reporting.interfaces.AggragatedReport;
 import com.github.mkolisnyk.cucumber.reporting.types.enums.CucumberReportLink;
 import com.github.mkolisnyk.cucumber.reporting.types.enums.CucumberReportTypes;
 import com.github.mkolisnyk.cucumber.reporting.types.result.CucumberBeforeAfterResult;
@@ -18,11 +19,22 @@ import com.github.mkolisnyk.cucumber.reporting.types.result.CucumberEmbedding;
 import com.github.mkolisnyk.cucumber.reporting.types.result.CucumberFeatureResult;
 import com.github.mkolisnyk.cucumber.reporting.types.result.CucumberScenarioResult;
 import com.github.mkolisnyk.cucumber.reporting.types.result.CucumberStepResult;
+import com.github.mkolisnyk.cucumber.runner.runtime.ExtendedRuntimeOptions;
 
 /**
  * @author Myk Kolisnyk
  */
-public class CucumberDetailedResults extends CucumberResultsCommon {
+public class CucumberDetailedResults extends AggragatedReport {
+    public CucumberDetailedResults() {
+        super();
+    }
+
+    public CucumberDetailedResults(ExtendedRuntimeOptions extendedOptions) {
+        super(extendedOptions);
+        this.setScreenShotLocation(extendedOptions.getScreenShotLocation());
+        this.setScreenShotWidth(extendedOptions.getScreenShotSize());
+    }
+
     private String screenShotLocation;
     private String screenShotWidth;
 
@@ -398,7 +410,7 @@ public class CucumberDetailedResults extends CucumberResultsCommon {
         for (CucumberFeatureResult result : results) {
             String featureDescriptionHeading = "";
             if (StringUtils.isNotBlank(result.getDescription())) {
-                featureDescriptionHeading = String.format("<tr class=\"%s_description\">"
+                featureDescriptionHeading = String.format(Locale.US, "<tr class=\"%s_description\">"
                         + "<td colspan=\"4\"><br>%s</br></td></tr>", result.getStatus(),
                     escapeHtml(result.getDescription()).replaceAll(System.lineSeparator(),
                             "</br><br>" + System.lineSeparator()));
@@ -425,7 +437,7 @@ public class CucumberDetailedResults extends CucumberResultsCommon {
             for (CucumberScenarioResult scenario : result.getElements()) {
                 String descriptionHeading = "";
                 if (StringUtils.isNotBlank(scenario.getDescription())) {
-                    descriptionHeading = String.format("<tr class=\"%s_description\">"
+                    descriptionHeading = String.format(Locale.US, "<tr class=\"%s_description\">"
                         + "<td colspan=\"4\"><br>%s</br></td></tr>", scenario.getStatus(),
                         escapeHtml(scenario.getDescription()).replaceAll(System.lineSeparator(),
                                 "</br><br>" + System.lineSeparator()));
@@ -481,24 +493,9 @@ public class CucumberDetailedResults extends CucumberResultsCommon {
         return content;
     }
 
-
+    @Deprecated
     public void executeDetailedResultsReport(boolean toPdf, boolean aggregate) throws Exception {
-        CucumberFeatureResult[] features = readFileContent(aggregate);
-        String formatName = "";
-        if (aggregate) {
-            formatName = "%s%s%s-agg-test-results.html";
-        } else {
-            formatName = "%s%s%s-test-results.html";
-        }
-        File outFile = new File(
-                String.format(Locale.US,
-                        formatName,
-                        this.getOutputDirectory(), File.separator, this.getOutputName()));
-        String content = generateStepsReport(features);
-        FileUtils.writeStringToFile(outFile, content, "UTF-8");
-        if (toPdf) {
-            this.exportToPDF(outFile, "test-results");
-        }
+        this.execute(aggregate, toPdf);
     }
 
     @Override
@@ -521,5 +518,25 @@ public class CucumberDetailedResults extends CucumberResultsCommon {
     public CucumberReportLink getReportDocLink() {
         // TODO Auto-generated method stub
         return CucumberReportLink.DETAILED_URL;
+    }
+
+    @Override
+    public void execute(boolean aggregate, boolean toPDF) throws Exception {
+        CucumberFeatureResult[] features = readFileContent(aggregate);
+        String formatName = "";
+        if (aggregate) {
+            formatName = "%s%s%s-agg-test-results.html";
+        } else {
+            formatName = "%s%s%s-test-results.html";
+        }
+        File outFile = new File(
+                String.format(Locale.US,
+                        formatName,
+                        this.getOutputDirectory(), File.separator, this.getOutputName()));
+        String content = generateStepsReport(features);
+        FileUtils.writeStringToFile(outFile, content, "UTF-8");
+        if (toPDF) {
+            this.exportToPDF(outFile, "test-results");
+        }
     }
 }

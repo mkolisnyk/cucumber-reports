@@ -9,9 +9,10 @@ import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.IOUtils;
 import org.apache.commons.lang.ArrayUtils;
 import org.apache.commons.lang3.StringUtils;
-import org.testng.Assert;
+import org.junit.Assert;
 
 import com.cedarsoftware.util.io.JsonReader;
+import com.github.mkolisnyk.cucumber.reporting.interfaces.ConfigurableReport;
 import com.github.mkolisnyk.cucumber.reporting.types.breakdown.BreakdownStats;
 import com.github.mkolisnyk.cucumber.reporting.types.enums.CucumberReportError;
 import com.github.mkolisnyk.cucumber.reporting.types.enums.CucumberReportLink;
@@ -20,9 +21,17 @@ import com.github.mkolisnyk.cucumber.reporting.types.result.CucumberFeatureResul
 import com.github.mkolisnyk.cucumber.reporting.types.retrospective.RetrospectiveBatch;
 import com.github.mkolisnyk.cucumber.reporting.types.retrospective.RetrospectiveModel;
 import com.github.mkolisnyk.cucumber.reporting.utils.helpers.FolderUtils;
+import com.github.mkolisnyk.cucumber.runner.runtime.ExtendedRuntimeOptions;
 
-public class CucumberRetrospectiveOverviewReport extends CucumberResultsCommon {
+public class CucumberRetrospectiveOverviewReport extends ConfigurableReport<RetrospectiveBatch> {
 
+    public CucumberRetrospectiveOverviewReport() {
+        super();
+    }
+    public CucumberRetrospectiveOverviewReport(
+            ExtendedRuntimeOptions extendedOptions) {
+        super(extendedOptions);
+    }
     protected String getReportBase() throws IOException {
         InputStream is = this.getClass().getResourceAsStream("/consolidated-tmpl.html");
         String result = IOUtils.toString(is);
@@ -138,23 +147,13 @@ public class CucumberRetrospectiveOverviewReport extends CucumberResultsCommon {
             this.exportToPDF(outFile, model.getReportSuffix());
         }
     }
+    @Deprecated
     public void executeReport(RetrospectiveBatch batch, boolean aggregate, boolean toPDF) throws Exception {
-        for (RetrospectiveModel model : batch.getModels()) {
-            this.executeReport(model, aggregate, toPDF);
-        }
+        this.execute(batch, aggregate, toPDF);
     }
+    @Deprecated
     public void executeReport(File config, boolean aggregate, boolean toPDF) throws Exception {
-        Assert.assertTrue(config.exists(),
-                this.constructErrorMessage(CucumberReportError.NON_EXISTING_CONFIG_FILE, ""));
-        String content = FileUtils.readFileToString(config);
-        RetrospectiveBatch batch = null;
-        try {
-            batch = (RetrospectiveBatch) JsonReader.jsonToJava(content);
-        } catch (Throwable e) {
-            Assert.fail(this.constructErrorMessage(CucumberReportError.INVALID_CONFIG_FILE, ""), e);
-        }
-        validateParameters();
-        this.executeReport(batch, aggregate, toPDF);
+        this.execute(config, aggregate, toPDF);
     }
     @Override
     public CucumberReportTypes getReportType() {
@@ -162,13 +161,47 @@ public class CucumberRetrospectiveOverviewReport extends CucumberResultsCommon {
     }
     @Override
     public void validateParameters() {
-        Assert.assertNotNull(this.getOutputDirectory(),
-                this.constructErrorMessage(CucumberReportError.NO_OUTPUT_DIRECTORY, ""));
-        Assert.assertNotNull(this.getOutputName(),
-                this.constructErrorMessage(CucumberReportError.NO_OUTPUT_NAME, ""));
+        Assert.assertNotNull(this.constructErrorMessage(CucumberReportError.NO_OUTPUT_DIRECTORY, ""),
+            this.getOutputDirectory());
+        Assert.assertNotNull(this.constructErrorMessage(CucumberReportError.NO_OUTPUT_NAME, ""),
+            this.getOutputName());
     }
     @Override
     public CucumberReportLink getReportDocLink() {
         return CucumberReportLink.RETROSPECTIVE_OVERVIEW_URL;
+    }
+    @Override
+    public void execute(RetrospectiveBatch batch, boolean toPDF) {
+        // TODO Auto-generated method stub
+    }
+    @Override
+    public void execute(File config, boolean toPDF) {
+        // TODO Auto-generated method stub
+    }
+    @Override
+    public void execute(boolean aggregate, boolean toPDF) throws Exception {
+        // TODO Auto-generated method stub
+    }
+    @Override
+    public void execute(RetrospectiveBatch batch, boolean aggregate,
+            boolean toPDF) throws Exception {
+        for (RetrospectiveModel model : batch.getModels()) {
+            this.executeReport(model, aggregate, toPDF);
+        }
+    }
+    @Override
+    public void execute(File config, boolean aggregate, boolean toPDF)
+            throws Exception {
+        Assert.assertTrue(this.constructErrorMessage(CucumberReportError.NON_EXISTING_CONFIG_FILE, ""),
+            config.exists());
+        validateParameters();
+        String content = FileUtils.readFileToString(config);
+        RetrospectiveBatch batch = null;
+        try {
+            batch = (RetrospectiveBatch) JsonReader.jsonToJava(content);
+        } catch (Throwable e) {
+            Assert.fail(this.constructErrorMessage(CucumberReportError.INVALID_CONFIG_FILE, ""));
+        }
+        this.execute(batch, aggregate, toPDF);
     }
 }

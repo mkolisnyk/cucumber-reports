@@ -1,7 +1,6 @@
 package com.github.mkolisnyk.cucumber.reporting.types.breakdown;
 
 import org.junit.Assert;
-
 import org.junit.Test;
 
 public class DataDimensionGetRowTest {

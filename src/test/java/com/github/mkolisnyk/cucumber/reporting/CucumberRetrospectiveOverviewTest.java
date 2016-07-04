@@ -40,7 +40,7 @@ public class CucumberRetrospectiveOverviewTest {
                         "(.*)retrospective-source.1.131(.*)json", 300, 400)
             }
         );
-        report.executeReport(batch, true, false);
+        report.execute(batch, true, false);
         String json = JsonWriter.objectToJson(batch);
         FileUtils.writeStringToFile(new File("./src/test/resources/retrospective-source/sample_batch.json"), json);
     }
@@ -49,6 +49,6 @@ public class CucumberRetrospectiveOverviewTest {
         CucumberRetrospectiveOverviewReport report = new CucumberRetrospectiveOverviewReport();
         report.setOutputDirectory("./target");
         report.setOutputName("cucumber-results-batch");
-        report.executeReport(new File("./src/test/resources/retrospective-source/sample_batch.json"), true, true);
+        report.execute(new File("./src/test/resources/retrospective-source/sample_batch.json"), true, true);
     }
 }

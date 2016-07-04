@@ -2,9 +2,6 @@ package com.github.mkolisnyk.cucumber.runner;
 
 import java.io.File;
 
-import javassist.bytecode.annotation.Annotation;
-import javassist.bytecode.annotation.ArrayMemberValue;
-
 import org.junit.Test;
 import org.testng.Assert;
 

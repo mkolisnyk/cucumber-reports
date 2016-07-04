@@ -11,8 +11,17 @@ import org.apache.commons.io.IOUtils;
 import com.github.mkolisnyk.cucumber.reporting.types.enums.CucumberReportLink;
 import com.github.mkolisnyk.cucumber.reporting.types.enums.CucumberReportTypes;
 import com.github.mkolisnyk.cucumber.reporting.types.result.CucumberFeatureResult;
+import com.github.mkolisnyk.cucumber.runner.runtime.ExtendedRuntimeOptions;
 
 public class CucumberFeatureOverview extends CucumberResultsOverview {
+
+    public CucumberFeatureOverview() {
+        super();
+    }
+
+    public CucumberFeatureOverview(ExtendedRuntimeOptions extendedOptions) {
+        super(extendedOptions);
+    }
 
     @Override
     public CucumberReportLink getReportDocLink() {
@@ -24,7 +33,7 @@ public class CucumberFeatureOverview extends CucumberResultsOverview {
         return CucumberReportTypes.FEATURE_OVERVIEW;
     }
 
-    @Override
+    //@Override
     protected String getReportBase() throws IOException {
         InputStream is = this.getClass().getResourceAsStream("/feature-overview-tmpl-2.html");
         String result = IOUtils.toString(is);
@@ -87,17 +96,49 @@ public class CucumberFeatureOverview extends CucumberResultsOverview {
         return content;
     }
 
+    /**
+     * Generates feature overview chart report.
+     * @throws Exception
+     * @deprecated This method is left for backward compatibility since version 1.0.6
+     * and it would be removed shortly. Use {@link #execute(boolean, boolean)} method instead.
+     */
+    @Deprecated
     public void executeFeatureOverviewChartReport() throws Exception {
-        this.validateParameters();
-        executeFeatureOverviewChartReport(false);
+        execute(true, false);
     }
+    /**
+     * Generates feature overview chart report.
+     * @param toPdf flag identifying whether report should be exported to PDF as well
+     * @throws Exception
+     * @deprecated This method is left for backward compatibility since version 1.0.6
+     * and it would be removed shortly. Use {@link #execute(boolean, boolean)} method instead.
+     */
+    @Deprecated
     public void executeFeatureOverviewChartReport(boolean toPdf) throws Exception {
-        CucumberFeatureResult[] features = readFileContent(true);
+        execute(true, toPdf);
+    }
+
+    @Override
+    public void execute(boolean toPDF) throws Exception {
+        // TODO Auto-generated method stub
+        execute(true, toPDF);
+    }
+
+    @Override
+    public void execute() throws Exception {
+        // TODO Auto-generated method stub
+        execute(false);
+    }
+
+    @Override
+    public void execute(boolean aggregate, boolean toPDF) throws Exception {
+        validateParameters();
+        CucumberFeatureResult[] features = readFileContent(aggregate);
         File outFile = new File(
                 this.getOutputDirectory() + File.separator + this.getOutputName()
                 + "-feature-overview-chart.html");
         FileUtils.writeStringToFile(outFile, generateFeatureOverviewChart(features));
-        if (toPdf) {
+        if (toPDF) {
             this.exportToPDF(outFile, "feature-overview-chart");
         }
     }

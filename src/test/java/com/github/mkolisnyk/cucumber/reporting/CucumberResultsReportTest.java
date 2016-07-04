@@ -82,6 +82,7 @@ public class CucumberResultsReportTest {
         results.setSourceFile("./src/test/resources/cucumber.json");
         results.setScreenShotLocation("../src/test/resources/");
         results.execute(true, false);
+        results.execute(false, false);
     }
 
     @Test
@@ -103,6 +104,7 @@ public class CucumberResultsReportTest {
         results.setScreenShotLocation("../src/test/resources/");
         results.setScreenShotWidth("200px");
         results.execute(true, false);
+        results.execute(false, false);
     }
 
     @Test
@@ -112,6 +114,7 @@ public class CucumberResultsReportTest {
         results.setOutputName("cucumber-results-27");
         results.setSourceFile("./src/test/resources/cucumber1.json");
         results.execute(true, false);
+        results.execute(false, false);
     }
     @Test
     public void testLocalizedDetailedReportIssue41() throws Exception {
@@ -120,6 +123,7 @@ public class CucumberResultsReportTest {
         results.setOutputName("localized-results");
         results.setSourceFile("./src/test/resources/detailed-source/localized-1.json");
         results.execute(true, false);
+        results.execute(false, false);
     }
     @Test
     public void testLocalizedDetailedReportIssue44() throws Exception {
@@ -128,6 +132,7 @@ public class CucumberResultsReportTest {
         results.setOutputName("issue44-results");
         results.setSourceFile("./src/test/resources/detailed-source/cucumber-2.json");
         results.execute(true, false);
+        results.execute(false, false);
     }
     @Test
     public void testRubyDetailedReport() throws Exception {
@@ -136,6 +141,7 @@ public class CucumberResultsReportTest {
         results.setOutputName("cucumber-ruby-results");
         results.setSourceFile("./src/test/resources/ruby/cucumber.json");
         results.execute(true, false);
+        results.execute(false, false);
     }
 
     @Test

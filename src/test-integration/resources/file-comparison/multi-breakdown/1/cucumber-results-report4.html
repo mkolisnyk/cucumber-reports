@@ -1,0 +1,118 @@
+<html>
+<head><style type="text/css">h1 {background-color:#9999CC}
+h2 {background-color:#BBBBCC}
+h3 {background-color:#DDDDFF}
+th {border:1px solid black;background-color:#CCCCDD;}
+td{border:1px solid black;}
+table {border:1px solid black;border-collapse: collapse;}
+.chart {border:0px none black;border-collapse: collapse;background-color: none;}
+.passed {background-color:lightgreen;font-weight:bold;color:darkgreen}
+.failed {background-color:tomato;font-weight:bold;color:darkred}
+.undefined {background-color:gold;font-weight:bold;color:goldenrod}
+.skipped {background-color:silver;font-weight:bold;color:darkgray}
+.passed_description {background-color:#D0FFD0;font-weight:bold;font-style:italic;color:black}
+.failed_description {background-color:#FFA898;font-weight:bold;font-style:italic;color:black}
+OL { counter-reset: item }
+OL>LI { display: block }
+OL>LI:before { content: counters(item, ".") " "; counter-increment: item }
+
+
+.hoverTable {
+    display: flex;
+    flex-flow: column;
+    height: 90%;
+    border-spacing: 0;
+    border-collapse: collapse;
+    overflow-y: auto;
+    z-index: 1;
+}
+
+.hoverTable td, th, .ff-fix {
+    cursor: pointer;
+    padding: 3px;
+    position: relative;
+}
+
+.hoverTable td:hover::after,
+.ff-fix:hover::after {
+    background-color: #ffa;
+    content: '\00a0';
+    height: 10000px;
+    left: 0;
+    position: absolute;
+    top: -5000px;
+    width: 100%;
+    z-index: -1;
+}
+.hoverTable tr:hover {
+          background-color: #ffff99;
+    }
+.hoverTable td:hover {
+          background-color: #ffff99;
+          border:3px solid #ffff99;
+}
+
+div.header {
+    display: block; text-align: center;
+    position: running(header);
+}
+div.footer {
+    display: block; text-align: center;
+    position: running(footer);
+}
+div.content {page-break-after: always;}
+@page {
+	 size: __PAGESIZE__;
+     @top-center {
+     	content: "Fourth Breakdown";
+	    color: silver;
+	    font-size: 14px;
+     }
+     @top-right {
+     	content: date("dd MMM, yyyy hh:mm");
+	    color: silver;
+	    font-size: 8px;
+     }
+    @bottom-right {
+    	content: "Page " counter(page) " of " counter(pages) ;
+	    color: silver;
+	    font-size: 8px;
+    }
+}
+
+</style>
+<meta http-equiv="Refresh" content="3; url=./cucumber-results-report2.html" />
+<title>Fourth Breakdown</title>
+<script>
+  var toggle = function(id) {
+  var mydiv = document.getElementById(id);
+  if (mydiv.style.display === 'block' || mydiv.style.display === '')
+    mydiv.style.display = 'none';
+  else
+    mydiv.style.display = 'block'
+  }
+</script>
+  </head>
+  <body>
+    <div class='header'></div>
+    <div class='footer'></div>
+  
+  <h1>Fourth Breakdown</h1>
+<table class="hoverTable"><thead><tr><th colspan="1" rowspan="1">&#160;</th><th colspan="1" rowspan="1">Scenarios</th></tr><tr></tr></thead><tbody><tr><th colspan="1" rowspan="1">Features</th><td><div id="__ID__" style="width: 400px; height: 300px;">
+    <div style="position: relative;">
+        <div dir="ltr"
+            style="position: relative; width: 400px; height: 300px;">
+            <div aria-label="A chart."
+                style="position: absolute; left: 0px; top: 0px; width: 100%; height: 100%;">
+                <svg aria-label="A chart." style="overflow: hidden;" height="300"
+                    width="450">
+                    <defs id="defs"></defs>
+                         <path fill="darkgreen" stroke-width="1" stroke="darkgreen" d="M150.48076412,121.94135671 L150.96152824,63.88271341 A90.00000000,60.00000000,0,0,1,233.45702517,99.89667131 M233.45702517,99.89667131 L150.48076412,121.94135671"></path><path fill="darkgreen" stroke-width="1" stroke="darkgreen" d="M150.48076412,121.94135671 L233.45702517,99.89667131 A90.00000000,60.00000000,0,0,1,216.91954367,164.70503955 M216.91954367,164.70503955 L150.48076412,121.94135671"></path><path fill="darkgreen" stroke-width="1" stroke="darkgreen" d="M150.48076412,121.94135671 L216.91954367,164.70503955 A90.00000000,60.00000000,0,0,1,121.20175582,180.50762331 M121.20175582,180.50762331 L150.48076412,121.94135671"></path><path fill="darkgreen" stroke-width="1" stroke="darkgreen" d="M150.48076412,121.94135671 L121.20175582,180.50762331 A90.00000000,60.00000000,0,0,1,61.20954099,128.33396971 M61.20954099,128.33396971 L150.48076412,121.94135671"></path><path fill="darkgreen" stroke-width="1" stroke="darkgreen" d="M150.48076412,121.94135671 L61.20954099,128.33396971 A90.00000000,60.00000000,0,0,1,108.96146915,70.81673755 M108.96146915,70.81673755 L150.48076412,121.94135671"></path><path fill="darkred" stroke-width="1" stroke="darkred" d="M149.14327654,118.19278532 L106.28649398,63.31959478 A90.00000000,60.00000000,0,0,1,107.65659820,62.84760169 M107.65659820,62.84760169 L149.14327654,118.19278532"></path><path fill="darkred" stroke-width="1" stroke="darkred" d="M149.14327654,118.19278532 L107.65659820,62.84760169 A90.00000000,60.00000000,0,0,1,109.03863276,62.39132917 M109.03863276,62.39132917 L149.14327654,118.19278532"></path><path fill="darkred" stroke-width="1" stroke="darkred" d="M149.14327654,118.19278532 L109.03863276,62.39132917 A90.00000000,60.00000000,0,0,1,110.43219184,61.95091119 M110.43219184,61.95091119 L149.14327654,118.19278532"></path><path fill="darkred" stroke-width="1" stroke="darkred" d="M149.14327654,118.19278532 L110.43219184,61.95091119 A90.00000000,60.00000000,0,0,1,111.83686624,61.52647707 M111.83686624,61.52647707 L149.14327654,118.19278532"></path><path fill="darkred" stroke-width="1" stroke="darkred" d="M149.14327654,118.19278532 L111.83686624,61.52647707 A90.00000000,60.00000000,0,0,1,113.25224351,61.11815145 M113.25224351,61.11815145 L149.14327654,118.19278532"></path><path fill="darkgray" stroke-width="1" stroke="darkgray" d="M149.60281907,118.03983488 L114.17132856,60.81225057 A90.00000000,60.00000000,0,0,1,120.90564701,59.12311515 M120.90564701,59.12311515 L149.60281907,118.03983488"></path><path fill="darkgray" stroke-width="1" stroke="darkgray" d="M149.60281907,118.03983488 L120.90564701,59.12311515 A90.00000000,60.00000000,0,0,1,127.82084326,57.79801437 M127.82084326,57.79801437 L149.60281907,118.03983488"></path><path fill="darkgray" stroke-width="1" stroke="darkgray" d="M149.60281907,118.03983488 L127.82084326,57.79801437 A90.00000000,60.00000000,0,0,1,134.87271923,56.84541752 M134.87271923,56.84541752 L149.60281907,118.03983488"></path><path fill="darkgray" stroke-width="1" stroke="darkgray" d="M149.60281907,118.03983488 L134.87271923,56.84541752 A90.00000000,60.00000000,0,0,1,142.01620324,56.27141308 M142.01620324,56.27141308 L149.60281907,118.03983488"></path><path fill="darkgray" stroke-width="1" stroke="darkgray" d="M149.60281907,118.03983488 L142.01620324,56.27141308 A90.00000000,60.00000000,0,0,1,149.20563813,56.07966976 M149.20563813,56.07966976 L149.60281907,118.03983488"></path><path fill="darkgreen" stroke-width="1" stroke="darkgreen" d="M150.48076412,121.94135671 L150.96152824,63.88271341 L150.96152824,43.88271341 L150.48076412,101.94135671 L150.48076412,121.94135671 "></path><path fill="darkred" stroke-width="1" stroke="darkred" d="M149.14327654,118.19278532 L106.28649398,63.31959478 L106.28649398,43.31959478 L149.14327654,98.19278532 L149.14327654,118.19278532 "></path><path fill="darkgray" stroke-width="1" stroke="darkgray" d="M149.60281907,118.03983488 L114.17132856,60.81225057 L114.17132856,40.81225057 L149.60281907,98.03983488 L149.60281907,118.03983488 "></path><path fill="darkgreen" stroke-width="1" stroke="darkgreen" d="M150.48076412,121.94135671 L108.96146915,70.81673755 L108.96146915,50.81673755 L150.48076412,101.94135671 L150.48076412,121.94135671 "></path><path fill="darkred" stroke-width="1" stroke="darkred" d="M149.14327654,118.19278532 L113.25224351,61.11815145 L113.25224351,41.11815145 L149.14327654,98.19278532 L149.14327654,118.19278532 "></path><path fill="darkgray" stroke-width="1" stroke="darkgray" d="M149.60281907,118.03983488 L149.20563813,56.07966976 L149.20563813,36.07966976 L149.60281907,98.03983488 L149.60281907,118.03983488 "></path><path fill="green" stroke-width="1" stroke="green" d="M150.48076412,101.94135671 L150.96152824,43.88271341 A90.00000000,60.00000000,0,0,1,233.45702517,79.89667131 M233.45702517,79.89667131 L150.48076412,101.94135671"></path><path fill="green" stroke-width="1" stroke="green" d="M150.48076412,101.94135671 L233.45702517,79.89667131 A90.00000000,60.00000000,0,0,1,216.91954367,144.70503955 M216.91954367,144.70503955 L150.48076412,101.94135671"></path><path fill="green" stroke-width="1" stroke="green" d="M150.48076412,101.94135671 L216.91954367,144.70503955 A90.00000000,60.00000000,0,0,1,121.20175582,160.50762331 M121.20175582,160.50762331 L150.48076412,101.94135671"></path><path fill="green" stroke-width="1" stroke="green" d="M150.48076412,101.94135671 L121.20175582,160.50762331 A90.00000000,60.00000000,0,0,1,61.20954099,108.33396971 M61.20954099,108.33396971 L150.48076412,101.94135671"></path><path fill="green" stroke-width="1" stroke="green" d="M150.48076412,101.94135671 L61.20954099,108.33396971 A90.00000000,60.00000000,0,0,1,108.96146915,50.81673755 M108.96146915,50.81673755 L150.48076412,101.94135671"></path><path fill="red" stroke-width="1" stroke="red" d="M149.14327654,98.19278532 L106.28649398,43.31959478 A90.00000000,60.00000000,0,0,1,107.65659820,42.84760169 M107.65659820,42.84760169 L149.14327654,98.19278532"></path><path fill="red" stroke-width="1" stroke="red" d="M149.14327654,98.19278532 L107.65659820,42.84760169 A90.00000000,60.00000000,0,0,1,109.03863276,42.39132917 M109.03863276,42.39132917 L149.14327654,98.19278532"></path><path fill="red" stroke-width="1" stroke="red" d="M149.14327654,98.19278532 L109.03863276,42.39132917 A90.00000000,60.00000000,0,0,1,110.43219184,41.95091119 M110.43219184,41.95091119 L149.14327654,98.19278532"></path><path fill="red" stroke-width="1" stroke="red" d="M149.14327654,98.19278532 L110.43219184,41.95091119 A90.00000000,60.00000000,0,0,1,111.83686624,41.52647707 M111.83686624,41.52647707 L149.14327654,98.19278532"></path><path fill="red" stroke-width="1" stroke="red" d="M149.14327654,98.19278532 L111.83686624,41.52647707 A90.00000000,60.00000000,0,0,1,113.25224351,41.11815145 M113.25224351,41.11815145 L149.14327654,98.19278532"></path><path fill="silver" stroke-width="1" stroke="silver" d="M149.60281907,98.03983488 L114.17132856,40.81225057 A90.00000000,60.00000000,0,0,1,120.90564701,39.12311515 M120.90564701,39.12311515 L149.60281907,98.03983488"></path><path fill="silver" stroke-width="1" stroke="silver" d="M149.60281907,98.03983488 L120.90564701,39.12311515 A90.00000000,60.00000000,0,0,1,127.82084326,37.79801437 M127.82084326,37.79801437 L149.60281907,98.03983488"></path><path fill="silver" stroke-width="1" stroke="silver" d="M149.60281907,98.03983488 L127.82084326,37.79801437 A90.00000000,60.00000000,0,0,1,134.87271923,36.84541752 M134.87271923,36.84541752 L149.60281907,98.03983488"></path><path fill="silver" stroke-width="1" stroke="silver" d="M149.60281907,98.03983488 L134.87271923,36.84541752 A90.00000000,60.00000000,0,0,1,142.01620324,36.27141308 M142.01620324,36.27141308 L149.60281907,98.03983488"></path><path fill="silver" stroke-width="1" stroke="silver" d="M149.60281907,98.03983488 L142.01620324,36.27141308 A90.00000000,60.00000000,0,0,1,149.20563813,36.07966976 M149.20563813,36.07966976 L149.60281907,98.03983488"></path><text x="280" y="67" font-weight = "bold" font-size = "14">92% (406) Passed</text><circle cx="270" cy="62" r="5" stroke="darkgreen" stroke-width="1" fill="green" /><text x="280" y="97" font-weight = "bold" font-size = "14">1% (6) Failed</text><circle cx="270" cy="92" r="5" stroke="darkred" stroke-width="1" fill="red" /><text x="280" y="127" font-weight = "bold" font-size = "14">6% (28) Skipped</text><circle cx="270" cy="122" r="5" stroke="darkgray" stroke-width="1" fill="silver" />
+                    </svg>
+            </div>
+        </div>
+    </div>
+</div>
+</td></tr></tbody></table>
+	</body>
+</html>

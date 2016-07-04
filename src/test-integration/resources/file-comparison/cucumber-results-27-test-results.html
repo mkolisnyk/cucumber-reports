@@ -1,0 +1,60 @@
+<html>
+<head><style type="text/css">h1 {background-color:#9999CC}
+h2 {background-color:#BBBBCC}
+h3 {background-color:#DDDDFF}
+th {border:1px solid black;background-color:#CCCCDD;}
+td{border:1px solid black;}
+table {border:1px solid black;border-collapse: collapse;}
+.chart {border:0px none black;border-collapse: collapse;background-color: none;}
+.passed {background-color:lightgreen;font-weight:bold;color:darkgreen}
+.failed {background-color:tomato;font-weight:bold;color:darkred}
+.undefined {background-color:gold;font-weight:bold;color:goldenrod}
+.skipped {background-color:silver;font-weight:bold;color:darkgray}
+.passed_description {background-color:#D0FFD0;font-weight:bold;font-style:italic;color:black}
+.failed_description {background-color:#FFA898;font-weight:bold;font-style:italic;color:black}
+OL { counter-reset: item }
+OL>LI { display: block }
+OL>LI:before { content: counters(item, ".") " "; counter-increment: item }
+
+div.header {
+    display: block; text-align: center;
+    position: running(header);
+}
+div.footer {
+    display: block; text-align: center;
+    position: running(footer);
+}
+div.content {page-break-after: always;}
+@page {
+	 size: __PAGESIZE__;
+     @top-center {
+     	content: "Detailed Results Report";
+	    color: silver;
+	    font-size: 14px;
+     }
+     @top-right {
+     	content: date("dd MMM, yyyy hh:mm");
+	    color: silver;
+	    font-size: 8px;
+     }
+    @bottom-right {
+    	content: "Page " counter(page) " of " counter(pages) ;
+	    color: silver;
+	    font-size: 8px;
+    }
+}
+ol a::after {
+  content: leader('.') target-counter(attr(href), page);
+}
+</style>
+<title>Detailed Results Report</title>
+  </head>
+  <body>
+    <div class='header'></div>
+    <div class='footer'></div>
+  <h1>Overview</h1>
+<table><tr><th></th><th>Passed</th><th>Failed</th><th>Undefined</th><th>%Passed</th></tr><tr><th>Features</th><td class="passed">1</td><td class="failed">0</td><td class="undefined">0</td><td>100.00</td></tr><tr><th>Scenarios</th><td class="passed">1</td><td class="failed">0</td><td class="undefined">0</td><td>100.00</td></tr><tr><th>Steps</th><td class="passed">6</td><td class="failed">0</td><td class="undefined">0</td><td>100.00</td></tr></table><div><b>Overall Duration: 0h 02m 11s</b></div>
+<a id="top"></a><h1>Table of Contents</h1><ol><li> <span class="passed"><a href="#feature-2ntt-create-network">NTT Create Network</a></span><ol><li> <span class="passed"><a href="#sc-6-ntt-create-network;"></a></span></li></ol></li></ol><h1>Detailed Results Report</h1><table width="700px"><tr class="passed"><td colspan="4"><b>Feature:</b> <a id="feature-2ntt-create-network">NTT Create Network</a></td></tr><tr class="passed_description"><td colspan="4"><br>As an Regular user</br><br>
+I want to Create Network</br></td></tr><tr class="passed"><td><small><b>Passed:</b> 1</small></td><td><small><b>Failed:</b> 0</small></td><td><small><b>Undefined:</b> 0</small></td><td><small>Duration: 131.97s</small></td></tr><tr class="passed"><td colspan="4" style="padding-left:20px"> <table width="100%"><tr class="passed"><td colspan="4"><b>Scenario:</b> <a id="sc-6-ntt-create-network;"></a></td></tr><tr class="passed"><td><small><b>Passed:</b> 6</small></td><td><small><b>Failed:</b> 0</small></td><td><small><b>Undefined:</b> 0</small></td><td><small>Duration: 131.97s</small></td></tr><tr class="passed"><td colspan="4" style="padding-left:20px"> <table width="100%"><tr class="passed"><td><b>Given </b> &quot;ACP Add Network&quot; in &quot;Scenario: Create NTT Network without mandatory fields&quot;</td><td width="100">0.63s</td></tr><tr class="passed"><td><b>Given </b> as a &quot;Regular User&quot;</td><td width="100">43.43s</td></tr><tr class="passed"><td><b>Given </b> the &quot;ACP Add Network&quot; order page</td><td width="100">49.73s</td></tr><tr class="passed"><td><b>When </b> I populate the new form with the following details</td><td width="100">11.95s</td></tr><tr class="passed"><td style="padding-left:20px" colspan="2"><table><tr><td>name</td><td>value</td></tr><tr><td>Account</td><td>{acp.account}</td></tr></table></td></tr><tr class="passed"><td><b>Then </b> I submit the order and check for mandatory fields</td><td width="100">24.73s</td></tr><tr class="passed"><td><b>Then </b> I close the page</td><td width="100">1.50s</td></tr></table></td></tr><tr><td colspan="5"><sup><a href="#top">Back to Table of Contents</a></sup></td></tr></table></td></tr><tr><td colspan="5"></td></tr></table>
+	</body>
+</html>

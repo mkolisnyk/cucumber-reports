@@ -1,0 +1,131 @@
+<html>
+<head><style type="text/css">h1 {background-color:#9999CC}
+h2 {background-color:#BBBBCC}
+h3 {background-color:#DDDDFF}
+th {border:1px solid black;background-color:#CCCCDD;}
+td{border:1px solid black;}
+table {border:1px solid black;border-collapse: collapse;}
+.chart {border:0px none black;border-collapse: collapse;background-color: none;}
+.passed {background-color:lightgreen;font-weight:bold;color:darkgreen}
+.failed {background-color:tomato;font-weight:bold;color:darkred}
+.undefined {background-color:gold;font-weight:bold;color:goldenrod}
+.skipped {background-color:silver;font-weight:bold;color:darkgray}
+.passed_description {background-color:#D0FFD0;font-weight:bold;font-style:italic;color:black}
+.failed_description {background-color:#FFA898;font-weight:bold;font-style:italic;color:black}
+OL { counter-reset: item }
+OL>LI { display: block }
+OL>LI:before { content: counters(item, ".") " "; counter-increment: item }
+
+
+.hoverTable {
+    display: flex;
+    flex-flow: column;
+    height: 90%;
+    border-spacing: 0;
+    border-collapse: collapse;
+    overflow-y: auto;
+    z-index: 1;
+}
+
+.hoverTable td, th, .ff-fix {
+    cursor: pointer;
+    padding: 3px;
+    position: relative;
+}
+
+.hoverTable td:hover::after,
+.ff-fix:hover::after {
+    background-color: #ffa;
+    content: '\00a0';
+    height: 10000px;
+    left: 0;
+    position: absolute;
+    top: -5000px;
+    width: 100%;
+    z-index: -1;
+}
+.hoverTable tr:hover {
+          background-color: #ffff99;
+    }
+.hoverTable td:hover {
+          background-color: #ffff99;
+          border:3px solid #ffff99;
+}
+
+div.header {
+    display: block; text-align: center;
+    position: running(header);
+}
+div.footer {
+    display: block; text-align: center;
+    position: running(footer);
+}
+div.content {page-break-after: always;}
+@page {
+	 size: __PAGESIZE__;
+     @top-center {
+     	content: "Fourth Breakdown";
+	    color: silver;
+	    font-size: 14px;
+     }
+     @top-right {
+     	content: date("dd MMM, yyyy hh:mm");
+	    color: silver;
+	    font-size: 8px;
+     }
+    @bottom-right {
+    	content: "Page " counter(page) " of " counter(pages) ;
+	    color: silver;
+	    font-size: 8px;
+    }
+}
+
+</style>
+<meta http-equiv="Refresh" content="5; url=./dry-run-thread-report1.html" />
+<title>Fourth Breakdown</title>
+<script>
+  var toggle = function(id) {
+  var mydiv = document.getElementById(id);
+  if (mydiv.style.display === 'block' || mydiv.style.display === '')
+    mydiv.style.display = 'none';
+  else
+    mydiv.style.display = 'block'
+  }
+</script>
+  </head>
+  <body>
+    <div class='header'></div>
+    <div class='footer'></div>
+  
+  <h1>Fourth Breakdown</h1>
+<table class="_hoverTable"><thead><tr><th colspan="1" rowspan="1">&#160;</th><th colspan="1" rowspan="1">Scenarios</th></tr><tr></tr></thead><tbody><tr><th colspan="1" rowspan="1">Features</th><td><ul><li> <b>Feature:</b> Tests with docstrings <ul><li> <a onclick="toggle('scenario0')"><b>Scenario:</b> Sample</a><div id="scenario0" style="display:none"><table><tr><td></td></tr><tr><td><table><tr><td><b>When </b> I use the following text:</td></tr><tr><td><i>Some multiline &#36; £
+docstring text</i></td></tr><tr><td><b>Then </b> I should see the following text:</td></tr><tr><td><i>Another multiline
+docstring output
+₠	8352	20A0	 	EURO-CURRENCY SIGN
+₡	8353	20A1	 	COLON SIGN
+₢	8354	20A2	 	CRUZEIRO SIGN
+₣	8355	20A3	 	FRENCH FRANC SIGN
+₤	8356	20A4	 	LIRA SIGN
+₥	8357	20A5	 	MILL SIGN
+₦	8358	20A6	 	NAIRA SIGN
+₧	8359	20A7	 	PESETA SIGN
+₨	8360	20A8	 	RUPEE SIGN
+₩	8361	20A9	 	WON SIGN
+₪	8362	20AA	 	NEW SHEQEL SIGN
+₫	8363	20AB	 	DONG SIGN
+€	8364	20AC	&#8364;	EURO SIGN
+₭	8365	20AD	 	KIP SIGN
+₮	8366	20AE	 	TUGRIK SIGN
+₯	8367	20AF	 	DRACHMA SIGN
+₰	8368	20B0	 	GERMAN PENNY SYMBOL
+₱	8369	20B1	 	PESO SIGN
+₲	8370	20B2	 	GUARANI SIGN
+₳	8371	20B3	 	AUSTRAL SIGN
+₴	8372	20B4	 	HRYVNIA SIGN
+₵	8373	20B5	 	CEDI SIGN
+₶	8374	20B6	 	LIVRE TOURNOIS SIGN
+₷	8375	20B7	 	SPESMILO SIGN
+₸	8376	20B8	 	TENGE SIGN
+₹	8377	20B9	 	INDIAN RUPEE SIGN</i></td></tr></table></td></tr></table></div></li></ul></li><li> <b>Feature:</b> Sample re-run feature <ul><li> <a onclick="toggle('scenario1')"><b>Scenario:</b> Always passed test</a><div id="scenario1" style="display:none"><table><tr><td></td></tr><tr><td><table><tr><td><b>Given </b> I am in the system</td></tr><tr><td><b>When </b> I do nothing</td></tr><tr><td><b>Then </b> I should see nothing</td></tr></table></td></tr></table></div></li><li> <a onclick="toggle('scenario2')"><b>Scenario:</b> Always failed test</a><div id="scenario2" style="display:none"><table><tr><td></td></tr><tr><td><table><tr><td><b>Given </b> I am in the system</td></tr><tr><td><b>When </b> I do wrong</td></tr><tr><td><b>Then </b> I should see nothing</td></tr></table></td></tr></table></div></li><li> <a onclick="toggle('scenario3')"><b>Scenario:</b> Flaky test</a><div id="scenario3" style="display:none"><table><tr><td></td></tr><tr><td><table><tr><td><b>Given </b> I am in the system</td></tr><tr><td><b>When </b> I do something</td></tr><tr><td><b>Then </b> I should see nothing</td></tr></table></td></tr></table></div></li><li> <a onclick="toggle('scenario4')"><b>Scenario:</b> outlining test</a><div id="scenario4" style="display:none"><table><tr><td></td></tr><tr><td><table><tr><td><b>Given </b> I am in the system</td></tr><tr><td><b>When </b> I do some 1 things</td></tr><tr><td><b>Then </b> I should see nothing</td></tr></table></td></tr></table></div></li><li> <a onclick="toggle('scenario5')"><b>Scenario:</b> outlining test</a><div id="scenario5" style="display:none"><table><tr><td></td></tr><tr><td><table><tr><td><b>Given </b> I am in the system</td></tr><tr><td><b>When </b> I do some 2 things</td></tr><tr><td><b>Then </b> I should see nothing</td></tr></table></td></tr></table></div></li><li> <a onclick="toggle('scenario6')"><b>Scenario:</b> outlining test</a><div id="scenario6" style="display:none"><table><tr><td></td></tr><tr><td><table><tr><td><b>Given </b> I am in the system</td></tr><tr><td><b>When </b> I do some 3 things</td></tr><tr><td><b>Then </b> I should see nothing</td></tr></table></td></tr></table></div></li><li> <a onclick="toggle('scenario7')"><b>Scenario:</b> Some undefined scenario</a><div id="scenario7" style="display:none"><table><tr><td></td></tr><tr><td><table></table></td></tr></table></div></li><li> <a onclick="toggle('scenario8')"><b>Scenario:</b> Some scenario with undefined step</a><div id="scenario8" style="display:none"><table><tr><td></td></tr><tr><td><table><tr><td><b>Given </b> I am in the system</td></tr><tr><td><b>When </b> I do nothing</td></tr><tr><td><b>Then </b> I should see something</td></tr></table></td></tr></table></div></li><li> <a onclick="toggle('scenario9')"><b>Scenario:</b> Some scenario outline with undefined step</a><div id="scenario9" style="display:none"><table><tr><td></td></tr><tr><td><table><tr><td><b>Given </b> I am in the system</td></tr><tr><td><b>When </b> I do nothing</td></tr><tr><td><b>Then </b> I should see 1 something</td></tr></table></td></tr></table></div></li><li> <a onclick="toggle('scenario10')"><b>Scenario:</b> Some scenario outline with undefined step</a><div id="scenario10" style="display:none"><table><tr><td></td></tr><tr><td><table><tr><td><b>Given </b> I am in the system</td></tr><tr><td><b>When </b> I do nothing</td></tr><tr><td><b>Then </b> I should see 2 something</td></tr></table></td></tr></table></div></li><li> <a onclick="toggle('scenario11')"><b>Scenario:</b> Some scenario outline with undefined step</a><div id="scenario11" style="display:none"><table><tr><td></td></tr><tr><td><table><tr><td><b>Given </b> I am in the system</td></tr><tr><td><b>When </b> I do nothing</td></tr><tr><td><b>Then </b> I should see 3 something</td></tr></table></td></tr></table></div></li><li> <a onclick="toggle('scenario12')"><b>Scenario:</b> Some scenario outline with undefined step</a><div id="scenario12" style="display:none"><table><tr><td></td></tr><tr><td><table><tr><td><b>Given </b> I am in the system</td></tr><tr><td><b>When </b> I do nothing</td></tr><tr><td><b>Then </b> I should see 4 something</td></tr></table></td></tr></table></div></li></ul></li></ul></td></tr></tbody></table>
+	</body>
+</html>

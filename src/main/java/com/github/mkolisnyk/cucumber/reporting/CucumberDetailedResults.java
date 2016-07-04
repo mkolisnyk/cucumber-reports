@@ -410,7 +410,7 @@ public class CucumberDetailedResults extends AggragatedReport {
         for (CucumberFeatureResult result : results) {
             String featureDescriptionHeading = "";
             if (StringUtils.isNotBlank(result.getDescription())) {
-                featureDescriptionHeading = String.format("<tr class=\"%s_description\">"
+                featureDescriptionHeading = String.format(Locale.US, "<tr class=\"%s_description\">"
                         + "<td colspan=\"4\"><br>%s</br></td></tr>", result.getStatus(),
                     escapeHtml(result.getDescription()).replaceAll(System.lineSeparator(),
                             "</br><br>" + System.lineSeparator()));
@@ -437,7 +437,7 @@ public class CucumberDetailedResults extends AggragatedReport {
             for (CucumberScenarioResult scenario : result.getElements()) {
                 String descriptionHeading = "";
                 if (StringUtils.isNotBlank(scenario.getDescription())) {
-                    descriptionHeading = String.format("<tr class=\"%s_description\">"
+                    descriptionHeading = String.format(Locale.US, "<tr class=\"%s_description\">"
                         + "<td colspan=\"4\"><br>%s</br></td></tr>", scenario.getStatus(),
                         escapeHtml(scenario.getDescription()).replaceAll(System.lineSeparator(),
                                 "</br><br>" + System.lineSeparator()));

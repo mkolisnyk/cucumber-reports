@@ -1,5 +1,7 @@
 package com.github.mkolisnyk.cucumber.reporting.types.result;
 
+import java.util.Locale;
+
 import com.cedarsoftware.util.io.JsonObject;
 
 public class CucumberResult {
@@ -48,7 +50,7 @@ public class CucumberResult {
     public final String getDurationTimeString(String format) {
         final int nanosecondsInMillisecond = 1000000;
         final double millesecondsInSecond = 1000.f;
-        return String.format("%.2fs",
+        return String.format(Locale.US, "%.2fs",
                 (double) (this.getDuration() / nanosecondsInMillisecond) / millesecondsInSecond);
     }
 }

@@ -1,0 +1,66 @@
+<html>
+<head><style type="text/css">h1 {background-color:#9999CC}
+h2 {background-color:#BBBBCC}
+h3 {background-color:#DDDDFF}
+th {border:1px solid black;background-color:#CCCCDD;}
+td{border:1px solid black;}
+table {border:1px solid black;border-collapse: collapse;}
+.chart {border:0px none black;border-collapse: collapse;background-color: none;}
+.passed {background-color:lightgreen;font-weight:bold;color:darkgreen}
+.failed {background-color:tomato;font-weight:bold;color:darkred}
+.undefined {background-color:gold;font-weight:bold;color:goldenrod}
+.skipped {background-color:silver;font-weight:bold;color:darkgray}
+.passed_description {background-color:#D0FFD0;font-weight:bold;font-style:italic;color:black}
+.failed_description {background-color:#FFA898;font-weight:bold;font-style:italic;color:black}
+OL { counter-reset: item }
+OL>LI { display: block }
+OL>LI:before { content: counters(item, ".") " "; counter-increment: item }
+
+div.header {
+    display: block; text-align: center;
+    position: running(header);
+}
+div.footer {
+    display: block; text-align: center;
+    position: running(footer);
+}
+div.content {page-break-after: always;}
+@page {
+	 size: __PAGESIZE__;
+     @top-center {
+     	content: "Detailed Results Report";
+	    color: silver;
+	    font-size: 14px;
+     }
+     @top-right {
+     	content: date("dd MMM, yyyy hh:mm");
+	    color: silver;
+	    font-size: 8px;
+     }
+    @bottom-right {
+    	content: "Page " counter(page) " of " counter(pages) ;
+	    color: silver;
+	    font-size: 8px;
+    }
+}
+ol a::after {
+  content: leader('.') target-counter(attr(href), page);
+}
+</style>
+<title>Detailed Results Report</title>
+  </head>
+  <body>
+    <div class='header'></div>
+    <div class='footer'></div>
+  <h1>Overview</h1>
+<table><tr><th></th><th>Passed</th><th>Failed</th><th>Undefined</th><th>%Passed</th></tr><tr><th>Features</th><td class="passed">0</td><td class="failed">1</td><td class="undefined">0</td><td>0.00</td></tr><tr><th>Scenarios</th><td class="passed">0</td><td class="failed">1</td><td class="undefined">0</td><td>0.00</td></tr><tr><th>Steps</th><td class="passed">4</td><td class="failed">1</td><td class="undefined">1</td><td>66.67</td></tr></table><div><b>Overall Duration: 0h 02m 31s</b></div>
+<a id="top"></a><h1>Table of Contents</h1><ol><li> <span class="failed"><a href="#feature-1cashback-offer">Cashback Offer</a></span><ol><li> <span class="failed"><a href="#sc-4-cashback-offer;show-advert">Show advert</a></span></li></ol></li></ol><h1>Detailed Results Report</h1><table width="700px"><tr class="failed"><td colspan="4"><b>Feature:</b> <a id="feature-1cashback-offer">Cashback Offer</a></td></tr><tr class="failed"><td><small><b>Passed:</b> 0</small></td><td><small><b>Failed:</b> 1</small></td><td><small><b>Undefined:</b> 0</small></td><td><small>Duration: 151.58s</small></td></tr><tr class="failed"><td colspan="4" style="padding-left:20px"> <table width="100%"><tr class="failed"><td colspan="4"><b>Scenario:</b> <a id="sc-4-cashback-offer;show-advert">Show advert</a></td></tr><tr class="failed"><td><small><b>Passed:</b> 4</small></td><td><small><b>Failed:</b> 1</small></td><td><small><b>Undefined:</b> 1</small></td><td><small>Duration: 151.58s</small></td></tr><tr class="passed"><td>Before</td><td colspan="2"></td><td width="100">17.94s</td></tr><tr class="passed"><td colspan="4"></td></tr><tr class="failed"><td colspan="4" style="padding-left:20px"> <table width="100%"><tr class="passed"><td><b>Given </b> I am not logged into the system</td><td width="100">3.70s</td></tr><tr class="passed"><td><b>And </b> I am on the &quot;Home&quot; page</td><td width="100">5.88s</td></tr><tr class="passed"><td><b>When </b> I click on the &quot;Me&quot; button</td><td width="100">1.08s</td></tr><tr class="passed"><td><b>Then </b> I should see the &quot;Me&quot; screen</td><td width="100">0.43s</td></tr><tr class="failed"><td><b>When </b> I click on the &quot;Advert_&quot; button</td><td width="100">120.98s</td></tr><tr class="failed"><td colspan="2"><div><br>java.lang.AssertionError: Unable to find element with locator: 'By.xpath: //*[@text=&quot;Advert_&quot; or contains(@text,&quot;Advert_&quot;) or contains(@text,&quot;ADVERT_&quot;) or contains(text(),&quot;Advert_&quot;) or text()=&quot;Advert_&quot;]'</br><br>
+	at org.junit.Assert.fail(Assert.java:88)</br><br>
+	at org.junit.Assert.assertTrue(Assert.java:41)</br><br>
+	at com.thetrainline.common.lib.ui.controls.Control.getElement(Control.java:91)</br><br>
+	at com.thetrainline.common.lib.ui.controls.Control.click(Control.java:311)</br><br>
+	at com.thetrainline.common.steps.generic.FieldActions.clickOnTheField(FieldActions.java:174)</br><br>
+	at &#10045;.When I click on the &quot;Advert_&quot; button(common/6_Cashback_Offer.feature:9)</br><br>
+</br></div></td></tr><tr class="skipped"><td><b>Then </b> I should see the &quot;Advert WebPage&quot; screen</td><td width="100">0.00s</td></tr><tr class="skipped"><td colspan="2"><img src="screenshots/4-cashback-offer_show-advert1467647386466.png" width="300" /></td></tr><tr class="skipped"><td colspan="2"><img src="screenshots/4-cashback-offer_show-advert1467647386467.png" width="300" /></td></tr></table></td></tr><tr class="passed"><td>After</td><td colspan="2"></td><td width="100">1.57s</td></tr><tr class="passed"><td colspan="4"></td></tr><tr><td colspan="5"><sup><a href="#top">Back to Table of Contents</a></sup></td></tr></table></td></tr><tr><td colspan="5"></td></tr></table>
+	</body>
+</html>

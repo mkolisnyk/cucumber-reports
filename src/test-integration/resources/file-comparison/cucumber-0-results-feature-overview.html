@@ -1,0 +1,91 @@
+<html>
+<head><style type="text/css">h1 {background-color:#9999CC}
+h2 {background-color:#BBBBCC}
+h3 {background-color:#DDDDFF}
+th {border:1px solid black;background-color:#CCCCDD;}
+td{border:1px solid black;}
+table {border:1px solid black;border-collapse: collapse;}
+.chart {border:0px none black;border-collapse: collapse;background-color: none;}
+.passed {background-color:lightgreen;font-weight:bold;color:darkgreen}
+.skipped {background-color:silver;font-weight:bold;color:darkgray}
+.failed {background-color:tomato;font-weight:bold;color:darkred}
+.undefined {background-color:gold;font-weight:bold;color:goldenrod}
+
+
+div.header {
+    display: block; text-align: center;
+    position: running(header);
+}
+div.footer {
+    display: block; text-align: center;
+    position: running(footer);
+}
+div.content {page-break-after: always;}
+@page {
+	 size: __PAGESIZE__;
+     @top-center {
+     	content: "Features Overview";
+	    color: silver;
+	    font-size: 14px;
+     }
+     @top-right {
+     	content: date("dd MMM, yyyy hh:mm");
+	    color: silver;
+	    font-size: 8px;
+     }
+    @bottom-right {
+    	content: "Page " counter(page) " of " counter(pages) ;
+	    color: silver;
+	    font-size: 8px;
+    }
+}
+</style>
+<title>Features Overview</title>
+<meta charset="UTF-8" />
+</head>
+  <body>
+    <div class='header'></div>
+    <div class='footer'></div>
+  
+  <h1>Overview Chart</h1>
+	<table class="chart">
+	<tr>
+	<th class="chart">Features Status</th><th class="chart">Scenario Status</th>
+	</tr>
+	<tr class="chart">
+    <td class="chart"><div style="width: 400px; height: 200px;" ><div id="__ID__" style="width: 400px; height: 300px;">
+    <div style="position: relative;">
+        <div dir="ltr"
+            style="position: relative; width: 400px; height: 300px;">
+            <div aria-label="A chart."
+                style="position: absolute; left: 0px; top: 0px; width: 100%; height: 100%;">
+                <svg aria-label="A chart." style="overflow: hidden;" height="300"
+                    width="450">
+                    <defs id="defs"></defs>
+                         <path fill="darkgreen" stroke-width="1" stroke="darkgreen" d="MNaN,NaN LNaN,NaN LNaN,NaN LNaN,NaN LNaN,NaN "></path><path fill="darkred" stroke-width="1" stroke="darkred" d="MNaN,NaN LNaN,NaN LNaN,NaN LNaN,NaN LNaN,NaN "></path><path fill="darkgray" stroke-width="1" stroke="darkgray" d="MNaN,NaN LNaN,NaN LNaN,NaN LNaN,NaN LNaN,NaN "></path><text x="280" y="67" font-weight = "bold" font-size = "14">NaN% (0) Passed</text><circle cx="270" cy="62" r="5" stroke="darkgreen" stroke-width="1" fill="green" /><text x="280" y="97" font-weight = "bold" font-size = "14">NaN% (0) Failed</text><circle cx="270" cy="92" r="5" stroke="darkred" stroke-width="1" fill="red" /><text x="280" y="127" font-weight = "bold" font-size = "14">NaN% (0) Undefined</text><circle cx="270" cy="122" r="5" stroke="darkgray" stroke-width="1" fill="silver" />
+                    </svg>
+            </div>
+        </div>
+    </div>
+</div>
+</div></td>
+    <td class="chart"><div style="width: 400px; height: 200px;"><div id="__ID__" style="width: 400px; height: 300px;">
+    <div style="position: relative;">
+        <div dir="ltr"
+            style="position: relative; width: 400px; height: 300px;">
+            <div aria-label="A chart."
+                style="position: absolute; left: 0px; top: 0px; width: 100%; height: 100%;">
+                <svg aria-label="A chart." style="overflow: hidden;" height="300"
+                    width="450">
+                    <defs id="defs"></defs>
+                         <path fill="darkgreen" stroke-width="1" stroke="darkgreen" d="MNaN,NaN LNaN,NaN LNaN,NaN LNaN,NaN LNaN,NaN "></path><path fill="darkred" stroke-width="1" stroke="darkred" d="MNaN,NaN LNaN,NaN LNaN,NaN LNaN,NaN LNaN,NaN "></path><path fill="darkgray" stroke-width="1" stroke="darkgray" d="MNaN,NaN LNaN,NaN LNaN,NaN LNaN,NaN LNaN,NaN "></path><text x="280" y="67" font-weight = "bold" font-size = "14">NaN% (0) Passed</text><circle cx="270" cy="62" r="5" stroke="darkgreen" stroke-width="1" fill="green" /><text x="280" y="97" font-weight = "bold" font-size = "14">NaN% (0) Failed</text><circle cx="270" cy="92" r="5" stroke="darkred" stroke-width="1" fill="red" /><text x="280" y="127" font-weight = "bold" font-size = "14">NaN% (0) Undefined</text><circle cx="270" cy="122" r="5" stroke="darkgray" stroke-width="1" fill="silver" />
+                    </svg>
+            </div>
+        </div>
+    </div>
+</div>
+</div></td></tr>
+	</table>
+<h1>Features Status</h1><table><tr><th>Feature Name</th><th>Status</th><th>Passed</th><th>Failed</th><th>Undefined</th><th>Duration</th></tr></table><h1>Scenario Status</h1><table><tr><th>Feature Name</th><th>Scenario</th><th>Status</th><th>Passed</th><th>Failed</th><th>Undefined</th><th>Retries</th><th>Duration</th></tr></table>	
+	</body>
+</html>

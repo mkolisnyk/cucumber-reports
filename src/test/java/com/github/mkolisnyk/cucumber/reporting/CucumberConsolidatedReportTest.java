@@ -30,7 +30,8 @@ public class CucumberConsolidatedReportTest {
                 },
                 "consolidated",
                 "Overall Results",
-                true);
+                true,
+                -1);
         results.executeConsolidatedReport(batch);
         //String json = JsonWriter.objectToJson(model);
         //FileUtils.writeStringToFile(new File("./src/test/resources/known-errors-source/sample_model.json"), json);

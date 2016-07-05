@@ -63,14 +63,29 @@ public class CucumberConsolidatedReport extends ConfigurableReport<ConsolidatedR
             reportContent = reportContent.concat(
                     String.format(Locale.US, "<h1>Table of Contents</h1>%s", generateTableOfContents(model)));
         }
+        int index = 0;
+        reportContent = reportContent.concat("<table class=\"noborder\">");
         for (ConsolidatedItemInfo item : model.getItems()) {
+            String formatString = "<td class=\"noborder\">"
+                    + "<div class=\"content\"><a id=\"%s\"><h1>%s</h1></a>%s</div></td>";
+            if (index % model.getCols() == 0) {
+                formatString = "<tr class=\"noborder\" valigh=\"top\">" + formatString;
+            }
             String content = FileUtils.readFileToString(new File(item.getPath()));
             content = this.amendHtmlHeaders(content);
             content = this.retrieveBody(content);
             reportContent = reportContent.concat(
-                String.format(Locale.US, "<div class=\"content\"><a id=\"%s\"><h1>%s</h1></a>%s</div>",
+                String.format(Locale.US, formatString,
                     generateLocalLink(item.getTitle()), item.getTitle(), content));
+            if (index % model.getCols() == model.getCols() - 1) {
+                reportContent = reportContent.concat("</tr>");
+            }
+            index++;
         }
+        if (index % model.getCols() != 0) {
+            reportContent = reportContent.concat("</tr>");
+        }
+        reportContent = reportContent.concat("</table>");
         reportContent = this.replaceHtmlEntitiesWithCodes(reportContent);
         reportContent = reportContent.replaceAll("[$]", "&#36;");
         result = result.replaceAll("__REPORT__", reportContent);

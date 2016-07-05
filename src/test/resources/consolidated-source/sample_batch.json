@@ -26,7 +26,8 @@
       ], 
       "reportSuffix": "batch-config1", 
       "title": "Overall Results Batch 1", 
-      "useTableOfContents": true
+      "useTableOfContents": true,
+      "cols": 2
     }, 
     {
       "items": [
@@ -41,7 +42,8 @@
       ], 
       "reportSuffix": "batch-config2", 
       "title": "Overall Results Batch 2", 
-      "useTableOfContents": false
+      "useTableOfContents": false,
+      "cols": 2
     }
   ]
 }

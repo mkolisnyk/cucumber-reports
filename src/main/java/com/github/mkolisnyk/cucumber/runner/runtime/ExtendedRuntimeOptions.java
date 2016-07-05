@@ -47,6 +47,8 @@ public class ExtendedRuntimeOptions {
         }
         return result;
     }
+    public ExtendedRuntimeOptions() {
+    }
     public ExtendedRuntimeOptions(ExtendedCucumberOptions options) throws Exception {
         if (options != null) {
             this.isOverviewReport = options.overviewReport();
@@ -209,6 +211,70 @@ public class ExtendedRuntimeOptions {
 
     public String getThreadsCountValue() {
         return threadsCountValue;
+    }
+
+    public void setOverviewReport(boolean isOverviewReportValue) {
+        this.isOverviewReport = isOverviewReportValue;
+    }
+    public void setUsageReport(boolean isUsageReportValue) {
+        this.isUsageReport = isUsageReportValue;
+    }
+    public void setDetailedReport(boolean isDetailedReportValue) {
+        this.isDetailedReport = isDetailedReportValue;
+    }
+    public void setDetailedAggregatedReport(boolean isDetailedAggregatedReportValue) {
+        this.isDetailedAggregatedReport = isDetailedAggregatedReportValue;
+    }
+    public void setCoverageReport(boolean isCoverageReportValue) {
+        this.isCoverageReport = isCoverageReportValue;
+    }
+    public void setOutputFolder(String outputFolderValue) {
+        this.outputFolder = outputFolderValue;
+    }
+    public void setReportPrefix(String reportPrefixValue) {
+        this.reportPrefix = reportPrefixValue;
+    }
+    public void setRetryCount(int retryCountValue) {
+        this.retryCount = retryCountValue;
+    }
+    public void setScreenShotSize(String screenShotSizeValue) {
+        this.screenShotSize = screenShotSizeValue;
+    }
+    public void setToPDF(boolean toPDFValue) {
+        this.toPDF = toPDFValue;
+    }
+    public void setPdfPageSize(String pdfPageSizeValue) {
+        this.pdfPageSize = pdfPageSizeValue;
+    }
+    public void setScreenShotLocation(String screenShotLocationValue) {
+        this.screenShotLocation = screenShotLocationValue;
+    }
+    public void setBreakdownReport(boolean breakdownReportValue) {
+        this.breakdownReport = breakdownReportValue;
+    }
+    public void setBreakdownConfig(String breakdownConfigValue) {
+        this.breakdownConfig = breakdownConfigValue;
+    }
+    public void setFeatureMapReport(boolean featureMapReportValue) {
+        this.featureMapReport = featureMapReportValue;
+    }
+    public void setFeatureMapConfig(String featureMapConfigValue) {
+        this.featureMapConfig = featureMapConfigValue;
+    }
+    public void setFeatureOverviewChart(boolean featureOverviewChartValue) {
+        this.featureOverviewChart = featureOverviewChartValue;
+    }
+    public void setKnownErrorsReport(boolean knownErrorsReportValue) {
+        this.knownErrorsReport = knownErrorsReportValue;
+    }
+    public void setKnownErrorsConfig(String knownErrorsConfigValue) {
+        this.knownErrorsConfig = knownErrorsConfigValue;
+    }
+    public void setConsolidatedReport(boolean consolidatedReportValue) {
+        this.consolidatedReport = consolidatedReportValue;
+    }
+    public void setConsolidatedReportConfig(String consolidatedReportConfigValue) {
+        this.consolidatedReportConfig = consolidatedReportConfigValue;
     }
     public static ExtendedRuntimeOptions[] init(Class<?> clazz) throws Exception {
         ExtendedCucumberOptions[] options = clazz.getAnnotationsByType(ExtendedCucumberOptions.class);

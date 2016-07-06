@@ -1,6 +1,5 @@
 package com.github.mkolisnyk.cucumber.runner;
 
-import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.List;
@@ -70,9 +69,6 @@ public class ExtendedFeatureRunner extends FeatureRunner {
             return true;
         }
         for (Method method : this.retryMethods) {
-            if (!method.getReturnType().equals(Boolean.class)) {
-                continue;
-            }
             try {
                 if (!(Boolean) method.invoke(null)) {
                     return false;

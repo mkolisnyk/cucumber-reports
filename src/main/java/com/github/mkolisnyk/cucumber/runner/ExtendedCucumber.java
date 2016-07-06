@@ -121,7 +121,7 @@ public class ExtendedCucumber extends ParentRunner<ExtendedFeatureRunner> {
             Annotation[] annotations = method.getAnnotations();
             for (Annotation item : annotations) {
                 if (item.annotationType().equals(annotation)) {
-                    ArrayUtils.add(filteredMethodList, method);
+                    filteredMethodList = (Method[]) ArrayUtils.add(filteredMethodList, method);
                 }
             }
         }

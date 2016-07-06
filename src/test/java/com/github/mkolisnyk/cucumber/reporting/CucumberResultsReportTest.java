@@ -73,6 +73,14 @@ public class CucumberResultsReportTest {
         results.setSourceFile("./src/test/resources/overview-sources/nothing.json");
         results.execute();
     }
+    @Test
+    public void testGenerateOverviewEmptyElementsReport() throws Exception {
+        CucumberResultsOverview results = new CucumberResultsOverview();
+        results.setOutputDirectory("target");
+        results.setOutputName("cucumber-empty-results");
+        results.setSourceFile("./src/test/resources/overview-sources/empty-elements.json");
+        results.execute();
+    }
 
     @Test
     public void testGenerateDetailedReport() throws Exception {

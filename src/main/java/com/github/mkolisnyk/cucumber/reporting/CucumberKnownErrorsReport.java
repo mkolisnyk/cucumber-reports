@@ -92,6 +92,7 @@ public class CucumberKnownErrorsReport extends ConfigurableReport<KnownErrorsMod
 
     @Override
     public void execute(KnownErrorsModel batch, boolean toPDF) throws Exception {
+        validateParameters();
         CucumberFeatureResult[] features = readFileContent(true);
         File outFile = new File(
                 this.getOutputDirectory() + File.separator + this.getOutputName()
@@ -104,6 +105,8 @@ public class CucumberKnownErrorsReport extends ConfigurableReport<KnownErrorsMod
 
     @Override
     public void execute(File config, boolean toPDF) throws Exception {
+        Assert.assertNotNull(this.constructErrorMessage(CucumberReportError.NO_CONFIG_FILE, ""),
+                config);
         Assert.assertTrue(
                 this.constructErrorMessage(CucumberReportError.NON_EXISTING_CONFIG_FILE, ""),
                 config.exists());
@@ -124,12 +127,15 @@ public class CucumberKnownErrorsReport extends ConfigurableReport<KnownErrorsMod
 
     @Override
     public void validateParameters() {
+        Assert.assertNotNull(this.constructErrorMessage(CucumberReportError.NO_OUTPUT_DIRECTORY, ""),
+                this.getOutputDirectory());
+        Assert.assertNotNull(this.constructErrorMessage(CucumberReportError.NO_OUTPUT_NAME, ""),
+                this.getOutputName());
     }
 
     @Override
     public void execute(KnownErrorsModel batch, boolean aggregate, boolean toPDF)
             throws Exception {
-        // TODO Auto-generated method stub
         execute(batch, toPDF);
     }
 

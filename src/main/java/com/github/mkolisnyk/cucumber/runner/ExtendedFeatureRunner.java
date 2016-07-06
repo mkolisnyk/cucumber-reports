@@ -1,5 +1,7 @@
 package com.github.mkolisnyk.cucumber.runner;
 
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -23,6 +25,7 @@ public class ExtendedFeatureRunner extends FeatureRunner {
     private final List<ParentRunner> children = new ArrayList<ParentRunner>();
 
     private int retryCount;
+    private Method[] retryMethods;
     private int failedAttempts = 0;
     private int scenarioCount = 0;
     private Runtime runtime;
@@ -33,13 +36,15 @@ public class ExtendedFeatureRunner extends FeatureRunner {
             CucumberFeature cucumberFeatureValue,
             Runtime runtimeValue,
             JUnitReporter jUnitReporterValue,
-            int retryCountValue)
+            int retryCountValue,
+            Method[] retryMethodsValue)
             throws InitializationError {
         super(cucumberFeatureValue, runtimeValue, jUnitReporterValue);
         this.cucumberFeature = cucumberFeatureValue;
         this.runtime = runtimeValue;
         this.jUnitReporter = jUnitReporterValue;
         this.retryCount = retryCountValue;
+        this.retryMethods = retryMethodsValue;
         buildFeatureElementRunners();
     }
 
@@ -60,6 +65,24 @@ public class ExtendedFeatureRunner extends FeatureRunner {
             }
         }
     }
+    private boolean isRetryApplicable() {
+        if (this.retryMethods == null || this.retryMethods.length == 0) {
+            return true;
+        }
+        for (Method method : this.retryMethods) {
+            if (!method.getReturnType().equals(Boolean.class)) {
+                continue;
+            }
+            try {
+                if (!(Boolean) method.invoke(null)) {
+                    return false;
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+        return true;
+    }
     /**
      * @return the runtime
      */
@@ -79,8 +102,10 @@ public class ExtendedFeatureRunner extends FeatureRunner {
             System.out.println("Scenario AssumptionViolatedException...");
             //notifier.fireTestAssumptionFailed(new Failure(child.getDescription(), e));
         } catch (Throwable e) {
-            System.out.println("Initiating retry...");
-            retry(notifier, child, e);
+            if (this.isRetryApplicable()) {
+                System.out.println("Initiating retry...");
+                retry(notifier, child, e);
+            }
         } finally {
             System.out.println("Scenario completed..." + this.getRuntime().exitStatus());
             //notifier.fireTestFinished(child.getDescription());

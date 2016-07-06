@@ -59,7 +59,8 @@ public class ExtendedCucumber extends ParentRunner<ExtendedFeatureRunner> {
                 runtimeOptions.reporter(classLoader),
                 runtimeOptions.formatter(classLoader),
                 runtimeOptions.isStrict());
-        addChildren(cucumberFeatures);
+        Method[] retryMethods = this.getPredefinedMethods(RetryAcceptance.class);
+        addChildren(cucumberFeatures, retryMethods);
     }
     public ExtendedCucumber(
             Class clazz, CucumberOptions baseOptions,
@@ -86,7 +87,8 @@ public class ExtendedCucumber extends ParentRunner<ExtendedFeatureRunner> {
                 runtimeOptions.reporter(classLoader),
                 runtimeOptions.formatter(classLoader),
                 runtimeOptions.isStrict());
-        addChildren(cucumberFeatures);
+        Method[] retryMethods = this.getPredefinedMethods(RetryAcceptance.class);
+        addChildren(cucumberFeatures, retryMethods);
     }
     protected Runtime createRuntime(ResourceLoader resourceLoader, ClassLoader classLoader,
                                     RuntimeOptions runtimeOptions) throws InitializationError, IOException {
@@ -163,11 +165,11 @@ public class ExtendedCucumber extends ParentRunner<ExtendedFeatureRunner> {
         }
     }
 
-    private void addChildren(List<CucumberFeature> cucumberFeatures) throws InitializationError {
+    private void addChildren(List<CucumberFeature> cucumberFeatures, Method[] retryMethods) throws InitializationError {
         for (CucumberFeature cucumberFeature : cucumberFeatures) {
             children.add(
                     new ExtendedFeatureRunner(cucumberFeature, runtime,
-                            jUnitReporter, this.retryCount));
+                            jUnitReporter, this.retryCount, retryMethods));
         }
     }
 }

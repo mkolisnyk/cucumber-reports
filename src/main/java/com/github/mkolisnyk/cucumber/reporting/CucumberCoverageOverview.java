@@ -11,6 +11,7 @@ import com.github.mkolisnyk.cucumber.reporting.types.enums.CucumberReportLink;
 import com.github.mkolisnyk.cucumber.reporting.types.enums.CucumberReportTypes;
 import com.github.mkolisnyk.cucumber.reporting.types.result.CucumberFeatureResult;
 import com.github.mkolisnyk.cucumber.reporting.types.result.CucumberScenarioResult;
+import com.github.mkolisnyk.cucumber.reporting.types.result.CucumberStepResult;
 import com.github.mkolisnyk.cucumber.reporting.utils.drawers.PieChartDrawer;
 import com.github.mkolisnyk.cucumber.runner.runtime.ExtendedRuntimeOptions;
 
@@ -68,7 +69,7 @@ public class CucumberCoverageOverview extends CucumberResultsOverview {
         }
     }
     public int[][] getStatuses(CucumberFeatureResult[] results) {
-        int[][] statuses = {{0, 0}, {0, 0}};
+        int[][] statuses = {{0, 0}, {0, 0}, {0, 0}};
         for (CucumberFeatureResult result : results) {
             result.setIncludeCoverageTags(includeCoverageTags);
             result.setExcludeCoverageTags(excludeCoverageTags);
@@ -84,6 +85,13 @@ public class CucumberCoverageOverview extends CucumberResultsOverview {
                     statuses[1][1]++;
                 } else {
                     statuses[1][0]++;
+                }
+                for (CucumberStepResult step : element.getSteps()) {
+                    if (step.getResult().getStatus().equals("undefined")) {
+                        statuses[2][1]++;
+                    } else {
+                        statuses[2][0]++;
+                    }
                 }
             }
         }

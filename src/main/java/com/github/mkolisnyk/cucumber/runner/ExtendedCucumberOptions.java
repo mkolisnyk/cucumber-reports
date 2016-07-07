@@ -26,6 +26,8 @@ public @interface ExtendedCucumberOptions {
 
     boolean overviewReport() default false;
 
+    boolean overviewChartsReport() default false;
+
     boolean coverageReport() default false;
 
     boolean detailedReport() default false;

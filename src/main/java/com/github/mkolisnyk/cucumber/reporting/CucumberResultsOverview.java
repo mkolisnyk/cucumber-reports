@@ -36,7 +36,7 @@ public class CucumberResultsOverview extends AggragatedReport {
 
     @Override
     public int[][] getStatuses(CucumberFeatureResult[] results) {
-        int[][] statuses = {{0, 0, 0}, {0, 0, 0}};
+        int[][] statuses = {{0, 0, 0}, {0, 0, 0}, {0, 0, 0}};
         for (CucumberFeatureResult result : results) {
             if (result.getStatus().trim().equalsIgnoreCase("passed")) {
                 statuses[0][0]++;
@@ -53,6 +53,9 @@ public class CucumberResultsOverview extends AggragatedReport {
                 } else {
                     statuses[1][2]++;
                 }
+                statuses[2][0] += element.getPassed();
+                statuses[2][1] += element.getFailed();
+                statuses[2][2] += element.getSkipped() + element.getUndefined();
             }
         }
         return statuses;

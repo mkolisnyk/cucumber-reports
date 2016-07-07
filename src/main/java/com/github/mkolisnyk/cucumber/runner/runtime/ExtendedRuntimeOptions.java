@@ -10,6 +10,7 @@ import com.github.mkolisnyk.cucumber.runner.ExtendedCucumberOptions;
 public class ExtendedRuntimeOptions {
 
     private boolean isOverviewReport = false;
+    private boolean isOverviewChartsReport = false;
     private boolean isUsageReport = false;
     private boolean isDetailedReport = false;
     private boolean isDetailedAggregatedReport = false;
@@ -52,6 +53,7 @@ public class ExtendedRuntimeOptions {
     public ExtendedRuntimeOptions(ExtendedCucumberOptions options) throws Exception {
         if (options != null) {
             this.isOverviewReport = options.overviewReport();
+            this.isOverviewChartsReport = options.overviewChartsReport();
             this.isUsageReport = options.usageReport();
             this.isDetailedReport = options.detailedReport();
             this.isDetailedAggregatedReport = options
@@ -98,6 +100,9 @@ public class ExtendedRuntimeOptions {
         return isOverviewReport;
     }
 
+    public boolean isOverviewChartsReport() {
+        return isOverviewChartsReport;
+    }
     public final boolean isUsageReport() {
         return isUsageReport;
     }
@@ -275,6 +280,9 @@ public class ExtendedRuntimeOptions {
     }
     public void setConsolidatedReportConfig(String consolidatedReportConfigValue) {
         this.consolidatedReportConfig = consolidatedReportConfigValue;
+    }
+    public void setOverviewChartsReport(boolean isOverviewChartsReportValue) {
+        this.isOverviewChartsReport = isOverviewChartsReportValue;
     }
     public static ExtendedRuntimeOptions[] init(Class<?> clazz) throws Exception {
         ExtendedCucumberOptions[] options = clazz.getAnnotationsByType(ExtendedCucumberOptions.class);

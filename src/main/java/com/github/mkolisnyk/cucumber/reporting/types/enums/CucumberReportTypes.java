@@ -2,6 +2,7 @@ package com.github.mkolisnyk.cucumber.reporting.types.enums;
 
 public enum CucumberReportTypes {
     BREAKDOWN_REPORT("Breakdown Report"),
+    CHARTS_REPORT("Charts Report"),
     CONSOLIDATED_REPORT("Consolidated Report"),
     COVERAGE_OVERVIEW("Coverage Overview"),
     DETAILED_REPORT("Detailed Results Report"),

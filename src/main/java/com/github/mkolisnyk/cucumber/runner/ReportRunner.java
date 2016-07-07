@@ -9,6 +9,7 @@ import com.github.mkolisnyk.cucumber.reporting.CucumberDetailedResults;
 import com.github.mkolisnyk.cucumber.reporting.CucumberFeatureMapReport;
 import com.github.mkolisnyk.cucumber.reporting.CucumberFeatureOverview;
 import com.github.mkolisnyk.cucumber.reporting.CucumberKnownErrorsReport;
+import com.github.mkolisnyk.cucumber.reporting.CucumberOverviewChartsReport;
 import com.github.mkolisnyk.cucumber.reporting.CucumberResultsOverview;
 import com.github.mkolisnyk.cucumber.reporting.CucumberUsageReporting;
 import com.github.mkolisnyk.cucumber.runner.runtime.ExtendedRuntimeOptions;
@@ -122,6 +123,18 @@ public final class ReportRunner {
             e.printStackTrace();
         }
     }
+    public void runOverviewChartsReport(ExtendedRuntimeOptions extendedOptions) {
+        if (!extendedOptions.isOverviewChartsReport()) {
+            return;
+        }
+        CucumberOverviewChartsReport report = new CucumberOverviewChartsReport(extendedOptions);
+        try {
+            report.execute(extendedOptions.isDetailedAggregatedReport(),
+                    extendedOptions.isToPDF());
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
+    }
     public void runConsolidatedReport(ExtendedRuntimeOptions extendedOptions) {
         if (!extendedOptions.isConsolidatedReport()) {
             return;
@@ -138,6 +151,7 @@ public final class ReportRunner {
         ReportRunner runner = new ReportRunner();
         runner.runUsageReport(extendedOption);
         runner.runOverviewReport(extendedOption);
+        runner.runOverviewChartsReport(extendedOption);
         runner.runFeatureOverviewChartReport(extendedOption);
         runner.runDetailedReport(extendedOption);
         runner.runDetailedAggregatedReport(extendedOption);

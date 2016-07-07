@@ -3,6 +3,7 @@ package com.github.mkolisnyk.cucumber.reporting.types.enums;
 public enum CucumberReportLink {
     COMMON_URL("http://mkolisnyk.github.io/cucumber-reports"),
     BREAKDOWN_URL(COMMON_URL + "/breakdown-report"),
+    CHART_URL(COMMON_URL + "/chart-report"),
     CONSOLIDATED_URL(COMMON_URL + "/consolidated-report"),
     COVERAGE_OVERVIEW_URL(COMMON_URL + "/coverage-report"),
     DETAILED_URL(COMMON_URL + "/detailed-report"),

@@ -27,8 +27,11 @@ public class CucumberFeatureResult {
         this.name = (String) json.get("name");
         //this.keyword = (String) json.get("keyword");
         this.line = (Long) json.get("line");
-        Object[] objs = (Object[]) ((JsonObject<String, Object>) json.get("elements"))
+        Object[] objs = {};
+        if (json.get("elements") != null) {
+            objs = (Object[]) ((JsonObject<String, Object>) json.get("elements"))
                 .get("@items");
+        }
         this.elements = new CucumberScenarioResult[objs.length];
         for (int i = 0; i < objs.length; i++) {
             this.elements[i] = new CucumberScenarioResult(

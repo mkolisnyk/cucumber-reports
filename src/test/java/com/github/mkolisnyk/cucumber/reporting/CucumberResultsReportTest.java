@@ -74,6 +74,14 @@ public class CucumberResultsReportTest {
         results.execute();
     }
     @Test
+    public void testGenerateOverviewReportIssue83() throws Exception {
+        CucumberResultsOverview results = new CucumberResultsOverview();
+        results.setOutputDirectory("target");
+        results.setOutputName("cucumber-83-results");
+        results.setSourceFile("./src/test/resources/83/cucumber.json");
+        results.execute();
+    }
+    @Test
     public void testGenerateOverviewEmptyElementsReport() throws Exception {
         CucumberResultsOverview results = new CucumberResultsOverview();
         results.setOutputDirectory("target");

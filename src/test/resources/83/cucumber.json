@@ -1,0 +1,128 @@
+[
+  {
+    "comments": [
+      {
+        "line": 1,
+        "value": "# language: es"
+      }
+    ],
+    "line": 2,
+    "name": "Consulta Individual Persona Natural mensajes respuesta contenido JSON",
+    "description": "",
+    "id": "consulta-individual-persona-natural-mensajes-respuesta-contenido-json",
+    "keyword": "CaracterÌstica",
+    "uri": "Features/01_ConsultaIndividual_PersonaNatural_JSON.feature"
+  },
+  {
+    "comments": [
+      {
+        "line": 1,
+        "value": "# language: es"
+      }
+    ],
+    "line": 2,
+    "elements": [
+      {
+        "line": 4,
+        "name": "",
+        "description": "",
+        "type": "background",
+        "keyword": "Antecedentes",
+        "steps": [
+          {
+            "result": {
+              "duration": 97217510,
+              "status": "passed"
+            },
+            "line": 5,
+            "name": "que existe informacion de consulta en la base datos",
+            "match": {
+              "location": "ConsultaStepDefinition.que_existe_informacion_de_consulta_en_la_base_datos()"
+            },
+            "keyword": "Dado "
+          }
+        ]
+      },
+      {
+        "line": 114,
+        "name": "Consulta_004-Obtener datos de una persona JURIDICA y listado de planillas pagas de manera EXITOSA historico 1 meses - tipo de contenido JSON",
+        "description": "",
+        "id": "consulta-individual-persona-juridica-con-diferentes-tipos-de-contenido;consulta-004-obtener-datos-de-una-persona-juridica-y-listado-de-planillas-pagas-de-manera-exitosa-historico-1-meses---tipo-de-contenido-json",
+        "type": "scenario",
+        "keyword": "Escenario",
+        "steps": [
+          {
+            "result": {
+              "duration": 2533022,
+              "status": "passed"
+            },
+            "line": 115,
+            "name": "que busco datos de unas personas \"juridicas\" por tipo de documento \"NI\" y identificacion \"xxxxxx\" con historico \"1\"",
+            "match": {
+              "arguments": [
+                {
+                  "val": "juridicas",
+                  "offset": 34
+                },
+                {
+                  "val": "NI",
+                  "offset": 68
+                },
+                {
+                  "val": "xxxxxx",
+                  "offset": 90
+                },
+                {
+                  "val": "1",
+                  "offset": 116
+                }
+              ],
+              "location": "ConsultaStepDefinition.que_busco_datos_de_una_persona_por_tipo_de_documento_y_identificacion(String,String,String,String)"
+            },
+            "keyword": "Dado "
+          },
+          {
+            "result": {
+              "duration": 39694274,
+              "status": "passed"
+            },
+            "line": 116,
+            "name": "realizo la llamada del servicio consulta historica de seguridad social con el tipo de contenido \"application/json\"",
+            "match": {
+              "arguments": [
+                {
+                  "val": "application/json",
+                  "offset": 97
+                }
+              ],
+              "location": "ConsultaStepDefinition.realizo_la_llamada_del_servicio_consulta_historica_de_seguridad_social(String)"
+            },
+            "keyword": "Cuando "
+          },
+          {
+            "result": {
+              "duration": 5028309,
+              "status": "passed"
+            },
+            "line": 117,
+            "name": "la respuesta debe contener:",
+            "match": {
+              "location": "ConsultaStepDefinition.la_respuesta_debe_contener_JSON(String)"
+            },
+            "keyword": "Entonces ",
+            "doc_string": {
+              "content_type": "",
+              "line": 118,
+              "value": "{\n\"message\": \"No se encontrÛ informaciÛn correspondiente en PILA\"\n}"
+            }
+          }
+        ]
+      }
+    ],
+    "name": "Consulta Individual Persona Juridica con diferentes tipos de contenido",
+    "description": "",
+    "id": "consulta-individual-persona-juridica-con-diferentes-tipos-de-contenido",
+    "keyword": "CaracterÌstica",
+    "uri": "Features/02_ConsultaIndividual_PersonaJuridica.feature"
+  }
+]

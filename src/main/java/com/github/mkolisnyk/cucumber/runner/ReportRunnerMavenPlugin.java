@@ -1,5 +1,8 @@
 package com.github.mkolisnyk.cucumber.runner;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.apache.maven.plugin.AbstractMojo;
 import org.apache.maven.plugin.MojoExecutionException;
 import org.apache.maven.plugin.MojoFailureException;
@@ -11,38 +14,76 @@ import com.github.mkolisnyk.cucumber.runner.runtime.ExtendedRuntimeOptions;
 
 @Mojo(name = "generate", defaultPhase = LifecyclePhase.VERIFY)
 public class ReportRunnerMavenPlugin extends AbstractMojo {
+    /**
+     * Defines path to breakdown report configuration file.
+     * Parameter is needed only when {@link #breakdownReport} parameter is true.
+     */
     @Parameter
     private String breakdownConfig = "";
+    /**
+     * Flag identifying that breakdown report is to be generated.
+     * If set, the {@link #breakdownConfig} parameter should be defined as well.
+     */
     @Parameter
     private boolean breakdownReport = false;
+    /**
+     * Flag identifying that consolidated report is to be generated.
+     * If set, the {@link #consolidatedReportConfig} parameter should be defined as well.
+     */
     @Parameter
     private boolean consolidatedReport = false;
+    /**
+     * Defines path to consolidated report configuration file.
+     * Parameter is needed only when {@link #consolidatedReport} parameter is true.
+     */
     @Parameter
     private String consolidatedReportConfig = "";
     @Parameter
-    private String[] excludeCoverageTags = {};
+    private List<String> excludeCoverageTags = new ArrayList<String>();
     @Parameter
     private String featureMapConfig = "";
     @Parameter
+    /**
+     * Flag identifying that feature map report is to be generated.
+     * If set, the {@link #featureMapConfig} parameter should be defined as well.
+     */
     private boolean featureMapReport = false;
+    /**
+     * Flag identifying that feature overview chart is to be generated.
+     */
     @Parameter
     private boolean featureOverviewChart = false;
     @Parameter
-    private String[] includeCoverageTags = {};
+    private List<String> includeCoverageTags = new ArrayList<String>();
+    /**
+     * Flag identifying if coverage report is to be generated.
+     */
     @Parameter
     private boolean isCoverageReport = false;
+    /**
+     * Flag identifying if detailed aggregated report is to be generated.
+     */
     @Parameter
     private boolean isDetailedAggregatedReport = false;
+    /**
+     * Flag identifying if detailed report is to be generated.
+     */
     @Parameter
     private boolean isDetailedReport = false;
+    /**
+     * Flag identifying if overview report is to be generated.
+     */
     @Parameter
     private boolean isOverviewReport = false;
+    /**
+     * Flag identifying if usage report is to be generated.
+     */
     @Parameter
     private boolean isUsageReport = false;
     @Parameter
-    private String[] jsonReportPaths;
+    private List<String> jsonReportPaths;
     @Parameter
-    private String[] jsonUsageReportPaths;
+    private List<String> jsonUsageReportPaths;
     @Parameter
     private String knownErrorsConfig = "";
     @Parameter
@@ -73,13 +114,17 @@ public class ReportRunnerMavenPlugin extends AbstractMojo {
         options.setCoverageReport(isCoverageReport);
         options.setDetailedAggregatedReport(isDetailedAggregatedReport);
         options.setDetailedReport(isDetailedReport);
-        options.setExcludeCoverageTags(excludeCoverageTags);
-        options.setIncludeCoverageTags(includeCoverageTags);
+        String[] tags = new String[excludeCoverageTags.size()];
+        options.setExcludeCoverageTags(excludeCoverageTags.toArray(tags));
+        tags = new String[includeCoverageTags.size()];
+        options.setIncludeCoverageTags(includeCoverageTags.toArray(tags));
         options.setFeatureMapConfig(featureMapConfig);
         options.setFeatureMapReport(featureMapReport);
         options.setFeatureOverviewChart(featureOverviewChart);
-        options.setJsonReportPaths(jsonReportPaths);
-        options.setJsonUsageReportPaths(jsonUsageReportPaths);
+        String[] paths = new String[jsonReportPaths.size()];
+        options.setJsonReportPaths(jsonReportPaths.toArray(paths));
+        paths = new String[jsonUsageReportPaths.size()];
+        options.setJsonUsageReportPaths(jsonUsageReportPaths.toArray(paths));
         options.setKnownErrorsConfig(knownErrorsConfig);
         options.setKnownErrorsReport(knownErrorsReport);
         options.setOutputFolder(outputFolder);
@@ -121,7 +166,7 @@ public class ReportRunnerMavenPlugin extends AbstractMojo {
         this.isDetailedReport = isDetailedReportValue;
     }
 
-    public void setExcludeCoverageTags(String[] excludeCoverageTagsValue) {
+    public void setExcludeCoverageTags(List<String> excludeCoverageTagsValue) {
         this.excludeCoverageTags = excludeCoverageTagsValue;
     }
 
@@ -137,15 +182,15 @@ public class ReportRunnerMavenPlugin extends AbstractMojo {
         this.featureOverviewChart = featureOverviewChartValue;
     }
 
-    public void setIncludeCoverageTags(String[] includeCoverageTagsValue) {
+    public void setIncludeCoverageTags(List<String> includeCoverageTagsValue) {
         this.includeCoverageTags = includeCoverageTagsValue;
     }
 
-    public void setJsonReportPaths(String[] jsonReportPathsValue) {
+    public void setJsonReportPaths(List<String> jsonReportPathsValue) {
         this.jsonReportPaths = jsonReportPathsValue;
     }
 
-    public void setJsonUsageReportPaths(String[] jsonUsageReportPathsValue) {
+    public void setJsonUsageReportPaths(List<String> jsonUsageReportPathsValue) {
         this.jsonUsageReportPaths = jsonUsageReportPathsValue;
     }
 

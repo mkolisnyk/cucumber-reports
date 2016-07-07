@@ -1,6 +1,7 @@
 package com.github.mkolisnyk.cucumber.runner;
 
 import java.io.File;
+import java.util.ArrayList;
 
 import org.junit.Assert;
 import org.junit.Test;
@@ -55,14 +56,22 @@ public class ReportRunnerMavenPluginTest {
             "sample-maven-test-results.pdf",
         };
         plugin = new ReportRunnerMavenPlugin();
-        plugin.setJsonReportPaths(new String[] {"src/test/resources/cucumber.json"});
+        plugin.setJsonReportPaths(new ArrayList<String>() {
+            {
+                add("src/test/resources/cucumber.json");
+            }
+        });
         plugin.setFeatureOverviewChart(true);
         plugin.setDetailedReport(true);
         plugin.setDetailedAggregatedReport(true);
         plugin.setOverviewReport(true);
         plugin.setCoverageReport(true);
         plugin.setUsageReport(true);
-        plugin.setJsonUsageReportPaths(new String[] {"src/test/resources/cucumber-usage.json"});
+        plugin.setJsonUsageReportPaths(new ArrayList<String>() {
+            {
+                add("src/test/resources/cucumber-usage.json");
+            }
+        });
         plugin.setToPDF(true);
         plugin.setBreakdownReport(true);
         plugin.setBreakdownConfig("src/test/resources/breakdown-source/simple.json");
@@ -72,8 +81,8 @@ public class ReportRunnerMavenPluginTest {
         plugin.setConsolidatedReportConfig("./src/test/resources/consolidated-source/sample_batch.json");
         plugin.setOutputFolder("target/maven-plugin");
         plugin.setReportPrefix("sample-maven");
-        plugin.setIncludeCoverageTags(new String[] {});
-        plugin.setExcludeCoverageTags(new String[] {});
+        plugin.setIncludeCoverageTags(new ArrayList<String>());
+        plugin.setExcludeCoverageTags(new ArrayList<String>());
         plugin.setFeatureMapReport(true);
         plugin.setFeatureMapConfig("src/test/resources/breakdown-source/simple.json");
         plugin.setPdfPageSize("A4 Portrait");

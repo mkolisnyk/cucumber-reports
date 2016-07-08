@@ -1,11 +1,11 @@
 package com.github.mkolisnyk.cucumber.runner;
 
 import org.junit.Assert;
-
 import org.junit.Test;
 import org.junit.runner.notification.RunNotifier;
 
 import cucumber.api.CucumberOptions;
+import cucumber.runtime.model.CucumberScenario;
 
 public class RetryAcceptanceTest {
 
@@ -33,7 +33,22 @@ public class RetryAcceptanceTest {
         public SampleTestRetryIsOff() {
         }
         @RetryAcceptance
+        public static boolean retryCheck(Throwable e) {
+            retries++;
+            return false;
+        }
+        @RetryAcceptance
         public static boolean retryCheck() {
+            retries++;
+            return false;
+        }
+        @RetryAcceptance
+        public static boolean retryCheck(int value) {
+            retries++;
+            return false;
+        }
+        @RetryAcceptance
+        public static boolean retryCheck(int value, int index) {
             retries++;
             return false;
         }
@@ -64,6 +79,21 @@ public class RetryAcceptanceTest {
         }
         @RetryAcceptance
         public static boolean retryCheck() {
+            retries++;
+            return false;
+        }
+        @RetryAcceptance
+        public static boolean retryCheck(int value) {
+            retries++;
+            return false;
+        }
+        @RetryAcceptance
+        public static boolean retryCheck(Throwable e, int index) {
+            retries++;
+            return false;
+        }
+        @RetryAcceptance
+        public static boolean retryCheck(Throwable e) {
             retries++;
             return true;
         }

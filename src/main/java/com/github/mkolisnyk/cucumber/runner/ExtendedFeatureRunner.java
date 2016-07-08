@@ -4,6 +4,7 @@ import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.commons.lang3.ArrayUtils;
 import org.junit.Assert;
 import org.junit.internal.AssumptionViolatedException;
 import org.junit.runner.Description;
@@ -64,17 +65,21 @@ public class ExtendedFeatureRunner extends FeatureRunner {
             }
         }
     }
-    private boolean isRetryApplicable() {
+    private boolean isRetryApplicable(Throwable e) {
         if (this.retryMethods == null || this.retryMethods.length == 0) {
             return true;
         }
         for (Method method : this.retryMethods) {
+            Class<?>[] types = method.getParameterTypes();
+            if (types.length != 1 || !ArrayUtils.contains(types, Throwable.class)) {
+                continue;
+            }
             try {
-                if (!(Boolean) method.invoke(null)) {
+                if (!(Boolean) method.invoke(null, e)) {
                     return false;
                 }
-            } catch (Exception e) {
-                e.printStackTrace();
+            } catch (Exception ex) {
+                ex.printStackTrace();
             }
         }
         return true;
@@ -89,50 +94,52 @@ public class ExtendedFeatureRunner extends FeatureRunner {
     @Override
     protected void runChild(ParentRunner child, RunNotifier notifier) {
         System.out.println("Running Feature child (scenario)...");
-        //notifier.fireTestStarted(child.getDescription());
         try {
             System.out.println("Begin scenario run...");
             child.run(notifier);
             Assert.assertEquals(0, this.getRuntime().exitStatus());
         } catch (AssumptionViolatedException e) {
             System.out.println("Scenario AssumptionViolatedException...");
-            //notifier.fireTestAssumptionFailed(new Failure(child.getDescription(), e));
         } catch (Throwable e) {
-            if (this.isRetryApplicable()) {
+            if (this.isRetryApplicable(e)) {
                 System.out.println("Initiating retry...");
                 retry(notifier, child, e);
             }
         } finally {
             System.out.println("Scenario completed..." + this.getRuntime().exitStatus());
-            //notifier.fireTestFinished(child.getDescription());
         }
 
         this.setScenarioCount(this.getScenarioCount() + 1);
         this.setFailedAttempts(0);
     }
 
-    public void retry(RunNotifier notifier, ParentRunner child, Throwable currentThrowable) {
-        //Throwable caughtThrowable = currentThrowable;
-        ParentRunner featureElementRunner = null;
-        //boolean failed = true;
-        Class<? extends ParentRunner> clazz = child.getClass();
-        System.out.println("Current class is: " + clazz.getCanonicalName());
+    private CucumberScenario getCurrentScenario() {
         CucumberTagStatement cucumberTagStatement
         = this.cucumberFeature.getFeatureElements().get(this.getScenarioCount());
 
         if (cucumberTagStatement instanceof CucumberScenarioOutline) {
+            return null;
+        }
+        return (CucumberScenario) cucumberTagStatement;
+    }
+
+    public void retry(RunNotifier notifier, ParentRunner child, Throwable currentThrowable) {
+        ParentRunner featureElementRunner = null;
+        Class<? extends ParentRunner> clazz = child.getClass();
+        System.out.println("Current class is: " + clazz.getCanonicalName());
+
+        CucumberScenario scenario = getCurrentScenario();
+        if (scenario == null) {
             return;
         }
         while (this.getRetryCount() > this.getFailedAttempts()) {
             try {
                 featureElementRunner = new ExtendedExecutionUnitRunner(
                         runtime,
-                        (CucumberScenario) cucumberTagStatement,
-                        jUnitReporter/*,
-                        retryCount*/);
+                        scenario,
+                        jUnitReporter);
                 featureElementRunner.run(notifier);
                 Assert.assertEquals(0, this.getRuntime().exitStatus());
-                //failed = false;
                 break;
             } catch (Throwable t) {
                 this.setFailedAttempts(this.getFailedAttempts() + 1);

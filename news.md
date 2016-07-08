@@ -2,6 +2,19 @@
 title: Cucumber Reports News
 ---
 
+## TBD 1.0.6 Version Release
+
+* [#83](https://github.com/mkolisnyk/cucumber-reports/issues/83): Bug fix: Error report @ExtendedCucumberOptions
+* [#81](https://github.com/mkolisnyk/cucumber-reports/issues/81): Enhancement: Determine retry status dynamically
+* [#78](https://github.com/mkolisnyk/cucumber-reports/issues/78): Bug fix:NullPointerException can occur when attempting to generate a usage report
+* [#77](https://github.com/mkolisnyk/cucumber-reports/issues/77): Bug fix: Option to suppress the display of blank comment box for scenarios in detailed test reports html file
+* [#76](https://github.com/mkolisnyk/cucumber-reports/issues/76): Enhancement: Add the set of system options which can override ExtendedCucumberOptions values
+* [#74](https://github.com/mkolisnyk/cucumber-reports/issues/74): Enhancement: Parallel Runner corrections
+* [#72](https://github.com/mkolisnyk/cucumber-reports/issues/72): Enhancement: Refactoring: add more comprehensive error reporting
+* [#60](https://github.com/mkolisnyk/cucumber-reports/issues/60): Enhancement: Consolidated Report: add ability to define overall layout
+* [#58](https://github.com/mkolisnyk/cucumber-reports/issues/58): Enhancement: Refactoring: make all report generation classes exposing similar interface
+* [#22](https://github.com/mkolisnyk/cucumber-reports/issues/22): Enhancement: New Report: Overview charts report
+
 ## 10.04.2016 1.0.5 Version Release
 
 * [#73](https://github.com/mkolisnyk/cucumber-reports/issues/73): Enhancement: Parallel Runner: add before and after methods handling

@@ -8,7 +8,7 @@ layout: default
 Extended Cucumber Runner is the extension of standard **Cucumber** JUnit runner which additionally supports:
 
 * [Before- and After- suite methods](/cucumber-reports/before-after-methods)
-* Failed Tests Re-run
+* [Failed Tests Re-run](/failed-tests-rerun)
 * Advanced Reporting after tests completion
 
 This extension is done in a form of JUnit runner. Since there are some additional options there is dedicated **@ExtendedCucumberOptions** annotation for that.
@@ -87,21 +87,21 @@ public class SampleCucumberTest extends ExtendedTestNGRunner {
 
 # Major options to set
 
-| Option | Type | Mandatory | Description | Default Value | Applied to |
-| ------ | ---- | --------- | ----------- | ------------- | ---------- |
-| **jsonReport** | **String** | | | | |
-| **jsonUsageReport** | **String** | | | | "cucumber-usage.json" |
-| **outputFolder** | **String** | | | | "." |
-| **reportPrefix** | **String** | | | | "cucumber-results" |
-| **usageReport** | **boolean** | | | | false |
-| **overviewReport** | **boolean** | | | | false |
-| **coverageReport** | **boolean** | | | | false |
-| **detailedReport** | **boolean** | | | | false |
-| **detailedAggregatedReport** | **boolean** | | | | false |
-| **toPDF** | **boolean** | | | | false |
-| **screenShotSize** | **String** | | | | "" |
-| **screenShotLocation** | **String** | | | | "" |
-| **includeCoverageTags** | **String[]** | | | | { } |
-| **excludeCoverageTags** | **String[]** | | | | { } |
-| **retryCount** | **int** | | | | 0 |
+| Option | Type | Description | Default Value | Applied to |
+| ------ | ---- | ----------- | ------------- | ---------- |
+| **jsonReport**               | **String** | | | |
+| **jsonUsageReport**          | **String** | | | "cucumber-usage.json" |
+| **outputFolder**             | **String** | | | "." |
+| **reportPrefix**             | **String** | | | "cucumber-results" |
+| **usageReport**              | **boolean** | | | false |
+| **overviewReport**           | **boolean** | | | false |
+| **coverageReport**           | **boolean** | | | false |
+| **detailedReport**           | **boolean** | | | false |
+| **detailedAggregatedReport** | **boolean** | | | false |
+| **toPDF**                    | **boolean** | | | false |
+| **screenShotSize**           | **String** | | | "" |
+| **screenShotLocation**       | **String** | | | "" |
+| **includeCoverageTags**      | **String[]** | | | { } |
+| **excludeCoverageTags**      | **String[]** | | | { } |
+| **retryCount**               | **int** | | | 0 |
 

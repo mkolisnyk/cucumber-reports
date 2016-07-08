@@ -2,49 +2,12 @@ Cucumber Reporting library is the set of Cucumber extensions to produce addition
 
 **The Latest Version:** [![Cucumber Report](https://maven-badges.herokuapp.com/maven-central/com.github.mkolisnyk/cucumber-reports/badge.svg?style=flat)](http://mvnrepository.com/artifact/com.github.mkolisnyk/cucumber-reports)
 
-# How to include
+For more information visit [documentation page](http://mkolisnyk.github.io/cucumber-reports/)
 
-The library is supposed to be included as Maven or Gradle dependency. 
+Authors
+======
+Myk Kolisnyk (kolesnik.nickolay@gmail.com) 
 
-So, in order to add this library we should add either Maven dependency like:
-
-```xml
-<dependency>
-    <groupId>com.github.mkolisnyk</groupId>
-    <artifactId>cucumber-reports</artifactId>
-    <version>0.0.12</version>
-</dependency>
-```
-
-or Gradle dependency:
-
-```groovy
-compile 'com.github.mkolisnyk:cucumber-reports:0.0.12'
-```
-
-# Features
-
-## Cucumber Engine Extensions
-
-### Pre- and Post-conditions
-
-### Failed Tests Re-run
-
-## Reports
-
-### Overview Report
-
-### Detailed Report
-
-### Test Coverage Report
-
-### Usage Report
-
-# System Requirements
-
-| Component | Value |
-| --------- | ----- |
-| Java Version | 1.8 or greater |
-| Maven | 3.0 or greater |
-| Cucumber Version | 1.2.2 | 
-| JUnit Version | 4.11 or geater |
+<a href="http://ua.linkedin.com/pub/mykola-kolisnyk/14/533/903"><img src="http://www.linkedin.com/img/webpromo/btn_profile_bluetxt_80x15.png" width="80" height="15" border="0" alt="View Mykola Kolisnyk's profile on LinkedIn"></a>
+<a href="http://plus.google.com/108480514086204589709?prsrc=3" rel="publisher" style="text-decoration:none;">
+<img src="http://ssl.gstatic.com/images/icons/gplus-16.png" alt="Google+" style="border:0;width:16px;height:16px;"/></a>

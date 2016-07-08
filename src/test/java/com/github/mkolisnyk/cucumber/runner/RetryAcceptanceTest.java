@@ -16,6 +16,8 @@ public class RetryAcceptanceTest {
             detailedReport = true,
             detailedAggregatedReport = true,
             overviewReport = true,
+            overviewChartsReport = true,
+            pdfPageSize = "A4 Landscape",
             toPDF = true,
             outputFolder = "target/81",
             retryCount = 3)
@@ -44,6 +46,8 @@ public class RetryAcceptanceTest {
             detailedReport = true,
             detailedAggregatedReport = true,
             overviewReport = true,
+            overviewChartsReport = true,
+            pdfPageSize = "A4 Landscape",
             toPDF = true,
             outputFolder = "target/81",
             retryCount = 3)

@@ -99,7 +99,11 @@ public abstract class CucumberResultsCommon {
      * @param sourceFileValue the sourceFile to set
      */
     public final void setSourceFile(String sourceFileValue) {
-        this.sourceFiles = new String[] {sourceFileValue};
+        if (sourceFileValue == null) {
+            this.sourceFiles = null;
+        } else {
+            this.sourceFiles = new String[] {sourceFileValue};
+        }
     }
 
     public String[] getSourceFiles() {

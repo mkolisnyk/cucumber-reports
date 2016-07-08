@@ -12,11 +12,13 @@ import org.junit.runners.Parameterized.Parameters;
 
 import com.github.mkolisnyk.cucumber.reporting.CucumberCoverageOverview;
 import com.github.mkolisnyk.cucumber.reporting.CucumberFeatureOverview;
+import com.github.mkolisnyk.cucumber.reporting.CucumberOverviewChartsReport;
 import com.github.mkolisnyk.cucumber.reporting.CucumberResultsOverview;
 import com.github.mkolisnyk.cucumber.reporting.CucumberRetrospectiveOverviewReport;
 import com.github.mkolisnyk.cucumber.reporting.types.enums.CucumberReportError;
 import com.github.mkolisnyk.cucumber.reporting.types.enums.CucumberReportLink;
 import com.github.mkolisnyk.cucumber.reporting.types.enums.CucumberReportTypes;
+import com.github.mkolisnyk.cucumber.runner.runtime.ExtendedRuntimeOptions;
 
 @RunWith(Parameterized.class)
 public class CucumberCoverageAndOverviewReportTest {
@@ -109,6 +111,27 @@ public class CucumberCoverageAndOverviewReportTest {
                 actualMessage.contains(expectedMessage.toString()));
         Assert.assertTrue("Report URL wasn't found", actualMessage
                 .contains(CucumberReportLink.FEATURE_OVERVIEW_URL.toString()));
+    }
+    @Test
+    public void testVerifyErrorMessagesOverviewChartsReport() throws Exception {
+        //CucumberFeatureOverview results = new CucumberFeatureOverview();
+        ExtendedRuntimeOptions options = new ExtendedRuntimeOptions();
+        CucumberOverviewChartsReport results = new CucumberOverviewChartsReport(options);
+        results.setOutputDirectory(outputDirectory);
+        results.setOutputName(outputName);
+        results.setSourceFile(sourceFile);
+        String actualMessage = "";
+        try {
+            results.execute();
+        } catch (AssertionError e) {
+            actualMessage = e.getMessage();
+        }
+        Assert.assertTrue("Report name is unexpected", actualMessage
+                .startsWith(CucumberReportTypes.CHARTS_REPORT.toString()));
+        Assert.assertTrue("Incorrect error message is shown",
+                actualMessage.contains(expectedMessage.toString()));
+        Assert.assertTrue("Report URL wasn't found", actualMessage
+                .contains(CucumberReportLink.CHART_URL.toString()));
     }
     @Test
     public void testVerifyErrorMessagesRetrospectiveReport() throws Exception {

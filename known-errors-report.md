@@ -21,7 +21,7 @@ The table itself contains the following columns:
 
 * Description - contains brief error summary (in bold) with more detailed description. It is used to give detailed information about error found.
 * Priority - indicates the importance of the problem
-* # of Occurrences - indicates frequency of errors matching the same pattern
+* \# of Occurrences - indicates frequency of errors matching the same pattern
 
 # Configuration options
 

@@ -18,10 +18,14 @@ public class FileContentValidationIT {
     @Test
     public void testValidate() throws Exception {
         String expectedFolder = "src/test-integration/resources/file-comparison/";
-        String actualFolder = "target/";
+        String actualFolder = "target" + File.separator;
         String[] files = FolderUtils.getFilesByMask(expectedFolder, "(.*)html");
         for (String file : files) {
-            String actualFile = actualFolder + file.split(expectedFolder)[1];
+            File expectedFolderPath = new File(expectedFolder);
+            String fileNameTail = (new File(file)).getAbsolutePath()
+                    .replace(expectedFolderPath.getAbsolutePath(), "");
+
+            String actualFile = actualFolder + fileNameTail;
             System.out.println("Verifying file: " + actualFile);
             String expectedContent = FileUtils.readFileToString(new File(file));
             String actualContent = FileUtils.readFileToString(new File(actualFile));

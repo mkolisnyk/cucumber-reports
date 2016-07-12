@@ -15,20 +15,24 @@ Each row and column corresponds to some set of criteria to match scenario or ste
 
 Each criteria can be either simple of complex. Mainly it is condition which should match some specific feature/scenario/step. More details on available filter rules can be found on [Filter Rules](/cucumber-reports/filter-rules) page.
 
-# Major sections
-
-
-
 # Configuration options
 
 ## Top-Level Parameters
+
+At the highest level we should define the following options:
+
+* Source file - the path to initial JSON report to generate breakdown from
+* Output directory - the directory to send output to
+* Enable breakdown - flag which enables breakdown report generation
+* Breakdown configuration file - the path to breakdown report configuration file. This is one of the ways to specify configuration from code and the only way to do it via extended Cucumber runner
 
 ## Configuration File Format
 
 ### What is normally defined
 
-### Core Data Types
+Configuration is targeted to define [filter rules](/cucumber-reports/filter-rules) to be processed. These rules should be applied to rows and columns. Any cell shows how many items match rules for specific column and row. So, additional parameter to define is the information to be displayed in cells. It should be either scenarios or steps matching rules.
 
+### Core Data Types
 
 #### Breakdown Report Model
 

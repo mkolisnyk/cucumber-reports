@@ -2,7 +2,7 @@
 title: Cucumber Reports News
 ---
 
-## TBD 1.0.6 Version Release
+## 18.07.2016 1.0.6 Version Release
 
 * [#83](https://github.com/mkolisnyk/cucumber-reports/issues/83): Bug fix: Error report @ExtendedCucumberOptions
 * [#81](https://github.com/mkolisnyk/cucumber-reports/issues/81): Enhancement: Determine retry status dynamically

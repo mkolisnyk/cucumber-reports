@@ -15,6 +15,7 @@ import com.github.mkolisnyk.cucumber.reporting.types.consolidated.ConsolidatedRe
 import com.github.mkolisnyk.cucumber.reporting.types.consolidated.ConsolidatedReportModel;
 import com.github.mkolisnyk.cucumber.reporting.types.enums.CucumberReportLink;
 import com.github.mkolisnyk.cucumber.reporting.types.enums.CucumberReportTypes;
+import com.github.mkolisnyk.cucumber.reporting.utils.helpers.StringConversionUtils;
 import com.github.mkolisnyk.cucumber.runner.runtime.ExtendedRuntimeOptions;
 
 public class CucumberConsolidatedReport extends ConfigurableReport<ConsolidatedReportBatch> {
@@ -86,7 +87,7 @@ public class CucumberConsolidatedReport extends ConfigurableReport<ConsolidatedR
             reportContent = reportContent.concat("</tr>");
         }
         reportContent = reportContent.concat("</table>");
-        reportContent = this.replaceHtmlEntitiesWithCodes(reportContent);
+        reportContent = StringConversionUtils.replaceHtmlEntitiesWithCodes(reportContent);
         reportContent = reportContent.replaceAll("[$]", "&#36;");
         result = result.replaceAll("__REPORT__", reportContent);
         return result;

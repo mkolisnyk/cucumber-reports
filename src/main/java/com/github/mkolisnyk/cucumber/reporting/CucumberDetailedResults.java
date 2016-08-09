@@ -19,6 +19,7 @@ import com.github.mkolisnyk.cucumber.reporting.types.result.CucumberEmbedding;
 import com.github.mkolisnyk.cucumber.reporting.types.result.CucumberFeatureResult;
 import com.github.mkolisnyk.cucumber.reporting.types.result.CucumberScenarioResult;
 import com.github.mkolisnyk.cucumber.reporting.types.result.CucumberStepResult;
+import com.github.mkolisnyk.cucumber.reporting.utils.helpers.StringConversionUtils;
 import com.github.mkolisnyk.cucumber.runner.runtime.ExtendedRuntimeOptions;
 
 /**
@@ -486,8 +487,7 @@ public class CucumberDetailedResults extends AggragatedReport {
             reportContent += "</table></td></tr><tr><td colspan=\"5\"></td></tr>";
         }
         reportContent += "</table>";
-        //reportContent = reportContent.replaceAll("&pound;", "&#163;");
-        reportContent = this.replaceHtmlEntitiesWithCodes(reportContent);
+        reportContent = StringConversionUtils.replaceHtmlEntitiesWithCodes(reportContent);
         reportContent = reportContent.replaceAll("[$]", "&#36;");
         content = content.replaceAll("__REPORT__", reportContent);
         return content;

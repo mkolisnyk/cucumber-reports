@@ -4,14 +4,9 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.Date;
-import java.util.HashMap;
 import java.util.Locale;
-import java.util.Map;
-import java.util.Map.Entry;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -21,7 +16,6 @@ import org.apache.batik.transcoder.TranscoderInput;
 import org.apache.batik.transcoder.TranscoderOutput;
 import org.apache.batik.transcoder.image.PNGTranscoder;
 import org.apache.commons.io.FileUtils;
-import org.apache.commons.io.IOUtils;
 import org.apache.commons.lang.ArrayUtils;
 import org.xhtmlrenderer.pdf.ITextRenderer;
 
@@ -31,6 +25,7 @@ import com.github.mkolisnyk.cucumber.reporting.types.enums.CucumberReportError;
 import com.github.mkolisnyk.cucumber.reporting.types.enums.CucumberReportLink;
 import com.github.mkolisnyk.cucumber.reporting.types.enums.CucumberReportTypes;
 import com.github.mkolisnyk.cucumber.reporting.types.result.CucumberFeatureResult;
+import com.github.mkolisnyk.cucumber.reporting.utils.helpers.StringConversionUtils;
 //import com.google.common.io.Files;
 import com.github.mkolisnyk.cucumber.runner.runtime.ExtendedRuntimeOptions;
 
@@ -72,7 +67,7 @@ public abstract class CucumberResultsCommon {
      * @param outputDirectoryValue the outputDirectory to set
      */
     public final void setOutputDirectory(String outputDirectoryValue) {
-        this.outputDirectory = outputDirectoryValue;
+        this.outputDirectory = StringConversionUtils.transformPathString(outputDirectoryValue);
     }
 
     /**
@@ -86,7 +81,7 @@ public abstract class CucumberResultsCommon {
      * @param outputNameValue the outputName to set
      */
     public final void setOutputName(String outputNameValue) {
-        this.outputName = outputNameValue;
+        this.outputName = StringConversionUtils.transformPathString(outputNameValue);
     }
     /**
      * @return the sourceFile
@@ -155,21 +150,6 @@ public abstract class CucumberResultsCommon {
         CucumberFeatureResult[] output = {};
         for (String sourceFile : sourceFilesValue) {
             output = (CucumberFeatureResult[]) ArrayUtils.addAll(output, readFileContent(sourceFile));
-        }
-        return output;
-    }
-
-    public String replaceHtmlEntitiesWithCodes(String input) throws IOException {
-        String output = input;
-        Map<String, String> entitiesMap = new HashMap<String, String>();
-        InputStream is = this.getClass().getResourceAsStream("/html_entities_map.txt");
-        String[] result = IOUtils.toString(is).split("\n");
-        is.close();
-        for (String line : result) {
-            entitiesMap.put(line.split("(\\s+)")[0], line.split("(\\s+)")[1]);
-        }
-        for (Entry<String, String> entry : entitiesMap.entrySet()) {
-            output = output.replace(entry.getKey(), entry.getValue());
         }
         return output;
     }

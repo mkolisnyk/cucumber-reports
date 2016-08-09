@@ -11,6 +11,7 @@ import org.apache.commons.io.IOUtils;
 import com.github.mkolisnyk.cucumber.reporting.types.enums.CucumberReportLink;
 import com.github.mkolisnyk.cucumber.reporting.types.enums.CucumberReportTypes;
 import com.github.mkolisnyk.cucumber.reporting.types.result.CucumberFeatureResult;
+import com.github.mkolisnyk.cucumber.reporting.utils.helpers.StringConversionUtils;
 import com.github.mkolisnyk.cucumber.runner.runtime.ExtendedRuntimeOptions;
 
 public class CucumberFeatureOverview extends CucumberResultsOverview {
@@ -91,7 +92,7 @@ public class CucumberFeatureOverview extends CucumberResultsOverview {
         content = content.replaceAll("__RATE__", String.format(Locale.US, "%.0f%%", rate * maxRate));
         String featuresTable = generateFeaturesTable(features);
         content = content.replaceAll("__FEATURES__", featuresTable);
-        content = this.replaceHtmlEntitiesWithCodes(content);
+        content = StringConversionUtils.replaceHtmlEntitiesWithCodes(content);
         content = content.replaceAll("[$]", "&#36;");
         return content;
     }

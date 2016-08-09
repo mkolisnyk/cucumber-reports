@@ -27,6 +27,7 @@ import com.github.mkolisnyk.cucumber.reporting.types.enums.CucumberReportTypes;
 import com.github.mkolisnyk.cucumber.reporting.types.result.CucumberFeatureResult;
 import com.github.mkolisnyk.cucumber.reporting.types.result.CucumberScenarioResult;
 import com.github.mkolisnyk.cucumber.reporting.utils.drawers.PieChartDrawer;
+import com.github.mkolisnyk.cucumber.reporting.utils.helpers.StringConversionUtils;
 import com.github.mkolisnyk.cucumber.runner.runtime.ExtendedRuntimeOptions;
 
 public class CucumberBreakdownReport extends ConfigurableReport<BreakdownReportModel> {
@@ -145,10 +146,10 @@ public class CucumberBreakdownReport extends ConfigurableReport<BreakdownReportM
             content = content.replaceAll("__REFRESH__", "");
         }
         String tableContent = generateBreakdownTable(features, table);
-        tableContent = this.replaceHtmlEntitiesWithCodes(tableContent);
+        tableContent = StringConversionUtils.replaceHtmlEntitiesWithCodes(tableContent);
         tableContent = tableContent.replaceAll("[$]", "&#36;");
         content = content.replaceAll("__REPORT__", tableContent);
-        content = this.replaceHtmlEntitiesWithCodes(content);
+        content = StringConversionUtils.replaceHtmlEntitiesWithCodes(content);
         content = content.replaceAll("[$]", "&#36;");
         return content;
     }
@@ -157,7 +158,7 @@ public class CucumberBreakdownReport extends ConfigurableReport<BreakdownReportM
         String content = String.format(Locale.US,
                 "<table class=\"hoverTable\"><thead>%s</thead><tbody>%s</tbody></table>",
                 generateHeader(table), generateBody(table, features));
-        content = replaceHtmlEntitiesWithCodes(content);
+        content = StringConversionUtils.replaceHtmlEntitiesWithCodes(content);
         return content;
     }
     protected String generateHeader(BreakdownTable table) {

@@ -21,6 +21,7 @@ import com.github.mkolisnyk.cucumber.reporting.types.result.CucumberFeatureResul
 import com.github.mkolisnyk.cucumber.reporting.types.retrospective.RetrospectiveBatch;
 import com.github.mkolisnyk.cucumber.reporting.types.retrospective.RetrospectiveModel;
 import com.github.mkolisnyk.cucumber.reporting.utils.helpers.FolderUtils;
+import com.github.mkolisnyk.cucumber.reporting.utils.helpers.StringConversionUtils;
 import com.github.mkolisnyk.cucumber.runner.runtime.ExtendedRuntimeOptions;
 
 public class CucumberRetrospectiveOverviewReport extends ConfigurableReport<RetrospectiveBatch> {
@@ -131,7 +132,7 @@ public class CucumberRetrospectiveOverviewReport extends ConfigurableReport<Retr
             result = result.replaceAll("__REFRESH__", "");
         }
         String reportContent = "<h1>" + model.getTitle() + "</h1>" + drawGraph(model, stats);
-        reportContent = this.replaceHtmlEntitiesWithCodes(reportContent);
+        reportContent = StringConversionUtils.replaceHtmlEntitiesWithCodes(reportContent);
         reportContent = reportContent.replaceAll("[$]", "&#36;");
         result = result.replaceAll("__REPORT__", reportContent);
         return result;

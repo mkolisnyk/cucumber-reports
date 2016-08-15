@@ -3,6 +3,10 @@ package com.github.mkolisnyk.cucumber.reporting.types.result;
 import org.apache.commons.lang.ArrayUtils;
 
 import com.cedarsoftware.util.io.JsonObject;
+import com.github.mkolisnyk.cucumber.reporting.types.breakdown.matchers.BaseMatcher;
+import com.github.mkolisnyk.cucumber.reporting.types.breakdown.matchers.Matcher;
+import com.github.mkolisnyk.cucumber.reporting.types.knownerrors.KnownErrorsInfo;
+import com.github.mkolisnyk.cucumber.reporting.types.knownerrors.KnownErrorsModel;
 import com.github.mkolisnyk.cucumber.reporting.utils.helpers.JsonUtils;
 
 public class CucumberFeatureResult {
@@ -45,12 +49,26 @@ public class CucumberFeatureResult {
     private int failed = 0;
     private int undefined = 0;
     private int skipped = 0;
+    private int known = 0;
+
+    public void valuateKnownErrors(KnownErrorsModel batch) {
+        for (CucumberScenarioResult scenario : elements) {
+            for (KnownErrorsInfo info : batch.getErrorDescriptions()) {
+                Matcher matcher = BaseMatcher.create(info.getFilter().getDimensionValue());
+                if (matcher.matches(scenario, info.getFilter())) {
+                    scenario.updateFailedToKnown();
+                    break;
+                }
+            }
+        }
+    }
 
     public void valuate() {
         passed = 0;
         failed = 0;
         undefined = 0;
         skipped = 0;
+        known = 0;
         duration = 0.f;
         for (CucumberScenarioResult scenario : elements) {
             boolean isBackground = scenario.getType().equalsIgnoreCase("background");
@@ -65,6 +83,8 @@ public class CucumberFeatureResult {
             } else if (!isBackground) {
                 if (scenario.getFailed() > 0) {
                     this.failed++;
+                } else if (scenario.getKnown() > 0) {
+                    this.known++;
                 } else if (scenario.getUndefined() > 0) {
                     this.undefined++;
                 } else if (scenario.getSkipped() > 0) {
@@ -81,6 +101,8 @@ public class CucumberFeatureResult {
         this.valuate();
         if (this.getFailed() > 0) {
             return "failed";
+        } else if (this.getKnown() > 0) {
+            return "known";
         } else if (this.getUndefined() > 0) {
             return "undefined";
         } else if (this.getSkipped() > 0) {
@@ -133,6 +155,10 @@ public class CucumberFeatureResult {
 
     public final int getSkipped() {
         return skipped;
+    }
+
+    public int getKnown() {
+        return known;
     }
 
     /**

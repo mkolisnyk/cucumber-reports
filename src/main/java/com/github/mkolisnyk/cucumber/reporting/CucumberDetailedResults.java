@@ -11,7 +11,7 @@ import org.apache.commons.io.IOUtils;
 import org.apache.commons.lang.StringEscapeUtils;
 import org.apache.commons.lang.StringUtils;
 
-import com.github.mkolisnyk.cucumber.reporting.interfaces.AggragatedReport;
+import com.github.mkolisnyk.cucumber.reporting.interfaces.AggregatedReport;
 import com.github.mkolisnyk.cucumber.reporting.types.enums.CucumberReportLink;
 import com.github.mkolisnyk.cucumber.reporting.types.enums.CucumberReportTypes;
 import com.github.mkolisnyk.cucumber.reporting.types.result.CucumberBeforeAfterResult;
@@ -25,7 +25,7 @@ import com.github.mkolisnyk.cucumber.runner.runtime.ExtendedRuntimeOptions;
 /**
  * @author Myk Kolisnyk
  */
-public class CucumberDetailedResults extends AggragatedReport {
+public class CucumberDetailedResults extends AggregatedReport {
     public CucumberDetailedResults() {
         super();
     }

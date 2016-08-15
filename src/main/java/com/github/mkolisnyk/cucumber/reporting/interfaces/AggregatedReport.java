@@ -5,11 +5,11 @@ import org.apache.commons.lang.ArrayUtils;
 import com.github.mkolisnyk.cucumber.reporting.types.result.CucumberFeatureResult;
 import com.github.mkolisnyk.cucumber.runner.runtime.ExtendedRuntimeOptions;
 
-public abstract class AggragatedReport extends SimpleReport {
-    public AggragatedReport() {
+public abstract class AggregatedReport extends SimpleReport {
+    public AggregatedReport() {
         super();
     }
-    public AggragatedReport(ExtendedRuntimeOptions extendedOptions) {
+    public AggregatedReport(ExtendedRuntimeOptions extendedOptions) {
         super(extendedOptions);
     }
     public abstract void execute(boolean aggregate, boolean toPDF) throws Exception;

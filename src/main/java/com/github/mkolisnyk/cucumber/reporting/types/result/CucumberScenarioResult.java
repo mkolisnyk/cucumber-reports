@@ -24,6 +24,7 @@ public class CucumberScenarioResult {
     private int failed = 0;
     private int skipped = 0;
     private int undefined = 0;
+    private int known = 0;
     private double duration = 0.f;
     private int rerunAttempts = 0;
 
@@ -78,6 +79,15 @@ public class CucumberScenarioResult {
         this.tags = JsonUtils.toTagArray((JsonObject<String, Object>) json);
     }
 
+    public void updateFailedToKnown() {
+        for (CucumberStepResult step : steps) {
+            String status = step.getResult().getStatus();
+            if (status.equalsIgnoreCase("failed")) {
+                step.getResult().setStatus("known");
+            }
+        }
+    }
+
     public void valuate() {
         final int nanosecondsInMillisecond = 1000000;
         final float millesecondsInSecond = 1000.f;
@@ -85,6 +95,7 @@ public class CucumberScenarioResult {
         failed = 0;
         skipped = 0;
         undefined = 0;
+        known = 0;
         this.duration = 0.f;
         if (steps == null) {
             return;
@@ -93,6 +104,8 @@ public class CucumberScenarioResult {
             String status = step.getResult().getStatus();
             if (status.equalsIgnoreCase("passed")) {
                 this.passed++;
+            } else if (status.equalsIgnoreCase("known")) {
+                this.known++;
             } else if (status.equalsIgnoreCase("failed")) {
                 this.failed++;
             } else if (status.equalsIgnoreCase("skipped")) {
@@ -139,6 +152,10 @@ public class CucumberScenarioResult {
     }
     public final int getSkipped() {
         return skipped;
+    }
+
+    public int getKnown() {
+        return known;
     }
 
     public String getStatus() {

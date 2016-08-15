@@ -9,16 +9,18 @@ import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.IOUtils;
 import org.junit.Assert;
 
-import com.github.mkolisnyk.cucumber.reporting.interfaces.AggragatedReport;
+import com.github.mkolisnyk.cucumber.reporting.interfaces.AggregatedReport;
+import com.github.mkolisnyk.cucumber.reporting.interfaces.KECompatibleReport;
 import com.github.mkolisnyk.cucumber.reporting.types.enums.CucumberReportError;
 import com.github.mkolisnyk.cucumber.reporting.types.enums.CucumberReportLink;
 import com.github.mkolisnyk.cucumber.reporting.types.enums.CucumberReportTypes;
+import com.github.mkolisnyk.cucumber.reporting.types.knownerrors.KnownErrorsModel;
 import com.github.mkolisnyk.cucumber.reporting.types.result.CucumberFeatureResult;
 import com.github.mkolisnyk.cucumber.reporting.types.result.CucumberScenarioResult;
 import com.github.mkolisnyk.cucumber.reporting.utils.drawers.PieChartDrawer;
 import com.github.mkolisnyk.cucumber.runner.runtime.ExtendedRuntimeOptions;
 
-public class CucumberResultsOverview extends AggragatedReport {
+public class CucumberResultsOverview extends KECompatibleReport {
 
     public CucumberResultsOverview() {
         super();
@@ -137,8 +139,12 @@ public class CucumberResultsOverview extends AggragatedReport {
         executeOverviewReport(reportSuffix, false);
     }
     protected void executeOverviewReport(String reportSuffix, boolean toPdf) throws Exception {
+        executeOverviewReport(null, reportSuffix, toPdf);
+    }
+    protected void executeOverviewReport(KnownErrorsModel batch, String reportSuffix, boolean toPdf) throws Exception {
         this.validateParameters();
         CucumberFeatureResult[] features = readFileContent(true);
+        
         File outFile = new File(
                 this.getOutputDirectory() + File.separator + this.getOutputName()
                 + "-" + reportSuffix + ".html");
@@ -191,5 +197,11 @@ public class CucumberResultsOverview extends AggragatedReport {
     @Override
     public void execute(boolean aggregate, boolean toPDF) throws Exception {
         executeOverviewReport("feature-overview", toPDF);
+    }
+
+    @Override
+    public void execute(KnownErrorsModel batch, boolean aggregate, boolean toPDF)
+            throws Exception {
+        executeOverviewReport(batch, "feature-overview", toPDF);
     }
 }

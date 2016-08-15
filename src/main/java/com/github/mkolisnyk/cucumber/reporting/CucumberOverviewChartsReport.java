@@ -9,7 +9,7 @@ import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.IOUtils;
 import org.junit.Assert;
 
-import com.github.mkolisnyk.cucumber.reporting.interfaces.AggragatedReport;
+import com.github.mkolisnyk.cucumber.reporting.interfaces.AggregatedReport;
 import com.github.mkolisnyk.cucumber.reporting.types.enums.CucumberReportError;
 import com.github.mkolisnyk.cucumber.reporting.types.enums.CucumberReportLink;
 import com.github.mkolisnyk.cucumber.reporting.types.enums.CucumberReportTypes;
@@ -17,7 +17,7 @@ import com.github.mkolisnyk.cucumber.reporting.types.result.CucumberFeatureResul
 import com.github.mkolisnyk.cucumber.reporting.utils.drawers.PieChartDrawer;
 import com.github.mkolisnyk.cucumber.runner.runtime.ExtendedRuntimeOptions;
 
-public class CucumberOverviewChartsReport extends AggragatedReport {
+public class CucumberOverviewChartsReport extends AggregatedReport {
     private ExtendedRuntimeOptions options;
 
     public CucumberOverviewChartsReport(ExtendedRuntimeOptions extendedOptions) {

@@ -190,14 +190,6 @@ public class CucumberCoverageOverview extends CucumberResultsOverview {
                 2));
         return content;
     }
-    @Deprecated
-    public void executeCoverageReport(boolean toPDF) throws Exception {
-        execute(toPDF);
-    }
-    @Deprecated
-    public void executeCoverageReport() throws Exception {
-        execute(false);
-    }
 
     @Override
     public void execute(boolean toPDF) throws Exception {

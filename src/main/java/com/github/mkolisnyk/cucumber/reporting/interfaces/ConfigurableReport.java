@@ -5,7 +5,6 @@ import java.io.File;
 import com.github.mkolisnyk.cucumber.runner.runtime.ExtendedRuntimeOptions;
 
 public abstract class ConfigurableReport<Model> extends AggragatedReport {
-    @Deprecated
     public ConfigurableReport() {
         super();
     }

@@ -3,7 +3,6 @@ package com.github.mkolisnyk.cucumber.reporting.interfaces;
 import com.github.mkolisnyk.cucumber.runner.runtime.ExtendedRuntimeOptions;
 
 public abstract class SimpleReport extends CucumberResultsCommon {
-    @Deprecated
     public SimpleReport() {
         super();
     }

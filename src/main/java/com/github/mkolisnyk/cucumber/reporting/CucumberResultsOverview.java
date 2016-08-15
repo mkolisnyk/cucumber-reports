@@ -156,15 +156,6 @@ public class CucumberResultsOverview extends AggragatedReport {
             return;
         }
     }
-    @Deprecated
-    public void executeFeaturesOverviewReport() throws Exception {
-        this.execute(false);
-    }
-    @Deprecated
-    public void executeFeaturesOverviewReport(boolean toPDF) throws Exception {
-        this.execute(toPDF);
-    }
-
     @Override
     public CucumberReportTypes getReportType() {
         return CucumberReportTypes.RESULTS_OVERVIEW;

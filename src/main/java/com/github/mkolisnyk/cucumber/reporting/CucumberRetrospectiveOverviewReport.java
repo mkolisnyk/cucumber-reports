@@ -148,14 +148,7 @@ public class CucumberRetrospectiveOverviewReport extends ConfigurableReport<Retr
             this.exportToPDF(outFile, model.getReportSuffix());
         }
     }
-    @Deprecated
-    public void executeReport(RetrospectiveBatch batch, boolean aggregate, boolean toPDF) throws Exception {
-        this.execute(batch, aggregate, toPDF);
-    }
-    @Deprecated
-    public void executeReport(File config, boolean aggregate, boolean toPDF) throws Exception {
-        this.execute(config, aggregate, toPDF);
-    }
+
     @Override
     public CucumberReportTypes getReportType() {
         return CucumberReportTypes.RETROSPECTIVE_OVERVIEW;

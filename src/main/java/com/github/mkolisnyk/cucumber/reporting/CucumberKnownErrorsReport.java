@@ -63,22 +63,6 @@ public class CucumberKnownErrorsReport extends ConfigurableReport<KnownErrorsMod
         content = content.replaceAll("__REPORT__", reportContent);
         return content;
     }
-    @Deprecated
-    public void executeKnownErrorsReport(KnownErrorsModel model) throws Exception {
-        executeKnownErrorsReport(model, false);
-    }
-    @Deprecated
-    public void executeKnownErrorsReport(KnownErrorsModel model, boolean toPDF) throws Exception {
-        execute(model, toPDF);
-    }
-    @Deprecated
-    public void executeKnownErrorsReport(File config) throws Exception {
-        executeKnownErrorsReport(config, false);
-    }
-    @Deprecated
-    public void executeKnownErrorsReport(File config, boolean toPDF) throws Exception {
-        execute(config, toPDF);
-    }
 
     @Override
     public CucumberReportTypes getReportType() {

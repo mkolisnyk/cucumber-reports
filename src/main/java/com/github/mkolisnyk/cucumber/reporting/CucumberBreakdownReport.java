@@ -61,22 +61,6 @@ public class CucumberBreakdownReport extends ConfigurableReport<BreakdownReportM
     public void executeReport(BreakdownTable table, boolean toPDF) throws Exception {
         executeReport(new BreakdownReportInfo(table), table, toPDF);
     }
-    @Deprecated
-    public void executeReport(BreakdownReportModel model, boolean toPDF) throws Exception {
-        execute(model, toPDF);
-    }
-    @Deprecated
-    public void executeReport(BreakdownReportModel model) throws Exception {
-        executeReport(model, false);
-    }
-    @Deprecated
-    public void executeReport(File config, boolean toPDF) throws Exception {
-        execute(config, toPDF);
-    }
-    @Deprecated
-    public void executeReport(File config) throws Exception {
-        executeReport(config, false);
-    }
     protected void generateFrameFile(BreakdownReportModel model) throws Exception {
         InputStream is = this.getClass().getResourceAsStream("/breakdown-frame.html");
         String content = IOUtils.toString(is);
@@ -126,9 +110,8 @@ public class CucumberBreakdownReport extends ConfigurableReport<BreakdownReportM
         } catch (Throwable e) {
             Assert.fail(this.constructErrorMessage(CucumberReportError.INVALID_CONFIG_FILE, ""));
         }
-        this.executeReport(model, toPDF);
+        this.execute(model, toPDF);
     }
-    @Deprecated
     @Override
     public void execute(boolean aggregate, boolean toPDF) throws Exception {
     }

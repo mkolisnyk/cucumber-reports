@@ -97,28 +97,6 @@ public class CucumberFeatureOverview extends CucumberResultsOverview {
         return content;
     }
 
-    /**
-     * Generates feature overview chart report.
-     * @throws Exception
-     * @deprecated This method is left for backward compatibility since version 1.0.6
-     * and it would be removed shortly. Use {@link #execute(boolean, boolean)} method instead.
-     */
-    @Deprecated
-    public void executeFeatureOverviewChartReport() throws Exception {
-        execute(true, false);
-    }
-    /**
-     * Generates feature overview chart report.
-     * @param toPdf flag identifying whether report should be exported to PDF as well
-     * @throws Exception
-     * @deprecated This method is left for backward compatibility since version 1.0.6
-     * and it would be removed shortly. Use {@link #execute(boolean, boolean)} method instead.
-     */
-    @Deprecated
-    public void executeFeatureOverviewChartReport(boolean toPdf) throws Exception {
-        execute(true, toPdf);
-    }
-
     @Override
     public void execute(boolean toPDF) throws Exception {
         // TODO Auto-generated method stub

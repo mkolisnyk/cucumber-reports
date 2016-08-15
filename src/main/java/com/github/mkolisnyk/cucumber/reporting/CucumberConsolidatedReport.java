@@ -105,22 +105,6 @@ public class CucumberConsolidatedReport extends ConfigurableReport<ConsolidatedR
     public void executeConsolidatedReport(ConsolidatedReportModel model) throws Exception {
         executeConsolidatedReport(model, false);
     }
-    @Deprecated
-    public void executeConsolidatedReport(ConsolidatedReportBatch batch, boolean toPDF) throws Exception {
-        execute(batch, toPDF);
-    }
-    @Deprecated
-    public void executeConsolidatedReport(ConsolidatedReportBatch batch) throws Exception {
-        executeConsolidatedReport(batch, false);
-    }
-    @Deprecated
-    public void executeConsolidatedReport(File config, boolean toPDF) throws Exception {
-        execute(config, toPDF);
-    }
-    @Deprecated
-    public void executeConsolidatedReport(File config) throws Exception {
-        this.executeConsolidatedReport(config, false);
-    }
     @Override
     public CucumberReportTypes getReportType() {
         return CucumberReportTypes.CONSOLIDATED_REPORT;
@@ -145,7 +129,6 @@ public class CucumberConsolidatedReport extends ConfigurableReport<ConsolidatedR
                 FileUtils.readFileToString(config));
         this.execute(model, toPDF);
     }
-    @Deprecated
     @Override
     public void execute(boolean aggregate, boolean toPDF) throws Exception {
     }

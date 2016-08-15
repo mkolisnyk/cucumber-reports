@@ -6,7 +6,6 @@ import com.github.mkolisnyk.cucumber.reporting.types.result.CucumberFeatureResul
 import com.github.mkolisnyk.cucumber.runner.runtime.ExtendedRuntimeOptions;
 
 public abstract class AggragatedReport extends SimpleReport {
-    @Deprecated
     public AggragatedReport() {
         super();
     }

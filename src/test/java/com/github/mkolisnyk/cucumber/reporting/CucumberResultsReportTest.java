@@ -1,7 +1,11 @@
 package com.github.mkolisnyk.cucumber.reporting;
 
+import java.io.File;
 import java.util.Locale;
 
+import javax.xml.bind.JAXB;
+
+import org.apache.commons.io.FileUtils;
 import org.junit.Test;
 
 public class CucumberResultsReportTest {
@@ -13,6 +17,19 @@ public class CucumberResultsReportTest {
         results.setOutputName("cucumber-results");
         results.setSourceFile("./src/test/resources/cucumber.json");
         results.execute();
+
+        File dump = new File("./target/cucumber-results-feature-overview-dump.xml");
+        //String content = FileUtils.readFileToString(dump);
+        //content = content.replaceAll("\\[]\\[]", "");
+        //FileUtils.writeStringToFile(dump, content);
+        int[][] result = JAXB.unmarshal(dump, int[][].class);
+        for (int[] row : result) {
+            String text = "";
+            for (int item : row) {
+                text = text.concat("" + item + ";");
+            }
+            System.out.println(text);
+        }
     }
 
     @Test

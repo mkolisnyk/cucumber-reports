@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.io.IOException;
 import java.io.OutputStream;
 import java.util.Date;
 import java.util.Locale;
@@ -154,9 +155,12 @@ public abstract class CucumberResultsCommon {
         return output;
     }
 
-    public void dumpOverviewStats(File outFile, CucumberFeatureResult[] results) {
+    public void dumpOverviewStats(File outFile, CucumberFeatureResult[] results) throws IOException {
         int[][] stats = getStatuses(results);
         JAXB.marshal(stats, outFile);
+        String content = FileUtils.readFileToString(outFile);
+        content = content.replaceAll("\\[]\\[]", "");
+        FileUtils.writeStringToFile(outFile, content);
     }
 
     private void convertSvgToPng(File svg, File png) throws Exception {

@@ -113,8 +113,8 @@ For this purpose the **outputFolder** and **reportPrefix** fields may contain sp
 
 | Format | Description |
 | ------ | ----------- |
-| DATE(<format>) | Inserts current date/time. The **format** should fit the [Joda time date format specification](http://joda-time.sourceforge.net/apidocs/org/joda/time/format/DateTimeFormat.html) |
-| ${<variable>} | Inserts system property or environment variable. |
+| DATE(&lt;format&gt;) | Inserts current date/time. The **format** should fit the [Joda time date format specification](http://joda-time.sourceforge.net/apidocs/org/joda/time/format/DateTimeFormat.html) |
+| ${&lt;variable&gt;} | Inserts system property or environment variable. |
 
 The following sample demonstrates the use of parameterizing values:
 
@@ -134,7 +134,7 @@ The **DATE(dd-MM-yyyy)** statement will be replaced with actual current date in 
 
 Sometimes we would like to define values externally depending on various parameters calculated in build scripts or so. For this purpose library reserves an ability to override fields in **ExtendedCucumberOptions** annotation with system properties. Such system properties should fit the following format:
 
-**cucumber.reports.<field name>** 
+**cucumber.reports.&lt;field name&gt;** 
 
 where **field name** is the name of the **ExtendedCucumberOptions** annotation field name. E.g. if we want to override **retryCount** field we should define **cucumber.reports.retryCount** property.
 

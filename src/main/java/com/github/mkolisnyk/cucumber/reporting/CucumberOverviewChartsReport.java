@@ -10,14 +10,16 @@ import org.apache.commons.io.IOUtils;
 import org.junit.Assert;
 
 import com.github.mkolisnyk.cucumber.reporting.interfaces.AggregatedReport;
+import com.github.mkolisnyk.cucumber.reporting.interfaces.KECompatibleReport;
 import com.github.mkolisnyk.cucumber.reporting.types.enums.CucumberReportError;
 import com.github.mkolisnyk.cucumber.reporting.types.enums.CucumberReportLink;
 import com.github.mkolisnyk.cucumber.reporting.types.enums.CucumberReportTypes;
+import com.github.mkolisnyk.cucumber.reporting.types.knownerrors.KnownErrorsModel;
 import com.github.mkolisnyk.cucumber.reporting.types.result.CucumberFeatureResult;
 import com.github.mkolisnyk.cucumber.reporting.utils.drawers.PieChartDrawer;
 import com.github.mkolisnyk.cucumber.runner.runtime.ExtendedRuntimeOptions;
 
-public class CucumberOverviewChartsReport extends AggregatedReport {
+public class CucumberOverviewChartsReport extends KECompatibleReport {
     private ExtendedRuntimeOptions options;
 
     public CucumberOverviewChartsReport(ExtendedRuntimeOptions extendedOptions) {
@@ -114,8 +116,19 @@ public class CucumberOverviewChartsReport extends AggregatedReport {
 
     @Override
     public void execute(boolean aggregate, boolean toPDF) throws Exception {
+        this.execute((KnownErrorsModel) null, aggregate, toPDF);
+    }
+
+    @Override
+    public void execute(KnownErrorsModel batch, boolean aggregate, boolean toPDF)
+            throws Exception {
         this.validateParameters();
         CucumberFeatureResult[] features = readFileContent(aggregate);
+        if (batch != null) {
+            for (CucumberFeatureResult feature : features) {
+                feature.valuateKnownErrors(batch);
+            }
+        }
         File outFile = new File(
                 this.getOutputDirectory() + File.separator + this.getOutputName()
                 + "-charts-report.html");

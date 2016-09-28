@@ -26,7 +26,8 @@ import cucumber.api.CucumberOptions;
         knownErrorsConfig = "src/test/resources/known-errors-source/sample_model.json",
         consolidatedReport = true,
         consolidatedReportConfig = "src/test/resources/consolidated-source/s_ample_batch.json",
-        outputFolder = "target")
+        outputFolder = "target/sample",
+        reportPrefix = "result01")
 @ExtendedCucumberOptions(jsonReport = "target/cucumber.json",
         retryCount = 3,
         threadsCount = 3,
@@ -46,14 +47,16 @@ import cucumber.api.CucumberOptions;
         consolidatedReportConfig = "src/test/resources/consolidated-source/sample_batch.json",
         excludeCoverageTags = {"@flaky" },
         includeCoverageTags = {"@passed" },
-        outputFolder = "target")
+        outputFolder = "target/sample",
+        reportPrefix = "result02")
 @ExtendedCucumberOptions(jsonReport = "target/cucumber.json",
         retryCount = 3,
         coverageReport = true,
         jsonUsageReport = "target/cucumber-usage.json",
         excludeCoverageTags = {"@flaky" },
         includeCoverageTags = {"@passed" },
-        outputFolder = "target")
+        outputFolder = "target/sample",
+        reportPrefix = "result03")
 @CucumberOptions(plugin = { "html:target/cucumber-html-report",
         "json:target/cucumber.json", "pretty:target/cucumber-pretty.txt",
         "usage:target/cucumber-usage.json", "junit:target/cucumber-results.xml" },

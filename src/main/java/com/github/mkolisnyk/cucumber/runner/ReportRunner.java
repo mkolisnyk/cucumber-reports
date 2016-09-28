@@ -38,7 +38,11 @@ public final class ReportRunner {
         }
         CucumberResultsOverview results = new CucumberResultsOverview(extendedOptions);
         try {
-            results.execute(extendedOptions.isToPDF());
+            if (extendedOptions.isKnownErrorsReport()) {
+                results.execute(new File(extendedOptions.getKnownErrorsConfig()), extendedOptions.isToPDF());
+            } else {
+                results.execute(extendedOptions.isToPDF());
+            }
         } catch (Throwable e) {
             e.printStackTrace();
         }
@@ -62,7 +66,12 @@ public final class ReportRunner {
         }
         CucumberDetailedResults results = new CucumberDetailedResults(extendedOptions);
         try {
-            results.execute(false, extendedOptions.isToPDF());
+            if (extendedOptions.isKnownErrorsReport()) {
+                results.execute(new File(extendedOptions.getKnownErrorsConfig()),
+                        false, extendedOptions.isToPDF());
+            } else {
+                results.execute(false, extendedOptions.isToPDF());
+            }
         } catch (Throwable e) {
             e.printStackTrace();
         }
@@ -73,7 +82,12 @@ public final class ReportRunner {
         }
         CucumberDetailedResults results = new CucumberDetailedResults(extendedOptions);
         try {
-            results.execute(true, extendedOptions.isToPDF());
+            if (extendedOptions.isKnownErrorsReport()) {
+                results.execute(new File(extendedOptions.getKnownErrorsConfig()),
+                        true, extendedOptions.isToPDF());
+            } else {
+                results.execute(true, extendedOptions.isToPDF());
+            }
         } catch (Throwable e) {
             e.printStackTrace();
         }
@@ -129,8 +143,12 @@ public final class ReportRunner {
         }
         CucumberOverviewChartsReport report = new CucumberOverviewChartsReport(extendedOptions);
         try {
-            report.execute(extendedOptions.isDetailedAggregatedReport(),
-                    extendedOptions.isToPDF());
+            if (extendedOptions.isKnownErrorsReport()) {
+                report.execute(new File(extendedOptions.getKnownErrorsConfig()),
+                        extendedOptions.isDetailedAggregatedReport(), extendedOptions.isToPDF());
+            } else {
+                report.execute(extendedOptions.isDetailedAggregatedReport(), extendedOptions.isToPDF());
+            }
         } catch (Throwable e) {
             e.printStackTrace();
         }
@@ -150,11 +168,11 @@ public final class ReportRunner {
     public static void run(ExtendedRuntimeOptions extendedOption) {
         ReportRunner runner = new ReportRunner();
         runner.runUsageReport(extendedOption);
-        runner.runOverviewReport(extendedOption);
-        runner.runOverviewChartsReport(extendedOption);
+        runner.runOverviewReport(extendedOption); // TODO
+        runner.runOverviewChartsReport(extendedOption); // TODO
         runner.runFeatureOverviewChartReport(extendedOption);
-        runner.runDetailedReport(extendedOption);
-        runner.runDetailedAggregatedReport(extendedOption);
+        runner.runDetailedReport(extendedOption); // TODO
+        runner.runDetailedAggregatedReport(extendedOption); // TODO
         runner.runCoverageReport(extendedOption);
         runner.runBreakdownReport(extendedOption);
         runner.runFeatureMapReport(extendedOption);

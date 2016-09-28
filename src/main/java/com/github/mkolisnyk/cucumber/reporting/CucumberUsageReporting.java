@@ -27,6 +27,7 @@ import com.github.mkolisnyk.cucumber.reporting.types.usage.CucumberStep;
 import com.github.mkolisnyk.cucumber.reporting.types.usage.CucumberStepDuration;
 import com.github.mkolisnyk.cucumber.reporting.types.usage.CucumberStepSource;
 import com.github.mkolisnyk.cucumber.reporting.utils.helpers.MapUtils;
+import com.github.mkolisnyk.cucumber.reporting.utils.helpers.StringConversionUtils;
 
 public class CucumberUsageReporting {
     private static final float USAGE_30 = 30.f;
@@ -50,7 +51,7 @@ public class CucumberUsageReporting {
     }
 
     protected String getOutputDirectory() {
-        return this.outputDirectory;
+        return StringConversionUtils.transformPathString(this.outputDirectory);
     }
 
     public String getJsonUsageFile() {

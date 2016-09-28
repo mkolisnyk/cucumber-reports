@@ -47,8 +47,8 @@ import cucumber.api.CucumberOptions;
         consolidatedReportConfig = "src/test/resources/consolidated-source/sample_batch.json",
         excludeCoverageTags = {"@flaky" },
         includeCoverageTags = {"@passed" },
-        outputFolder = "target/sample",
-        reportPrefix = "result02")
+        outputFolder = "target/sample/DATE(yyyyMMdd)",
+        reportPrefix = "result02-DATE(yyyy-MM-dd)")
 @ExtendedCucumberOptions(jsonReport = "target/cucumber.json",
         retryCount = 3,
         coverageReport = true,

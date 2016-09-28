@@ -1,0 +1,458 @@
+[
+  {
+    "line": 1,
+    "elements": [
+      {
+        "before": [
+          {
+            "result": {
+              "duration": 18608263981,
+              "status": "passed"
+            },
+            "match": {
+              "location": "Hooks.setUp(Scenario)"
+            }
+          }
+        ],
+        "line": 4,
+        "name": "Show advert",
+        "description": "",
+        "id": "cashback-offer;show-advert",
+        "after": [
+          {
+            "result": {
+              "duration": 706397206,
+              "status": "passed"
+            },
+            "match": {
+              "location": "Hooks.tearDown(Scenario)"
+            }
+          }
+        ],
+        "type": "scenario",
+        "keyword": "Scenario",
+        "steps": [
+          {
+            "result": {
+              "duration": 7257302516,
+              "status": "passed"
+            },
+            "line": 5,
+            "name": "I am not logged into the system",
+            "match": {
+              "location": "LoginActions.openHomePageNotLogged()"
+            },
+            "keyword": "Given "
+          },
+          {
+            "result": {
+              "duration": 5842930428,
+              "status": "passed"
+            },
+            "line": 6,
+            "name": "I am on the \"Home\" page",
+            "match": {
+              "arguments": [
+                {
+                  "val": "Home",
+                  "offset": 13
+                }
+              ],
+              "location": "NavigationActions.navigateToPage(String)"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 1139648983,
+              "status": "passed"
+            },
+            "line": 7,
+            "name": "I click on the \"Me\" button",
+            "match": {
+              "arguments": [
+                {
+                  "val": "Me",
+                  "offset": 16
+                }
+              ],
+              "location": "FieldActions.clickOnTheField(String)"
+            },
+            "keyword": "When "
+          },
+          {
+            "result": {
+              "duration": 506055923,
+              "status": "passed"
+            },
+            "line": 8,
+            "name": "I should see the \"Me\" screen",
+            "match": {
+              "arguments": [
+                {
+                  "val": "Me",
+                  "offset": 18
+                }
+              ],
+              "location": "PageActions.shouldSeeTheScreen(String)"
+            },
+            "keyword": "Then "
+          },
+          {
+            "result": {
+              "duration": 1340712921,
+              "status": "passed"
+            },
+            "line": 9,
+            "name": "I click on the \"Advert\" button",
+            "match": {
+              "arguments": [
+                {
+                  "val": "Advert",
+                  "offset": 16
+                }
+              ],
+              "location": "FieldActions.clickOnTheField(String)"
+            },
+            "keyword": "When "
+          },
+          {
+            "result": {
+              "duration": 363704026,
+              "status": "passed"
+            },
+            "output": [
+              "Scenario completed: Show advert"
+            ],
+            "line": 10,
+            "name": "I should see the \"Advert WebPage\" screen",
+            "match": {
+              "arguments": [
+                {
+                  "val": "Advert WebPage",
+                  "offset": 18
+                }
+              ],
+              "location": "PageActions.shouldSeeTheScreen(String)"
+            },
+            "keyword": "Then "
+          }
+        ],
+        "tags": [
+          {
+            "line": 3,
+            "name": "@ios"
+          },
+          {
+            "line": 3,
+            "name": "@android"
+          },
+          {
+            "line": 3,
+            "name": "@ios_live"
+          },
+          {
+            "line": 3,
+            "name": "@pre_prod"
+          },
+          {
+            "line": 3,
+            "name": "@android_live"
+          },
+          {
+            "line": 3,
+            "name": "@ios_acceptance"
+          }
+        ]
+      }
+    ],
+    "name": "Cashback Offer",
+    "description": "",
+    "id": "cashback-offer",
+    "keyword": "Feature",
+    "uri": "common/6_Cashback_Offer.feature"
+  },
+  {
+    "line": 2,
+    "elements": [
+      {
+        "before": [
+          {
+            "result": {
+              "duration": 13082779616,
+              "status": "passed"
+            },
+            "match": {
+              "location": "Hooks.setUp(Scenario)"
+            }
+          }
+        ],
+        "line": 21,
+        "name": "Booking flow for not logged user",
+        "description": "",
+        "id": "journey-search;booking-flow-for-not-logged-user",
+        "after": [
+          {
+            "result": {
+              "duration": 699334752,
+              "status": "passed"
+            },
+            "match": {
+              "location": "Hooks.tearDown(Scenario)"
+            }
+          }
+        ],
+        "type": "scenario",
+        "keyword": "Scenario",
+        "steps": [
+          {
+            "result": {
+              "duration": 9326524526,
+              "status": "passed"
+            },
+            "line": 22,
+            "name": "I am not logged into the system",
+            "match": {
+              "location": "LoginActions.openHomePageNotLogged()"
+            },
+            "keyword": "Given "
+          },
+          {
+            "result": {
+              "duration": 16548024800,
+              "status": "passed"
+            },
+            "line": 23,
+            "name": "I am on the \"Journey Search\" screen",
+            "match": {
+              "arguments": [
+                {
+                  "val": "Journey Search",
+                  "offset": 13
+                }
+              ],
+              "location": "NavigationActions.navigateToPage(String)"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 80332588061,
+              "status": "passed"
+            },
+            "line": 24,
+            "name": "I search for journey using the following criteria:",
+            "match": {
+              "location": "JourneySearchActions.searchJourneyByCriteria(DataTable)"
+            },
+            "rows": [
+              {
+                "cells": [
+                  "From",
+                  "To",
+                  "Type",
+                  "Out Date",
+                  "Adults",
+                  "Children"
+                ],
+                "line": 25
+              },
+              {
+                "cells": [
+                  "YRK",
+                  "NCL",
+                  "Single",
+                  "tomorrow",
+                  "2",
+                  "2"
+                ],
+                "line": 26
+              }
+            ],
+            "keyword": "When "
+          },
+          {
+            "result": {
+              "duration": 3137897989,
+              "status": "passed"
+            },
+            "line": 27,
+            "name": "accept the alert message",
+            "match": {
+              "location": "PageActions.acceptMessage()"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 29403013811,
+              "status": "passed"
+            },
+            "line": 28,
+            "name": "proceed search results to the payment screen",
+            "match": {
+              "location": "JourneySearchActions.proceedFromSearchResultsToPayment()"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 1115948339,
+              "status": "passed"
+            },
+            "line": 29,
+            "name": "I should see the \"Payment\" screen",
+            "match": {
+              "arguments": [
+                {
+                  "val": "Payment",
+                  "offset": 18
+                }
+              ],
+              "location": "PageActions.shouldSeeTheScreen(String)"
+            },
+            "keyword": "Then "
+          },
+          {
+            "result": {
+              "duration": 22815128015,
+              "status": "passed"
+            },
+            "line": 30,
+            "name": "the following elements are shown:",
+            "match": {
+              "location": "FieldActions.elementsAreShown(String\u003e)"
+            },
+            "rows": [
+              {
+                "cells": [
+                  "Mobile ticket"
+                ],
+                "line": 31
+              },
+              {
+                "cells": [
+                  "Self-service ticket machine"
+                ],
+                "line": 32
+              }
+            ],
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 7713085967,
+              "status": "passed"
+            },
+            "line": 33,
+            "name": "at least one of the following elements is shown:",
+            "match": {
+              "location": "FieldActions.atLeastOneElementIsShown(String\u003e)"
+            },
+            "rows": [
+              {
+                "cells": [
+                  "Login or register"
+                ],
+                "line": 34
+              },
+              {
+                "cells": [
+                  "Create an account"
+                ],
+                "line": 35
+              }
+            ],
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 764826152,
+              "status": "passed"
+            },
+            "output": [
+              "Scenario completed: Booking flow for not logged user"
+            ],
+            "line": 36,
+            "name": "the following elements are shown:",
+            "match": {
+              "location": "FieldActions.elementsAreShown(String\u003e)"
+            },
+            "rows": [
+              {
+                "cells": [
+                  "Pay with paypal"
+                ],
+                "line": 37
+              },
+              {
+                "cells": [
+                  "Buy"
+                ],
+                "line": 38
+              }
+            ],
+            "keyword": "And "
+          }
+        ],
+        "tags": [
+          {
+            "line": 20,
+            "name": "@android"
+          },
+          {
+            "line": 20,
+            "name": "@system"
+          },
+          {
+            "line": 20,
+            "name": "@ios"
+          },
+          {
+            "line": 20,
+            "name": "@ios_live"
+          },
+          {
+            "line": 20,
+            "name": "@android_live"
+          },
+          {
+            "line": 20,
+            "name": "@ticket_selection"
+          },
+          {
+            "line": 20,
+            "name": "@payment"
+          },
+          {
+            "line": 20,
+            "name": "@pre_prod"
+          },
+          {
+            "line": 20,
+            "name": "@test"
+          },
+          {
+            "line": 20,
+            "name": "@ios_acceptance"
+          }
+        ]
+      }
+    ],
+    "name": "Journey Search",
+    "description": "",
+    "id": "journey-search",
+    "keyword": "Feature",
+    "uri": "journeysearch/BasicJourneySearch.feature",
+    "tags": [
+      {
+        "line": 1,
+        "name": "@search"
+      },
+      {
+        "line": 1,
+        "name": "@search_results"
+      }
+    ]
+  }
+]

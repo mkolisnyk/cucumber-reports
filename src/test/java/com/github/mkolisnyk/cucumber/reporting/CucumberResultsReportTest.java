@@ -193,4 +193,14 @@ public class CucumberResultsReportTest {
         results.setSourceFile("./src/test/resources/56/embed-screenshot-2images.json");
         results.execute(true, false);
     }
+    @Test
+    public void testEmbedOutputTestIssue85() throws Exception {
+        CucumberDetailedResults results = new CucumberDetailedResults();
+        results.setScreenShotLocation("screenshots/");
+        results.setScreenShotWidth("300");
+        results.setOutputDirectory("target/");
+        results.setOutputName("issue85-results");
+        results.setSourceFile("./src/test/resources/85/cucumber.json");
+        results.execute(true, false);
+    }
 }

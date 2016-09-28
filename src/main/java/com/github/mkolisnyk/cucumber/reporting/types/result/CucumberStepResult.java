@@ -13,6 +13,7 @@ public class CucumberStepResult {
     private String[][] rows;
     private String docString;
     private CucumberEmbedding[] embeddings;
+    private String[] output;
 
     @SuppressWarnings("unchecked")
     public CucumberStepResult(JsonObject<String, Object> json) {
@@ -27,6 +28,14 @@ public class CucumberStepResult {
             this.embeddings = new CucumberEmbedding[objs.length];
             for (int i = 0; i < objs.length; i++) {
                 this.embeddings[i] = new CucumberEmbedding((JsonObject<String, Object>) objs[i]);
+            }
+        }
+        if (json.containsKey("output")) {
+            Object[] objs = (Object[]) ((JsonObject<String, Object>) json
+                    .get("output")).get("@items");
+            this.output = new String[objs.length];
+            for (int i = 0; i < objs.length; i++) {
+                this.output[i] = (String) objs[i];
             }
         }
         if (json.containsKey("rows")) {
@@ -89,5 +98,9 @@ public class CucumberStepResult {
 
     public CucumberEmbedding[] getEmbeddings() {
         return embeddings;
+    }
+
+    public String[] getOutput() {
+        return output;
     }
 }

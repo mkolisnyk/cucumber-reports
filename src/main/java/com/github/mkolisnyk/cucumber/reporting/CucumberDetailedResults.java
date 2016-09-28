@@ -389,6 +389,22 @@ public class CucumberDetailedResults extends KECompatibleReport {
         }
         return reportContent;
     }
+    private String embeddingOutput(CucumberStepResult step) {
+        String reportContent = "";
+        if (step.getOutput() != null) {
+            reportContent += String.format(Locale.US,
+                    "<tr class=\"%s\"><td colspan=\"2\" class=\"comment\">"
+                    + "<span class=\"tip\">Output</span>"
+                    + "<pre class=\"comment\">",
+                    step.getResult().getStatus());
+            for (String line : step.getOutput()) {
+                reportContent += line + System.lineSeparator();
+            }
+            reportContent += String.format(Locale.US,
+                    "</pre></td></tr>");
+        }
+        return reportContent;
+    }
     private String generateScreenShot(CucumberScenarioResult scenario, CucumberStepResult step) throws IOException {
         String reportContent = "";
         if (step.getResult().getStatus().trim().equalsIgnoreCase("failed")) {
@@ -521,6 +537,7 @@ public class CucumberDetailedResults extends KECompatibleReport {
                     reportContent += this.generateDocString(step);
                     reportContent += this.generateScreenShot(scenario, step);
                     reportContent += this.embeddingScreenShots(scenario, step);
+                    reportContent += this.embeddingOutput(step);
                 }
                 reportContent += "</table></td></tr>"
                         + this.generateBeforeAfterRow(scenario.getAfter(), "After")

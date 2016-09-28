@@ -134,8 +134,10 @@ The **DATE(dd-MM-yyyy)** statement will be replaced with actual current date in 
 
 Sometimes we would like to define values externally depending on various parameters calculated in build scripts or so. For this purpose library reserves an ability to override fields in **ExtendedCucumberOptions** annotation with system properties. Such system properties should fit the following format:
 
-**cucumber.reports.<field name>** is the **ExtendedCucumberOptions** annotation field name. E.g. if we want to override **retryCount** field we should define **cucumber.reports.retryCount** property.
+**cucumber.reports.<field name>** 
+
+where **field name** is the name of the **ExtendedCucumberOptions** annotation field name. E.g. if we want to override **retryCount** field we should define **cucumber.reports.retryCount** property.
 
 Note that currently we can override only booleans, integers and strings. Array values aren't supported.
 
-where **field name** is the name of a
+

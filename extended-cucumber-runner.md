@@ -105,3 +105,37 @@ public class SampleCucumberTest extends ExtendedTestNGRunner {
 | **excludeCoverageTags**      | **String[]** | | | { } |
 | **retryCount**               | **int** | | | 0 |
 
+# Parameterizing Values
+
+In some cases we need to define dynamic values for the output. Normally it may be needed if we would like to drop reports to some folder which name corresponds to current date and time or we need to paste value from either system property or environment variable.
+
+For this purpose the **outputFolder** and **reportPrefix** fields may contain specific expressions which are later calculated. The following expressions are supported:
+
+| Format | Description |
+| ------ | ----------- |
+| DATE(<format>) | Inserts current date/time. The **format** should fit the [Joda time date format specification](http://joda-time.sourceforge.net/apidocs/org/joda/time/format/DateTimeFormat.html) |
+| ${<variable>} | Inserts system property or environment variable. |
+
+The following sample demonstrates the use of parameterizing values:
+
+{% highlight java linenos=table %}
+@ExtendedCucumberOptions(
+        jsonReport = "target/cucumber.json",
+        overviewReport = true,
+        outputFolder = "${user.dir}/DATE(dd-MM-yyyy)"
+        reportPrefix = "results-${user}")
+{% endhighlight %}
+
+In the above example entries **${user.dir}** and **${user}** will be replaced with system properties named **user.dir** and **user**. Otherwise, engine will try to replace values with environment variables of the same name.
+
+The **DATE(dd-MM-yyyy)** statement will be replaced with actual current date in the specified format. E.g. **28-09-2016**.
+
+# Overriding properties from external values
+
+Sometimes we would like to define values externally depending on various parameters calculated in build scripts or so. For this purpose library reserves an ability to override fields in **ExtendedCucumberOptions** annotation with system properties. Such system properties should fit the following format:
+
+**cucumber.reports.<field name>** is the **ExtendedCucumberOptions** annotation field name. E.g. if we want to override **retryCount** field we should define **cucumber.reports.retryCount** property.
+
+Note that currently we can override only booleans, integers and strings. Array values aren't supported.
+
+where **field name** is the name of a

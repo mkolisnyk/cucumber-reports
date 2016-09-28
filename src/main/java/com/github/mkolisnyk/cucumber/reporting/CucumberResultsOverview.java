@@ -38,12 +38,14 @@ public class CucumberResultsOverview extends KECompatibleReport {
 
     @Override
     public int[][] getStatuses(CucumberFeatureResult[] results) {
-        int[][] statuses = {{0, 0, 0}, {0, 0, 0}, {0, 0, 0}};
+        int[][] statuses = {{0, 0, 0, 0}, {0, 0, 0, 0}, {0, 0, 0, 0}};
         for (CucumberFeatureResult result : results) {
             if (result.getStatus().trim().equalsIgnoreCase("passed")) {
                 statuses[0][0]++;
             } else if (result.getStatus().trim().equalsIgnoreCase("failed")) {
                 statuses[0][1]++;
+            } else if (result.getStatus().trim().equalsIgnoreCase("known")) {
+                statuses[0][3]++;
             } else {
                 statuses[0][2]++;
             }
@@ -52,12 +54,15 @@ public class CucumberResultsOverview extends KECompatibleReport {
                     statuses[1][0]++;
                 } else if (element.getStatus().trim().equalsIgnoreCase("failed")) {
                     statuses[1][1]++;
+                } else if (element.getStatus().trim().equalsIgnoreCase("known")) {
+                    statuses[1][3]++;
                 } else {
                     statuses[1][2]++;
                 }
                 statuses[2][0] += element.getPassed();
                 statuses[2][1] += element.getFailed();
                 statuses[2][2] += element.getSkipped() + element.getUndefined();
+                statuses[2][3] += element.getKnown();
             }
         }
         return statuses;
@@ -68,16 +73,18 @@ public class CucumberResultsOverview extends KECompatibleReport {
         String reportContent = "";
 
         reportContent += "<h1>Features Status</h1><table><tr><th>Feature Name</th><th>Status</th>"
-                + "<th>Passed</th><th>Failed</th><th>Undefined</th><th>Duration</th></tr>";
+                + "<th>Passed</th><th>Failed</th><th>Known</th><th>Undefined</th><th>Duration</th></tr>";
 
         for (CucumberFeatureResult result : results) {
             reportContent += String.format(Locale.US,
-                    "<tr class=\"%s\"><td>%s</td><td>%s</td><td>%d</td><td>%d</td><td>%d</td><td>%.2fs</td></tr>",
+                    "<tr class=\"%s\"><td>%s</td><td>%s</td>"
+                    + "<td>%d</td><td>%d</td><td>%d</td><td>%d</td><td>%.2fs</td></tr>",
                     result.getStatus(),
                     result.getName(),
                     result.getStatus(),
                     result.getPassed(),
                     result.getFailed(),
+                    result.getKnown(),
                     result.getUndefined() + result.getSkipped(),
                     result.getDuration());
         }
@@ -88,6 +95,7 @@ public class CucumberResultsOverview extends KECompatibleReport {
                 + "<th>Status</th>"
                 + "<th>Passed</th>"
                 + "<th>Failed</th>"
+                + "<th>Known</th>"
                 + "<th>Undefined</th>"
                 + "<th>Retries</th>"
                 + "<th>Duration</th></tr>";
@@ -100,7 +108,7 @@ public class CucumberResultsOverview extends KECompatibleReport {
                 reportContent += String.format(Locale.US,
                         "<tr class=\"%s\">"
                         + "<td>%s</td><td>%s</td><td>%s</td>"
-                        + "<td>%d</td><td>%d</td><td>%d</td><td>%d</td>"
+                        + "<td>%d</td><td>%d</td><td>%d</td><td>%d</td><td>%d</td>"
                         + "<td>%.2fs</td></tr>",
                         element.getStatus(),
                         result.getName(),
@@ -108,6 +116,7 @@ public class CucumberResultsOverview extends KECompatibleReport {
                         element.getStatus(),
                         element.getPassed(),
                         element.getFailed(),
+                        element.getKnown(),
                         element.getUndefined() + element.getSkipped(),
                         element.getRerunAttempts(),
                         element.getDuration());
@@ -119,17 +128,17 @@ public class CucumberResultsOverview extends KECompatibleReport {
         content = content.replaceAll("__FEATURE_DATA__", pieChart.generatePieChart(
                 CHART_WIDTH, CHART_HEIGHT,
                 featureStatuses,
-                new String[]{"Passed", "Failed", "Undefined"},
-                new String[]{"green", "red", "silver"},
-                new String[]{"darkgreen", "darkred", "darkgray"},
+                new String[]{"Passed", "Failed", "Undefined", "Known"},
+                new String[]{"green", "red", "silver", "gold"},
+                new String[]{"darkgreen", "darkred", "darkgray", "goldenrod"},
                 CHART_THICKNESS,
                 2));
         content = content.replaceAll("__SCENARIO_DATA__", pieChart.generatePieChart(
                 CHART_WIDTH, CHART_HEIGHT,
                 scenarioStatuses,
-                new String[]{"Passed", "Failed", "Undefined"},
-                new String[]{"green", "red", "silver"},
-                new String[]{"darkgreen", "darkred", "darkgray"},
+                new String[]{"Passed", "Failed", "Undefined", "Known"},
+                new String[]{"green", "red", "silver", "gold"},
+                new String[]{"darkgreen", "darkred", "darkgray", "goldenrod"},
                 CHART_THICKNESS,
                 2));
         return content;
@@ -144,7 +153,12 @@ public class CucumberResultsOverview extends KECompatibleReport {
     protected void executeOverviewReport(KnownErrorsModel batch, String reportSuffix, boolean toPdf) throws Exception {
         this.validateParameters();
         CucumberFeatureResult[] features = readFileContent(true);
-        
+
+        if (batch != null) {
+            for (CucumberFeatureResult feature : features) {
+                feature.valuateKnownErrors(batch);
+            }
+        }
         File outFile = new File(
                 this.getOutputDirectory() + File.separator + this.getOutputName()
                 + "-" + reportSuffix + ".html");

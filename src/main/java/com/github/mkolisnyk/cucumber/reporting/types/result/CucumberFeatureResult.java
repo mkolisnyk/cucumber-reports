@@ -14,10 +14,8 @@ public class CucumberFeatureResult {
     private CucumberTagResults[] tags;
     private String description;
     private String name;
-    //private String keyword;
     private Long line;
     private CucumberScenarioResult[] elements;
-    //private String uri;
     private float duration;
 
     private String[] includeCoverageTags = {};

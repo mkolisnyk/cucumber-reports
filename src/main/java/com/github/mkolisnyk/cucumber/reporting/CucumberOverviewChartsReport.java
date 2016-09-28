@@ -39,27 +39,27 @@ public class CucumberOverviewChartsReport extends AggregatedReport {
                 pieChart.generatePieChart(
                     CHART_WIDTH, CHART_HEIGHT,
                     statuses[0],
-                    new String[]{"Passed", "Failed", "Undefined"},
-                    new String[]{"green", "red", "silver"},
-                    new String[]{"darkgreen", "darkred", "darkgray"},
+                    new String[]{"Passed", "Failed", "Undefined", "Known"},
+                    new String[]{"green", "red", "silver", "goldenrod"},
+                    new String[]{"darkgreen", "darkred", "darkgray", "darkred"},
                     CHART_THICKNESS,
                     2
                 ),
                 pieChart.generatePieChart(
                     CHART_WIDTH, CHART_HEIGHT,
                     statuses[1],
-                    new String[]{"Passed", "Failed", "Undefined"},
-                    new String[]{"green", "red", "silver"},
-                    new String[]{"darkgreen", "darkred", "darkgray"},
+                    new String[]{"Passed", "Failed", "Undefined", "Known"},
+                    new String[]{"green", "red", "silver", "goldenrod"},
+                    new String[]{"darkgreen", "darkred", "darkgray", "darkred"},
                     CHART_THICKNESS,
                     2
                 ),
                 pieChart.generatePieChart(
                     CHART_WIDTH, CHART_HEIGHT,
                     statuses[2],
-                    new String[]{"Passed", "Failed", "Undefined"},
-                    new String[]{"green", "red", "silver"},
-                    new String[]{"darkgreen", "darkred", "darkgray"},
+                    new String[]{"Passed", "Failed", "Undefined", "Known"},
+                    new String[]{"green", "red", "silver", "goldenrod"},
+                    new String[]{"darkgreen", "darkred", "darkgray", "darkred"},
                     CHART_THICKNESS,
                     2
                 )

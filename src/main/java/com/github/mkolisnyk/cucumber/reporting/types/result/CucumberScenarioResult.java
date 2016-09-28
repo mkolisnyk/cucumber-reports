@@ -162,6 +162,8 @@ public class CucumberScenarioResult {
         valuate();
         if (this.getFailed() > 0) {
             return "failed";
+        } else if (this.getKnown() > 0) {
+            return "known";
         } else if (this.getUndefined() > 0) {
             return "undefined";
         } else if (this.getPassed() > 0) {

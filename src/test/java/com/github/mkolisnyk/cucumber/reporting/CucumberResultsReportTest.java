@@ -19,9 +19,6 @@ public class CucumberResultsReportTest {
         results.execute();
 
         File dump = new File("./target/cucumber-results-feature-overview-dump.xml");
-        //String content = FileUtils.readFileToString(dump);
-        //content = content.replaceAll("\\[]\\[]", "");
-        //FileUtils.writeStringToFile(dump, content);
         int[][] result = JAXB.unmarshal(dump, int[][].class);
         for (int[] row : result) {
             String text = "";

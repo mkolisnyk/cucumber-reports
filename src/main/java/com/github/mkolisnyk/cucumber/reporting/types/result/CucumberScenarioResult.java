@@ -31,6 +31,9 @@ public class CucumberScenarioResult {
     private String[] includeCoverageTags = {};
     private String[] excludeCoverageTags = {};
 
+    public CucumberScenarioResult() {
+    }
+
     @SuppressWarnings("unchecked")
     public CucumberScenarioResult(JsonObject<String, Object> json) {
         this.id = (String) json.get("id");
@@ -87,7 +90,19 @@ public class CucumberScenarioResult {
             }
         }
     }
-
+    private void valuateStepStatus(String status) {
+        if (status.equalsIgnoreCase("passed")) {
+            this.passed++;
+        } else if (status.equalsIgnoreCase("known")) {
+            this.known++;
+        } else if (status.equalsIgnoreCase("failed")) {
+            this.failed++;
+        } else if (status.equalsIgnoreCase("skipped")) {
+            this.skipped++;
+        } else {
+            this.undefined++;
+        }
+    }
     public void valuate() {
         final int nanosecondsInMillisecond = 1000000;
         final float millesecondsInSecond = 1000.f;
@@ -102,17 +117,7 @@ public class CucumberScenarioResult {
         }
         for (CucumberStepResult step : steps) {
             String status = step.getResult().getStatus();
-            if (status.equalsIgnoreCase("passed")) {
-                this.passed++;
-            } else if (status.equalsIgnoreCase("known")) {
-                this.known++;
-            } else if (status.equalsIgnoreCase("failed")) {
-                this.failed++;
-            } else if (status.equalsIgnoreCase("skipped")) {
-                this.skipped++;
-            } else {
-                this.undefined++;
-            }
+            valuateStepStatus(status);
             this.duration += (float) (step.getResult().getDuration() / nanosecondsInMillisecond)
                     / millesecondsInSecond;
         }
@@ -158,21 +163,33 @@ public class CucumberScenarioResult {
         return known;
     }
 
-    public String getStatus() {
-        valuate();
-        if (this.getFailed() > 0) {
-            return "failed";
-        } else if (this.getKnown() > 0) {
-            return "known";
-        } else if (this.getUndefined() > 0) {
-            return "undefined";
-        } else if (this.getPassed() > 0) {
-            return "passed";
-        } else if (this.getSkipped() > 0) {
-            return "skipped";
-        } else {
-            return "undefined";
+    public String getStatus(boolean valuate) {
+        if (valuate) {
+            valuate();
         }
+        String[] statuses = {
+            "failed",
+            "known",
+            "undefined",
+            "skipped",
+            "passed",
+        };
+        for (String status : statuses) {
+            int value = 0;
+            try {
+                value = this.getClass().getDeclaredField(status).getInt(this);
+            } catch (Exception e) {
+                e.printStackTrace();
+                continue;
+            }
+            if (value > 0) {
+                return status;
+            }
+        }
+        return "undefined";
+    }
+    public String getStatus() {
+        return getStatus(true);
     }
 
     /**
@@ -323,5 +340,25 @@ public class CucumberScenarioResult {
     }
     public boolean isSameAs(CucumberScenarioResult another) {
         return another != null && this.getId().equals(another.getId());
+    }
+
+    public void setPassed(int passedValue) {
+        this.passed = passedValue;
+    }
+
+    public void setFailed(int failedValue) {
+        this.failed = failedValue;
+    }
+
+    public void setSkipped(int skippedValue) {
+        this.skipped = skippedValue;
+    }
+
+    public void setUndefined(int undefinedValue) {
+        this.undefined = undefinedValue;
+    }
+
+    public void setKnown(int knownValue) {
+        this.known = knownValue;
     }
 }

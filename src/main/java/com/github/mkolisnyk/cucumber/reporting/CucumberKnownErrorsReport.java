@@ -10,8 +10,7 @@ import org.apache.commons.io.IOUtils;
 import org.apache.commons.lang3.ArrayUtils;
 import org.junit.Assert;
 
-import com.cedarsoftware.util.io.JsonReader;
-import com.github.mkolisnyk.cucumber.reporting.interfaces.ConfigurableReport;
+import com.github.mkolisnyk.cucumber.reporting.interfaces.KECompatibleReport;
 import com.github.mkolisnyk.cucumber.reporting.types.enums.CucumberReportError;
 import com.github.mkolisnyk.cucumber.reporting.types.enums.CucumberReportLink;
 import com.github.mkolisnyk.cucumber.reporting.types.enums.CucumberReportTypes;
@@ -22,7 +21,7 @@ import com.github.mkolisnyk.cucumber.reporting.types.result.CucumberFeatureResul
 import com.github.mkolisnyk.cucumber.reporting.types.result.CucumberScenarioResult;
 import com.github.mkolisnyk.cucumber.runner.runtime.ExtendedRuntimeOptions;
 
-public class CucumberKnownErrorsReport extends ConfigurableReport<KnownErrorsModel> {
+public class CucumberKnownErrorsReport extends KECompatibleReport {
     public CucumberKnownErrorsReport() {
         super();
     }
@@ -87,23 +86,6 @@ public class CucumberKnownErrorsReport extends ConfigurableReport<KnownErrorsMod
         }
     }
 
-    @Override
-    public void execute(File config, boolean toPDF) throws Exception {
-        Assert.assertNotNull(this.constructErrorMessage(CucumberReportError.NO_CONFIG_FILE, ""),
-                config);
-        Assert.assertTrue(
-                this.constructErrorMessage(CucumberReportError.NON_EXISTING_CONFIG_FILE, ""),
-                config.exists());
-        String content = FileUtils.readFileToString(config);
-        KnownErrorsModel model = null;
-        try {
-            model = (KnownErrorsModel) JsonReader.jsonToJava(content);
-        } catch (Throwable e) {
-            Assert.fail(this.constructErrorMessage(CucumberReportError.INVALID_CONFIG_FILE, ""));
-        }
-        this.execute(model, toPDF);
-    }
-
     @Deprecated
     @Override
     public void execute(boolean aggregate, boolean toPDF) throws Exception {
@@ -121,11 +103,5 @@ public class CucumberKnownErrorsReport extends ConfigurableReport<KnownErrorsMod
     public void execute(KnownErrorsModel batch, boolean aggregate, boolean toPDF)
             throws Exception {
         execute(batch, toPDF);
-    }
-
-    @Override
-    public void execute(File config, boolean aggregate, boolean toPDF)
-            throws Exception {
-        execute(config, toPDF);
     }
 }

@@ -18,7 +18,7 @@ public class CucumberResultsReportTest {
         results.setSourceFile("./src/test/resources/cucumber.json");
         results.execute();
 
-        File dump = new File("./target/cucumber-results-feature-overview-dump.xml");
+        /*File dump = new File("./target/cucumber-results-feature-overview-dump.xml");
         int[][] result = JAXB.unmarshal(dump, int[][].class);
         for (int[] row : result) {
             String text = "";
@@ -26,7 +26,7 @@ public class CucumberResultsReportTest {
                 text = text.concat("" + item + ";");
             }
             System.out.println(text);
-        }
+        }*/
     }
 
     @Test

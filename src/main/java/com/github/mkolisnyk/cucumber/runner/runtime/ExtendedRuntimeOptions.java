@@ -1,6 +1,7 @@
 package com.github.mkolisnyk.cucumber.runner.runtime;
 
 import java.lang.reflect.Field;
+import java.util.Arrays;
 
 import org.apache.commons.lang3.ArrayUtils;
 import org.apache.commons.lang3.StringUtils;
@@ -291,8 +292,39 @@ public class ExtendedRuntimeOptions {
     public static ExtendedRuntimeOptions[] init(ExtendedCucumberOptions[] options) throws Exception {
         ExtendedRuntimeOptions[] result = {};
         for (ExtendedCucumberOptions option : options) {
-            result = ArrayUtils.add(result, new ExtendedRuntimeOptions(option));
+            ExtendedRuntimeOptions runtimeOption = new ExtendedRuntimeOptions(option);
+            result = ArrayUtils.add(result, runtimeOption);
         }
         return result;
+    }
+    @Override
+    public String toString() {
+        return "ExtendedRuntimeOptions [isOverviewReport=" + isOverviewReport
+                + ", isOverviewChartsReport=" + isOverviewChartsReport
+                + ", isUsageReport=" + isUsageReport + ", isDetailedReport="
+                + isDetailedReport + ", isDetailedAggregatedReport="
+                + isDetailedAggregatedReport + ", isCoverageReport="
+                + isCoverageReport + ", jsonReportPaths="
+                + Arrays.toString(jsonReportPaths) + ", outputFolder="
+                + outputFolder + ", reportPrefix=" + reportPrefix
+                + ", retryCount=" + retryCount + ", screenShotSize="
+                + screenShotSize + ", toPDF=" + toPDF + ", pdfPageSize="
+                + pdfPageSize + ", jsonUsageReportPaths="
+                + Arrays.toString(jsonUsageReportPaths)
+                + ", screenShotLocation=" + screenShotLocation
+                + ", includeCoverageTags="
+                + Arrays.toString(includeCoverageTags)
+                + ", excludeCoverageTags="
+                + Arrays.toString(excludeCoverageTags) + ", breakdownReport="
+                + breakdownReport + ", breakdownConfig=" + breakdownConfig
+                + ", featureMapReport=" + featureMapReport
+                + ", featureMapConfig=" + featureMapConfig
+                + ", featureOverviewChart=" + featureOverviewChart
+                + ", knownErrorsReport=" + knownErrorsReport
+                + ", knownErrorsConfig=" + knownErrorsConfig
+                + ", consolidatedReport=" + consolidatedReport
+                + ", consolidatedReportConfig=" + consolidatedReportConfig
+                + ", threadsCount=" + threadsCount + ", threadsCountValue="
+                + threadsCountValue + "]";
     }
 }

@@ -34,7 +34,6 @@ public class TestSteps {
     public void i_do_something() throws Throwable {
         System.out.println("" + Thread.currentThread().getId() + "[Step] Doing something...");
         Assert.assertTrue(retry++ > 1);
-        retry = 0;
         System.out.println("" + Thread.currentThread().getId() + "[Step] DONE!!!");
     }
 

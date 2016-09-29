@@ -9,7 +9,6 @@ import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.IOUtils;
 import org.junit.Assert;
 
-import com.github.mkolisnyk.cucumber.reporting.interfaces.AggregatedReport;
 import com.github.mkolisnyk.cucumber.reporting.interfaces.KECompatibleReport;
 import com.github.mkolisnyk.cucumber.reporting.types.enums.CucumberReportError;
 import com.github.mkolisnyk.cucumber.reporting.types.enums.CucumberReportLink;
@@ -38,6 +37,7 @@ public class CucumberResultsOverview extends KECompatibleReport {
 
     @Override
     public int[][] getStatuses(CucumberFeatureResult[] results) {
+        final int kePosition = 3;
         int[][] statuses = {{0, 0, 0, 0}, {0, 0, 0, 0}, {0, 0, 0, 0}};
         for (CucumberFeatureResult result : results) {
             if (result.getStatus().trim().equalsIgnoreCase("passed")) {
@@ -45,7 +45,7 @@ public class CucumberResultsOverview extends KECompatibleReport {
             } else if (result.getStatus().trim().equalsIgnoreCase("failed")) {
                 statuses[0][1]++;
             } else if (result.getStatus().trim().equalsIgnoreCase("known")) {
-                statuses[0][3]++;
+                statuses[0][kePosition]++;
             } else {
                 statuses[0][2]++;
             }
@@ -55,14 +55,14 @@ public class CucumberResultsOverview extends KECompatibleReport {
                 } else if (element.getStatus().trim().equalsIgnoreCase("failed")) {
                     statuses[1][1]++;
                 } else if (element.getStatus().trim().equalsIgnoreCase("known")) {
-                    statuses[1][3]++;
+                    statuses[1][kePosition]++;
                 } else {
                     statuses[1][2]++;
                 }
                 statuses[2][0] += element.getPassed();
                 statuses[2][1] += element.getFailed();
                 statuses[2][2] += element.getSkipped() + element.getUndefined();
-                statuses[2][3] += element.getKnown();
+                statuses[2][kePosition] += element.getKnown();
             }
         }
         return statuses;

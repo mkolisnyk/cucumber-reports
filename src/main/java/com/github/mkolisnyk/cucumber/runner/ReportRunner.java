@@ -39,7 +39,9 @@ public final class ReportRunner {
         CucumberResultsOverview results = new CucumberResultsOverview(extendedOptions);
         try {
             if (extendedOptions.isKnownErrorsReport()) {
-                results.execute(new File(extendedOptions.getKnownErrorsConfig()), extendedOptions.isToPDF());
+                results.execute(new File(extendedOptions.getKnownErrorsConfig()),
+                        extendedOptions.isDetailedAggregatedReport(),
+                        extendedOptions.isToPDF());
             } else {
                 results.execute(extendedOptions.isToPDF());
             }
@@ -132,6 +134,7 @@ public final class ReportRunner {
         CucumberKnownErrorsReport report = new CucumberKnownErrorsReport(extendedOptions);
         try {
             report.execute(new File(extendedOptions.getKnownErrorsConfig()),
+                    true,
                     extendedOptions.isToPDF());
         } catch (Throwable e) {
             e.printStackTrace();
@@ -168,11 +171,11 @@ public final class ReportRunner {
     public static void run(ExtendedRuntimeOptions extendedOption) {
         ReportRunner runner = new ReportRunner();
         runner.runUsageReport(extendedOption);
-        runner.runOverviewReport(extendedOption); // TODO
-        runner.runOverviewChartsReport(extendedOption); // TODO
+        runner.runOverviewReport(extendedOption);
+        runner.runOverviewChartsReport(extendedOption);
         runner.runFeatureOverviewChartReport(extendedOption);
-        runner.runDetailedReport(extendedOption); // TODO
-        runner.runDetailedAggregatedReport(extendedOption); // TODO
+        runner.runDetailedReport(extendedOption);
+        runner.runDetailedAggregatedReport(extendedOption);
         runner.runCoverageReport(extendedOption);
         runner.runBreakdownReport(extendedOption);
         runner.runFeatureMapReport(extendedOption);

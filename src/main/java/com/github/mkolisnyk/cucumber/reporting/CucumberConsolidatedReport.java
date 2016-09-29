@@ -123,12 +123,7 @@ public class CucumberConsolidatedReport extends ConfigurableReport<ConsolidatedR
             executeConsolidatedReport(model, toPDF);
         }
     }
-    @Override
-    public void execute(File config, boolean toPDF) throws Exception {
-        ConsolidatedReportBatch model = (ConsolidatedReportBatch) JsonReader.jsonToJava(
-                FileUtils.readFileToString(config));
-        this.execute(model, toPDF);
-    }
+
     @Override
     public void execute(boolean aggregate, boolean toPDF) throws Exception {
     }

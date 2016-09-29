@@ -164,14 +164,7 @@ public class CucumberRetrospectiveOverviewReport extends ConfigurableReport<Retr
     public CucumberReportLink getReportDocLink() {
         return CucumberReportLink.RETROSPECTIVE_OVERVIEW_URL;
     }
-    @Override
-    public void execute(RetrospectiveBatch batch, boolean toPDF) {
-        // TODO Auto-generated method stub
-    }
-    @Override
-    public void execute(File config, boolean toPDF) {
-        // TODO Auto-generated method stub
-    }
+
     @Override
     public void execute(boolean aggregate, boolean toPDF) throws Exception {
         // TODO Auto-generated method stub

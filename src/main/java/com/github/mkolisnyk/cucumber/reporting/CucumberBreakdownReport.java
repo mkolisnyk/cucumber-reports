@@ -13,7 +13,6 @@ import org.apache.commons.lang3.ArrayUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.junit.Assert;
 
-import com.cedarsoftware.util.io.JsonReader;
 import com.github.mkolisnyk.cucumber.reporting.interfaces.ConfigurableReport;
 import com.github.mkolisnyk.cucumber.reporting.types.breakdown.BreakdownCellDisplayType;
 import com.github.mkolisnyk.cucumber.reporting.types.breakdown.BreakdownReportInfo;
@@ -99,19 +98,7 @@ public class CucumberBreakdownReport extends ConfigurableReport<BreakdownReportM
             this.executeReport(info, info.getTable(), toPDF);
         }
     }
-    @Override
-    public void execute(File config, boolean toPDF) throws Exception {
-        Assert.assertTrue(this.constructErrorMessage(CucumberReportError.NON_EXISTING_CONFIG_FILE, ""),
-                config.exists());
-        String content = FileUtils.readFileToString(config);
-        BreakdownReportModel model = null;
-        try {
-            model = (BreakdownReportModel) JsonReader.jsonToJava(content);
-        } catch (Throwable e) {
-            Assert.fail(this.constructErrorMessage(CucumberReportError.INVALID_CONFIG_FILE, ""));
-        }
-        this.execute(model, toPDF);
-    }
+
     @Override
     public void execute(boolean aggregate, boolean toPDF) throws Exception {
     }

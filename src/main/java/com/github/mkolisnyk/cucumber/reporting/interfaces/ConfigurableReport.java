@@ -1,14 +1,11 @@
 package com.github.mkolisnyk.cucumber.reporting.interfaces;
 
 import java.io.File;
-import java.lang.reflect.ParameterizedType;
-import java.lang.reflect.Type;
 
 import org.apache.commons.io.FileUtils;
 import org.junit.Assert;
 
 import com.cedarsoftware.util.io.JsonReader;
-import com.github.mkolisnyk.cucumber.reporting.types.breakdown.BreakdownReportModel;
 import com.github.mkolisnyk.cucumber.reporting.types.enums.CucumberReportError;
 import com.github.mkolisnyk.cucumber.runner.runtime.ExtendedRuntimeOptions;
 
@@ -32,7 +29,7 @@ public abstract class ConfigurableReport<Model> extends AggregatedReport {
         Model model = null;
         try {
             model = (Model) JsonReader.jsonToJava(content);
-            Assert.assertNotEquals(Object[].class, model.getClass().getCanonicalName());
+            Assert.assertNotEquals("java.lang.Object[]", model.getClass().getCanonicalName());
         } catch (Throwable e) {
             Assert.fail(this.constructErrorMessage(CucumberReportError.INVALID_CONFIG_FILE, ""));
         }

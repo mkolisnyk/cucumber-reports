@@ -4,7 +4,7 @@ Feature: Tests with backgrounds
     Given I am in the system
     When I do nothing
 
-  @passed_background
+  @passed_background @consistent
   Scenario: Always passed test
     When I do nothing
     Then I should see nothing

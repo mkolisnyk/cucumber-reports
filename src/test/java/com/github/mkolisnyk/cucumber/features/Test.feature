@@ -33,7 +33,6 @@ Feature: Sample re-run feature
 
   Scenario: Some undefined scenario
 
-  @consistent
   Scenario: Some scenario with undefined step
     Given I am in the system
     When I do nothing

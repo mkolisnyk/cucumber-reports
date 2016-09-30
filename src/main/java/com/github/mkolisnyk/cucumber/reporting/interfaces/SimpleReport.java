@@ -9,8 +9,6 @@ public abstract class SimpleReport extends CucumberResultsCommon {
     public SimpleReport(ExtendedRuntimeOptions extendedOptions) {
         super(extendedOptions);
     }
+    public abstract void execute() throws Exception;
     public abstract void execute(boolean toPDF) throws Exception;
-    public void execute() throws Exception {
-        execute(false);
-    }
 }

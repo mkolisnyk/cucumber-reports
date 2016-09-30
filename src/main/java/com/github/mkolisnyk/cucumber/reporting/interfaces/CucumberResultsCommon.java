@@ -17,7 +17,7 @@ import org.apache.batik.transcoder.TranscoderInput;
 import org.apache.batik.transcoder.TranscoderOutput;
 import org.apache.batik.transcoder.image.PNGTranscoder;
 import org.apache.commons.io.FileUtils;
-import org.apache.commons.lang.ArrayUtils;
+//import org.apache.commons.lang.ArrayUtils;
 import org.xhtmlrenderer.pdf.ITextRenderer;
 
 import com.cedarsoftware.util.io.JsonObject;
@@ -142,7 +142,7 @@ public abstract class CucumberResultsCommon {
         return sources;
     }
 
-    @SuppressWarnings("unchecked")
+    /*@SuppressWarnings("unchecked")
     public CucumberFeatureResult[] readFileContent() throws Exception {
         return readFileContent(this.getSourceFiles());
     }
@@ -153,7 +153,7 @@ public abstract class CucumberResultsCommon {
             output = (CucumberFeatureResult[]) ArrayUtils.addAll(output, readFileContent(sourceFile));
         }
         return output;
-    }
+    }*/
 
     public void dumpOverviewStats(File outFile, CucumberFeatureResult[] results) throws IOException {
         int[][] stats = getStatuses(results);

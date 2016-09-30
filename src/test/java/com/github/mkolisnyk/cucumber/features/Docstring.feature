@@ -1,4 +1,4 @@
-@docstring @passed
+@docstring @passed @consistent
 Feature: Tests with docstrings
 
   Scenario: Sample

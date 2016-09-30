@@ -5,7 +5,6 @@ import org.junit.runner.RunWith;
 
 import cucumber.api.CucumberOptions;
 
-@Ignore
 @RunWith(ExtendedParallelCucumber.class)
 @ExtendedCucumberOptions(
     reportPrefix = "cucumber-parallel",
@@ -39,7 +38,7 @@ import cucumber.api.CucumberOptions;
         },
         features = { "./src/test/java/com/github/mkolisnyk/cucumber/features" },
         glue = { "com/github/mkolisnyk/cucumber/steps" },
-        tags = { "@passed" })
+        tags = { "@consistent" })
 public class SampleParallelTest {
 
 }

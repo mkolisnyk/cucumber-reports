@@ -5,7 +5,6 @@ import org.junit.Test;
 import org.junit.runner.notification.RunNotifier;
 
 import cucumber.api.CucumberOptions;
-import cucumber.runtime.model.CucumberScenario;
 
 public class RetryAcceptanceTest {
 

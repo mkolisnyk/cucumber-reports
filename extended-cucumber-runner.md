@@ -90,20 +90,20 @@ public class SampleCucumberTest extends ExtendedTestNGRunner {
 | Option | Type | Description | Default Value | Applied to |
 | ------ | ---- | ----------- | ------------- | ---------- |
 | **jsonReport**               | **String** | | | |
-| **jsonUsageReport**          | **String** | | | "cucumber-usage.json" |
-| **outputFolder**             | **String** | | | "." |
-| **reportPrefix**             | **String** | | | "cucumber-results" |
-| **usageReport**              | **boolean** | | | false |
-| **overviewReport**           | **boolean** | | | false |
-| **coverageReport**           | **boolean** | | | false |
-| **detailedReport**           | **boolean** | | | false |
-| **detailedAggregatedReport** | **boolean** | | | false |
-| **toPDF**                    | **boolean** | | | false |
-| **screenShotSize**           | **String** | | | "" |
-| **screenShotLocation**       | **String** | | | "" |
-| **includeCoverageTags**      | **String[]** | | | { } |
-| **excludeCoverageTags**      | **String[]** | | | { } |
-| **retryCount**               | **int** | | | 0 |
+| **jsonUsageReport**          | **String** | | "cucumber-usage.json" | |
+| **outputFolder**             | **String** | | "." | |
+| **reportPrefix**             | **String** | | "cucumber-results" | |
+| **usageReport**              | **boolean** | | false | |
+| **overviewReport**           | **boolean** | | false | |
+| **coverageReport**           | **boolean** | | false | |
+| **detailedReport**           | **boolean** | | false | |
+| **detailedAggregatedReport** | **boolean** | | false | |
+| **toPDF**                    | **boolean** | | false | |
+| **screenShotSize**           | **String** | | "" | |
+| **screenShotLocation**       | **String** | | "" | |
+| **includeCoverageTags**      | **String[]** | | { } | |
+| **excludeCoverageTags**      | **String[]** | | { } | |
+| **retryCount**               | **int** | | 0 | |
 
 # Parameterizing Values
 

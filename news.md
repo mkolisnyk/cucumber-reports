@@ -2,6 +2,13 @@
 title: Cucumber Reports News
 ---
 
+## 12.10.2016 1.0.7 Version Release
+
+* [#85](https://github.com/mkolisnyk/cucumber-reports/issues/85) Enhancement: scenario.write does not work
+* [#84](https://github.com/mkolisnyk/cucumber-reports/issues/84) Enhancement: Getting a File Extension Error
+* [#86](https://github.com/mkolisnyk/cucumber-reports/issues/86) Enhancement: Combine results report with known error report
+* [#87](https://github.com/mkolisnyk/cucumber-reports/issues/87) Enhancement: Remove deprecated report generation methods
+
 ## 18.07.2016 1.0.6 Version Release
 
 * [#83](https://github.com/mkolisnyk/cucumber-reports/issues/83): Bug fix: Error report @ExtendedCucumberOptions

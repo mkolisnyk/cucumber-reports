@@ -24,6 +24,7 @@ import cucumber.runtime.io.MultiLoader;
 import cucumber.runtime.io.ResourceLoader;
 import cucumber.runtime.io.ResourceLoaderClassFinder;
 import cucumber.runtime.junit.Assertions;
+import cucumber.runtime.junit.JUnitOptions;
 import cucumber.runtime.junit.JUnitReporter;
 import cucumber.runtime.model.CucumberFeature;
 
@@ -53,12 +54,13 @@ public class ExtendedCucumber extends ParentRunner<ExtendedFeatureRunner> {
             retryCount = Math.max(retryCount, option.getRetryCount());
             threadsCount = Math.max(threadsCount, option.getThreadsCount());
         }
-
+        final JUnitOptions junitOptions = new JUnitOptions(runtimeOptions.getJunitOptions());
         final List<CucumberFeature> cucumberFeatures = runtimeOptions.cucumberFeatures(resourceLoader);
         jUnitReporter = new JUnitReporter(
                 runtimeOptions.reporter(classLoader),
                 runtimeOptions.formatter(classLoader),
-                runtimeOptions.isStrict());
+                runtimeOptions.isStrict(),
+                junitOptions);
         Method[] retryMethods = this.getPredefinedMethods(RetryAcceptance.class);
         addChildren(cucumberFeatures, retryMethods);
     }
@@ -82,11 +84,13 @@ public class ExtendedCucumber extends ParentRunner<ExtendedFeatureRunner> {
             threadsCount = Math.max(threadsCount, option.getThreadsCount());
         }
 
+        final JUnitOptions junitOptions = new JUnitOptions(runtimeOptions.getJunitOptions());
         final List<CucumberFeature> cucumberFeatures = runtimeOptions.cucumberFeatures(resourceLoader);
         jUnitReporter = new JUnitReporter(
                 runtimeOptions.reporter(classLoader),
                 runtimeOptions.formatter(classLoader),
-                runtimeOptions.isStrict());
+                runtimeOptions.isStrict(),
+                junitOptions);
         Method[] retryMethods = this.getPredefinedMethods(RetryAcceptance.class);
         addChildren(cucumberFeatures, retryMethods);
     }

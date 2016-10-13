@@ -1,16 +1,9 @@
 language: java
 jdk:
   - oraclejdk8
-before_install:
-  - export MAVEN_SKIP_RC=true
-  - mvn -Xmx32M -v | grep 1.7.0; if [ $? = 0 ]; then export MAVEN_OPTS="-XX:MaxPermSize=240M"; else export MAVEN_OPTS="-XX:MaxMetaspaceSize=240M -XX:CompressedClassSpaceSize=240M"; fi
-  - export MAVEN_OPTS="-Xmx2048M $MAVEN_OPTS"
 install: mvn clean verify -DskipTests=true -Dfail.coverage=false
 notifications:
   email: false
-env:
-  global:
-    - JAVA_OPTS="-Xmx2048M"
 cache:
   directories:
     - $HOME/.m2

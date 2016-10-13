@@ -29,7 +29,7 @@ import cucumber.runtime.junit.JUnitReporter;
 import cucumber.runtime.model.CucumberFeature;
 
 public class ExtendedCucumber extends ParentRunner<ExtendedFeatureRunner> {
-    private final JUnitReporter jUnitReporter;
+    private JUnitReporter jUnitReporter;
     private final List<ExtendedFeatureRunner> children = new ArrayList<ExtendedFeatureRunner>();
     private final Runtime runtime;
     private final ExtendedRuntimeOptions[] extendedOptions;
@@ -50,19 +50,7 @@ public class ExtendedCucumber extends ParentRunner<ExtendedFeatureRunner> {
         ResourceLoader resourceLoader = new MultiLoader(classLoader);
         runtime = createRuntime(resourceLoader, classLoader, runtimeOptions);
         extendedOptions = ExtendedRuntimeOptions.init(clazz);
-        for (ExtendedRuntimeOptions option : extendedOptions) {
-            retryCount = Math.max(retryCount, option.getRetryCount());
-            threadsCount = Math.max(threadsCount, option.getThreadsCount());
-        }
-        final JUnitOptions junitOptions = new JUnitOptions(runtimeOptions.getJunitOptions());
-        final List<CucumberFeature> cucumberFeatures = runtimeOptions.cucumberFeatures(resourceLoader);
-        jUnitReporter = new JUnitReporter(
-                runtimeOptions.reporter(classLoader),
-                runtimeOptions.formatter(classLoader),
-                runtimeOptions.isStrict(),
-                junitOptions);
-        Method[] retryMethods = this.getPredefinedMethods(RetryAcceptance.class);
-        addChildren(cucumberFeatures, retryMethods);
+        init(runtimeOptions, classLoader, resourceLoader);
     }
     public ExtendedCucumber(
             Class clazz, CucumberOptions baseOptions,
@@ -77,8 +65,12 @@ public class ExtendedCucumber extends ParentRunner<ExtendedFeatureRunner> {
 
         ResourceLoader resourceLoader = new MultiLoader(classLoader);
         runtime = createRuntime(resourceLoader, classLoader, runtimeOptions);
-
         extendedOptions = ExtendedRuntimeOptions.init(extendedOptionsValue);
+        init(runtimeOptions, classLoader, resourceLoader);
+    }
+    private void init(RuntimeOptions runtimeOptions,
+            ClassLoader classLoader, ResourceLoader resourceLoader) throws Exception {
+
         for (ExtendedRuntimeOptions option : extendedOptions) {
             retryCount = Math.max(retryCount, option.getRetryCount());
             threadsCount = Math.max(threadsCount, option.getThreadsCount());

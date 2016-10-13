@@ -247,6 +247,35 @@
 					<suppressionsLocation>./checkstyle-suppressions.xml</suppressionsLocation>
 				</configuration>
 			</plugin>
+			<plugin>
+			    <groupId>com.github.danielflower.mavenplugins</groupId>
+			    <artifactId>gitlog-maven-plugin</artifactId>
+			    <version>1.13.3</version>
+			    <configuration>
+					<reportTitle>Changelog for ${project.name} version ${project.version}</reportTitle>
+					<verbose>true</verbose>
+					<outputDirectory>target/site/changelog</outputDirectory>
+					<generatePlainTextChangeLog>true</generatePlainTextChangeLog>
+					<plainTextChangeLogFilename>changelog-${project.version}.txt</plainTextChangeLogFilename>
+					<generateSimpleHTMLChangeLog>true</generateSimpleHTMLChangeLog>
+					<markdownChangeLogFilename>changelog-${project.version}.md</markdownChangeLogFilename>
+					<generateMarkdownChangeLog>true</generateMarkdownChangeLog>
+					<simpleHTMLChangeLogFilename>changelog.html</simpleHTMLChangeLogFilename>
+					<generateHTMLTableOnlyChangeLog>true</generateHTMLTableOnlyChangeLog>
+					<htmlTableOnlyChangeLogFilename>changelog-tableonly.html</htmlTableOnlyChangeLogFilename>
+					<issueManagementSystem>GitHub issue tracker</issueManagementSystem>
+					<issueManagementUrl>https://github.com/${scm.repository.owner}/${scm.repository.name}/issues</issueManagementUrl>
+					<fullGitMessage>true</fullGitMessage>
+					<dateFormat>yyyy-MM-dd HH:mm:ss Z</dateFormat>
+				</configuration>
+				<executions>
+					<execution>
+						<goals>
+							<goal>generate</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
 		</plugins>
 	</build>
 	<dependencies>

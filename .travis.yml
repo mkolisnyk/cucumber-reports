@@ -1,0 +1,4 @@
+language: java
+install: mvn clean verify
+notifications:
+  email: false

@@ -1,7 +1,8 @@
 language: java
 jdk:
   - oraclejdk8
-install: mvn clean verify -DskipTests=true -Dfail.coverage=false
+install: true
+script: mvn clean verify -DskipTests=true -Dfail.coverage=false
 notifications:
   email: false
 cache:

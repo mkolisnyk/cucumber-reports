@@ -304,7 +304,7 @@
 		<dependency>
 			<groupId>com.itextpdf</groupId>
 			<artifactId>itextpdf</artifactId>
-			<version>5.5.8</version>
+			<version>5.5.10</version>
 		</dependency>
 		<dependency>
 			<groupId>com.cedarsoftware</groupId>
@@ -341,7 +341,7 @@
 		<dependency>
 			<groupId>org.xhtmlrenderer</groupId>
 			<artifactId>flying-saucer-pdf</artifactId>
-			<version>9.0.8</version>
+			<version>9.0.9</version>
 			<exclusions>
 				<exclusion>
 					<groupId>org.bouncycastle</groupId>
@@ -366,12 +366,12 @@
 		<dependency>
 		    <groupId>org.javassist</groupId>
 		    <artifactId>javassist</artifactId>
-		    <version>3.20.0-GA</version>
+		    <version>3.22.0-CR1</version>
 		</dependency>
 		<dependency>
 			<groupId>joda-time</groupId>
 			<artifactId>joda-time</artifactId>
-			<version>2.9.1</version>
+			<version>2.9.4</version>
 		</dependency>
 	</dependencies>
 </project>

@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/mkolisnyk/cucumber-reports.svg?branch=master)](https://travis-ci.org/mkolisnyk/cucumber-reports)
+
 Cucumber Reporting library is the set of Cucumber extensions to produce additional HTML reports and extend existing Cucumber runner functionality (currently based on JUnit).
 
 **The Latest Version:** [![Cucumber Report](https://maven-badges.herokuapp.com/maven-central/com.github.mkolisnyk/cucumber-reports/badge.svg?style=flat)](http://mvnrepository.com/artifact/com.github.mkolisnyk/cucumber-reports)

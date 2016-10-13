@@ -215,7 +215,8 @@ public class CucumberBreakdownReport extends ConfigurableReport<BreakdownReportM
             return String.format(Locale.US,
                     "<td bgcolor=\"silver\"><center><b>N/A</b></center></td>");
         }
-        CellDrawer drawer = (CellDrawer) (drawCellMap.get(type).getConstructor(this.getClass()).newInstance(this));
+        CellDrawer drawer = (CellDrawer) (drawCellMap.get(type)
+                .getConstructor(this.getClass()).newInstance(this));
         return drawer.drawCell(stats);
     }
     private interface CellDrawer {

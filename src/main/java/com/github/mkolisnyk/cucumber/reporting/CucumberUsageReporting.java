@@ -504,8 +504,7 @@ public class CucumberUsageReporting {
                     String.format(Locale.US,
                             "<line x1=\"%d\" y1=\"%d\" x2=\"%d\""
                             + " y2=\"%d\" style=\"stroke:black;stroke-width:1\" />"
-                            + "<text x=\"%d\" y=\"%d\" font-size=\"8\">%.2f</text>"
-                            ,
+                            + "<text x=\"%d\" y=\"%d\" font-size=\"8\">%.2f</text>",
                         startX + i * stepX, bottomY,
                         startX + i * stepX, bottomY + 2,
                         startX + i * stepX + 2, bottomY + shiftY, this.getMinDuration(source) + (double) i * step)
@@ -515,8 +514,7 @@ public class CucumberUsageReporting {
                 String.format(Locale.US,
                         "<line x1=\"%d\" y1=\"%d\" x2=\"%d\""
                         + " y2=\"%d\" style=\"stroke:black;stroke-width:1\" />"
-                        + "<text x=\"%d\" y=\"%d\" font-size=\"8\">%.2f</text>"
-                        ,
+                        + "<text x=\"%d\" y=\"%d\" font-size=\"8\">%.2f</text>",
                     endX, bottomY,
                     endX, bottomY + 2,
                     endX + 2, bottomY + shiftY, this.getMaxDuration(source))

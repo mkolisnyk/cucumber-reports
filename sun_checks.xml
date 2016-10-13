@@ -40,7 +40,7 @@
     <module name="WhitespaceAfter"/>
     <module name="WhitespaceAround"/>
     <module name="ModifierOrder"/>
-    <module name="RedundantModifier"/>
+    <!-- <module name="RedundantModifier"/>-->
     <module name="AvoidNestedBlocks"/>
     <module name="EmptyBlock"/>
     <module name="LeftCurly"/>
@@ -54,7 +54,7 @@
     <module name="InnerAssignment"/>
     <module name="MagicNumber"/>
     <module name="MissingSwitchDefault"/>
-    <module name="RedundantThrows"/>
+    <!-- <module name="RedundantThrows"/> -->
     <module name="SimplifyBooleanExpression"/>
     <module name="SimplifyBooleanReturn"/>
     <module name="FinalClass"/>

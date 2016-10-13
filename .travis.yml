@@ -4,3 +4,6 @@ jdk:
 install: mvn clean verify
 notifications:
   email: false
+env:
+  global:
+    - JAVA_OPTS="-Xmx1024M"

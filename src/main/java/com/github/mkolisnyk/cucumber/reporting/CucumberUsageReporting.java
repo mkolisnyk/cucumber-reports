@@ -650,8 +650,8 @@ public class CucumberUsageReporting {
 
         fis = new FileInputStream(file);
         jr = new JsonReader(fis, true);
-        JsonObject<String, Object> source = (JsonObject<String, Object>) jr.readObject();
-        Object[] objs = (Object[]) source.get("@items");
+        //JsonObject<String, Object> source = (JsonObject<String, Object>) jr.readObject();
+        Object[] objs = (Object[]) jr.readObject();
 
         CucumberStepSource[] sources = new CucumberStepSource[objs.length];
         for (int i = 0; i < objs.length; i++) {

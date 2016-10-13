@@ -43,37 +43,29 @@ public class CucumberScenarioResult {
         this.line = (Long) json.get("line");
         this.type = (String) json.get("type");
         if (json.containsKey("before")) {
-            Object[] objs = (Object[]) ((JsonObject<String, Object>) json
-                    .get("before")).get("@items");
+            Object[] objs = (Object[]) json.get("before");
             for (int i = 0; i < objs.length; i++) {
                 this.before = new CucumberBeforeAfterResult(
                         (JsonObject<String, Object>) objs[i]);
             }
         }
         if (json.containsKey("after")) {
-            Object[] objs = (Object[]) ((JsonObject<String, Object>) json
-                    .get("after")).get("@items");
+            Object[] objs = (Object[]) json.get("after");
             for (int i = 0; i < objs.length; i++) {
                 this.after = new CucumberBeforeAfterResult(
                         (JsonObject<String, Object>) objs[i]);
             }
         }
         if (json.containsKey("steps")) {
-            Object[] objs = (Object[]) ((JsonObject<String, Object>) json
-                    .get("steps")).get("@items");
+            Object[] objs = (Object[]) json.get("steps");
             this.steps = new CucumberStepResult[objs.length];
             for (int i = 0; i < objs.length; i++) {
                 this.steps[i] = new CucumberStepResult(
                         (JsonObject<String, Object>) objs[i]);
             }
         }
-        JsonObject<String, Object> tagEntry = (JsonObject<String, Object>) json
-                .get("tags");
         Object[] objs = {};
-        if (tagEntry != null) {
-            objs = (Object[]) ((JsonObject<String, Object>) json.get("tags"))
-                    .get("@items");
-        }
+        objs = (Object[]) json.getOrDefault("tags", new Object[] {});
         this.tags = new CucumberTagResults[objs.length];
         for (int i = 0; i < objs.length; i++) {
             this.tags[i] = new CucumberTagResults(

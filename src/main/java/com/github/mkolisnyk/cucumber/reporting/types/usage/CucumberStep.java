@@ -27,7 +27,7 @@ public class CucumberStep {
         this.name = (String) json.get("name");
         this.aggregatedDurations = new CucumberAggregatedDuration(
                 (JsonObject<String, Object>) json.get("aggregatedDurations"));
-        Object[] objs = (Object[]) ((JsonObject<String, Object>) json.get("durations")).get("@items");
+        Object[] objs = (Object[]) json.get("durations");
         this.durations = new CucumberStepDuration[objs.length];
 
         for (int i = 0; i < objs.length; i++) {

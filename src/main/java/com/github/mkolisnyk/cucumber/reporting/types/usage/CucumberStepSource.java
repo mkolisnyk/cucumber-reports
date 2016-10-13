@@ -24,7 +24,7 @@ public class CucumberStepSource {
     @SuppressWarnings("unchecked")
     public CucumberStepSource(JsonObject<String, Object> json) {
         this.source = (String) json.get("source");
-        Object[] objs = (Object[]) ((JsonObject<String, Object>) json.get("steps")).get("@items");
+        Object[] objs = (Object[]) json.get("steps");
         this.steps = new CucumberStep[objs.length];
         for (int i = 0; i < objs.length; i++) {
             this.steps[i] = new CucumberStep((JsonObject<String, Object>) objs[i]);

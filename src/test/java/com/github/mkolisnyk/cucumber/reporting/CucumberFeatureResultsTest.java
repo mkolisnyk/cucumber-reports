@@ -63,8 +63,7 @@ public class CucumberFeatureResultsTest {
     @Test
     public void testValuate() throws IOException {
         JsonReader jr = new JsonReader(IOUtils.toInputStream(json, "UTF-8"), true);
-        JsonObject<String, Object> source = (JsonObject<String, Object>) jr.readObject();
-        Object[] objs = (Object[]) source.get("@items");
+        Object[] objs = (Object[]) jr.readObject();
 
         CucumberFeatureResult[] features = new CucumberFeatureResult[objs.length];
         for (int i = 0; i < objs.length; i++) {

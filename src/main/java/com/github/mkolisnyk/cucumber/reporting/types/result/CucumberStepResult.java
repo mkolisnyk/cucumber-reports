@@ -23,28 +23,24 @@ public class CucumberStepResult {
         this.result = new CucumberResult(
                 (JsonObject<String, Object>) json.get("result"));
         if (json.containsKey("embeddings")) {
-            Object[] objs = (Object[]) ((JsonObject<String, Object>) json
-                    .get("embeddings")).get("@items");
+            Object[] objs = (Object[]) json.get("embeddings");
             this.embeddings = new CucumberEmbedding[objs.length];
             for (int i = 0; i < objs.length; i++) {
                 this.embeddings[i] = new CucumberEmbedding((JsonObject<String, Object>) objs[i]);
             }
         }
         if (json.containsKey("output")) {
-            Object[] objs = (Object[]) ((JsonObject<String, Object>) json
-                    .get("output")).get("@items");
+            Object[] objs = (Object[]) json.get("output");
             this.output = new String[objs.length];
             for (int i = 0; i < objs.length; i++) {
                 this.output[i] = (String) objs[i];
             }
         }
         if (json.containsKey("rows")) {
-            Object[] objs = (Object[]) ((JsonObject<String, Object>) json
-                    .get("rows")).get("@items");
+            Object[] objs = (Object[]) json.get("rows");
             this.rows = new String[objs.length][];
             for (int i = 0; i < objs.length; i++) {
-                Object[] row = (Object[]) ((JsonObject<String, Object>)
-                        ((LinkedHashMap<String, Object>) objs[i]).get("cells")).get("@items");
+                Object[] row = (Object[]) ((LinkedHashMap<String, Object>) objs[i]).get("cells");
                 this.rows[i] = new String[row.length];
                 for (int j = 0; j < row.length; j++) {
                     this.rows[i][j] = (String) row[j];

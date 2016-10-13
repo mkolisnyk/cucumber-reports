@@ -7,13 +7,8 @@ public final class JsonUtils {
     private JsonUtils() {
     }
     private CucumberTagResults[] getCucumberTags(JsonObject<String, Object> json) {
-        JsonObject<String, Object> tagEntry = (JsonObject<String, Object>) json
-                .get("tags");
         Object[] objs = {};
-        if (tagEntry != null) {
-            objs = (Object[]) ((JsonObject<String, Object>) json.get("tags"))
-                    .get("@items");
-        }
+        objs = (Object[]) json.getOrDefault("tags", new Object[] {});
         CucumberTagResults[] tags = new CucumberTagResults[objs.length];
         for (int i = 0; i < objs.length; i++) {
             tags[i] = new CucumberTagResults(

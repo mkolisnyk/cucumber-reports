@@ -31,8 +31,7 @@ public class CucumberFeatureResult {
         this.line = (Long) json.get("line");
         Object[] objs = {};
         if (json.get("elements") != null) {
-            objs = (Object[]) ((JsonObject<String, Object>) json.get("elements"))
-                .get("@items");
+            objs = (Object[]) json.get("elements");
         }
         this.elements = new CucumberScenarioResult[objs.length];
         for (int i = 0; i < objs.length; i++) {

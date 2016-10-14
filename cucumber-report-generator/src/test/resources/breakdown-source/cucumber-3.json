@@ -1,0 +1,6565 @@
+[
+  {
+    "line": 1,
+    "elements": [
+      {
+        "before": [
+          {
+            "result": {
+              "duration": 22476718517,
+              "status": "passed"
+            },
+            "match": {
+              "location": "Hooks.setUp(Scenario)"
+            }
+          }
+        ],
+        "line": 75,
+        "name": "Book the kiosk ticket through all available entry points using Payment Cards",
+        "description": "Entry points : 923,924,921",
+        "id": "kiosk-booking-for-registered-user;book-the-kiosk-ticket-through-all-available-entry-points-using-payment-cards;;2",
+        "after": [
+          {
+            "result": {
+              "duration": 3391034037,
+              "status": "passed"
+            },
+            "match": {
+              "location": "Hooks.tearDown(Scenario)"
+            }
+          }
+        ],
+        "type": "scenario",
+        "keyword": "Scenario Outline",
+        "steps": [
+          {
+            "result": {
+              "duration": 39661165757,
+              "status": "passed"
+            },
+            "line": 7,
+            "name": "I am logged into the system",
+            "match": {
+              "location": "LoginActions.openHomePageLogged()"
+            },
+            "keyword": "Given "
+          },
+          {
+            "result": {
+              "duration": 11734432639,
+              "status": "passed"
+            },
+            "line": 8,
+            "name": "I am on the \"Available Cards\" page",
+            "match": {
+              "arguments": [
+                {
+                  "val": "Available Cards",
+                  "offset": 13
+                }
+              ],
+              "location": "NavigationActions.navigateToPage(String)"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 14153907548,
+              "status": "passed"
+            },
+            "line": 9,
+            "name": "I have no payment cards stored",
+            "match": {
+              "location": "CardManipulationActions.removeAllCards()"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 9676336096,
+              "status": "passed"
+            },
+            "line": 10,
+            "name": "I go to the \"Journey Search\" screen",
+            "match": {
+              "arguments": [
+                {
+                  "val": "Journey Search",
+                  "offset": 13
+                }
+              ],
+              "location": "NavigationActions.navigateToPage(String)"
+            },
+            "keyword": "When "
+          },
+          {
+            "result": {
+              "duration": 61809484947,
+              "status": "passed"
+            },
+            "line": 11,
+            "name": "search for journey using the following criteria:",
+            "match": {
+              "location": "JourneySearchActions.searchJourneyByCriteria(DataTable)"
+            },
+            "matchedColumns": [
+              3,
+              4,
+              7,
+              8,
+              9,
+              12,
+              13,
+              14
+            ],
+            "rows": [
+              {
+                "cells": [
+                  "From",
+                  "To",
+                  "Via",
+                  "Type",
+                  "Out Date",
+                  "Return Date",
+                  "Adults",
+                  "Railcards"
+                ],
+                "line": 12
+              },
+              {
+                "cells": [
+                  "CBY",
+                  "EVE",
+                  "",
+                  "Single",
+                  "+1 hours",
+                  "",
+                  "1",
+                  "Cotswold Line Railcard"
+                ],
+                "line": 13
+              }
+            ],
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 3922845388,
+              "status": "passed"
+            },
+            "line": 14,
+            "name": "accept the alert message",
+            "match": {
+              "location": "PageActions.acceptMessage()"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 9912724456,
+              "status": "passed"
+            },
+            "line": 15,
+            "name": "I should see the \"Out Search Results\" screen",
+            "match": {
+              "arguments": [
+                {
+                  "val": "Out Search Results",
+                  "offset": 18
+                }
+              ],
+              "location": "PageActions.shouldSeeTheScreen(String)"
+            },
+            "keyword": "Then "
+          },
+          {
+            "result": {
+              "duration": 1031917413,
+              "status": "passed"
+            },
+            "line": 16,
+            "name": "the following labels are shown:",
+            "match": {
+              "location": "LabelActions.labelsAreShown(String\u003e)"
+            },
+            "matchedColumns": [
+              5,
+              6
+            ],
+            "rows": [
+              {
+                "cells": [
+                  "Charlbury"
+                ],
+                "line": 17
+              },
+              {
+                "cells": [
+                  "Evesham"
+                ],
+                "line": 18
+              }
+            ],
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 148806284,
+              "status": "passed"
+            },
+            "line": 19,
+            "name": "the \"Cotswold Line Railcard savings applied\" text is shown",
+            "match": {
+              "arguments": [
+                {
+                  "val": "Cotswold Line Railcard savings applied",
+                  "offset": 5
+                }
+              ],
+              "location": "LabelActions.messageIsShown(String)"
+            },
+            "matchedColumns": [
+              11
+            ],
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 10826690122,
+              "status": "passed"
+            },
+            "line": 20,
+            "name": "I proceed search results to the payment screen",
+            "match": {
+              "location": "JourneySearchActions.proceedFromSearchResultsToPayment()"
+            },
+            "keyword": "When "
+          },
+          {
+            "result": {
+              "duration": 265695798,
+              "status": "passed"
+            },
+            "line": 21,
+            "name": "I should see the \"Payment\" screen",
+            "match": {
+              "arguments": [
+                {
+                  "val": "Payment",
+                  "offset": 18
+                }
+              ],
+              "location": "PageActions.shouldSeeTheScreen(String)"
+            },
+            "keyword": "Then "
+          },
+          {
+            "result": {
+              "duration": 18704391863,
+              "status": "passed"
+            },
+            "line": 22,
+            "name": "I select Pay by card method",
+            "match": {
+              "arguments": [
+                {
+                  "val": "card",
+                  "offset": 16
+                }
+              ],
+              "location": "PaymentActions.selectPaymentMethod(String)"
+            },
+            "keyword": "When "
+          },
+          {
+            "result": {
+              "duration": 57074562950,
+              "status": "passed"
+            },
+            "line": 23,
+            "name": "add the card with the following criteria:",
+            "match": {
+              "location": "CardManipulationActions.addCards(DataTable)"
+            },
+            "matchedColumns": [
+              0,
+              1
+            ],
+            "rows": [
+              {
+                "cells": [
+                  "Card type",
+                  "Card number",
+                  "Expiry month",
+                  "Expiry year",
+                  "Card holder name"
+                ],
+                "line": 24
+              },
+              {
+                "cells": [
+                  "Visa Credit",
+                  "4000000000000051",
+                  "12",
+                  "20",
+                  "Sarath Banala"
+                ],
+                "line": 25
+              }
+            ],
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 297911298,
+              "status": "passed"
+            },
+            "line": 26,
+            "name": "I should see the \"Payment\" screen",
+            "match": {
+              "arguments": [
+                {
+                  "val": "Payment",
+                  "offset": 18
+                }
+              ],
+              "location": "PageActions.shouldSeeTheScreen(String)"
+            },
+            "keyword": "Then "
+          },
+          {
+            "result": {
+              "duration": 51798745416,
+              "status": "passed"
+            },
+            "line": 27,
+            "name": "the \"Railcard Discount\" field containts \"Cotswold Line Railcard\" railcards",
+            "match": {
+              "arguments": [
+                {
+                  "val": "Railcard Discount",
+                  "offset": 5
+                },
+                {
+                  "val": "Cotswold Line Railcard",
+                  "offset": 41
+                }
+              ],
+              "location": "RailcardActions.fieldContainsRailCards(String,String)"
+            },
+            "matchedColumns": [
+              10
+            ],
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 185716176,
+              "status": "passed"
+            },
+            "line": 28,
+            "name": "the \"No booking fee\" text is shown",
+            "match": {
+              "arguments": [
+                {
+                  "val": "No booking fee",
+                  "offset": 5
+                }
+              ],
+              "location": "LabelActions.messageIsShown(String)"
+            },
+            "matchedColumns": [
+              15
+            ],
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 9466609520,
+              "status": "passed"
+            },
+            "comments": [
+              {
+                "line": 29,
+                "value": "# Add fee verification formula"
+              },
+              {
+                "line": 30,
+                "value": "# Add buttons verification on Payment screen"
+              }
+            ],
+            "line": 31,
+            "name": "I click on the \"Self-service ticket machine\" button",
+            "match": {
+              "arguments": [
+                {
+                  "val": "Self-service ticket machine",
+                  "offset": 16
+                }
+              ],
+              "location": "FieldActions.clickOnTheField(String)"
+            },
+            "keyword": "When "
+          },
+          {
+            "result": {
+              "duration": 3617814331,
+              "status": "passed"
+            },
+            "line": 32,
+            "name": "I note following fields values:",
+            "match": {
+              "location": "FieldActions.noteTheFollowingFields(DataTable)"
+            },
+            "rows": [
+              {
+                "cells": [
+                  "Field",
+                  "As"
+                ],
+                "line": 33
+              },
+              {
+                "cells": [
+                  "Outbound Ticket Date",
+                  "Outbound Ticket Date"
+                ],
+                "line": 34
+              },
+              {
+                "cells": [
+                  "Outbound Passangers",
+                  "Outbound Passangers"
+                ],
+                "line": 35
+              },
+              {
+                "cells": [
+                  "Outbound Departure Time",
+                  "Outbound Deptarture Time"
+                ],
+                "line": 36
+              },
+              {
+                "cells": [
+                  "Outbound Arrival Time",
+                  "Outbound Arrival Time"
+                ],
+                "line": 37
+              },
+              {
+                "cells": [
+                  "Outbound Ticket Type",
+                  "Outbound Ticket Type"
+                ],
+                "line": 38
+              },
+              {
+                "cells": [
+                  "Ticket price",
+                  "Total Price"
+                ],
+                "line": 39
+              }
+            ],
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 19598496330,
+              "status": "passed"
+            },
+            "line": 40,
+            "name": "I type \"223\" text into \"CVV\" field",
+            "match": {
+              "arguments": [
+                {
+                  "val": "223",
+                  "offset": 8
+                },
+                {
+                  "val": "CVV",
+                  "offset": 24
+                }
+              ],
+              "location": "FieldActions.typeTextIntoField(String,String)"
+            },
+            "matchedColumns": [
+              2
+            ],
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 1267378758,
+              "status": "passed"
+            },
+            "line": 41,
+            "name": "click on the \"Buy\" button",
+            "match": {
+              "arguments": [
+                {
+                  "val": "Buy",
+                  "offset": 14
+                }
+              ],
+              "location": "FieldActions.clickOnTheField(String)"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 7238389382,
+              "status": "passed"
+            },
+            "line": 42,
+            "name": "I proceed to booking confirmation",
+            "match": {
+              "location": "BookingActions.proceeedToBookingConfirmation()"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 227223970,
+              "status": "passed"
+            },
+            "line": 43,
+            "name": "I should see the \"Booking Confirmation\" screen",
+            "match": {
+              "arguments": [
+                {
+                  "val": "Booking Confirmation",
+                  "offset": 18
+                }
+              ],
+              "location": "PageActions.shouldSeeTheScreen(String)"
+            },
+            "keyword": "Then "
+          },
+          {
+            "result": {
+              "duration": 7424545161,
+              "status": "passed"
+            },
+            "line": 44,
+            "name": "I should see the \"My Tickets\" screen",
+            "match": {
+              "arguments": [
+                {
+                  "val": "My Tickets",
+                  "offset": 18
+                }
+              ],
+              "location": "PageActions.shouldSeeTheScreen(String)"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 1245053480,
+              "status": "passed"
+            },
+            "line": 45,
+            "name": "the following labels are shown:",
+            "match": {
+              "location": "LabelActions.labelsAreShown(String\u003e)"
+            },
+            "matchedColumns": [
+              5,
+              6
+            ],
+            "rows": [
+              {
+                "cells": [
+                  "Outbound Ticket Date"
+                ],
+                "line": 46
+              },
+              {
+                "cells": [
+                  "Charlbury"
+                ],
+                "line": 47
+              },
+              {
+                "cells": [
+                  "Evesham"
+                ],
+                "line": 48
+              }
+            ],
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 1892892259,
+              "status": "passed"
+            },
+            "line": 49,
+            "name": "I open the \"Outbound\" leg for the top-most visible ticket",
+            "match": {
+              "arguments": [
+                {
+                  "val": "Outbound",
+                  "offset": 12
+                }
+              ],
+              "location": "MyTicketsActions.openFirstTicketLeg(String)"
+            },
+            "keyword": "When "
+          },
+          {
+            "result": {
+              "duration": 4092068329,
+              "status": "passed"
+            },
+            "line": 50,
+            "name": "I should see the \"Booking info\" screen",
+            "match": {
+              "arguments": [
+                {
+                  "val": "Booking info",
+                  "offset": 18
+                }
+              ],
+              "location": "PageActions.shouldSeeTheScreen(String)"
+            },
+            "keyword": "Then "
+          },
+          {
+            "result": {
+              "duration": 2604895690,
+              "status": "passed"
+            },
+            "line": 51,
+            "name": "the page contains the following data:",
+            "match": {
+              "location": "PageActions.pageContainsData(DataTable)"
+            },
+            "matchedColumns": [
+              5,
+              6,
+              8,
+              13
+            ],
+            "rows": [
+              {
+                "cells": [
+                  "Journey Date",
+                  "Origin Station",
+                  "Destination Station",
+                  "Ticket Type",
+                  "Ticket Class",
+                  "Passengers",
+                  "Total Price",
+                  "Purchase Date"
+                ],
+                "line": 52
+              },
+              {
+                "cells": [
+                  "DATE(+1 hours;EEE dd MMM)",
+                  "Charlbury",
+                  "Evesham",
+                  "Outbound Ticket Type",
+                  "Standard",
+                  "1",
+                  "Total Price",
+                  "DATE(today;EEE dd MMM yyyy)"
+                ],
+                "line": 53
+              }
+            ],
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 900023924,
+              "status": "passed"
+            },
+            "line": 54,
+            "name": "I click on the \"Back\" button",
+            "match": {
+              "arguments": [
+                {
+                  "val": "Back",
+                  "offset": 16
+                }
+              ],
+              "location": "FieldActions.clickOnTheField(String)"
+            },
+            "keyword": "When "
+          },
+          {
+            "result": {
+              "duration": 891800067,
+              "status": "passed"
+            },
+            "comments": [
+              {
+                "line": 55,
+                "value": "# Share trip flow"
+              }
+            ],
+            "line": 56,
+            "name": "I should see the \"My Tickets\" screen",
+            "match": {
+              "arguments": [
+                {
+                  "val": "My Tickets",
+                  "offset": 18
+                }
+              ],
+              "location": "PageActions.shouldSeeTheScreen(String)"
+            },
+            "keyword": "Then "
+          },
+          {
+            "result": {
+              "duration": 1825862788,
+              "status": "passed"
+            },
+            "line": 57,
+            "name": "I click on the \"Share\" button",
+            "match": {
+              "arguments": [
+                {
+                  "val": "Share",
+                  "offset": 16
+                }
+              ],
+              "location": "FieldActions.clickOnTheField(String)"
+            },
+            "keyword": "When "
+          },
+          {
+            "result": {
+              "duration": 712611327,
+              "status": "passed"
+            },
+            "line": 58,
+            "name": "the following labels are shown:",
+            "match": {
+              "location": "LabelActions.labelsAreShown(String\u003e)"
+            },
+            "rows": [
+              {
+                "cells": [
+                  "Share trip details"
+                ],
+                "line": 59
+              }
+            ],
+            "keyword": "Then "
+          },
+          {
+            "result": {
+              "duration": 47029858,
+              "status": "passed"
+            },
+            "line": 60,
+            "name": "I should see the \"Share collection reference\" text is not shown",
+            "match": {
+              "arguments": [
+                {
+                  "val": "Share collection reference",
+                  "offset": 18
+                }
+              ],
+              "location": "LabelActions.messageIsNotShown(String)"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 394730497,
+              "status": "passed"
+            },
+            "line": 61,
+            "name": "I click on the \"Share trip details\" text",
+            "match": {
+              "arguments": [
+                {
+                  "val": "Share trip details",
+                  "offset": 16
+                }
+              ],
+              "location": "FieldActions.clickOnText(String)"
+            },
+            "keyword": "When "
+          },
+          {
+            "result": {
+              "duration": 1339668776,
+              "status": "passed"
+            },
+            "line": 62,
+            "name": "I scroll to the \"Gmail\" text",
+            "match": {
+              "arguments": [
+                {
+                  "val": "Gmail",
+                  "offset": 17
+                }
+              ],
+              "location": "ScrollActions.scrollToText(String)"
+            },
+            "matchedColumns": [
+              16
+            ],
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 154074716,
+              "status": "passed"
+            },
+            "line": 63,
+            "name": "I should see the \"Gmail\" text is shown",
+            "match": {
+              "arguments": [
+                {
+                  "val": "Gmail",
+                  "offset": 18
+                }
+              ],
+              "location": "LabelActions.messageIsShown(String)"
+            },
+            "matchedColumns": [
+              16
+            ],
+            "keyword": "Then "
+          },
+          {
+            "result": {
+              "duration": 763439548,
+              "status": "passed"
+            },
+            "line": 64,
+            "name": "I click on the \"Gmail\" text",
+            "match": {
+              "arguments": [
+                {
+                  "val": "Gmail",
+                  "offset": 16
+                }
+              ],
+              "location": "FieldActions.clickOnText(String)"
+            },
+            "matchedColumns": [
+              16
+            ],
+            "keyword": "When "
+          },
+          {
+            "result": {
+              "duration": 40351318218,
+              "error_message": "java.lang.AssertionError: Unable to find label: \u0027Going to Newcastle\u0027\n\tat org.junit.Assert.fail(Assert.java:88)\n\tat org.junit.Assert.assertTrue(Assert.java:41)\n\tat com.thetrainline.common.steps.generic.LabelActions.labelsAreShown(LabelActions.java:88)\n\tat ✽.Then the following labels are shown:(booking/RegisteredKioskBooking.feature:65)\n",
+              "status": "failed"
+            },
+            "line": 65,
+            "name": "the following labels are shown:",
+            "match": {
+              "location": "LabelActions.labelsAreShown(String\u003e)"
+            },
+            "matchedColumns": [
+              18
+            ],
+            "rows": [
+              {
+                "cells": [
+                  "Going to Newcastle"
+                ],
+                "line": 66
+              },
+              {
+                "cells": [
+                  "View live journey updates"
+                ],
+                "line": 67
+              },
+              {
+                "cells": [
+                  "Download our app:"
+                ],
+                "line": 68
+              },
+              {
+                "cells": [
+                  "www.thetrainline.com/train-tickets/mobile-app"
+                ],
+                "line": 69
+              }
+            ],
+            "keyword": "Then "
+          },
+          {
+            "result": {
+              "status": "skipped"
+            },
+            "line": 70,
+            "name": "I scroll to the \"ticket_shared.png\" text",
+            "match": {
+              "arguments": [
+                {
+                  "val": "ticket_shared.png",
+                  "offset": 17
+                }
+              ],
+              "location": "ScrollActions.scrollToText(String)"
+            },
+            "matchedColumns": [
+              17
+            ],
+            "keyword": "When "
+          },
+          {
+            "result": {
+              "status": "skipped"
+            },
+            "line": 71,
+            "name": "I should see the \"ticket_shared.png\" text is shown",
+            "match": {
+              "arguments": [
+                {
+                  "val": "ticket_shared.png",
+                  "offset": 18
+                }
+              ],
+              "location": "LabelActions.messageIsShown(String)"
+            },
+            "matchedColumns": [
+              17
+            ],
+            "keyword": "Then "
+          }
+        ],
+        "tags": [
+          {
+            "line": 3,
+            "name": "@debug"
+          }
+        ]
+      },
+      {
+        "before": [
+          {
+            "result": {
+              "duration": 15334629456,
+              "status": "passed"
+            },
+            "match": {
+              "location": "Hooks.setUp(Scenario)"
+            }
+          }
+        ],
+        "line": 76,
+        "name": "Book the kiosk ticket through all available entry points using Payment Cards",
+        "description": "Entry points : 923,924,921",
+        "id": "kiosk-booking-for-registered-user;book-the-kiosk-ticket-through-all-available-entry-points-using-payment-cards;;3",
+        "after": [
+          {
+            "result": {
+              "duration": 989963766,
+              "status": "passed"
+            },
+            "match": {
+              "location": "Hooks.tearDown(Scenario)"
+            }
+          }
+        ],
+        "type": "scenario",
+        "keyword": "Scenario Outline",
+        "steps": [
+          {
+            "result": {
+              "duration": 39502217704,
+              "status": "passed"
+            },
+            "line": 7,
+            "name": "I am logged into the system",
+            "match": {
+              "location": "LoginActions.openHomePageLogged()"
+            },
+            "keyword": "Given "
+          },
+          {
+            "result": {
+              "duration": 11453115681,
+              "status": "passed"
+            },
+            "line": 8,
+            "name": "I am on the \"Available Cards\" page",
+            "match": {
+              "arguments": [
+                {
+                  "val": "Available Cards",
+                  "offset": 13
+                }
+              ],
+              "location": "NavigationActions.navigateToPage(String)"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 14164920987,
+              "status": "passed"
+            },
+            "line": 9,
+            "name": "I have no payment cards stored",
+            "match": {
+              "location": "CardManipulationActions.removeAllCards()"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 9756133799,
+              "status": "passed"
+            },
+            "line": 10,
+            "name": "I go to the \"Journey Search\" screen",
+            "match": {
+              "arguments": [
+                {
+                  "val": "Journey Search",
+                  "offset": 13
+                }
+              ],
+              "location": "NavigationActions.navigateToPage(String)"
+            },
+            "keyword": "When "
+          },
+          {
+            "result": {
+              "duration": 77102774160,
+              "status": "passed"
+            },
+            "line": 11,
+            "name": "search for journey using the following criteria:",
+            "match": {
+              "location": "JourneySearchActions.searchJourneyByCriteria(DataTable)"
+            },
+            "matchedColumns": [
+              3,
+              4,
+              7,
+              8,
+              9,
+              12,
+              13,
+              14
+            ],
+            "rows": [
+              {
+                "cells": [
+                  "From",
+                  "To",
+                  "Via",
+                  "Type",
+                  "Out Date",
+                  "Return Date",
+                  "Adults",
+                  "Railcards"
+                ],
+                "line": 12
+              },
+              {
+                "cells": [
+                  "PLY",
+                  "NTA",
+                  "",
+                  "Single",
+                  "+3 hours",
+                  "",
+                  "1",
+                  "Devon And Cornwall"
+                ],
+                "line": 13
+              }
+            ],
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 4085739316,
+              "status": "passed"
+            },
+            "line": 14,
+            "name": "accept the alert message",
+            "match": {
+              "location": "PageActions.acceptMessage()"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 10347067531,
+              "status": "passed"
+            },
+            "line": 15,
+            "name": "I should see the \"Out Search Results\" screen",
+            "match": {
+              "arguments": [
+                {
+                  "val": "Out Search Results",
+                  "offset": 18
+                }
+              ],
+              "location": "PageActions.shouldSeeTheScreen(String)"
+            },
+            "keyword": "Then "
+          },
+          {
+            "result": {
+              "duration": 934880131,
+              "status": "passed"
+            },
+            "line": 16,
+            "name": "the following labels are shown:",
+            "match": {
+              "location": "LabelActions.labelsAreShown(String\u003e)"
+            },
+            "matchedColumns": [
+              5,
+              6
+            ],
+            "rows": [
+              {
+                "cells": [
+                  "Plymouth"
+                ],
+                "line": 17
+              },
+              {
+                "cells": [
+                  "Newton Abbot"
+                ],
+                "line": 18
+              }
+            ],
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 193203710,
+              "status": "passed"
+            },
+            "line": 19,
+            "name": "the \"Devon And Cornwall Railcard savings applied\" text is shown",
+            "match": {
+              "arguments": [
+                {
+                  "val": "Devon And Cornwall Railcard savings applied",
+                  "offset": 5
+                }
+              ],
+              "location": "LabelActions.messageIsShown(String)"
+            },
+            "matchedColumns": [
+              11
+            ],
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 10739897474,
+              "status": "passed"
+            },
+            "line": 20,
+            "name": "I proceed search results to the payment screen",
+            "match": {
+              "location": "JourneySearchActions.proceedFromSearchResultsToPayment()"
+            },
+            "keyword": "When "
+          },
+          {
+            "result": {
+              "duration": 304738516,
+              "status": "passed"
+            },
+            "line": 21,
+            "name": "I should see the \"Payment\" screen",
+            "match": {
+              "arguments": [
+                {
+                  "val": "Payment",
+                  "offset": 18
+                }
+              ],
+              "location": "PageActions.shouldSeeTheScreen(String)"
+            },
+            "keyword": "Then "
+          },
+          {
+            "result": {
+              "duration": 18958661434,
+              "status": "passed"
+            },
+            "line": 22,
+            "name": "I select Pay by card method",
+            "match": {
+              "arguments": [
+                {
+                  "val": "card",
+                  "offset": 16
+                }
+              ],
+              "location": "PaymentActions.selectPaymentMethod(String)"
+            },
+            "keyword": "When "
+          },
+          {
+            "result": {
+              "duration": 56148040756,
+              "status": "passed"
+            },
+            "line": 23,
+            "name": "add the card with the following criteria:",
+            "match": {
+              "location": "CardManipulationActions.addCards(DataTable)"
+            },
+            "matchedColumns": [
+              0,
+              1
+            ],
+            "rows": [
+              {
+                "cells": [
+                  "Card type",
+                  "Card number",
+                  "Expiry month",
+                  "Expiry year",
+                  "Card holder name"
+                ],
+                "line": 24
+              },
+              {
+                "cells": [
+                  "Mastercard",
+                  "5200000000000056",
+                  "12",
+                  "20",
+                  "Sarath Banala"
+                ],
+                "line": 25
+              }
+            ],
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 192390326,
+              "status": "passed"
+            },
+            "line": 26,
+            "name": "I should see the \"Payment\" screen",
+            "match": {
+              "arguments": [
+                {
+                  "val": "Payment",
+                  "offset": 18
+                }
+              ],
+              "location": "PageActions.shouldSeeTheScreen(String)"
+            },
+            "keyword": "Then "
+          },
+          {
+            "result": {
+              "duration": 52479084445,
+              "status": "passed"
+            },
+            "line": 27,
+            "name": "the \"Railcard Discount\" field containts \"Devon And Cornwall Railcard\" railcards",
+            "match": {
+              "arguments": [
+                {
+                  "val": "Railcard Discount",
+                  "offset": 5
+                },
+                {
+                  "val": "Devon And Cornwall Railcard",
+                  "offset": 41
+                }
+              ],
+              "location": "RailcardActions.fieldContainsRailCards(String,String)"
+            },
+            "matchedColumns": [
+              10
+            ],
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 191124939,
+              "status": "passed"
+            },
+            "line": 28,
+            "name": "the \"No booking fee\" text is shown",
+            "match": {
+              "arguments": [
+                {
+                  "val": "No booking fee",
+                  "offset": 5
+                }
+              ],
+              "location": "LabelActions.messageIsShown(String)"
+            },
+            "matchedColumns": [
+              15
+            ],
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 6753201271,
+              "status": "passed"
+            },
+            "comments": [
+              {
+                "line": 29,
+                "value": "# Add fee verification formula"
+              },
+              {
+                "line": 30,
+                "value": "# Add buttons verification on Payment screen"
+              }
+            ],
+            "line": 31,
+            "name": "I click on the \"Self-service ticket machine\" button",
+            "match": {
+              "arguments": [
+                {
+                  "val": "Self-service ticket machine",
+                  "offset": 16
+                }
+              ],
+              "location": "FieldActions.clickOnTheField(String)"
+            },
+            "keyword": "When "
+          },
+          {
+            "result": {
+              "duration": 3369627889,
+              "status": "passed"
+            },
+            "line": 32,
+            "name": "I note following fields values:",
+            "match": {
+              "location": "FieldActions.noteTheFollowingFields(DataTable)"
+            },
+            "rows": [
+              {
+                "cells": [
+                  "Field",
+                  "As"
+                ],
+                "line": 33
+              },
+              {
+                "cells": [
+                  "Outbound Ticket Date",
+                  "Outbound Ticket Date"
+                ],
+                "line": 34
+              },
+              {
+                "cells": [
+                  "Outbound Passangers",
+                  "Outbound Passangers"
+                ],
+                "line": 35
+              },
+              {
+                "cells": [
+                  "Outbound Departure Time",
+                  "Outbound Deptarture Time"
+                ],
+                "line": 36
+              },
+              {
+                "cells": [
+                  "Outbound Arrival Time",
+                  "Outbound Arrival Time"
+                ],
+                "line": 37
+              },
+              {
+                "cells": [
+                  "Outbound Ticket Type",
+                  "Outbound Ticket Type"
+                ],
+                "line": 38
+              },
+              {
+                "cells": [
+                  "Ticket price",
+                  "Total Price"
+                ],
+                "line": 39
+              }
+            ],
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 20599639418,
+              "status": "passed"
+            },
+            "line": 40,
+            "name": "I type \"223\" text into \"CVV\" field",
+            "match": {
+              "arguments": [
+                {
+                  "val": "223",
+                  "offset": 8
+                },
+                {
+                  "val": "CVV",
+                  "offset": 24
+                }
+              ],
+              "location": "FieldActions.typeTextIntoField(String,String)"
+            },
+            "matchedColumns": [
+              2
+            ],
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 1569454301,
+              "status": "passed"
+            },
+            "line": 41,
+            "name": "click on the \"Buy\" button",
+            "match": {
+              "arguments": [
+                {
+                  "val": "Buy",
+                  "offset": 14
+                }
+              ],
+              "location": "FieldActions.clickOnTheField(String)"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 10811777241,
+              "status": "passed"
+            },
+            "line": 42,
+            "name": "I proceed to booking confirmation",
+            "match": {
+              "location": "BookingActions.proceeedToBookingConfirmation()"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 166327271,
+              "status": "passed"
+            },
+            "line": 43,
+            "name": "I should see the \"Booking Confirmation\" screen",
+            "match": {
+              "arguments": [
+                {
+                  "val": "Booking Confirmation",
+                  "offset": 18
+                }
+              ],
+              "location": "PageActions.shouldSeeTheScreen(String)"
+            },
+            "keyword": "Then "
+          },
+          {
+            "result": {
+              "duration": 6358431223,
+              "status": "passed"
+            },
+            "line": 44,
+            "name": "I should see the \"My Tickets\" screen",
+            "match": {
+              "arguments": [
+                {
+                  "val": "My Tickets",
+                  "offset": 18
+                }
+              ],
+              "location": "PageActions.shouldSeeTheScreen(String)"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 698016720,
+              "status": "passed"
+            },
+            "line": 45,
+            "name": "the following labels are shown:",
+            "match": {
+              "location": "LabelActions.labelsAreShown(String\u003e)"
+            },
+            "matchedColumns": [
+              5,
+              6
+            ],
+            "rows": [
+              {
+                "cells": [
+                  "Outbound Ticket Date"
+                ],
+                "line": 46
+              },
+              {
+                "cells": [
+                  "Plymouth"
+                ],
+                "line": 47
+              },
+              {
+                "cells": [
+                  "Newton Abbot"
+                ],
+                "line": 48
+              }
+            ],
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 1942635814,
+              "status": "passed"
+            },
+            "line": 49,
+            "name": "I open the \"Outbound\" leg for the top-most visible ticket",
+            "match": {
+              "arguments": [
+                {
+                  "val": "Outbound",
+                  "offset": 12
+                }
+              ],
+              "location": "MyTicketsActions.openFirstTicketLeg(String)"
+            },
+            "keyword": "When "
+          },
+          {
+            "result": {
+              "duration": 3862028484,
+              "status": "passed"
+            },
+            "line": 50,
+            "name": "I should see the \"Booking info\" screen",
+            "match": {
+              "arguments": [
+                {
+                  "val": "Booking info",
+                  "offset": 18
+                }
+              ],
+              "location": "PageActions.shouldSeeTheScreen(String)"
+            },
+            "keyword": "Then "
+          },
+          {
+            "result": {
+              "duration": 2493207234,
+              "status": "passed"
+            },
+            "line": 51,
+            "name": "the page contains the following data:",
+            "match": {
+              "location": "PageActions.pageContainsData(DataTable)"
+            },
+            "matchedColumns": [
+              5,
+              6,
+              8,
+              13
+            ],
+            "rows": [
+              {
+                "cells": [
+                  "Journey Date",
+                  "Origin Station",
+                  "Destination Station",
+                  "Ticket Type",
+                  "Ticket Class",
+                  "Passengers",
+                  "Total Price",
+                  "Purchase Date"
+                ],
+                "line": 52
+              },
+              {
+                "cells": [
+                  "DATE(+3 hours;EEE dd MMM)",
+                  "Plymouth",
+                  "Newton Abbot",
+                  "Outbound Ticket Type",
+                  "Standard",
+                  "1",
+                  "Total Price",
+                  "DATE(today;EEE dd MMM yyyy)"
+                ],
+                "line": 53
+              }
+            ],
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 803980825,
+              "status": "passed"
+            },
+            "line": 54,
+            "name": "I click on the \"Back\" button",
+            "match": {
+              "arguments": [
+                {
+                  "val": "Back",
+                  "offset": 16
+                }
+              ],
+              "location": "FieldActions.clickOnTheField(String)"
+            },
+            "keyword": "When "
+          },
+          {
+            "result": {
+              "duration": 987160904,
+              "status": "passed"
+            },
+            "comments": [
+              {
+                "line": 55,
+                "value": "# Share trip flow"
+              }
+            ],
+            "line": 56,
+            "name": "I should see the \"My Tickets\" screen",
+            "match": {
+              "arguments": [
+                {
+                  "val": "My Tickets",
+                  "offset": 18
+                }
+              ],
+              "location": "PageActions.shouldSeeTheScreen(String)"
+            },
+            "keyword": "Then "
+          },
+          {
+            "result": {
+              "duration": 1625046916,
+              "status": "passed"
+            },
+            "line": 57,
+            "name": "I click on the \"Share\" button",
+            "match": {
+              "arguments": [
+                {
+                  "val": "Share",
+                  "offset": 16
+                }
+              ],
+              "location": "FieldActions.clickOnTheField(String)"
+            },
+            "keyword": "When "
+          },
+          {
+            "result": {
+              "duration": 722748114,
+              "status": "passed"
+            },
+            "line": 58,
+            "name": "the following labels are shown:",
+            "match": {
+              "location": "LabelActions.labelsAreShown(String\u003e)"
+            },
+            "rows": [
+              {
+                "cells": [
+                  "Share trip details"
+                ],
+                "line": 59
+              }
+            ],
+            "keyword": "Then "
+          },
+          {
+            "result": {
+              "duration": 36693106,
+              "status": "passed"
+            },
+            "line": 60,
+            "name": "I should see the \"Share collection reference\" text is not shown",
+            "match": {
+              "arguments": [
+                {
+                  "val": "Share collection reference",
+                  "offset": 18
+                }
+              ],
+              "location": "LabelActions.messageIsNotShown(String)"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 381250562,
+              "status": "passed"
+            },
+            "line": 61,
+            "name": "I click on the \"Share trip details\" text",
+            "match": {
+              "arguments": [
+                {
+                  "val": "Share trip details",
+                  "offset": 16
+                }
+              ],
+              "location": "FieldActions.clickOnText(String)"
+            },
+            "keyword": "When "
+          },
+          {
+            "result": {
+              "duration": 1312590667,
+              "status": "passed"
+            },
+            "line": 62,
+            "name": "I scroll to the \"Tweet\" text",
+            "match": {
+              "arguments": [
+                {
+                  "val": "Tweet",
+                  "offset": 17
+                }
+              ],
+              "location": "ScrollActions.scrollToText(String)"
+            },
+            "matchedColumns": [
+              16
+            ],
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 114314584,
+              "status": "passed"
+            },
+            "line": 63,
+            "name": "I should see the \"Tweet\" text is shown",
+            "match": {
+              "arguments": [
+                {
+                  "val": "Tweet",
+                  "offset": 18
+                }
+              ],
+              "location": "LabelActions.messageIsShown(String)"
+            },
+            "matchedColumns": [
+              16
+            ],
+            "keyword": "Then "
+          },
+          {
+            "result": {
+              "duration": 655251407,
+              "status": "passed"
+            },
+            "line": 64,
+            "name": "I click on the \"Tweet\" text",
+            "match": {
+              "arguments": [
+                {
+                  "val": "Tweet",
+                  "offset": 16
+                }
+              ],
+              "location": "FieldActions.clickOnText(String)"
+            },
+            "matchedColumns": [
+              16
+            ],
+            "keyword": "When "
+          },
+          {
+            "result": {
+              "duration": 8852017738,
+              "status": "passed"
+            },
+            "line": 65,
+            "name": "the following labels are shown:",
+            "match": {
+              "location": "LabelActions.labelsAreShown(String\u003e)"
+            },
+            "matchedColumns": [
+              18
+            ],
+            "rows": [
+              {
+                "cells": [
+                  ""
+                ],
+                "line": 66
+              },
+              {
+                "cells": [
+                  "View live journey updates"
+                ],
+                "line": 67
+              },
+              {
+                "cells": [
+                  "Download our app:"
+                ],
+                "line": 68
+              },
+              {
+                "cells": [
+                  "www.thetrainline.com/train-tickets/mobile-app"
+                ],
+                "line": 69
+              }
+            ],
+            "keyword": "Then "
+          },
+          {
+            "result": {
+              "duration": 5463773801,
+              "status": "passed"
+            },
+            "line": 70,
+            "name": "I scroll to the \"Who\u0027s in this photo?\" text",
+            "match": {
+              "arguments": [
+                {
+                  "val": "Who\u0027s in this photo?",
+                  "offset": 17
+                }
+              ],
+              "location": "ScrollActions.scrollToText(String)"
+            },
+            "matchedColumns": [
+              17
+            ],
+            "keyword": "When "
+          },
+          {
+            "result": {
+              "duration": 87377003,
+              "status": "passed"
+            },
+            "line": 71,
+            "name": "I should see the \"Who\u0027s in this photo?\" text is shown",
+            "match": {
+              "arguments": [
+                {
+                  "val": "Who\u0027s in this photo?",
+                  "offset": 18
+                }
+              ],
+              "location": "LabelActions.messageIsShown(String)"
+            },
+            "matchedColumns": [
+              17
+            ],
+            "keyword": "Then "
+          }
+        ],
+        "tags": [
+          {
+            "line": 3,
+            "name": "@debug"
+          }
+        ]
+      },
+      {
+        "before": [
+          {
+            "result": {
+              "duration": 16565214233,
+              "status": "passed"
+            },
+            "match": {
+              "location": "Hooks.setUp(Scenario)"
+            }
+          }
+        ],
+        "line": 77,
+        "name": "Book the kiosk ticket through all available entry points using Payment Cards",
+        "description": "Entry points : 923,924,921",
+        "id": "kiosk-booking-for-registered-user;book-the-kiosk-ticket-through-all-available-entry-points-using-payment-cards;;4",
+        "after": [
+          {
+            "result": {
+              "duration": 3689328281,
+              "status": "passed"
+            },
+            "match": {
+              "location": "Hooks.tearDown(Scenario)"
+            }
+          }
+        ],
+        "type": "scenario",
+        "keyword": "Scenario Outline",
+        "steps": [
+          {
+            "result": {
+              "duration": 46286382472,
+              "status": "passed"
+            },
+            "line": 7,
+            "name": "I am logged into the system",
+            "match": {
+              "location": "LoginActions.openHomePageLogged()"
+            },
+            "keyword": "Given "
+          },
+          {
+            "result": {
+              "duration": 11786497436,
+              "status": "passed"
+            },
+            "line": 8,
+            "name": "I am on the \"Available Cards\" page",
+            "match": {
+              "arguments": [
+                {
+                  "val": "Available Cards",
+                  "offset": 13
+                }
+              ],
+              "location": "NavigationActions.navigateToPage(String)"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 14520404833,
+              "status": "passed"
+            },
+            "line": 9,
+            "name": "I have no payment cards stored",
+            "match": {
+              "location": "CardManipulationActions.removeAllCards()"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 9576522520,
+              "status": "passed"
+            },
+            "line": 10,
+            "name": "I go to the \"Journey Search\" screen",
+            "match": {
+              "arguments": [
+                {
+                  "val": "Journey Search",
+                  "offset": 13
+                }
+              ],
+              "location": "NavigationActions.navigateToPage(String)"
+            },
+            "keyword": "When "
+          },
+          {
+            "result": {
+              "duration": 65511197132,
+              "status": "passed"
+            },
+            "line": 11,
+            "name": "search for journey using the following criteria:",
+            "match": {
+              "location": "JourneySearchActions.searchJourneyByCriteria(DataTable)"
+            },
+            "matchedColumns": [
+              3,
+              4,
+              7,
+              8,
+              9,
+              12,
+              13,
+              14
+            ],
+            "rows": [
+              {
+                "cells": [
+                  "From",
+                  "To",
+                  "Via",
+                  "Type",
+                  "Out Date",
+                  "Return Date",
+                  "Adults",
+                  "Railcards"
+                ],
+                "line": 12
+              },
+              {
+                "cells": [
+                  "SBE",
+                  "HGT",
+                  "",
+                  "Single",
+                  "tomorrow",
+                  "",
+                  "2",
+                  "Two Together Railcard,Senior Railcard"
+                ],
+                "line": 13
+              }
+            ],
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 4635686059,
+              "status": "passed"
+            },
+            "line": 14,
+            "name": "accept the alert message",
+            "match": {
+              "location": "PageActions.acceptMessage()"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 10045436424,
+              "status": "passed"
+            },
+            "line": 15,
+            "name": "I should see the \"Out Search Results\" screen",
+            "match": {
+              "arguments": [
+                {
+                  "val": "Out Search Results",
+                  "offset": 18
+                }
+              ],
+              "location": "PageActions.shouldSeeTheScreen(String)"
+            },
+            "keyword": "Then "
+          },
+          {
+            "result": {
+              "duration": 919389596,
+              "status": "passed"
+            },
+            "line": 16,
+            "name": "the following labels are shown:",
+            "match": {
+              "location": "LabelActions.labelsAreShown(String\u003e)"
+            },
+            "matchedColumns": [
+              5,
+              6
+            ],
+            "rows": [
+              {
+                "cells": [
+                  "Starbeck"
+                ],
+                "line": 17
+              },
+              {
+                "cells": [
+                  "Harrogate"
+                ],
+                "line": 18
+              }
+            ],
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 139802913,
+              "status": "passed"
+            },
+            "line": 19,
+            "name": "the \"Two Together Railcard savings applied\" text is shown",
+            "match": {
+              "arguments": [
+                {
+                  "val": "Two Together Railcard savings applied",
+                  "offset": 5
+                }
+              ],
+              "location": "LabelActions.messageIsShown(String)"
+            },
+            "matchedColumns": [
+              11
+            ],
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 11498527473,
+              "status": "passed"
+            },
+            "line": 20,
+            "name": "I proceed search results to the payment screen",
+            "match": {
+              "location": "JourneySearchActions.proceedFromSearchResultsToPayment()"
+            },
+            "keyword": "When "
+          },
+          {
+            "result": {
+              "duration": 260334471,
+              "status": "passed"
+            },
+            "line": 21,
+            "name": "I should see the \"Payment\" screen",
+            "match": {
+              "arguments": [
+                {
+                  "val": "Payment",
+                  "offset": 18
+                }
+              ],
+              "location": "PageActions.shouldSeeTheScreen(String)"
+            },
+            "keyword": "Then "
+          },
+          {
+            "result": {
+              "duration": 19177466782,
+              "status": "passed"
+            },
+            "line": 22,
+            "name": "I select Pay by card method",
+            "match": {
+              "arguments": [
+                {
+                  "val": "card",
+                  "offset": 16
+                }
+              ],
+              "location": "PaymentActions.selectPaymentMethod(String)"
+            },
+            "keyword": "When "
+          },
+          {
+            "result": {
+              "duration": 55866910746,
+              "status": "passed"
+            },
+            "line": 23,
+            "name": "add the card with the following criteria:",
+            "match": {
+              "location": "CardManipulationActions.addCards(DataTable)"
+            },
+            "matchedColumns": [
+              0,
+              1
+            ],
+            "rows": [
+              {
+                "cells": [
+                  "Card type",
+                  "Card number",
+                  "Expiry month",
+                  "Expiry year",
+                  "Card holder name"
+                ],
+                "line": 24
+              },
+              {
+                "cells": [
+                  "Maestro",
+                  "560000227571480302",
+                  "12",
+                  "20",
+                  "Sarath Banala"
+                ],
+                "line": 25
+              }
+            ],
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 249580408,
+              "status": "passed"
+            },
+            "line": 26,
+            "name": "I should see the \"Payment\" screen",
+            "match": {
+              "arguments": [
+                {
+                  "val": "Payment",
+                  "offset": 18
+                }
+              ],
+              "location": "PageActions.shouldSeeTheScreen(String)"
+            },
+            "keyword": "Then "
+          },
+          {
+            "result": {
+              "duration": 51495056918,
+              "status": "passed"
+            },
+            "line": 27,
+            "name": "the \"Railcard Discount\" field containts \"Two Together Railcard\" railcards",
+            "match": {
+              "arguments": [
+                {
+                  "val": "Railcard Discount",
+                  "offset": 5
+                },
+                {
+                  "val": "Two Together Railcard",
+                  "offset": 41
+                }
+              ],
+              "location": "RailcardActions.fieldContainsRailCards(String,String)"
+            },
+            "matchedColumns": [
+              10
+            ],
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 166210666,
+              "status": "passed"
+            },
+            "line": 28,
+            "name": "the \"Booking fee\" text is shown",
+            "match": {
+              "arguments": [
+                {
+                  "val": "Booking fee",
+                  "offset": 5
+                }
+              ],
+              "location": "LabelActions.messageIsShown(String)"
+            },
+            "matchedColumns": [
+              15
+            ],
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 6743238649,
+              "status": "passed"
+            },
+            "comments": [
+              {
+                "line": 29,
+                "value": "# Add fee verification formula"
+              },
+              {
+                "line": 30,
+                "value": "# Add buttons verification on Payment screen"
+              }
+            ],
+            "line": 31,
+            "name": "I click on the \"Self-service ticket machine\" button",
+            "match": {
+              "arguments": [
+                {
+                  "val": "Self-service ticket machine",
+                  "offset": 16
+                }
+              ],
+              "location": "FieldActions.clickOnTheField(String)"
+            },
+            "keyword": "When "
+          },
+          {
+            "result": {
+              "duration": 3344114417,
+              "status": "passed"
+            },
+            "line": 32,
+            "name": "I note following fields values:",
+            "match": {
+              "location": "FieldActions.noteTheFollowingFields(DataTable)"
+            },
+            "rows": [
+              {
+                "cells": [
+                  "Field",
+                  "As"
+                ],
+                "line": 33
+              },
+              {
+                "cells": [
+                  "Outbound Ticket Date",
+                  "Outbound Ticket Date"
+                ],
+                "line": 34
+              },
+              {
+                "cells": [
+                  "Outbound Passangers",
+                  "Outbound Passangers"
+                ],
+                "line": 35
+              },
+              {
+                "cells": [
+                  "Outbound Departure Time",
+                  "Outbound Deptarture Time"
+                ],
+                "line": 36
+              },
+              {
+                "cells": [
+                  "Outbound Arrival Time",
+                  "Outbound Arrival Time"
+                ],
+                "line": 37
+              },
+              {
+                "cells": [
+                  "Outbound Ticket Type",
+                  "Outbound Ticket Type"
+                ],
+                "line": 38
+              },
+              {
+                "cells": [
+                  "Ticket price",
+                  "Total Price"
+                ],
+                "line": 39
+              }
+            ],
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 19430564023,
+              "status": "passed"
+            },
+            "line": 40,
+            "name": "I type \"223\" text into \"CVV\" field",
+            "match": {
+              "arguments": [
+                {
+                  "val": "223",
+                  "offset": 8
+                },
+                {
+                  "val": "CVV",
+                  "offset": 24
+                }
+              ],
+              "location": "FieldActions.typeTextIntoField(String,String)"
+            },
+            "matchedColumns": [
+              2
+            ],
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 1445357991,
+              "status": "passed"
+            },
+            "line": 41,
+            "name": "click on the \"Buy\" button",
+            "match": {
+              "arguments": [
+                {
+                  "val": "Buy",
+                  "offset": 14
+                }
+              ],
+              "location": "FieldActions.clickOnTheField(String)"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 120273258742,
+              "status": "passed"
+            },
+            "line": 42,
+            "name": "I proceed to booking confirmation",
+            "match": {
+              "location": "BookingActions.proceeedToBookingConfirmation()"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 231340948,
+              "status": "passed"
+            },
+            "line": 43,
+            "name": "I should see the \"Booking Confirmation\" screen",
+            "match": {
+              "arguments": [
+                {
+                  "val": "Booking Confirmation",
+                  "offset": 18
+                }
+              ],
+              "location": "PageActions.shouldSeeTheScreen(String)"
+            },
+            "keyword": "Then "
+          },
+          {
+            "result": {
+              "duration": 15721322822,
+              "status": "passed"
+            },
+            "line": 44,
+            "name": "I should see the \"My Tickets\" screen",
+            "match": {
+              "arguments": [
+                {
+                  "val": "My Tickets",
+                  "offset": 18
+                }
+              ],
+              "location": "PageActions.shouldSeeTheScreen(String)"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 683703570,
+              "status": "passed"
+            },
+            "line": 45,
+            "name": "the following labels are shown:",
+            "match": {
+              "location": "LabelActions.labelsAreShown(String\u003e)"
+            },
+            "matchedColumns": [
+              5,
+              6
+            ],
+            "rows": [
+              {
+                "cells": [
+                  "Outbound Ticket Date"
+                ],
+                "line": 46
+              },
+              {
+                "cells": [
+                  "Starbeck"
+                ],
+                "line": 47
+              },
+              {
+                "cells": [
+                  "Harrogate"
+                ],
+                "line": 48
+              }
+            ],
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 3362991661,
+              "status": "passed"
+            },
+            "line": 49,
+            "name": "I open the \"Outbound\" leg for the top-most visible ticket",
+            "match": {
+              "arguments": [
+                {
+                  "val": "Outbound",
+                  "offset": 12
+                }
+              ],
+              "location": "MyTicketsActions.openFirstTicketLeg(String)"
+            },
+            "keyword": "When "
+          },
+          {
+            "result": {
+              "duration": 3998502326,
+              "status": "passed"
+            },
+            "line": 50,
+            "name": "I should see the \"Booking info\" screen",
+            "match": {
+              "arguments": [
+                {
+                  "val": "Booking info",
+                  "offset": 18
+                }
+              ],
+              "location": "PageActions.shouldSeeTheScreen(String)"
+            },
+            "keyword": "Then "
+          },
+          {
+            "result": {
+              "duration": 2840874735,
+              "status": "passed"
+            },
+            "line": 51,
+            "name": "the page contains the following data:",
+            "match": {
+              "location": "PageActions.pageContainsData(DataTable)"
+            },
+            "matchedColumns": [
+              5,
+              6,
+              8,
+              13
+            ],
+            "rows": [
+              {
+                "cells": [
+                  "Journey Date",
+                  "Origin Station",
+                  "Destination Station",
+                  "Ticket Type",
+                  "Ticket Class",
+                  "Passengers",
+                  "Total Price",
+                  "Purchase Date"
+                ],
+                "line": 52
+              },
+              {
+                "cells": [
+                  "DATE(tomorrow;EEE dd MMM)",
+                  "Starbeck",
+                  "Harrogate",
+                  "Outbound Ticket Type",
+                  "Standard",
+                  "2",
+                  "Total Price",
+                  "DATE(today;EEE dd MMM yyyy)"
+                ],
+                "line": 53
+              }
+            ],
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 1081342253,
+              "status": "passed"
+            },
+            "line": 54,
+            "name": "I click on the \"Back\" button",
+            "match": {
+              "arguments": [
+                {
+                  "val": "Back",
+                  "offset": 16
+                }
+              ],
+              "location": "FieldActions.clickOnTheField(String)"
+            },
+            "keyword": "When "
+          },
+          {
+            "result": {
+              "duration": 1365531018,
+              "status": "passed"
+            },
+            "comments": [
+              {
+                "line": 55,
+                "value": "# Share trip flow"
+              }
+            ],
+            "line": 56,
+            "name": "I should see the \"My Tickets\" screen",
+            "match": {
+              "arguments": [
+                {
+                  "val": "My Tickets",
+                  "offset": 18
+                }
+              ],
+              "location": "PageActions.shouldSeeTheScreen(String)"
+            },
+            "keyword": "Then "
+          },
+          {
+            "result": {
+              "duration": 1361152301,
+              "status": "passed"
+            },
+            "line": 57,
+            "name": "I click on the \"Share\" button",
+            "match": {
+              "arguments": [
+                {
+                  "val": "Share",
+                  "offset": 16
+                }
+              ],
+              "location": "FieldActions.clickOnTheField(String)"
+            },
+            "keyword": "When "
+          },
+          {
+            "result": {
+              "duration": 748049580,
+              "status": "passed"
+            },
+            "line": 58,
+            "name": "the following labels are shown:",
+            "match": {
+              "location": "LabelActions.labelsAreShown(String\u003e)"
+            },
+            "rows": [
+              {
+                "cells": [
+                  "Share trip details"
+                ],
+                "line": 59
+              }
+            ],
+            "keyword": "Then "
+          },
+          {
+            "result": {
+              "duration": 65173366,
+              "status": "passed"
+            },
+            "line": 60,
+            "name": "I should see the \"Share collection reference\" text is not shown",
+            "match": {
+              "arguments": [
+                {
+                  "val": "Share collection reference",
+                  "offset": 18
+                }
+              ],
+              "location": "LabelActions.messageIsNotShown(String)"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 747973483,
+              "status": "passed"
+            },
+            "line": 61,
+            "name": "I click on the \"Share trip details\" text",
+            "match": {
+              "arguments": [
+                {
+                  "val": "Share trip details",
+                  "offset": 16
+                }
+              ],
+              "location": "FieldActions.clickOnText(String)"
+            },
+            "keyword": "When "
+          },
+          {
+            "result": {
+              "duration": 1811272145,
+              "status": "passed"
+            },
+            "line": 62,
+            "name": "I scroll to the \"Gmail\" text",
+            "match": {
+              "arguments": [
+                {
+                  "val": "Gmail",
+                  "offset": 17
+                }
+              ],
+              "location": "ScrollActions.scrollToText(String)"
+            },
+            "matchedColumns": [
+              16
+            ],
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 156216860,
+              "status": "passed"
+            },
+            "line": 63,
+            "name": "I should see the \"Gmail\" text is shown",
+            "match": {
+              "arguments": [
+                {
+                  "val": "Gmail",
+                  "offset": 18
+                }
+              ],
+              "location": "LabelActions.messageIsShown(String)"
+            },
+            "matchedColumns": [
+              16
+            ],
+            "keyword": "Then "
+          },
+          {
+            "result": {
+              "duration": 848628753,
+              "status": "passed"
+            },
+            "line": 64,
+            "name": "I click on the \"Gmail\" text",
+            "match": {
+              "arguments": [
+                {
+                  "val": "Gmail",
+                  "offset": 16
+                }
+              ],
+              "location": "FieldActions.clickOnText(String)"
+            },
+            "matchedColumns": [
+              16
+            ],
+            "keyword": "When "
+          },
+          {
+            "result": {
+              "duration": 40026949555,
+              "error_message": "java.lang.AssertionError: Unable to find label: \u0027Going to Newcastle\u0027\n\tat org.junit.Assert.fail(Assert.java:88)\n\tat org.junit.Assert.assertTrue(Assert.java:41)\n\tat com.thetrainline.common.steps.generic.LabelActions.labelsAreShown(LabelActions.java:88)\n\tat ✽.Then the following labels are shown:(booking/RegisteredKioskBooking.feature:65)\n",
+              "status": "failed"
+            },
+            "line": 65,
+            "name": "the following labels are shown:",
+            "match": {
+              "location": "LabelActions.labelsAreShown(String\u003e)"
+            },
+            "matchedColumns": [
+              18
+            ],
+            "rows": [
+              {
+                "cells": [
+                  "Going to Newcastle"
+                ],
+                "line": 66
+              },
+              {
+                "cells": [
+                  "View live journey updates"
+                ],
+                "line": 67
+              },
+              {
+                "cells": [
+                  "Download our app:"
+                ],
+                "line": 68
+              },
+              {
+                "cells": [
+                  "www.thetrainline.com/train-tickets/mobile-app"
+                ],
+                "line": 69
+              }
+            ],
+            "keyword": "Then "
+          },
+          {
+            "result": {
+              "status": "skipped"
+            },
+            "line": 70,
+            "name": "I scroll to the \"ticket_shared.png\" text",
+            "match": {
+              "arguments": [
+                {
+                  "val": "ticket_shared.png",
+                  "offset": 17
+                }
+              ],
+              "location": "ScrollActions.scrollToText(String)"
+            },
+            "matchedColumns": [
+              17
+            ],
+            "keyword": "When "
+          },
+          {
+            "result": {
+              "status": "skipped"
+            },
+            "line": 71,
+            "name": "I should see the \"ticket_shared.png\" text is shown",
+            "match": {
+              "arguments": [
+                {
+                  "val": "ticket_shared.png",
+                  "offset": 18
+                }
+              ],
+              "location": "LabelActions.messageIsShown(String)"
+            },
+            "matchedColumns": [
+              17
+            ],
+            "keyword": "Then "
+          }
+        ],
+        "tags": [
+          {
+            "line": 3,
+            "name": "@debug"
+          }
+        ]
+      },
+      {
+        "before": [
+          {
+            "result": {
+              "duration": 13754542792,
+              "status": "passed"
+            },
+            "match": {
+              "location": "Hooks.setUp(Scenario)"
+            }
+          }
+        ],
+        "line": 78,
+        "name": "Book the kiosk ticket through all available entry points using Payment Cards",
+        "description": "Entry points : 923,924,921",
+        "id": "kiosk-booking-for-registered-user;book-the-kiosk-ticket-through-all-available-entry-points-using-payment-cards;;5",
+        "after": [
+          {
+            "result": {
+              "duration": 3189253320,
+              "status": "passed"
+            },
+            "match": {
+              "location": "Hooks.tearDown(Scenario)"
+            }
+          }
+        ],
+        "type": "scenario",
+        "keyword": "Scenario Outline",
+        "steps": [
+          {
+            "result": {
+              "duration": 37899778883,
+              "status": "passed"
+            },
+            "line": 7,
+            "name": "I am logged into the system",
+            "match": {
+              "location": "LoginActions.openHomePageLogged()"
+            },
+            "keyword": "Given "
+          },
+          {
+            "result": {
+              "duration": 11546529514,
+              "status": "passed"
+            },
+            "line": 8,
+            "name": "I am on the \"Available Cards\" page",
+            "match": {
+              "arguments": [
+                {
+                  "val": "Available Cards",
+                  "offset": 13
+                }
+              ],
+              "location": "NavigationActions.navigateToPage(String)"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 14290734261,
+              "status": "passed"
+            },
+            "line": 9,
+            "name": "I have no payment cards stored",
+            "match": {
+              "location": "CardManipulationActions.removeAllCards()"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 9790873030,
+              "status": "passed"
+            },
+            "line": 10,
+            "name": "I go to the \"Journey Search\" screen",
+            "match": {
+              "arguments": [
+                {
+                  "val": "Journey Search",
+                  "offset": 13
+                }
+              ],
+              "location": "NavigationActions.navigateToPage(String)"
+            },
+            "keyword": "When "
+          },
+          {
+            "result": {
+              "duration": 73657280511,
+              "status": "passed"
+            },
+            "line": 11,
+            "name": "search for journey using the following criteria:",
+            "match": {
+              "location": "JourneySearchActions.searchJourneyByCriteria(DataTable)"
+            },
+            "matchedColumns": [
+              3,
+              4,
+              7,
+              8,
+              9,
+              12,
+              13,
+              14
+            ],
+            "rows": [
+              {
+                "cells": [
+                  "From",
+                  "To",
+                  "Via",
+                  "Type",
+                  "Out Date",
+                  "Return Date",
+                  "Adults",
+                  "Railcards"
+                ],
+                "line": 12
+              },
+              {
+                "cells": [
+                  "GYP",
+                  "JCH",
+                  "",
+                  "Open Return",
+                  "tomorrow",
+                  "",
+                  "1",
+                  "Esk Valley Railcard"
+                ],
+                "line": 13
+              }
+            ],
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 3500094656,
+              "status": "passed"
+            },
+            "line": 14,
+            "name": "accept the alert message",
+            "match": {
+              "location": "PageActions.acceptMessage()"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 9845372340,
+              "status": "passed"
+            },
+            "line": 15,
+            "name": "I should see the \"Out Search Results\" screen",
+            "match": {
+              "arguments": [
+                {
+                  "val": "Out Search Results",
+                  "offset": 18
+                }
+              ],
+              "location": "PageActions.shouldSeeTheScreen(String)"
+            },
+            "keyword": "Then "
+          },
+          {
+            "result": {
+              "duration": 40953673251,
+              "error_message": "java.lang.AssertionError: Unable to find label: \u0027James Cook Univercity Hospital\u0027\n\tat org.junit.Assert.fail(Assert.java:88)\n\tat org.junit.Assert.assertTrue(Assert.java:41)\n\tat com.thetrainline.common.steps.generic.LabelActions.labelsAreShown(LabelActions.java:88)\n\tat ✽.And the following labels are shown:(booking/RegisteredKioskBooking.feature:16)\n",
+              "status": "failed"
+            },
+            "line": 16,
+            "name": "the following labels are shown:",
+            "match": {
+              "location": "LabelActions.labelsAreShown(String\u003e)"
+            },
+            "matchedColumns": [
+              5,
+              6
+            ],
+            "rows": [
+              {
+                "cells": [
+                  "Gypsy Lane"
+                ],
+                "line": 17
+              },
+              {
+                "cells": [
+                  "James Cook Univercity Hospital"
+                ],
+                "line": 18
+              }
+            ],
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "status": "skipped"
+            },
+            "line": 19,
+            "name": "the \"Esk Valley Railcard savings applied\" text is shown",
+            "match": {
+              "arguments": [
+                {
+                  "val": "Esk Valley Railcard savings applied",
+                  "offset": 5
+                }
+              ],
+              "location": "LabelActions.messageIsShown(String)"
+            },
+            "matchedColumns": [
+              11
+            ],
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "status": "skipped"
+            },
+            "line": 20,
+            "name": "I proceed search results to the payment screen",
+            "match": {
+              "location": "JourneySearchActions.proceedFromSearchResultsToPayment()"
+            },
+            "keyword": "When "
+          },
+          {
+            "result": {
+              "status": "skipped"
+            },
+            "line": 21,
+            "name": "I should see the \"Payment\" screen",
+            "match": {
+              "arguments": [
+                {
+                  "val": "Payment",
+                  "offset": 18
+                }
+              ],
+              "location": "PageActions.shouldSeeTheScreen(String)"
+            },
+            "keyword": "Then "
+          },
+          {
+            "result": {
+              "status": "skipped"
+            },
+            "line": 22,
+            "name": "I select Pay by card method",
+            "match": {
+              "arguments": [
+                {
+                  "val": "card",
+                  "offset": 16
+                }
+              ],
+              "location": "PaymentActions.selectPaymentMethod(String)"
+            },
+            "keyword": "When "
+          },
+          {
+            "result": {
+              "status": "skipped"
+            },
+            "line": 23,
+            "name": "add the card with the following criteria:",
+            "match": {
+              "location": "CardManipulationActions.addCards(DataTable)"
+            },
+            "matchedColumns": [
+              0,
+              1
+            ],
+            "rows": [
+              {
+                "cells": [
+                  "Card type",
+                  "Card number",
+                  "Expiry month",
+                  "Expiry year",
+                  "Card holder name"
+                ],
+                "line": 24
+              },
+              {
+                "cells": [
+                  "Visa Debit",
+                  "4539791001730106",
+                  "12",
+                  "20",
+                  "Sarath Banala"
+                ],
+                "line": 25
+              }
+            ],
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "status": "skipped"
+            },
+            "line": 26,
+            "name": "I should see the \"Payment\" screen",
+            "match": {
+              "arguments": [
+                {
+                  "val": "Payment",
+                  "offset": 18
+                }
+              ],
+              "location": "PageActions.shouldSeeTheScreen(String)"
+            },
+            "keyword": "Then "
+          },
+          {
+            "result": {
+              "status": "skipped"
+            },
+            "line": 27,
+            "name": "the \"Railcard Discount\" field containts \"Esk Valley Railcard\" railcards",
+            "match": {
+              "arguments": [
+                {
+                  "val": "Railcard Discount",
+                  "offset": 5
+                },
+                {
+                  "val": "Esk Valley Railcard",
+                  "offset": 41
+                }
+              ],
+              "location": "RailcardActions.fieldContainsRailCards(String,String)"
+            },
+            "matchedColumns": [
+              10
+            ],
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "status": "skipped"
+            },
+            "line": 28,
+            "name": "the \"Booking fee\" text is shown",
+            "match": {
+              "arguments": [
+                {
+                  "val": "Booking fee",
+                  "offset": 5
+                }
+              ],
+              "location": "LabelActions.messageIsShown(String)"
+            },
+            "matchedColumns": [
+              15
+            ],
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "status": "skipped"
+            },
+            "comments": [
+              {
+                "line": 29,
+                "value": "# Add fee verification formula"
+              },
+              {
+                "line": 30,
+                "value": "# Add buttons verification on Payment screen"
+              }
+            ],
+            "line": 31,
+            "name": "I click on the \"Self-service ticket machine\" button",
+            "match": {
+              "arguments": [
+                {
+                  "val": "Self-service ticket machine",
+                  "offset": 16
+                }
+              ],
+              "location": "FieldActions.clickOnTheField(String)"
+            },
+            "keyword": "When "
+          },
+          {
+            "result": {
+              "status": "skipped"
+            },
+            "line": 32,
+            "name": "I note following fields values:",
+            "match": {
+              "location": "FieldActions.noteTheFollowingFields(DataTable)"
+            },
+            "rows": [
+              {
+                "cells": [
+                  "Field",
+                  "As"
+                ],
+                "line": 33
+              },
+              {
+                "cells": [
+                  "Outbound Ticket Date",
+                  "Outbound Ticket Date"
+                ],
+                "line": 34
+              },
+              {
+                "cells": [
+                  "Outbound Passangers",
+                  "Outbound Passangers"
+                ],
+                "line": 35
+              },
+              {
+                "cells": [
+                  "Outbound Departure Time",
+                  "Outbound Deptarture Time"
+                ],
+                "line": 36
+              },
+              {
+                "cells": [
+                  "Outbound Arrival Time",
+                  "Outbound Arrival Time"
+                ],
+                "line": 37
+              },
+              {
+                "cells": [
+                  "Outbound Ticket Type",
+                  "Outbound Ticket Type"
+                ],
+                "line": 38
+              },
+              {
+                "cells": [
+                  "Ticket price",
+                  "Total Price"
+                ],
+                "line": 39
+              }
+            ],
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "status": "skipped"
+            },
+            "line": 40,
+            "name": "I type \"223\" text into \"CVV\" field",
+            "match": {
+              "arguments": [
+                {
+                  "val": "223",
+                  "offset": 8
+                },
+                {
+                  "val": "CVV",
+                  "offset": 24
+                }
+              ],
+              "location": "FieldActions.typeTextIntoField(String,String)"
+            },
+            "matchedColumns": [
+              2
+            ],
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "status": "skipped"
+            },
+            "line": 41,
+            "name": "click on the \"Buy\" button",
+            "match": {
+              "arguments": [
+                {
+                  "val": "Buy",
+                  "offset": 14
+                }
+              ],
+              "location": "FieldActions.clickOnTheField(String)"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "status": "skipped"
+            },
+            "line": 42,
+            "name": "I proceed to booking confirmation",
+            "match": {
+              "location": "BookingActions.proceeedToBookingConfirmation()"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "status": "skipped"
+            },
+            "line": 43,
+            "name": "I should see the \"Booking Confirmation\" screen",
+            "match": {
+              "arguments": [
+                {
+                  "val": "Booking Confirmation",
+                  "offset": 18
+                }
+              ],
+              "location": "PageActions.shouldSeeTheScreen(String)"
+            },
+            "keyword": "Then "
+          },
+          {
+            "result": {
+              "status": "skipped"
+            },
+            "line": 44,
+            "name": "I should see the \"My Tickets\" screen",
+            "match": {
+              "arguments": [
+                {
+                  "val": "My Tickets",
+                  "offset": 18
+                }
+              ],
+              "location": "PageActions.shouldSeeTheScreen(String)"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "status": "skipped"
+            },
+            "line": 45,
+            "name": "the following labels are shown:",
+            "match": {
+              "location": "LabelActions.labelsAreShown(String\u003e)"
+            },
+            "matchedColumns": [
+              5,
+              6
+            ],
+            "rows": [
+              {
+                "cells": [
+                  "Outbound Ticket Date"
+                ],
+                "line": 46
+              },
+              {
+                "cells": [
+                  "Gypsy Lane"
+                ],
+                "line": 47
+              },
+              {
+                "cells": [
+                  "James Cook Univercity Hospital"
+                ],
+                "line": 48
+              }
+            ],
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "status": "skipped"
+            },
+            "line": 49,
+            "name": "I open the \"Outbound\" leg for the top-most visible ticket",
+            "match": {
+              "arguments": [
+                {
+                  "val": "Outbound",
+                  "offset": 12
+                }
+              ],
+              "location": "MyTicketsActions.openFirstTicketLeg(String)"
+            },
+            "keyword": "When "
+          },
+          {
+            "result": {
+              "status": "skipped"
+            },
+            "line": 50,
+            "name": "I should see the \"Booking info\" screen",
+            "match": {
+              "arguments": [
+                {
+                  "val": "Booking info",
+                  "offset": 18
+                }
+              ],
+              "location": "PageActions.shouldSeeTheScreen(String)"
+            },
+            "keyword": "Then "
+          },
+          {
+            "result": {
+              "status": "skipped"
+            },
+            "line": 51,
+            "name": "the page contains the following data:",
+            "match": {
+              "location": "PageActions.pageContainsData(DataTable)"
+            },
+            "matchedColumns": [
+              5,
+              6,
+              8,
+              13
+            ],
+            "rows": [
+              {
+                "cells": [
+                  "Journey Date",
+                  "Origin Station",
+                  "Destination Station",
+                  "Ticket Type",
+                  "Ticket Class",
+                  "Passengers",
+                  "Total Price",
+                  "Purchase Date"
+                ],
+                "line": 52
+              },
+              {
+                "cells": [
+                  "DATE(tomorrow;EEE dd MMM)",
+                  "Gypsy Lane",
+                  "James Cook Univercity Hospital",
+                  "Outbound Ticket Type",
+                  "Standard",
+                  "1",
+                  "Total Price",
+                  "DATE(today;EEE dd MMM yyyy)"
+                ],
+                "line": 53
+              }
+            ],
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "status": "skipped"
+            },
+            "line": 54,
+            "name": "I click on the \"Back\" button",
+            "match": {
+              "arguments": [
+                {
+                  "val": "Back",
+                  "offset": 16
+                }
+              ],
+              "location": "FieldActions.clickOnTheField(String)"
+            },
+            "keyword": "When "
+          },
+          {
+            "result": {
+              "status": "skipped"
+            },
+            "comments": [
+              {
+                "line": 55,
+                "value": "# Share trip flow"
+              }
+            ],
+            "line": 56,
+            "name": "I should see the \"My Tickets\" screen",
+            "match": {
+              "arguments": [
+                {
+                  "val": "My Tickets",
+                  "offset": 18
+                }
+              ],
+              "location": "PageActions.shouldSeeTheScreen(String)"
+            },
+            "keyword": "Then "
+          },
+          {
+            "result": {
+              "status": "skipped"
+            },
+            "line": 57,
+            "name": "I click on the \"Share\" button",
+            "match": {
+              "arguments": [
+                {
+                  "val": "Share",
+                  "offset": 16
+                }
+              ],
+              "location": "FieldActions.clickOnTheField(String)"
+            },
+            "keyword": "When "
+          },
+          {
+            "result": {
+              "status": "skipped"
+            },
+            "line": 58,
+            "name": "the following labels are shown:",
+            "match": {
+              "location": "LabelActions.labelsAreShown(String\u003e)"
+            },
+            "rows": [
+              {
+                "cells": [
+                  "Share trip details"
+                ],
+                "line": 59
+              }
+            ],
+            "keyword": "Then "
+          },
+          {
+            "result": {
+              "status": "skipped"
+            },
+            "line": 60,
+            "name": "I should see the \"Share collection reference\" text is not shown",
+            "match": {
+              "arguments": [
+                {
+                  "val": "Share collection reference",
+                  "offset": 18
+                }
+              ],
+              "location": "LabelActions.messageIsNotShown(String)"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "status": "skipped"
+            },
+            "line": 61,
+            "name": "I click on the \"Share trip details\" text",
+            "match": {
+              "arguments": [
+                {
+                  "val": "Share trip details",
+                  "offset": 16
+                }
+              ],
+              "location": "FieldActions.clickOnText(String)"
+            },
+            "keyword": "When "
+          },
+          {
+            "result": {
+              "status": "skipped"
+            },
+            "line": 62,
+            "name": "I scroll to the \"Tweet\" text",
+            "match": {
+              "arguments": [
+                {
+                  "val": "Tweet",
+                  "offset": 17
+                }
+              ],
+              "location": "ScrollActions.scrollToText(String)"
+            },
+            "matchedColumns": [
+              16
+            ],
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "status": "skipped"
+            },
+            "line": 63,
+            "name": "I should see the \"Tweet\" text is shown",
+            "match": {
+              "arguments": [
+                {
+                  "val": "Tweet",
+                  "offset": 18
+                }
+              ],
+              "location": "LabelActions.messageIsShown(String)"
+            },
+            "matchedColumns": [
+              16
+            ],
+            "keyword": "Then "
+          },
+          {
+            "result": {
+              "status": "skipped"
+            },
+            "line": 64,
+            "name": "I click on the \"Tweet\" text",
+            "match": {
+              "arguments": [
+                {
+                  "val": "Tweet",
+                  "offset": 16
+                }
+              ],
+              "location": "FieldActions.clickOnText(String)"
+            },
+            "matchedColumns": [
+              16
+            ],
+            "keyword": "When "
+          },
+          {
+            "result": {
+              "status": "skipped"
+            },
+            "line": 65,
+            "name": "the following labels are shown:",
+            "match": {
+              "location": "LabelActions.labelsAreShown(String\u003e)"
+            },
+            "matchedColumns": [
+              18
+            ],
+            "rows": [
+              {
+                "cells": [
+                  ""
+                ],
+                "line": 66
+              },
+              {
+                "cells": [
+                  "View live journey updates"
+                ],
+                "line": 67
+              },
+              {
+                "cells": [
+                  "Download our app:"
+                ],
+                "line": 68
+              },
+              {
+                "cells": [
+                  "www.thetrainline.com/train-tickets/mobile-app"
+                ],
+                "line": 69
+              }
+            ],
+            "keyword": "Then "
+          },
+          {
+            "result": {
+              "status": "skipped"
+            },
+            "line": 70,
+            "name": "I scroll to the \"Who\u0027s in this photo?\" text",
+            "match": {
+              "arguments": [
+                {
+                  "val": "Who\u0027s in this photo?",
+                  "offset": 17
+                }
+              ],
+              "location": "ScrollActions.scrollToText(String)"
+            },
+            "matchedColumns": [
+              17
+            ],
+            "keyword": "When "
+          },
+          {
+            "result": {
+              "status": "skipped"
+            },
+            "line": 71,
+            "name": "I should see the \"Who\u0027s in this photo?\" text is shown",
+            "match": {
+              "arguments": [
+                {
+                  "val": "Who\u0027s in this photo?",
+                  "offset": 18
+                }
+              ],
+              "location": "LabelActions.messageIsShown(String)"
+            },
+            "matchedColumns": [
+              17
+            ],
+            "keyword": "Then "
+          }
+        ],
+        "tags": [
+          {
+            "line": 3,
+            "name": "@debug"
+          }
+        ]
+      },
+      {
+        "before": [
+          {
+            "result": {
+              "duration": 16470582011,
+              "status": "passed"
+            },
+            "match": {
+              "location": "Hooks.setUp(Scenario)"
+            }
+          }
+        ],
+        "line": 79,
+        "name": "Book the kiosk ticket through all available entry points using Payment Cards",
+        "description": "Entry points : 923,924,921",
+        "id": "kiosk-booking-for-registered-user;book-the-kiosk-ticket-through-all-available-entry-points-using-payment-cards;;6",
+        "after": [
+          {
+            "result": {
+              "duration": 3163571596,
+              "status": "passed"
+            },
+            "match": {
+              "location": "Hooks.tearDown(Scenario)"
+            }
+          }
+        ],
+        "type": "scenario",
+        "keyword": "Scenario Outline",
+        "steps": [
+          {
+            "result": {
+              "duration": 39954904438,
+              "status": "passed"
+            },
+            "line": 7,
+            "name": "I am logged into the system",
+            "match": {
+              "location": "LoginActions.openHomePageLogged()"
+            },
+            "keyword": "Given "
+          },
+          {
+            "result": {
+              "duration": 11542675321,
+              "status": "passed"
+            },
+            "line": 8,
+            "name": "I am on the \"Available Cards\" page",
+            "match": {
+              "arguments": [
+                {
+                  "val": "Available Cards",
+                  "offset": 13
+                }
+              ],
+              "location": "NavigationActions.navigateToPage(String)"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 10856618628,
+              "status": "passed"
+            },
+            "line": 9,
+            "name": "I have no payment cards stored",
+            "match": {
+              "location": "CardManipulationActions.removeAllCards()"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 9709327913,
+              "status": "passed"
+            },
+            "line": 10,
+            "name": "I go to the \"Journey Search\" screen",
+            "match": {
+              "arguments": [
+                {
+                  "val": "Journey Search",
+                  "offset": 13
+                }
+              ],
+              "location": "NavigationActions.navigateToPage(String)"
+            },
+            "keyword": "When "
+          },
+          {
+            "result": {
+              "duration": 63789275877,
+              "status": "passed"
+            },
+            "line": 11,
+            "name": "search for journey using the following criteria:",
+            "match": {
+              "location": "JourneySearchActions.searchJourneyByCriteria(DataTable)"
+            },
+            "matchedColumns": [
+              3,
+              4,
+              7,
+              8,
+              9,
+              12,
+              13,
+              14
+            ],
+            "rows": [
+              {
+                "cells": [
+                  "From",
+                  "To",
+                  "Via",
+                  "Type",
+                  "Out Date",
+                  "Return Date",
+                  "Adults",
+                  "Railcards"
+                ],
+                "line": 12
+              },
+              {
+                "cells": [
+                  "ZFD",
+                  "LUT",
+                  "",
+                  "Open Return",
+                  "tomorrow",
+                  "",
+                  "2",
+                  "16-25 Railcard, Senior Railcard"
+                ],
+                "line": 13
+              }
+            ],
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 3452419056,
+              "status": "passed"
+            },
+            "line": 14,
+            "name": "accept the alert message",
+            "match": {
+              "location": "PageActions.acceptMessage()"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 10295013039,
+              "status": "passed"
+            },
+            "line": 15,
+            "name": "I should see the \"Out Search Results\" screen",
+            "match": {
+              "arguments": [
+                {
+                  "val": "Out Search Results",
+                  "offset": 18
+                }
+              ],
+              "location": "PageActions.shouldSeeTheScreen(String)"
+            },
+            "keyword": "Then "
+          },
+          {
+            "result": {
+              "duration": 1007005227,
+              "status": "passed"
+            },
+            "line": 16,
+            "name": "the following labels are shown:",
+            "match": {
+              "location": "LabelActions.labelsAreShown(String\u003e)"
+            },
+            "matchedColumns": [
+              5,
+              6
+            ],
+            "rows": [
+              {
+                "cells": [
+                  "Farringdon"
+                ],
+                "line": 17
+              },
+              {
+                "cells": [
+                  "Luton"
+                ],
+                "line": 18
+              }
+            ],
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 110383036,
+              "status": "passed"
+            },
+            "line": 19,
+            "name": "the \"Valid railcards savings applied\" text is shown",
+            "match": {
+              "arguments": [
+                {
+                  "val": "Valid railcards savings applied",
+                  "offset": 5
+                }
+              ],
+              "location": "LabelActions.messageIsShown(String)"
+            },
+            "matchedColumns": [
+              11
+            ],
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 11278150860,
+              "status": "passed"
+            },
+            "line": 20,
+            "name": "I proceed search results to the payment screen",
+            "match": {
+              "location": "JourneySearchActions.proceedFromSearchResultsToPayment()"
+            },
+            "keyword": "When "
+          },
+          {
+            "result": {
+              "duration": 294753521,
+              "status": "passed"
+            },
+            "line": 21,
+            "name": "I should see the \"Payment\" screen",
+            "match": {
+              "arguments": [
+                {
+                  "val": "Payment",
+                  "offset": 18
+                }
+              ],
+              "location": "PageActions.shouldSeeTheScreen(String)"
+            },
+            "keyword": "Then "
+          },
+          {
+            "result": {
+              "duration": 18760971942,
+              "status": "passed"
+            },
+            "line": 22,
+            "name": "I select Pay by card method",
+            "match": {
+              "arguments": [
+                {
+                  "val": "card",
+                  "offset": 16
+                }
+              ],
+              "location": "PaymentActions.selectPaymentMethod(String)"
+            },
+            "keyword": "When "
+          },
+          {
+            "result": {
+              "duration": 56658261512,
+              "status": "passed"
+            },
+            "line": 23,
+            "name": "add the card with the following criteria:",
+            "match": {
+              "location": "CardManipulationActions.addCards(DataTable)"
+            },
+            "matchedColumns": [
+              0,
+              1
+            ],
+            "rows": [
+              {
+                "cells": [
+                  "Card type",
+                  "Card number",
+                  "Expiry month",
+                  "Expiry year",
+                  "Card holder name"
+                ],
+                "line": 24
+              },
+              {
+                "cells": [
+                  "Amex",
+                  "341111111111111",
+                  "12",
+                  "20",
+                  "Sarath Banala"
+                ],
+                "line": 25
+              }
+            ],
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 288835610,
+              "status": "passed"
+            },
+            "line": 26,
+            "name": "I should see the \"Payment\" screen",
+            "match": {
+              "arguments": [
+                {
+                  "val": "Payment",
+                  "offset": 18
+                }
+              ],
+              "location": "PageActions.shouldSeeTheScreen(String)"
+            },
+            "keyword": "Then "
+          },
+          {
+            "result": {
+              "duration": 52294955221,
+              "status": "passed"
+            },
+            "line": 27,
+            "name": "the \"Railcard Discount\" field containts \"16-25 Railcard, Senior Railcard\" railcards",
+            "match": {
+              "arguments": [
+                {
+                  "val": "Railcard Discount",
+                  "offset": 5
+                },
+                {
+                  "val": "16-25 Railcard, Senior Railcard",
+                  "offset": 41
+                }
+              ],
+              "location": "RailcardActions.fieldContainsRailCards(String,String)"
+            },
+            "matchedColumns": [
+              10
+            ],
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 229025675,
+              "status": "passed"
+            },
+            "line": 28,
+            "name": "the \"Booking fee\" text is shown",
+            "match": {
+              "arguments": [
+                {
+                  "val": "Booking fee",
+                  "offset": 5
+                }
+              ],
+              "location": "LabelActions.messageIsShown(String)"
+            },
+            "matchedColumns": [
+              15
+            ],
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 9618315446,
+              "status": "passed"
+            },
+            "comments": [
+              {
+                "line": 29,
+                "value": "# Add fee verification formula"
+              },
+              {
+                "line": 30,
+                "value": "# Add buttons verification on Payment screen"
+              }
+            ],
+            "line": 31,
+            "name": "I click on the \"Self-service ticket machine\" button",
+            "match": {
+              "arguments": [
+                {
+                  "val": "Self-service ticket machine",
+                  "offset": 16
+                }
+              ],
+              "location": "FieldActions.clickOnTheField(String)"
+            },
+            "keyword": "When "
+          },
+          {
+            "result": {
+              "duration": 4087640133,
+              "status": "passed"
+            },
+            "line": 32,
+            "name": "I note following fields values:",
+            "match": {
+              "location": "FieldActions.noteTheFollowingFields(DataTable)"
+            },
+            "rows": [
+              {
+                "cells": [
+                  "Field",
+                  "As"
+                ],
+                "line": 33
+              },
+              {
+                "cells": [
+                  "Outbound Ticket Date",
+                  "Outbound Ticket Date"
+                ],
+                "line": 34
+              },
+              {
+                "cells": [
+                  "Outbound Passangers",
+                  "Outbound Passangers"
+                ],
+                "line": 35
+              },
+              {
+                "cells": [
+                  "Outbound Departure Time",
+                  "Outbound Deptarture Time"
+                ],
+                "line": 36
+              },
+              {
+                "cells": [
+                  "Outbound Arrival Time",
+                  "Outbound Arrival Time"
+                ],
+                "line": 37
+              },
+              {
+                "cells": [
+                  "Outbound Ticket Type",
+                  "Outbound Ticket Type"
+                ],
+                "line": 38
+              },
+              {
+                "cells": [
+                  "Ticket price",
+                  "Total Price"
+                ],
+                "line": 39
+              }
+            ],
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 19295588043,
+              "status": "passed"
+            },
+            "line": 40,
+            "name": "I type \"1111\" text into \"CVV\" field",
+            "match": {
+              "arguments": [
+                {
+                  "val": "1111",
+                  "offset": 8
+                },
+                {
+                  "val": "CVV",
+                  "offset": 25
+                }
+              ],
+              "location": "FieldActions.typeTextIntoField(String,String)"
+            },
+            "matchedColumns": [
+              2
+            ],
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 1329615932,
+              "status": "passed"
+            },
+            "line": 41,
+            "name": "click on the \"Buy\" button",
+            "match": {
+              "arguments": [
+                {
+                  "val": "Buy",
+                  "offset": 14
+                }
+              ],
+              "location": "FieldActions.clickOnTheField(String)"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 8656561067,
+              "status": "passed"
+            },
+            "line": 42,
+            "name": "I proceed to booking confirmation",
+            "match": {
+              "location": "BookingActions.proceeedToBookingConfirmation()"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 168293100,
+              "status": "passed"
+            },
+            "line": 43,
+            "name": "I should see the \"Booking Confirmation\" screen",
+            "match": {
+              "arguments": [
+                {
+                  "val": "Booking Confirmation",
+                  "offset": 18
+                }
+              ],
+              "location": "PageActions.shouldSeeTheScreen(String)"
+            },
+            "keyword": "Then "
+          },
+          {
+            "result": {
+              "duration": 8298302517,
+              "status": "passed"
+            },
+            "line": 44,
+            "name": "I should see the \"My Tickets\" screen",
+            "match": {
+              "arguments": [
+                {
+                  "val": "My Tickets",
+                  "offset": 18
+                }
+              ],
+              "location": "PageActions.shouldSeeTheScreen(String)"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 1017081971,
+              "status": "passed"
+            },
+            "line": 45,
+            "name": "the following labels are shown:",
+            "match": {
+              "location": "LabelActions.labelsAreShown(String\u003e)"
+            },
+            "matchedColumns": [
+              5,
+              6
+            ],
+            "rows": [
+              {
+                "cells": [
+                  "Outbound Ticket Date"
+                ],
+                "line": 46
+              },
+              {
+                "cells": [
+                  "Farringdon"
+                ],
+                "line": 47
+              },
+              {
+                "cells": [
+                  "Luton"
+                ],
+                "line": 48
+              }
+            ],
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 1916738031,
+              "status": "passed"
+            },
+            "line": 49,
+            "name": "I open the \"Outbound\" leg for the top-most visible ticket",
+            "match": {
+              "arguments": [
+                {
+                  "val": "Outbound",
+                  "offset": 12
+                }
+              ],
+              "location": "MyTicketsActions.openFirstTicketLeg(String)"
+            },
+            "keyword": "When "
+          },
+          {
+            "result": {
+              "duration": 4199101147,
+              "status": "passed"
+            },
+            "line": 50,
+            "name": "I should see the \"Booking info\" screen",
+            "match": {
+              "arguments": [
+                {
+                  "val": "Booking info",
+                  "offset": 18
+                }
+              ],
+              "location": "PageActions.shouldSeeTheScreen(String)"
+            },
+            "keyword": "Then "
+          },
+          {
+            "result": {
+              "duration": 2961596616,
+              "status": "passed"
+            },
+            "line": 51,
+            "name": "the page contains the following data:",
+            "match": {
+              "location": "PageActions.pageContainsData(DataTable)"
+            },
+            "matchedColumns": [
+              5,
+              6,
+              8,
+              13
+            ],
+            "rows": [
+              {
+                "cells": [
+                  "Journey Date",
+                  "Origin Station",
+                  "Destination Station",
+                  "Ticket Type",
+                  "Ticket Class",
+                  "Passengers",
+                  "Total Price",
+                  "Purchase Date"
+                ],
+                "line": 52
+              },
+              {
+                "cells": [
+                  "DATE(tomorrow;EEE dd MMM)",
+                  "Farringdon",
+                  "Luton",
+                  "Outbound Ticket Type",
+                  "Standard",
+                  "2",
+                  "Total Price",
+                  "DATE(today;EEE dd MMM yyyy)"
+                ],
+                "line": 53
+              }
+            ],
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 918370610,
+              "status": "passed"
+            },
+            "line": 54,
+            "name": "I click on the \"Back\" button",
+            "match": {
+              "arguments": [
+                {
+                  "val": "Back",
+                  "offset": 16
+                }
+              ],
+              "location": "FieldActions.clickOnTheField(String)"
+            },
+            "keyword": "When "
+          },
+          {
+            "result": {
+              "duration": 1505052427,
+              "status": "passed"
+            },
+            "comments": [
+              {
+                "line": 55,
+                "value": "# Share trip flow"
+              }
+            ],
+            "line": 56,
+            "name": "I should see the \"My Tickets\" screen",
+            "match": {
+              "arguments": [
+                {
+                  "val": "My Tickets",
+                  "offset": 18
+                }
+              ],
+              "location": "PageActions.shouldSeeTheScreen(String)"
+            },
+            "keyword": "Then "
+          },
+          {
+            "result": {
+              "duration": 40968293267,
+              "status": "passed"
+            },
+            "line": 57,
+            "name": "I click on the \"Share\" button",
+            "match": {
+              "arguments": [
+                {
+                  "val": "Share",
+                  "offset": 16
+                }
+              ],
+              "location": "FieldActions.clickOnTheField(String)"
+            },
+            "keyword": "When "
+          },
+          {
+            "result": {
+              "duration": 702152130,
+              "status": "passed"
+            },
+            "line": 58,
+            "name": "the following labels are shown:",
+            "match": {
+              "location": "LabelActions.labelsAreShown(String\u003e)"
+            },
+            "rows": [
+              {
+                "cells": [
+                  "Share trip details"
+                ],
+                "line": 59
+              }
+            ],
+            "keyword": "Then "
+          },
+          {
+            "result": {
+              "duration": 47739946,
+              "status": "passed"
+            },
+            "line": 60,
+            "name": "I should see the \"Share collection reference\" text is not shown",
+            "match": {
+              "arguments": [
+                {
+                  "val": "Share collection reference",
+                  "offset": 18
+                }
+              ],
+              "location": "LabelActions.messageIsNotShown(String)"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 385151107,
+              "status": "passed"
+            },
+            "line": 61,
+            "name": "I click on the \"Share trip details\" text",
+            "match": {
+              "arguments": [
+                {
+                  "val": "Share trip details",
+                  "offset": 16
+                }
+              ],
+              "location": "FieldActions.clickOnText(String)"
+            },
+            "keyword": "When "
+          },
+          {
+            "result": {
+              "duration": 1418467606,
+              "status": "passed"
+            },
+            "line": 62,
+            "name": "I scroll to the \"Gmail\" text",
+            "match": {
+              "arguments": [
+                {
+                  "val": "Gmail",
+                  "offset": 17
+                }
+              ],
+              "location": "ScrollActions.scrollToText(String)"
+            },
+            "matchedColumns": [
+              16
+            ],
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 100248086,
+              "status": "passed"
+            },
+            "line": 63,
+            "name": "I should see the \"Gmail\" text is shown",
+            "match": {
+              "arguments": [
+                {
+                  "val": "Gmail",
+                  "offset": 18
+                }
+              ],
+              "location": "LabelActions.messageIsShown(String)"
+            },
+            "matchedColumns": [
+              16
+            ],
+            "keyword": "Then "
+          },
+          {
+            "result": {
+              "duration": 912832508,
+              "status": "passed"
+            },
+            "line": 64,
+            "name": "I click on the \"Gmail\" text",
+            "match": {
+              "arguments": [
+                {
+                  "val": "Gmail",
+                  "offset": 16
+                }
+              ],
+              "location": "FieldActions.clickOnText(String)"
+            },
+            "matchedColumns": [
+              16
+            ],
+            "keyword": "When "
+          },
+          {
+            "result": {
+              "duration": 40449952954,
+              "error_message": "java.lang.AssertionError: Unable to find label: \u0027Going to Newcastle\u0027\n\tat org.junit.Assert.fail(Assert.java:88)\n\tat org.junit.Assert.assertTrue(Assert.java:41)\n\tat com.thetrainline.common.steps.generic.LabelActions.labelsAreShown(LabelActions.java:88)\n\tat ✽.Then the following labels are shown:(booking/RegisteredKioskBooking.feature:65)\n",
+              "status": "failed"
+            },
+            "line": 65,
+            "name": "the following labels are shown:",
+            "match": {
+              "location": "LabelActions.labelsAreShown(String\u003e)"
+            },
+            "matchedColumns": [
+              18
+            ],
+            "rows": [
+              {
+                "cells": [
+                  "Going to Newcastle"
+                ],
+                "line": 66
+              },
+              {
+                "cells": [
+                  "View live journey updates"
+                ],
+                "line": 67
+              },
+              {
+                "cells": [
+                  "Download our app:"
+                ],
+                "line": 68
+              },
+              {
+                "cells": [
+                  "www.thetrainline.com/train-tickets/mobile-app"
+                ],
+                "line": 69
+              }
+            ],
+            "keyword": "Then "
+          },
+          {
+            "result": {
+              "status": "skipped"
+            },
+            "line": 70,
+            "name": "I scroll to the \"ticket_shared.png\" text",
+            "match": {
+              "arguments": [
+                {
+                  "val": "ticket_shared.png",
+                  "offset": 17
+                }
+              ],
+              "location": "ScrollActions.scrollToText(String)"
+            },
+            "matchedColumns": [
+              17
+            ],
+            "keyword": "When "
+          },
+          {
+            "result": {
+              "status": "skipped"
+            },
+            "line": 71,
+            "name": "I should see the \"ticket_shared.png\" text is shown",
+            "match": {
+              "arguments": [
+                {
+                  "val": "ticket_shared.png",
+                  "offset": 18
+                }
+              ],
+              "location": "LabelActions.messageIsShown(String)"
+            },
+            "matchedColumns": [
+              17
+            ],
+            "keyword": "Then "
+          }
+        ],
+        "tags": [
+          {
+            "line": 3,
+            "name": "@debug"
+          }
+        ]
+      },
+      {
+        "before": [
+          {
+            "result": {
+              "duration": 16450647490,
+              "status": "passed"
+            },
+            "match": {
+              "location": "Hooks.setUp(Scenario)"
+            }
+          }
+        ],
+        "line": 80,
+        "name": "Book the kiosk ticket through all available entry points using Payment Cards",
+        "description": "Entry points : 923,924,921",
+        "id": "kiosk-booking-for-registered-user;book-the-kiosk-ticket-through-all-available-entry-points-using-payment-cards;;7",
+        "after": [
+          {
+            "result": {
+              "duration": 989076411,
+              "status": "passed"
+            },
+            "match": {
+              "location": "Hooks.tearDown(Scenario)"
+            }
+          }
+        ],
+        "type": "scenario",
+        "keyword": "Scenario Outline",
+        "steps": [
+          {
+            "result": {
+              "duration": 39089162254,
+              "status": "passed"
+            },
+            "line": 7,
+            "name": "I am logged into the system",
+            "match": {
+              "location": "LoginActions.openHomePageLogged()"
+            },
+            "keyword": "Given "
+          },
+          {
+            "result": {
+              "duration": 11549460508,
+              "status": "passed"
+            },
+            "line": 8,
+            "name": "I am on the \"Available Cards\" page",
+            "match": {
+              "arguments": [
+                {
+                  "val": "Available Cards",
+                  "offset": 13
+                }
+              ],
+              "location": "NavigationActions.navigateToPage(String)"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 14185739845,
+              "status": "passed"
+            },
+            "line": 9,
+            "name": "I have no payment cards stored",
+            "match": {
+              "location": "CardManipulationActions.removeAllCards()"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 9838010804,
+              "status": "passed"
+            },
+            "line": 10,
+            "name": "I go to the \"Journey Search\" screen",
+            "match": {
+              "arguments": [
+                {
+                  "val": "Journey Search",
+                  "offset": 13
+                }
+              ],
+              "location": "NavigationActions.navigateToPage(String)"
+            },
+            "keyword": "When "
+          },
+          {
+            "result": {
+              "duration": 68207942576,
+              "status": "passed"
+            },
+            "line": 11,
+            "name": "search for journey using the following criteria:",
+            "match": {
+              "location": "JourneySearchActions.searchJourneyByCriteria(DataTable)"
+            },
+            "matchedColumns": [
+              3,
+              4,
+              7,
+              8,
+              9,
+              12,
+              13,
+              14
+            ],
+            "rows": [
+              {
+                "cells": [
+                  "From",
+                  "To",
+                  "Via",
+                  "Type",
+                  "Out Date",
+                  "Return Date",
+                  "Adults",
+                  "Railcards"
+                ],
+                "line": 12
+              },
+              {
+                "cells": [
+                  "ZFD",
+                  "LUT",
+                  "",
+                  "Open Return",
+                  "tomorrow",
+                  "",
+                  "3",
+                  "Senior Railcard, Senior Railcard, Senior Railcard"
+                ],
+                "line": 13
+              }
+            ],
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 3421822450,
+              "status": "passed"
+            },
+            "line": 14,
+            "name": "accept the alert message",
+            "match": {
+              "location": "PageActions.acceptMessage()"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 9811104895,
+              "status": "passed"
+            },
+            "line": 15,
+            "name": "I should see the \"Out Search Results\" screen",
+            "match": {
+              "arguments": [
+                {
+                  "val": "Out Search Results",
+                  "offset": 18
+                }
+              ],
+              "location": "PageActions.shouldSeeTheScreen(String)"
+            },
+            "keyword": "Then "
+          },
+          {
+            "result": {
+              "duration": 1057184133,
+              "status": "passed"
+            },
+            "line": 16,
+            "name": "the following labels are shown:",
+            "match": {
+              "location": "LabelActions.labelsAreShown(String\u003e)"
+            },
+            "matchedColumns": [
+              5,
+              6
+            ],
+            "rows": [
+              {
+                "cells": [
+                  "Farringdon"
+                ],
+                "line": 17
+              },
+              {
+                "cells": [
+                  "Luton"
+                ],
+                "line": 18
+              }
+            ],
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 141079232,
+              "status": "passed"
+            },
+            "line": 19,
+            "name": "the \"Senior Railcard savings applied\" text is shown",
+            "match": {
+              "arguments": [
+                {
+                  "val": "Senior Railcard savings applied",
+                  "offset": 5
+                }
+              ],
+              "location": "LabelActions.messageIsShown(String)"
+            },
+            "matchedColumns": [
+              11
+            ],
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 11014119034,
+              "status": "passed"
+            },
+            "line": 20,
+            "name": "I proceed search results to the payment screen",
+            "match": {
+              "location": "JourneySearchActions.proceedFromSearchResultsToPayment()"
+            },
+            "keyword": "When "
+          },
+          {
+            "result": {
+              "duration": 277702321,
+              "status": "passed"
+            },
+            "line": 21,
+            "name": "I should see the \"Payment\" screen",
+            "match": {
+              "arguments": [
+                {
+                  "val": "Payment",
+                  "offset": 18
+                }
+              ],
+              "location": "PageActions.shouldSeeTheScreen(String)"
+            },
+            "keyword": "Then "
+          },
+          {
+            "result": {
+              "duration": 19215129138,
+              "status": "passed"
+            },
+            "line": 22,
+            "name": "I select Pay by card method",
+            "match": {
+              "arguments": [
+                {
+                  "val": "card",
+                  "offset": 16
+                }
+              ],
+              "location": "PaymentActions.selectPaymentMethod(String)"
+            },
+            "keyword": "When "
+          },
+          {
+            "result": {
+              "duration": 58016108780,
+              "status": "passed"
+            },
+            "line": 23,
+            "name": "add the card with the following criteria:",
+            "match": {
+              "location": "CardManipulationActions.addCards(DataTable)"
+            },
+            "matchedColumns": [
+              0,
+              1
+            ],
+            "rows": [
+              {
+                "cells": [
+                  "Card type",
+                  "Card number",
+                  "Expiry month",
+                  "Expiry year",
+                  "Card holder name"
+                ],
+                "line": 24
+              },
+              {
+                "cells": [
+                  "Diners",
+                  "36005100150025",
+                  "12",
+                  "20",
+                  "Sarath Banala"
+                ],
+                "line": 25
+              }
+            ],
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 271385108,
+              "status": "passed"
+            },
+            "line": 26,
+            "name": "I should see the \"Payment\" screen",
+            "match": {
+              "arguments": [
+                {
+                  "val": "Payment",
+                  "offset": 18
+                }
+              ],
+              "location": "PageActions.shouldSeeTheScreen(String)"
+            },
+            "keyword": "Then "
+          },
+          {
+            "result": {
+              "duration": 52066479301,
+              "status": "passed"
+            },
+            "line": 27,
+            "name": "the \"Railcard Discount\" field containts \"Senior Railcard\" railcards",
+            "match": {
+              "arguments": [
+                {
+                  "val": "Railcard Discount",
+                  "offset": 5
+                },
+                {
+                  "val": "Senior Railcard",
+                  "offset": 41
+                }
+              ],
+              "location": "RailcardActions.fieldContainsRailCards(String,String)"
+            },
+            "matchedColumns": [
+              10
+            ],
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 134710764,
+              "status": "passed"
+            },
+            "line": 28,
+            "name": "the \"Booking fee\" text is shown",
+            "match": {
+              "arguments": [
+                {
+                  "val": "Booking fee",
+                  "offset": 5
+                }
+              ],
+              "location": "LabelActions.messageIsShown(String)"
+            },
+            "matchedColumns": [
+              15
+            ],
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 9362006891,
+              "status": "passed"
+            },
+            "comments": [
+              {
+                "line": 29,
+                "value": "# Add fee verification formula"
+              },
+              {
+                "line": 30,
+                "value": "# Add buttons verification on Payment screen"
+              }
+            ],
+            "line": 31,
+            "name": "I click on the \"Self-service ticket machine\" button",
+            "match": {
+              "arguments": [
+                {
+                  "val": "Self-service ticket machine",
+                  "offset": 16
+                }
+              ],
+              "location": "FieldActions.clickOnTheField(String)"
+            },
+            "keyword": "When "
+          },
+          {
+            "result": {
+              "duration": 4112221028,
+              "status": "passed"
+            },
+            "line": 32,
+            "name": "I note following fields values:",
+            "match": {
+              "location": "FieldActions.noteTheFollowingFields(DataTable)"
+            },
+            "rows": [
+              {
+                "cells": [
+                  "Field",
+                  "As"
+                ],
+                "line": 33
+              },
+              {
+                "cells": [
+                  "Outbound Ticket Date",
+                  "Outbound Ticket Date"
+                ],
+                "line": 34
+              },
+              {
+                "cells": [
+                  "Outbound Passangers",
+                  "Outbound Passangers"
+                ],
+                "line": 35
+              },
+              {
+                "cells": [
+                  "Outbound Departure Time",
+                  "Outbound Deptarture Time"
+                ],
+                "line": 36
+              },
+              {
+                "cells": [
+                  "Outbound Arrival Time",
+                  "Outbound Arrival Time"
+                ],
+                "line": 37
+              },
+              {
+                "cells": [
+                  "Outbound Ticket Type",
+                  "Outbound Ticket Type"
+                ],
+                "line": 38
+              },
+              {
+                "cells": [
+                  "Ticket price",
+                  "Total Price"
+                ],
+                "line": 39
+              }
+            ],
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 20732227919,
+              "status": "passed"
+            },
+            "line": 40,
+            "name": "I type \"223\" text into \"CVV\" field",
+            "match": {
+              "arguments": [
+                {
+                  "val": "223",
+                  "offset": 8
+                },
+                {
+                  "val": "CVV",
+                  "offset": 24
+                }
+              ],
+              "location": "FieldActions.typeTextIntoField(String,String)"
+            },
+            "matchedColumns": [
+              2
+            ],
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 1484425893,
+              "status": "passed"
+            },
+            "line": 41,
+            "name": "click on the \"Buy\" button",
+            "match": {
+              "arguments": [
+                {
+                  "val": "Buy",
+                  "offset": 14
+                }
+              ],
+              "location": "FieldActions.clickOnTheField(String)"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 8255781707,
+              "status": "passed"
+            },
+            "line": 42,
+            "name": "I proceed to booking confirmation",
+            "match": {
+              "location": "BookingActions.proceeedToBookingConfirmation()"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 271882043,
+              "status": "passed"
+            },
+            "line": 43,
+            "name": "I should see the \"Booking Confirmation\" screen",
+            "match": {
+              "arguments": [
+                {
+                  "val": "Booking Confirmation",
+                  "offset": 18
+                }
+              ],
+              "location": "PageActions.shouldSeeTheScreen(String)"
+            },
+            "keyword": "Then "
+          },
+          {
+            "result": {
+              "duration": 7702646751,
+              "status": "passed"
+            },
+            "line": 44,
+            "name": "I should see the \"My Tickets\" screen",
+            "match": {
+              "arguments": [
+                {
+                  "val": "My Tickets",
+                  "offset": 18
+                }
+              ],
+              "location": "PageActions.shouldSeeTheScreen(String)"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 1399153569,
+              "status": "passed"
+            },
+            "line": 45,
+            "name": "the following labels are shown:",
+            "match": {
+              "location": "LabelActions.labelsAreShown(String\u003e)"
+            },
+            "matchedColumns": [
+              5,
+              6
+            ],
+            "rows": [
+              {
+                "cells": [
+                  "Outbound Ticket Date"
+                ],
+                "line": 46
+              },
+              {
+                "cells": [
+                  "Farringdon"
+                ],
+                "line": 47
+              },
+              {
+                "cells": [
+                  "Luton"
+                ],
+                "line": 48
+              }
+            ],
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 1937788811,
+              "status": "passed"
+            },
+            "line": 49,
+            "name": "I open the \"Outbound\" leg for the top-most visible ticket",
+            "match": {
+              "arguments": [
+                {
+                  "val": "Outbound",
+                  "offset": 12
+                }
+              ],
+              "location": "MyTicketsActions.openFirstTicketLeg(String)"
+            },
+            "keyword": "When "
+          },
+          {
+            "result": {
+              "duration": 3924933384,
+              "status": "passed"
+            },
+            "line": 50,
+            "name": "I should see the \"Booking info\" screen",
+            "match": {
+              "arguments": [
+                {
+                  "val": "Booking info",
+                  "offset": 18
+                }
+              ],
+              "location": "PageActions.shouldSeeTheScreen(String)"
+            },
+            "keyword": "Then "
+          },
+          {
+            "result": {
+              "duration": 2607602977,
+              "status": "passed"
+            },
+            "line": 51,
+            "name": "the page contains the following data:",
+            "match": {
+              "location": "PageActions.pageContainsData(DataTable)"
+            },
+            "matchedColumns": [
+              5,
+              6,
+              8,
+              13
+            ],
+            "rows": [
+              {
+                "cells": [
+                  "Journey Date",
+                  "Origin Station",
+                  "Destination Station",
+                  "Ticket Type",
+                  "Ticket Class",
+                  "Passengers",
+                  "Total Price",
+                  "Purchase Date"
+                ],
+                "line": 52
+              },
+              {
+                "cells": [
+                  "DATE(tomorrow;EEE dd MMM)",
+                  "Farringdon",
+                  "Luton",
+                  "Outbound Ticket Type",
+                  "Standard",
+                  "3",
+                  "Total Price",
+                  "DATE(today;EEE dd MMM yyyy)"
+                ],
+                "line": 53
+              }
+            ],
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 915051163,
+              "status": "passed"
+            },
+            "line": 54,
+            "name": "I click on the \"Back\" button",
+            "match": {
+              "arguments": [
+                {
+                  "val": "Back",
+                  "offset": 16
+                }
+              ],
+              "location": "FieldActions.clickOnTheField(String)"
+            },
+            "keyword": "When "
+          },
+          {
+            "result": {
+              "duration": 1358648802,
+              "status": "passed"
+            },
+            "comments": [
+              {
+                "line": 55,
+                "value": "# Share trip flow"
+              }
+            ],
+            "line": 56,
+            "name": "I should see the \"My Tickets\" screen",
+            "match": {
+              "arguments": [
+                {
+                  "val": "My Tickets",
+                  "offset": 18
+                }
+              ],
+              "location": "PageActions.shouldSeeTheScreen(String)"
+            },
+            "keyword": "Then "
+          },
+          {
+            "result": {
+              "duration": 33508605176,
+              "status": "passed"
+            },
+            "line": 57,
+            "name": "I click on the \"Share\" button",
+            "match": {
+              "arguments": [
+                {
+                  "val": "Share",
+                  "offset": 16
+                }
+              ],
+              "location": "FieldActions.clickOnTheField(String)"
+            },
+            "keyword": "When "
+          },
+          {
+            "result": {
+              "duration": 715917476,
+              "status": "passed"
+            },
+            "line": 58,
+            "name": "the following labels are shown:",
+            "match": {
+              "location": "LabelActions.labelsAreShown(String\u003e)"
+            },
+            "rows": [
+              {
+                "cells": [
+                  "Share trip details"
+                ],
+                "line": 59
+              }
+            ],
+            "keyword": "Then "
+          },
+          {
+            "result": {
+              "duration": 43147326,
+              "status": "passed"
+            },
+            "line": 60,
+            "name": "I should see the \"Share collection reference\" text is not shown",
+            "match": {
+              "arguments": [
+                {
+                  "val": "Share collection reference",
+                  "offset": 18
+                }
+              ],
+              "location": "LabelActions.messageIsNotShown(String)"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 333728727,
+              "status": "passed"
+            },
+            "line": 61,
+            "name": "I click on the \"Share trip details\" text",
+            "match": {
+              "arguments": [
+                {
+                  "val": "Share trip details",
+                  "offset": 16
+                }
+              ],
+              "location": "FieldActions.clickOnText(String)"
+            },
+            "keyword": "When "
+          },
+          {
+            "result": {
+              "duration": 1390105754,
+              "status": "passed"
+            },
+            "line": 62,
+            "name": "I scroll to the \"Tweet\" text",
+            "match": {
+              "arguments": [
+                {
+                  "val": "Tweet",
+                  "offset": 17
+                }
+              ],
+              "location": "ScrollActions.scrollToText(String)"
+            },
+            "matchedColumns": [
+              16
+            ],
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 143967600,
+              "status": "passed"
+            },
+            "line": 63,
+            "name": "I should see the \"Tweet\" text is shown",
+            "match": {
+              "arguments": [
+                {
+                  "val": "Tweet",
+                  "offset": 18
+                }
+              ],
+              "location": "LabelActions.messageIsShown(String)"
+            },
+            "matchedColumns": [
+              16
+            ],
+            "keyword": "Then "
+          },
+          {
+            "result": {
+              "duration": 707512521,
+              "status": "passed"
+            },
+            "line": 64,
+            "name": "I click on the \"Tweet\" text",
+            "match": {
+              "arguments": [
+                {
+                  "val": "Tweet",
+                  "offset": 16
+                }
+              ],
+              "location": "FieldActions.clickOnText(String)"
+            },
+            "matchedColumns": [
+              16
+            ],
+            "keyword": "When "
+          },
+          {
+            "result": {
+              "duration": 2407598212,
+              "status": "passed"
+            },
+            "line": 65,
+            "name": "the following labels are shown:",
+            "match": {
+              "location": "LabelActions.labelsAreShown(String\u003e)"
+            },
+            "matchedColumns": [
+              18
+            ],
+            "rows": [
+              {
+                "cells": [
+                  ""
+                ],
+                "line": 66
+              },
+              {
+                "cells": [
+                  "View live journey updates"
+                ],
+                "line": 67
+              },
+              {
+                "cells": [
+                  "Download our app:"
+                ],
+                "line": 68
+              },
+              {
+                "cells": [
+                  "www.thetrainline.com/train-tickets/mobile-app"
+                ],
+                "line": 69
+              }
+            ],
+            "keyword": "Then "
+          },
+          {
+            "result": {
+              "duration": 9834079495,
+              "status": "passed"
+            },
+            "line": 70,
+            "name": "I scroll to the \"Who\u0027s in this photo?\" text",
+            "match": {
+              "arguments": [
+                {
+                  "val": "Who\u0027s in this photo?",
+                  "offset": 17
+                }
+              ],
+              "location": "ScrollActions.scrollToText(String)"
+            },
+            "matchedColumns": [
+              17
+            ],
+            "keyword": "When "
+          },
+          {
+            "result": {
+              "duration": 108167033,
+              "status": "passed"
+            },
+            "line": 71,
+            "name": "I should see the \"Who\u0027s in this photo?\" text is shown",
+            "match": {
+              "arguments": [
+                {
+                  "val": "Who\u0027s in this photo?",
+                  "offset": 18
+                }
+              ],
+              "location": "LabelActions.messageIsShown(String)"
+            },
+            "matchedColumns": [
+              17
+            ],
+            "keyword": "Then "
+          }
+        ],
+        "tags": [
+          {
+            "line": 3,
+            "name": "@debug"
+          }
+        ]
+      },
+      {
+        "before": [
+          {
+            "result": {
+              "duration": 12838551689,
+              "status": "passed"
+            },
+            "match": {
+              "location": "Hooks.setUp(Scenario)"
+            }
+          }
+        ],
+        "line": 81,
+        "name": "Book the kiosk ticket through all available entry points using Payment Cards",
+        "description": "Entry points : 923,924,921",
+        "id": "kiosk-booking-for-registered-user;book-the-kiosk-ticket-through-all-available-entry-points-using-payment-cards;;8",
+        "after": [
+          {
+            "result": {
+              "duration": 3189964872,
+              "status": "passed"
+            },
+            "match": {
+              "location": "Hooks.tearDown(Scenario)"
+            }
+          }
+        ],
+        "type": "scenario",
+        "keyword": "Scenario Outline",
+        "steps": [
+          {
+            "result": {
+              "duration": 39244011965,
+              "status": "passed"
+            },
+            "line": 7,
+            "name": "I am logged into the system",
+            "match": {
+              "location": "LoginActions.openHomePageLogged()"
+            },
+            "keyword": "Given "
+          },
+          {
+            "result": {
+              "duration": 11303201360,
+              "status": "passed"
+            },
+            "line": 8,
+            "name": "I am on the \"Available Cards\" page",
+            "match": {
+              "arguments": [
+                {
+                  "val": "Available Cards",
+                  "offset": 13
+                }
+              ],
+              "location": "NavigationActions.navigateToPage(String)"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 13911423448,
+              "status": "passed"
+            },
+            "line": 9,
+            "name": "I have no payment cards stored",
+            "match": {
+              "location": "CardManipulationActions.removeAllCards()"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 9724426367,
+              "status": "passed"
+            },
+            "line": 10,
+            "name": "I go to the \"Journey Search\" screen",
+            "match": {
+              "arguments": [
+                {
+                  "val": "Journey Search",
+                  "offset": 13
+                }
+              ],
+              "location": "NavigationActions.navigateToPage(String)"
+            },
+            "keyword": "When "
+          },
+          {
+            "result": {
+              "duration": 90442885717,
+              "status": "passed"
+            },
+            "line": 11,
+            "name": "search for journey using the following criteria:",
+            "match": {
+              "location": "JourneySearchActions.searchJourneyByCriteria(DataTable)"
+            },
+            "matchedColumns": [
+              3,
+              4,
+              7,
+              8,
+              9,
+              12,
+              13,
+              14
+            ],
+            "rows": [
+              {
+                "cells": [
+                  "From",
+                  "To",
+                  "Via",
+                  "Type",
+                  "Out Date",
+                  "Return Date",
+                  "Adults",
+                  "Railcards"
+                ],
+                "line": 12
+              },
+              {
+                "cells": [
+                  "SWA",
+                  "AMF",
+                  "",
+                  "Open Return",
+                  "tomorrow",
+                  "",
+                  "2",
+                  "Heart Of Wales Railcard, Highland Railcard"
+                ],
+                "line": 13
+              }
+            ],
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 3346688132,
+              "status": "passed"
+            },
+            "line": 14,
+            "name": "accept the alert message",
+            "match": {
+              "location": "PageActions.acceptMessage()"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 3955983226,
+              "status": "passed"
+            },
+            "line": 15,
+            "name": "I should see the \"Out Search Results\" screen",
+            "match": {
+              "arguments": [
+                {
+                  "val": "Out Search Results",
+                  "offset": 18
+                }
+              ],
+              "location": "PageActions.shouldSeeTheScreen(String)"
+            },
+            "keyword": "Then "
+          },
+          {
+            "result": {
+              "duration": 1157226229,
+              "status": "passed"
+            },
+            "line": 16,
+            "name": "the following labels are shown:",
+            "match": {
+              "location": "LabelActions.labelsAreShown(String\u003e)"
+            },
+            "matchedColumns": [
+              5,
+              6
+            ],
+            "rows": [
+              {
+                "cells": [
+                  "Swansea"
+                ],
+                "line": 17
+              },
+              {
+                "cells": [
+                  "Ammanford"
+                ],
+                "line": 18
+              }
+            ],
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 160937086,
+              "status": "passed"
+            },
+            "line": 19,
+            "name": "the \"Heart Of Wales Railcard savings applied\" text is shown",
+            "match": {
+              "arguments": [
+                {
+                  "val": "Heart Of Wales Railcard savings applied",
+                  "offset": 5
+                }
+              ],
+              "location": "LabelActions.messageIsShown(String)"
+            },
+            "matchedColumns": [
+              11
+            ],
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 10935968926,
+              "status": "passed"
+            },
+            "line": 20,
+            "name": "I proceed search results to the payment screen",
+            "match": {
+              "location": "JourneySearchActions.proceedFromSearchResultsToPayment()"
+            },
+            "keyword": "When "
+          },
+          {
+            "result": {
+              "duration": 284718725,
+              "status": "passed"
+            },
+            "line": 21,
+            "name": "I should see the \"Payment\" screen",
+            "match": {
+              "arguments": [
+                {
+                  "val": "Payment",
+                  "offset": 18
+                }
+              ],
+              "location": "PageActions.shouldSeeTheScreen(String)"
+            },
+            "keyword": "Then "
+          },
+          {
+            "result": {
+              "duration": 18296273736,
+              "status": "passed"
+            },
+            "line": 22,
+            "name": "I select Pay by card method",
+            "match": {
+              "arguments": [
+                {
+                  "val": "card",
+                  "offset": 16
+                }
+              ],
+              "location": "PaymentActions.selectPaymentMethod(String)"
+            },
+            "keyword": "When "
+          },
+          {
+            "result": {
+              "duration": 55764399255,
+              "status": "passed"
+            },
+            "line": 23,
+            "name": "add the card with the following criteria:",
+            "match": {
+              "location": "CardManipulationActions.addCards(DataTable)"
+            },
+            "matchedColumns": [
+              0,
+              1
+            ],
+            "rows": [
+              {
+                "cells": [
+                  "Card type",
+                  "Card number",
+                  "Expiry month",
+                  "Expiry year",
+                  "Card holder name"
+                ],
+                "line": 24
+              },
+              {
+                "cells": [
+                  "Mastercard Debit",
+                  "5372100000002862",
+                  "12",
+                  "20",
+                  "Sarath Banala"
+                ],
+                "line": 25
+              }
+            ],
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 222477202,
+              "status": "passed"
+            },
+            "line": 26,
+            "name": "I should see the \"Payment\" screen",
+            "match": {
+              "arguments": [
+                {
+                  "val": "Payment",
+                  "offset": 18
+                }
+              ],
+              "location": "PageActions.shouldSeeTheScreen(String)"
+            },
+            "keyword": "Then "
+          },
+          {
+            "result": {
+              "duration": 52326266061,
+              "status": "passed"
+            },
+            "line": 27,
+            "name": "the \"Railcard Discount\" field containts \"Heart Of Wales Railcard\" railcards",
+            "match": {
+              "arguments": [
+                {
+                  "val": "Railcard Discount",
+                  "offset": 5
+                },
+                {
+                  "val": "Heart Of Wales Railcard",
+                  "offset": 41
+                }
+              ],
+              "location": "RailcardActions.fieldContainsRailCards(String,String)"
+            },
+            "matchedColumns": [
+              10
+            ],
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 144558865,
+              "status": "passed"
+            },
+            "line": 28,
+            "name": "the \"Booking fee\" text is shown",
+            "match": {
+              "arguments": [
+                {
+                  "val": "Booking fee",
+                  "offset": 5
+                }
+              ],
+              "location": "LabelActions.messageIsShown(String)"
+            },
+            "matchedColumns": [
+              15
+            ],
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 9467615474,
+              "status": "passed"
+            },
+            "comments": [
+              {
+                "line": 29,
+                "value": "# Add fee verification formula"
+              },
+              {
+                "line": 30,
+                "value": "# Add buttons verification on Payment screen"
+              }
+            ],
+            "line": 31,
+            "name": "I click on the \"Self-service ticket machine\" button",
+            "match": {
+              "arguments": [
+                {
+                  "val": "Self-service ticket machine",
+                  "offset": 16
+                }
+              ],
+              "location": "FieldActions.clickOnTheField(String)"
+            },
+            "keyword": "When "
+          },
+          {
+            "result": {
+              "duration": 4257657504,
+              "status": "passed"
+            },
+            "line": 32,
+            "name": "I note following fields values:",
+            "match": {
+              "location": "FieldActions.noteTheFollowingFields(DataTable)"
+            },
+            "rows": [
+              {
+                "cells": [
+                  "Field",
+                  "As"
+                ],
+                "line": 33
+              },
+              {
+                "cells": [
+                  "Outbound Ticket Date",
+                  "Outbound Ticket Date"
+                ],
+                "line": 34
+              },
+              {
+                "cells": [
+                  "Outbound Passangers",
+                  "Outbound Passangers"
+                ],
+                "line": 35
+              },
+              {
+                "cells": [
+                  "Outbound Departure Time",
+                  "Outbound Deptarture Time"
+                ],
+                "line": 36
+              },
+              {
+                "cells": [
+                  "Outbound Arrival Time",
+                  "Outbound Arrival Time"
+                ],
+                "line": 37
+              },
+              {
+                "cells": [
+                  "Outbound Ticket Type",
+                  "Outbound Ticket Type"
+                ],
+                "line": 38
+              },
+              {
+                "cells": [
+                  "Ticket price",
+                  "Total Price"
+                ],
+                "line": 39
+              }
+            ],
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 19473767483,
+              "status": "passed"
+            },
+            "line": 40,
+            "name": "I type \"223\" text into \"CVV\" field",
+            "match": {
+              "arguments": [
+                {
+                  "val": "223",
+                  "offset": 8
+                },
+                {
+                  "val": "CVV",
+                  "offset": 24
+                }
+              ],
+              "location": "FieldActions.typeTextIntoField(String,String)"
+            },
+            "matchedColumns": [
+              2
+            ],
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 1296461045,
+              "status": "passed"
+            },
+            "line": 41,
+            "name": "click on the \"Buy\" button",
+            "match": {
+              "arguments": [
+                {
+                  "val": "Buy",
+                  "offset": 14
+                }
+              ],
+              "location": "FieldActions.clickOnTheField(String)"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 11746166687,
+              "status": "passed"
+            },
+            "line": 42,
+            "name": "I proceed to booking confirmation",
+            "match": {
+              "location": "BookingActions.proceeedToBookingConfirmation()"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 242636720,
+              "status": "passed"
+            },
+            "line": 43,
+            "name": "I should see the \"Booking Confirmation\" screen",
+            "match": {
+              "arguments": [
+                {
+                  "val": "Booking Confirmation",
+                  "offset": 18
+                }
+              ],
+              "location": "PageActions.shouldSeeTheScreen(String)"
+            },
+            "keyword": "Then "
+          },
+          {
+            "result": {
+              "duration": 8194117260,
+              "status": "passed"
+            },
+            "line": 44,
+            "name": "I should see the \"My Tickets\" screen",
+            "match": {
+              "arguments": [
+                {
+                  "val": "My Tickets",
+                  "offset": 18
+                }
+              ],
+              "location": "PageActions.shouldSeeTheScreen(String)"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 1748699737,
+              "status": "passed"
+            },
+            "line": 45,
+            "name": "the following labels are shown:",
+            "match": {
+              "location": "LabelActions.labelsAreShown(String\u003e)"
+            },
+            "matchedColumns": [
+              5,
+              6
+            ],
+            "rows": [
+              {
+                "cells": [
+                  "Outbound Ticket Date"
+                ],
+                "line": 46
+              },
+              {
+                "cells": [
+                  "Swansea"
+                ],
+                "line": 47
+              },
+              {
+                "cells": [
+                  "Ammanford"
+                ],
+                "line": 48
+              }
+            ],
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 1844749080,
+              "status": "passed"
+            },
+            "line": 49,
+            "name": "I open the \"Outbound\" leg for the top-most visible ticket",
+            "match": {
+              "arguments": [
+                {
+                  "val": "Outbound",
+                  "offset": 12
+                }
+              ],
+              "location": "MyTicketsActions.openFirstTicketLeg(String)"
+            },
+            "keyword": "When "
+          },
+          {
+            "result": {
+              "duration": 4110174877,
+              "status": "passed"
+            },
+            "line": 50,
+            "name": "I should see the \"Booking info\" screen",
+            "match": {
+              "arguments": [
+                {
+                  "val": "Booking info",
+                  "offset": 18
+                }
+              ],
+              "location": "PageActions.shouldSeeTheScreen(String)"
+            },
+            "keyword": "Then "
+          },
+          {
+            "result": {
+              "duration": 2518242909,
+              "status": "passed"
+            },
+            "line": 51,
+            "name": "the page contains the following data:",
+            "match": {
+              "location": "PageActions.pageContainsData(DataTable)"
+            },
+            "matchedColumns": [
+              5,
+              6,
+              8,
+              13
+            ],
+            "rows": [
+              {
+                "cells": [
+                  "Journey Date",
+                  "Origin Station",
+                  "Destination Station",
+                  "Ticket Type",
+                  "Ticket Class",
+                  "Passengers",
+                  "Total Price",
+                  "Purchase Date"
+                ],
+                "line": 52
+              },
+              {
+                "cells": [
+                  "DATE(tomorrow;EEE dd MMM)",
+                  "Swansea",
+                  "Ammanford",
+                  "Outbound Ticket Type",
+                  "Standard",
+                  "2",
+                  "Total Price",
+                  "DATE(today;EEE dd MMM yyyy)"
+                ],
+                "line": 53
+              }
+            ],
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 953991730,
+              "status": "passed"
+            },
+            "line": 54,
+            "name": "I click on the \"Back\" button",
+            "match": {
+              "arguments": [
+                {
+                  "val": "Back",
+                  "offset": 16
+                }
+              ],
+              "location": "FieldActions.clickOnTheField(String)"
+            },
+            "keyword": "When "
+          },
+          {
+            "result": {
+              "duration": 1340062927,
+              "status": "passed"
+            },
+            "comments": [
+              {
+                "line": 55,
+                "value": "# Share trip flow"
+              }
+            ],
+            "line": 56,
+            "name": "I should see the \"My Tickets\" screen",
+            "match": {
+              "arguments": [
+                {
+                  "val": "My Tickets",
+                  "offset": 18
+                }
+              ],
+              "location": "PageActions.shouldSeeTheScreen(String)"
+            },
+            "keyword": "Then "
+          },
+          {
+            "result": {
+              "duration": 15725971865,
+              "status": "passed"
+            },
+            "line": 57,
+            "name": "I click on the \"Share\" button",
+            "match": {
+              "arguments": [
+                {
+                  "val": "Share",
+                  "offset": 16
+                }
+              ],
+              "location": "FieldActions.clickOnTheField(String)"
+            },
+            "keyword": "When "
+          },
+          {
+            "result": {
+              "duration": 712434030,
+              "status": "passed"
+            },
+            "line": 58,
+            "name": "the following labels are shown:",
+            "match": {
+              "location": "LabelActions.labelsAreShown(String\u003e)"
+            },
+            "rows": [
+              {
+                "cells": [
+                  "Share trip details"
+                ],
+                "line": 59
+              }
+            ],
+            "keyword": "Then "
+          },
+          {
+            "result": {
+              "duration": 45335912,
+              "status": "passed"
+            },
+            "line": 60,
+            "name": "I should see the \"Share collection reference\" text is not shown",
+            "match": {
+              "arguments": [
+                {
+                  "val": "Share collection reference",
+                  "offset": 18
+                }
+              ],
+              "location": "LabelActions.messageIsNotShown(String)"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 380609629,
+              "status": "passed"
+            },
+            "line": 61,
+            "name": "I click on the \"Share trip details\" text",
+            "match": {
+              "arguments": [
+                {
+                  "val": "Share trip details",
+                  "offset": 16
+                }
+              ],
+              "location": "FieldActions.clickOnText(String)"
+            },
+            "keyword": "When "
+          },
+          {
+            "result": {
+              "duration": 1392142616,
+              "status": "passed"
+            },
+            "line": 62,
+            "name": "I scroll to the \"Gmail\" text",
+            "match": {
+              "arguments": [
+                {
+                  "val": "Gmail",
+                  "offset": 17
+                }
+              ],
+              "location": "ScrollActions.scrollToText(String)"
+            },
+            "matchedColumns": [
+              16
+            ],
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 131771728,
+              "status": "passed"
+            },
+            "line": 63,
+            "name": "I should see the \"Gmail\" text is shown",
+            "match": {
+              "arguments": [
+                {
+                  "val": "Gmail",
+                  "offset": 18
+                }
+              ],
+              "location": "LabelActions.messageIsShown(String)"
+            },
+            "matchedColumns": [
+              16
+            ],
+            "keyword": "Then "
+          },
+          {
+            "result": {
+              "duration": 857382320,
+              "status": "passed"
+            },
+            "line": 64,
+            "name": "I click on the \"Gmail\" text",
+            "match": {
+              "arguments": [
+                {
+                  "val": "Gmail",
+                  "offset": 16
+                }
+              ],
+              "location": "FieldActions.clickOnText(String)"
+            },
+            "matchedColumns": [
+              16
+            ],
+            "keyword": "When "
+          },
+          {
+            "result": {
+              "duration": 40259335258,
+              "error_message": "java.lang.AssertionError: Unable to find label: \u0027Going to Newcastle\u0027\n\tat org.junit.Assert.fail(Assert.java:88)\n\tat org.junit.Assert.assertTrue(Assert.java:41)\n\tat com.thetrainline.common.steps.generic.LabelActions.labelsAreShown(LabelActions.java:88)\n\tat ✽.Then the following labels are shown:(booking/RegisteredKioskBooking.feature:65)\n",
+              "status": "failed"
+            },
+            "line": 65,
+            "name": "the following labels are shown:",
+            "match": {
+              "location": "LabelActions.labelsAreShown(String\u003e)"
+            },
+            "matchedColumns": [
+              18
+            ],
+            "rows": [
+              {
+                "cells": [
+                  "Going to Newcastle"
+                ],
+                "line": 66
+              },
+              {
+                "cells": [
+                  "View live journey updates"
+                ],
+                "line": 67
+              },
+              {
+                "cells": [
+                  "Download our app:"
+                ],
+                "line": 68
+              },
+              {
+                "cells": [
+                  "www.thetrainline.com/train-tickets/mobile-app"
+                ],
+                "line": 69
+              }
+            ],
+            "keyword": "Then "
+          },
+          {
+            "result": {
+              "status": "skipped"
+            },
+            "line": 70,
+            "name": "I scroll to the \"ticket_shared.png\" text",
+            "match": {
+              "arguments": [
+                {
+                  "val": "ticket_shared.png",
+                  "offset": 17
+                }
+              ],
+              "location": "ScrollActions.scrollToText(String)"
+            },
+            "matchedColumns": [
+              17
+            ],
+            "keyword": "When "
+          },
+          {
+            "result": {
+              "status": "skipped"
+            },
+            "line": 71,
+            "name": "I should see the \"ticket_shared.png\" text is shown",
+            "match": {
+              "arguments": [
+                {
+                  "val": "ticket_shared.png",
+                  "offset": 18
+                }
+              ],
+              "location": "LabelActions.messageIsShown(String)"
+            },
+            "matchedColumns": [
+              17
+            ],
+            "keyword": "Then "
+          }
+        ],
+        "tags": [
+          {
+            "line": 3,
+            "name": "@debug"
+          }
+        ]
+      }
+    ],
+    "name": "Kiosk Booking for registered user",
+    "description": "",
+    "id": "kiosk-booking-for-registered-user",
+    "keyword": "Feature",
+    "uri": "booking/RegisteredKioskBooking.feature"
+  }
+]

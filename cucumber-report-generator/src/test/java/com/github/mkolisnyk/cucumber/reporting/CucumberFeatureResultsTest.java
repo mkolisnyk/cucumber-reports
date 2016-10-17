@@ -56,7 +56,7 @@ public class CucumberFeatureResultsTest {
     @Parameters
     public static Collection<Object[]> getParameters() throws IOException {
         return Arrays.asList(new Object[][] {
-            {FileUtils.readFileToString(new File("src/test/resources/background-source/failed-background.json")), 0, 0, 1, 0, 0, 3, 3, 3, 6},
+            {FileUtils.readFileToString(new File("src/test/resources/background-source/failed-background.json")), 0, 1, 0, 0, 3, 0, 3, 3, 6},
             {FileUtils.readFileToString(new File("src/test/resources/background-source/failed-step.json")), 0, 1, 0, 2, 1, 0, 10, 1, 1}, 
         });
     }

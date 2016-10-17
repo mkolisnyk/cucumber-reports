@@ -67,8 +67,8 @@ public class CucumberFeatureResult {
         skipped = 0;
         known = 0;
         duration = 0.f;
+        collapseBackgrounds();
         for (CucumberScenarioResult scenario : elements) {
-            boolean isBackground = scenario.getType().equalsIgnoreCase("background");
             scenario.valuate();
             if (!scenario.isInTagSet(this.includeCoverageTags, this.excludeCoverageTags)) {
                 this.undefined++;
@@ -77,7 +77,7 @@ public class CucumberFeatureResult {
                     //|| !this.isInTagSet(this.includeCoverageTags, this.excludeCoverageTags)
                     ) {
                 this.undefined++;
-            } else if (!isBackground) {
+            } else {
                 if (scenario.getFailed() > 0) {
                     this.failed++;
                 } else if (scenario.getKnown() > 0) {
@@ -277,5 +277,14 @@ public class CucumberFeatureResult {
 
     public final void setExcludeCoverageTags(String[] excludeCoverageTagsValue) {
         this.excludeCoverageTags = excludeCoverageTagsValue;
+    }
+    public void collapseBackgrounds() {
+        for (int i = 0; i < this.elements.length; i++) {
+            if (this.elements[i].getKeyword().equalsIgnoreCase("background")) {
+                this.elements[i + 1].addBackground(this.elements[i]);
+                this.elements = (CucumberScenarioResult[]) ArrayUtils.remove(this.elements, i);
+                i--;
+            }
+        }
     }
 }

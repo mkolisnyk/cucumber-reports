@@ -353,4 +353,8 @@ public class CucumberScenarioResult {
     public void setKnown(int knownValue) {
         this.known = knownValue;
     }
+    public void addBackground(CucumberScenarioResult background) {
+        this.steps = (CucumberStepResult[]) ArrayUtils.addAll(background.getSteps(), this.getSteps());
+        this.valuate();
+    }
 }

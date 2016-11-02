@@ -12,6 +12,7 @@
   <url>http://maven.apache.org</url>
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <java.main.class>com.github.mkolisnyk.cucumber.runner.CLIRunner</java.main.class>
   </properties>
   <dependencies>
     <dependency>

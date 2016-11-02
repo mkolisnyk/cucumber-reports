@@ -13,19 +13,16 @@ public class ExtendedExecutionUnitRunner extends ExecutionUnitRunner {
     private JUnitReporter jUnitReporter;
     private CucumberScenario cucumberScenario;
     private Runtime runtime;
-    //private int retryCount;
 
     public ExtendedExecutionUnitRunner(
             Runtime runtimeValue,
             CucumberScenario cucumberScenarioValue,
-            JUnitReporter jUnitReporterValue/*,
-            int retryCountValue*/)
+            JUnitReporter jUnitReporterValue)
             throws InitializationError {
         super(runtimeValue, cucumberScenarioValue, jUnitReporterValue);
         this.runtime = runtimeValue;
         this.cucumberScenario = cucumberScenarioValue;
         this.jUnitReporter = jUnitReporterValue;
-        //this.retryCount = retryCountValue;
     }
 
     @Override

@@ -20,8 +20,10 @@ public class CucumberStepResult {
         this.name = (String) json.get("name");
         this.keyword = (String) json.get("keyword");
         //this.line = (Long) json.get("line");
-        this.result = new CucumberResult(
+         if (json.containsKey("result")) {
+             this.result = new CucumberResult(
                 (JsonObject<String, Object>) json.get("result"));
+         }
         if (json.containsKey("embeddings")) {
             Object[] objs = (Object[]) json.get("embeddings");
             this.embeddings = new CucumberEmbedding[objs.length];

@@ -2,6 +2,13 @@
 title: Cucumber Reports News
 ---
 
+## 02.01.2017 1.0.8 Version Release
+
+* [#100](https://github.com/mkolisnyk/cucumber-reports/issues/100) Add identifiers to unique HTML entities in detailed and overview report enhancement
+* [#96](https://github.com/mkolisnyk/cucumber-reports/issues/96) @ExtendedCucumberReports annotation not taking effect when only present on superclass test runner enhancement
+* [#95](https://github.com/mkolisnyk/cucumber-reports/issues/95) Correct backgrounds calculations in overview report enhancement
+* [#75](https://github.com/mkolisnyk/cucumber-reports/issues/75) Create Maven plugin for reporting enhancement
+
 ## 12.10.2016 1.0.7 Version Release
 
 * [#85](https://github.com/mkolisnyk/cucumber-reports/issues/85) Enhancement: scenario.write does not work

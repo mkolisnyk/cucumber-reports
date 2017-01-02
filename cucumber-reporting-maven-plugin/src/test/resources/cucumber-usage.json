@@ -1,0 +1,2469 @@
+[
+  {
+    "source": "I am on the Payment cards screen",
+    "steps": [
+      {
+        "name": "I am on the Payment cards screen",
+        "aggregatedDurations": {
+          "average": 30.396089614,
+          "median": 29.016038692
+        },
+        "durations": [
+          {
+            "duration": 29.666317742,
+            "location": "Payments.feature:13"
+          },
+          {
+            "duration": 26.278262537,
+            "location": "Payments.feature:13"
+          },
+          {
+            "duration": 27.777434024,
+            "location": "Payments.feature:13"
+          },
+          {
+            "duration": 37.136044343,
+            "location": "Payments.feature:13"
+          },
+          {
+            "duration": 28.365759642,
+            "location": "Payments.feature:13"
+          },
+          {
+            "duration": 33.1527194,
+            "location": "Payments.feature:13"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "source": "^(?:I should see |)the current page content is different from \"(.*?)\"$",
+    "steps": [
+      {
+        "name": "I should see the current page content is different from \"Original Search Results\"",
+        "aggregatedDurations": {
+          "average": 0.402572444,
+          "median": 0.402572444
+        },
+        "durations": [
+          {
+            "duration": 0.343841346,
+            "location": "booking/JourneyOptions.feature:19"
+          },
+          {
+            "duration": 0.461303542,
+            "location": "booking/JourneyOptions.feature:37"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "source": "^(?:I |)search for live time trains with the following criteria:",
+    "steps": [
+      {
+        "name": "I search for live time trains with the following criteria:",
+        "aggregatedDurations": {
+          "average": 28.688737163,
+          "median": 33.38470784
+        },
+        "durations": [
+          {
+            "duration": 33.638106087,
+            "location": "LiveTrainTimes.feature:8"
+          },
+          {
+            "duration": 19.028942421,
+            "location": "LiveTrainTimes.feature:8"
+          },
+          {
+            "duration": 33.954802636,
+            "location": "LiveTrainTimes.feature:8"
+          },
+          {
+            "duration": 18.497060198,
+            "location": "LiveTrainTimes.feature:8"
+          },
+          {
+            "duration": 33.131309594,
+            "location": "LiveTrainTimes.feature:43"
+          },
+          {
+            "duration": 33.882202046,
+            "location": "LiveTrainTimes.feature:56"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "source": "^(?:I |)click on the \"([^\"]*)\" (?:text|label)$",
+    "steps": [
+      {
+        "name": "click on the \"Anytime\" text",
+        "aggregatedDurations": {
+          "average": 2.733746396,
+          "median": 2.733746396
+        },
+        "durations": [
+          {
+            "duration": 2.733746396,
+            "location": "booking/JourneyOptions.feature:96"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "source": "^(?:I |)select item No.(\\d+) from the \"([^\"]*)\" table$",
+    "steps": [
+      {
+        "name": "I select item No.3 from the \"Search Results\" table",
+        "aggregatedDurations": {
+          "average": 4.282671654,
+          "median": 4.758337696
+        },
+        "durations": [
+          {
+            "duration": 4.777160865,
+            "location": "LiveTrainTimes.feature:14"
+          },
+          {
+            "duration": 4.739514528,
+            "location": "LiveTrainTimes.feature:14"
+          },
+          {
+            "duration": 4.940160869,
+            "location": "LiveTrainTimes.feature:14"
+          },
+          {
+            "duration": 2.673850357,
+            "location": "LiveTrainTimes.feature:14"
+          }
+        ]
+      },
+      {
+        "name": "I select item No.1 from the \"Search Results\" table",
+        "aggregatedDurations": {
+          "average": 1.301412122,
+          "median": 1.044039118
+        },
+        "durations": [
+          {
+            "duration": 1.14522863,
+            "location": "booking/JourneyOptions.feature:92"
+          },
+          {
+            "duration": 1.044039118,
+            "location": "journeysearch/BON-88_SingleOptionsForJourney.feature:20"
+          },
+          {
+            "duration": 1.099847152,
+            "location": "journeysearch/BON-88_SingleOptionsForJourney.feature:22"
+          },
+          {
+            "duration": 1.008818402,
+            "location": "journeysearch/BON-88_SingleOptionsForJourney.feature:85"
+          },
+          {
+            "duration": 1.033318983,
+            "location": "journeysearch/BON-88_SingleOptionsForJourney.feature:87"
+          },
+          {
+            "duration": 3.978084047,
+            "location": "journeysearch/BasicJourneySearch.feature:12"
+          },
+          {
+            "duration": 1.418033352,
+            "location": "journeysearch/BasicJourneySearch.feature:27"
+          },
+          {
+            "duration": 1.038069465,
+            "location": "journeysearch/BasicJourneySearch.feature:73"
+          },
+          {
+            "duration": 1.042720526,
+            "location": "journeysearch/BasicJourneySearch.feature:73"
+          },
+          {
+            "duration": 1.387260166,
+            "location": "journeysearch/BasicJourneySearch.feature:73"
+          },
+          {
+            "duration": 1.151252847,
+            "location": "journeysearch/BasicJourneySearch.feature:73"
+          },
+          {
+            "duration": 1.126782393,
+            "location": "journeysearch/BasicJourneySearch.feature:73"
+          },
+          {
+            "duration": 0.992612333,
+            "location": "journeysearch/BasicJourneySearch.feature:201"
+          },
+          {
+            "duration": 1.020691091,
+            "location": "journeysearch/BasicJourneySearch.feature:204"
+          },
+          {
+            "duration": 1.034423335,
+            "location": "journeysearch/BasicJourneySearch.feature:227"
+          }
+        ]
+      },
+      {
+        "name": "I select item No.1 from the \"Tickets\" table",
+        "aggregatedDurations": {
+          "average": 1.730445396,
+          "median": 1.730445396
+        },
+        "durations": [
+          {
+            "duration": 1.730445396,
+            "location": "journeysearch/BasicJourneySearch.feature:29"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "source": "(?:I |)go to the Home (?:screen|page)",
+    "steps": [
+      {
+        "name": "I go to the Home page",
+        "aggregatedDurations": {
+          "average": 27.815263303,
+          "median": 27.815263303
+        },
+        "durations": [
+          {
+            "duration": 28.423383042,
+            "location": "LiveTrainTimes.feature:61"
+          },
+          {
+            "duration": 27.207143565,
+            "location": "journeysearch/BasicJourneySearch.feature:230"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "source": "I am on the Home (?:screen|page)",
+    "steps": [
+      {
+        "name": "I am on the Home page",
+        "aggregatedDurations": {
+          "average": 17.124899072,
+          "median": 17.221762904
+        },
+        "durations": [
+          {
+            "duration": 17.290639031,
+            "location": "booking/JourneyOptions.feature:11"
+          },
+          {
+            "duration": 16.570072869,
+            "location": "booking/JourneyOptions.feature:29"
+          },
+          {
+            "duration": 16.782879788,
+            "location": "booking/JourneyOptions.feature:86"
+          },
+          {
+            "duration": 16.258242292,
+            "location": "journeysearch/BON-80_RTJP_SeatsLeft.feature:13"
+          },
+          {
+            "duration": 17.637990263,
+            "location": "journeysearch/BON-88_SingleOptionsForJourney.feature:14"
+          },
+          {
+            "duration": 17.221762904,
+            "location": "journeysearch/BON-88_SingleOptionsForJourney.feature:78"
+          },
+          {
+            "duration": 18.299063763,
+            "location": "journeysearch/BasicJourneySearch.feature:6"
+          },
+          {
+            "duration": 17.794923536,
+            "location": "journeysearch/BasicJourneySearch.feature:21"
+          },
+          {
+            "duration": 16.268517205,
+            "location": "journeysearch/BasicJourneySearch.feature:220"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "source": "^(?:I should see |)the \"([^\"]*)\" list contains only (\\d+) item(?:s|)$",
+    "steps": [
+      {
+        "name": "the \"Tickets\" list contains only 1 item",
+        "aggregatedDurations": {
+          "average": 0.243514492,
+          "median": 0.243514492
+        },
+        "durations": [
+          {
+            "duration": 0.243514492,
+            "location": "journeysearch/BasicJourneySearch.feature:206"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "source": "^(?:I |)click on the \"([^\"]*)\" button$",
+    "steps": [
+      {
+        "name": "I click on the \"OK\" button",
+        "aggregatedDurations": {
+          "average": 2.858510898,
+          "median": 2.858510898
+        },
+        "durations": [
+          {
+            "duration": 2.858510898,
+            "location": "LiveTrainTimes.feature:48"
+          }
+        ]
+      },
+      {
+        "name": "I click on the \"Skip\" button",
+        "aggregatedDurations": {
+          "average": 1.862363906,
+          "median": 1.862363906
+        },
+        "durations": [
+          {
+            "duration": 1.862363906,
+            "location": "Startup.feature:7"
+          }
+        ]
+      },
+      {
+        "name": "I click on the \"Login\" button",
+        "aggregatedDurations": {
+          "average": 2.242663886,
+          "median": 2.242663886
+        },
+        "durations": [
+          {
+            "duration": 2.242663886,
+            "location": "Startup.feature:7"
+          }
+        ]
+      },
+      {
+        "name": "I click on the \"Buy Tickets\" button",
+        "aggregatedDurations": {
+          "average": 20.927887145,
+          "median": 21.087017738
+        },
+        "durations": [
+          {
+            "duration": 19.839095216,
+            "location": "booking/JourneyOptions.feature:12"
+          },
+          {
+            "duration": 21.44855246,
+            "location": "booking/JourneyOptions.feature:30"
+          },
+          {
+            "duration": 20.263704459,
+            "location": "booking/JourneyOptions.feature:87"
+          },
+          {
+            "duration": 22.396167947,
+            "location": "journeysearch/BON-80_RTJP_SeatsLeft.feature:14"
+          },
+          {
+            "duration": 20.97751731,
+            "location": "journeysearch/BON-88_SingleOptionsForJourney.feature:15"
+          },
+          {
+            "duration": 21.321668302,
+            "location": "journeysearch/BON-88_SingleOptionsForJourney.feature:79"
+          },
+          {
+            "duration": 21.294036775,
+            "location": "journeysearch/BasicJourneySearch.feature:7"
+          },
+          {
+            "duration": 19.723224101,
+            "location": "journeysearch/BasicJourneySearch.feature:22"
+          },
+          {
+            "duration": 21.087017738,
+            "location": "journeysearch/BasicJourneySearch.feature:221"
+          }
+        ]
+      },
+      {
+        "name": "I click on the \"Earlier Trains\" button",
+        "aggregatedDurations": {
+          "average": 28.285814568,
+          "median": 28.285814568
+        },
+        "durations": [
+          {
+            "duration": 28.285814568,
+            "location": "booking/JourneyOptions.feature:18"
+          }
+        ]
+      },
+      {
+        "name": "I click on the \"Later Trains\" button",
+        "aggregatedDurations": {
+          "average": 18.404438358,
+          "median": 18.404438358
+        },
+        "durations": [
+          {
+            "duration": 18.404438358,
+            "location": "booking/JourneyOptions.feature:36"
+          }
+        ]
+      },
+      {
+        "name": "I click on the \"First Class\" button",
+        "aggregatedDurations": {
+          "average": 0.815324731,
+          "median": 0.815324731
+        },
+        "durations": [
+          {
+            "duration": 0.815324731,
+            "location": "booking/JourneyOptions.feature:94"
+          }
+        ]
+      },
+      {
+        "name": "click on the \"Buy Tickets\" button",
+        "aggregatedDurations": {
+          "average": 29.302681774,
+          "median": 29.302681774
+        },
+        "durations": [
+          {
+            "duration": 29.302681774,
+            "location": "journeysearch/BasicJourneySearch.feature:231"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "source": "^(?:I |)add the card with the following criteria:$",
+    "steps": [
+      {
+        "name": "I add the card with the following criteria:",
+        "aggregatedDurations": {
+          "average": 75.3858195,
+          "median": 75.475923383
+        },
+        "durations": [
+          {
+            "duration": 80.120901115,
+            "location": "Payments.feature:17"
+          },
+          {
+            "duration": 75.95691928,
+            "location": "Payments.feature:17"
+          },
+          {
+            "duration": 79.106483298,
+            "location": "Payments.feature:17"
+          },
+          {
+            "duration": 70.156772926,
+            "location": "Payments.feature:17"
+          },
+          {
+            "duration": 71.978912896,
+            "location": "Payments.feature:17"
+          },
+          {
+            "duration": 74.994927486,
+            "location": "Payments.feature:17"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "source": "I am on the Buy ticket screen",
+    "steps": [
+      {
+        "name": "I am on the Buy ticket screen",
+        "aggregatedDurations": {
+          "average": 40.205503155,
+          "median": 40.457373205
+        },
+        "durations": [
+          {
+            "duration": 41.186928828,
+            "location": "journeysearch/BasicJourneySearch.feature:38"
+          },
+          {
+            "duration": 39.991535767,
+            "location": "journeysearch/BasicJourneySearch.feature:38"
+          },
+          {
+            "duration": 40.670430184,
+            "location": "journeysearch/BasicJourneySearch.feature:38"
+          },
+          {
+            "duration": 39.104297695,
+            "location": "journeysearch/BasicJourneySearch.feature:38"
+          },
+          {
+            "duration": 43.648214293,
+            "location": "journeysearch/BasicJourneySearch.feature:38"
+          },
+          {
+            "duration": 27.08240484,
+            "location": "journeysearch/BasicJourneySearch.feature:38"
+          },
+          {
+            "duration": 39.460773628,
+            "location": "journeysearch/BasicJourneySearch.feature:38"
+          },
+          {
+            "duration": 41.129160814,
+            "location": "journeysearch/BasicJourneySearch.feature:38"
+          },
+          {
+            "duration": 40.117652002,
+            "location": "journeysearch/BasicJourneySearch.feature:38"
+          },
+          {
+            "duration": 42.076573106,
+            "location": "journeysearch/BasicJourneySearch.feature:38"
+          },
+          {
+            "duration": 40.518543984,
+            "location": "journeysearch/BasicJourneySearch.feature:64"
+          },
+          {
+            "duration": 41.057694702,
+            "location": "journeysearch/BasicJourneySearch.feature:64"
+          },
+          {
+            "duration": 41.162148392,
+            "location": "journeysearch/BasicJourneySearch.feature:64"
+          },
+          {
+            "duration": 40.46392332,
+            "location": "journeysearch/BasicJourneySearch.feature:64"
+          },
+          {
+            "duration": 39.974881129,
+            "location": "journeysearch/BasicJourneySearch.feature:64"
+          },
+          {
+            "duration": 39.81436332,
+            "location": "journeysearch/BasicJourneySearch.feature:64"
+          },
+          {
+            "duration": 41.953479357,
+            "location": "journeysearch/BasicJourneySearch.feature:92"
+          },
+          {
+            "duration": 39.812822116,
+            "location": "journeysearch/BasicJourneySearch.feature:92"
+          },
+          {
+            "duration": 40.095827436,
+            "location": "journeysearch/BasicJourneySearch.feature:92"
+          },
+          {
+            "duration": 40.392942266,
+            "location": "journeysearch/BasicJourneySearch.feature:92"
+          },
+          {
+            "duration": 40.548539204,
+            "location": "journeysearch/BasicJourneySearch.feature:92"
+          },
+          {
+            "duration": 40.326862667,
+            "location": "journeysearch/BasicJourneySearch.feature:92"
+          },
+          {
+            "duration": 39.85911814,
+            "location": "journeysearch/BasicJourneySearch.feature:92"
+          },
+          {
+            "duration": 40.450823091,
+            "location": "journeysearch/BasicJourneySearch.feature:133"
+          },
+          {
+            "duration": 40.080674166,
+            "location": "journeysearch/BasicJourneySearch.feature:149"
+          },
+          {
+            "duration": 41.367580029,
+            "location": "journeysearch/BasicJourneySearch.feature:164"
+          },
+          {
+            "duration": 42.348560695,
+            "location": "journeysearch/BasicJourneySearch.feature:183"
+          },
+          {
+            "duration": 41.057333169,
+            "location": "journeysearch/BasicJourneySearch.feature:195"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "source": "^(?:I |)accept the alert message$",
+    "steps": [
+      {
+        "name": "accept the alert message",
+        "aggregatedDurations": {
+          "average": 2.737718736,
+          "median": 2.734613741
+        },
+        "durations": [
+          {
+            "duration": 1.701708848,
+            "location": "LiveTrainTimes.feature:49"
+          },
+          {
+            "duration": 2.676060063,
+            "location": "journeysearch/BON-88_SingleOptionsForJourney.feature:83"
+          },
+          {
+            "duration": 2.154916051,
+            "location": "journeysearch/BasicJourneySearch.feature:42"
+          },
+          {
+            "duration": 2.222716615,
+            "location": "journeysearch/BasicJourneySearch.feature:42"
+          },
+          {
+            "duration": 2.053796168,
+            "location": "journeysearch/BasicJourneySearch.feature:42"
+          },
+          {
+            "duration": 1.981556442,
+            "location": "journeysearch/BasicJourneySearch.feature:42"
+          },
+          {
+            "duration": 3.092427014,
+            "location": "journeysearch/BasicJourneySearch.feature:42"
+          },
+          {
+            "duration": 3.695218319,
+            "location": "journeysearch/BasicJourneySearch.feature:42"
+          },
+          {
+            "duration": 3.401837996,
+            "location": "journeysearch/BasicJourneySearch.feature:42"
+          },
+          {
+            "duration": 3.623782336,
+            "location": "journeysearch/BasicJourneySearch.feature:42"
+          },
+          {
+            "duration": 3.59448541,
+            "location": "journeysearch/BasicJourneySearch.feature:42"
+          },
+          {
+            "duration": 3.080791329,
+            "location": "journeysearch/BasicJourneySearch.feature:42"
+          },
+          {
+            "duration": 3.165508979,
+            "location": "journeysearch/BasicJourneySearch.feature:68"
+          },
+          {
+            "duration": 2.734613741,
+            "location": "journeysearch/BasicJourneySearch.feature:68"
+          },
+          {
+            "duration": 2.149745453,
+            "location": "journeysearch/BasicJourneySearch.feature:68"
+          },
+          {
+            "duration": 3.484285684,
+            "location": "journeysearch/BasicJourneySearch.feature:68"
+          },
+          {
+            "duration": 3.715619849,
+            "location": "journeysearch/BasicJourneySearch.feature:68"
+          },
+          {
+            "duration": 3.21974133,
+            "location": "journeysearch/BasicJourneySearch.feature:68"
+          },
+          {
+            "duration": 1.736030751,
+            "location": "journeysearch/BasicJourneySearch.feature:137"
+          },
+          {
+            "duration": 1.975195797,
+            "location": "journeysearch/BasicJourneySearch.feature:168"
+          },
+          {
+            "duration": 2.032055291,
+            "location": "journeysearch/BasicJourneySearch.feature:187"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "source": "^(?:I should see |)the \"(.*?)\" field contains \"(.*?)\" text$",
+    "steps": [
+      {
+        "name": "the \"Origin station\" field contains \"Farringdon\" text",
+        "aggregatedDurations": {
+          "average": 0.321279319,
+          "median": 0.321279319
+        },
+        "durations": [
+          {
+            "duration": 0.321279319,
+            "location": "journeysearch/BasicJourneySearch.feature:233"
+          }
+        ]
+      },
+      {
+        "name": "the \"Destination station\" field contains \"Newcastle\" text",
+        "aggregatedDurations": {
+          "average": 0.317143779,
+          "median": 0.317143779
+        },
+        "durations": [
+          {
+            "duration": 0.317143779,
+            "location": "journeysearch/BasicJourneySearch.feature:234"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "source": "^(?:I |)note the current page content as \"(.*?)\"$",
+    "steps": [
+      {
+        "name": "I note the current page content as \"Original Search Results\"",
+        "aggregatedDurations": {
+          "average": 0.39226757,
+          "median": 0.39226757
+        },
+        "durations": [
+          {
+            "duration": 0.457792985,
+            "location": "booking/JourneyOptions.feature:17"
+          },
+          {
+            "duration": 0.326742156,
+            "location": "booking/JourneyOptions.feature:35"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "source": "^user account has billing address with the following parameters:$",
+    "steps": [
+      {
+        "name": "user account has billing address with the following parameters:",
+        "aggregatedDurations": {
+          "average": 0.000069851,
+          "median": 0.000069293
+        },
+        "durations": [
+          {
+            "duration": 0.000073646,
+            "location": "Payments.feature:14"
+          },
+          {
+            "duration": 0.000065277,
+            "location": "Payments.feature:14"
+          },
+          {
+            "duration": 0.000062599,
+            "location": "Payments.feature:14"
+          },
+          {
+            "duration": 0.000082684,
+            "location": "Payments.feature:14"
+          },
+          {
+            "duration": 0.000061595,
+            "location": "Payments.feature:14"
+          },
+          {
+            "duration": 0.00007331,
+            "location": "Payments.feature:14"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "source": "^I am not logged into the system$",
+    "steps": [
+      {
+        "name": "I am not logged into the system",
+        "aggregatedDurations": {
+          "average": 7.648288321,
+          "median": 6.954820378
+        },
+        "durations": [
+          {
+            "duration": 7.222027694,
+            "location": "LiveTrainTimes.feature:6"
+          },
+          {
+            "duration": 5.436373472,
+            "location": "LiveTrainTimes.feature:6"
+          },
+          {
+            "duration": 5.377834857,
+            "location": "LiveTrainTimes.feature:6"
+          },
+          {
+            "duration": 5.256488854,
+            "location": "LiveTrainTimes.feature:6"
+          },
+          {
+            "duration": 7.366930608,
+            "location": "LiveTrainTimes.feature:41"
+          },
+          {
+            "duration": 11.073526852,
+            "location": "LiveTrainTimes.feature:54"
+          },
+          {
+            "duration": 5.017067723,
+            "location": "booking/JourneyOptions.feature:10"
+          },
+          {
+            "duration": 11.745159135,
+            "location": "booking/JourneyOptions.feature:28"
+          },
+          {
+            "duration": 6.325159778,
+            "location": "booking/JourneyOptions.feature:85"
+          },
+          {
+            "duration": 6.323820431,
+            "location": "journeysearch/BON-80_RTJP_SeatsLeft.feature:5"
+          },
+          {
+            "duration": 9.41090378,
+            "location": "journeysearch/BON-88_SingleOptionsForJourney.feature:13"
+          },
+          {
+            "duration": 5.824234855,
+            "location": "journeysearch/BON-88_SingleOptionsForJourney.feature:77"
+          },
+          {
+            "duration": 6.199356538,
+            "location": "journeysearch/BasicJourneySearch.feature:5"
+          },
+          {
+            "duration": 6.153924511,
+            "location": "journeysearch/BasicJourneySearch.feature:37"
+          },
+          {
+            "duration": 8.220033904,
+            "location": "journeysearch/BasicJourneySearch.feature:37"
+          },
+          {
+            "duration": 8.155745569,
+            "location": "journeysearch/BasicJourneySearch.feature:37"
+          },
+          {
+            "duration": 10.46456772,
+            "location": "journeysearch/BasicJourneySearch.feature:37"
+          },
+          {
+            "duration": 6.482018735,
+            "location": "journeysearch/BasicJourneySearch.feature:37"
+          },
+          {
+            "duration": 6.422390164,
+            "location": "journeysearch/BasicJourneySearch.feature:37"
+          },
+          {
+            "duration": 7.548579374,
+            "location": "journeysearch/BasicJourneySearch.feature:37"
+          },
+          {
+            "duration": 5.215852502,
+            "location": "journeysearch/BasicJourneySearch.feature:37"
+          },
+          {
+            "duration": 6.301251709,
+            "location": "journeysearch/BasicJourneySearch.feature:37"
+          },
+          {
+            "duration": 8.031058396,
+            "location": "journeysearch/BasicJourneySearch.feature:37"
+          },
+          {
+            "duration": 9.254715667,
+            "location": "journeysearch/BasicJourneySearch.feature:63"
+          },
+          {
+            "duration": 12.314540739,
+            "location": "journeysearch/BasicJourneySearch.feature:63"
+          },
+          {
+            "duration": 5.513535073,
+            "location": "journeysearch/BasicJourneySearch.feature:63"
+          },
+          {
+            "duration": 4.905752934,
+            "location": "journeysearch/BasicJourneySearch.feature:63"
+          },
+          {
+            "duration": 6.472943244,
+            "location": "journeysearch/BasicJourneySearch.feature:63"
+          },
+          {
+            "duration": 6.866384291,
+            "location": "journeysearch/BasicJourneySearch.feature:63"
+          },
+          {
+            "duration": 7.043256465,
+            "location": "journeysearch/BasicJourneySearch.feature:91"
+          },
+          {
+            "duration": 6.661391515,
+            "location": "journeysearch/BasicJourneySearch.feature:91"
+          },
+          {
+            "duration": 11.243024414,
+            "location": "journeysearch/BasicJourneySearch.feature:91"
+          },
+          {
+            "duration": 9.827401284,
+            "location": "journeysearch/BasicJourneySearch.feature:91"
+          },
+          {
+            "duration": 9.645360522,
+            "location": "journeysearch/BasicJourneySearch.feature:91"
+          },
+          {
+            "duration": 4.446298903,
+            "location": "journeysearch/BasicJourneySearch.feature:91"
+          },
+          {
+            "duration": 15.002327539,
+            "location": "journeysearch/BasicJourneySearch.feature:91"
+          },
+          {
+            "duration": 5.114576625,
+            "location": "journeysearch/BasicJourneySearch.feature:132"
+          },
+          {
+            "duration": 8.975893758,
+            "location": "journeysearch/BasicJourneySearch.feature:148"
+          },
+          {
+            "duration": 9.804784359,
+            "location": "journeysearch/BasicJourneySearch.feature:163"
+          },
+          {
+            "duration": 8.270382783,
+            "location": "journeysearch/BasicJourneySearch.feature:182"
+          },
+          {
+            "duration": 5.926860457,
+            "location": "journeysearch/BasicJourneySearch.feature:194"
+          },
+          {
+            "duration": 8.364371755,
+            "location": "journeysearch/BasicJourneySearch.feature:219"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "source": "^(?:I |)start the application$",
+    "steps": [
+      {
+        "name": "I start the application",
+        "aggregatedDurations": {
+          "average": 0.000195831,
+          "median": 0.000195831
+        },
+        "durations": [
+          {
+            "duration": 0.000213238,
+            "location": "Startup.feature:5"
+          },
+          {
+            "duration": 0.000178424,
+            "location": "Startup.feature:5"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "source": "^(?:I should see |)the \"([^\"]*)\" list is not empty$",
+    "steps": [
+      {
+        "name": "the \"Search Results\" list is not empty",
+        "aggregatedDurations": {
+          "average": 0.393432153,
+          "median": 0.313872237
+        },
+        "durations": [
+          {
+            "duration": 1.353685766,
+            "location": "LiveTrainTimes.feature:13"
+          },
+          {
+            "duration": 0.595681818,
+            "location": "LiveTrainTimes.feature:13"
+          },
+          {
+            "duration": 0.806907698,
+            "location": "LiveTrainTimes.feature:13"
+          },
+          {
+            "duration": 1.135839474,
+            "location": "LiveTrainTimes.feature:13"
+          },
+          {
+            "duration": 0.265157287,
+            "location": "journeysearch/BasicJourneySearch.feature:44"
+          },
+          {
+            "duration": 0.312519499,
+            "location": "journeysearch/BasicJourneySearch.feature:44"
+          },
+          {
+            "duration": 0.367668069,
+            "location": "journeysearch/BasicJourneySearch.feature:44"
+          },
+          {
+            "duration": 0.26632591,
+            "location": "journeysearch/BasicJourneySearch.feature:44"
+          },
+          {
+            "duration": 0.442867348,
+            "location": "journeysearch/BasicJourneySearch.feature:44"
+          },
+          {
+            "duration": 0.351836589,
+            "location": "journeysearch/BasicJourneySearch.feature:44"
+          },
+          {
+            "duration": 0.494490633,
+            "location": "journeysearch/BasicJourneySearch.feature:44"
+          },
+          {
+            "duration": 0.256142385,
+            "location": "journeysearch/BasicJourneySearch.feature:44"
+          },
+          {
+            "duration": 0.394167127,
+            "location": "journeysearch/BasicJourneySearch.feature:44"
+          },
+          {
+            "duration": 0.315224975,
+            "location": "journeysearch/BasicJourneySearch.feature:44"
+          },
+          {
+            "duration": 0.168687795,
+            "location": "journeysearch/BasicJourneySearch.feature:70"
+          },
+          {
+            "duration": 0.482666817,
+            "location": "journeysearch/BasicJourneySearch.feature:75"
+          },
+          {
+            "duration": 0.190857156,
+            "location": "journeysearch/BasicJourneySearch.feature:70"
+          },
+          {
+            "duration": 0.20429013,
+            "location": "journeysearch/BasicJourneySearch.feature:75"
+          },
+          {
+            "duration": 0.445537004,
+            "location": "journeysearch/BasicJourneySearch.feature:70"
+          },
+          {
+            "duration": 0.181184464,
+            "location": "journeysearch/BasicJourneySearch.feature:75"
+          },
+          {
+            "duration": 0.243197147,
+            "location": "journeysearch/BasicJourneySearch.feature:70"
+          },
+          {
+            "duration": 0.252222426,
+            "location": "journeysearch/BasicJourneySearch.feature:75"
+          },
+          {
+            "duration": 0.390401154,
+            "location": "journeysearch/BasicJourneySearch.feature:70"
+          },
+          {
+            "duration": 0.326696964,
+            "location": "journeysearch/BasicJourneySearch.feature:75"
+          },
+          {
+            "duration": 0.231846337,
+            "location": "journeysearch/BasicJourneySearch.feature:170"
+          },
+          {
+            "duration": 0.278064364,
+            "location": "journeysearch/BasicJourneySearch.feature:189"
+          },
+          {
+            "duration": 0.121629538,
+            "location": "journeysearch/BasicJourneySearch.feature:200"
+          },
+          {
+            "duration": 0.140304411,
+            "location": "journeysearch/BasicJourneySearch.feature:203"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "source": "^(?:I |)go to the Payment cards screen$",
+    "steps": [
+      {
+        "name": "go to the Payment cards screen",
+        "aggregatedDurations": {
+          "average": 35.175441773,
+          "median": 34.314315617
+        },
+        "durations": [
+          {
+            "duration": 38.020791517,
+            "location": "Payments.feature:20"
+          },
+          {
+            "duration": 35.381869971,
+            "location": "Payments.feature:20"
+          },
+          {
+            "duration": 33.246761263,
+            "location": "Payments.feature:20"
+          },
+          {
+            "duration": 33.129796175,
+            "location": "Payments.feature:20"
+          },
+          {
+            "duration": 32.489164376,
+            "location": "Payments.feature:20"
+          },
+          {
+            "duration": 38.784267339,
+            "location": "Payments.feature:20"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "source": "^(?:I should see |)the \"([^\"]*)\" screen$",
+    "steps": [
+      {
+        "name": "I should see the \"Live Train Times Search Results\" screen",
+        "aggregatedDurations": {
+          "average": 2.985716502,
+          "median": 2.898627378
+        },
+        "durations": [
+          {
+            "duration": 3.647227441,
+            "location": "LiveTrainTimes.feature:11"
+          },
+          {
+            "duration": 2.995633815,
+            "location": "LiveTrainTimes.feature:11"
+          },
+          {
+            "duration": 2.498383812,
+            "location": "LiveTrainTimes.feature:11"
+          },
+          {
+            "duration": 2.801620941,
+            "location": "LiveTrainTimes.feature:11"
+          }
+        ]
+      },
+      {
+        "name": "I should see the \"Live Progress\" screen",
+        "aggregatedDurations": {
+          "average": 1.108211293,
+          "median": 0.856534348
+        },
+        "durations": [
+          {
+            "duration": 0.891782012,
+            "location": "LiveTrainTimes.feature:15"
+          },
+          {
+            "duration": 0.821286684,
+            "location": "LiveTrainTimes.feature:15"
+          },
+          {
+            "duration": 0.586456692,
+            "location": "LiveTrainTimes.feature:15"
+          },
+          {
+            "duration": 2.133319787,
+            "location": "LiveTrainTimes.feature:15"
+          }
+        ]
+      },
+      {
+        "name": "I should see the \"Alert\" screen",
+        "aggregatedDurations": {
+          "average": 0.024016863,
+          "median": 0.024016863
+        },
+        "durations": [
+          {
+            "duration": 0.022697601,
+            "location": "LiveTrainTimes.feature:46"
+          },
+          {
+            "duration": 0.025336126,
+            "location": "LiveTrainTimes.feature:59"
+          }
+        ]
+      },
+      {
+        "name": "I should see the \"Out Search Results\" screen",
+        "aggregatedDurations": {
+          "average": 35.437474625,
+          "median": 15.407919121
+        },
+        "durations": [
+          {
+            "duration": 14.920694305,
+            "location": "LiveTrainTimes.feature:50"
+          },
+          {
+            "duration": 17.913544312,
+            "location": "booking/JourneyOptions.feature:16"
+          },
+          {
+            "duration": 16.621680086,
+            "location": "booking/JourneyOptions.feature:34"
+          },
+          {
+            "duration": 15.407919121,
+            "location": "booking/JourneyOptions.feature:91"
+          },
+          {
+            "duration": 20.919284994,
+            "location": "journeysearch/BON-88_SingleOptionsForJourney.feature:19"
+          },
+          {
+            "duration": 24.451946188,
+            "location": "journeysearch/BON-88_SingleOptionsForJourney.feature:84"
+          },
+          {
+            "duration": 17.425042413,
+            "location": "journeysearch/BasicJourneySearch.feature:11"
+          },
+          {
+            "duration": 17.533027749,
+            "location": "journeysearch/BasicJourneySearch.feature:26"
+          },
+          {
+            "duration": 13.671049478,
+            "location": "journeysearch/BasicJourneySearch.feature:43"
+          },
+          {
+            "duration": 13.324188324,
+            "location": "journeysearch/BasicJourneySearch.feature:43"
+          },
+          {
+            "duration": 13.115708759,
+            "location": "journeysearch/BasicJourneySearch.feature:43"
+          },
+          {
+            "duration": 13.912846352,
+            "location": "journeysearch/BasicJourneySearch.feature:43"
+          },
+          {
+            "duration": 13.691007459,
+            "location": "journeysearch/BasicJourneySearch.feature:43"
+          },
+          {
+            "duration": 13.054330768,
+            "location": "journeysearch/BasicJourneySearch.feature:43"
+          },
+          {
+            "duration": 17.531733258,
+            "location": "journeysearch/BasicJourneySearch.feature:43"
+          },
+          {
+            "duration": 12.116847589,
+            "location": "journeysearch/BasicJourneySearch.feature:43"
+          },
+          {
+            "duration": 13.652071988,
+            "location": "journeysearch/BasicJourneySearch.feature:43"
+          },
+          {
+            "duration": 12.94674379,
+            "location": "journeysearch/BasicJourneySearch.feature:43"
+          },
+          {
+            "duration": 131.129969912,
+            "location": "journeysearch/BasicJourneySearch.feature:69"
+          },
+          {
+            "duration": 129.22640593,
+            "location": "journeysearch/BasicJourneySearch.feature:69"
+          },
+          {
+            "duration": 14.210812459,
+            "location": "journeysearch/BasicJourneySearch.feature:69"
+          },
+          {
+            "duration": 14.053645194,
+            "location": "journeysearch/BasicJourneySearch.feature:69"
+          },
+          {
+            "duration": 16.365722149,
+            "location": "journeysearch/BasicJourneySearch.feature:69"
+          },
+          {
+            "duration": 129.16960937,
+            "location": "journeysearch/BasicJourneySearch.feature:138"
+          },
+          {
+            "duration": 131.479345397,
+            "location": "journeysearch/BasicJourneySearch.feature:153"
+          },
+          {
+            "duration": 127.416822885,
+            "location": "journeysearch/BasicJourneySearch.feature:169"
+          },
+          {
+            "duration": 22.670236363,
+            "location": "journeysearch/BasicJourneySearch.feature:188"
+          },
+          {
+            "duration": 14.694486884,
+            "location": "journeysearch/BasicJourneySearch.feature:199"
+          },
+          {
+            "duration": 15.060040653,
+            "location": "journeysearch/BasicJourneySearch.feature:225"
+          }
+        ]
+      },
+      {
+        "name": "I should see the \"Landing Page\" screen",
+        "aggregatedDurations": {
+          "average": 8.183455094,
+          "median": 8.183455094
+        },
+        "durations": [
+          {
+            "duration": 11.962084521,
+            "location": "Startup.feature:6"
+          },
+          {
+            "duration": 4.404825668,
+            "location": "Startup.feature:6"
+          }
+        ]
+      },
+      {
+        "name": "I should see the \"Home Page\" screen",
+        "aggregatedDurations": {
+          "average": 14.730382128,
+          "median": 14.730382128
+        },
+        "durations": [
+          {
+            "duration": 14.730382128,
+            "location": "Startup.feature:8"
+          }
+        ]
+      },
+      {
+        "name": "I should see the \"Login Page\" screen",
+        "aggregatedDurations": {
+          "average": 0.788702149,
+          "median": 0.788702149
+        },
+        "durations": [
+          {
+            "duration": 0.788702149,
+            "location": "Startup.feature:8"
+          }
+        ]
+      },
+      {
+        "name": "I should see the \"Select Ticket\" screen",
+        "aggregatedDurations": {
+          "average": 2.222923291,
+          "median": 2.141701001
+        },
+        "durations": [
+          {
+            "duration": 1.980043022,
+            "location": "booking/JourneyOptions.feature:93"
+          },
+          {
+            "duration": 2.348480354,
+            "location": "journeysearch/BON-88_SingleOptionsForJourney.feature:23"
+          },
+          {
+            "duration": 3.118602701,
+            "location": "journeysearch/BON-88_SingleOptionsForJourney.feature:88"
+          },
+          {
+            "duration": 2.141701001,
+            "location": "journeysearch/BasicJourneySearch.feature:28"
+          },
+          {
+            "duration": 1.525789381,
+            "location": "journeysearch/BasicJourneySearch.feature:205"
+          }
+        ]
+      },
+      {
+        "name": "I should see the \"Payment\" screen",
+        "aggregatedDurations": {
+          "average": 0.017839497,
+          "median": 0.017839497
+        },
+        "durations": [
+          {
+            "duration": 0.016919428,
+            "location": "booking/JourneyOptions.feature:97"
+          },
+          {
+            "duration": 0.018759566,
+            "location": "journeysearch/BasicJourneySearch.feature:30"
+          }
+        ]
+      },
+      {
+        "name": "I should see the \"Return Search Results\" screen",
+        "aggregatedDurations": {
+          "average": 28.489460334,
+          "median": 15.112543334
+        },
+        "durations": [
+          {
+            "duration": 19.011181424,
+            "location": "journeysearch/BON-88_SingleOptionsForJourney.feature:21"
+          },
+          {
+            "duration": 14.972822732,
+            "location": "journeysearch/BON-88_SingleOptionsForJourney.feature:86"
+          },
+          {
+            "duration": 15.004689222,
+            "location": "journeysearch/BasicJourneySearch.feature:74"
+          },
+          {
+            "duration": 130.816432429,
+            "location": "journeysearch/BasicJourneySearch.feature:74"
+          },
+          {
+            "duration": 15.112543334,
+            "location": "journeysearch/BasicJourneySearch.feature:74"
+          },
+          {
+            "duration": 15.889661015,
+            "location": "journeysearch/BasicJourneySearch.feature:74"
+          },
+          {
+            "duration": 16.270871188,
+            "location": "journeysearch/BasicJourneySearch.feature:74"
+          },
+          {
+            "duration": 14.642327659,
+            "location": "journeysearch/BasicJourneySearch.feature:202"
+          },
+          {
+            "duration": 14.684614009,
+            "location": "journeysearch/BasicJourneySearch.feature:228"
+          }
+        ]
+      },
+      {
+        "name": "I should see the \"Journey Search\" screen",
+        "aggregatedDurations": {
+          "average": 3.365928358,
+          "median": 3.365928358
+        },
+        "durations": [
+          {
+            "duration": 3.365928358,
+            "location": "journeysearch/BasicJourneySearch.feature:232"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "source": "^(?:I should see |)all \"(.*?)\" list items contain one of the following labels:$",
+    "steps": [
+      {
+        "name": "all \"Search Results\" list items contain one of the following labels:",
+        "aggregatedDurations": {
+          "average": 0.622197615,
+          "median": 0.622197615
+        },
+        "durations": [
+          {
+            "duration": 0.622197615,
+            "location": "journeysearch/BasicJourneySearch.feature:141"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "source": "^(?:I should see |)all \"([^\"]*)\" list items contain the \"([^\"]*)\" text$",
+    "steps": [
+      {
+        "name": "all \"Platform Column\" list items contain the \"Platform\" text",
+        "aggregatedDurations": {
+          "average": 8.149398816,
+          "median": 8.223203011
+        },
+        "durations": [
+          {
+            "duration": 9.283466275,
+            "location": "LiveTrainTimes.feature:16"
+          },
+          {
+            "duration": 8.112249755,
+            "location": "LiveTrainTimes.feature:16"
+          },
+          {
+            "duration": 6.867722969,
+            "location": "LiveTrainTimes.feature:16"
+          },
+          {
+            "duration": 8.334156268,
+            "location": "LiveTrainTimes.feature:16"
+          }
+        ]
+      },
+      {
+        "name": "all \"Tickets\" list items contain the \"Single\" text",
+        "aggregatedDurations": {
+          "average": 0.165903318,
+          "median": 0.165903318
+        },
+        "durations": [
+          {
+            "duration": 0.165903318,
+            "location": "journeysearch/BasicJourneySearch.feature:207"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "source": "^(?:I |)search for journey using the following criteria:$",
+    "steps": [
+      {
+        "name": "search for journey using the following criteria:",
+        "aggregatedDurations": {
+          "average": 64.890062273,
+          "median": 58.659110508
+        },
+        "durations": [
+          {
+            "duration": 54.604728187,
+            "location": "booking/JourneyOptions.feature:13"
+          },
+          {
+            "duration": 51.477918679,
+            "location": "booking/JourneyOptions.feature:31"
+          },
+          {
+            "duration": 54.034234868,
+            "location": "booking/JourneyOptions.feature:88"
+          },
+          {
+            "duration": 51.527481224,
+            "location": "journeysearch/BON-80_RTJP_SeatsLeft.feature:15"
+          },
+          {
+            "duration": 108.099123415,
+            "location": "journeysearch/BON-88_SingleOptionsForJourney.feature:16"
+          },
+          {
+            "duration": 64.310288704,
+            "location": "journeysearch/BON-88_SingleOptionsForJourney.feature:80"
+          },
+          {
+            "duration": 59.257658482,
+            "location": "journeysearch/BasicJourneySearch.feature:8"
+          },
+          {
+            "duration": 58.659110508,
+            "location": "journeysearch/BasicJourneySearch.feature:23"
+          },
+          {
+            "duration": 82.04001639,
+            "location": "journeysearch/BasicJourneySearch.feature:222"
+          }
+        ]
+      },
+      {
+        "name": "I search for journey using the following criteria:",
+        "aggregatedDurations": {
+          "average": 87.956880006,
+          "median": 64.427356561
+        },
+        "durations": [
+          {
+            "duration": 62.403687841,
+            "location": "journeysearch/BasicJourneySearch.feature:39"
+          },
+          {
+            "duration": 62.288033312,
+            "location": "journeysearch/BasicJourneySearch.feature:39"
+          },
+          {
+            "duration": 62.285529024,
+            "location": "journeysearch/BasicJourneySearch.feature:39"
+          },
+          {
+            "duration": 60.922778143,
+            "location": "journeysearch/BasicJourneySearch.feature:39"
+          },
+          {
+            "duration": 64.40945999,
+            "location": "journeysearch/BasicJourneySearch.feature:39"
+          },
+          {
+            "duration": 96.546386741,
+            "location": "journeysearch/BasicJourneySearch.feature:39"
+          },
+          {
+            "duration": 167.23949712,
+            "location": "journeysearch/BasicJourneySearch.feature:39"
+          },
+          {
+            "duration": 67.492242765,
+            "location": "journeysearch/BasicJourneySearch.feature:39"
+          },
+          {
+            "duration": 94.14025855,
+            "location": "journeysearch/BasicJourneySearch.feature:39"
+          },
+          {
+            "duration": 171.987783184,
+            "location": "journeysearch/BasicJourneySearch.feature:39"
+          },
+          {
+            "duration": 68.616852611,
+            "location": "journeysearch/BasicJourneySearch.feature:65"
+          },
+          {
+            "duration": 72.119908238,
+            "location": "journeysearch/BasicJourneySearch.feature:65"
+          },
+          {
+            "duration": 78.971104779,
+            "location": "journeysearch/BasicJourneySearch.feature:65"
+          },
+          {
+            "duration": 80.119951085,
+            "location": "journeysearch/BasicJourneySearch.feature:65"
+          },
+          {
+            "duration": 143.215749733,
+            "location": "journeysearch/BasicJourneySearch.feature:65"
+          },
+          {
+            "duration": 299.525045225,
+            "location": "journeysearch/BasicJourneySearch.feature:65"
+          },
+          {
+            "duration": 23.187604025,
+            "location": "journeysearch/BasicJourneySearch.feature:93"
+          },
+          {
+            "duration": 36.280618865,
+            "location": "journeysearch/BasicJourneySearch.feature:93"
+          },
+          {
+            "duration": 36.195656511,
+            "location": "journeysearch/BasicJourneySearch.feature:93"
+          },
+          {
+            "duration": 48.834446499,
+            "location": "journeysearch/BasicJourneySearch.feature:93"
+          },
+          {
+            "duration": 63.57234919,
+            "location": "journeysearch/BasicJourneySearch.feature:93"
+          },
+          {
+            "duration": 58.467306669,
+            "location": "journeysearch/BasicJourneySearch.feature:93"
+          },
+          {
+            "duration": 60.577196081,
+            "location": "journeysearch/BasicJourneySearch.feature:93"
+          },
+          {
+            "duration": 64.445253133,
+            "location": "journeysearch/BasicJourneySearch.feature:134"
+          },
+          {
+            "duration": 77.450708605,
+            "location": "journeysearch/BasicJourneySearch.feature:150"
+          },
+          {
+            "duration": 61.785460065,
+            "location": "journeysearch/BasicJourneySearch.feature:165"
+          },
+          {
+            "duration": 59.243683878,
+            "location": "journeysearch/BasicJourneySearch.feature:184"
+          },
+          {
+            "duration": 220.468088319,
+            "location": "journeysearch/BasicJourneySearch.feature:196"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "source": "^(?:I |)scroll to the \"([^\"]*)\" text",
+    "steps": [
+      {
+        "name": "I scroll to the \"Anytime\" text",
+        "aggregatedDurations": {
+          "average": 4.042840702,
+          "median": 4.042840702
+        },
+        "durations": [
+          {
+            "duration": 4.042840702,
+            "location": "booking/JourneyOptions.feature:95"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "source": "^I am logged into the system$",
+    "steps": [
+      {
+        "name": "I am logged into the system",
+        "aggregatedDurations": {
+          "average": 27.921531606,
+          "median": 26.189979265
+        },
+        "durations": [
+          {
+            "duration": 27.434434917,
+            "location": "Payments.feature:11"
+          },
+          {
+            "duration": 32.945934022,
+            "location": "Payments.feature:11"
+          },
+          {
+            "duration": 24.708850136,
+            "location": "Payments.feature:11"
+          },
+          {
+            "duration": 24.887393397,
+            "location": "Payments.feature:11"
+          },
+          {
+            "duration": 31.21465576,
+            "location": "Payments.feature:11"
+          },
+          {
+            "duration": 32.580911171,
+            "location": "Payments.feature:11"
+          },
+          {
+            "duration": 24.654549831,
+            "location": "Payments.feature:11"
+          },
+          {
+            "duration": 24.945523614,
+            "location": "journeysearch/BasicJourneySearch.feature:20"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "source": "^(?:I |)have no payment cards stored$",
+    "steps": [
+      {
+        "name": "I have no payment cards stored",
+        "aggregatedDurations": {
+          "average": 35.596050477,
+          "median": 36.393687426
+        },
+        "durations": [
+          {
+            "duration": 36.677287937,
+            "location": "Payments.feature:12"
+          },
+          {
+            "duration": 36.111767376,
+            "location": "Payments.feature:12"
+          },
+          {
+            "duration": 30.40619079,
+            "location": "Payments.feature:12"
+          },
+          {
+            "duration": 36.868155471,
+            "location": "Payments.feature:12"
+          },
+          {
+            "duration": 34.861291023,
+            "location": "Payments.feature:12"
+          },
+          {
+            "duration": 37.853973318,
+            "location": "Payments.feature:12"
+          },
+          {
+            "duration": 36.393687426,
+            "location": "Payments.feature:12"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "source": "^(?:I should see |)the \"([^\"]*)\" button is visible$",
+    "steps": [
+      {
+        "name": "the \"Buy\" button is visible",
+        "aggregatedDurations": {
+          "average": 9.948033259,
+          "median": 9.948033259
+        },
+        "durations": [
+          {
+            "duration": 9.948033259,
+            "location": "journeysearch/BasicJourneySearch.feature:31"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "source": "^(?:I should see |)none of the following labels are shown:$",
+    "steps": [
+      {
+        "name": "none of the following labels are shown:",
+        "aggregatedDurations": {
+          "average": 0.473309798,
+          "median": 0.473309798
+        },
+        "durations": [
+          {
+            "duration": 0.473309798,
+            "location": "journeysearch/BasicJourneySearch.feature:154"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "source": "I am on the Live Train Times screen",
+    "steps": [
+      {
+        "name": "I am on the Live Train Times screen",
+        "aggregatedDurations": {
+          "average": 20.537486883,
+          "median": 20.337402536
+        },
+        "durations": [
+          {
+            "duration": 20.011719707,
+            "location": "LiveTrainTimes.feature:7"
+          },
+          {
+            "duration": 22.20588322,
+            "location": "LiveTrainTimes.feature:7"
+          },
+          {
+            "duration": 19.816856561,
+            "location": "LiveTrainTimes.feature:7"
+          },
+          {
+            "duration": 20.803108584,
+            "location": "LiveTrainTimes.feature:7"
+          },
+          {
+            "duration": 20.663085366,
+            "location": "LiveTrainTimes.feature:42"
+          },
+          {
+            "duration": 19.724267861,
+            "location": "LiveTrainTimes.feature:55"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "source": "^(?:I should see |)the \"([^\"]*)\" (?:message|label|text) is shown$",
+    "steps": [
+      {
+        "name": "the \"Arrivals\" label is shown",
+        "aggregatedDurations": {
+          "average": 0.402070314,
+          "median": 0.402070314
+        },
+        "durations": [
+          {
+            "duration": 0.448733562,
+            "location": "LiveTrainTimes.feature:12"
+          },
+          {
+            "duration": 0.355407067,
+            "location": "LiveTrainTimes.feature:12"
+          }
+        ]
+      },
+      {
+        "name": "the \"Departures\" label is shown",
+        "aggregatedDurations": {
+          "average": 0.902722581,
+          "median": 0.902722581
+        },
+        "durations": [
+          {
+            "duration": 1.001337674,
+            "location": "LiveTrainTimes.feature:12"
+          },
+          {
+            "duration": 0.804107488,
+            "location": "LiveTrainTimes.feature:12"
+          }
+        ]
+      },
+      {
+        "name": "the \"No live times for this route\" message is shown",
+        "aggregatedDurations": {
+          "average": 2.760303032,
+          "median": 2.760303032
+        },
+        "durations": [
+          {
+            "duration": 2.760303032,
+            "location": "LiveTrainTimes.feature:47"
+          }
+        ]
+      },
+      {
+        "name": "the \"no booking fee on the day of travel\" message is shown",
+        "aggregatedDurations": {
+          "average": 2.866863992,
+          "median": 2.866863992
+        },
+        "durations": [
+          {
+            "duration": 2.866863992,
+            "location": "LiveTrainTimes.feature:60"
+          }
+        ]
+      },
+      {
+        "name": "I should see the \"Farringdon\" text is shown",
+        "aggregatedDurations": {
+          "average": 0.264241068,
+          "median": 0.264241068
+        },
+        "durations": [
+          {
+            "duration": 0.264241068,
+            "location": "LiveTrainTimes.feature:62"
+          }
+        ]
+      },
+      {
+        "name": "I should see the \"Joe Public\" text is shown",
+        "aggregatedDurations": {
+          "average": 0.969122873,
+          "median": 0.97281905
+        },
+        "durations": [
+          {
+            "duration": 1.021496507,
+            "location": "Payments.feature:21"
+          },
+          {
+            "duration": 0.922468831,
+            "location": "Payments.feature:21"
+          },
+          {
+            "duration": 0.947854835,
+            "location": "Payments.feature:21"
+          },
+          {
+            "duration": 0.997783265,
+            "location": "Payments.feature:21"
+          },
+          {
+            "duration": 0.824917751,
+            "location": "Payments.feature:21"
+          },
+          {
+            "duration": 1.10021605,
+            "location": "Payments.feature:21"
+          }
+        ]
+      },
+      {
+        "name": "the \"0051\" text is shown",
+        "aggregatedDurations": {
+          "average": 0.50868517,
+          "median": 0.50868517
+        },
+        "durations": [
+          {
+            "duration": 0.50868517,
+            "location": "Payments.feature:22"
+          }
+        ]
+      },
+      {
+        "name": "the \"0302\" text is shown",
+        "aggregatedDurations": {
+          "average": 0.14414972,
+          "median": 0.14414972
+        },
+        "durations": [
+          {
+            "duration": 0.14414972,
+            "location": "Payments.feature:22"
+          }
+        ]
+      },
+      {
+        "name": "the \"0106\" text is shown",
+        "aggregatedDurations": {
+          "average": 0.500852951,
+          "median": 0.500852951
+        },
+        "durations": [
+          {
+            "duration": 0.500852951,
+            "location": "Payments.feature:22"
+          }
+        ]
+      },
+      {
+        "name": "the \"1111\" text is shown",
+        "aggregatedDurations": {
+          "average": 0.492184518,
+          "median": 0.492184518
+        },
+        "durations": [
+          {
+            "duration": 0.492184518,
+            "location": "Payments.feature:22"
+          }
+        ]
+      },
+      {
+        "name": "the \"0025\" text is shown",
+        "aggregatedDurations": {
+          "average": 0.497849881,
+          "median": 0.497849881
+        },
+        "durations": [
+          {
+            "duration": 0.497849881,
+            "location": "Payments.feature:22"
+          }
+        ]
+      },
+      {
+        "name": "the \"2862\" text is shown",
+        "aggregatedDurations": {
+          "average": 0.482025765,
+          "median": 0.482025765
+        },
+        "durations": [
+          {
+            "duration": 0.482025765,
+            "location": "Payments.feature:22"
+          }
+        ]
+      },
+      {
+        "name": "the \"Cheapest Tickets\" label is shown",
+        "aggregatedDurations": {
+          "average": 0.14593998,
+          "median": 0.14593998
+        },
+        "durations": [
+          {
+            "duration": 0.14593998,
+            "location": "journeysearch/BON-88_SingleOptionsForJourney.feature:24"
+          }
+        ]
+      },
+      {
+        "name": "the \"Advance Single\" text is shown",
+        "aggregatedDurations": {
+          "average": 0.197097288,
+          "median": 0.197097288
+        },
+        "durations": [
+          {
+            "duration": 0.222524132,
+            "location": "journeysearch/BON-88_SingleOptionsForJourney.feature:25"
+          },
+          {
+            "duration": 0.171670445,
+            "location": "journeysearch/BON-88_SingleOptionsForJourney.feature:90"
+          }
+        ]
+      },
+      {
+        "name": "the \"Cheapest Tickets\" text is shown",
+        "aggregatedDurations": {
+          "average": 0.17382525,
+          "median": 0.17382525
+        },
+        "durations": [
+          {
+            "duration": 0.17382525,
+            "location": "journeysearch/BON-88_SingleOptionsForJourney.feature:89"
+          }
+        ]
+      },
+      {
+        "name": "the \"Farringdon\" label is shown",
+        "aggregatedDurations": {
+          "average": 0.197480714,
+          "median": 0.191092319
+        },
+        "durations": [
+          {
+            "duration": 0.203223606,
+            "location": "journeysearch/BasicJourneySearch.feature:45"
+          },
+          {
+            "duration": 0.229151575,
+            "location": "journeysearch/BasicJourneySearch.feature:45"
+          },
+          {
+            "duration": 0.211902081,
+            "location": "journeysearch/BasicJourneySearch.feature:45"
+          },
+          {
+            "duration": 0.284635233,
+            "location": "journeysearch/BasicJourneySearch.feature:45"
+          },
+          {
+            "duration": 0.239067967,
+            "location": "journeysearch/BasicJourneySearch.feature:45"
+          },
+          {
+            "duration": 0.190167229,
+            "location": "journeysearch/BasicJourneySearch.feature:45"
+          },
+          {
+            "duration": 0.255594394,
+            "location": "journeysearch/BasicJourneySearch.feature:45"
+          },
+          {
+            "duration": 0.214389966,
+            "location": "journeysearch/BasicJourneySearch.feature:45"
+          },
+          {
+            "duration": 0.209532698,
+            "location": "journeysearch/BasicJourneySearch.feature:45"
+          },
+          {
+            "duration": 0.168690807,
+            "location": "journeysearch/BasicJourneySearch.feature:45"
+          },
+          {
+            "duration": 0.173217674,
+            "location": "journeysearch/BasicJourneySearch.feature:71"
+          },
+          {
+            "duration": 0.19201741,
+            "location": "journeysearch/BasicJourneySearch.feature:76"
+          },
+          {
+            "duration": 0.221135576,
+            "location": "journeysearch/BasicJourneySearch.feature:71"
+          },
+          {
+            "duration": 0.138563695,
+            "location": "journeysearch/BasicJourneySearch.feature:76"
+          },
+          {
+            "duration": 0.186876606,
+            "location": "journeysearch/BasicJourneySearch.feature:71"
+          },
+          {
+            "duration": 0.188592885,
+            "location": "journeysearch/BasicJourneySearch.feature:76"
+          },
+          {
+            "duration": 0.160142551,
+            "location": "journeysearch/BasicJourneySearch.feature:71"
+          },
+          {
+            "duration": 0.134696627,
+            "location": "journeysearch/BasicJourneySearch.feature:76"
+          },
+          {
+            "duration": 0.174693266,
+            "location": "journeysearch/BasicJourneySearch.feature:71"
+          },
+          {
+            "duration": 0.173322451,
+            "location": "journeysearch/BasicJourneySearch.feature:76"
+          }
+        ]
+      },
+      {
+        "name": "the \"Newcastle\" label is shown",
+        "aggregatedDurations": {
+          "average": 0.22034191,
+          "median": 0.198356964
+        },
+        "durations": [
+          {
+            "duration": 0.183536439,
+            "location": "journeysearch/BasicJourneySearch.feature:46"
+          },
+          {
+            "duration": 0.158294379,
+            "location": "journeysearch/BasicJourneySearch.feature:46"
+          },
+          {
+            "duration": 0.176912344,
+            "location": "journeysearch/BasicJourneySearch.feature:46"
+          },
+          {
+            "duration": 0.224370965,
+            "location": "journeysearch/BasicJourneySearch.feature:46"
+          },
+          {
+            "duration": 0.257496127,
+            "location": "journeysearch/BasicJourneySearch.feature:46"
+          },
+          {
+            "duration": 0.30312097,
+            "location": "journeysearch/BasicJourneySearch.feature:46"
+          },
+          {
+            "duration": 0.32715658,
+            "location": "journeysearch/BasicJourneySearch.feature:46"
+          },
+          {
+            "duration": 0.270748669,
+            "location": "journeysearch/BasicJourneySearch.feature:46"
+          },
+          {
+            "duration": 0.186242248,
+            "location": "journeysearch/BasicJourneySearch.feature:46"
+          },
+          {
+            "duration": 0.266497974,
+            "location": "journeysearch/BasicJourneySearch.feature:46"
+          },
+          {
+            "duration": 0.158341579,
+            "location": "journeysearch/BasicJourneySearch.feature:72"
+          },
+          {
+            "duration": 0.185509809,
+            "location": "journeysearch/BasicJourneySearch.feature:77"
+          },
+          {
+            "duration": 0.213819882,
+            "location": "journeysearch/BasicJourneySearch.feature:72"
+          },
+          {
+            "duration": 0.163336766,
+            "location": "journeysearch/BasicJourneySearch.feature:77"
+          },
+          {
+            "duration": 0.210471681,
+            "location": "journeysearch/BasicJourneySearch.feature:72"
+          },
+          {
+            "duration": 0.177559422,
+            "location": "journeysearch/BasicJourneySearch.feature:77"
+          },
+          {
+            "duration": 0.357182932,
+            "location": "journeysearch/BasicJourneySearch.feature:72"
+          },
+          {
+            "duration": 0.250403377,
+            "location": "journeysearch/BasicJourneySearch.feature:77"
+          },
+          {
+            "duration": 0.162776388,
+            "location": "journeysearch/BasicJourneySearch.feature:72"
+          },
+          {
+            "duration": 0.17305967,
+            "location": "journeysearch/BasicJourneySearch.feature:77"
+          }
+        ]
+      },
+      {
+        "name": "I should see the \"You must choose origin and destination\" message is shown",
+        "aggregatedDurations": {
+          "average": 0.6344623,
+          "median": 0.6344623
+        },
+        "durations": [
+          {
+            "duration": 0.6344623,
+            "location": "journeysearch/BasicJourneySearch.feature:96"
+          }
+        ]
+      },
+      {
+        "name": "I should see the \"You must choose a destination station\" message is shown",
+        "aggregatedDurations": {
+          "average": 0.658368694,
+          "median": 0.658368694
+        },
+        "durations": [
+          {
+            "duration": 0.658368694,
+            "location": "journeysearch/BasicJourneySearch.feature:96"
+          }
+        ]
+      },
+      {
+        "name": "I should see the \"You must choose an origin station\" message is shown",
+        "aggregatedDurations": {
+          "average": 0.623589853,
+          "median": 0.623589853
+        },
+        "durations": [
+          {
+            "duration": 0.623589853,
+            "location": "journeysearch/BasicJourneySearch.feature:96"
+          }
+        ]
+      },
+      {
+        "name": "I should see the \"From and To stations must be different\" message is shown",
+        "aggregatedDurations": {
+          "average": 0.611112599,
+          "median": 0.611112599
+        },
+        "durations": [
+          {
+            "duration": 0.611112599,
+            "location": "journeysearch/BasicJourneySearch.feature:96"
+          }
+        ]
+      },
+      {
+        "name": "I should see the \"The via or avoid station can\" message is shown",
+        "aggregatedDurations": {
+          "average": 0.641850301,
+          "median": 0.641850301
+        },
+        "durations": [
+          {
+            "duration": 0.666030525,
+            "location": "journeysearch/BasicJourneySearch.feature:96"
+          },
+          {
+            "duration": 0.617670078,
+            "location": "journeysearch/BasicJourneySearch.feature:96"
+          }
+        ]
+      },
+      {
+        "name": "the \"Plat\" text is shown",
+        "aggregatedDurations": {
+          "average": 0.171759489,
+          "median": 0.171759489
+        },
+        "durations": [
+          {
+            "duration": 0.171759489,
+            "location": "journeysearch/BasicJourneySearch.feature:140"
+          }
+        ]
+      },
+      {
+        "name": "the \"Not available\" text is shown",
+        "aggregatedDurations": {
+          "average": 0.173814539,
+          "median": 0.173814539
+        },
+        "durations": [
+          {
+            "duration": 0.173814539,
+            "location": "journeysearch/BasicJourneySearch.feature:190"
+          }
+        ]
+      },
+      {
+        "name": "the \"Select outbound\" label is shown",
+        "aggregatedDurations": {
+          "average": 0.199337792,
+          "median": 0.199337792
+        },
+        "durations": [
+          {
+            "duration": 0.199337792,
+            "location": "journeysearch/BasicJourneySearch.feature:226"
+          }
+        ]
+      },
+      {
+        "name": "the \"Select return\" label is shown",
+        "aggregatedDurations": {
+          "average": 0.120578078,
+          "median": 0.120578078
+        },
+        "durations": [
+          {
+            "duration": 0.120578078,
+            "location": "journeysearch/BasicJourneySearch.feature:229"
+          }
+        ]
+      }
+    ]
+  }
+]

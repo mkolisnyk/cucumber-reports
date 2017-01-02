@@ -51,6 +51,12 @@ public class ExtendedRuntimeOptions {
     }
     public ExtendedRuntimeOptions() {
     }
+    /*public ExtendedRuntimeOptions(String[] args) throws Exception {
+        for (int i = 0; i < args.length; i++) {
+            if (args[i].equals("-r")) {
+            }
+        }
+    }*/
     public ExtendedRuntimeOptions(ExtendedCucumberOptions options) throws Exception {
         if (options != null) {
             this.isOverviewReport = options.overviewReport();

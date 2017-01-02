@@ -1,0 +1,81 @@
+{
+	"@type":"com.github.mkolisnyk.cucumber.reporting.types.breakdown.BreakdownReportModel",
+	"reportsInfo":[
+		{
+			"reportSuffix":"report1",
+			"title":"First Breakdown",
+			"refreshTimeout":5,
+			"nextFile":"",
+			"table":{
+				"rows":{
+					"alias":"Features",
+					"dimensionValue":{"name":"FEATURE"},
+					"expression":"(.*)",
+					"subElements":[
+						{
+							"alias":"LDB Link",
+							"dimensionValue":{"name":"STEP_PARAM"},
+							"expression":"(.*)com.thetrainline/ldp1(.*)",
+							"subElements":[]
+						},
+						{
+							"alias":"Payment",
+							"dimensionValue":{"name":"FEATURE"},
+							"expression":"(.*)[Pp]ayment(.*)",
+							"subElements":[
+								{
+									"alias":"Visa Credit",
+									"dimensionValue":{"name":"STEP_PARAM"},
+									"expression":"Visa Credit",
+									"subElements":[]
+								},
+								{
+									"alias":"MasterCard",
+									"dimensionValue":{"name":"STEP_PARAM"},
+									"expression":"Mastercard",
+									"subElements":[]
+								},
+							
+							]
+						}
+					]
+				},
+				"cols":{"alias":"Scenarios","dimensionValue":{"name":"SCENARIO"},"expression":"(.*)","subElements":[]},
+				"cell":{"name":"STEPS"}
+			}
+		},
+		{
+			"reportSuffix":"report2",
+			"title":"Second Breakdown",
+			"refreshTimeout":5,
+			"nextFile":"",
+			"table":{
+				"rows":{"alias":"Features","dimensionValue":{"name":"FEATURE"},"expression":"(.*)","subElements":[]},
+				"cols":{"alias":"Scenarios","dimensionValue":{"name":"SCENARIO"},"expression":"(.*)","subElements":[]},
+				"cell":{"name":"SCENARIOS"}
+			}
+		},
+		{
+			"reportSuffix":"report3",
+			"title":"Third Breakdown",
+			"refreshTimeout":0,
+			"nextFile":"",
+			"table":{
+				"rows":{"alias":"Features","dimensionValue":{"name":"FEATURE"},"expression":"(.*)","subElements":[]},
+				"cols":{"alias":"Scenarios","dimensionValue":{"name":"SCENARIO"},"expression":"(.*)","subElements":[]},
+				"cell":{"name":"STEPS"}
+			}
+		},
+		{
+			"reportSuffix":"report4",
+			"title":"Fourth Breakdown",
+			"refreshTimeout":5,
+			"nextFile":"",
+			"table":{
+				"rows":{"alias":"Features","dimensionValue":{"name":"FEATURE"},"expression":"(.*)","subElements":[]},
+				"cols":{"alias":"Scenarios","dimensionValue":{"name":"SCENARIO"},"expression":"(.*)","subElements":[]},
+				"cell":{"name":"STEPS"}
+			}
+		}
+	]
+}

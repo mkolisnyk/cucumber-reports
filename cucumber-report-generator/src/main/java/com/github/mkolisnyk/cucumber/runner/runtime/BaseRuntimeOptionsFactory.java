@@ -20,38 +20,11 @@ public class BaseRuntimeOptionsFactory {
         this.clazz = clazzValue;
     }
 
-    /*public RuntimeOptions create() {
-        List<String> args = buildArgsFromOptions();
-        return new RuntimeOptions(args);
-    }*/
     public RuntimeOptions create(CucumberOptions options) {
         List<String> args = buildArgsFromOptions(options);
         return new RuntimeOptions(args);
     }
-    /*private List<String> buildArgsFromOptions() {
-        List<String> args = new ArrayList<String>();
 
-        for (Class classWithOptions = clazz;
-                hasSuperClass(classWithOptions);
-                classWithOptions = classWithOptions.getSuperclass()) {
-            CucumberOptions options = getOptions(classWithOptions);
-            if (options != null) {
-                addDryRun(options, args);
-                addMonochrome(options, args);
-                addTags(options, args);
-                addPlugins(options, args);
-                addStrict(options, args);
-                addName(options, args);
-                addSnippets(options, args);
-                addGlue(options, args);
-                addFeatures(options, args);
-            }
-        }
-        addDefaultFeaturePathIfNoFeaturePathIsSpecified(args, clazz);
-        addDefaultGlueIfNoGlueIsSpecified(args, clazz);
-        addNullFormatIfNoPluginIsSpecified(args);
-        return args;
-    }*/
     private List<String> buildArgsFromOptions(CucumberOptions options) {
         List<String> args = new ArrayList<String>();
         if (options != null) {
@@ -170,12 +143,4 @@ public class BaseRuntimeOptionsFactory {
         boolean intelliJidea = System.getProperty("idea.launcher.bin.path") != null;
         return intelliJidea;
     }
-/*
-    private boolean hasSuperClass(Class classWithOptions) {
-        return classWithOptions != Object.class;
-    }
-
-    private CucumberOptions getOptions(Class<?> clazzValue) {
-        return clazzValue.getAnnotation(CucumberOptions.class);
-    }*/
 }

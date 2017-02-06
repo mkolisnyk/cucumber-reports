@@ -58,7 +58,7 @@ CucumberResultsOverview results = new CucumberResultsOverview();
 results.setOutputDirectory("target");
 results.setOutputName("cucumber-results");
 results.setSourceFile("./src/test/resources/cucumber.json");
-results.executeFeaturesOverviewReport();
+results.execute();
 {% endhighlight %}
 
 If similar code snippet is executed somewhere after the Cucumber JSON report is generated and completed the coverage report will be generated as well.

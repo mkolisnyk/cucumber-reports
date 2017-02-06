@@ -127,7 +127,7 @@ CucumberBreakdownReport report = new CucumberBreakdownReport();
 report.setOutputDirectory("target/multi-breakdown");
 report.setOutputName("cucumber-results");
 report.setSourceFile("./src/test/resources/breakdown-source/cucumber.json");
-report.executeReport(new File("src/test/resources/breakdown-source/simple.json"));
+report.execute(new File("src/test/resources/breakdown-source/simple.json"), false);
 ```
 
 ```json

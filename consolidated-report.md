@@ -115,7 +115,7 @@ results.setOutputDirectory("target");
 results.setOutputName("cucumber-results");
 results.setPdfPageSize("A4 landscape");
 results.setSourceFile("./src/test/resources/cucumber.json");
-results.executeConsolidatedReport(
+results.execute(
 	new File("./src/test/resources/consolidated-source/sample_batch.json"),
 	true
 );

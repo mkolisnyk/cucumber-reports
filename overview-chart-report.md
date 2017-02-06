@@ -48,7 +48,7 @@ CucumberFeatureOverview results = new CucumberFeatureOverview();
 results.setOutputDirectory("target");
 results.setOutputName("cucumber-results");
 results.setSourceFile("./src/test/resources/cucumber.json");
-results.executeFeatureOverviewChartReport(false);
+results.execute();
 {% endhighlight %}
 
 Note that the parameter for the last statement indicates whether you would like to have PDF copy as well.

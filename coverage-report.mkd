@@ -65,7 +65,7 @@ results.setOutputName("cucumber-results");
 results.setSourceFile("./src/test/resources/cucumber.json");
 results.setExcludeCoverageTags(new String[]{"@android"});
 results.setIncludeCoverageTags(new String[]{"@ios"});
-results.executeOverviewReport("coverage-filtered");
+results.execute();
 {% endhighlight %}
 
 If similar code snippet is executed somewhere after the Cucumber JSON report is generated and completed the coverage report will be generated as well.

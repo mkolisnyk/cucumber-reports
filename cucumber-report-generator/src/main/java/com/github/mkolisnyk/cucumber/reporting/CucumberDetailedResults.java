@@ -77,8 +77,11 @@ public class CucumberDetailedResults extends KECompatibleReport {
     private String escapeHtml(String input) {
         return StringEscapeUtils.escapeHtml(input);
     }
-    private String generateNameFromId(String scId) {
-        String result = scId.replaceAll("[; !@#$%^&*()+=]", "_");
+    public String generateNameFromId(String scId) {
+        if (scId == null) {
+            scId = "null";
+        }
+        String result = scId.replaceAll("[^A-Za-z0-9]", "_");
         return result;
     }
     private String generateTableOfContents(CucumberFeatureResult[] results) {
@@ -189,7 +192,7 @@ public class CucumberDetailedResults extends KECompatibleReport {
                     + "<pre class=\"comment\">",
                     step.getResult().getStatus());
             for (String line : step.getOutput()) {
-                reportContent += line + System.lineSeparator();
+                reportContent += this.escapeHtml(line) + System.lineSeparator();
             }
             reportContent += String.format(Locale.US,
                     "</pre></td></tr>");

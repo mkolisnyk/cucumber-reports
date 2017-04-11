@@ -22,6 +22,7 @@ import org.xhtmlrenderer.pdf.ITextRenderer;
 
 import com.cedarsoftware.util.io.JsonObject;
 import com.cedarsoftware.util.io.JsonReader;
+import com.github.mkolisnyk.cucumber.reporting.types.OverviewStats;
 import com.github.mkolisnyk.cucumber.reporting.types.enums.CucumberReportError;
 import com.github.mkolisnyk.cucumber.reporting.types.enums.CucumberReportLink;
 import com.github.mkolisnyk.cucumber.reporting.types.enums.CucumberReportTypes;
@@ -226,5 +227,65 @@ public abstract class CucumberResultsCommon {
 
     public int[][] getStatuses(CucumberFeatureResult[] results) {
         return null;
+    }
+    public String generateRunStatsTable(CucumberFeatureResult[] results) {
+        final int secondsInMinute = 60;
+        final int secondsInHour = 3600;
+        final float highestPercent = 100.f;
+        float overallDuration = 0.f;
+        OverviewStats stats = new OverviewStats();
+        stats.valuate(results);
+        overallDuration = stats.getOverallDuration();
+        return String.format(
+                Locale.US,
+                "<table>"
+                + "<tr><th></th><th>Passed</th><th>Failed</th><th>Known</th><th>Undefined</th>"
+                    + "<th>Total</th><th>%%Passed</th></tr>"
+                + "<tr><th>Features</th>"
+                    + "<td class=\"passed\" id=\"features_passed\">%d</td>"
+                    + "<td class=\"failed\" id=\"features_failed\">%d</td>"
+                    + "<td class=\"known\" id=\"features_known\">%d</td>"
+                    + "<td class=\"undefined\" id=\"features_undefined\">%d</td>"
+                    + "<td id=\"features_total\">%d</td>"
+                    + "<td id=\"features_rate\">%.2f</td></tr>"
+                + "<tr><th>Scenarios</th>"
+                    + "<td class=\"passed\" id=\"scenarios_passed\">%d</td>"
+                    + "<td class=\"failed\" id=\"scenarios_failed\">%d</td>"
+                    + "<td class=\"known\" id=\"scenarios_known\">%d</td>"
+                    + "<td class=\"undefined\" id=\"scenarios_undefined\">%d</td>"
+                    + "<td id=\"scenarios_total\">%d</td>"
+                    + "<td id=\"scenarios_rate\">%.2f</td></tr>"
+                + "<tr><th>Steps</th>"
+                    + "<td class=\"passed\" id=\"steps_passed\">%d</td>"
+                    + "<td class=\"failed\" id=\"steps_failed\">%d</td>"
+                    + "<td class=\"known\" id=\"steps_known\">%d</td>"
+                    + "<td class=\"undefined\" id=\"steps_undefined\">%d</td>"
+                    + "<td id=\"steps_total\">%d</td>"
+                    + "<td id=\"steps_rate\">%.2f</td></tr></table>"
+                + "<div><b>Overall Duration: %dh %02dm %02ds</b></div>",
+                stats.getFeaturesPassed(),
+                stats.getFeaturesFailed(),
+                stats.getFeaturesKnown(),
+                stats.getFeaturesUndefined(),
+                stats.getFeaturesTotal(),
+                highestPercent * (float) (stats.getFeaturesPassed() + stats.getFeaturesKnown())
+                    / (float) (stats.getFeaturesTotal()),
+                stats.getScenariosPassed(),
+                stats.getScenariosFailed(),
+                stats.getScenariosKnown(),
+                stats.getScenariosUndefined(),
+                stats.getScenariosTotal(),
+                highestPercent * (float) (stats.getScenariosPassed() + stats.getScenariosKnown())
+                    / (float) (stats.getScenariosTotal()),
+                stats.getStepsPassed(),
+                stats.getStepsFailed(),
+                stats.getStepsKnown(),
+                stats.getStepsUndefined(),
+                stats.getStepsTotal(),
+                highestPercent * (float) (stats.getStepsPassed() + stats.getStepsKnown())
+                    / (float) (stats.getStepsTotal()),
+                (int) overallDuration / secondsInHour,
+                ((int) overallDuration % secondsInHour) / secondsInMinute,
+                ((int) overallDuration % secondsInHour) % secondsInMinute);
     }
 }

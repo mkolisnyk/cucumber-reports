@@ -15,7 +15,7 @@ import org.junit.runners.Parameterized.Parameters;
 
 import com.cedarsoftware.util.io.JsonObject;
 import com.cedarsoftware.util.io.JsonReader;
-import com.github.mkolisnyk.cucumber.reporting.CucumberDetailedResults.OverviewStats;
+import com.github.mkolisnyk.cucumber.reporting.types.OverviewStats;
 import com.github.mkolisnyk.cucumber.reporting.types.result.CucumberFeatureResult;
 
 @RunWith(Parameterized.class)
@@ -71,8 +71,7 @@ public class CucumberFeatureResultsTest {
         }
         jr.close();
 
-        CucumberDetailedResults detailedReport = new CucumberDetailedResults();
-        OverviewStats actualStats = detailedReport.valuateOverviewStats(features);
+        OverviewStats actualStats = new OverviewStats().valuate(features);
         Assert.assertEquals(this.featuresPassed, actualStats.getFeaturesPassed());
         Assert.assertEquals(this.featuresFailed, actualStats.getFeaturesFailed());
         Assert.assertEquals(this.featuresUndefined, actualStats.getFeaturesUndefined());

@@ -71,7 +71,7 @@ public class CucumberResultsOverview extends KECompatibleReport {
         String content = this.getReportBase();
         content = content.replaceAll("__TITLE__", "Features Overview");
         String reportContent = "";
-
+        reportContent += "<h1>Summary</h1>" + this.generateRunStatsTable(results);
         reportContent += "<h1>Features Status</h1><table><tr><th>Feature Name</th><th>Status</th>"
                 + "<th>Passed</th><th>Failed</th><th>Known</th><th>Undefined</th><th>Total</th>"
                 + "<th>Duration</th></tr>";

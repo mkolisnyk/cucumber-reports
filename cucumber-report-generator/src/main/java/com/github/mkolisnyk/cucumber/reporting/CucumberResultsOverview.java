@@ -73,12 +73,13 @@ public class CucumberResultsOverview extends KECompatibleReport {
         String reportContent = "";
 
         reportContent += "<h1>Features Status</h1><table><tr><th>Feature Name</th><th>Status</th>"
-                + "<th>Passed</th><th>Failed</th><th>Known</th><th>Undefined</th><th>Duration</th></tr>";
+                + "<th>Passed</th><th>Failed</th><th>Known</th><th>Undefined</th><th>Total</th>"
+                + "<th>Duration</th></tr>";
 
         for (CucumberFeatureResult result : results) {
             reportContent += String.format(Locale.US,
                     "<tr class=\"%s\"><td>%s</td><td>%s</td>"
-                    + "<td>%d</td><td>%d</td><td>%d</td><td>%d</td><td>%.2fs</td></tr>",
+                    + "<td>%d</td><td>%d</td><td>%d</td><td>%d</td><td>%d</td><td>%.2fs</td></tr>",
                     result.getStatus(),
                     result.getName(),
                     result.getStatus(),
@@ -86,6 +87,8 @@ public class CucumberResultsOverview extends KECompatibleReport {
                     result.getFailed(),
                     result.getKnown(),
                     result.getUndefined() + result.getSkipped(),
+                    result.getPassed() + result.getFailed() + result.getKnown()
+                    + result.getUndefined() + result.getSkipped(),
                     result.getDuration());
         }
         reportContent += "</table>";
@@ -97,6 +100,7 @@ public class CucumberResultsOverview extends KECompatibleReport {
                 + "<th>Failed</th>"
                 + "<th>Known</th>"
                 + "<th>Undefined</th>"
+                + "<th>Total</th>"
                 + "<th>Retries</th>"
                 + "<th>Duration</th></tr>";
 
@@ -108,7 +112,7 @@ public class CucumberResultsOverview extends KECompatibleReport {
                 reportContent += String.format(Locale.US,
                         "<tr class=\"%s\">"
                         + "<td>%s</td><td>%s</td><td>%s</td>"
-                        + "<td>%d</td><td>%d</td><td>%d</td><td>%d</td><td>%d</td>"
+                        + "<td>%d</td><td>%d</td><td>%d</td><td>%d</td><td>%d</td><td>%d</td>"
                         + "<td>%.2fs</td></tr>",
                         element.getStatus(),
                         result.getName(),
@@ -118,6 +122,8 @@ public class CucumberResultsOverview extends KECompatibleReport {
                         element.getFailed(),
                         element.getKnown(),
                         element.getUndefined() + element.getSkipped(),
+                        element.getPassed() + element.getFailed()
+                        + element.getKnown() + element.getUndefined() + element.getSkipped(),
                         element.getRerunAttempts(),
                         element.getDuration());
             }

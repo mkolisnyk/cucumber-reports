@@ -1,5 +1,6 @@
 ---
 title: Cucumber Reports News
+layout: null
 ---
 
 ## 02.01.2017 1.0.8 Version Release

@@ -25,6 +25,41 @@ The table itself contains the following columns:
 
 # Configuration options
 
+## Top-Level Parameters
+
+At the highest level we should define the following options:
+
+* Source file - the path to initial JSON report to generate breakdown from
+* Output directory - the directory to send output to
+* Enable breakdown - flag which enables breakdown report generation
+* Known errors configuration file - the path to known errors report configuration file. This is one of the ways to specify configuration from code and the only way to do it via extended Cucumber runner
+
+## Configuration File Format
+
+### What is normally defined
+
+Configuration defines the list of expressions which can indicate known errors. They are defined using [filter rules](/cucumber-reports/filter-rules). Additionally, each rule has title, description and the priority. 
+
+In addition to the list of rules, at the top-most level we define the parameter to order by.
+
+### Core Data Types
+
+#### Known Errors Report Model
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| errorDescriptions | List of [Breakdown Report Info](#known-errors-info) | The list of error description items |
+| orderBy | Enumeration | The field to order errors by. Possible values: **PRIORITY, FREQUENCY, NAME** |
+
+#### Known Errors Info
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| title | String | The short text which gives summary to an error |
+| description | String | The text which contains detailed description of the error |
+| filter | [Data Dimension](/cucumber-reports/breakdown-report#data-dimension) | Contains the filter which is used to match some specific error |
+| priority | Enumeration | Defines the priority of the error. Can be one of the following values: **LOWEST, LOW, MEDIUM, HIGH, HIGHEST** |
+
 # Generation sample
 
 ## From code

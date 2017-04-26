@@ -12,6 +12,7 @@ Overview report is summarized test results representation and it is mainly targe
 Report consists of 3 major sections:
 
 * Overview Chart
+* Summary
 * Features Status
 * Scenario Status
 
@@ -24,6 +25,14 @@ In other words if feature contains at least one failed scenario it is treated as
  feature is undefined. Otherwise it is treated as passed. Eventually, the overview chart looks like this: 
 
 ![Overview Chart](/cucumber-reports/images/overview-report/overview-chart.png)
+
+## Summary
+
+Summary section shows aggregated statistics about features/scenarios/steps statuses. This section is the same as [Overview section in detailed report](/cucumber-reports/detailed-report#overview).
+
+Typical representation is:
+
+![Overview Chart](/cucumber-reports/images/overview-report/summary.png)
 
 ## Features Status
 

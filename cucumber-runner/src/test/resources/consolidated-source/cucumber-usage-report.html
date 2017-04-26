@@ -1,0 +1,1161 @@
+<html><head><style type="text/css">h1 {background-color:#9999CC}
+h2 {background-color:#BBBBCC}
+h3 {background-color:#DDDDFF}
+th {border:1px solid black;background-color:#CCCCDD;}
+td{border:1px solid black;}
+.none {border:0px none black;}
+table{border:1px solid black;border-collapse: collapse;}
+tr:nth-child(even) {background: #CCC}
+tr:nth-child(odd) {background: #FFF}</style><title>Cucumber Steps Usage Report</title></head><body><h1>Cucumber Usage Statistics</h1><h2>Overview Graph</h2><p><svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="500" height="400"><defs><filter id="f1" x="0" y="0" width="200%" height="200%"><feOffset result="offOut" in="SourceAlpha" dx="10" dy="10" /><feGaussianBlur result="blurOut" in="offOut" stdDeviation="10" /><feBlend in="SourceGraphic" in2="blurOut" mode="normal" /></filter><radialGradient id="grad1" cx="0%" cy="100%" r="150%" fx="0%" fy="100%"><stop offset="0%" style="stop-color:white;stop-opacity:0.1" /><stop offset="100%" style="stop-color:gold;stop-opacity:0.7" /></radialGradient><linearGradient id="grad2" cx="0%" cy="100%" r="150%" fx="0%" fy="100%"><stop offset="0%" style="stop-color:red;stop-opacity:0.7" /><stop offset="50%" style="stop-color:yellow;stop-opacity:0.7" /><stop offset="100%" style="stop-color:green;stop-opacity:0.7" /></linearGradient></defs><rect width="90%" height="90%" stroke="black" stroke-width="1" fill="url(#grad1)" filter="url(#f1)" /><line x1="40" y1="30" x2="40" y2="300" style="stroke:black;stroke-width:1" /><line x1="40" y1="300" x2="350" y2="300" style="stroke:black;stroke-width:1" /><polygon points="35,50 40,30 45,50" style="fill:black;stroke:black;stroke-width:1"/><polygon points="350,300 330,305 330,295" style="fill:black;stroke:black;stroke-width:1"/><polygon points="40,300 40,300 43,95 47,129 50,300 54,300 58,266 61,95 65,266 69,266 72,266 76,300 80,300 83,300 87,300 91,300 94,300 98,266 102,300 105,300 109,300 112,266 116,266 120,300 123,300 127,300 131,300 134,300 138,300 142,232 145,300 149,300 153,300 156,300 160,300 164,300 167,300 171,300 175,266 178,300 182,300 185,300 189,300 193,266 196,300 200,300 204,300 207,300 211,300 215,300 218,300 222,300 226,300 229,300 233,300 237,300 240,300 244,300 247,300 251,300 255,300 258,266 262,300 266,300 269,300 273,300 277,300 280,300 284,300 288,300 291,300 295,300 299,300 302,300 306,266 310,300" style="stroke:black;stroke-width:1"  fill="url(#grad2)" /><line x1="40" y1="300" x2="40" y2="305" style="stroke:black;stroke-width:1" /><text x="40" y="310" font-size = "8">0</text><line x1="72" y1="300" x2="72" y2="305" style="stroke:black;stroke-width:1" /><text x="72" y="310" font-size = "8">9</text><line x1="105" y1="300" x2="105" y2="305" style="stroke:black;stroke-width:1" /><text x="105" y="310" font-size = "8">18</text><line x1="138" y1="300" x2="138" y2="305" style="stroke:black;stroke-width:1" /><text x="138" y="310" font-size = "8">27</text><line x1="171" y1="300" x2="171" y2="305" style="stroke:black;stroke-width:1" /><text x="171" y="310" font-size = "8">36</text><line x1="204" y1="300" x2="204" y2="305" style="stroke:black;stroke-width:1" /><text x="204" y="310" font-size = "8">45</text><line x1="237" y1="300" x2="237" y2="305" style="stroke:black;stroke-width:1" /><text x="237" y="310" font-size = "8">54</text><line x1="269" y1="300" x2="269" y2="305" style="stroke:black;stroke-width:1" /><text x="269" y="310" font-size = "8">63</text><line x1="302" y1="300" x2="302" y2="305" style="stroke:black;stroke-width:1" /><text x="302" y="310" font-size = "8">72</text><line x1="40" y1="300" x2="35" y2="300" style="stroke:black;stroke-width:1" /><text x="35" y="300" transform="rotate(-90 35,300)" font-size = "8">0</text><line x1="40" y1="266" x2="35" y2="266" style="stroke:black;stroke-width:1" /><text x="35" y="266" transform="rotate(-90 35,266)" font-size = "8">1</text><line x1="40" y1="232" x2="35" y2="232" style="stroke:black;stroke-width:1" /><text x="35" y="232" transform="rotate(-90 35,232)" font-size = "8">2</text><line x1="40" y1="198" x2="35" y2="198" style="stroke:black;stroke-width:1" /><text x="35" y="198" transform="rotate(-90 35,198)" font-size = "8">3</text><line x1="40" y1="163" x2="35" y2="163" style="stroke:black;stroke-width:1" /><text x="35" y="163" transform="rotate(-90 35,163)" font-size = "8">4</text><line x1="40" y1="129" x2="35" y2="129" style="stroke:black;stroke-width:1" /><text x="35" y="129" transform="rotate(-90 35,129)" font-size = "8">5</text><line x1="40" y1="95" x2="35" y2="95" style="stroke:black;stroke-width:1" /><text x="35" y="95" transform="rotate(-90 35,95)" font-size = "8">6</text><line stroke-dasharray="10,10" x1="61.89189189189189" y1="30" x2="61.89189189189189" y2="300" style="stroke:yellow;stroke-width:3" /><line stroke-dasharray="10,10" x1="89" y1="30" x2="89" y2="300" style="stroke:red;stroke-width:3" /><rect x="60%" y="20%" width="28%" height="20%" stroke="black" stroke-width="1" fill="white" filter="url(#f1)" /><line x1="62%" y1="29%" x2="67%" y2="29%" stroke-dasharray="5,5" style="stroke:red;stroke-width:3" /><text x="69%" y="30%" font-weight = "bold" font-size = "12">Average: 13.5</text><line x1="62%" y1="34%" x2="67%" y2="34%" stroke-dasharray="5,5" style="stroke:yellow;stroke-width:3" /><text x="69%" y="35%" font-weight = "bold" font-size = "12">Median: 6</text><text x="60%" y="55%" font-weight = "bold" font-size = "40" fill="green">92.6%</text><text x="66%" y="60%" font-weight = "bold" font-size = "16" fill="green">Re-use</text><text x="120" y="330" font-weight = "bold" font-size = "14" >Step re-use count</text><text x="20" y="220" font-weight = "bold" font-size = "14" transform="rotate(-90 20,220)">Steps count</text></svg></p><h2>Overview Table</h2><p><table><tr><th rowspan="2"><a id="top">#</a></th><th rowspan="2">Expression</th><th rowspan="2">Occurences</th><th colspan="5">Duration</th></tr><tr><th>Average</th><th>Median</th><th>Minimal</th><th>Maximal</th><th>Total</th></tr><tr style="background:lightgreen"><td>1</td><td width="60%"><a href="#_5E_28_3F_3AI-should-see-_7C_29the-_22_28_5B_5E_22_5D*_29_22-_28_3F_3Amessage_7Clabel_7Ctext_29-is-shown_24">^(?:I should see |)the "([^"]*)" (?:message|label|text) is shown$</a></td><td>73</td><td>0.42s</td><td>0.22s</td><td>0.12s</td><td>2.87s</td><td>30.49s</td></tr><tr style="background:lightgreen"><td>2</td><td width="60%"><a href="#_5E_28_3F_3AI-should-see-_7C_29the-_22_28_5B_5E_22_5D*_29_22-screen_24">^(?:I should see |)the "([^"]*)" screen$</a></td><td>60</td><td>22.45s</td><td>14.05s</td><td>0.02s</td><td>131.48s</td><td>1346.92s</td></tr><tr style="background:lightgreen"><td>3</td><td width="60%"><a href="#_5EI-am-not-logged-into-the-system_24">^I am not logged into the system$</a></td><td>42</td><td>7.65s</td><td>7.04s</td><td>4.45s</td><td>15.00s</td><td>321.23s</td></tr><tr style="background:lightgreen"><td>4</td><td width="60%"><a href="#_5E_28_3F_3AI-_7C_29search-for-journey-using-the-following-criteria_3A_24">^(?:I |)search for journey using the following criteria:$</a></td><td>37</td><td>82.35s</td><td>63.57s</td><td>23.19s</td><td>299.53s</td><td>3046.80s</td></tr><tr style="background:lightgreen"><td>5</td><td width="60%"><a href="#I-am-on-the-Buy-ticket-screen">I am on the Buy ticket screen</a></td><td>28</td><td>40.21s</td><td>40.46s</td><td>27.08s</td><td>43.65s</td><td>1125.75s</td></tr><tr style="background:lightgreen"><td>6</td><td width="60%"><a href="#_5E_28_3F_3AI-should-see-_7C_29the-_22_28_5B_5E_22_5D*_29_22-list-is-not-empty_24">^(?:I should see |)the "([^"]*)" list is not empty$</a></td><td>28</td><td>0.39s</td><td>0.32s</td><td>0.12s</td><td>1.35s</td><td>11.02s</td></tr><tr style="background:lightgreen"><td>7</td><td width="60%"><a href="#_5E_28_3F_3AI-_7C_29accept-the-alert-message_24">^(?:I |)accept the alert message$</a></td><td>21</td><td>2.74s</td><td>2.73s</td><td>1.70s</td><td>3.72s</td><td>57.49s</td></tr><tr style="background:lightgreen"><td>8</td><td width="60%"><a href="#_5E_28_3F_3AI-_7C_29select-item-No._28_5Cd_2B_29-from-the-_22_28_5B_5E_22_5D*_29_22-table_24">^(?:I |)select item No.(\d+) from the "([^"]*)" table$</a></td><td>20</td><td>1.92s</td><td>1.15s</td><td>0.99s</td><td>4.94s</td><td>38.38s</td></tr><tr style="background:lightgreen"><td>9</td><td width="60%"><a href="#_5E_28_3F_3AI-_7C_29click-on-the-_22_28_5B_5E_22_5D*_29_22-button_24">^(?:I |)click on the "([^"]*)" button$</a></td><td>16</td><td>17.01s</td><td>20.98s</td><td>0.82s</td><td>29.30s</td><td>272.12s</td></tr><tr style="background:lightgreen"><td>10</td><td width="60%"><a href="#I-am-on-the-Home-_28_3F_3Ascreen_7Cpage_29">I am on the Home (?:screen|page)</a></td><td>9</td><td>17.12s</td><td>17.22s</td><td>16.26s</td><td>18.30s</td><td>154.12s</td></tr><tr style="background:gold"><td>11</td><td width="60%"><a href="#_5EI-am-logged-into-the-system_24">^I am logged into the system$</a></td><td>8</td><td>27.92s</td><td>27.43s</td><td>24.65s</td><td>32.95s</td><td>223.37s</td></tr><tr style="background:gold"><td>12</td><td width="60%"><a href="#_5E_28_3F_3AI-_7C_29have-no-payment-cards-stored_24">^(?:I |)have no payment cards stored$</a></td><td>7</td><td>35.60s</td><td>36.39s</td><td>30.41s</td><td>37.85s</td><td>249.17s</td></tr><tr style="background:gold"><td>13</td><td width="60%"><a href="#I-am-on-the-Payment-cards-screen">I am on the Payment cards screen</a></td><td>6</td><td>30.40s</td><td>29.67s</td><td>26.28s</td><td>37.14s</td><td>182.38s</td></tr><tr style="background:gold"><td>14</td><td width="60%"><a href="#_5E_28_3F_3AI-_7C_29search-for-live-time-trains-with-the-following-criteria_3A">^(?:I |)search for live time trains with the following criteria:</a></td><td>6</td><td>28.69s</td><td>33.64s</td><td>18.50s</td><td>33.95s</td><td>172.13s</td></tr><tr style="background:gold"><td>15</td><td width="60%"><a href="#_5E_28_3F_3AI-_7C_29add-the-card-with-the-following-criteria_3A_24">^(?:I |)add the card with the following criteria:$</a></td><td>6</td><td>75.39s</td><td>75.96s</td><td>70.16s</td><td>80.12s</td><td>452.31s</td></tr><tr style="background:gold"><td>16</td><td width="60%"><a href="#_5Euser-account-has-billing-address-with-the-following-parameters_3A_24">^user account has billing address with the following parameters:$</a></td><td>6</td><td>0.00s</td><td>0.00s</td><td>0.00s</td><td>0.00s</td><td>0.00s</td></tr><tr style="background:gold"><td>17</td><td width="60%"><a href="#_5E_28_3F_3AI-_7C_29go-to-the-Payment-cards-screen_24">^(?:I |)go to the Payment cards screen$</a></td><td>6</td><td>35.18s</td><td>35.38s</td><td>32.49s</td><td>38.78s</td><td>211.05s</td></tr><tr style="background:gold"><td>18</td><td width="60%"><a href="#I-am-on-the-Live-Train-Times-screen">I am on the Live Train Times screen</a></td><td>6</td><td>20.54s</td><td>20.66s</td><td>19.72s</td><td>22.21s</td><td>123.22s</td></tr><tr style="background:gold"><td>19</td><td width="60%"><a href="#_5E_28_3F_3AI-should-see-_7C_29all-_22_28_5B_5E_22_5D*_29_22-list-items-contain-the-_22_28_5B_5E_22_5D*_29_22-text_24">^(?:I should see |)all "([^"]*)" list items contain the "([^"]*)" text$</a></td><td>5</td><td>6.55s</td><td>8.11s</td><td>0.17s</td><td>9.28s</td><td>32.76s</td></tr><tr style="background:gold"><td>20</td><td width="60%"><a href="#_5E_28_3F_3AI-should-see-_7C_29the-current-page-content-is-different-from-_22_28.*_3F_29_22_24">^(?:I should see |)the current page content is different from "(.*?)"$</a></td><td>2</td><td>0.40s</td><td>0.46s</td><td>0.34s</td><td>0.46s</td><td>0.81s</td></tr><tr style="background:tomato"><td>21</td><td width="60%"><a href="#_28_3F_3AI-_7C_29go-to-the-Home-_28_3F_3Ascreen_7Cpage_29">(?:I |)go to the Home (?:screen|page)</a></td><td>2</td><td>27.82s</td><td>28.42s</td><td>27.21s</td><td>28.42s</td><td>55.63s</td></tr><tr style="background:tomato"><td>22</td><td width="60%"><a href="#_5E_28_3F_3AI-should-see-_7C_29the-_22_28.*_3F_29_22-field-contains-_22_28.*_3F_29_22-text_24">^(?:I should see |)the "(.*?)" field contains "(.*?)" text$</a></td><td>2</td><td>0.32s</td><td>0.32s</td><td>0.32s</td><td>0.32s</td><td>0.64s</td></tr><tr style="background:tomato"><td>23</td><td width="60%"><a href="#_5E_28_3F_3AI-_7C_29note-the-current-page-content-as-_22_28.*_3F_29_22_24">^(?:I |)note the current page content as "(.*?)"$</a></td><td>2</td><td>0.39s</td><td>0.46s</td><td>0.33s</td><td>0.46s</td><td>0.78s</td></tr><tr style="background:tomato"><td>24</td><td width="60%"><a href="#_5E_28_3F_3AI-_7C_29start-the-application_24">^(?:I |)start the application$</a></td><td>2</td><td>0.00s</td><td>0.00s</td><td>0.00s</td><td>0.00s</td><td>0.00s</td></tr><tr style="background:tomato"><td>25</td><td width="60%"><a href="#_5E_28_3F_3AI-_7C_29click-on-the-_22_28_5B_5E_22_5D*_29_22-_28_3F_3Atext_7Clabel_29_24">^(?:I |)click on the "([^"]*)" (?:text|label)$</a></td><td>1</td><td>2.73s</td><td>2.73s</td><td>2.73s</td><td>2.73s</td><td>2.73s</td></tr><tr style="background:tomato"><td>26</td><td width="60%"><a href="#_5E_28_3F_3AI-should-see-_7C_29the-_22_28_5B_5E_22_5D*_29_22-list-contains-only-_28_5Cd_2B_29-item_28_3F_3As_7C_29_24">^(?:I should see |)the "([^"]*)" list contains only (\d+) item(?:s|)$</a></td><td>1</td><td>0.24s</td><td>0.24s</td><td>0.24s</td><td>0.24s</td><td>0.24s</td></tr><tr style="background:tomato"><td>27</td><td width="60%"><a href="#_5E_28_3F_3AI-should-see-_7C_29all-_22_28.*_3F_29_22-list-items-contain-one-of-the-following-labels_3A_24">^(?:I should see |)all "(.*?)" list items contain one of the following labels:$</a></td><td>1</td><td>0.62s</td><td>0.62s</td><td>0.62s</td><td>0.62s</td><td>0.62s</td></tr><tr style="background:tomato"><td>28</td><td width="60%"><a href="#_5E_28_3F_3AI-_7C_29scroll-to-the-_22_28_5B_5E_22_5D*_29_22-text">^(?:I |)scroll to the "([^"]*)" text</a></td><td>1</td><td>4.04s</td><td>4.04s</td><td>4.04s</td><td>4.04s</td><td>4.04s</td></tr><tr style="background:tomato"><td>29</td><td width="60%"><a href="#_5E_28_3F_3AI-should-see-_7C_29the-_22_28_5B_5E_22_5D*_29_22-button-is-visible_24">^(?:I should see |)the "([^"]*)" button is visible$</a></td><td>1</td><td>9.95s</td><td>9.95s</td><td>9.95s</td><td>9.95s</td><td>9.95s</td></tr><tr style="background:tomato"><td>30</td><td width="60%"><a href="#_5E_28_3F_3AI-should-see-_7C_29none-of-the-following-labels-are-shown_3A_24">^(?:I should see |)none of the following labels are shown:$</a></td><td>1</td><td>0.47s</td><td>0.47s</td><td>0.47s</td><td>0.47s</td><td>0.47s</td></tr></table></p><h1>Cucumber Usage Detailed Information</h1><p><h3><a id="I-am-on-the-Payment-cards-screen">I am on the Payment cards screen</a></h3><p><table><tr><th>Step Name</th><th>Duration</th><th>Location</th></tr><tr><td>I am on the Payment cards screen</td><td> - </td><td> - </td></tr><tr><td></td><td>29.666317742</td><td>Payments.feature:13</td></tr><tr><td></td><td>26.278262537</td><td>Payments.feature:13</td></tr><tr><td></td><td>27.777434024</td><td>Payments.feature:13</td></tr><tr><td></td><td>37.136044343</td><td>Payments.feature:13</td></tr><tr><td></td><td>28.365759642</td><td>Payments.feature:13</td></tr><tr><td></td><td>33.1527194</td><td>Payments.feature:13</td></tr></table></p><p><table class="none"><tr><td class="none"><svg  xmlns="http://www.w3.org/2000/svg" version="1.1" width="400" height="300">
+	<defs>
+		<filter id="f1" x="0" y="0" width="200%" height="200%">
+		<feOffset result="offOut" in="SourceAlpha" dx="10" dy="10" />
+		<feGaussianBlur result="blurOut" in="offOut" stdDeviation="10" />
+		<feBlend in="SourceGraphic" in2="blurOut" mode="normal" /></filter>
+		<radialGradient id="grad1" cx="0%" cy="100%" r="150%" fx="0%"
+			fy="100%">
+		<stop offset="0%" style="stop-color:white;stop-opacity:0.1" />
+		<stop offset="100%" style="stop-color:gold;stop-opacity:0.7" /></radialGradient>
+		<linearGradient id="grad3" cx="0%" cy="100%" r="150%" fx="0%"
+			fy="100%">
+		<stop offset="0%" style="stop-color:green;stop-opacity:0.7" />
+		<stop offset="50%" style="stop-color:yellow;stop-opacity:0.7" />
+		<stop offset="100%" style="stop-color:red;stop-opacity:0.7" />
+		</linearGradient>
+	</defs>
+<rect width="90%" height="90%" stroke="black" stroke-width="1" fill="url(#grad1)" filter="url(#f1)"/>
+			<line x1="30" y1="30" x2="30" y2="240"
+			style="stroke:black;stroke-width:1" />
+		<line x1="30" y1="240" x2="350" y2="240"
+			style="stroke:black;stroke-width:1" />
+		<polygon points="25,50 30,30 35,50"
+			style="fill:black;stroke:black;stroke-width:1" />
+		<polygon points="350,240 330,245 330,235"
+			style="fill:black;stroke:black;stroke-width:1" />
+		<!-- Scale Marks-->
+		<!--<line x1="40" y1="240" x2="40" y2="245"
+			style="stroke:black;stroke-width:1" />
+		<text x="42" y="253" font-size="8">0.6s</text>
+		<line x1="320" y1="240" x2="320" y2="245"
+			style="stroke:black;stroke-width:1" />
+		<text x="322" y="253" font-size="8">11.6s</text>-->
+
+		<text x="60" y="220" font-weight="bold" font-size="14"
+			transform="rotate(-90 20,220)">Frequency</text>
+			<text x="140" y="260" font-weight="bold" font-size="14">Duration</text>
+		<!-- Polygon -->
+		<polygon
+			points="40,240 40,50 180,50 180,240 180,240 180,145 320,145 320,240 "
+			style="stroke:black;stroke-width:1" fill="url(#grad3)" />
+		<text x="110" y="48" font-weight="bold" font-size="14">4</text><line x1="40" y1="240" x2="40" y2="242" style="stroke:black;stroke-width:1" /><text x="42" y="248" font-size="8">26.28</text><text x="250" y="143" font-weight="bold" font-size="14">2</text><line x1="180" y1="240" x2="180" y2="242" style="stroke:black;stroke-width:1" /><text x="182" y="248" font-size="8">31.71</text><line x1="320" y1="240" x2="320" y2="242" style="stroke:black;stroke-width:1" /><text x="322" y="248" font-size="8">37.14</text>
+</svg></td><td valign="top" class="none"><p><table><tr><th colspan="2">Duration Characteristic</th></tr><tr><th>Average</th><td>30.40s</td></tr><tr><th>Median</th><td>29.67s</td></tr><tr><th>Variance</th><td>13.58</td></tr><tr><th>Skewness</th><td>0.77</td></tr><tr><th>Minimum</th><td>26.28s</td></tr><tr><th>Maximum</th><td>37.14s</td></tr><tr><th>Total</th><td>182.38s</td></tr></table></p></td></tr></table></p><p><a href="#top">To Overview Table</a></p><h3><a id="_5E_28_3F_3AI-should-see-_7C_29the-current-page-content-is-different-from-_22_28.*_3F_29_22_24">^(?:I should see |)the current page content is different from "(.*?)"$</a></h3><p><table><tr><th>Step Name</th><th>Duration</th><th>Location</th></tr><tr><td>I should see the current page content is different from "Original Search Results"</td><td> - </td><td> - </td></tr><tr><td></td><td>0.343841346</td><td>booking/JourneyOptions.feature:19</td></tr><tr><td></td><td>0.461303542</td><td>booking/JourneyOptions.feature:37</td></tr></table></p><p><table class="none"><tr><td class="none"><svg  xmlns="http://www.w3.org/2000/svg" version="1.1" width="400" height="300">
+	<defs>
+		<filter id="f1" x="0" y="0" width="200%" height="200%">
+		<feOffset result="offOut" in="SourceAlpha" dx="10" dy="10" />
+		<feGaussianBlur result="blurOut" in="offOut" stdDeviation="10" />
+		<feBlend in="SourceGraphic" in2="blurOut" mode="normal" /></filter>
+		<radialGradient id="grad4" cx="0%" cy="100%" r="150%" fx="0%"
+			fy="100%">
+		<stop offset="0%" style="stop-color:white;stop-opacity:0.1" />
+		<stop offset="100%" style="stop-color:silver;stop-opacity:0.7" /></radialGradient>
+	</defs>
+<rect width="90%" height="90%" stroke="black" stroke-width="1" fill="url(#grad4)" filter="url(#f1)"/>
+			<line x1="30" y1="30" x2="30" y2="240"
+			style="stroke:black;stroke-width:1" />
+		<line x1="30" y1="240" x2="350" y2="240"
+			style="stroke:black;stroke-width:1" />
+		<polygon points="25,50 30,30 35,50"
+			style="fill:black;stroke:black;stroke-width:1" />
+		<polygon points="350,240 330,245 330,235"
+			style="fill:black;stroke:black;stroke-width:1" />
+		<!-- Scale Marks-->
+		<line x1="40" y1="240" x2="40" y2="245"
+			style="stroke:black;stroke-width:1" />
+		<text x="42" y="253" font-size="8">0.0s</text>
+		<line x1="320" y1="240" x2="320" y2="245"
+			style="stroke:black;stroke-width:1" />
+		<text x="322" y="253" font-size="8">0.0s</text>
+
+		<text x="60" y="220" font-weight="bold" font-size="14"
+			transform="rotate(-90 20,220)">Frequency</text>
+			<text x="140" y="260" font-weight="bold" font-size="14">Duration</text>
+		<!-- Polygon -->
+			<text x="22%" y="55%" font-weight="bold" font-size="120" fill="gray">N/A</text>
+</svg></td><td valign="top" class="none"><p><table><tr><th colspan="2">Duration Characteristic</th></tr><tr><th>Average</th><td>0.40s</td></tr><tr><th>Median</th><td>0.46s</td></tr><tr><th>Variance</th><td>0.00</td></tr><tr><th>Skewness</th><td>-0.00</td></tr><tr><th>Minimum</th><td>0.34s</td></tr><tr><th>Maximum</th><td>0.46s</td></tr><tr><th>Total</th><td>0.81s</td></tr></table></p></td></tr></table></p><p><a href="#top">To Overview Table</a></p><h3><a id="_5E_28_3F_3AI-_7C_29search-for-live-time-trains-with-the-following-criteria_3A">^(?:I |)search for live time trains with the following criteria:</a></h3><p><table><tr><th>Step Name</th><th>Duration</th><th>Location</th></tr><tr><td>I search for live time trains with the following criteria:</td><td> - </td><td> - </td></tr><tr><td></td><td>33.638106087</td><td>LiveTrainTimes.feature:8</td></tr><tr><td></td><td>19.028942421</td><td>LiveTrainTimes.feature:8</td></tr><tr><td></td><td>33.954802636</td><td>LiveTrainTimes.feature:8</td></tr><tr><td></td><td>18.497060198</td><td>LiveTrainTimes.feature:8</td></tr><tr><td></td><td>33.131309594</td><td>LiveTrainTimes.feature:43</td></tr><tr><td></td><td>33.882202046</td><td>LiveTrainTimes.feature:56</td></tr></table></p><p><table class="none"><tr><td class="none"><svg  xmlns="http://www.w3.org/2000/svg" version="1.1" width="400" height="300">
+	<defs>
+		<filter id="f1" x="0" y="0" width="200%" height="200%">
+		<feOffset result="offOut" in="SourceAlpha" dx="10" dy="10" />
+		<feGaussianBlur result="blurOut" in="offOut" stdDeviation="10" />
+		<feBlend in="SourceGraphic" in2="blurOut" mode="normal" /></filter>
+		<radialGradient id="grad1" cx="0%" cy="100%" r="150%" fx="0%"
+			fy="100%">
+		<stop offset="0%" style="stop-color:white;stop-opacity:0.1" />
+		<stop offset="100%" style="stop-color:gold;stop-opacity:0.7" /></radialGradient>
+		<linearGradient id="grad3" cx="0%" cy="100%" r="150%" fx="0%"
+			fy="100%">
+		<stop offset="0%" style="stop-color:green;stop-opacity:0.7" />
+		<stop offset="50%" style="stop-color:yellow;stop-opacity:0.7" />
+		<stop offset="100%" style="stop-color:red;stop-opacity:0.7" />
+		</linearGradient>
+	</defs>
+<rect width="90%" height="90%" stroke="black" stroke-width="1" fill="url(#grad1)" filter="url(#f1)"/>
+			<line x1="30" y1="30" x2="30" y2="240"
+			style="stroke:black;stroke-width:1" />
+		<line x1="30" y1="240" x2="350" y2="240"
+			style="stroke:black;stroke-width:1" />
+		<polygon points="25,50 30,30 35,50"
+			style="fill:black;stroke:black;stroke-width:1" />
+		<polygon points="350,240 330,245 330,235"
+			style="fill:black;stroke:black;stroke-width:1" />
+		<!-- Scale Marks-->
+		<!--<line x1="40" y1="240" x2="40" y2="245"
+			style="stroke:black;stroke-width:1" />
+		<text x="42" y="253" font-size="8">0.6s</text>
+		<line x1="320" y1="240" x2="320" y2="245"
+			style="stroke:black;stroke-width:1" />
+		<text x="322" y="253" font-size="8">11.6s</text>-->
+
+		<text x="60" y="220" font-weight="bold" font-size="14"
+			transform="rotate(-90 20,220)">Frequency</text>
+			<text x="140" y="260" font-weight="bold" font-size="14">Duration</text>
+		<!-- Polygon -->
+		<polygon
+			points="40,240 40,145 180,145 180,240 180,240 180,50 320,50 320,240 "
+			style="stroke:black;stroke-width:1" fill="url(#grad3)" />
+		<text x="110" y="143" font-weight="bold" font-size="14">2</text><line x1="40" y1="240" x2="40" y2="242" style="stroke:black;stroke-width:1" /><text x="42" y="248" font-size="8">18.50</text><text x="250" y="48" font-weight="bold" font-size="14">4</text><line x1="180" y1="240" x2="180" y2="242" style="stroke:black;stroke-width:1" /><text x="182" y="248" font-size="8">26.23</text><line x1="320" y1="240" x2="320" y2="242" style="stroke:black;stroke-width:1" /><text x="322" y="248" font-size="8">33.95</text>
+</svg></td><td valign="top" class="none"><p><table><tr><th colspan="2">Duration Characteristic</th></tr><tr><th>Average</th><td>28.69s</td></tr><tr><th>Median</th><td>33.64s</td></tr><tr><th>Variance</th><td>49.35</td></tr><tr><th>Skewness</th><td>-0.70</td></tr><tr><th>Minimum</th><td>18.50s</td></tr><tr><th>Maximum</th><td>33.95s</td></tr><tr><th>Total</th><td>172.13s</td></tr></table></p></td></tr></table></p><p><a href="#top">To Overview Table</a></p><h3><a id="_5E_28_3F_3AI-_7C_29click-on-the-_22_28_5B_5E_22_5D*_29_22-_28_3F_3Atext_7Clabel_29_24">^(?:I |)click on the "([^"]*)" (?:text|label)$</a></h3><p><table><tr><th>Step Name</th><th>Duration</th><th>Location</th></tr><tr><td>click on the "Anytime" text</td><td> - </td><td> - </td></tr><tr><td></td><td>2.733746396</td><td>booking/JourneyOptions.feature:96</td></tr></table></p><p><table class="none"><tr><td class="none"><svg  xmlns="http://www.w3.org/2000/svg" version="1.1" width="400" height="300">
+	<defs>
+		<filter id="f1" x="0" y="0" width="200%" height="200%">
+		<feOffset result="offOut" in="SourceAlpha" dx="10" dy="10" />
+		<feGaussianBlur result="blurOut" in="offOut" stdDeviation="10" />
+		<feBlend in="SourceGraphic" in2="blurOut" mode="normal" /></filter>
+		<radialGradient id="grad4" cx="0%" cy="100%" r="150%" fx="0%"
+			fy="100%">
+		<stop offset="0%" style="stop-color:white;stop-opacity:0.1" />
+		<stop offset="100%" style="stop-color:silver;stop-opacity:0.7" /></radialGradient>
+	</defs>
+<rect width="90%" height="90%" stroke="black" stroke-width="1" fill="url(#grad4)" filter="url(#f1)"/>
+			<line x1="30" y1="30" x2="30" y2="240"
+			style="stroke:black;stroke-width:1" />
+		<line x1="30" y1="240" x2="350" y2="240"
+			style="stroke:black;stroke-width:1" />
+		<polygon points="25,50 30,30 35,50"
+			style="fill:black;stroke:black;stroke-width:1" />
+		<polygon points="350,240 330,245 330,235"
+			style="fill:black;stroke:black;stroke-width:1" />
+		<!-- Scale Marks-->
+		<line x1="40" y1="240" x2="40" y2="245"
+			style="stroke:black;stroke-width:1" />
+		<text x="42" y="253" font-size="8">0.0s</text>
+		<line x1="320" y1="240" x2="320" y2="245"
+			style="stroke:black;stroke-width:1" />
+		<text x="322" y="253" font-size="8">0.0s</text>
+
+		<text x="60" y="220" font-weight="bold" font-size="14"
+			transform="rotate(-90 20,220)">Frequency</text>
+			<text x="140" y="260" font-weight="bold" font-size="14">Duration</text>
+		<!-- Polygon -->
+			<text x="22%" y="55%" font-weight="bold" font-size="120" fill="gray">N/A</text>
+</svg></td><td valign="top" class="none"><p><table><tr><th colspan="2">Duration Characteristic</th></tr><tr><th>Average</th><td>2.73s</td></tr><tr><th>Median</th><td>2.73s</td></tr><tr><th>Variance</th><td>0.00</td></tr><tr><th>Skewness</th><td>0.00</td></tr><tr><th>Minimum</th><td>2.73s</td></tr><tr><th>Maximum</th><td>2.73s</td></tr><tr><th>Total</th><td>2.73s</td></tr></table></p></td></tr></table></p><p><a href="#top">To Overview Table</a></p><h3><a id="_5E_28_3F_3AI-_7C_29select-item-No._28_5Cd_2B_29-from-the-_22_28_5B_5E_22_5D*_29_22-table_24">^(?:I |)select item No.(\d+) from the "([^"]*)" table$</a></h3><p><table><tr><th>Step Name</th><th>Duration</th><th>Location</th></tr><tr><td>I select item No.3 from the "Search Results" table</td><td> - </td><td> - </td></tr><tr><td></td><td>4.777160865</td><td>LiveTrainTimes.feature:14</td></tr><tr><td></td><td>4.739514528</td><td>LiveTrainTimes.feature:14</td></tr><tr><td></td><td>4.940160869</td><td>LiveTrainTimes.feature:14</td></tr><tr><td></td><td>2.673850357</td><td>LiveTrainTimes.feature:14</td></tr><tr><td>I select item No.1 from the "Search Results" table</td><td> - </td><td> - </td></tr><tr><td></td><td>1.14522863</td><td>booking/JourneyOptions.feature:92</td></tr><tr><td></td><td>1.044039118</td><td>journeysearch/BON-88_SingleOptionsForJourney.feature:20</td></tr><tr><td></td><td>1.099847152</td><td>journeysearch/BON-88_SingleOptionsForJourney.feature:22</td></tr><tr><td></td><td>1.008818402</td><td>journeysearch/BON-88_SingleOptionsForJourney.feature:85</td></tr><tr><td></td><td>1.033318983</td><td>journeysearch/BON-88_SingleOptionsForJourney.feature:87</td></tr><tr><td></td><td>3.978084047</td><td>journeysearch/BasicJourneySearch.feature:12</td></tr><tr><td></td><td>1.418033352</td><td>journeysearch/BasicJourneySearch.feature:27</td></tr><tr><td></td><td>1.038069465</td><td>journeysearch/BasicJourneySearch.feature:73</td></tr><tr><td></td><td>1.042720526</td><td>journeysearch/BasicJourneySearch.feature:73</td></tr><tr><td></td><td>1.387260166</td><td>journeysearch/BasicJourneySearch.feature:73</td></tr><tr><td></td><td>1.151252847</td><td>journeysearch/BasicJourneySearch.feature:73</td></tr><tr><td></td><td>1.126782393</td><td>journeysearch/BasicJourneySearch.feature:73</td></tr><tr><td></td><td>0.992612333</td><td>journeysearch/BasicJourneySearch.feature:201</td></tr><tr><td></td><td>1.020691091</td><td>journeysearch/BasicJourneySearch.feature:204</td></tr><tr><td></td><td>1.034423335</td><td>journeysearch/BasicJourneySearch.feature:227</td></tr><tr><td>I select item No.1 from the "Tickets" table</td><td> - </td><td> - </td></tr><tr><td></td><td>1.730445396</td><td>journeysearch/BasicJourneySearch.feature:29</td></tr></table></p><p><table class="none"><tr><td class="none"><svg  xmlns="http://www.w3.org/2000/svg" version="1.1" width="400" height="300">
+	<defs>
+		<filter id="f1" x="0" y="0" width="200%" height="200%">
+		<feOffset result="offOut" in="SourceAlpha" dx="10" dy="10" />
+		<feGaussianBlur result="blurOut" in="offOut" stdDeviation="10" />
+		<feBlend in="SourceGraphic" in2="blurOut" mode="normal" /></filter>
+		<radialGradient id="grad1" cx="0%" cy="100%" r="150%" fx="0%"
+			fy="100%">
+		<stop offset="0%" style="stop-color:white;stop-opacity:0.1" />
+		<stop offset="100%" style="stop-color:gold;stop-opacity:0.7" /></radialGradient>
+		<linearGradient id="grad3" cx="0%" cy="100%" r="150%" fx="0%"
+			fy="100%">
+		<stop offset="0%" style="stop-color:green;stop-opacity:0.7" />
+		<stop offset="50%" style="stop-color:yellow;stop-opacity:0.7" />
+		<stop offset="100%" style="stop-color:red;stop-opacity:0.7" />
+		</linearGradient>
+	</defs>
+<rect width="90%" height="90%" stroke="black" stroke-width="1" fill="url(#grad1)" filter="url(#f1)"/>
+			<line x1="30" y1="30" x2="30" y2="240"
+			style="stroke:black;stroke-width:1" />
+		<line x1="30" y1="240" x2="350" y2="240"
+			style="stroke:black;stroke-width:1" />
+		<polygon points="25,50 30,30 35,50"
+			style="fill:black;stroke:black;stroke-width:1" />
+		<polygon points="350,240 330,245 330,235"
+			style="fill:black;stroke:black;stroke-width:1" />
+		<!-- Scale Marks-->
+		<!--<line x1="40" y1="240" x2="40" y2="245"
+			style="stroke:black;stroke-width:1" />
+		<text x="42" y="253" font-size="8">0.6s</text>
+		<line x1="320" y1="240" x2="320" y2="245"
+			style="stroke:black;stroke-width:1" />
+		<text x="322" y="253" font-size="8">11.6s</text>-->
+
+		<text x="60" y="220" font-weight="bold" font-size="14"
+			transform="rotate(-90 20,220)">Frequency</text>
+			<text x="140" y="260" font-weight="bold" font-size="14">Duration</text>
+		<!-- Polygon -->
+		<polygon
+			points="40,240 40,50 86,50 86,240 86,240 86,227 132,227 132,240 132,240 132,227 178,227 178,240 178,240 178,240 224,240 224,240 224,240 224,227 270,227 270,240 270,240 270,200 316,200 316,240 "
+			style="stroke:black;stroke-width:1" fill="url(#grad3)" />
+		<text x="56" y="48" font-weight="bold" font-size="14">14</text><line x1="40" y1="240" x2="40" y2="242" style="stroke:black;stroke-width:1" /><text x="42" y="248" font-size="8">0.99</text><text x="109" y="225" font-weight="bold" font-size="14">1</text><line x1="86" y1="240" x2="86" y2="242" style="stroke:black;stroke-width:1" /><text x="88" y="248" font-size="8">1.65</text><text x="155" y="225" font-weight="bold" font-size="14">1</text><line x1="132" y1="240" x2="132" y2="242" style="stroke:black;stroke-width:1" /><text x="134" y="248" font-size="8">2.31</text><text x="-2147483447" y="238" font-weight="bold" font-size="14">0</text><line x1="178" y1="240" x2="178" y2="242" style="stroke:black;stroke-width:1" /><text x="180" y="248" font-size="8">2.97</text><text x="247" y="225" font-weight="bold" font-size="14">1</text><line x1="224" y1="240" x2="224" y2="242" style="stroke:black;stroke-width:1" /><text x="226" y="248" font-size="8">3.62</text><text x="293" y="198" font-weight="bold" font-size="14">3</text><line x1="270" y1="240" x2="270" y2="242" style="stroke:black;stroke-width:1" /><text x="272" y="248" font-size="8">4.28</text><line x1="320" y1="240" x2="320" y2="242" style="stroke:black;stroke-width:1" /><text x="322" y="248" font-size="8">4.94</text>
+</svg></td><td valign="top" class="none"><p><table><tr><th colspan="2">Duration Characteristic</th></tr><tr><th>Average</th><td>1.92s</td></tr><tr><th>Median</th><td>1.15s</td></tr><tr><th>Variance</th><td>1.97</td></tr><tr><th>Skewness</th><td>1.34</td></tr><tr><th>Minimum</th><td>0.99s</td></tr><tr><th>Maximum</th><td>4.94s</td></tr><tr><th>Total</th><td>38.38s</td></tr></table></p></td></tr></table></p><p><a href="#top">To Overview Table</a></p><h3><a id="_28_3F_3AI-_7C_29go-to-the-Home-_28_3F_3Ascreen_7Cpage_29">(?:I |)go to the Home (?:screen|page)</a></h3><p><table><tr><th>Step Name</th><th>Duration</th><th>Location</th></tr><tr><td>I go to the Home page</td><td> - </td><td> - </td></tr><tr><td></td><td>28.423383042</td><td>LiveTrainTimes.feature:61</td></tr><tr><td></td><td>27.207143565</td><td>journeysearch/BasicJourneySearch.feature:230</td></tr></table></p><p><table class="none"><tr><td class="none"><svg  xmlns="http://www.w3.org/2000/svg" version="1.1" width="400" height="300">
+	<defs>
+		<filter id="f1" x="0" y="0" width="200%" height="200%">
+		<feOffset result="offOut" in="SourceAlpha" dx="10" dy="10" />
+		<feGaussianBlur result="blurOut" in="offOut" stdDeviation="10" />
+		<feBlend in="SourceGraphic" in2="blurOut" mode="normal" /></filter>
+		<radialGradient id="grad4" cx="0%" cy="100%" r="150%" fx="0%"
+			fy="100%">
+		<stop offset="0%" style="stop-color:white;stop-opacity:0.1" />
+		<stop offset="100%" style="stop-color:silver;stop-opacity:0.7" /></radialGradient>
+	</defs>
+<rect width="90%" height="90%" stroke="black" stroke-width="1" fill="url(#grad4)" filter="url(#f1)"/>
+			<line x1="30" y1="30" x2="30" y2="240"
+			style="stroke:black;stroke-width:1" />
+		<line x1="30" y1="240" x2="350" y2="240"
+			style="stroke:black;stroke-width:1" />
+		<polygon points="25,50 30,30 35,50"
+			style="fill:black;stroke:black;stroke-width:1" />
+		<polygon points="350,240 330,245 330,235"
+			style="fill:black;stroke:black;stroke-width:1" />
+		<!-- Scale Marks-->
+		<line x1="40" y1="240" x2="40" y2="245"
+			style="stroke:black;stroke-width:1" />
+		<text x="42" y="253" font-size="8">0.0s</text>
+		<line x1="320" y1="240" x2="320" y2="245"
+			style="stroke:black;stroke-width:1" />
+		<text x="322" y="253" font-size="8">0.0s</text>
+
+		<text x="60" y="220" font-weight="bold" font-size="14"
+			transform="rotate(-90 20,220)">Frequency</text>
+			<text x="140" y="260" font-weight="bold" font-size="14">Duration</text>
+		<!-- Polygon -->
+			<text x="22%" y="55%" font-weight="bold" font-size="120" fill="gray">N/A</text>
+</svg></td><td valign="top" class="none"><p><table><tr><th colspan="2">Duration Characteristic</th></tr><tr><th>Average</th><td>27.82s</td></tr><tr><th>Median</th><td>28.42s</td></tr><tr><th>Variance</th><td>0.37</td></tr><tr><th>Skewness</th><td>0.00</td></tr><tr><th>Minimum</th><td>27.21s</td></tr><tr><th>Maximum</th><td>28.42s</td></tr><tr><th>Total</th><td>55.63s</td></tr></table></p></td></tr></table></p><p><a href="#top">To Overview Table</a></p><h3><a id="I-am-on-the-Home-_28_3F_3Ascreen_7Cpage_29">I am on the Home (?:screen|page)</a></h3><p><table><tr><th>Step Name</th><th>Duration</th><th>Location</th></tr><tr><td>I am on the Home page</td><td> - </td><td> - </td></tr><tr><td></td><td>17.290639031</td><td>booking/JourneyOptions.feature:11</td></tr><tr><td></td><td>16.570072869</td><td>booking/JourneyOptions.feature:29</td></tr><tr><td></td><td>16.782879788</td><td>booking/JourneyOptions.feature:86</td></tr><tr><td></td><td>16.258242292</td><td>journeysearch/BON-80_RTJP_SeatsLeft.feature:13</td></tr><tr><td></td><td>17.637990263</td><td>journeysearch/BON-88_SingleOptionsForJourney.feature:14</td></tr><tr><td></td><td>17.221762904</td><td>journeysearch/BON-88_SingleOptionsForJourney.feature:78</td></tr><tr><td></td><td>18.299063763</td><td>journeysearch/BasicJourneySearch.feature:6</td></tr><tr><td></td><td>17.794923536</td><td>journeysearch/BasicJourneySearch.feature:21</td></tr><tr><td></td><td>16.268517205</td><td>journeysearch/BasicJourneySearch.feature:220</td></tr></table></p><p><table class="none"><tr><td class="none"><svg  xmlns="http://www.w3.org/2000/svg" version="1.1" width="400" height="300">
+	<defs>
+		<filter id="f1" x="0" y="0" width="200%" height="200%">
+		<feOffset result="offOut" in="SourceAlpha" dx="10" dy="10" />
+		<feGaussianBlur result="blurOut" in="offOut" stdDeviation="10" />
+		<feBlend in="SourceGraphic" in2="blurOut" mode="normal" /></filter>
+		<radialGradient id="grad1" cx="0%" cy="100%" r="150%" fx="0%"
+			fy="100%">
+		<stop offset="0%" style="stop-color:white;stop-opacity:0.1" />
+		<stop offset="100%" style="stop-color:gold;stop-opacity:0.7" /></radialGradient>
+		<linearGradient id="grad3" cx="0%" cy="100%" r="150%" fx="0%"
+			fy="100%">
+		<stop offset="0%" style="stop-color:green;stop-opacity:0.7" />
+		<stop offset="50%" style="stop-color:yellow;stop-opacity:0.7" />
+		<stop offset="100%" style="stop-color:red;stop-opacity:0.7" />
+		</linearGradient>
+	</defs>
+<rect width="90%" height="90%" stroke="black" stroke-width="1" fill="url(#grad1)" filter="url(#f1)"/>
+			<line x1="30" y1="30" x2="30" y2="240"
+			style="stroke:black;stroke-width:1" />
+		<line x1="30" y1="240" x2="350" y2="240"
+			style="stroke:black;stroke-width:1" />
+		<polygon points="25,50 30,30 35,50"
+			style="fill:black;stroke:black;stroke-width:1" />
+		<polygon points="350,240 330,245 330,235"
+			style="fill:black;stroke:black;stroke-width:1" />
+		<!-- Scale Marks-->
+		<!--<line x1="40" y1="240" x2="40" y2="245"
+			style="stroke:black;stroke-width:1" />
+		<text x="42" y="253" font-size="8">0.6s</text>
+		<line x1="320" y1="240" x2="320" y2="245"
+			style="stroke:black;stroke-width:1" />
+		<text x="322" y="253" font-size="8">11.6s</text>-->
+
+		<text x="60" y="220" font-weight="bold" font-size="14"
+			transform="rotate(-90 20,220)">Frequency</text>
+			<text x="140" y="260" font-weight="bold" font-size="14">Duration</text>
+		<!-- Polygon -->
+		<polygon
+			points="40,240 40,50 133,50 133,240 133,240 133,145 226,145 226,240 226,240 226,98 319,98 319,240 "
+			style="stroke:black;stroke-width:1" fill="url(#grad3)" />
+		<text x="86" y="48" font-weight="bold" font-size="14">4</text><line x1="40" y1="240" x2="40" y2="242" style="stroke:black;stroke-width:1" /><text x="42" y="248" font-size="8">16.26</text><text x="179" y="143" font-weight="bold" font-size="14">2</text><line x1="133" y1="240" x2="133" y2="242" style="stroke:black;stroke-width:1" /><text x="135" y="248" font-size="8">16.94</text><text x="272" y="96" font-weight="bold" font-size="14">3</text><line x1="226" y1="240" x2="226" y2="242" style="stroke:black;stroke-width:1" /><text x="228" y="248" font-size="8">17.62</text><line x1="320" y1="240" x2="320" y2="242" style="stroke:black;stroke-width:1" /><text x="322" y="248" font-size="8">18.30</text>
+</svg></td><td valign="top" class="none"><p><table><tr><th colspan="2">Duration Characteristic</th></tr><tr><th>Average</th><td>17.12s</td></tr><tr><th>Median</th><td>17.22s</td></tr><tr><th>Variance</th><td>0.45</td></tr><tr><th>Skewness</th><td>0.21</td></tr><tr><th>Minimum</th><td>16.26s</td></tr><tr><th>Maximum</th><td>18.30s</td></tr><tr><th>Total</th><td>154.12s</td></tr></table></p></td></tr></table></p><p><a href="#top">To Overview Table</a></p><h3><a id="_5E_28_3F_3AI-should-see-_7C_29the-_22_28_5B_5E_22_5D*_29_22-list-contains-only-_28_5Cd_2B_29-item_28_3F_3As_7C_29_24">^(?:I should see |)the "([^"]*)" list contains only (\d+) item(?:s|)$</a></h3><p><table><tr><th>Step Name</th><th>Duration</th><th>Location</th></tr><tr><td>the "Tickets" list contains only 1 item</td><td> - </td><td> - </td></tr><tr><td></td><td>0.243514492</td><td>journeysearch/BasicJourneySearch.feature:206</td></tr></table></p><p><table class="none"><tr><td class="none"><svg  xmlns="http://www.w3.org/2000/svg" version="1.1" width="400" height="300">
+	<defs>
+		<filter id="f1" x="0" y="0" width="200%" height="200%">
+		<feOffset result="offOut" in="SourceAlpha" dx="10" dy="10" />
+		<feGaussianBlur result="blurOut" in="offOut" stdDeviation="10" />
+		<feBlend in="SourceGraphic" in2="blurOut" mode="normal" /></filter>
+		<radialGradient id="grad4" cx="0%" cy="100%" r="150%" fx="0%"
+			fy="100%">
+		<stop offset="0%" style="stop-color:white;stop-opacity:0.1" />
+		<stop offset="100%" style="stop-color:silver;stop-opacity:0.7" /></radialGradient>
+	</defs>
+<rect width="90%" height="90%" stroke="black" stroke-width="1" fill="url(#grad4)" filter="url(#f1)"/>
+			<line x1="30" y1="30" x2="30" y2="240"
+			style="stroke:black;stroke-width:1" />
+		<line x1="30" y1="240" x2="350" y2="240"
+			style="stroke:black;stroke-width:1" />
+		<polygon points="25,50 30,30 35,50"
+			style="fill:black;stroke:black;stroke-width:1" />
+		<polygon points="350,240 330,245 330,235"
+			style="fill:black;stroke:black;stroke-width:1" />
+		<!-- Scale Marks-->
+		<line x1="40" y1="240" x2="40" y2="245"
+			style="stroke:black;stroke-width:1" />
+		<text x="42" y="253" font-size="8">0.0s</text>
+		<line x1="320" y1="240" x2="320" y2="245"
+			style="stroke:black;stroke-width:1" />
+		<text x="322" y="253" font-size="8">0.0s</text>
+
+		<text x="60" y="220" font-weight="bold" font-size="14"
+			transform="rotate(-90 20,220)">Frequency</text>
+			<text x="140" y="260" font-weight="bold" font-size="14">Duration</text>
+		<!-- Polygon -->
+			<text x="22%" y="55%" font-weight="bold" font-size="120" fill="gray">N/A</text>
+</svg></td><td valign="top" class="none"><p><table><tr><th colspan="2">Duration Characteristic</th></tr><tr><th>Average</th><td>0.24s</td></tr><tr><th>Median</th><td>0.24s</td></tr><tr><th>Variance</th><td>0.00</td></tr><tr><th>Skewness</th><td>0.00</td></tr><tr><th>Minimum</th><td>0.24s</td></tr><tr><th>Maximum</th><td>0.24s</td></tr><tr><th>Total</th><td>0.24s</td></tr></table></p></td></tr></table></p><p><a href="#top">To Overview Table</a></p><h3><a id="_5E_28_3F_3AI-_7C_29click-on-the-_22_28_5B_5E_22_5D*_29_22-button_24">^(?:I |)click on the "([^"]*)" button$</a></h3><p><table><tr><th>Step Name</th><th>Duration</th><th>Location</th></tr><tr><td>I click on the "OK" button</td><td> - </td><td> - </td></tr><tr><td></td><td>2.858510898</td><td>LiveTrainTimes.feature:48</td></tr><tr><td>I click on the "Skip" button</td><td> - </td><td> - </td></tr><tr><td></td><td>1.862363906</td><td>Startup.feature:7</td></tr><tr><td>I click on the "Login" button</td><td> - </td><td> - </td></tr><tr><td></td><td>2.242663886</td><td>Startup.feature:7</td></tr><tr><td>I click on the "Buy Tickets" button</td><td> - </td><td> - </td></tr><tr><td></td><td>19.839095216</td><td>booking/JourneyOptions.feature:12</td></tr><tr><td></td><td>21.44855246</td><td>booking/JourneyOptions.feature:30</td></tr><tr><td></td><td>20.263704459</td><td>booking/JourneyOptions.feature:87</td></tr><tr><td></td><td>22.396167947</td><td>journeysearch/BON-80_RTJP_SeatsLeft.feature:14</td></tr><tr><td></td><td>20.97751731</td><td>journeysearch/BON-88_SingleOptionsForJourney.feature:15</td></tr><tr><td></td><td>21.321668302</td><td>journeysearch/BON-88_SingleOptionsForJourney.feature:79</td></tr><tr><td></td><td>21.294036775</td><td>journeysearch/BasicJourneySearch.feature:7</td></tr><tr><td></td><td>19.723224101</td><td>journeysearch/BasicJourneySearch.feature:22</td></tr><tr><td></td><td>21.087017738</td><td>journeysearch/BasicJourneySearch.feature:221</td></tr><tr><td>I click on the "Earlier Trains" button</td><td> - </td><td> - </td></tr><tr><td></td><td>28.285814568</td><td>booking/JourneyOptions.feature:18</td></tr><tr><td>I click on the "Later Trains" button</td><td> - </td><td> - </td></tr><tr><td></td><td>18.404438358</td><td>booking/JourneyOptions.feature:36</td></tr><tr><td>I click on the "First Class" button</td><td> - </td><td> - </td></tr><tr><td></td><td>0.815324731</td><td>booking/JourneyOptions.feature:94</td></tr><tr><td>click on the "Buy Tickets" button</td><td> - </td><td> - </td></tr><tr><td></td><td>29.302681774</td><td>journeysearch/BasicJourneySearch.feature:231</td></tr></table></p><p><table class="none"><tr><td class="none"><svg  xmlns="http://www.w3.org/2000/svg" version="1.1" width="400" height="300">
+	<defs>
+		<filter id="f1" x="0" y="0" width="200%" height="200%">
+		<feOffset result="offOut" in="SourceAlpha" dx="10" dy="10" />
+		<feGaussianBlur result="blurOut" in="offOut" stdDeviation="10" />
+		<feBlend in="SourceGraphic" in2="blurOut" mode="normal" /></filter>
+		<radialGradient id="grad1" cx="0%" cy="100%" r="150%" fx="0%"
+			fy="100%">
+		<stop offset="0%" style="stop-color:white;stop-opacity:0.1" />
+		<stop offset="100%" style="stop-color:gold;stop-opacity:0.7" /></radialGradient>
+		<linearGradient id="grad3" cx="0%" cy="100%" r="150%" fx="0%"
+			fy="100%">
+		<stop offset="0%" style="stop-color:green;stop-opacity:0.7" />
+		<stop offset="50%" style="stop-color:yellow;stop-opacity:0.7" />
+		<stop offset="100%" style="stop-color:red;stop-opacity:0.7" />
+		</linearGradient>
+	</defs>
+<rect width="90%" height="90%" stroke="black" stroke-width="1" fill="url(#grad1)" filter="url(#f1)"/>
+			<line x1="30" y1="30" x2="30" y2="240"
+			style="stroke:black;stroke-width:1" />
+		<line x1="30" y1="240" x2="350" y2="240"
+			style="stroke:black;stroke-width:1" />
+		<polygon points="25,50 30,30 35,50"
+			style="fill:black;stroke:black;stroke-width:1" />
+		<polygon points="350,240 330,245 330,235"
+			style="fill:black;stroke:black;stroke-width:1" />
+		<!-- Scale Marks-->
+		<!--<line x1="40" y1="240" x2="40" y2="245"
+			style="stroke:black;stroke-width:1" />
+		<text x="42" y="253" font-size="8">0.6s</text>
+		<line x1="320" y1="240" x2="320" y2="245"
+			style="stroke:black;stroke-width:1" />
+		<text x="322" y="253" font-size="8">11.6s</text>-->
+
+		<text x="60" y="220" font-weight="bold" font-size="14"
+			transform="rotate(-90 20,220)">Frequency</text>
+			<text x="140" y="260" font-weight="bold" font-size="14">Duration</text>
+		<!-- Polygon -->
+		<polygon
+			points="40,240 40,164 96,164 96,240 96,240 96,240 152,240 152,240 152,240 152,240 208,240 208,240 208,240 208,50 264,50 264,240 264,240 264,202 320,202 320,240 "
+			style="stroke:black;stroke-width:1" fill="url(#grad3)" />
+		<text x="68" y="162" font-weight="bold" font-size="14">4</text><line x1="40" y1="240" x2="40" y2="242" style="stroke:black;stroke-width:1" /><text x="42" y="248" font-size="8">0.82</text><text x="-2147483524" y="238" font-weight="bold" font-size="14">0</text><line x1="96" y1="240" x2="96" y2="242" style="stroke:black;stroke-width:1" /><text x="98" y="248" font-size="8">6.51</text><text x="-2147483468" y="238" font-weight="bold" font-size="14">0</text><line x1="152" y1="240" x2="152" y2="242" style="stroke:black;stroke-width:1" /><text x="154" y="248" font-size="8">12.21</text><text x="229" y="48" font-weight="bold" font-size="14">10</text><line x1="208" y1="240" x2="208" y2="242" style="stroke:black;stroke-width:1" /><text x="210" y="248" font-size="8">17.91</text><text x="292" y="200" font-weight="bold" font-size="14">2</text><line x1="264" y1="240" x2="264" y2="242" style="stroke:black;stroke-width:1" /><text x="266" y="248" font-size="8">23.61</text><line x1="320" y1="240" x2="320" y2="242" style="stroke:black;stroke-width:1" /><text x="322" y="248" font-size="8">29.30</text>
+</svg></td><td valign="top" class="none"><p><table><tr><th colspan="2">Duration Characteristic</th></tr><tr><th>Average</th><td>17.01s</td></tr><tr><th>Median</th><td>20.98s</td></tr><tr><th>Variance</th><td>83.39</td></tr><tr><th>Skewness</th><td>-0.81</td></tr><tr><th>Minimum</th><td>0.82s</td></tr><tr><th>Maximum</th><td>29.30s</td></tr><tr><th>Total</th><td>272.12s</td></tr></table></p></td></tr></table></p><p><a href="#top">To Overview Table</a></p><h3><a id="_5E_28_3F_3AI-_7C_29add-the-card-with-the-following-criteria_3A_24">^(?:I |)add the card with the following criteria:$</a></h3><p><table><tr><th>Step Name</th><th>Duration</th><th>Location</th></tr><tr><td>I add the card with the following criteria:</td><td> - </td><td> - </td></tr><tr><td></td><td>80.120901115</td><td>Payments.feature:17</td></tr><tr><td></td><td>75.95691928</td><td>Payments.feature:17</td></tr><tr><td></td><td>79.106483298</td><td>Payments.feature:17</td></tr><tr><td></td><td>70.156772926</td><td>Payments.feature:17</td></tr><tr><td></td><td>71.978912896</td><td>Payments.feature:17</td></tr><tr><td></td><td>74.994927486</td><td>Payments.feature:17</td></tr></table></p><p><table class="none"><tr><td class="none"><svg  xmlns="http://www.w3.org/2000/svg" version="1.1" width="400" height="300">
+	<defs>
+		<filter id="f1" x="0" y="0" width="200%" height="200%">
+		<feOffset result="offOut" in="SourceAlpha" dx="10" dy="10" />
+		<feGaussianBlur result="blurOut" in="offOut" stdDeviation="10" />
+		<feBlend in="SourceGraphic" in2="blurOut" mode="normal" /></filter>
+		<radialGradient id="grad1" cx="0%" cy="100%" r="150%" fx="0%"
+			fy="100%">
+		<stop offset="0%" style="stop-color:white;stop-opacity:0.1" />
+		<stop offset="100%" style="stop-color:gold;stop-opacity:0.7" /></radialGradient>
+		<linearGradient id="grad3" cx="0%" cy="100%" r="150%" fx="0%"
+			fy="100%">
+		<stop offset="0%" style="stop-color:green;stop-opacity:0.7" />
+		<stop offset="50%" style="stop-color:yellow;stop-opacity:0.7" />
+		<stop offset="100%" style="stop-color:red;stop-opacity:0.7" />
+		</linearGradient>
+	</defs>
+<rect width="90%" height="90%" stroke="black" stroke-width="1" fill="url(#grad1)" filter="url(#f1)"/>
+			<line x1="30" y1="30" x2="30" y2="240"
+			style="stroke:black;stroke-width:1" />
+		<line x1="30" y1="240" x2="350" y2="240"
+			style="stroke:black;stroke-width:1" />
+		<polygon points="25,50 30,30 35,50"
+			style="fill:black;stroke:black;stroke-width:1" />
+		<polygon points="350,240 330,245 330,235"
+			style="fill:black;stroke:black;stroke-width:1" />
+		<!-- Scale Marks-->
+		<!--<line x1="40" y1="240" x2="40" y2="245"
+			style="stroke:black;stroke-width:1" />
+		<text x="42" y="253" font-size="8">0.6s</text>
+		<line x1="320" y1="240" x2="320" y2="245"
+			style="stroke:black;stroke-width:1" />
+		<text x="322" y="253" font-size="8">11.6s</text>-->
+
+		<text x="60" y="220" font-weight="bold" font-size="14"
+			transform="rotate(-90 20,220)">Frequency</text>
+			<text x="140" y="260" font-weight="bold" font-size="14">Duration</text>
+		<!-- Polygon -->
+		<polygon
+			points="40,240 40,50 180,50 180,240 180,240 180,50 320,50 320,240 "
+			style="stroke:black;stroke-width:1" fill="url(#grad3)" />
+		<text x="110" y="48" font-weight="bold" font-size="14">3</text><line x1="40" y1="240" x2="40" y2="242" style="stroke:black;stroke-width:1" /><text x="42" y="248" font-size="8">70.16</text><text x="250" y="48" font-weight="bold" font-size="14">3</text><line x1="180" y1="240" x2="180" y2="242" style="stroke:black;stroke-width:1" /><text x="182" y="248" font-size="8">75.14</text><line x1="320" y1="240" x2="320" y2="242" style="stroke:black;stroke-width:1" /><text x="322" y="248" font-size="8">80.12</text>
+</svg></td><td valign="top" class="none"><p><table><tr><th colspan="2">Duration Characteristic</th></tr><tr><th>Average</th><td>75.39s</td></tr><tr><th>Median</th><td>75.96s</td></tr><tr><th>Variance</th><td>12.62</td></tr><tr><th>Skewness</th><td>-0.09</td></tr><tr><th>Minimum</th><td>70.16s</td></tr><tr><th>Maximum</th><td>80.12s</td></tr><tr><th>Total</th><td>452.31s</td></tr></table></p></td></tr></table></p><p><a href="#top">To Overview Table</a></p><h3><a id="I-am-on-the-Buy-ticket-screen">I am on the Buy ticket screen</a></h3><p><table><tr><th>Step Name</th><th>Duration</th><th>Location</th></tr><tr><td>I am on the Buy ticket screen</td><td> - </td><td> - </td></tr><tr><td></td><td>41.186928828</td><td>journeysearch/BasicJourneySearch.feature:38</td></tr><tr><td></td><td>39.991535767</td><td>journeysearch/BasicJourneySearch.feature:38</td></tr><tr><td></td><td>40.670430184</td><td>journeysearch/BasicJourneySearch.feature:38</td></tr><tr><td></td><td>39.104297695</td><td>journeysearch/BasicJourneySearch.feature:38</td></tr><tr><td></td><td>43.648214293</td><td>journeysearch/BasicJourneySearch.feature:38</td></tr><tr><td></td><td>27.08240484</td><td>journeysearch/BasicJourneySearch.feature:38</td></tr><tr><td></td><td>39.460773628</td><td>journeysearch/BasicJourneySearch.feature:38</td></tr><tr><td></td><td>41.129160814</td><td>journeysearch/BasicJourneySearch.feature:38</td></tr><tr><td></td><td>40.117652002</td><td>journeysearch/BasicJourneySearch.feature:38</td></tr><tr><td></td><td>42.076573106</td><td>journeysearch/BasicJourneySearch.feature:38</td></tr><tr><td></td><td>40.518543984</td><td>journeysearch/BasicJourneySearch.feature:64</td></tr><tr><td></td><td>41.057694702</td><td>journeysearch/BasicJourneySearch.feature:64</td></tr><tr><td></td><td>41.162148392</td><td>journeysearch/BasicJourneySearch.feature:64</td></tr><tr><td></td><td>40.46392332</td><td>journeysearch/BasicJourneySearch.feature:64</td></tr><tr><td></td><td>39.974881129</td><td>journeysearch/BasicJourneySearch.feature:64</td></tr><tr><td></td><td>39.81436332</td><td>journeysearch/BasicJourneySearch.feature:64</td></tr><tr><td></td><td>41.953479357</td><td>journeysearch/BasicJourneySearch.feature:92</td></tr><tr><td></td><td>39.812822116</td><td>journeysearch/BasicJourneySearch.feature:92</td></tr><tr><td></td><td>40.095827436</td><td>journeysearch/BasicJourneySearch.feature:92</td></tr><tr><td></td><td>40.392942266</td><td>journeysearch/BasicJourneySearch.feature:92</td></tr><tr><td></td><td>40.548539204</td><td>journeysearch/BasicJourneySearch.feature:92</td></tr><tr><td></td><td>40.326862667</td><td>journeysearch/BasicJourneySearch.feature:92</td></tr><tr><td></td><td>39.85911814</td><td>journeysearch/BasicJourneySearch.feature:92</td></tr><tr><td></td><td>40.450823091</td><td>journeysearch/BasicJourneySearch.feature:133</td></tr><tr><td></td><td>40.080674166</td><td>journeysearch/BasicJourneySearch.feature:149</td></tr><tr><td></td><td>41.367580029</td><td>journeysearch/BasicJourneySearch.feature:164</td></tr><tr><td></td><td>42.348560695</td><td>journeysearch/BasicJourneySearch.feature:183</td></tr><tr><td></td><td>41.057333169</td><td>journeysearch/BasicJourneySearch.feature:195</td></tr></table></p><p><table class="none"><tr><td class="none"><svg  xmlns="http://www.w3.org/2000/svg" version="1.1" width="400" height="300">
+	<defs>
+		<filter id="f1" x="0" y="0" width="200%" height="200%">
+		<feOffset result="offOut" in="SourceAlpha" dx="10" dy="10" />
+		<feGaussianBlur result="blurOut" in="offOut" stdDeviation="10" />
+		<feBlend in="SourceGraphic" in2="blurOut" mode="normal" /></filter>
+		<radialGradient id="grad1" cx="0%" cy="100%" r="150%" fx="0%"
+			fy="100%">
+		<stop offset="0%" style="stop-color:white;stop-opacity:0.1" />
+		<stop offset="100%" style="stop-color:gold;stop-opacity:0.7" /></radialGradient>
+		<linearGradient id="grad3" cx="0%" cy="100%" r="150%" fx="0%"
+			fy="100%">
+		<stop offset="0%" style="stop-color:green;stop-opacity:0.7" />
+		<stop offset="50%" style="stop-color:yellow;stop-opacity:0.7" />
+		<stop offset="100%" style="stop-color:red;stop-opacity:0.7" />
+		</linearGradient>
+	</defs>
+<rect width="90%" height="90%" stroke="black" stroke-width="1" fill="url(#grad1)" filter="url(#f1)"/>
+			<line x1="30" y1="30" x2="30" y2="240"
+			style="stroke:black;stroke-width:1" />
+		<line x1="30" y1="240" x2="350" y2="240"
+			style="stroke:black;stroke-width:1" />
+		<polygon points="25,50 30,30 35,50"
+			style="fill:black;stroke:black;stroke-width:1" />
+		<polygon points="350,240 330,245 330,235"
+			style="fill:black;stroke:black;stroke-width:1" />
+		<!-- Scale Marks-->
+		<!--<line x1="40" y1="240" x2="40" y2="245"
+			style="stroke:black;stroke-width:1" />
+		<text x="42" y="253" font-size="8">0.6s</text>
+		<line x1="320" y1="240" x2="320" y2="245"
+			style="stroke:black;stroke-width:1" />
+		<text x="322" y="253" font-size="8">11.6s</text>-->
+
+		<text x="60" y="220" font-weight="bold" font-size="14"
+			transform="rotate(-90 20,220)">Frequency</text>
+			<text x="140" y="260" font-weight="bold" font-size="14">Duration</text>
+		<!-- Polygon -->
+		<polygon
+			points="40,240 40,230 71,230 71,240 71,240 71,240 102,240 102,240 102,240 102,240 133,240 133,240 133,240 133,240 164,240 164,240 164,240 164,240 195,240 195,240 195,240 195,240 226,240 226,240 226,240 226,188 257,188 257,240 257,240 257,50 288,50 288,240 288,240 288,198 319,198 319,240 "
+			style="stroke:black;stroke-width:1" fill="url(#grad3)" />
+		<text x="55" y="228" font-weight="bold" font-size="14">1</text><line x1="40" y1="240" x2="40" y2="242" style="stroke:black;stroke-width:1" /><text x="42" y="248" font-size="8">27.08</text><text x="-2147483562" y="238" font-weight="bold" font-size="14">0</text><line x1="71" y1="240" x2="71" y2="242" style="stroke:black;stroke-width:1" /><text x="73" y="248" font-size="8">28.92</text><text x="-2147483531" y="238" font-weight="bold" font-size="14">0</text><line x1="102" y1="240" x2="102" y2="242" style="stroke:black;stroke-width:1" /><text x="104" y="248" font-size="8">30.76</text><text x="-2147483500" y="238" font-weight="bold" font-size="14">0</text><line x1="133" y1="240" x2="133" y2="242" style="stroke:black;stroke-width:1" /><text x="135" y="248" font-size="8">32.60</text><text x="-2147483469" y="238" font-weight="bold" font-size="14">0</text><line x1="164" y1="240" x2="164" y2="242" style="stroke:black;stroke-width:1" /><text x="166" y="248" font-size="8">34.44</text><text x="-2147483438" y="238" font-weight="bold" font-size="14">0</text><line x1="195" y1="240" x2="195" y2="242" style="stroke:black;stroke-width:1" /><text x="197" y="248" font-size="8">36.29</text><text x="241" y="186" font-weight="bold" font-size="14">5</text><line x1="226" y1="240" x2="226" y2="242" style="stroke:black;stroke-width:1" /><text x="228" y="248" font-size="8">38.13</text><text x="265" y="48" font-weight="bold" font-size="14">18</text><line x1="257" y1="240" x2="257" y2="242" style="stroke:black;stroke-width:1" /><text x="259" y="248" font-size="8">39.97</text><text x="303" y="196" font-weight="bold" font-size="14">4</text><line x1="288" y1="240" x2="288" y2="242" style="stroke:black;stroke-width:1" /><text x="290" y="248" font-size="8">41.81</text><line x1="320" y1="240" x2="320" y2="242" style="stroke:black;stroke-width:1" /><text x="322" y="248" font-size="8">43.65</text>
+</svg></td><td valign="top" class="none"><p><table><tr><th colspan="2">Duration Characteristic</th></tr><tr><th>Average</th><td>40.21s</td></tr><tr><th>Median</th><td>40.46s</td></tr><tr><th>Variance</th><td>7.27</td></tr><tr><th>Skewness</th><td>-3.99</td></tr><tr><th>Minimum</th><td>27.08s</td></tr><tr><th>Maximum</th><td>43.65s</td></tr><tr><th>Total</th><td>1125.75s</td></tr></table></p></td></tr></table></p><p><a href="#top">To Overview Table</a></p><h3><a id="_5E_28_3F_3AI-_7C_29accept-the-alert-message_24">^(?:I |)accept the alert message$</a></h3><p><table><tr><th>Step Name</th><th>Duration</th><th>Location</th></tr><tr><td>accept the alert message</td><td> - </td><td> - </td></tr><tr><td></td><td>1.701708848</td><td>LiveTrainTimes.feature:49</td></tr><tr><td></td><td>2.676060063</td><td>journeysearch/BON-88_SingleOptionsForJourney.feature:83</td></tr><tr><td></td><td>2.154916051</td><td>journeysearch/BasicJourneySearch.feature:42</td></tr><tr><td></td><td>2.222716615</td><td>journeysearch/BasicJourneySearch.feature:42</td></tr><tr><td></td><td>2.053796168</td><td>journeysearch/BasicJourneySearch.feature:42</td></tr><tr><td></td><td>1.981556442</td><td>journeysearch/BasicJourneySearch.feature:42</td></tr><tr><td></td><td>3.092427014</td><td>journeysearch/BasicJourneySearch.feature:42</td></tr><tr><td></td><td>3.695218319</td><td>journeysearch/BasicJourneySearch.feature:42</td></tr><tr><td></td><td>3.401837996</td><td>journeysearch/BasicJourneySearch.feature:42</td></tr><tr><td></td><td>3.623782336</td><td>journeysearch/BasicJourneySearch.feature:42</td></tr><tr><td></td><td>3.59448541</td><td>journeysearch/BasicJourneySearch.feature:42</td></tr><tr><td></td><td>3.080791329</td><td>journeysearch/BasicJourneySearch.feature:42</td></tr><tr><td></td><td>3.165508979</td><td>journeysearch/BasicJourneySearch.feature:68</td></tr><tr><td></td><td>2.734613741</td><td>journeysearch/BasicJourneySearch.feature:68</td></tr><tr><td></td><td>2.149745453</td><td>journeysearch/BasicJourneySearch.feature:68</td></tr><tr><td></td><td>3.484285684</td><td>journeysearch/BasicJourneySearch.feature:68</td></tr><tr><td></td><td>3.715619849</td><td>journeysearch/BasicJourneySearch.feature:68</td></tr><tr><td></td><td>3.21974133</td><td>journeysearch/BasicJourneySearch.feature:68</td></tr><tr><td></td><td>1.736030751</td><td>journeysearch/BasicJourneySearch.feature:137</td></tr><tr><td></td><td>1.975195797</td><td>journeysearch/BasicJourneySearch.feature:168</td></tr><tr><td></td><td>2.032055291</td><td>journeysearch/BasicJourneySearch.feature:187</td></tr></table></p><p><table class="none"><tr><td class="none"><svg  xmlns="http://www.w3.org/2000/svg" version="1.1" width="400" height="300">
+	<defs>
+		<filter id="f1" x="0" y="0" width="200%" height="200%">
+		<feOffset result="offOut" in="SourceAlpha" dx="10" dy="10" />
+		<feGaussianBlur result="blurOut" in="offOut" stdDeviation="10" />
+		<feBlend in="SourceGraphic" in2="blurOut" mode="normal" /></filter>
+		<radialGradient id="grad1" cx="0%" cy="100%" r="150%" fx="0%"
+			fy="100%">
+		<stop offset="0%" style="stop-color:white;stop-opacity:0.1" />
+		<stop offset="100%" style="stop-color:gold;stop-opacity:0.7" /></radialGradient>
+		<linearGradient id="grad3" cx="0%" cy="100%" r="150%" fx="0%"
+			fy="100%">
+		<stop offset="0%" style="stop-color:green;stop-opacity:0.7" />
+		<stop offset="50%" style="stop-color:yellow;stop-opacity:0.7" />
+		<stop offset="100%" style="stop-color:red;stop-opacity:0.7" />
+		</linearGradient>
+	</defs>
+<rect width="90%" height="90%" stroke="black" stroke-width="1" fill="url(#grad1)" filter="url(#f1)"/>
+			<line x1="30" y1="30" x2="30" y2="240"
+			style="stroke:black;stroke-width:1" />
+		<line x1="30" y1="240" x2="350" y2="240"
+			style="stroke:black;stroke-width:1" />
+		<polygon points="25,50 30,30 35,50"
+			style="fill:black;stroke:black;stroke-width:1" />
+		<polygon points="350,240 330,245 330,235"
+			style="fill:black;stroke:black;stroke-width:1" />
+		<!-- Scale Marks-->
+		<!--<line x1="40" y1="240" x2="40" y2="245"
+			style="stroke:black;stroke-width:1" />
+		<text x="42" y="253" font-size="8">0.6s</text>
+		<line x1="320" y1="240" x2="320" y2="245"
+			style="stroke:black;stroke-width:1" />
+		<text x="322" y="253" font-size="8">11.6s</text>-->
+
+		<text x="60" y="220" font-weight="bold" font-size="14"
+			transform="rotate(-90 20,220)">Frequency</text>
+			<text x="140" y="260" font-weight="bold" font-size="14">Duration</text>
+		<!-- Polygon -->
+		<polygon
+			points="40,240 40,88 80,88 80,240 80,240 80,50 120,50 120,240 120,240 120,240 160,240 160,240 160,240 160,164 200,164 200,240 200,240 200,164 240,164 240,240 240,240 240,126 280,126 280,240 280,240 280,50 320,50 320,240 "
+			style="stroke:black;stroke-width:1" fill="url(#grad3)" />
+		<text x="60" y="86" font-weight="bold" font-size="14">4</text><line x1="40" y1="240" x2="40" y2="242" style="stroke:black;stroke-width:1" /><text x="42" y="248" font-size="8">1.70</text><text x="100" y="48" font-weight="bold" font-size="14">5</text><line x1="80" y1="240" x2="80" y2="242" style="stroke:black;stroke-width:1" /><text x="82" y="248" font-size="8">1.99</text><text x="-2147483508" y="238" font-weight="bold" font-size="14">0</text><line x1="120" y1="240" x2="120" y2="242" style="stroke:black;stroke-width:1" /><text x="122" y="248" font-size="8">2.28</text><text x="180" y="162" font-weight="bold" font-size="14">2</text><line x1="160" y1="240" x2="160" y2="242" style="stroke:black;stroke-width:1" /><text x="162" y="248" font-size="8">2.56</text><text x="220" y="162" font-weight="bold" font-size="14">2</text><line x1="200" y1="240" x2="200" y2="242" style="stroke:black;stroke-width:1" /><text x="202" y="248" font-size="8">2.85</text><text x="260" y="124" font-weight="bold" font-size="14">3</text><line x1="240" y1="240" x2="240" y2="242" style="stroke:black;stroke-width:1" /><text x="242" y="248" font-size="8">3.14</text><text x="300" y="48" font-weight="bold" font-size="14">5</text><line x1="280" y1="240" x2="280" y2="242" style="stroke:black;stroke-width:1" /><text x="282" y="248" font-size="8">3.43</text><line x1="320" y1="240" x2="320" y2="242" style="stroke:black;stroke-width:1" /><text x="322" y="248" font-size="8">3.72</text>
+</svg></td><td valign="top" class="none"><p><table><tr><th colspan="2">Duration Characteristic</th></tr><tr><th>Average</th><td>2.74s</td></tr><tr><th>Median</th><td>2.73s</td></tr><tr><th>Variance</th><td>0.49</td></tr><tr><th>Skewness</th><td>-0.01</td></tr><tr><th>Minimum</th><td>1.70s</td></tr><tr><th>Maximum</th><td>3.72s</td></tr><tr><th>Total</th><td>57.49s</td></tr></table></p></td></tr></table></p><p><a href="#top">To Overview Table</a></p><h3><a id="_5E_28_3F_3AI-should-see-_7C_29the-_22_28.*_3F_29_22-field-contains-_22_28.*_3F_29_22-text_24">^(?:I should see |)the "(.*?)" field contains "(.*?)" text$</a></h3><p><table><tr><th>Step Name</th><th>Duration</th><th>Location</th></tr><tr><td>the "Origin station" field contains "Farringdon" text</td><td> - </td><td> - </td></tr><tr><td></td><td>0.321279319</td><td>journeysearch/BasicJourneySearch.feature:233</td></tr><tr><td>the "Destination station" field contains "Newcastle" text</td><td> - </td><td> - </td></tr><tr><td></td><td>0.317143779</td><td>journeysearch/BasicJourneySearch.feature:234</td></tr></table></p><p><table class="none"><tr><td class="none"><svg  xmlns="http://www.w3.org/2000/svg" version="1.1" width="400" height="300">
+	<defs>
+		<filter id="f1" x="0" y="0" width="200%" height="200%">
+		<feOffset result="offOut" in="SourceAlpha" dx="10" dy="10" />
+		<feGaussianBlur result="blurOut" in="offOut" stdDeviation="10" />
+		<feBlend in="SourceGraphic" in2="blurOut" mode="normal" /></filter>
+		<radialGradient id="grad4" cx="0%" cy="100%" r="150%" fx="0%"
+			fy="100%">
+		<stop offset="0%" style="stop-color:white;stop-opacity:0.1" />
+		<stop offset="100%" style="stop-color:silver;stop-opacity:0.7" /></radialGradient>
+	</defs>
+<rect width="90%" height="90%" stroke="black" stroke-width="1" fill="url(#grad4)" filter="url(#f1)"/>
+			<line x1="30" y1="30" x2="30" y2="240"
+			style="stroke:black;stroke-width:1" />
+		<line x1="30" y1="240" x2="350" y2="240"
+			style="stroke:black;stroke-width:1" />
+		<polygon points="25,50 30,30 35,50"
+			style="fill:black;stroke:black;stroke-width:1" />
+		<polygon points="350,240 330,245 330,235"
+			style="fill:black;stroke:black;stroke-width:1" />
+		<!-- Scale Marks-->
+		<line x1="40" y1="240" x2="40" y2="245"
+			style="stroke:black;stroke-width:1" />
+		<text x="42" y="253" font-size="8">0.0s</text>
+		<line x1="320" y1="240" x2="320" y2="245"
+			style="stroke:black;stroke-width:1" />
+		<text x="322" y="253" font-size="8">0.0s</text>
+
+		<text x="60" y="220" font-weight="bold" font-size="14"
+			transform="rotate(-90 20,220)">Frequency</text>
+			<text x="140" y="260" font-weight="bold" font-size="14">Duration</text>
+		<!-- Polygon -->
+			<text x="22%" y="55%" font-weight="bold" font-size="120" fill="gray">N/A</text>
+</svg></td><td valign="top" class="none"><p><table><tr><th colspan="2">Duration Characteristic</th></tr><tr><th>Average</th><td>0.32s</td></tr><tr><th>Median</th><td>0.32s</td></tr><tr><th>Variance</th><td>0.00</td></tr><tr><th>Skewness</th><td>-0.00</td></tr><tr><th>Minimum</th><td>0.32s</td></tr><tr><th>Maximum</th><td>0.32s</td></tr><tr><th>Total</th><td>0.64s</td></tr></table></p></td></tr></table></p><p><a href="#top">To Overview Table</a></p><h3><a id="_5E_28_3F_3AI-_7C_29note-the-current-page-content-as-_22_28.*_3F_29_22_24">^(?:I |)note the current page content as "(.*?)"$</a></h3><p><table><tr><th>Step Name</th><th>Duration</th><th>Location</th></tr><tr><td>I note the current page content as "Original Search Results"</td><td> - </td><td> - </td></tr><tr><td></td><td>0.457792985</td><td>booking/JourneyOptions.feature:17</td></tr><tr><td></td><td>0.326742156</td><td>booking/JourneyOptions.feature:35</td></tr></table></p><p><table class="none"><tr><td class="none"><svg  xmlns="http://www.w3.org/2000/svg" version="1.1" width="400" height="300">
+	<defs>
+		<filter id="f1" x="0" y="0" width="200%" height="200%">
+		<feOffset result="offOut" in="SourceAlpha" dx="10" dy="10" />
+		<feGaussianBlur result="blurOut" in="offOut" stdDeviation="10" />
+		<feBlend in="SourceGraphic" in2="blurOut" mode="normal" /></filter>
+		<radialGradient id="grad4" cx="0%" cy="100%" r="150%" fx="0%"
+			fy="100%">
+		<stop offset="0%" style="stop-color:white;stop-opacity:0.1" />
+		<stop offset="100%" style="stop-color:silver;stop-opacity:0.7" /></radialGradient>
+	</defs>
+<rect width="90%" height="90%" stroke="black" stroke-width="1" fill="url(#grad4)" filter="url(#f1)"/>
+			<line x1="30" y1="30" x2="30" y2="240"
+			style="stroke:black;stroke-width:1" />
+		<line x1="30" y1="240" x2="350" y2="240"
+			style="stroke:black;stroke-width:1" />
+		<polygon points="25,50 30,30 35,50"
+			style="fill:black;stroke:black;stroke-width:1" />
+		<polygon points="350,240 330,245 330,235"
+			style="fill:black;stroke:black;stroke-width:1" />
+		<!-- Scale Marks-->
+		<line x1="40" y1="240" x2="40" y2="245"
+			style="stroke:black;stroke-width:1" />
+		<text x="42" y="253" font-size="8">0.0s</text>
+		<line x1="320" y1="240" x2="320" y2="245"
+			style="stroke:black;stroke-width:1" />
+		<text x="322" y="253" font-size="8">0.0s</text>
+
+		<text x="60" y="220" font-weight="bold" font-size="14"
+			transform="rotate(-90 20,220)">Frequency</text>
+			<text x="140" y="260" font-weight="bold" font-size="14">Duration</text>
+		<!-- Polygon -->
+			<text x="22%" y="55%" font-weight="bold" font-size="120" fill="gray">N/A</text>
+</svg></td><td valign="top" class="none"><p><table><tr><th colspan="2">Duration Characteristic</th></tr><tr><th>Average</th><td>0.39s</td></tr><tr><th>Median</th><td>0.46s</td></tr><tr><th>Variance</th><td>0.00</td></tr><tr><th>Skewness</th><td>0.00</td></tr><tr><th>Minimum</th><td>0.33s</td></tr><tr><th>Maximum</th><td>0.46s</td></tr><tr><th>Total</th><td>0.78s</td></tr></table></p></td></tr></table></p><p><a href="#top">To Overview Table</a></p><h3><a id="_5Euser-account-has-billing-address-with-the-following-parameters_3A_24">^user account has billing address with the following parameters:$</a></h3><p><table><tr><th>Step Name</th><th>Duration</th><th>Location</th></tr><tr><td>user account has billing address with the following parameters:</td><td> - </td><td> - </td></tr><tr><td></td><td>7.3646E-5</td><td>Payments.feature:14</td></tr><tr><td></td><td>6.5277E-5</td><td>Payments.feature:14</td></tr><tr><td></td><td>6.2599E-5</td><td>Payments.feature:14</td></tr><tr><td></td><td>8.2684E-5</td><td>Payments.feature:14</td></tr><tr><td></td><td>6.1595E-5</td><td>Payments.feature:14</td></tr><tr><td></td><td>7.331E-5</td><td>Payments.feature:14</td></tr></table></p><p><table class="none"><tr><td class="none"><svg  xmlns="http://www.w3.org/2000/svg" version="1.1" width="400" height="300">
+	<defs>
+		<filter id="f1" x="0" y="0" width="200%" height="200%">
+		<feOffset result="offOut" in="SourceAlpha" dx="10" dy="10" />
+		<feGaussianBlur result="blurOut" in="offOut" stdDeviation="10" />
+		<feBlend in="SourceGraphic" in2="blurOut" mode="normal" /></filter>
+		<radialGradient id="grad1" cx="0%" cy="100%" r="150%" fx="0%"
+			fy="100%">
+		<stop offset="0%" style="stop-color:white;stop-opacity:0.1" />
+		<stop offset="100%" style="stop-color:gold;stop-opacity:0.7" /></radialGradient>
+		<linearGradient id="grad3" cx="0%" cy="100%" r="150%" fx="0%"
+			fy="100%">
+		<stop offset="0%" style="stop-color:green;stop-opacity:0.7" />
+		<stop offset="50%" style="stop-color:yellow;stop-opacity:0.7" />
+		<stop offset="100%" style="stop-color:red;stop-opacity:0.7" />
+		</linearGradient>
+	</defs>
+<rect width="90%" height="90%" stroke="black" stroke-width="1" fill="url(#grad1)" filter="url(#f1)"/>
+			<line x1="30" y1="30" x2="30" y2="240"
+			style="stroke:black;stroke-width:1" />
+		<line x1="30" y1="240" x2="350" y2="240"
+			style="stroke:black;stroke-width:1" />
+		<polygon points="25,50 30,30 35,50"
+			style="fill:black;stroke:black;stroke-width:1" />
+		<polygon points="350,240 330,245 330,235"
+			style="fill:black;stroke:black;stroke-width:1" />
+		<!-- Scale Marks-->
+		<!--<line x1="40" y1="240" x2="40" y2="245"
+			style="stroke:black;stroke-width:1" />
+		<text x="42" y="253" font-size="8">0.6s</text>
+		<line x1="320" y1="240" x2="320" y2="245"
+			style="stroke:black;stroke-width:1" />
+		<text x="322" y="253" font-size="8">11.6s</text>-->
+
+		<text x="60" y="220" font-weight="bold" font-size="14"
+			transform="rotate(-90 20,220)">Frequency</text>
+			<text x="140" y="260" font-weight="bold" font-size="14">Duration</text>
+		<!-- Polygon -->
+		<polygon
+			points="40,240 40,50 180,50 180,240 180,240 180,50 320,50 320,240 "
+			style="stroke:black;stroke-width:1" fill="url(#grad3)" />
+		<text x="110" y="48" font-weight="bold" font-size="14">3</text><line x1="40" y1="240" x2="40" y2="242" style="stroke:black;stroke-width:1" /><text x="42" y="248" font-size="8">0.00</text><text x="250" y="48" font-weight="bold" font-size="14">3</text><line x1="180" y1="240" x2="180" y2="242" style="stroke:black;stroke-width:1" /><text x="182" y="248" font-size="8">0.00</text><line x1="320" y1="240" x2="320" y2="242" style="stroke:black;stroke-width:1" /><text x="322" y="248" font-size="8">0.00</text>
+</svg></td><td valign="top" class="none"><p><table><tr><th colspan="2">Duration Characteristic</th></tr><tr><th>Average</th><td>0.00s</td></tr><tr><th>Median</th><td>0.00s</td></tr><tr><th>Variance</th><td>0.00</td></tr><tr><th>Skewness</th><td>0.00</td></tr><tr><th>Minimum</th><td>0.00s</td></tr><tr><th>Maximum</th><td>0.00s</td></tr><tr><th>Total</th><td>0.00s</td></tr></table></p></td></tr></table></p><p><a href="#top">To Overview Table</a></p><h3><a id="_5EI-am-not-logged-into-the-system_24">^I am not logged into the system$</a></h3><p><table><tr><th>Step Name</th><th>Duration</th><th>Location</th></tr><tr><td>I am not logged into the system</td><td> - </td><td> - </td></tr><tr><td></td><td>7.222027694</td><td>LiveTrainTimes.feature:6</td></tr><tr><td></td><td>5.436373472</td><td>LiveTrainTimes.feature:6</td></tr><tr><td></td><td>5.377834857</td><td>LiveTrainTimes.feature:6</td></tr><tr><td></td><td>5.256488854</td><td>LiveTrainTimes.feature:6</td></tr><tr><td></td><td>7.366930608</td><td>LiveTrainTimes.feature:41</td></tr><tr><td></td><td>11.073526852</td><td>LiveTrainTimes.feature:54</td></tr><tr><td></td><td>5.017067723</td><td>booking/JourneyOptions.feature:10</td></tr><tr><td></td><td>11.745159135</td><td>booking/JourneyOptions.feature:28</td></tr><tr><td></td><td>6.325159778</td><td>booking/JourneyOptions.feature:85</td></tr><tr><td></td><td>6.323820431</td><td>journeysearch/BON-80_RTJP_SeatsLeft.feature:5</td></tr><tr><td></td><td>9.41090378</td><td>journeysearch/BON-88_SingleOptionsForJourney.feature:13</td></tr><tr><td></td><td>5.824234855</td><td>journeysearch/BON-88_SingleOptionsForJourney.feature:77</td></tr><tr><td></td><td>6.199356538</td><td>journeysearch/BasicJourneySearch.feature:5</td></tr><tr><td></td><td>6.153924511</td><td>journeysearch/BasicJourneySearch.feature:37</td></tr><tr><td></td><td>8.220033904</td><td>journeysearch/BasicJourneySearch.feature:37</td></tr><tr><td></td><td>8.155745569</td><td>journeysearch/BasicJourneySearch.feature:37</td></tr><tr><td></td><td>10.46456772</td><td>journeysearch/BasicJourneySearch.feature:37</td></tr><tr><td></td><td>6.482018735</td><td>journeysearch/BasicJourneySearch.feature:37</td></tr><tr><td></td><td>6.422390164</td><td>journeysearch/BasicJourneySearch.feature:37</td></tr><tr><td></td><td>7.548579374</td><td>journeysearch/BasicJourneySearch.feature:37</td></tr><tr><td></td><td>5.215852502</td><td>journeysearch/BasicJourneySearch.feature:37</td></tr><tr><td></td><td>6.301251709</td><td>journeysearch/BasicJourneySearch.feature:37</td></tr><tr><td></td><td>8.031058396</td><td>journeysearch/BasicJourneySearch.feature:37</td></tr><tr><td></td><td>9.254715667</td><td>journeysearch/BasicJourneySearch.feature:63</td></tr><tr><td></td><td>12.314540739</td><td>journeysearch/BasicJourneySearch.feature:63</td></tr><tr><td></td><td>5.513535073</td><td>journeysearch/BasicJourneySearch.feature:63</td></tr><tr><td></td><td>4.905752934</td><td>journeysearch/BasicJourneySearch.feature:63</td></tr><tr><td></td><td>6.472943244</td><td>journeysearch/BasicJourneySearch.feature:63</td></tr><tr><td></td><td>6.866384291</td><td>journeysearch/BasicJourneySearch.feature:63</td></tr><tr><td></td><td>7.043256465</td><td>journeysearch/BasicJourneySearch.feature:91</td></tr><tr><td></td><td>6.661391515</td><td>journeysearch/BasicJourneySearch.feature:91</td></tr><tr><td></td><td>11.243024414</td><td>journeysearch/BasicJourneySearch.feature:91</td></tr><tr><td></td><td>9.827401284</td><td>journeysearch/BasicJourneySearch.feature:91</td></tr><tr><td></td><td>9.645360522</td><td>journeysearch/BasicJourneySearch.feature:91</td></tr><tr><td></td><td>4.446298903</td><td>journeysearch/BasicJourneySearch.feature:91</td></tr><tr><td></td><td>15.002327539</td><td>journeysearch/BasicJourneySearch.feature:91</td></tr><tr><td></td><td>5.114576625</td><td>journeysearch/BasicJourneySearch.feature:132</td></tr><tr><td></td><td>8.975893758</td><td>journeysearch/BasicJourneySearch.feature:148</td></tr><tr><td></td><td>9.804784359</td><td>journeysearch/BasicJourneySearch.feature:163</td></tr><tr><td></td><td>8.270382783</td><td>journeysearch/BasicJourneySearch.feature:182</td></tr><tr><td></td><td>5.926860457</td><td>journeysearch/BasicJourneySearch.feature:194</td></tr><tr><td></td><td>8.364371755</td><td>journeysearch/BasicJourneySearch.feature:219</td></tr></table></p><p><table class="none"><tr><td class="none"><svg  xmlns="http://www.w3.org/2000/svg" version="1.1" width="400" height="300">
+	<defs>
+		<filter id="f1" x="0" y="0" width="200%" height="200%">
+		<feOffset result="offOut" in="SourceAlpha" dx="10" dy="10" />
+		<feGaussianBlur result="blurOut" in="offOut" stdDeviation="10" />
+		<feBlend in="SourceGraphic" in2="blurOut" mode="normal" /></filter>
+		<radialGradient id="grad1" cx="0%" cy="100%" r="150%" fx="0%"
+			fy="100%">
+		<stop offset="0%" style="stop-color:white;stop-opacity:0.1" />
+		<stop offset="100%" style="stop-color:gold;stop-opacity:0.7" /></radialGradient>
+		<linearGradient id="grad3" cx="0%" cy="100%" r="150%" fx="0%"
+			fy="100%">
+		<stop offset="0%" style="stop-color:green;stop-opacity:0.7" />
+		<stop offset="50%" style="stop-color:yellow;stop-opacity:0.7" />
+		<stop offset="100%" style="stop-color:red;stop-opacity:0.7" />
+		</linearGradient>
+	</defs>
+<rect width="90%" height="90%" stroke="black" stroke-width="1" fill="url(#grad1)" filter="url(#f1)"/>
+			<line x1="30" y1="30" x2="30" y2="240"
+			style="stroke:black;stroke-width:1" />
+		<line x1="30" y1="240" x2="350" y2="240"
+			style="stroke:black;stroke-width:1" />
+		<polygon points="25,50 30,30 35,50"
+			style="fill:black;stroke:black;stroke-width:1" />
+		<polygon points="350,240 330,245 330,235"
+			style="fill:black;stroke:black;stroke-width:1" />
+		<!-- Scale Marks-->
+		<!--<line x1="40" y1="240" x2="40" y2="245"
+			style="stroke:black;stroke-width:1" />
+		<text x="42" y="253" font-size="8">0.6s</text>
+		<line x1="320" y1="240" x2="320" y2="245"
+			style="stroke:black;stroke-width:1" />
+		<text x="322" y="253" font-size="8">11.6s</text>-->
+
+		<text x="60" y="220" font-weight="bold" font-size="14"
+			transform="rotate(-90 20,220)">Frequency</text>
+			<text x="140" y="260" font-weight="bold" font-size="14">Duration</text>
+		<!-- Polygon -->
+		<polygon
+			points="40,240 40,102 68,102 68,240 68,240 68,50 96,50 96,240 96,240 96,137 124,137 124,240 124,240 124,154 152,154 152,240 152,240 152,171 180,171 180,240 180,240 180,189 208,189 208,240 208,240 208,189 236,189 236,240 236,240 236,223 264,223 264,240 264,240 264,240 292,240 292,240 292,240 292,223 320,223 320,240 "
+			style="stroke:black;stroke-width:1" fill="url(#grad3)" />
+		<text x="54" y="100" font-weight="bold" font-size="14">8</text><line x1="40" y1="240" x2="40" y2="242" style="stroke:black;stroke-width:1" /><text x="42" y="248" font-size="8">4.45</text><text x="75" y="48" font-weight="bold" font-size="14">11</text><line x1="68" y1="240" x2="68" y2="242" style="stroke:black;stroke-width:1" /><text x="70" y="248" font-size="8">5.50</text><text x="110" y="135" font-weight="bold" font-size="14">6</text><line x1="96" y1="240" x2="96" y2="242" style="stroke:black;stroke-width:1" /><text x="98" y="248" font-size="8">6.56</text><text x="138" y="152" font-weight="bold" font-size="14">5</text><line x1="124" y1="240" x2="124" y2="242" style="stroke:black;stroke-width:1" /><text x="126" y="248" font-size="8">7.61</text><text x="166" y="169" font-weight="bold" font-size="14">4</text><line x1="152" y1="240" x2="152" y2="242" style="stroke:black;stroke-width:1" /><text x="154" y="248" font-size="8">8.67</text><text x="194" y="187" font-weight="bold" font-size="14">3</text><line x1="180" y1="240" x2="180" y2="242" style="stroke:black;stroke-width:1" /><text x="182" y="248" font-size="8">9.72</text><text x="222" y="187" font-weight="bold" font-size="14">3</text><line x1="208" y1="240" x2="208" y2="242" style="stroke:black;stroke-width:1" /><text x="210" y="248" font-size="8">10.78</text><text x="250" y="221" font-weight="bold" font-size="14">1</text><line x1="236" y1="240" x2="236" y2="242" style="stroke:black;stroke-width:1" /><text x="238" y="248" font-size="8">11.84</text><text x="-2147483370" y="238" font-weight="bold" font-size="14">0</text><line x1="264" y1="240" x2="264" y2="242" style="stroke:black;stroke-width:1" /><text x="266" y="248" font-size="8">12.89</text><text x="306" y="221" font-weight="bold" font-size="14">1</text><line x1="292" y1="240" x2="292" y2="242" style="stroke:black;stroke-width:1" /><text x="294" y="248" font-size="8">13.95</text><line x1="320" y1="240" x2="320" y2="242" style="stroke:black;stroke-width:1" /><text x="322" y="248" font-size="8">15.00</text>
+</svg></td><td valign="top" class="none"><p><table><tr><th colspan="2">Duration Characteristic</th></tr><tr><th>Average</th><td>7.65s</td></tr><tr><th>Median</th><td>7.04s</td></tr><tr><th>Variance</th><td>5.42</td></tr><tr><th>Skewness</th><td>1.02</td></tr><tr><th>Minimum</th><td>4.45s</td></tr><tr><th>Maximum</th><td>15.00s</td></tr><tr><th>Total</th><td>321.23s</td></tr></table></p></td></tr></table></p><p><a href="#top">To Overview Table</a></p><h3><a id="_5E_28_3F_3AI-_7C_29start-the-application_24">^(?:I |)start the application$</a></h3><p><table><tr><th>Step Name</th><th>Duration</th><th>Location</th></tr><tr><td>I start the application</td><td> - </td><td> - </td></tr><tr><td></td><td>2.13238E-4</td><td>Startup.feature:5</td></tr><tr><td></td><td>1.78424E-4</td><td>Startup.feature:5</td></tr></table></p><p><table class="none"><tr><td class="none"><svg  xmlns="http://www.w3.org/2000/svg" version="1.1" width="400" height="300">
+	<defs>
+		<filter id="f1" x="0" y="0" width="200%" height="200%">
+		<feOffset result="offOut" in="SourceAlpha" dx="10" dy="10" />
+		<feGaussianBlur result="blurOut" in="offOut" stdDeviation="10" />
+		<feBlend in="SourceGraphic" in2="blurOut" mode="normal" /></filter>
+		<radialGradient id="grad4" cx="0%" cy="100%" r="150%" fx="0%"
+			fy="100%">
+		<stop offset="0%" style="stop-color:white;stop-opacity:0.1" />
+		<stop offset="100%" style="stop-color:silver;stop-opacity:0.7" /></radialGradient>
+	</defs>
+<rect width="90%" height="90%" stroke="black" stroke-width="1" fill="url(#grad4)" filter="url(#f1)"/>
+			<line x1="30" y1="30" x2="30" y2="240"
+			style="stroke:black;stroke-width:1" />
+		<line x1="30" y1="240" x2="350" y2="240"
+			style="stroke:black;stroke-width:1" />
+		<polygon points="25,50 30,30 35,50"
+			style="fill:black;stroke:black;stroke-width:1" />
+		<polygon points="350,240 330,245 330,235"
+			style="fill:black;stroke:black;stroke-width:1" />
+		<!-- Scale Marks-->
+		<line x1="40" y1="240" x2="40" y2="245"
+			style="stroke:black;stroke-width:1" />
+		<text x="42" y="253" font-size="8">0.0s</text>
+		<line x1="320" y1="240" x2="320" y2="245"
+			style="stroke:black;stroke-width:1" />
+		<text x="322" y="253" font-size="8">0.0s</text>
+
+		<text x="60" y="220" font-weight="bold" font-size="14"
+			transform="rotate(-90 20,220)">Frequency</text>
+			<text x="140" y="260" font-weight="bold" font-size="14">Duration</text>
+		<!-- Polygon -->
+			<text x="22%" y="55%" font-weight="bold" font-size="120" fill="gray">N/A</text>
+</svg></td><td valign="top" class="none"><p><table><tr><th colspan="2">Duration Characteristic</th></tr><tr><th>Average</th><td>0.00s</td></tr><tr><th>Median</th><td>0.00s</td></tr><tr><th>Variance</th><td>0.00</td></tr><tr><th>Skewness</th><td>0.00</td></tr><tr><th>Minimum</th><td>0.00s</td></tr><tr><th>Maximum</th><td>0.00s</td></tr><tr><th>Total</th><td>0.00s</td></tr></table></p></td></tr></table></p><p><a href="#top">To Overview Table</a></p><h3><a id="_5E_28_3F_3AI-should-see-_7C_29the-_22_28_5B_5E_22_5D*_29_22-list-is-not-empty_24">^(?:I should see |)the "([^"]*)" list is not empty$</a></h3><p><table><tr><th>Step Name</th><th>Duration</th><th>Location</th></tr><tr><td>the "Search Results" list is not empty</td><td> - </td><td> - </td></tr><tr><td></td><td>1.353685766</td><td>LiveTrainTimes.feature:13</td></tr><tr><td></td><td>0.595681818</td><td>LiveTrainTimes.feature:13</td></tr><tr><td></td><td>0.806907698</td><td>LiveTrainTimes.feature:13</td></tr><tr><td></td><td>1.135839474</td><td>LiveTrainTimes.feature:13</td></tr><tr><td></td><td>0.265157287</td><td>journeysearch/BasicJourneySearch.feature:44</td></tr><tr><td></td><td>0.312519499</td><td>journeysearch/BasicJourneySearch.feature:44</td></tr><tr><td></td><td>0.367668069</td><td>journeysearch/BasicJourneySearch.feature:44</td></tr><tr><td></td><td>0.26632591</td><td>journeysearch/BasicJourneySearch.feature:44</td></tr><tr><td></td><td>0.442867348</td><td>journeysearch/BasicJourneySearch.feature:44</td></tr><tr><td></td><td>0.351836589</td><td>journeysearch/BasicJourneySearch.feature:44</td></tr><tr><td></td><td>0.494490633</td><td>journeysearch/BasicJourneySearch.feature:44</td></tr><tr><td></td><td>0.256142385</td><td>journeysearch/BasicJourneySearch.feature:44</td></tr><tr><td></td><td>0.394167127</td><td>journeysearch/BasicJourneySearch.feature:44</td></tr><tr><td></td><td>0.315224975</td><td>journeysearch/BasicJourneySearch.feature:44</td></tr><tr><td></td><td>0.168687795</td><td>journeysearch/BasicJourneySearch.feature:70</td></tr><tr><td></td><td>0.482666817</td><td>journeysearch/BasicJourneySearch.feature:75</td></tr><tr><td></td><td>0.190857156</td><td>journeysearch/BasicJourneySearch.feature:70</td></tr><tr><td></td><td>0.20429013</td><td>journeysearch/BasicJourneySearch.feature:75</td></tr><tr><td></td><td>0.445537004</td><td>journeysearch/BasicJourneySearch.feature:70</td></tr><tr><td></td><td>0.181184464</td><td>journeysearch/BasicJourneySearch.feature:75</td></tr><tr><td></td><td>0.243197147</td><td>journeysearch/BasicJourneySearch.feature:70</td></tr><tr><td></td><td>0.252222426</td><td>journeysearch/BasicJourneySearch.feature:75</td></tr><tr><td></td><td>0.390401154</td><td>journeysearch/BasicJourneySearch.feature:70</td></tr><tr><td></td><td>0.326696964</td><td>journeysearch/BasicJourneySearch.feature:75</td></tr><tr><td></td><td>0.231846337</td><td>journeysearch/BasicJourneySearch.feature:170</td></tr><tr><td></td><td>0.278064364</td><td>journeysearch/BasicJourneySearch.feature:189</td></tr><tr><td></td><td>0.121629538</td><td>journeysearch/BasicJourneySearch.feature:200</td></tr><tr><td></td><td>0.140304411</td><td>journeysearch/BasicJourneySearch.feature:203</td></tr></table></p><p><table class="none"><tr><td class="none"><svg  xmlns="http://www.w3.org/2000/svg" version="1.1" width="400" height="300">
+	<defs>
+		<filter id="f1" x="0" y="0" width="200%" height="200%">
+		<feOffset result="offOut" in="SourceAlpha" dx="10" dy="10" />
+		<feGaussianBlur result="blurOut" in="offOut" stdDeviation="10" />
+		<feBlend in="SourceGraphic" in2="blurOut" mode="normal" /></filter>
+		<radialGradient id="grad1" cx="0%" cy="100%" r="150%" fx="0%"
+			fy="100%">
+		<stop offset="0%" style="stop-color:white;stop-opacity:0.1" />
+		<stop offset="100%" style="stop-color:gold;stop-opacity:0.7" /></radialGradient>
+		<linearGradient id="grad3" cx="0%" cy="100%" r="150%" fx="0%"
+			fy="100%">
+		<stop offset="0%" style="stop-color:green;stop-opacity:0.7" />
+		<stop offset="50%" style="stop-color:yellow;stop-opacity:0.7" />
+		<stop offset="100%" style="stop-color:red;stop-opacity:0.7" />
+		</linearGradient>
+	</defs>
+<rect width="90%" height="90%" stroke="black" stroke-width="1" fill="url(#grad1)" filter="url(#f1)"/>
+			<line x1="30" y1="30" x2="30" y2="240"
+			style="stroke:black;stroke-width:1" />
+		<line x1="30" y1="240" x2="350" y2="240"
+			style="stroke:black;stroke-width:1" />
+		<polygon points="25,50 30,30 35,50"
+			style="fill:black;stroke:black;stroke-width:1" />
+		<polygon points="350,240 330,245 330,235"
+			style="fill:black;stroke:black;stroke-width:1" />
+		<!-- Scale Marks-->
+		<!--<line x1="40" y1="240" x2="40" y2="245"
+			style="stroke:black;stroke-width:1" />
+		<text x="42" y="253" font-size="8">0.6s</text>
+		<line x1="320" y1="240" x2="320" y2="245"
+			style="stroke:black;stroke-width:1" />
+		<text x="322" y="253" font-size="8">11.6s</text>-->
+
+		<text x="60" y="220" font-weight="bold" font-size="14"
+			transform="rotate(-90 20,220)">Frequency</text>
+			<text x="140" y="260" font-weight="bold" font-size="14">Duration</text>
+		<!-- Polygon -->
+		<polygon
+			points="40,240 40,50 71,50 71,240 71,240 71,50 102,50 102,240 102,240 102,164 133,164 133,240 133,240 133,221 164,221 164,240 164,240 164,240 195,240 195,240 195,240 195,221 226,221 226,240 226,240 226,240 257,240 257,240 257,240 257,221 288,221 288,240 288,240 288,221 319,221 319,240 "
+			style="stroke:black;stroke-width:1" fill="url(#grad3)" />
+		<text x="48" y="48" font-weight="bold" font-size="14">10</text><line x1="40" y1="240" x2="40" y2="242" style="stroke:black;stroke-width:1" /><text x="42" y="248" font-size="8">0.12</text><text x="79" y="48" font-weight="bold" font-size="14">10</text><line x1="71" y1="240" x2="71" y2="242" style="stroke:black;stroke-width:1" /><text x="73" y="248" font-size="8">0.26</text><text x="117" y="162" font-weight="bold" font-size="14">4</text><line x1="102" y1="240" x2="102" y2="242" style="stroke:black;stroke-width:1" /><text x="104" y="248" font-size="8">0.40</text><text x="148" y="219" font-weight="bold" font-size="14">1</text><line x1="133" y1="240" x2="133" y2="242" style="stroke:black;stroke-width:1" /><text x="135" y="248" font-size="8">0.53</text><text x="-2147483469" y="238" font-weight="bold" font-size="14">0</text><line x1="164" y1="240" x2="164" y2="242" style="stroke:black;stroke-width:1" /><text x="166" y="248" font-size="8">0.67</text><text x="210" y="219" font-weight="bold" font-size="14">1</text><line x1="195" y1="240" x2="195" y2="242" style="stroke:black;stroke-width:1" /><text x="197" y="248" font-size="8">0.81</text><text x="-2147483407" y="238" font-weight="bold" font-size="14">0</text><line x1="226" y1="240" x2="226" y2="242" style="stroke:black;stroke-width:1" /><text x="228" y="248" font-size="8">0.94</text><text x="272" y="219" font-weight="bold" font-size="14">1</text><line x1="257" y1="240" x2="257" y2="242" style="stroke:black;stroke-width:1" /><text x="259" y="248" font-size="8">1.08</text><text x="303" y="219" font-weight="bold" font-size="14">1</text><line x1="288" y1="240" x2="288" y2="242" style="stroke:black;stroke-width:1" /><text x="290" y="248" font-size="8">1.22</text><line x1="320" y1="240" x2="320" y2="242" style="stroke:black;stroke-width:1" /><text x="322" y="248" font-size="8">1.35</text>
+</svg></td><td valign="top" class="none"><p><table><tr><th colspan="2">Duration Characteristic</th></tr><tr><th>Average</th><td>0.39s</td></tr><tr><th>Median</th><td>0.32s</td></tr><tr><th>Variance</th><td>0.08</td></tr><tr><th>Skewness</th><td>2.12</td></tr><tr><th>Minimum</th><td>0.12s</td></tr><tr><th>Maximum</th><td>1.35s</td></tr><tr><th>Total</th><td>11.02s</td></tr></table></p></td></tr></table></p><p><a href="#top">To Overview Table</a></p><h3><a id="_5E_28_3F_3AI-_7C_29go-to-the-Payment-cards-screen_24">^(?:I |)go to the Payment cards screen$</a></h3><p><table><tr><th>Step Name</th><th>Duration</th><th>Location</th></tr><tr><td>go to the Payment cards screen</td><td> - </td><td> - </td></tr><tr><td></td><td>38.020791517</td><td>Payments.feature:20</td></tr><tr><td></td><td>35.381869971</td><td>Payments.feature:20</td></tr><tr><td></td><td>33.246761263</td><td>Payments.feature:20</td></tr><tr><td></td><td>33.129796175</td><td>Payments.feature:20</td></tr><tr><td></td><td>32.489164376</td><td>Payments.feature:20</td></tr><tr><td></td><td>38.784267339</td><td>Payments.feature:20</td></tr></table></p><p><table class="none"><tr><td class="none"><svg  xmlns="http://www.w3.org/2000/svg" version="1.1" width="400" height="300">
+	<defs>
+		<filter id="f1" x="0" y="0" width="200%" height="200%">
+		<feOffset result="offOut" in="SourceAlpha" dx="10" dy="10" />
+		<feGaussianBlur result="blurOut" in="offOut" stdDeviation="10" />
+		<feBlend in="SourceGraphic" in2="blurOut" mode="normal" /></filter>
+		<radialGradient id="grad1" cx="0%" cy="100%" r="150%" fx="0%"
+			fy="100%">
+		<stop offset="0%" style="stop-color:white;stop-opacity:0.1" />
+		<stop offset="100%" style="stop-color:gold;stop-opacity:0.7" /></radialGradient>
+		<linearGradient id="grad3" cx="0%" cy="100%" r="150%" fx="0%"
+			fy="100%">
+		<stop offset="0%" style="stop-color:green;stop-opacity:0.7" />
+		<stop offset="50%" style="stop-color:yellow;stop-opacity:0.7" />
+		<stop offset="100%" style="stop-color:red;stop-opacity:0.7" />
+		</linearGradient>
+	</defs>
+<rect width="90%" height="90%" stroke="black" stroke-width="1" fill="url(#grad1)" filter="url(#f1)"/>
+			<line x1="30" y1="30" x2="30" y2="240"
+			style="stroke:black;stroke-width:1" />
+		<line x1="30" y1="240" x2="350" y2="240"
+			style="stroke:black;stroke-width:1" />
+		<polygon points="25,50 30,30 35,50"
+			style="fill:black;stroke:black;stroke-width:1" />
+		<polygon points="350,240 330,245 330,235"
+			style="fill:black;stroke:black;stroke-width:1" />
+		<!-- Scale Marks-->
+		<!--<line x1="40" y1="240" x2="40" y2="245"
+			style="stroke:black;stroke-width:1" />
+		<text x="42" y="253" font-size="8">0.6s</text>
+		<line x1="320" y1="240" x2="320" y2="245"
+			style="stroke:black;stroke-width:1" />
+		<text x="322" y="253" font-size="8">11.6s</text>-->
+
+		<text x="60" y="220" font-weight="bold" font-size="14"
+			transform="rotate(-90 20,220)">Frequency</text>
+			<text x="140" y="260" font-weight="bold" font-size="14">Duration</text>
+		<!-- Polygon -->
+		<polygon
+			points="40,240 40,50 180,50 180,240 180,240 180,145 320,145 320,240 "
+			style="stroke:black;stroke-width:1" fill="url(#grad3)" />
+		<text x="110" y="48" font-weight="bold" font-size="14">4</text><line x1="40" y1="240" x2="40" y2="242" style="stroke:black;stroke-width:1" /><text x="42" y="248" font-size="8">32.49</text><text x="250" y="143" font-weight="bold" font-size="14">2</text><line x1="180" y1="240" x2="180" y2="242" style="stroke:black;stroke-width:1" /><text x="182" y="248" font-size="8">35.64</text><line x1="320" y1="240" x2="320" y2="242" style="stroke:black;stroke-width:1" /><text x="322" y="248" font-size="8">38.78</text>
+</svg></td><td valign="top" class="none"><p><table><tr><th colspan="2">Duration Characteristic</th></tr><tr><th>Average</th><td>35.18s</td></tr><tr><th>Median</th><td>35.38s</td></tr><tr><th>Variance</th><td>6.05</td></tr><tr><th>Skewness</th><td>0.39</td></tr><tr><th>Minimum</th><td>32.49s</td></tr><tr><th>Maximum</th><td>38.78s</td></tr><tr><th>Total</th><td>211.05s</td></tr></table></p></td></tr></table></p><p><a href="#top">To Overview Table</a></p><h3><a id="_5E_28_3F_3AI-should-see-_7C_29the-_22_28_5B_5E_22_5D*_29_22-screen_24">^(?:I should see |)the "([^"]*)" screen$</a></h3><p><table><tr><th>Step Name</th><th>Duration</th><th>Location</th></tr><tr><td>I should see the "Live Train Times Search Results" screen</td><td> - </td><td> - </td></tr><tr><td></td><td>3.647227441</td><td>LiveTrainTimes.feature:11</td></tr><tr><td></td><td>2.995633815</td><td>LiveTrainTimes.feature:11</td></tr><tr><td></td><td>2.498383812</td><td>LiveTrainTimes.feature:11</td></tr><tr><td></td><td>2.801620941</td><td>LiveTrainTimes.feature:11</td></tr><tr><td>I should see the "Live Progress" screen</td><td> - </td><td> - </td></tr><tr><td></td><td>0.891782012</td><td>LiveTrainTimes.feature:15</td></tr><tr><td></td><td>0.821286684</td><td>LiveTrainTimes.feature:15</td></tr><tr><td></td><td>0.586456692</td><td>LiveTrainTimes.feature:15</td></tr><tr><td></td><td>2.133319787</td><td>LiveTrainTimes.feature:15</td></tr><tr><td>I should see the "Alert" screen</td><td> - </td><td> - </td></tr><tr><td></td><td>0.022697601</td><td>LiveTrainTimes.feature:46</td></tr><tr><td></td><td>0.025336126</td><td>LiveTrainTimes.feature:59</td></tr><tr><td>I should see the "Out Search Results" screen</td><td> - </td><td> - </td></tr><tr><td></td><td>14.920694305</td><td>LiveTrainTimes.feature:50</td></tr><tr><td></td><td>17.913544312</td><td>booking/JourneyOptions.feature:16</td></tr><tr><td></td><td>16.621680086</td><td>booking/JourneyOptions.feature:34</td></tr><tr><td></td><td>15.407919121</td><td>booking/JourneyOptions.feature:91</td></tr><tr><td></td><td>20.919284994</td><td>journeysearch/BON-88_SingleOptionsForJourney.feature:19</td></tr><tr><td></td><td>24.451946188</td><td>journeysearch/BON-88_SingleOptionsForJourney.feature:84</td></tr><tr><td></td><td>17.425042413</td><td>journeysearch/BasicJourneySearch.feature:11</td></tr><tr><td></td><td>17.533027749</td><td>journeysearch/BasicJourneySearch.feature:26</td></tr><tr><td></td><td>13.671049478</td><td>journeysearch/BasicJourneySearch.feature:43</td></tr><tr><td></td><td>13.324188324</td><td>journeysearch/BasicJourneySearch.feature:43</td></tr><tr><td></td><td>13.115708759</td><td>journeysearch/BasicJourneySearch.feature:43</td></tr><tr><td></td><td>13.912846352</td><td>journeysearch/BasicJourneySearch.feature:43</td></tr><tr><td></td><td>13.691007459</td><td>journeysearch/BasicJourneySearch.feature:43</td></tr><tr><td></td><td>13.054330768</td><td>journeysearch/BasicJourneySearch.feature:43</td></tr><tr><td></td><td>17.531733258</td><td>journeysearch/BasicJourneySearch.feature:43</td></tr><tr><td></td><td>12.116847589</td><td>journeysearch/BasicJourneySearch.feature:43</td></tr><tr><td></td><td>13.652071988</td><td>journeysearch/BasicJourneySearch.feature:43</td></tr><tr><td></td><td>12.94674379</td><td>journeysearch/BasicJourneySearch.feature:43</td></tr><tr><td></td><td>131.129969912</td><td>journeysearch/BasicJourneySearch.feature:69</td></tr><tr><td></td><td>129.22640593</td><td>journeysearch/BasicJourneySearch.feature:69</td></tr><tr><td></td><td>14.210812459</td><td>journeysearch/BasicJourneySearch.feature:69</td></tr><tr><td></td><td>14.053645194</td><td>journeysearch/BasicJourneySearch.feature:69</td></tr><tr><td></td><td>16.365722149</td><td>journeysearch/BasicJourneySearch.feature:69</td></tr><tr><td></td><td>129.16960937</td><td>journeysearch/BasicJourneySearch.feature:138</td></tr><tr><td></td><td>131.479345397</td><td>journeysearch/BasicJourneySearch.feature:153</td></tr><tr><td></td><td>127.416822885</td><td>journeysearch/BasicJourneySearch.feature:169</td></tr><tr><td></td><td>22.670236363</td><td>journeysearch/BasicJourneySearch.feature:188</td></tr><tr><td></td><td>14.694486884</td><td>journeysearch/BasicJourneySearch.feature:199</td></tr><tr><td></td><td>15.060040653</td><td>journeysearch/BasicJourneySearch.feature:225</td></tr><tr><td>I should see the "Landing Page" screen</td><td> - </td><td> - </td></tr><tr><td></td><td>11.962084521</td><td>Startup.feature:6</td></tr><tr><td></td><td>4.404825668</td><td>Startup.feature:6</td></tr><tr><td>I should see the "Home Page" screen</td><td> - </td><td> - </td></tr><tr><td></td><td>14.730382128</td><td>Startup.feature:8</td></tr><tr><td>I should see the "Login Page" screen</td><td> - </td><td> - </td></tr><tr><td></td><td>0.788702149</td><td>Startup.feature:8</td></tr><tr><td>I should see the "Select Ticket" screen</td><td> - </td><td> - </td></tr><tr><td></td><td>1.980043022</td><td>booking/JourneyOptions.feature:93</td></tr><tr><td></td><td>2.348480354</td><td>journeysearch/BON-88_SingleOptionsForJourney.feature:23</td></tr><tr><td></td><td>3.118602701</td><td>journeysearch/BON-88_SingleOptionsForJourney.feature:88</td></tr><tr><td></td><td>2.141701001</td><td>journeysearch/BasicJourneySearch.feature:28</td></tr><tr><td></td><td>1.525789381</td><td>journeysearch/BasicJourneySearch.feature:205</td></tr><tr><td>I should see the "Payment" screen</td><td> - </td><td> - </td></tr><tr><td></td><td>0.016919428</td><td>booking/JourneyOptions.feature:97</td></tr><tr><td></td><td>0.018759566</td><td>journeysearch/BasicJourneySearch.feature:30</td></tr><tr><td>I should see the "Return Search Results" screen</td><td> - </td><td> - </td></tr><tr><td></td><td>19.011181424</td><td>journeysearch/BON-88_SingleOptionsForJourney.feature:21</td></tr><tr><td></td><td>14.972822732</td><td>journeysearch/BON-88_SingleOptionsForJourney.feature:86</td></tr><tr><td></td><td>15.004689222</td><td>journeysearch/BasicJourneySearch.feature:74</td></tr><tr><td></td><td>130.816432429</td><td>journeysearch/BasicJourneySearch.feature:74</td></tr><tr><td></td><td>15.112543334</td><td>journeysearch/BasicJourneySearch.feature:74</td></tr><tr><td></td><td>15.889661015</td><td>journeysearch/BasicJourneySearch.feature:74</td></tr><tr><td></td><td>16.270871188</td><td>journeysearch/BasicJourneySearch.feature:74</td></tr><tr><td></td><td>14.642327659</td><td>journeysearch/BasicJourneySearch.feature:202</td></tr><tr><td></td><td>14.684614009</td><td>journeysearch/BasicJourneySearch.feature:228</td></tr><tr><td>I should see the "Journey Search" screen</td><td> - </td><td> - </td></tr><tr><td></td><td>3.365928358</td><td>journeysearch/BasicJourneySearch.feature:232</td></tr></table></p><p><table class="none"><tr><td class="none"><svg  xmlns="http://www.w3.org/2000/svg" version="1.1" width="400" height="300">
+	<defs>
+		<filter id="f1" x="0" y="0" width="200%" height="200%">
+		<feOffset result="offOut" in="SourceAlpha" dx="10" dy="10" />
+		<feGaussianBlur result="blurOut" in="offOut" stdDeviation="10" />
+		<feBlend in="SourceGraphic" in2="blurOut" mode="normal" /></filter>
+		<radialGradient id="grad1" cx="0%" cy="100%" r="150%" fx="0%"
+			fy="100%">
+		<stop offset="0%" style="stop-color:white;stop-opacity:0.1" />
+		<stop offset="100%" style="stop-color:gold;stop-opacity:0.7" /></radialGradient>
+		<linearGradient id="grad3" cx="0%" cy="100%" r="150%" fx="0%"
+			fy="100%">
+		<stop offset="0%" style="stop-color:green;stop-opacity:0.7" />
+		<stop offset="50%" style="stop-color:yellow;stop-opacity:0.7" />
+		<stop offset="100%" style="stop-color:red;stop-opacity:0.7" />
+		</linearGradient>
+	</defs>
+<rect width="90%" height="90%" stroke="black" stroke-width="1" fill="url(#grad1)" filter="url(#f1)"/>
+			<line x1="30" y1="30" x2="30" y2="240"
+			style="stroke:black;stroke-width:1" />
+		<line x1="30" y1="240" x2="350" y2="240"
+			style="stroke:black;stroke-width:1" />
+		<polygon points="25,50 30,30 35,50"
+			style="fill:black;stroke:black;stroke-width:1" />
+		<polygon points="350,240 330,245 330,235"
+			style="fill:black;stroke:black;stroke-width:1" />
+		<!-- Scale Marks-->
+		<!--<line x1="40" y1="240" x2="40" y2="245"
+			style="stroke:black;stroke-width:1" />
+		<text x="42" y="253" font-size="8">0.6s</text>
+		<line x1="320" y1="240" x2="320" y2="245"
+			style="stroke:black;stroke-width:1" />
+		<text x="322" y="253" font-size="8">11.6s</text>-->
+
+		<text x="60" y="220" font-weight="bold" font-size="14"
+			transform="rotate(-90 20,220)">Frequency</text>
+			<text x="140" y="260" font-weight="bold" font-size="14">Duration</text>
+		<!-- Polygon -->
+		<polygon
+			points="40,240 40,77 68,77 68,240 68,240 68,50 96,50 96,240 96,240 96,240 124,240 124,240 124,240 124,240 152,240 152,240 152,240 152,240 180,240 180,240 180,240 180,240 208,240 208,240 208,240 208,240 236,240 236,240 236,240 236,240 264,240 264,240 264,240 264,240 292,240 292,240 292,240 292,201 320,201 320,240 "
+			style="stroke:black;stroke-width:1" fill="url(#grad3)" />
+		<text x="47" y="75" font-weight="bold" font-size="14">25</text><line x1="40" y1="240" x2="40" y2="242" style="stroke:black;stroke-width:1" /><text x="42" y="248" font-size="8">0.02</text><text x="75" y="48" font-weight="bold" font-size="14">29</text><line x1="68" y1="240" x2="68" y2="242" style="stroke:black;stroke-width:1" /><text x="70" y="248" font-size="8">13.16</text><text x="-2147483538" y="238" font-weight="bold" font-size="14">0</text><line x1="96" y1="240" x2="96" y2="242" style="stroke:black;stroke-width:1" /><text x="98" y="248" font-size="8">26.31</text><text x="-2147483510" y="238" font-weight="bold" font-size="14">0</text><line x1="124" y1="240" x2="124" y2="242" style="stroke:black;stroke-width:1" /><text x="126" y="248" font-size="8">39.46</text><text x="-2147483482" y="238" font-weight="bold" font-size="14">0</text><line x1="152" y1="240" x2="152" y2="242" style="stroke:black;stroke-width:1" /><text x="154" y="248" font-size="8">52.60</text><text x="-2147483454" y="238" font-weight="bold" font-size="14">0</text><line x1="180" y1="240" x2="180" y2="242" style="stroke:black;stroke-width:1" /><text x="182" y="248" font-size="8">65.75</text><text x="-2147483426" y="238" font-weight="bold" font-size="14">0</text><line x1="208" y1="240" x2="208" y2="242" style="stroke:black;stroke-width:1" /><text x="210" y="248" font-size="8">78.89</text><text x="-2147483398" y="238" font-weight="bold" font-size="14">0</text><line x1="236" y1="240" x2="236" y2="242" style="stroke:black;stroke-width:1" /><text x="238" y="248" font-size="8">92.04</text><text x="-2147483370" y="238" font-weight="bold" font-size="14">0</text><line x1="264" y1="240" x2="264" y2="242" style="stroke:black;stroke-width:1" /><text x="266" y="248" font-size="8">105.19</text><text x="306" y="199" font-weight="bold" font-size="14">6</text><line x1="292" y1="240" x2="292" y2="242" style="stroke:black;stroke-width:1" /><text x="294" y="248" font-size="8">118.33</text><line x1="320" y1="240" x2="320" y2="242" style="stroke:black;stroke-width:1" /><text x="322" y="248" font-size="8">131.48</text>
+</svg></td><td valign="top" class="none"><p><table><tr><th colspan="2">Duration Characteristic</th></tr><tr><th>Average</th><td>22.45s</td></tr><tr><th>Median</th><td>14.05s</td></tr><tr><th>Variance</th><td>1327.47</td></tr><tr><th>Skewness</th><td>2.50</td></tr><tr><th>Minimum</th><td>0.02s</td></tr><tr><th>Maximum</th><td>131.48s</td></tr><tr><th>Total</th><td>1346.92s</td></tr></table></p></td></tr></table></p><p><a href="#top">To Overview Table</a></p><h3><a id="_5E_28_3F_3AI-should-see-_7C_29all-_22_28.*_3F_29_22-list-items-contain-one-of-the-following-labels_3A_24">^(?:I should see |)all "(.*?)" list items contain one of the following labels:$</a></h3><p><table><tr><th>Step Name</th><th>Duration</th><th>Location</th></tr><tr><td>all "Search Results" list items contain one of the following labels:</td><td> - </td><td> - </td></tr><tr><td></td><td>0.622197615</td><td>journeysearch/BasicJourneySearch.feature:141</td></tr></table></p><p><table class="none"><tr><td class="none"><svg  xmlns="http://www.w3.org/2000/svg" version="1.1" width="400" height="300">
+	<defs>
+		<filter id="f1" x="0" y="0" width="200%" height="200%">
+		<feOffset result="offOut" in="SourceAlpha" dx="10" dy="10" />
+		<feGaussianBlur result="blurOut" in="offOut" stdDeviation="10" />
+		<feBlend in="SourceGraphic" in2="blurOut" mode="normal" /></filter>
+		<radialGradient id="grad4" cx="0%" cy="100%" r="150%" fx="0%"
+			fy="100%">
+		<stop offset="0%" style="stop-color:white;stop-opacity:0.1" />
+		<stop offset="100%" style="stop-color:silver;stop-opacity:0.7" /></radialGradient>
+	</defs>
+<rect width="90%" height="90%" stroke="black" stroke-width="1" fill="url(#grad4)" filter="url(#f1)"/>
+			<line x1="30" y1="30" x2="30" y2="240"
+			style="stroke:black;stroke-width:1" />
+		<line x1="30" y1="240" x2="350" y2="240"
+			style="stroke:black;stroke-width:1" />
+		<polygon points="25,50 30,30 35,50"
+			style="fill:black;stroke:black;stroke-width:1" />
+		<polygon points="350,240 330,245 330,235"
+			style="fill:black;stroke:black;stroke-width:1" />
+		<!-- Scale Marks-->
+		<line x1="40" y1="240" x2="40" y2="245"
+			style="stroke:black;stroke-width:1" />
+		<text x="42" y="253" font-size="8">0.0s</text>
+		<line x1="320" y1="240" x2="320" y2="245"
+			style="stroke:black;stroke-width:1" />
+		<text x="322" y="253" font-size="8">0.0s</text>
+
+		<text x="60" y="220" font-weight="bold" font-size="14"
+			transform="rotate(-90 20,220)">Frequency</text>
+			<text x="140" y="260" font-weight="bold" font-size="14">Duration</text>
+		<!-- Polygon -->
+			<text x="22%" y="55%" font-weight="bold" font-size="120" fill="gray">N/A</text>
+</svg></td><td valign="top" class="none"><p><table><tr><th colspan="2">Duration Characteristic</th></tr><tr><th>Average</th><td>0.62s</td></tr><tr><th>Median</th><td>0.62s</td></tr><tr><th>Variance</th><td>0.00</td></tr><tr><th>Skewness</th><td>0.00</td></tr><tr><th>Minimum</th><td>0.62s</td></tr><tr><th>Maximum</th><td>0.62s</td></tr><tr><th>Total</th><td>0.62s</td></tr></table></p></td></tr></table></p><p><a href="#top">To Overview Table</a></p><h3><a id="_5E_28_3F_3AI-should-see-_7C_29all-_22_28_5B_5E_22_5D*_29_22-list-items-contain-the-_22_28_5B_5E_22_5D*_29_22-text_24">^(?:I should see |)all "([^"]*)" list items contain the "([^"]*)" text$</a></h3><p><table><tr><th>Step Name</th><th>Duration</th><th>Location</th></tr><tr><td>all "Platform Column" list items contain the "Platform" text</td><td> - </td><td> - </td></tr><tr><td></td><td>9.283466275</td><td>LiveTrainTimes.feature:16</td></tr><tr><td></td><td>8.112249755</td><td>LiveTrainTimes.feature:16</td></tr><tr><td></td><td>6.867722969</td><td>LiveTrainTimes.feature:16</td></tr><tr><td></td><td>8.334156268</td><td>LiveTrainTimes.feature:16</td></tr><tr><td>all "Tickets" list items contain the "Single" text</td><td> - </td><td> - </td></tr><tr><td></td><td>0.165903318</td><td>journeysearch/BasicJourneySearch.feature:207</td></tr></table></p><p><table class="none"><tr><td class="none"><svg  xmlns="http://www.w3.org/2000/svg" version="1.1" width="400" height="300">
+	<defs>
+		<filter id="f1" x="0" y="0" width="200%" height="200%">
+		<feOffset result="offOut" in="SourceAlpha" dx="10" dy="10" />
+		<feGaussianBlur result="blurOut" in="offOut" stdDeviation="10" />
+		<feBlend in="SourceGraphic" in2="blurOut" mode="normal" /></filter>
+		<radialGradient id="grad4" cx="0%" cy="100%" r="150%" fx="0%"
+			fy="100%">
+		<stop offset="0%" style="stop-color:white;stop-opacity:0.1" />
+		<stop offset="100%" style="stop-color:silver;stop-opacity:0.7" /></radialGradient>
+	</defs>
+<rect width="90%" height="90%" stroke="black" stroke-width="1" fill="url(#grad4)" filter="url(#f1)"/>
+			<line x1="30" y1="30" x2="30" y2="240"
+			style="stroke:black;stroke-width:1" />
+		<line x1="30" y1="240" x2="350" y2="240"
+			style="stroke:black;stroke-width:1" />
+		<polygon points="25,50 30,30 35,50"
+			style="fill:black;stroke:black;stroke-width:1" />
+		<polygon points="350,240 330,245 330,235"
+			style="fill:black;stroke:black;stroke-width:1" />
+		<!-- Scale Marks-->
+		<line x1="40" y1="240" x2="40" y2="245"
+			style="stroke:black;stroke-width:1" />
+		<text x="42" y="253" font-size="8">0.0s</text>
+		<line x1="320" y1="240" x2="320" y2="245"
+			style="stroke:black;stroke-width:1" />
+		<text x="322" y="253" font-size="8">0.0s</text>
+
+		<text x="60" y="220" font-weight="bold" font-size="14"
+			transform="rotate(-90 20,220)">Frequency</text>
+			<text x="140" y="260" font-weight="bold" font-size="14">Duration</text>
+		<!-- Polygon -->
+			<text x="22%" y="55%" font-weight="bold" font-size="120" fill="gray">N/A</text>
+</svg></td><td valign="top" class="none"><p><table><tr><th colspan="2">Duration Characteristic</th></tr><tr><th>Average</th><td>6.55s</td></tr><tr><th>Median</th><td>8.11s</td></tr><tr><th>Variance</th><td>10.79</td></tr><tr><th>Skewness</th><td>-1.30</td></tr><tr><th>Minimum</th><td>0.17s</td></tr><tr><th>Maximum</th><td>9.28s</td></tr><tr><th>Total</th><td>32.76s</td></tr></table></p></td></tr></table></p><p><a href="#top">To Overview Table</a></p><h3><a id="_5E_28_3F_3AI-_7C_29search-for-journey-using-the-following-criteria_3A_24">^(?:I |)search for journey using the following criteria:$</a></h3><p><table><tr><th>Step Name</th><th>Duration</th><th>Location</th></tr><tr><td>search for journey using the following criteria:</td><td> - </td><td> - </td></tr><tr><td></td><td>54.604728187</td><td>booking/JourneyOptions.feature:13</td></tr><tr><td></td><td>51.477918679</td><td>booking/JourneyOptions.feature:31</td></tr><tr><td></td><td>54.034234868</td><td>booking/JourneyOptions.feature:88</td></tr><tr><td></td><td>51.527481224</td><td>journeysearch/BON-80_RTJP_SeatsLeft.feature:15</td></tr><tr><td></td><td>108.099123415</td><td>journeysearch/BON-88_SingleOptionsForJourney.feature:16</td></tr><tr><td></td><td>64.310288704</td><td>journeysearch/BON-88_SingleOptionsForJourney.feature:80</td></tr><tr><td></td><td>59.257658482</td><td>journeysearch/BasicJourneySearch.feature:8</td></tr><tr><td></td><td>58.659110508</td><td>journeysearch/BasicJourneySearch.feature:23</td></tr><tr><td></td><td>82.04001639</td><td>journeysearch/BasicJourneySearch.feature:222</td></tr><tr><td>I search for journey using the following criteria:</td><td> - </td><td> - </td></tr><tr><td></td><td>62.403687841</td><td>journeysearch/BasicJourneySearch.feature:39</td></tr><tr><td></td><td>62.288033312</td><td>journeysearch/BasicJourneySearch.feature:39</td></tr><tr><td></td><td>62.285529024</td><td>journeysearch/BasicJourneySearch.feature:39</td></tr><tr><td></td><td>60.922778143</td><td>journeysearch/BasicJourneySearch.feature:39</td></tr><tr><td></td><td>64.40945999</td><td>journeysearch/BasicJourneySearch.feature:39</td></tr><tr><td></td><td>96.546386741</td><td>journeysearch/BasicJourneySearch.feature:39</td></tr><tr><td></td><td>167.23949712</td><td>journeysearch/BasicJourneySearch.feature:39</td></tr><tr><td></td><td>67.492242765</td><td>journeysearch/BasicJourneySearch.feature:39</td></tr><tr><td></td><td>94.14025855</td><td>journeysearch/BasicJourneySearch.feature:39</td></tr><tr><td></td><td>171.987783184</td><td>journeysearch/BasicJourneySearch.feature:39</td></tr><tr><td></td><td>68.616852611</td><td>journeysearch/BasicJourneySearch.feature:65</td></tr><tr><td></td><td>72.119908238</td><td>journeysearch/BasicJourneySearch.feature:65</td></tr><tr><td></td><td>78.971104779</td><td>journeysearch/BasicJourneySearch.feature:65</td></tr><tr><td></td><td>80.119951085</td><td>journeysearch/BasicJourneySearch.feature:65</td></tr><tr><td></td><td>143.215749733</td><td>journeysearch/BasicJourneySearch.feature:65</td></tr><tr><td></td><td>299.525045225</td><td>journeysearch/BasicJourneySearch.feature:65</td></tr><tr><td></td><td>23.187604025</td><td>journeysearch/BasicJourneySearch.feature:93</td></tr><tr><td></td><td>36.280618865</td><td>journeysearch/BasicJourneySearch.feature:93</td></tr><tr><td></td><td>36.195656511</td><td>journeysearch/BasicJourneySearch.feature:93</td></tr><tr><td></td><td>48.834446499</td><td>journeysearch/BasicJourneySearch.feature:93</td></tr><tr><td></td><td>63.57234919</td><td>journeysearch/BasicJourneySearch.feature:93</td></tr><tr><td></td><td>58.467306669</td><td>journeysearch/BasicJourneySearch.feature:93</td></tr><tr><td></td><td>60.577196081</td><td>journeysearch/BasicJourneySearch.feature:93</td></tr><tr><td></td><td>64.445253133</td><td>journeysearch/BasicJourneySearch.feature:134</td></tr><tr><td></td><td>77.450708605</td><td>journeysearch/BasicJourneySearch.feature:150</td></tr><tr><td></td><td>61.785460065</td><td>journeysearch/BasicJourneySearch.feature:165</td></tr><tr><td></td><td>59.243683878</td><td>journeysearch/BasicJourneySearch.feature:184</td></tr><tr><td></td><td>220.468088319</td><td>journeysearch/BasicJourneySearch.feature:196</td></tr></table></p><p><table class="none"><tr><td class="none"><svg  xmlns="http://www.w3.org/2000/svg" version="1.1" width="400" height="300">
+	<defs>
+		<filter id="f1" x="0" y="0" width="200%" height="200%">
+		<feOffset result="offOut" in="SourceAlpha" dx="10" dy="10" />
+		<feGaussianBlur result="blurOut" in="offOut" stdDeviation="10" />
+		<feBlend in="SourceGraphic" in2="blurOut" mode="normal" /></filter>
+		<radialGradient id="grad1" cx="0%" cy="100%" r="150%" fx="0%"
+			fy="100%">
+		<stop offset="0%" style="stop-color:white;stop-opacity:0.1" />
+		<stop offset="100%" style="stop-color:gold;stop-opacity:0.7" /></radialGradient>
+		<linearGradient id="grad3" cx="0%" cy="100%" r="150%" fx="0%"
+			fy="100%">
+		<stop offset="0%" style="stop-color:green;stop-opacity:0.7" />
+		<stop offset="50%" style="stop-color:yellow;stop-opacity:0.7" />
+		<stop offset="100%" style="stop-color:red;stop-opacity:0.7" />
+		</linearGradient>
+	</defs>
+<rect width="90%" height="90%" stroke="black" stroke-width="1" fill="url(#grad1)" filter="url(#f1)"/>
+			<line x1="30" y1="30" x2="30" y2="240"
+			style="stroke:black;stroke-width:1" />
+		<line x1="30" y1="240" x2="350" y2="240"
+			style="stroke:black;stroke-width:1" />
+		<polygon points="25,50 30,30 35,50"
+			style="fill:black;stroke:black;stroke-width:1" />
+		<polygon points="350,240 330,245 330,235"
+			style="fill:black;stroke:black;stroke-width:1" />
+		<!-- Scale Marks-->
+		<!--<line x1="40" y1="240" x2="40" y2="245"
+			style="stroke:black;stroke-width:1" />
+		<text x="42" y="253" font-size="8">0.6s</text>
+		<line x1="320" y1="240" x2="320" y2="245"
+			style="stroke:black;stroke-width:1" />
+		<text x="322" y="253" font-size="8">11.6s</text>-->
+
+		<text x="60" y="220" font-weight="bold" font-size="14"
+			transform="rotate(-90 20,220)">Frequency</text>
+			<text x="140" y="260" font-weight="bold" font-size="14">Duration</text>
+		<!-- Polygon -->
+		<polygon
+			points="40,240 40,206 68,206 68,240 68,240 68,50 96,50 96,240 96,240 96,197 124,197 124,240 124,240 124,232 152,232 152,240 152,240 152,232 180,232 180,240 180,240 180,223 208,223 208,240 208,240 208,240 236,240 236,240 236,240 236,232 264,232 264,240 264,240 264,240 292,240 292,240 292,240 292,232 320,232 320,240 "
+			style="stroke:black;stroke-width:1" fill="url(#grad3)" />
+		<text x="54" y="204" font-weight="bold" font-size="14">4</text><line x1="40" y1="240" x2="40" y2="242" style="stroke:black;stroke-width:1" /><text x="42" y="248" font-size="8">23.19</text><text x="75" y="48" font-weight="bold" font-size="14">22</text><line x1="68" y1="240" x2="68" y2="242" style="stroke:black;stroke-width:1" /><text x="70" y="248" font-size="8">50.82</text><text x="110" y="195" font-weight="bold" font-size="14">5</text><line x1="96" y1="240" x2="96" y2="242" style="stroke:black;stroke-width:1" /><text x="98" y="248" font-size="8">78.46</text><text x="138" y="230" font-weight="bold" font-size="14">1</text><line x1="124" y1="240" x2="124" y2="242" style="stroke:black;stroke-width:1" /><text x="126" y="248" font-size="8">106.09</text><text x="166" y="230" font-weight="bold" font-size="14">1</text><line x1="152" y1="240" x2="152" y2="242" style="stroke:black;stroke-width:1" /><text x="154" y="248" font-size="8">133.72</text><text x="194" y="221" font-weight="bold" font-size="14">2</text><line x1="180" y1="240" x2="180" y2="242" style="stroke:black;stroke-width:1" /><text x="182" y="248" font-size="8">161.36</text><text x="-2147483426" y="238" font-weight="bold" font-size="14">0</text><line x1="208" y1="240" x2="208" y2="242" style="stroke:black;stroke-width:1" /><text x="210" y="248" font-size="8">188.99</text><text x="250" y="230" font-weight="bold" font-size="14">1</text><line x1="236" y1="240" x2="236" y2="242" style="stroke:black;stroke-width:1" /><text x="238" y="248" font-size="8">216.62</text><text x="-2147483370" y="238" font-weight="bold" font-size="14">0</text><line x1="264" y1="240" x2="264" y2="242" style="stroke:black;stroke-width:1" /><text x="266" y="248" font-size="8">244.26</text><text x="306" y="230" font-weight="bold" font-size="14">1</text><line x1="292" y1="240" x2="292" y2="242" style="stroke:black;stroke-width:1" /><text x="294" y="248" font-size="8">271.89</text><line x1="320" y1="240" x2="320" y2="242" style="stroke:black;stroke-width:1" /><text x="322" y="248" font-size="8">299.53</text>
+</svg></td><td valign="top" class="none"><p><table><tr><th colspan="2">Duration Characteristic</th></tr><tr><th>Average</th><td>82.35s</td></tr><tr><th>Median</th><td>63.57s</td></tr><tr><th>Variance</th><td>2842.55</td></tr><tr><th>Skewness</th><td>2.46</td></tr><tr><th>Minimum</th><td>23.19s</td></tr><tr><th>Maximum</th><td>299.53s</td></tr><tr><th>Total</th><td>3046.80s</td></tr></table></p></td></tr></table></p><p><a href="#top">To Overview Table</a></p><h3><a id="_5E_28_3F_3AI-_7C_29scroll-to-the-_22_28_5B_5E_22_5D*_29_22-text">^(?:I |)scroll to the "([^"]*)" text</a></h3><p><table><tr><th>Step Name</th><th>Duration</th><th>Location</th></tr><tr><td>I scroll to the "Anytime" text</td><td> - </td><td> - </td></tr><tr><td></td><td>4.042840702</td><td>booking/JourneyOptions.feature:95</td></tr></table></p><p><table class="none"><tr><td class="none"><svg  xmlns="http://www.w3.org/2000/svg" version="1.1" width="400" height="300">
+	<defs>
+		<filter id="f1" x="0" y="0" width="200%" height="200%">
+		<feOffset result="offOut" in="SourceAlpha" dx="10" dy="10" />
+		<feGaussianBlur result="blurOut" in="offOut" stdDeviation="10" />
+		<feBlend in="SourceGraphic" in2="blurOut" mode="normal" /></filter>
+		<radialGradient id="grad4" cx="0%" cy="100%" r="150%" fx="0%"
+			fy="100%">
+		<stop offset="0%" style="stop-color:white;stop-opacity:0.1" />
+		<stop offset="100%" style="stop-color:silver;stop-opacity:0.7" /></radialGradient>
+	</defs>
+<rect width="90%" height="90%" stroke="black" stroke-width="1" fill="url(#grad4)" filter="url(#f1)"/>
+			<line x1="30" y1="30" x2="30" y2="240"
+			style="stroke:black;stroke-width:1" />
+		<line x1="30" y1="240" x2="350" y2="240"
+			style="stroke:black;stroke-width:1" />
+		<polygon points="25,50 30,30 35,50"
+			style="fill:black;stroke:black;stroke-width:1" />
+		<polygon points="350,240 330,245 330,235"
+			style="fill:black;stroke:black;stroke-width:1" />
+		<!-- Scale Marks-->
+		<line x1="40" y1="240" x2="40" y2="245"
+			style="stroke:black;stroke-width:1" />
+		<text x="42" y="253" font-size="8">0.0s</text>
+		<line x1="320" y1="240" x2="320" y2="245"
+			style="stroke:black;stroke-width:1" />
+		<text x="322" y="253" font-size="8">0.0s</text>
+
+		<text x="60" y="220" font-weight="bold" font-size="14"
+			transform="rotate(-90 20,220)">Frequency</text>
+			<text x="140" y="260" font-weight="bold" font-size="14">Duration</text>
+		<!-- Polygon -->
+			<text x="22%" y="55%" font-weight="bold" font-size="120" fill="gray">N/A</text>
+</svg></td><td valign="top" class="none"><p><table><tr><th colspan="2">Duration Characteristic</th></tr><tr><th>Average</th><td>4.04s</td></tr><tr><th>Median</th><td>4.04s</td></tr><tr><th>Variance</th><td>0.00</td></tr><tr><th>Skewness</th><td>0.00</td></tr><tr><th>Minimum</th><td>4.04s</td></tr><tr><th>Maximum</th><td>4.04s</td></tr><tr><th>Total</th><td>4.04s</td></tr></table></p></td></tr></table></p><p><a href="#top">To Overview Table</a></p><h3><a id="_5EI-am-logged-into-the-system_24">^I am logged into the system$</a></h3><p><table><tr><th>Step Name</th><th>Duration</th><th>Location</th></tr><tr><td>I am logged into the system</td><td> - </td><td> - </td></tr><tr><td></td><td>27.434434917</td><td>Payments.feature:11</td></tr><tr><td></td><td>32.945934022</td><td>Payments.feature:11</td></tr><tr><td></td><td>24.708850136</td><td>Payments.feature:11</td></tr><tr><td></td><td>24.887393397</td><td>Payments.feature:11</td></tr><tr><td></td><td>31.21465576</td><td>Payments.feature:11</td></tr><tr><td></td><td>32.580911171</td><td>Payments.feature:11</td></tr><tr><td></td><td>24.654549831</td><td>Payments.feature:11</td></tr><tr><td></td><td>24.945523614</td><td>journeysearch/BasicJourneySearch.feature:20</td></tr></table></p><p><table class="none"><tr><td class="none"><svg  xmlns="http://www.w3.org/2000/svg" version="1.1" width="400" height="300">
+	<defs>
+		<filter id="f1" x="0" y="0" width="200%" height="200%">
+		<feOffset result="offOut" in="SourceAlpha" dx="10" dy="10" />
+		<feGaussianBlur result="blurOut" in="offOut" stdDeviation="10" />
+		<feBlend in="SourceGraphic" in2="blurOut" mode="normal" /></filter>
+		<radialGradient id="grad1" cx="0%" cy="100%" r="150%" fx="0%"
+			fy="100%">
+		<stop offset="0%" style="stop-color:white;stop-opacity:0.1" />
+		<stop offset="100%" style="stop-color:gold;stop-opacity:0.7" /></radialGradient>
+		<linearGradient id="grad3" cx="0%" cy="100%" r="150%" fx="0%"
+			fy="100%">
+		<stop offset="0%" style="stop-color:green;stop-opacity:0.7" />
+		<stop offset="50%" style="stop-color:yellow;stop-opacity:0.7" />
+		<stop offset="100%" style="stop-color:red;stop-opacity:0.7" />
+		</linearGradient>
+	</defs>
+<rect width="90%" height="90%" stroke="black" stroke-width="1" fill="url(#grad1)" filter="url(#f1)"/>
+			<line x1="30" y1="30" x2="30" y2="240"
+			style="stroke:black;stroke-width:1" />
+		<line x1="30" y1="240" x2="350" y2="240"
+			style="stroke:black;stroke-width:1" />
+		<polygon points="25,50 30,30 35,50"
+			style="fill:black;stroke:black;stroke-width:1" />
+		<polygon points="350,240 330,245 330,235"
+			style="fill:black;stroke:black;stroke-width:1" />
+		<!-- Scale Marks-->
+		<!--<line x1="40" y1="240" x2="40" y2="245"
+			style="stroke:black;stroke-width:1" />
+		<text x="42" y="253" font-size="8">0.6s</text>
+		<line x1="320" y1="240" x2="320" y2="245"
+			style="stroke:black;stroke-width:1" />
+		<text x="322" y="253" font-size="8">11.6s</text>-->
+
+		<text x="60" y="220" font-weight="bold" font-size="14"
+			transform="rotate(-90 20,220)">Frequency</text>
+			<text x="140" y="260" font-weight="bold" font-size="14">Duration</text>
+		<!-- Polygon -->
+		<polygon
+			points="40,240 40,50 180,50 180,240 180,240 180,126 320,126 320,240 "
+			style="stroke:black;stroke-width:1" fill="url(#grad3)" />
+		<text x="110" y="48" font-weight="bold" font-size="14">5</text><line x1="40" y1="240" x2="40" y2="242" style="stroke:black;stroke-width:1" /><text x="42" y="248" font-size="8">24.65</text><text x="250" y="124" font-weight="bold" font-size="14">3</text><line x1="180" y1="240" x2="180" y2="242" style="stroke:black;stroke-width:1" /><text x="182" y="248" font-size="8">28.80</text><line x1="320" y1="240" x2="320" y2="242" style="stroke:black;stroke-width:1" /><text x="322" y="248" font-size="8">32.95</text>
+</svg></td><td valign="top" class="none"><p><table><tr><th colspan="2">Duration Characteristic</th></tr><tr><th>Average</th><td>27.92s</td></tr><tr><th>Median</th><td>27.43s</td></tr><tr><th>Variance</th><td>12.14</td></tr><tr><th>Skewness</th><td>0.42</td></tr><tr><th>Minimum</th><td>24.65s</td></tr><tr><th>Maximum</th><td>32.95s</td></tr><tr><th>Total</th><td>223.37s</td></tr></table></p></td></tr></table></p><p><a href="#top">To Overview Table</a></p><h3><a id="_5E_28_3F_3AI-_7C_29have-no-payment-cards-stored_24">^(?:I |)have no payment cards stored$</a></h3><p><table><tr><th>Step Name</th><th>Duration</th><th>Location</th></tr><tr><td>I have no payment cards stored</td><td> - </td><td> - </td></tr><tr><td></td><td>36.677287937</td><td>Payments.feature:12</td></tr><tr><td></td><td>36.111767376</td><td>Payments.feature:12</td></tr><tr><td></td><td>30.40619079</td><td>Payments.feature:12</td></tr><tr><td></td><td>36.868155471</td><td>Payments.feature:12</td></tr><tr><td></td><td>34.861291023</td><td>Payments.feature:12</td></tr><tr><td></td><td>37.853973318</td><td>Payments.feature:12</td></tr><tr><td></td><td>36.393687426</td><td>Payments.feature:12</td></tr></table></p><p><table class="none"><tr><td class="none"><svg  xmlns="http://www.w3.org/2000/svg" version="1.1" width="400" height="300">
+	<defs>
+		<filter id="f1" x="0" y="0" width="200%" height="200%">
+		<feOffset result="offOut" in="SourceAlpha" dx="10" dy="10" />
+		<feGaussianBlur result="blurOut" in="offOut" stdDeviation="10" />
+		<feBlend in="SourceGraphic" in2="blurOut" mode="normal" /></filter>
+		<radialGradient id="grad1" cx="0%" cy="100%" r="150%" fx="0%"
+			fy="100%">
+		<stop offset="0%" style="stop-color:white;stop-opacity:0.1" />
+		<stop offset="100%" style="stop-color:gold;stop-opacity:0.7" /></radialGradient>
+		<linearGradient id="grad3" cx="0%" cy="100%" r="150%" fx="0%"
+			fy="100%">
+		<stop offset="0%" style="stop-color:green;stop-opacity:0.7" />
+		<stop offset="50%" style="stop-color:yellow;stop-opacity:0.7" />
+		<stop offset="100%" style="stop-color:red;stop-opacity:0.7" />
+		</linearGradient>
+	</defs>
+<rect width="90%" height="90%" stroke="black" stroke-width="1" fill="url(#grad1)" filter="url(#f1)"/>
+			<line x1="30" y1="30" x2="30" y2="240"
+			style="stroke:black;stroke-width:1" />
+		<line x1="30" y1="240" x2="350" y2="240"
+			style="stroke:black;stroke-width:1" />
+		<polygon points="25,50 30,30 35,50"
+			style="fill:black;stroke:black;stroke-width:1" />
+		<polygon points="350,240 330,245 330,235"
+			style="fill:black;stroke:black;stroke-width:1" />
+		<!-- Scale Marks-->
+		<!--<line x1="40" y1="240" x2="40" y2="245"
+			style="stroke:black;stroke-width:1" />
+		<text x="42" y="253" font-size="8">0.6s</text>
+		<line x1="320" y1="240" x2="320" y2="245"
+			style="stroke:black;stroke-width:1" />
+		<text x="322" y="253" font-size="8">11.6s</text>-->
+
+		<text x="60" y="220" font-weight="bold" font-size="14"
+			transform="rotate(-90 20,220)">Frequency</text>
+			<text x="140" y="260" font-weight="bold" font-size="14">Duration</text>
+		<!-- Polygon -->
+		<polygon
+			points="40,240 40,209 180,209 180,240 180,240 180,50 320,50 320,240 "
+			style="stroke:black;stroke-width:1" fill="url(#grad3)" />
+		<text x="110" y="207" font-weight="bold" font-size="14">1</text><line x1="40" y1="240" x2="40" y2="242" style="stroke:black;stroke-width:1" /><text x="42" y="248" font-size="8">30.41</text><text x="250" y="48" font-weight="bold" font-size="14">6</text><line x1="180" y1="240" x2="180" y2="242" style="stroke:black;stroke-width:1" /><text x="182" y="248" font-size="8">34.13</text><line x1="320" y1="240" x2="320" y2="242" style="stroke:black;stroke-width:1" /><text x="322" y="248" font-size="8">37.85</text>
+</svg></td><td valign="top" class="none"><p><table><tr><th colspan="2">Duration Characteristic</th></tr><tr><th>Average</th><td>35.60s</td></tr><tr><th>Median</th><td>36.39s</td></tr><tr><th>Variance</th><td>5.18</td></tr><tr><th>Skewness</th><td>-1.51</td></tr><tr><th>Minimum</th><td>30.41s</td></tr><tr><th>Maximum</th><td>37.85s</td></tr><tr><th>Total</th><td>249.17s</td></tr></table></p></td></tr></table></p><p><a href="#top">To Overview Table</a></p><h3><a id="_5E_28_3F_3AI-should-see-_7C_29the-_22_28_5B_5E_22_5D*_29_22-button-is-visible_24">^(?:I should see |)the "([^"]*)" button is visible$</a></h3><p><table><tr><th>Step Name</th><th>Duration</th><th>Location</th></tr><tr><td>the "Buy" button is visible</td><td> - </td><td> - </td></tr><tr><td></td><td>9.948033259</td><td>journeysearch/BasicJourneySearch.feature:31</td></tr></table></p><p><table class="none"><tr><td class="none"><svg  xmlns="http://www.w3.org/2000/svg" version="1.1" width="400" height="300">
+	<defs>
+		<filter id="f1" x="0" y="0" width="200%" height="200%">
+		<feOffset result="offOut" in="SourceAlpha" dx="10" dy="10" />
+		<feGaussianBlur result="blurOut" in="offOut" stdDeviation="10" />
+		<feBlend in="SourceGraphic" in2="blurOut" mode="normal" /></filter>
+		<radialGradient id="grad4" cx="0%" cy="100%" r="150%" fx="0%"
+			fy="100%">
+		<stop offset="0%" style="stop-color:white;stop-opacity:0.1" />
+		<stop offset="100%" style="stop-color:silver;stop-opacity:0.7" /></radialGradient>
+	</defs>
+<rect width="90%" height="90%" stroke="black" stroke-width="1" fill="url(#grad4)" filter="url(#f1)"/>
+			<line x1="30" y1="30" x2="30" y2="240"
+			style="stroke:black;stroke-width:1" />
+		<line x1="30" y1="240" x2="350" y2="240"
+			style="stroke:black;stroke-width:1" />
+		<polygon points="25,50 30,30 35,50"
+			style="fill:black;stroke:black;stroke-width:1" />
+		<polygon points="350,240 330,245 330,235"
+			style="fill:black;stroke:black;stroke-width:1" />
+		<!-- Scale Marks-->
+		<line x1="40" y1="240" x2="40" y2="245"
+			style="stroke:black;stroke-width:1" />
+		<text x="42" y="253" font-size="8">0.0s</text>
+		<line x1="320" y1="240" x2="320" y2="245"
+			style="stroke:black;stroke-width:1" />
+		<text x="322" y="253" font-size="8">0.0s</text>
+
+		<text x="60" y="220" font-weight="bold" font-size="14"
+			transform="rotate(-90 20,220)">Frequency</text>
+			<text x="140" y="260" font-weight="bold" font-size="14">Duration</text>
+		<!-- Polygon -->
+			<text x="22%" y="55%" font-weight="bold" font-size="120" fill="gray">N/A</text>
+</svg></td><td valign="top" class="none"><p><table><tr><th colspan="2">Duration Characteristic</th></tr><tr><th>Average</th><td>9.95s</td></tr><tr><th>Median</th><td>9.95s</td></tr><tr><th>Variance</th><td>0.00</td></tr><tr><th>Skewness</th><td>0.00</td></tr><tr><th>Minimum</th><td>9.95s</td></tr><tr><th>Maximum</th><td>9.95s</td></tr><tr><th>Total</th><td>9.95s</td></tr></table></p></td></tr></table></p><p><a href="#top">To Overview Table</a></p><h3><a id="_5E_28_3F_3AI-should-see-_7C_29none-of-the-following-labels-are-shown_3A_24">^(?:I should see |)none of the following labels are shown:$</a></h3><p><table><tr><th>Step Name</th><th>Duration</th><th>Location</th></tr><tr><td>none of the following labels are shown:</td><td> - </td><td> - </td></tr><tr><td></td><td>0.473309798</td><td>journeysearch/BasicJourneySearch.feature:154</td></tr></table></p><p><table class="none"><tr><td class="none"><svg  xmlns="http://www.w3.org/2000/svg" version="1.1" width="400" height="300">
+	<defs>
+		<filter id="f1" x="0" y="0" width="200%" height="200%">
+		<feOffset result="offOut" in="SourceAlpha" dx="10" dy="10" />
+		<feGaussianBlur result="blurOut" in="offOut" stdDeviation="10" />
+		<feBlend in="SourceGraphic" in2="blurOut" mode="normal" /></filter>
+		<radialGradient id="grad4" cx="0%" cy="100%" r="150%" fx="0%"
+			fy="100%">
+		<stop offset="0%" style="stop-color:white;stop-opacity:0.1" />
+		<stop offset="100%" style="stop-color:silver;stop-opacity:0.7" /></radialGradient>
+	</defs>
+<rect width="90%" height="90%" stroke="black" stroke-width="1" fill="url(#grad4)" filter="url(#f1)"/>
+			<line x1="30" y1="30" x2="30" y2="240"
+			style="stroke:black;stroke-width:1" />
+		<line x1="30" y1="240" x2="350" y2="240"
+			style="stroke:black;stroke-width:1" />
+		<polygon points="25,50 30,30 35,50"
+			style="fill:black;stroke:black;stroke-width:1" />
+		<polygon points="350,240 330,245 330,235"
+			style="fill:black;stroke:black;stroke-width:1" />
+		<!-- Scale Marks-->
+		<line x1="40" y1="240" x2="40" y2="245"
+			style="stroke:black;stroke-width:1" />
+		<text x="42" y="253" font-size="8">0.0s</text>
+		<line x1="320" y1="240" x2="320" y2="245"
+			style="stroke:black;stroke-width:1" />
+		<text x="322" y="253" font-size="8">0.0s</text>
+
+		<text x="60" y="220" font-weight="bold" font-size="14"
+			transform="rotate(-90 20,220)">Frequency</text>
+			<text x="140" y="260" font-weight="bold" font-size="14">Duration</text>
+		<!-- Polygon -->
+			<text x="22%" y="55%" font-weight="bold" font-size="120" fill="gray">N/A</text>
+</svg></td><td valign="top" class="none"><p><table><tr><th colspan="2">Duration Characteristic</th></tr><tr><th>Average</th><td>0.47s</td></tr><tr><th>Median</th><td>0.47s</td></tr><tr><th>Variance</th><td>0.00</td></tr><tr><th>Skewness</th><td>0.00</td></tr><tr><th>Minimum</th><td>0.47s</td></tr><tr><th>Maximum</th><td>0.47s</td></tr><tr><th>Total</th><td>0.47s</td></tr></table></p></td></tr></table></p><p><a href="#top">To Overview Table</a></p><h3><a id="I-am-on-the-Live-Train-Times-screen">I am on the Live Train Times screen</a></h3><p><table><tr><th>Step Name</th><th>Duration</th><th>Location</th></tr><tr><td>I am on the Live Train Times screen</td><td> - </td><td> - </td></tr><tr><td></td><td>20.011719707</td><td>LiveTrainTimes.feature:7</td></tr><tr><td></td><td>22.20588322</td><td>LiveTrainTimes.feature:7</td></tr><tr><td></td><td>19.816856561</td><td>LiveTrainTimes.feature:7</td></tr><tr><td></td><td>20.803108584</td><td>LiveTrainTimes.feature:7</td></tr><tr><td></td><td>20.663085366</td><td>LiveTrainTimes.feature:42</td></tr><tr><td></td><td>19.724267861</td><td>LiveTrainTimes.feature:55</td></tr></table></p><p><table class="none"><tr><td class="none"><svg  xmlns="http://www.w3.org/2000/svg" version="1.1" width="400" height="300">
+	<defs>
+		<filter id="f1" x="0" y="0" width="200%" height="200%">
+		<feOffset result="offOut" in="SourceAlpha" dx="10" dy="10" />
+		<feGaussianBlur result="blurOut" in="offOut" stdDeviation="10" />
+		<feBlend in="SourceGraphic" in2="blurOut" mode="normal" /></filter>
+		<radialGradient id="grad1" cx="0%" cy="100%" r="150%" fx="0%"
+			fy="100%">
+		<stop offset="0%" style="stop-color:white;stop-opacity:0.1" />
+		<stop offset="100%" style="stop-color:gold;stop-opacity:0.7" /></radialGradient>
+		<linearGradient id="grad3" cx="0%" cy="100%" r="150%" fx="0%"
+			fy="100%">
+		<stop offset="0%" style="stop-color:green;stop-opacity:0.7" />
+		<stop offset="50%" style="stop-color:yellow;stop-opacity:0.7" />
+		<stop offset="100%" style="stop-color:red;stop-opacity:0.7" />
+		</linearGradient>
+	</defs>
+<rect width="90%" height="90%" stroke="black" stroke-width="1" fill="url(#grad1)" filter="url(#f1)"/>
+			<line x1="30" y1="30" x2="30" y2="240"
+			style="stroke:black;stroke-width:1" />
+		<line x1="30" y1="240" x2="350" y2="240"
+			style="stroke:black;stroke-width:1" />
+		<polygon points="25,50 30,30 35,50"
+			style="fill:black;stroke:black;stroke-width:1" />
+		<polygon points="350,240 330,245 330,235"
+			style="fill:black;stroke:black;stroke-width:1" />
+		<!-- Scale Marks-->
+		<!--<line x1="40" y1="240" x2="40" y2="245"
+			style="stroke:black;stroke-width:1" />
+		<text x="42" y="253" font-size="8">0.6s</text>
+		<line x1="320" y1="240" x2="320" y2="245"
+			style="stroke:black;stroke-width:1" />
+		<text x="322" y="253" font-size="8">11.6s</text>-->
+
+		<text x="60" y="220" font-weight="bold" font-size="14"
+			transform="rotate(-90 20,220)">Frequency</text>
+			<text x="140" y="260" font-weight="bold" font-size="14">Duration</text>
+		<!-- Polygon -->
+		<polygon
+			points="40,240 40,50 180,50 180,240 180,240 180,202 320,202 320,240 "
+			style="stroke:black;stroke-width:1" fill="url(#grad3)" />
+		<text x="110" y="48" font-weight="bold" font-size="14">5</text><line x1="40" y1="240" x2="40" y2="242" style="stroke:black;stroke-width:1" /><text x="42" y="248" font-size="8">19.72</text><text x="250" y="200" font-weight="bold" font-size="14">1</text><line x1="180" y1="240" x2="180" y2="242" style="stroke:black;stroke-width:1" /><text x="182" y="248" font-size="8">20.97</text><line x1="320" y1="240" x2="320" y2="242" style="stroke:black;stroke-width:1" /><text x="322" y="248" font-size="8">22.21</text>
+</svg></td><td valign="top" class="none"><p><table><tr><th colspan="2">Duration Characteristic</th></tr><tr><th>Average</th><td>20.54s</td></tr><tr><th>Median</th><td>20.66s</td></tr><tr><th>Variance</th><td>0.72</td></tr><tr><th>Skewness</th><td>0.98</td></tr><tr><th>Minimum</th><td>19.72s</td></tr><tr><th>Maximum</th><td>22.21s</td></tr><tr><th>Total</th><td>123.22s</td></tr></table></p></td></tr></table></p><p><a href="#top">To Overview Table</a></p><h3><a id="_5E_28_3F_3AI-should-see-_7C_29the-_22_28_5B_5E_22_5D*_29_22-_28_3F_3Amessage_7Clabel_7Ctext_29-is-shown_24">^(?:I should see |)the "([^"]*)" (?:message|label|text) is shown$</a></h3><p><table><tr><th>Step Name</th><th>Duration</th><th>Location</th></tr><tr><td>the "Arrivals" label is shown</td><td> - </td><td> - </td></tr><tr><td></td><td>0.448733562</td><td>LiveTrainTimes.feature:12</td></tr><tr><td></td><td>0.355407067</td><td>LiveTrainTimes.feature:12</td></tr><tr><td>the "Departures" label is shown</td><td> - </td><td> - </td></tr><tr><td></td><td>1.001337674</td><td>LiveTrainTimes.feature:12</td></tr><tr><td></td><td>0.804107488</td><td>LiveTrainTimes.feature:12</td></tr><tr><td>the "No live times for this route" message is shown</td><td> - </td><td> - </td></tr><tr><td></td><td>2.760303032</td><td>LiveTrainTimes.feature:47</td></tr><tr><td>the "no booking fee on the day of travel" message is shown</td><td> - </td><td> - </td></tr><tr><td></td><td>2.866863992</td><td>LiveTrainTimes.feature:60</td></tr><tr><td>I should see the "Farringdon" text is shown</td><td> - </td><td> - </td></tr><tr><td></td><td>0.264241068</td><td>LiveTrainTimes.feature:62</td></tr><tr><td>I should see the "Joe Public" text is shown</td><td> - </td><td> - </td></tr><tr><td></td><td>1.021496507</td><td>Payments.feature:21</td></tr><tr><td></td><td>0.922468831</td><td>Payments.feature:21</td></tr><tr><td></td><td>0.947854835</td><td>Payments.feature:21</td></tr><tr><td></td><td>0.997783265</td><td>Payments.feature:21</td></tr><tr><td></td><td>0.824917751</td><td>Payments.feature:21</td></tr><tr><td></td><td>1.10021605</td><td>Payments.feature:21</td></tr><tr><td>the "0051" text is shown</td><td> - </td><td> - </td></tr><tr><td></td><td>0.50868517</td><td>Payments.feature:22</td></tr><tr><td>the "0302" text is shown</td><td> - </td><td> - </td></tr><tr><td></td><td>0.14414972</td><td>Payments.feature:22</td></tr><tr><td>the "0106" text is shown</td><td> - </td><td> - </td></tr><tr><td></td><td>0.500852951</td><td>Payments.feature:22</td></tr><tr><td>the "1111" text is shown</td><td> - </td><td> - </td></tr><tr><td></td><td>0.492184518</td><td>Payments.feature:22</td></tr><tr><td>the "0025" text is shown</td><td> - </td><td> - </td></tr><tr><td></td><td>0.497849881</td><td>Payments.feature:22</td></tr><tr><td>the "2862" text is shown</td><td> - </td><td> - </td></tr><tr><td></td><td>0.482025765</td><td>Payments.feature:22</td></tr><tr><td>the "Cheapest Tickets" label is shown</td><td> - </td><td> - </td></tr><tr><td></td><td>0.14593998</td><td>journeysearch/BON-88_SingleOptionsForJourney.feature:24</td></tr><tr><td>the "Advance Single" text is shown</td><td> - </td><td> - </td></tr><tr><td></td><td>0.222524132</td><td>journeysearch/BON-88_SingleOptionsForJourney.feature:25</td></tr><tr><td></td><td>0.171670445</td><td>journeysearch/BON-88_SingleOptionsForJourney.feature:90</td></tr><tr><td>the "Cheapest Tickets" text is shown</td><td> - </td><td> - </td></tr><tr><td></td><td>0.17382525</td><td>journeysearch/BON-88_SingleOptionsForJourney.feature:89</td></tr><tr><td>the "Farringdon" label is shown</td><td> - </td><td> - </td></tr><tr><td></td><td>0.203223606</td><td>journeysearch/BasicJourneySearch.feature:45</td></tr><tr><td></td><td>0.229151575</td><td>journeysearch/BasicJourneySearch.feature:45</td></tr><tr><td></td><td>0.211902081</td><td>journeysearch/BasicJourneySearch.feature:45</td></tr><tr><td></td><td>0.284635233</td><td>journeysearch/BasicJourneySearch.feature:45</td></tr><tr><td></td><td>0.239067967</td><td>journeysearch/BasicJourneySearch.feature:45</td></tr><tr><td></td><td>0.190167229</td><td>journeysearch/BasicJourneySearch.feature:45</td></tr><tr><td></td><td>0.255594394</td><td>journeysearch/BasicJourneySearch.feature:45</td></tr><tr><td></td><td>0.214389966</td><td>journeysearch/BasicJourneySearch.feature:45</td></tr><tr><td></td><td>0.209532698</td><td>journeysearch/BasicJourneySearch.feature:45</td></tr><tr><td></td><td>0.168690807</td><td>journeysearch/BasicJourneySearch.feature:45</td></tr><tr><td></td><td>0.173217674</td><td>journeysearch/BasicJourneySearch.feature:71</td></tr><tr><td></td><td>0.19201741</td><td>journeysearch/BasicJourneySearch.feature:76</td></tr><tr><td></td><td>0.221135576</td><td>journeysearch/BasicJourneySearch.feature:71</td></tr><tr><td></td><td>0.138563695</td><td>journeysearch/BasicJourneySearch.feature:76</td></tr><tr><td></td><td>0.186876606</td><td>journeysearch/BasicJourneySearch.feature:71</td></tr><tr><td></td><td>0.188592885</td><td>journeysearch/BasicJourneySearch.feature:76</td></tr><tr><td></td><td>0.160142551</td><td>journeysearch/BasicJourneySearch.feature:71</td></tr><tr><td></td><td>0.134696627</td><td>journeysearch/BasicJourneySearch.feature:76</td></tr><tr><td></td><td>0.174693266</td><td>journeysearch/BasicJourneySearch.feature:71</td></tr><tr><td></td><td>0.173322451</td><td>journeysearch/BasicJourneySearch.feature:76</td></tr><tr><td>the "Newcastle" label is shown</td><td> - </td><td> - </td></tr><tr><td></td><td>0.183536439</td><td>journeysearch/BasicJourneySearch.feature:46</td></tr><tr><td></td><td>0.158294379</td><td>journeysearch/BasicJourneySearch.feature:46</td></tr><tr><td></td><td>0.176912344</td><td>journeysearch/BasicJourneySearch.feature:46</td></tr><tr><td></td><td>0.224370965</td><td>journeysearch/BasicJourneySearch.feature:46</td></tr><tr><td></td><td>0.257496127</td><td>journeysearch/BasicJourneySearch.feature:46</td></tr><tr><td></td><td>0.30312097</td><td>journeysearch/BasicJourneySearch.feature:46</td></tr><tr><td></td><td>0.32715658</td><td>journeysearch/BasicJourneySearch.feature:46</td></tr><tr><td></td><td>0.270748669</td><td>journeysearch/BasicJourneySearch.feature:46</td></tr><tr><td></td><td>0.186242248</td><td>journeysearch/BasicJourneySearch.feature:46</td></tr><tr><td></td><td>0.266497974</td><td>journeysearch/BasicJourneySearch.feature:46</td></tr><tr><td></td><td>0.158341579</td><td>journeysearch/BasicJourneySearch.feature:72</td></tr><tr><td></td><td>0.185509809</td><td>journeysearch/BasicJourneySearch.feature:77</td></tr><tr><td></td><td>0.213819882</td><td>journeysearch/BasicJourneySearch.feature:72</td></tr><tr><td></td><td>0.163336766</td><td>journeysearch/BasicJourneySearch.feature:77</td></tr><tr><td></td><td>0.210471681</td><td>journeysearch/BasicJourneySearch.feature:72</td></tr><tr><td></td><td>0.177559422</td><td>journeysearch/BasicJourneySearch.feature:77</td></tr><tr><td></td><td>0.357182932</td><td>journeysearch/BasicJourneySearch.feature:72</td></tr><tr><td></td><td>0.250403377</td><td>journeysearch/BasicJourneySearch.feature:77</td></tr><tr><td></td><td>0.162776388</td><td>journeysearch/BasicJourneySearch.feature:72</td></tr><tr><td></td><td>0.17305967</td><td>journeysearch/BasicJourneySearch.feature:77</td></tr><tr><td>I should see the "You must choose origin and destination" message is shown</td><td> - </td><td> - </td></tr><tr><td></td><td>0.6344623</td><td>journeysearch/BasicJourneySearch.feature:96</td></tr><tr><td>I should see the "You must choose a destination station" message is shown</td><td> - </td><td> - </td></tr><tr><td></td><td>0.658368694</td><td>journeysearch/BasicJourneySearch.feature:96</td></tr><tr><td>I should see the "You must choose an origin station" message is shown</td><td> - </td><td> - </td></tr><tr><td></td><td>0.623589853</td><td>journeysearch/BasicJourneySearch.feature:96</td></tr><tr><td>I should see the "From and To stations must be different" message is shown</td><td> - </td><td> - </td></tr><tr><td></td><td>0.611112599</td><td>journeysearch/BasicJourneySearch.feature:96</td></tr><tr><td>I should see the "The via or avoid station can" message is shown</td><td> - </td><td> - </td></tr><tr><td></td><td>0.666030525</td><td>journeysearch/BasicJourneySearch.feature:96</td></tr><tr><td></td><td>0.617670078</td><td>journeysearch/BasicJourneySearch.feature:96</td></tr><tr><td>the "Plat" text is shown</td><td> - </td><td> - </td></tr><tr><td></td><td>0.171759489</td><td>journeysearch/BasicJourneySearch.feature:140</td></tr><tr><td>the "Not available" text is shown</td><td> - </td><td> - </td></tr><tr><td></td><td>0.173814539</td><td>journeysearch/BasicJourneySearch.feature:190</td></tr><tr><td>the "Select outbound" label is shown</td><td> - </td><td> - </td></tr><tr><td></td><td>0.199337792</td><td>journeysearch/BasicJourneySearch.feature:226</td></tr><tr><td>the "Select return" label is shown</td><td> - </td><td> - </td></tr><tr><td></td><td>0.120578078</td><td>journeysearch/BasicJourneySearch.feature:229</td></tr></table></p><p><table class="none"><tr><td class="none"><svg  xmlns="http://www.w3.org/2000/svg" version="1.1" width="400" height="300">
+	<defs>
+		<filter id="f1" x="0" y="0" width="200%" height="200%">
+		<feOffset result="offOut" in="SourceAlpha" dx="10" dy="10" />
+		<feGaussianBlur result="blurOut" in="offOut" stdDeviation="10" />
+		<feBlend in="SourceGraphic" in2="blurOut" mode="normal" /></filter>
+		<radialGradient id="grad1" cx="0%" cy="100%" r="150%" fx="0%"
+			fy="100%">
+		<stop offset="0%" style="stop-color:white;stop-opacity:0.1" />
+		<stop offset="100%" style="stop-color:gold;stop-opacity:0.7" /></radialGradient>
+		<linearGradient id="grad3" cx="0%" cy="100%" r="150%" fx="0%"
+			fy="100%">
+		<stop offset="0%" style="stop-color:green;stop-opacity:0.7" />
+		<stop offset="50%" style="stop-color:yellow;stop-opacity:0.7" />
+		<stop offset="100%" style="stop-color:red;stop-opacity:0.7" />
+		</linearGradient>
+	</defs>
+<rect width="90%" height="90%" stroke="black" stroke-width="1" fill="url(#grad1)" filter="url(#f1)"/>
+			<line x1="30" y1="30" x2="30" y2="240"
+			style="stroke:black;stroke-width:1" />
+		<line x1="30" y1="240" x2="350" y2="240"
+			style="stroke:black;stroke-width:1" />
+		<polygon points="25,50 30,30 35,50"
+			style="fill:black;stroke:black;stroke-width:1" />
+		<polygon points="350,240 330,245 330,235"
+			style="fill:black;stroke:black;stroke-width:1" />
+		<!-- Scale Marks-->
+		<!--<line x1="40" y1="240" x2="40" y2="245"
+			style="stroke:black;stroke-width:1" />
+		<text x="42" y="253" font-size="8">0.6s</text>
+		<line x1="320" y1="240" x2="320" y2="245"
+			style="stroke:black;stroke-width:1" />
+		<text x="322" y="253" font-size="8">11.6s</text>-->
+
+		<text x="60" y="220" font-weight="bold" font-size="14"
+			transform="rotate(-90 20,220)">Frequency</text>
+			<text x="140" y="260" font-weight="bold" font-size="14">Duration</text>
+		<!-- Polygon -->
+		<polygon
+			points="40,240 40,50 68,50 68,240 68,240 68,196 96,196 96,240 96,240 96,229 124,229 124,240 124,240 124,222 152,222 152,240 152,240 152,240 180,240 180,240 180,240 180,240 208,240 208,240 208,240 208,240 236,240 236,240 236,240 236,240 264,240 264,240 264,240 264,240 292,240 292,240 292,240 292,233 320,233 320,240 "
+			style="stroke:black;stroke-width:1" fill="url(#grad3)" />
+		<text x="47" y="48" font-weight="bold" font-size="14">51</text><line x1="40" y1="240" x2="40" y2="242" style="stroke:black;stroke-width:1" /><text x="42" y="248" font-size="8">0.12</text><text x="75" y="194" font-weight="bold" font-size="14">12</text><line x1="68" y1="240" x2="68" y2="242" style="stroke:black;stroke-width:1" /><text x="70" y="248" font-size="8">0.40</text><text x="110" y="227" font-weight="bold" font-size="14">3</text><line x1="96" y1="240" x2="96" y2="242" style="stroke:black;stroke-width:1" /><text x="98" y="248" font-size="8">0.67</text><text x="138" y="220" font-weight="bold" font-size="14">5</text><line x1="124" y1="240" x2="124" y2="242" style="stroke:black;stroke-width:1" /><text x="126" y="248" font-size="8">0.94</text><text x="-2147483482" y="238" font-weight="bold" font-size="14">0</text><line x1="152" y1="240" x2="152" y2="242" style="stroke:black;stroke-width:1" /><text x="154" y="248" font-size="8">1.22</text><text x="-2147483454" y="238" font-weight="bold" font-size="14">0</text><line x1="180" y1="240" x2="180" y2="242" style="stroke:black;stroke-width:1" /><text x="182" y="248" font-size="8">1.49</text><text x="-2147483426" y="238" font-weight="bold" font-size="14">0</text><line x1="208" y1="240" x2="208" y2="242" style="stroke:black;stroke-width:1" /><text x="210" y="248" font-size="8">1.77</text><text x="-2147483398" y="238" font-weight="bold" font-size="14">0</text><line x1="236" y1="240" x2="236" y2="242" style="stroke:black;stroke-width:1" /><text x="238" y="248" font-size="8">2.04</text><text x="-2147483370" y="238" font-weight="bold" font-size="14">0</text><line x1="264" y1="240" x2="264" y2="242" style="stroke:black;stroke-width:1" /><text x="266" y="248" font-size="8">2.32</text><text x="306" y="231" font-weight="bold" font-size="14">2</text><line x1="292" y1="240" x2="292" y2="242" style="stroke:black;stroke-width:1" /><text x="294" y="248" font-size="8">2.59</text><line x1="320" y1="240" x2="320" y2="242" style="stroke:black;stroke-width:1" /><text x="322" y="248" font-size="8">2.87</text>
+</svg></td><td valign="top" class="none"><p><table><tr><th colspan="2">Duration Characteristic</th></tr><tr><th>Average</th><td>0.42s</td></tr><tr><th>Median</th><td>0.22s</td></tr><tr><th>Variance</th><td>0.23</td></tr><tr><th>Skewness</th><td>3.59</td></tr><tr><th>Minimum</th><td>0.12s</td></tr><tr><th>Maximum</th><td>2.87s</td></tr><tr><th>Total</th><td>30.49s</td></tr></table></p></td></tr></table></p><p><a href="#top">To Overview Table</a></p></p></body></html>

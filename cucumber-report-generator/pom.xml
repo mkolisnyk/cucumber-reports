@@ -6,6 +6,7 @@
 		<version>1.0.9-SNAPSHOT</version>
 	</parent>
 	<artifactId>cucumber-report-generator</artifactId>
+	<packaging>jar</packaging>
 	<build>
 		<resources>
 			<resource>

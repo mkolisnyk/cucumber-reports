@@ -1,0 +1,49 @@
+{
+  "@type": "com.github.mkolisnyk.cucumber.reporting.types.consolidated.ConsolidatedReportBatch", 
+  "models": [
+    {
+      "items": [
+        {
+          "path": "src/test/resources/consolidated-source/cucumber-results-feature-overview-chart.html", 
+          "title": "Overview Chart"
+        }, 
+        {
+          "path": "src/test/resources/consolidated-source/cucumber-results-known-errors.html", 
+          "title": "Known Errors"
+        }, 
+        {
+          "path": "src/test/resources/consolidated-source/cucumber-results-feature-overview.html", 
+          "title": "Feature Overview"
+        },
+        {
+          "path": "src/test/resources/consolidated-source/cucumber-results-agg-test-results.html", 
+          "title": "Detailed Results"
+        },
+        {
+          "path": "src/test/resources/consolidated-source/cucumber-usage-report.html", 
+          "title": "Usage Report"
+        }
+      ], 
+      "reportSuffix": "batch-config1", 
+      "title": "Overall Results Batch 1", 
+      "useTableOfContents": true,
+      "cols": 2
+    }, 
+    {
+      "items": [
+        {
+          "path": "src/test/resources/consolidated-source/cucumber-results-2-feature-overview-chart.html", 
+          "title": "Overview Chart"
+        }, 
+        {
+          "path": "src/test/resources/consolidated-source/cucumber-results-coverage-filtered.html", 
+          "title": "Test Coverage"
+        }
+      ], 
+      "reportSuffix": "batch-config2", 
+      "title": "Overall Results Batch 2", 
+      "useTableOfContents": false,
+      "cols": 2
+    }
+  ]
+}

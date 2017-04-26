@@ -1,5 +1,7 @@
 package com.github.mkolisnyk.cucumber.runner;
 
+import org.junit.Assert;
+
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -56,13 +58,15 @@ public class TestNGRunnerTest {
             //glue = {"com/github/mkolisnyk/cucumber/steps" },
             tags = {"@passed"}
     )
-    public class TestSubClass extends ExtendedTestNGRunner {
+    public static class TestSubClass extends ExtendedTestNGRunner {
+        public static int counter = 0;
         @BeforeSuite
-        public void beforeRun() {
+        public void farBeforeRun() {
             System.out.println("Setup");
         }
         @AfterSuite
-        public void tearDown() {
+        public void lastTearDown() {
+            counter++;
             System.out.println("Teardown");
         }
     }
@@ -138,6 +142,7 @@ public class TestNGRunnerTest {
         testng.setTestClasses(new Class[] {TestSubClass.class});
         testng.addListener(tla);
         testng.run();
+        Assert.assertEquals(1, TestSubClass.counter);
     }
     @Test
     public void testRunSampleTestNGClassWithBeforeAfterExceptions() throws Exception {

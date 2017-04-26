@@ -1,7 +1,14 @@
 package com.github.mkolisnyk.cucumber.runner.runtime;
 
+import gherkin.util.FixJava;
+
+import java.io.InputStreamReader;
+import java.io.Reader;
 import java.lang.reflect.Field;
 import java.util.Arrays;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 import org.apache.commons.lang3.ArrayUtils;
 import org.apache.commons.lang3.StringUtils;
@@ -9,6 +16,9 @@ import org.apache.commons.lang3.StringUtils;
 import com.github.mkolisnyk.cucumber.runner.ExtendedCucumberOptions;
 
 public class ExtendedRuntimeOptions {
+
+    private static final String USAGE_RESOURCE = "cli_params.txt";
+    private static String usageText;
 
     private boolean isOverviewReport = false;
     private boolean isOverviewChartsReport = false;
@@ -51,12 +61,84 @@ public class ExtendedRuntimeOptions {
     }
     public ExtendedRuntimeOptions() {
     }
-    /*public ExtendedRuntimeOptions(String[] args) throws Exception {
-        for (int i = 0; i < args.length; i++) {
-            if (args[i].equals("-r")) {
+    public ExtendedRuntimeOptions(List<String> args) throws Exception {
+
+        Map<String, String> singleValueMap = new HashMap<String, String>() {
+            {
+                put("-o", "outputFolder");
+                put("--out-folder", "outputFolder");
+                put("-rp", "reportPrefix");
+                put("--report-prefix", "reportPrefix");
+                put("-ss", "screenShotSize");
+                put("--screenshot-size", "screenShotSize");
+                put("-ps", "pdfPageSize");
+                put("-pdf-page-size", "pdfPageSize");
+                put("-sl", "screenShotLocation");
+                put("--screenshot-location", "screenShotLocation");
+                put("-bc", "breakdownConfig");
+                put("--breakdown-config", "breakdownConfig");
+                put("-fmc", "featureMapConfig");
+                put("--feature-map-config", "featureMapConfig");
+                put("-kec", "knownErrorsConfig");
+                put("--known-errors-config", "knownErrorsConfig");
+                put("-crc", "consolidatedReportConfig");
+                put("--consolidated-report-config", "consolidatedReportConfig");
             }
+        };
+        Map<String, String> multiValueMap = new HashMap<String, String>() {
+            {
+                put("-jrp", "jsonReportPaths");
+                put("--json-report-path", "jsonReportPaths");
+                put("-urp", "jsonUsageReportPaths");
+                put("--usage-report-path", "jsonUsageReportPaths");
+                put("-ict", "includeCoverageTags");
+                put("--include-coverage-tags", "includeCoverageTags");
+                put("-ect", "excludeCoverageTags");
+                put("-exclude-coverage-tags", "excludeCoverageTags");
+            }
+        };
+
+        int size = args.size();
+        for (int i = 0; i < size; i++) {
+            String arg = "";
+            String value = "";
+            String field = "";
+            if (args.get(i).equals("-r")) {
+                arg = args.remove(i).trim();
+                value = args.remove(i).trim();
+                this.isOverviewReport = value.contains("o");
+                this.isOverviewChartsReport = value.contains("O");
+                this.isUsageReport = value.contains("u");
+                this.isDetailedReport = value.contains("d");
+                this.isDetailedAggregatedReport = value.contains("a");
+                this.isCoverageReport = value.contains("c");
+                this.breakdownReport = value.contains("B");
+                this.featureMapReport = value.contains("F");
+                this.featureOverviewChart = value.contains("f");
+                this.knownErrorsReport = value.contains("K");
+                this.consolidatedReport = value.contains("C");
+            } else if (args.get(i).equals("-pdf")) {
+                this.toPDF = true;
+                args.remove(i);
+            } else if (singleValueMap.containsKey(args.get(i))) {
+                arg = args.remove(i).trim();
+                value = args.remove(i).trim();
+                field = singleValueMap.get(arg);
+                this.getClass().getField(field).set(this, value);
+            } else if (multiValueMap.containsKey(args.get(i))) {
+                arg = args.remove(i).trim();
+                value = args.remove(i).trim();
+                field = singleValueMap.get(arg);
+                String[] currentValues = (String[]) this.getClass().getField(field).get(this);
+                currentValues = (String[]) ArrayUtils.add(currentValues, value.split(","));
+                this.getClass().getField(field).set(this, currentValues);
+            } else if (args.get(i).equals("-h") || args.get(i).equals("--help")) {
+                loadUsageTextIfNeeded();
+                System.out.println(usageText);
+            }
+            size = args.size();
         }
-    }*/
+    }
     public ExtendedRuntimeOptions(ExtendedCucumberOptions options) throws Exception {
         if (options != null) {
             this.isOverviewReport = options.overviewReport();
@@ -99,6 +181,17 @@ public class ExtendedRuntimeOptions {
                 } else {
                     field.set(this, System.getProperty(propertyName));
                 }
+            }
+        }
+    }
+
+    private static void loadUsageTextIfNeeded() {
+        if (usageText == null) {
+            try {
+                Reader reader = new InputStreamReader(FixJava.class.getResourceAsStream(USAGE_RESOURCE), "UTF-8");
+                usageText = FixJava.readReader(reader);
+            } catch (Exception e) {
+                usageText = "Could not load usage text: " + e.toString();
             }
         }
     }

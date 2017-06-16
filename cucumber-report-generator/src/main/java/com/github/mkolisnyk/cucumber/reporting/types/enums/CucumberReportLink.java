@@ -12,6 +12,7 @@ public enum CucumberReportLink {
     KNOWN_ERRORS_URL(COMMON_URL + "/known-errors-report"),
     RESULTS_OVERVIEW_URL(COMMON_URL + "/overview-report"),
     RETROSPECTIVE_OVERVIEW_URL(COMMON_URL + "/retrospective-results-report"),
+    SYSTEM_INFO_URL(COMMON_URL + "/system-info"),
     USAGE_URL(COMMON_URL + "/usage-report");
     private String value;
 

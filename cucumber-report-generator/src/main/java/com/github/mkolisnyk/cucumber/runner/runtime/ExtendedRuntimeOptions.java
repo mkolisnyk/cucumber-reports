@@ -188,10 +188,12 @@ public class ExtendedRuntimeOptions {
     private static void loadUsageTextIfNeeded() {
         if (usageText == null) {
             try {
-                Reader reader = new InputStreamReader(FixJava.class.getResourceAsStream(USAGE_RESOURCE), "UTF-8");
+                Reader reader = new InputStreamReader(
+                        ExtendedRuntimeOptions.class.getResourceAsStream(USAGE_RESOURCE), "UTF-8");
                 usageText = FixJava.readReader(reader);
             } catch (Exception e) {
                 usageText = "Could not load usage text: " + e.toString();
+                e.printStackTrace();
             }
         }
     }

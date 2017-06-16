@@ -11,6 +11,7 @@ public enum CucumberReportTypes {
     KNOWN_ERRORS("Known Errors Report"),
     RESULTS_OVERVIEW("Results Overview Report"),
     RETROSPECTIVE_OVERVIEW("Retrospective Overview Report"),
+    SYSTEM_INFO("System Information Report"),
     USAGE("Usage Report");
     private String value;
 

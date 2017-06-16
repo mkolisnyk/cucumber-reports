@@ -11,6 +11,7 @@ import com.github.mkolisnyk.cucumber.reporting.CucumberFeatureOverview;
 import com.github.mkolisnyk.cucumber.reporting.CucumberKnownErrorsReport;
 import com.github.mkolisnyk.cucumber.reporting.CucumberOverviewChartsReport;
 import com.github.mkolisnyk.cucumber.reporting.CucumberResultsOverview;
+import com.github.mkolisnyk.cucumber.reporting.CucumberSystemInfo;
 import com.github.mkolisnyk.cucumber.reporting.CucumberUsageReporting;
 import com.github.mkolisnyk.cucumber.runner.runtime.ExtendedRuntimeOptions;
 
@@ -168,6 +169,17 @@ public final class ReportRunner {
             e.printStackTrace();
         }
     }
+    public void runSystemInfoReport(ExtendedRuntimeOptions extendedOptions) {
+        if (!extendedOptions.isSystemInfoReport()) {
+            return;
+        }
+        CucumberSystemInfo report = new CucumberSystemInfo(extendedOptions);
+        try {
+            report.execute(extendedOptions.isToPDF());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
     public static void run(ExtendedRuntimeOptions extendedOption) {
         ReportRunner runner = new ReportRunner();
         runner.runUsageReport(extendedOption);
@@ -180,6 +192,7 @@ public final class ReportRunner {
         runner.runBreakdownReport(extendedOption);
         runner.runFeatureMapReport(extendedOption);
         runner.runKnownErrorsReport(extendedOption);
+        runner.runSystemInfoReport(extendedOption);
         runner.runConsolidatedReport(extendedOption);
     }
 }

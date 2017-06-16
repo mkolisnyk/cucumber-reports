@@ -11,9 +11,16 @@ import org.apache.commons.io.IOUtils;
 import com.github.mkolisnyk.cucumber.reporting.interfaces.SimpleReport;
 import com.github.mkolisnyk.cucumber.reporting.types.enums.CucumberReportLink;
 import com.github.mkolisnyk.cucumber.reporting.types.enums.CucumberReportTypes;
+import com.github.mkolisnyk.cucumber.runner.runtime.ExtendedRuntimeOptions;
 
 public class CucumberSystemInfo extends SimpleReport {
 
+    public CucumberSystemInfo() {
+    }
+    public CucumberSystemInfo(ExtendedRuntimeOptions extendedOptions) {
+        this.setOutputDirectory(extendedOptions.getOutputFolder());
+        this.setOutputName(extendedOptions.getReportPrefix());
+    }
     private String generateSystemInfo() throws IOException {
         InputStream is = this.getClass().getResourceAsStream("/consolidated-tmpl.html");
         String result = IOUtils.toString(is);
@@ -67,6 +74,4 @@ public class CucumberSystemInfo extends SimpleReport {
             this.exportToPDF(outFile, "system-info");
         }
     }
-
-    
 }

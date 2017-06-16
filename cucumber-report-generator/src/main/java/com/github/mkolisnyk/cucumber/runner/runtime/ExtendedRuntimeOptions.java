@@ -48,6 +48,7 @@ public class ExtendedRuntimeOptions {
     private String consolidatedReportConfig = "";
     private int threadsCount;
     private String threadsCountValue;
+    private boolean systemInfoReport = false;
 
     private String[] joinPaths(String singlePath, String[] arrayPath) {
         String[] result = {};
@@ -170,6 +171,7 @@ public class ExtendedRuntimeOptions {
             this.consolidatedReportConfig = options.consolidatedReportConfig();
             this.threadsCount = options.threadsCount();
             this.threadsCountValue = options.threadsCountValue();
+            this.systemInfoReport = options.systemInfoReport();
         }
         for (Field field : this.getClass().getDeclaredFields()) {
             String propertyName = "cucumber.reports." + field.getName();
@@ -385,6 +387,12 @@ public class ExtendedRuntimeOptions {
     }
     public void setOverviewChartsReport(boolean isOverviewChartsReportValue) {
         this.isOverviewChartsReport = isOverviewChartsReportValue;
+    }
+    public boolean isSystemInfoReport() {
+        return systemInfoReport;
+    }
+    public void setSystemInfoReport(boolean systemInfoReportValue) {
+        this.systemInfoReport = systemInfoReportValue;
     }
     public static ExtendedRuntimeOptions[] init(Class<?> clazz) throws Exception {
         ExtendedCucumberOptions[] options = clazz.getAnnotationsByType(ExtendedCucumberOptions.class);

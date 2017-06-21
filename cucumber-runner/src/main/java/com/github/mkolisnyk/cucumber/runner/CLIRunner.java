@@ -16,6 +16,7 @@ public final class CLIRunner {
         List<String> input = new ArrayList<String>(Arrays.asList(argv));
         extendedOptions[0] = new ExtendedRuntimeOptions(input);
         byte exitstatus = Main.run(argv, Thread.currentThread().getContextClassLoader());
+        ReportRunner.run(extendedOptions[0]);
         System.exit(exitstatus);
     }
 }

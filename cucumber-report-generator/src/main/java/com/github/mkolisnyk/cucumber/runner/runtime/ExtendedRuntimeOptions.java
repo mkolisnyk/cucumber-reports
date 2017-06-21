@@ -117,6 +117,7 @@ public class ExtendedRuntimeOptions {
                 this.featureMapReport = value.contains("F");
                 this.featureOverviewChart = value.contains("f");
                 this.knownErrorsReport = value.contains("K");
+                this.systemInfoReport = value.contains("s");
                 this.consolidatedReport = value.contains("C");
             } else if (args.get(i).equals("-pdf")) {
                 this.toPDF = true;

@@ -3,6 +3,14 @@ title: Cucumber Reports News
 layout: null
 ---
 
+## 21.06.2017 1.0.9 Version Release
+
+* [#113](https://github.com/mkolisnyk/cucumber-reports/issues/113) Enhancement: System info report
+* [#109](https://github.com/mkolisnyk/cucumber-reports/issues/109) Enhancement: Overview report. Add Total columns enhancement
+* [#107](https://github.com/mkolisnyk/cucumber-reports/issues/107) Bugfix: cucumber scenario is running two times
+* [#108](https://github.com/mkolisnyk/cucumber-reports/issues/108) Bugfix: PDF Reports: PDF is still failed to generate due to special characters
+* [#93](https://github.com/mkolisnyk/cucumber-reports/issues/93) Enhancement: Extend Cucumber command line runner enhancement ready for release
+
 ## 02.01.2017 1.0.8 Version Release
 
 * [#100](https://github.com/mkolisnyk/cucumber-reports/issues/100) Add identifiers to unique HTML entities in detailed and overview report enhancement

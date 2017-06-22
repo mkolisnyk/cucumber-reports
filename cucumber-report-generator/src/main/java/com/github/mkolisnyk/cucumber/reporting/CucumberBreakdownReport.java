@@ -53,9 +53,7 @@ public class CucumberBreakdownReport extends ConfigurableReport<BreakdownReportM
                 this.getOutputDirectory() + File.separator + this.getOutputName()
                 + "-" + info.getReportSuffix() + ".html");
         FileUtils.writeStringToFile(outFile, generateBreakdownReport(features, info, table));
-        if (toPDF) {
-            this.exportToPDF(outFile, info.getReportSuffix());
-        }
+        this.export(outFile, info.getReportSuffix(), "", toPDF, this.isImageExportable());
     }
     public void executeReport(BreakdownTable table, boolean toPDF) throws Exception {
         executeReport(new BreakdownReportInfo(table), table, toPDF);

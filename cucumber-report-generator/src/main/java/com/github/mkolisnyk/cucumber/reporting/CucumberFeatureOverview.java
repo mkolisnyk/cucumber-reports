@@ -117,8 +117,6 @@ public class CucumberFeatureOverview extends CucumberResultsOverview {
                 this.getOutputDirectory() + File.separator + this.getOutputName()
                 + "-feature-overview-chart.html");
         FileUtils.writeStringToFile(outFile, generateFeatureOverviewChart(features));
-        if (toPDF) {
-            this.exportToPDF(outFile, "feature-overview-chart");
-        }
+        this.export(outFile, "feature-overview-chart", "", toPDF, this.isImageExportable());
     }
 }

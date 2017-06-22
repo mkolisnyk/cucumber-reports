@@ -17,7 +17,11 @@ public class CucumberResultsReportTest {
         results.setOutputName("cucumber-results");
         results.setSourceFile("./src/test/resources/cucumber.json");
         results.execute();
+        File outFile = new File(
+                results.getOutputDirectory() + File.separator + results.getOutputName()
+                + "-" + "feature-overview" + ".html");
 
+        results.export(outFile, "feature-overview", "png,jpg", false, true);
         /*File dump = new File("./target/cucumber-results-feature-overview-dump.xml");
         int[][] result = JAXB.unmarshal(dump, int[][].class);
         for (int[] row : result) {

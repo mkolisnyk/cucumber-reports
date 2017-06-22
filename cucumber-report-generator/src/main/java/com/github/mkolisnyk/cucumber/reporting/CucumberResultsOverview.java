@@ -67,6 +67,10 @@ public class CucumberResultsOverview extends KECompatibleReport {
         }
         return statuses;
     }
+    @Override
+    public boolean isImageExportable() {
+        return true;
+    }
     protected String generateFeatureOverview(CucumberFeatureResult[] results) throws IOException {
         String content = this.getReportBase();
         content = content.replaceAll("__TITLE__", "Features Overview");
@@ -156,7 +160,7 @@ public class CucumberResultsOverview extends KECompatibleReport {
     protected void executeOverviewReport(String reportSuffix, boolean toPdf) throws Exception {
         executeOverviewReport(null, reportSuffix, toPdf);
     }
-    protected void executeOverviewReport(KnownErrorsModel batch, String reportSuffix, boolean toPdf) throws Exception {
+    protected void executeOverviewReport(KnownErrorsModel batch, String reportSuffix, boolean toPDF) throws Exception {
         this.validateParameters();
         CucumberFeatureResult[] features = readFileContent(true);
 
@@ -169,9 +173,7 @@ public class CucumberResultsOverview extends KECompatibleReport {
                 this.getOutputDirectory() + File.separator + this.getOutputName()
                 + "-" + reportSuffix + ".html");
         FileUtils.writeStringToFile(outFile, generateFeatureOverview(features));
-        if (toPdf) {
-            this.exportToPDF(outFile, reportSuffix);
-        }
+        this.export(outFile, reportSuffix, "", toPDF, this.isImageExportable());
         try {
             outFile = new File(
                     this.getOutputDirectory() + File.separator + this.getOutputName()

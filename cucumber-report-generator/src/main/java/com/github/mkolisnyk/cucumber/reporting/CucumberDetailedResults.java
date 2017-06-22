@@ -394,8 +394,6 @@ public class CucumberDetailedResults extends KECompatibleReport {
                         this.getOutputDirectory(), File.separator, this.getOutputName()));
         String content = generateStepsReport(features);
         FileUtils.writeStringToFile(outFile, content, "UTF-8");
-        if (toPDF) {
-            this.exportToPDF(outFile, "test-results");
-        }
+        this.export(outFile, "test-results", "", toPDF, this.isImageExportable());
     }
 }

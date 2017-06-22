@@ -96,9 +96,7 @@ public class CucumberFeatureMapReport extends CucumberBreakdownReport {
                 + "-" + info.getReportSuffix() + ".html");
         FileUtils.writeStringToFile(outFile, generateBreakdownReport(features, info, table)
                 .replaceAll("\"hoverTable\"", "\"_hoverTable\""));
-        if (toPDF) {
-            this.exportToPDF(outFile, info.getReportSuffix());
-        }
+        this.export(outFile, info.getReportSuffix(), "", toPDF, this.isImageExportable());
     }
 
     @Override

@@ -81,9 +81,7 @@ public class CucumberKnownErrorsReport extends KECompatibleReport {
                 this.getOutputDirectory() + File.separator + this.getOutputName()
                 + "-known-errors.html");
         FileUtils.writeStringToFile(outFile, generateKnownErrorsReport(features, batch));
-        if (toPDF) {
-            this.exportToPDF(outFile, "known-errors");
-        }
+        this.export(outFile, "known-errors", "", toPDF, this.isImageExportable());
     }
 
     @Deprecated

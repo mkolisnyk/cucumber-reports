@@ -70,8 +70,6 @@ public class CucumberSystemInfo extends SimpleReport {
                 this.getOutputDirectory() + File.separator + this.getOutputName()
                 + "-system-info.html");
         FileUtils.writeStringToFile(outFile, generateSystemInfo());
-        if (toPDF) {
-            this.exportToPDF(outFile, "system-info");
-        }
+        this.export(outFile, "system-info", "", toPDF, this.isImageExportable());
     }
 }

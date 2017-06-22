@@ -144,9 +144,7 @@ public class CucumberRetrospectiveOverviewReport extends ConfigurableReport<Retr
                 this.getOutputDirectory() + File.separator + this.getOutputName()
                 + "-" + model.getReportSuffix() + ".html");
         FileUtils.writeStringToFile(outFile, generateRetrospectiveReport(model, stats));
-        if (toPDF) {
-            this.exportToPDF(outFile, model.getReportSuffix());
-        }
+        this.export(outFile, model.getReportSuffix(), "", toPDF, this.isImageExportable());
     }
 
     @Override

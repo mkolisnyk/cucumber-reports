@@ -97,9 +97,7 @@ public class CucumberConsolidatedReport extends ConfigurableReport<ConsolidatedR
                 this.getOutputDirectory() + File.separator + this.getOutputName()
                 + "-" + model.getReportSuffix() + ".html");
         FileUtils.writeStringToFile(outFile, generateConsolidatedReport(model));
-        if (toPDF) {
-            this.exportToPDF(outFile, model.getReportSuffix());
-        }
+        this.export(outFile, model.getReportSuffix(), "", toPDF, this.isImageExportable());
     }
     public void executeConsolidatedReport(ConsolidatedReportModel model) throws Exception {
         executeConsolidatedReport(model, false);

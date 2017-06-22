@@ -1,5 +1,6 @@
 package com.github.mkolisnyk.cucumber.reporting.interfaces;
 
+import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -17,8 +18,11 @@ import org.apache.batik.transcoder.TranscoderInput;
 import org.apache.batik.transcoder.TranscoderOutput;
 import org.apache.batik.transcoder.image.PNGTranscoder;
 import org.apache.commons.io.FileUtils;
+import org.apache.commons.lang.StringUtils;
 //import org.apache.commons.lang.ArrayUtils;
 import org.xhtmlrenderer.pdf.ITextRenderer;
+import org.xhtmlrenderer.simple.Graphics2DRenderer;
+import org.xhtmlrenderer.util.FSImageWriter;
 
 import com.cedarsoftware.util.io.JsonObject;
 import com.cedarsoftware.util.io.JsonReader;
@@ -118,7 +122,9 @@ public abstract class CucumberResultsCommon {
     public void setPdfPageSize(String pdfPageSizeValue) {
         this.pdfPageSize = pdfPageSizeValue;
     }
-
+    public boolean isImageExportable() {
+        return false;
+    }
     @SuppressWarnings("unchecked")
     public CucumberFeatureResult[] readFileContent(String sourceFileValue) throws Exception {
         FileInputStream fis = null;
@@ -143,19 +149,6 @@ public abstract class CucumberResultsCommon {
         fis.close();
         return sources;
     }
-
-    /*@SuppressWarnings("unchecked")
-    public CucumberFeatureResult[] readFileContent() throws Exception {
-        return readFileContent(this.getSourceFiles());
-    }
-
-    private CucumberFeatureResult[] readFileContent(String[] sourceFilesValue) throws Exception {
-        CucumberFeatureResult[] output = {};
-        for (String sourceFile : sourceFilesValue) {
-            output = (CucumberFeatureResult[]) ArrayUtils.addAll(output, readFileContent(sourceFile));
-        }
-        return output;
-    }*/
 
     public void dumpOverviewStats(File outFile, CucumberFeatureResult[] results) throws IOException {
         int[][] stats = getStatuses(results);
@@ -206,15 +199,20 @@ public abstract class CucumberResultsCommon {
         }
         return htmlText;
     }
-    public void exportToPDF(File htmlFile, String suffix) throws Exception {
-        File bakupFile = new File(htmlFile.getAbsolutePath() + ".bak.html");
-        String url = bakupFile.toURI().toURL().toString();
-        String outputFile = this.getOutputDirectory() + File.separator + this.getOutputName()
-                + "-" + suffix + ".pdf";
+    private File generateBackupFile(File htmlFile) throws Exception {
+        File backupFile = new File(htmlFile.getAbsolutePath() + ".bak.html");
         String updatedContent = replaceSvgWithPng(htmlFile);
         updatedContent = updatedContent.replaceAll("\"hoverTable\"", "\"_hoverTable\"");
         updatedContent = updatedContent.replaceAll("__PAGESIZE__", this.getPdfPageSize());
-        FileUtils.writeStringToFile(bakupFile, updatedContent);
+        FileUtils.writeStringToFile(backupFile, updatedContent);
+        return backupFile;
+    }
+    private void exportToPDF(File htmlFile, String suffix) throws Exception {
+        File bakupFile = generateBackupFile(htmlFile);
+        String url = bakupFile.toURI().toURL().toString();
+        String outputFile = this.getOutputDirectory() + File.separator + this.getOutputName()
+                + "-" + suffix + ".pdf";
+
         OutputStream os = new FileOutputStream(outputFile);
 
         ITextRenderer renderer = new ITextRenderer();
@@ -224,7 +222,29 @@ public abstract class CucumberResultsCommon {
 
         os.close();
     }
+    private void exportToImage(File htmlFile, String suffix, String format) throws Exception {
+        File bakupFile = generateBackupFile(htmlFile);
+        String outputFile = this.getOutputDirectory() + File.separator + this.getOutputName()
+                + "-" + suffix + "." + format;
 
+        BufferedImage buff = null;
+        buff = Graphics2DRenderer.renderToImageAutoSize(bakupFile.toURI().toURL().toString(), 1024);
+        FSImageWriter imageWriter = new FSImageWriter();
+        imageWriter.write(buff, outputFile);
+    }
+
+    public void export(File htmlFile, String suffix, String format,
+            boolean toPDF, boolean toImage) throws Exception {
+        if (toPDF) {
+            this.exportToPDF(htmlFile, suffix);
+        }
+        if (toImage && StringUtils.isNotBlank(format)) {
+            String[] formats = format.split(",");
+            for (String fmt : formats) {
+                this.exportToImage(htmlFile, suffix, fmt);
+            }
+        }
+    }
     public int[][] getStatuses(CucumberFeatureResult[] results) {
         return null;
     }

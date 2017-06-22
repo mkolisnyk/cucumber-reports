@@ -132,9 +132,7 @@ public class CucumberOverviewChartsReport extends KECompatibleReport {
                 this.getOutputDirectory() + File.separator + this.getOutputName()
                 + "-charts-report.html");
         FileUtils.writeStringToFile(outFile, generateCharts(features));
-        if (toPDF) {
-            this.exportToPDF(outFile, "charts-report");
-        }
+        this.export(outFile, "charts-report", "", toPDF, this.isImageExportable());
     }
 
     @Override

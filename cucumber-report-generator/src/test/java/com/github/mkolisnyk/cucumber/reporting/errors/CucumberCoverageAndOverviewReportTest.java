@@ -145,7 +145,7 @@ public class CucumberCoverageAndOverviewReportTest {
             return;
         }
         try {
-            results.execute(new File("./src/test/resources/retrospective-source/sample_batch.json"), true, true);
+            results.execute(new File("./src/test/resources/retrospective-source/sample_batch.json"), true, new String[] {"pdf"});
         } catch (AssertionError e) {
             actualMessage = e.getMessage();
         }

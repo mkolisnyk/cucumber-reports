@@ -21,7 +21,7 @@ public class CucumberRetrospectiveOverviewTest {
                     "retro1",
                     "Nightly Runs Retrospective",
                     "(.*)retrospective-source.1(.*)json", 600, 200);
-        report.executeReport(model, true, true);
+        report.executeReport(model, true, new String[] {"pdf"});
     }
     @Test
     public void testGenerateReportFromBatch() throws Exception {
@@ -40,7 +40,7 @@ public class CucumberRetrospectiveOverviewTest {
                         "(.*)retrospective-source.1.131(.*)json", 300, 400)
             }
         );
-        report.execute(batch, true, false);
+        report.execute(batch, true, new String[] {});
         String json = JsonWriter.objectToJson(batch);
         FileUtils.writeStringToFile(new File("./src/test/resources/retrospective-source/sample_batch.json"), json);
     }
@@ -49,6 +49,6 @@ public class CucumberRetrospectiveOverviewTest {
         CucumberRetrospectiveOverviewReport report = new CucumberRetrospectiveOverviewReport();
         report.setOutputDirectory("./target");
         report.setOutputName("cucumber-results-batch");
-        report.execute(new File("./src/test/resources/retrospective-source/sample_batch.json"), true, true);
+        report.execute(new File("./src/test/resources/retrospective-source/sample_batch.json"), true, new String[] {"pdf"});
     }
 }

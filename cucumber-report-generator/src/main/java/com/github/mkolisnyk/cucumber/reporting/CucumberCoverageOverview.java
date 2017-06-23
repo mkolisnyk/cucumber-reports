@@ -192,9 +192,9 @@ public class CucumberCoverageOverview extends CucumberResultsOverview {
     }
 
     @Override
-    public void execute(boolean toPDF) throws Exception {
+    public void execute(String[] formats) throws Exception {
         // TODO Auto-generated method stub
-        executeOverviewReport("coverage", toPDF);
+        executeOverviewReport("coverage", formats);
     }
 
     @Override

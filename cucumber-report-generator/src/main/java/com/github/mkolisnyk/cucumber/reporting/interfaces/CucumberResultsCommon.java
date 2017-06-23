@@ -18,7 +18,6 @@ import org.apache.batik.transcoder.TranscoderInput;
 import org.apache.batik.transcoder.TranscoderOutput;
 import org.apache.batik.transcoder.image.PNGTranscoder;
 import org.apache.commons.io.FileUtils;
-import org.apache.commons.lang.StringUtils;
 //import org.apache.commons.lang.ArrayUtils;
 import org.xhtmlrenderer.pdf.ITextRenderer;
 import org.xhtmlrenderer.simple.Graphics2DRenderer;
@@ -223,25 +222,23 @@ public abstract class CucumberResultsCommon {
         os.close();
     }
     private void exportToImage(File htmlFile, String suffix, String format) throws Exception {
+        final int defaultWidth = 1024;
         File bakupFile = generateBackupFile(htmlFile);
         String outputFile = this.getOutputDirectory() + File.separator + this.getOutputName()
                 + "-" + suffix + "." + format;
 
         BufferedImage buff = null;
-        buff = Graphics2DRenderer.renderToImageAutoSize(bakupFile.toURI().toURL().toString(), 1024);
+        buff = Graphics2DRenderer.renderToImageAutoSize(bakupFile.toURI().toURL().toString(), defaultWidth);
         FSImageWriter imageWriter = new FSImageWriter();
         imageWriter.write(buff, outputFile);
     }
 
-    public void export(File htmlFile, String suffix, String format,
-            boolean toPDF, boolean toImage) throws Exception {
-        if (toPDF) {
-            this.exportToPDF(htmlFile, suffix);
-        }
-        if (toImage && StringUtils.isNotBlank(format)) {
-            String[] formats = format.split(",");
-            for (String fmt : formats) {
-                this.exportToImage(htmlFile, suffix, fmt);
+    public void export(File htmlFile, String suffix, String[] formats, boolean isImageExportable) throws Exception {
+        for (String format : formats) {
+            if (format.trim().equalsIgnoreCase("pdf")) {
+                this.exportToPDF(htmlFile, suffix);
+            } else if (isImageExportable) {
+                this.exportToImage(htmlFile, suffix, format);
             }
         }
     }

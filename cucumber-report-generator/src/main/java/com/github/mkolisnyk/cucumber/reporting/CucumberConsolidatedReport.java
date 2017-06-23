@@ -92,15 +92,15 @@ public class CucumberConsolidatedReport extends ConfigurableReport<ConsolidatedR
         return result;
     }
 
-    public void executeConsolidatedReport(ConsolidatedReportModel model, boolean toPDF) throws Exception {
+    public void executeConsolidatedReport(ConsolidatedReportModel model, String[] formats) throws Exception {
         File outFile = new File(
                 this.getOutputDirectory() + File.separator + this.getOutputName()
                 + "-" + model.getReportSuffix() + ".html");
         FileUtils.writeStringToFile(outFile, generateConsolidatedReport(model));
-        this.export(outFile, model.getReportSuffix(), "", toPDF, this.isImageExportable());
+        this.export(outFile, model.getReportSuffix(), formats, this.isImageExportable());
     }
     public void executeConsolidatedReport(ConsolidatedReportModel model) throws Exception {
-        executeConsolidatedReport(model, false);
+        executeConsolidatedReport(model, new String[] {});
     }
     @Override
     public CucumberReportTypes getReportType() {
@@ -114,24 +114,24 @@ public class CucumberConsolidatedReport extends ConfigurableReport<ConsolidatedR
         return CucumberReportLink.CONSOLIDATED_URL;
     }
     @Override
-    public void execute(ConsolidatedReportBatch batch, boolean toPDF)
+    public void execute(ConsolidatedReportBatch batch, String[] formats)
             throws Exception {
         for (ConsolidatedReportModel model : batch.getModels()) {
-            executeConsolidatedReport(model, toPDF);
+            executeConsolidatedReport(model, formats);
         }
     }
 
     @Override
-    public void execute(boolean aggregate, boolean toPDF) throws Exception {
+    public void execute(boolean aggregate, String[] formats) throws Exception {
     }
     @Override
     public void execute(ConsolidatedReportBatch batch, boolean aggregate,
-            boolean toPDF) throws Exception {
-        execute(batch, toPDF);
+            String[] formats) throws Exception {
+        execute(batch, formats);
     }
     @Override
-    public void execute(File config, boolean aggregate, boolean toPDF)
+    public void execute(File config, boolean aggregate, String[] formats)
             throws Exception {
-        execute(config, toPDF);
+        execute(config, formats);
     }
 }

@@ -60,16 +60,16 @@ public class CucumberSystemInfo extends SimpleReport {
 
     @Override
     public void execute() throws Exception {
-        execute(false);
+        execute(new String[] {});
     }
 
     @Override
-    public void execute(boolean toPDF) throws Exception {
+    public void execute(String[] formats) throws Exception {
         validateParameters();
         File outFile = new File(
                 this.getOutputDirectory() + File.separator + this.getOutputName()
                 + "-system-info.html");
         FileUtils.writeStringToFile(outFile, generateSystemInfo());
-        this.export(outFile, "system-info", "", toPDF, this.isImageExportable());
+        this.export(outFile, "system-info", formats, this.isImageExportable());
     }
 }

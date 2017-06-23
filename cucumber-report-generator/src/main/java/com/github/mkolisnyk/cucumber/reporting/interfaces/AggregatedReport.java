@@ -12,14 +12,13 @@ public abstract class AggregatedReport extends SimpleReport {
     public AggregatedReport(ExtendedRuntimeOptions extendedOptions) {
         super(extendedOptions);
     }
-    public abstract void execute(boolean aggregate, boolean toPDF) throws Exception;
-    @Override
+    public abstract void execute(boolean aggregate, String[] formats) throws Exception;
     public void execute(boolean aggregate) throws Exception {
-        execute(aggregate, false);
+        execute(aggregate, new String[] {});
     }
     @Override
     public void execute() throws Exception {
-        execute(false, false);
+        execute(false, new String[] {});
     }
 
     public CucumberFeatureResult[] aggregateResults(CucumberFeatureResult[] input, boolean collapse) {
@@ -29,14 +28,12 @@ public abstract class AggregatedReport extends SimpleReport {
         }
         return input;
     }
-    @SuppressWarnings("unchecked")
     public CucumberFeatureResult[] readFileContent(String sourceFileValue, boolean aggregate) throws Exception {
         CucumberFeatureResult[] sources = readFileContent(sourceFileValue);
         sources = aggregateResults(sources, aggregate);
         return sources;
     }
 
-    @SuppressWarnings("unchecked")
     public CucumberFeatureResult[] readFileContent(boolean aggregate) throws Exception {
         return readFileContent(this.getSourceFiles(), aggregate);
     }

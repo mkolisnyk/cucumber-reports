@@ -74,19 +74,19 @@ public class CucumberKnownErrorsReport extends KECompatibleReport {
     }
 
     @Override
-    public void execute(KnownErrorsModel batch, boolean toPDF) throws Exception {
+    public void execute(KnownErrorsModel batch, String[] formats) throws Exception {
         validateParameters();
         CucumberFeatureResult[] features = readFileContent(true);
         File outFile = new File(
                 this.getOutputDirectory() + File.separator + this.getOutputName()
                 + "-known-errors.html");
         FileUtils.writeStringToFile(outFile, generateKnownErrorsReport(features, batch));
-        this.export(outFile, "known-errors", "", toPDF, this.isImageExportable());
+        this.export(outFile, "known-errors", formats, this.isImageExportable());
     }
 
     @Deprecated
     @Override
-    public void execute(boolean aggregate, boolean toPDF) throws Exception {
+    public void execute(boolean aggregate, String[] formats) throws Exception {
     }
 
     @Override
@@ -98,8 +98,8 @@ public class CucumberKnownErrorsReport extends KECompatibleReport {
     }
 
     @Override
-    public void execute(KnownErrorsModel batch, boolean aggregate, boolean toPDF)
+    public void execute(KnownErrorsModel batch, boolean aggregate, String[] formats)
             throws Exception {
-        execute(batch, toPDF);
+        execute(batch, formats);
     }
 }

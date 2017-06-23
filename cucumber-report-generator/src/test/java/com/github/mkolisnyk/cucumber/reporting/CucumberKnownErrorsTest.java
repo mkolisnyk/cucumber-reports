@@ -37,7 +37,7 @@ public class CucumberKnownErrorsTest {
                    KnownErrorPriority.LOW),
             },
             KnownErrorOrderBy.FREQUENCY);
-        results.execute(model, false);
+        results.execute(model, new String[] {});
         //String json = JsonWriter.objectToJson(model);
         //FileUtils.writeStringToFile(new File("./src/test/resources/known-errors-source/sample_model.json"), json);
     }

@@ -49,6 +49,7 @@ public class ExtendedRuntimeOptions {
     private int threadsCount;
     private String threadsCountValue;
     private boolean systemInfoReport = false;
+    private String[] formats = {};
 
     private String[] joinPaths(String singlePath, String[] arrayPath) {
         String[] result = {};
@@ -59,6 +60,13 @@ public class ExtendedRuntimeOptions {
             result = ArrayUtils.addAll(result, arrayPath);
         }
         return result;
+    }
+    private void processParameters() {
+        if (!this.isToPDF()) {
+            this.formats = ArrayUtils.removeElement(this.formats, "pdf");
+        } else if (!ArrayUtils.contains(this.formats, "pdf")) {
+            this.formats = ArrayUtils.add(this.formats, "pdf");
+        }
     }
     public ExtendedRuntimeOptions() {
     }
@@ -95,7 +103,9 @@ public class ExtendedRuntimeOptions {
                 put("-ict", "includeCoverageTags");
                 put("--include-coverage-tags", "includeCoverageTags");
                 put("-ect", "excludeCoverageTags");
-                put("-exclude-coverage-tags", "excludeCoverageTags");
+                put("--exclude-coverage-tags", "excludeCoverageTags");
+                put("-f", "formats");
+                put("-formats", "formats");
             }
         };
 
@@ -140,6 +150,7 @@ public class ExtendedRuntimeOptions {
             }
             size = args.size();
         }
+        processParameters();
     }
     public ExtendedRuntimeOptions(ExtendedCucumberOptions options) throws Exception {
         if (options != null) {
@@ -173,6 +184,7 @@ public class ExtendedRuntimeOptions {
             this.threadsCount = options.threadsCount();
             this.threadsCountValue = options.threadsCountValue();
             this.systemInfoReport = options.systemInfoReport();
+            this.formats = options.formats();
         }
         for (Field field : this.getClass().getDeclaredFields()) {
             String propertyName = "cucumber.reports." + field.getName();
@@ -186,6 +198,7 @@ public class ExtendedRuntimeOptions {
                 }
             }
         }
+        processParameters();
     }
 
     private static void loadUsageTextIfNeeded() {
@@ -394,6 +407,12 @@ public class ExtendedRuntimeOptions {
     }
     public void setSystemInfoReport(boolean systemInfoReportValue) {
         this.systemInfoReport = systemInfoReportValue;
+    }
+    public String[] getFormats() {
+        return formats;
+    }
+    public void setFormats(String[] formatsValue) {
+        this.formats = formatsValue;
     }
     public static ExtendedRuntimeOptions[] init(Class<?> clazz) throws Exception {
         ExtendedCucumberOptions[] options = clazz.getAnnotationsByType(ExtendedCucumberOptions.class);

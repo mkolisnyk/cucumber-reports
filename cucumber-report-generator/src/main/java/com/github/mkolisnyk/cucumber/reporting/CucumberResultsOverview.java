@@ -155,12 +155,13 @@ public class CucumberResultsOverview extends KECompatibleReport {
     }
 
     protected void executeOverviewReport(String reportSuffix) throws Exception {
-        executeOverviewReport(reportSuffix, false);
+        executeOverviewReport(reportSuffix, new String[] {});
     }
-    protected void executeOverviewReport(String reportSuffix, boolean toPdf) throws Exception {
-        executeOverviewReport(null, reportSuffix, toPdf);
+    protected void executeOverviewReport(String reportSuffix,  String[] formats) throws Exception {
+        executeOverviewReport(null, reportSuffix, formats);
     }
-    protected void executeOverviewReport(KnownErrorsModel batch, String reportSuffix, boolean toPDF) throws Exception {
+    protected void executeOverviewReport(
+            KnownErrorsModel batch, String reportSuffix,  String[] formats) throws Exception {
         this.validateParameters();
         CucumberFeatureResult[] features = readFileContent(true);
 
@@ -173,7 +174,7 @@ public class CucumberResultsOverview extends KECompatibleReport {
                 this.getOutputDirectory() + File.separator + this.getOutputName()
                 + "-" + reportSuffix + ".html");
         FileUtils.writeStringToFile(outFile, generateFeatureOverview(features));
-        this.export(outFile, reportSuffix, "", toPDF, this.isImageExportable());
+        this.export(outFile, reportSuffix, formats, this.isImageExportable());
         try {
             outFile = new File(
                     this.getOutputDirectory() + File.separator + this.getOutputName()
@@ -212,18 +213,18 @@ public class CucumberResultsOverview extends KECompatibleReport {
     }
 
     @Override
-    public void execute(boolean toPDF) throws Exception {
-        executeOverviewReport("feature-overview", toPDF);
+    public void execute(String[] formats) throws Exception {
+        executeOverviewReport("feature-overview", formats);
     }
 
     @Override
-    public void execute(boolean aggregate, boolean toPDF) throws Exception {
-        executeOverviewReport("feature-overview", toPDF);
+    public void execute(boolean aggregate, String[] formats) throws Exception {
+        executeOverviewReport("feature-overview", formats);
     }
 
     @Override
-    public void execute(KnownErrorsModel batch, boolean aggregate, boolean toPDF)
+    public void execute(KnownErrorsModel batch, boolean aggregate, String[] formats)
             throws Exception {
-        executeOverviewReport(batch, "feature-overview", toPDF);
+        executeOverviewReport(batch, "feature-overview", formats);
     }
 }

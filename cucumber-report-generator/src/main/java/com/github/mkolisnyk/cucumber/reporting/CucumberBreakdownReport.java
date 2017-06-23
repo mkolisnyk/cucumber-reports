@@ -47,16 +47,16 @@ public class CucumberBreakdownReport extends ConfigurableReport<BreakdownReportM
         String result = IOUtils.toString(is);
         return result;
     }
-    public void executeReport(BreakdownReportInfo info, BreakdownTable table, boolean toPDF) throws Exception {
+    public void executeReport(BreakdownReportInfo info, BreakdownTable table, String[] formats) throws Exception {
         CucumberFeatureResult[] features = readFileContent(true);
         File outFile = new File(
                 this.getOutputDirectory() + File.separator + this.getOutputName()
                 + "-" + info.getReportSuffix() + ".html");
         FileUtils.writeStringToFile(outFile, generateBreakdownReport(features, info, table));
-        this.export(outFile, info.getReportSuffix(), "", toPDF, this.isImageExportable());
+        this.export(outFile, info.getReportSuffix(), formats, this.isImageExportable());
     }
-    public void executeReport(BreakdownTable table, boolean toPDF) throws Exception {
-        executeReport(new BreakdownReportInfo(table), table, toPDF);
+    public void executeReport(BreakdownTable table, String[] formats) throws Exception {
+        executeReport(new BreakdownReportInfo(table), table, formats);
     }
     protected void generateFrameFile(BreakdownReportModel model) throws Exception {
         InputStream is = this.getClass().getResourceAsStream("/breakdown-frame.html");
@@ -84,7 +84,7 @@ public class CucumberBreakdownReport extends ConfigurableReport<BreakdownReportM
     }
 
     @Override
-    public void execute(BreakdownReportModel batch, boolean toPDF) throws Exception {
+    public void execute(BreakdownReportModel batch, String[] formats) throws Exception {
         boolean frameGenerated = false;
         validateParameters();
         batch.initRedirectSequence("./" + this.getOutputName() + "-");
@@ -93,12 +93,12 @@ public class CucumberBreakdownReport extends ConfigurableReport<BreakdownReportM
                 frameGenerated = true;
                 generateFrameFile(batch);
             }
-            this.executeReport(info, info.getTable(), toPDF);
+            this.executeReport(info, info.getTable(), formats);
         }
     }
 
     @Override
-    public void execute(boolean aggregate, boolean toPDF) throws Exception {
+    public void execute(boolean aggregate, String[] formats) throws Exception {
     }
 
     protected String generateBreakdownReport(CucumberFeatureResult[] features,
@@ -362,12 +362,15 @@ public class CucumberBreakdownReport extends ConfigurableReport<BreakdownReportM
     }
     @Override
     public void execute(BreakdownReportModel batch, boolean aggregate,
-            boolean toPDF) throws Exception {
-        execute(batch, toPDF);
+            String[] formats) throws Exception {
+        execute(batch, formats);
     }
     @Override
-    public void execute(File config, boolean aggregate, boolean toPDF)
+    public void execute(File config, boolean aggregate, String[] formats)
             throws Exception {
-        execute(config, toPDF);
+        execute(config, formats);
+    }
+    @Override
+    public void execute(String[] formats) throws Exception {
     }
 }

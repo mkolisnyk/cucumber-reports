@@ -47,7 +47,7 @@ public class CucumberResultsKETest {
         results.setOutputName("cucumber-results-ke01");
         results.setSourceFile("./src/test/resources/cucumber.json");
         results.setScreenShotLocation("../src/test/resources/");
-        results.execute(model, true, true);
+        results.execute(model, true, new String[] {"pdf"});
     }
     @Test
     public void testRunChartsOverviewKEBatch() throws Exception {
@@ -58,6 +58,6 @@ public class CucumberResultsKETest {
         options.setOverviewReport(true);
         options.setCoverageReport(true);
         CucumberOverviewChartsReport report = new CucumberOverviewChartsReport(options);
-        report.execute(model, true, true);
+        report.execute(model, true, new String[] {"pdf"});
     }
 }

@@ -16,13 +16,20 @@ public abstract class ConfigurableReport<Model> extends AggregatedReport {
     public ConfigurableReport(ExtendedRuntimeOptions extendedOptions) {
         super(extendedOptions);
     }
-    public abstract void execute(Model batch, boolean aggregate, boolean toPDF) throws Exception;
-    public abstract void execute(File config, boolean aggregate, boolean toPDF) throws Exception;
-    public void execute(Model batch, boolean toPDF) throws Exception {
-        execute(batch, false, toPDF);
+    public abstract void execute(Model batch, boolean aggregate, String[] formats) throws Exception;
+    public abstract void execute(File config, boolean aggregate, String[] formats) throws Exception;
+
+    @Override
+    public void execute(boolean aggregate, String[] formats) throws Exception {
+    }
+    @Override
+    public void execute(String[] formats) throws Exception {
+    }
+    public void execute(Model batch, String[] formats) throws Exception {
+        execute(batch, false, formats);
     }
     @SuppressWarnings("unchecked")
-    public void execute(File config, boolean toPDF) throws Exception {
+    public void execute(File config, String[] formats) throws Exception {
         Assert.assertTrue(this.constructErrorMessage(CucumberReportError.NON_EXISTING_CONFIG_FILE, ""),
                 config.exists());
         String content = FileUtils.readFileToString(config);
@@ -33,6 +40,6 @@ public abstract class ConfigurableReport<Model> extends AggregatedReport {
         } catch (Throwable e) {
             Assert.fail(this.constructErrorMessage(CucumberReportError.INVALID_CONFIG_FILE, ""));
         }
-        this.execute(model, toPDF);
+        this.execute(model, formats);
     }
 }

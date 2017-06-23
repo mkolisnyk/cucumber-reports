@@ -137,14 +137,14 @@ public class CucumberRetrospectiveOverviewReport extends ConfigurableReport<Retr
         result = result.replaceAll("__REPORT__", reportContent);
         return result;
     }
-    public void executeReport(RetrospectiveModel model, boolean aggregate, boolean toPDF) throws Exception {
+    public void executeReport(RetrospectiveModel model, boolean aggregate, String[] formats) throws Exception {
         String[] files = FolderUtils.getFilesByMask(".", model.getMask());
         BreakdownStats[] stats = calculateStats(files);
         File outFile = new File(
                 this.getOutputDirectory() + File.separator + this.getOutputName()
                 + "-" + model.getReportSuffix() + ".html");
         FileUtils.writeStringToFile(outFile, generateRetrospectiveReport(model, stats));
-        this.export(outFile, model.getReportSuffix(), "", toPDF, this.isImageExportable());
+        this.export(outFile, model.getReportSuffix(), formats, this.isImageExportable());
     }
 
     @Override
@@ -164,18 +164,18 @@ public class CucumberRetrospectiveOverviewReport extends ConfigurableReport<Retr
     }
 
     @Override
-    public void execute(boolean aggregate, boolean toPDF) throws Exception {
+    public void execute(boolean aggregate, String[] formats) throws Exception {
         // TODO Auto-generated method stub
     }
     @Override
     public void execute(RetrospectiveBatch batch, boolean aggregate,
-            boolean toPDF) throws Exception {
+            String[] formats) throws Exception {
         for (RetrospectiveModel model : batch.getModels()) {
-            this.executeReport(model, aggregate, toPDF);
+            this.executeReport(model, aggregate, formats);
         }
     }
     @Override
-    public void execute(File config, boolean aggregate, boolean toPDF)
+    public void execute(File config, boolean aggregate, String[] formats)
             throws Exception {
         Assert.assertTrue(this.constructErrorMessage(CucumberReportError.NON_EXISTING_CONFIG_FILE, ""),
             config.exists());
@@ -187,6 +187,6 @@ public class CucumberRetrospectiveOverviewReport extends ConfigurableReport<Retr
         } catch (Throwable e) {
             Assert.fail(this.constructErrorMessage(CucumberReportError.INVALID_CONFIG_FILE, ""));
         }
-        this.execute(batch, aggregate, toPDF);
+        this.execute(batch, aggregate, formats);
     }
 }

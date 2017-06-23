@@ -19,11 +19,11 @@ public abstract class KECompatibleReport extends ConfigurableReport<KnownErrorsM
         super(extendedOptions);
     }
 
-    public abstract void execute(KnownErrorsModel batch, boolean aggregate, boolean toPDF) throws Exception;
+    public abstract void execute(KnownErrorsModel batch, boolean aggregate, String[] formats) throws Exception;
     public void execute(KnownErrorsModel batch) throws Exception {
-        execute(batch, false, false);
+        execute(batch, false, new String[] {});
     }
-    public void execute(File config, boolean aggregate, boolean toPDF) throws Exception {
+    public void execute(File config, boolean aggregate, String[] formats) throws Exception {
         Assert.assertNotNull(this.constructErrorMessage(CucumberReportError.NO_CONFIG_FILE, ""),
                 config);
         Assert.assertTrue(
@@ -36,9 +36,9 @@ public abstract class KECompatibleReport extends ConfigurableReport<KnownErrorsM
         } catch (Throwable e) {
             Assert.fail(this.constructErrorMessage(CucumberReportError.INVALID_CONFIG_FILE, ""));
         }
-        this.execute(model, aggregate, toPDF);
+        this.execute(model, aggregate, formats);
     }
     public void execute(File config, boolean aggregate) throws Exception {
-        execute(config, aggregate, false);
+        execute(config, aggregate, new String[] {});
     }
 }

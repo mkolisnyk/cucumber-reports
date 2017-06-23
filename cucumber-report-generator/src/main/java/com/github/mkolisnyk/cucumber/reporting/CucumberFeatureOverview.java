@@ -98,25 +98,23 @@ public class CucumberFeatureOverview extends CucumberResultsOverview {
     }
 
     @Override
-    public void execute(boolean toPDF) throws Exception {
-        // TODO Auto-generated method stub
-        execute(true, toPDF);
+    public void execute(String[] formats) throws Exception {
+        execute(true, formats);
     }
 
     @Override
     public void execute() throws Exception {
-        // TODO Auto-generated method stub
-        execute(false);
+        execute(true);
     }
 
     @Override
-    public void execute(boolean aggregate, boolean toPDF) throws Exception {
+    public void execute(boolean aggregate, String[] formats) throws Exception {
         validateParameters();
         CucumberFeatureResult[] features = readFileContent(aggregate);
         File outFile = new File(
                 this.getOutputDirectory() + File.separator + this.getOutputName()
                 + "-feature-overview-chart.html");
         FileUtils.writeStringToFile(outFile, generateFeatureOverviewChart(features));
-        this.export(outFile, "feature-overview-chart", "", toPDF, this.isImageExportable());
+        this.export(outFile, "feature-overview-chart", formats, this.isImageExportable());
     }
 }

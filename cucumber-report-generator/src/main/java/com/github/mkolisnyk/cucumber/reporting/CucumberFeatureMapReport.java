@@ -89,14 +89,14 @@ public class CucumberFeatureMapReport extends CucumberBreakdownReport {
     }
 
     @Override
-    public void executeReport(BreakdownReportInfo info, BreakdownTable table, boolean toPDF) throws Exception {
+    public void executeReport(BreakdownReportInfo info, BreakdownTable table, String[] formats) throws Exception {
         CucumberFeatureResult[] features = readFileContent(true);
         File outFile = new File(
                 this.getOutputDirectory() + File.separator + this.getOutputName()
                 + "-" + info.getReportSuffix() + ".html");
         FileUtils.writeStringToFile(outFile, generateBreakdownReport(features, info, table)
                 .replaceAll("\"hoverTable\"", "\"_hoverTable\""));
-        this.export(outFile, info.getReportSuffix(), "", toPDF, this.isImageExportable());
+        this.export(outFile, info.getReportSuffix(), formats, this.isImageExportable());
     }
 
     @Override

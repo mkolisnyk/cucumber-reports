@@ -64,4 +64,6 @@ public @interface ExtendedCucumberOptions {
     String threadsCountValue() default "";
 
     boolean systemInfoReport() default false;
+
+    String[] formats() default {};
 }

@@ -114,12 +114,12 @@ public class CucumberOverviewChartsReport extends KECompatibleReport {
     }
 
     @Override
-    public void execute(boolean aggregate, boolean toPDF) throws Exception {
-        this.execute((KnownErrorsModel) null, aggregate, toPDF);
+    public void execute(boolean aggregate, String[] formats) throws Exception {
+        this.execute((KnownErrorsModel) null, aggregate, formats);
     }
 
     @Override
-    public void execute(KnownErrorsModel batch, boolean aggregate, boolean toPDF)
+    public void execute(KnownErrorsModel batch, boolean aggregate, String[] formats)
             throws Exception {
         this.validateParameters();
         CucumberFeatureResult[] features = readFileContent(aggregate);
@@ -132,7 +132,7 @@ public class CucumberOverviewChartsReport extends KECompatibleReport {
                 this.getOutputDirectory() + File.separator + this.getOutputName()
                 + "-charts-report.html");
         FileUtils.writeStringToFile(outFile, generateCharts(features));
-        this.export(outFile, "charts-report", "", toPDF, this.isImageExportable());
+        this.export(outFile, "charts-report", formats, this.isImageExportable());
     }
 
     @Override

@@ -89,7 +89,7 @@ public class CucumberBreakdownReportTest {
         report.setOutputDirectory("target/multi-breakdown");
         report.setOutputName("cucumber-results");
         report.setSourceFile("./src/test/resources/breakdown-source/cucumber.json");
-        report.execute(model, false);
+        report.execute(model, new String[] {});
     }
     @Test
     public void testGenerateMultipleReportsSkipFirstRedirect() throws Exception {
@@ -108,7 +108,7 @@ public class CucumberBreakdownReportTest {
         report.setOutputDirectory("target/multi-breakdown/1");
         report.setOutputName("cucumber-results");
         report.setSourceFile("./src/test/resources/breakdown-source/cucumber.json");
-        report.execute(model, true);
+        report.execute(model, new String[] {"pdf"});
     }
     @Test
     public void testGenerateMultipleReportsSkipLastRedirect() throws Exception {
@@ -124,7 +124,7 @@ public class CucumberBreakdownReportTest {
         report.setOutputDirectory("target/multi-breakdown/2");
         report.setOutputName("cucumber-results");
         report.setSourceFile("./src/test/resources/breakdown-source/cucumber.json");
-        report.execute(model, false);
+        report.execute(model, new String[] {});
     }
     @Test
     public void testGenerateMultipleReportsSkipMidRedirect() throws Exception {
@@ -140,7 +140,7 @@ public class CucumberBreakdownReportTest {
         report.setOutputDirectory("target/multi-breakdown/3");
         report.setOutputName("cucumber-results");
         report.setSourceFile("./src/test/resources/breakdown-source/cucumber.json");
-        report.execute(model, false);
+        report.execute(model, new String[] {});
     }
     @Test
     public void testGenerateMultipleReportsLoadFromJSON() throws Exception {
@@ -148,6 +148,6 @@ public class CucumberBreakdownReportTest {
         report.setOutputDirectory("target/multi-breakdown/5");
         report.setOutputName("cucumber-results");
         report.setSourceFile("./src/test/resources/breakdown-source/cucumber-2.json");
-        report.execute(new File("src/test/resources/breakdown-source/simple.json"), false);
+        report.execute(new File("src/test/resources/breakdown-source/simple.json"), new String[] {});
     }
 }

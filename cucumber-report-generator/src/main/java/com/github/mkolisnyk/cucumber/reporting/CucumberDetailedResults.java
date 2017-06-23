@@ -369,12 +369,12 @@ public class CucumberDetailedResults extends KECompatibleReport {
     }
 
     @Override
-    public void execute(boolean aggregate, boolean toPDF) throws Exception {
-        execute((KnownErrorsModel) null, aggregate, toPDF);
+    public void execute(boolean aggregate, String[] formats) throws Exception {
+        execute((KnownErrorsModel) null, aggregate, formats);
     }
 
     @Override
-    public void execute(KnownErrorsModel batch, boolean aggregate, boolean toPDF)
+    public void execute(KnownErrorsModel batch, boolean aggregate, String[] formats)
             throws Exception {
         CucumberFeatureResult[] features = readFileContent(aggregate);
         String formatName = "";
@@ -394,6 +394,6 @@ public class CucumberDetailedResults extends KECompatibleReport {
                         this.getOutputDirectory(), File.separator, this.getOutputName()));
         String content = generateStepsReport(features);
         FileUtils.writeStringToFile(outFile, content, "UTF-8");
-        this.export(outFile, "test-results", "", toPDF, this.isImageExportable());
+        this.export(outFile, "test-results", formats, this.isImageExportable());
     }
 }

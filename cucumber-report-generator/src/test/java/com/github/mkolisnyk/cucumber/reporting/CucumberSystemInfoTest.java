@@ -11,6 +11,6 @@ public class CucumberSystemInfoTest {
         report.setOutputName("cucumber-results");
         report.execute();
         report.setOutputName("cucumber-results-1");
-        report.execute(true);
+        report.execute(new String[] {"pdf"});
     }
 }

@@ -2,12 +2,30 @@ package com.github.mkolisnyk.cucumber.steps;
 
 import org.junit.Assert;
 
+import com.github.mkolisnyk.cucumber.assertions.LazyAssert;
+
+import cucumber.api.Pending;
+import cucumber.api.PendingException;
+import cucumber.api.java.After;
+import cucumber.api.java.Before;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 
 public class TestSteps {
     private static int retry = 0;
+
+    @Pending
+    public class CustomPendingError extends Error {
+        private static final long serialVersionUID = 1L;
+    }
+    
+    @Before(value={"@lazy"})
+    public void beforeHook() {
+    }
+    @After
+    public void afterHook() {
+    }
     
     @Given("^I am out of the system$")
     public void i_am_out_of_the_system() throws Throwable {
@@ -49,7 +67,15 @@ public class TestSteps {
     }
     @When("^I do a bit wrong$")
     public void i_do_a_bit_wrong() throws Throwable {
-        //Assert.assertTrue(false);
+        LazyAssert.fail();
+    }
+    @When("^I do pending wrong$")
+    public void i_do_pending_wrong() throws Throwable {
+        throw new PendingException();
+    }
+    @When("^I do another pending wrong$")
+    public void i_do_another_pending_wrong() throws Throwable {
+        throw new CustomPendingError();
     }
     @When("^I do some (\\d+) things$")
     public void i_do_some_things(int value) throws Throwable {
@@ -67,5 +93,11 @@ public class TestSteps {
     }
     @Then("^I should see 3 something$")
     public void i_should_see_something() throws Throwable {
+    }
+    @Then("^I should see ambiguous step$")
+    public void i_should_see_amb_step() throws Throwable {
+    }
+    @Then("^(.*)ambiguous step$")
+    public void i_should_see_amb_step2() throws Throwable {
     }
 }

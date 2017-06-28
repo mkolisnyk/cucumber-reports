@@ -23,7 +23,7 @@ import cucumber.api.CucumberOptions;
         "usage:target/cucumber-usage-dry.json", "junit:target/cucumber-results-dry.xml" },
         features = { "./src/test/java/com/github/mkolisnyk/cucumber/features" },
         glue = { "com/github/mkolisnyk/cucumber/steps" },
-        tags = { },
+        tags = { "~@lazy"},
         dryRun = true)
 public class SampleDryRunCucumberTest {
 

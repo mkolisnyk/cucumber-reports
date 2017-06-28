@@ -20,4 +20,7 @@ public final class LazyAssert {
             }
         }
     }
+    public static void assertTrue(boolean condition) {
+        assertTrue(condition, null);
+    }
 }

@@ -17,6 +17,7 @@ import com.github.mkolisnyk.cucumber.runner.runtime.ExtendedRuntimeOptions;
 
 import cucumber.api.CucumberOptions;
 import cucumber.runtime.ClassFinder;
+import cucumber.runtime.ExtendedRuntime;
 import cucumber.runtime.Runtime;
 import cucumber.runtime.RuntimeOptions;
 import cucumber.runtime.RuntimeOptionsFactory;
@@ -89,7 +90,7 @@ public class ExtendedCucumber extends ParentRunner<ExtendedFeatureRunner> {
     protected Runtime createRuntime(ResourceLoader resourceLoader, ClassLoader classLoader,
                                     RuntimeOptions runtimeOptions) throws InitializationError, IOException {
         ClassFinder classFinder = new ResourceLoaderClassFinder(resourceLoader, classLoader);
-        return new Runtime(resourceLoader, classFinder, classLoader, runtimeOptions);
+        return new ExtendedRuntime(resourceLoader, classFinder, classLoader, runtimeOptions);
     }
 
     @Override

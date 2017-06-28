@@ -2,19 +2,13 @@ package cucumber.runtime;
 
 import gherkin.I18n;
 import gherkin.formatter.Argument;
-import gherkin.formatter.Formatter;
 import gherkin.formatter.Reporter;
-import gherkin.formatter.model.Comment;
-import gherkin.formatter.model.DataTableRow;
-import gherkin.formatter.model.DocString;
 import gherkin.formatter.model.Match;
 import gherkin.formatter.model.Result;
 import gherkin.formatter.model.Scenario;
 import gherkin.formatter.model.Step;
 import gherkin.formatter.model.Tag;
 
-import java.io.IOException;
-import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
@@ -25,10 +19,7 @@ import java.util.Set;
 import com.github.mkolisnyk.cucumber.assertions.LazyAssertionError;
 
 import cucumber.api.Pending;
-import cucumber.api.StepDefinitionReporter;
-import cucumber.api.SummaryPrinter;
 import cucumber.runtime.io.ResourceLoader;
-import cucumber.runtime.model.CucumberFeature;
 import cucumber.runtime.xstream.LocalizedXStreams;
 //import cucumber.runtime.Stats;
 
@@ -52,8 +43,8 @@ public class ExtendedRuntime extends Runtime {
 
     private final List<Throwable> errors = new ArrayList<Throwable>();
     private final Collection<? extends Backend> backends;
-    private final ResourceLoader resourceLoader;
-    private final ClassLoader classLoader;
+    //private final ResourceLoader resourceLoader;
+    //private final ClassLoader classLoader;
     private final StopWatch stopWatch;
 
     private boolean skipNextStep = false;
@@ -90,8 +81,8 @@ public class ExtendedRuntime extends Runtime {
             throw new CucumberException(
                     "No backends were found. Please make sure you have a backend module on your CLASSPATH.");
         }
-        this.resourceLoader = resourceLoaderValue;
-        this.classLoader = classLoaderValue;
+        //this.resourceLoader = resourceLoaderValue;
+        //this.classLoader = classLoaderValue;
         this.backends = backendsValue;
         this.runtimeOptions = runtimeOptionsValue;
         this.stopWatch = stopWatchValue;
@@ -126,9 +117,7 @@ public class ExtendedRuntime extends Runtime {
         errors.add(error);
     }
 
-    /**
-     * This is the main entry point. Used from CLI, but not from JUnit.
-     */
+    /*
     public void run() throws IOException {
         // Make sure all features parse before initialising any reporters/formatters
         List<CucumberFeature> features = runtimeOptions.cucumberFeatures(resourceLoader);
@@ -155,7 +144,7 @@ public class ExtendedRuntime extends Runtime {
 
     void printStats(PrintStream out) {
         stats.printStats(out, runtimeOptions.isStrict());
-    }
+    }*/
 
     public void buildBackendWorlds(Reporter reporter, Set<Tag> tags, Scenario gherkinScenario) {
         for (Backend backend : backends) {
@@ -264,7 +253,7 @@ public class ExtendedRuntime extends Runtime {
         }
     }
 
-    @Override
+    /*@Override
     public void runUnreportedStep(
             String featurePath, I18n i18n, String stepKeyword, String stepName,
             int line, List<DataTableRow> dataTableRows, DocString docString) throws Throwable {
@@ -283,7 +272,7 @@ public class ExtendedRuntime extends Runtime {
             throw error;
         }
         match.runStep(i18n);
-    }
+    }*/
 
     @Override
     public void runStep(String featurePath, Step step, Reporter reporter,
@@ -327,11 +316,7 @@ public class ExtendedRuntime extends Runtime {
                 match.runStep(i18n);
             } catch (LazyAssertionError t) {
                 error = t;
-                if (isPending(t)) {
-                    status = "pending";
-                } else {
-                    status = Result.FAILED;
-                }
+                status = Result.FAILED;
                 addError(t);
             } catch (Throwable t) {
                 error = t;

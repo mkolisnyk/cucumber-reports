@@ -3,6 +3,11 @@ title: Cucumber Reports News
 layout: null
 ---
 
+## 29.06.2017 1.0.10 Version Release
+
+* [#116](https://github.com/mkolisnyk/cucumber-reports/issues/116) Enhancement: add ability to generate overview report in different image formats
+* [#45](https://github.com/mkolisnyk/cucumber-reports/issues/45) Extended Cucumber Runner: lazy asserts
+
 ## 21.06.2017 1.0.9 Version Release
 
 * [#113](https://github.com/mkolisnyk/cucumber-reports/issues/113) Enhancement: System info report

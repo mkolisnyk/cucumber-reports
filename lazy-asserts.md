@@ -22,7 +22,8 @@ import com.github.mkolisnyk.cucumber.assertions.LazyAssert;
 
     @When("^I do something$")
     public void i_do_a_bit_wrong() throws Throwable {
-        LazyAssert.assertTrue(someCondition(), "The expected condition hasn't been met");
+        LazyAssert.assertTrue(someCondition(),
+        	 "The expected condition hasn't been met");
     }
 {% endhighlight %}
 

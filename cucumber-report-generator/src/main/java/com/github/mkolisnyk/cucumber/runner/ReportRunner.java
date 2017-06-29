@@ -101,7 +101,7 @@ public final class ReportRunner {
         }
         CucumberCoverageOverview results = new CucumberCoverageOverview(extendedOptions);
         try {
-            results.execute(extendedOptions.isToPDF());
+            results.execute(extendedOptions.getFormats());
         } catch (Throwable e) {
             e.printStackTrace();
         }

@@ -61,7 +61,7 @@ public class ExtendedRuntimeOptions {
         }
         return result;
     }
-    private void processParameters() {
+    public void processParameters() {
         if (!this.isToPDF()) {
             this.formats = ArrayUtils.removeElement(this.formats, "pdf");
         } else if (!ArrayUtils.contains(this.formats, "pdf")) {

@@ -135,6 +135,7 @@ public class ReportRunnerMavenPlugin extends AbstractMojo {
         options.setScreenShotSize(screenShotSize);
         options.setToPDF(toPDF);
         options.setUsageReport(isUsageReport);
+        options.processParameters();
         ReportRunner.run(options);
     }
 

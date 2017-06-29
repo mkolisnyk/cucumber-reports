@@ -33,3 +33,26 @@ report.execute(true);
 
 ## From Extended Cucumber runner
 
+ExtendedCucumberOptions annotation has **systemInfoReport** flag. The System info report will be generated if this flag is set to **true**.
+
+{% highlight java linenos=table %}
+package com.github.mkolisnyk.cucumber.reporting;
+
+import org.junit.runner.RunWith;
+import com.github.mkolisnyk.cucumber.runner.ExtendedCucumber;
+import com.github.mkolisnyk.cucumber.runner.ExtendedCucumberOptions;
+
+import cucumber.api.CucumberOptions;
+
+@RunWith(ExtendedCucumber.class)
+@ExtendedCucumberOptions(jsonReport = "target/cucumber.json",
+        jsonUsageReport = "target/cucumber-usage.json",
+        systemInfoReport = true,
+        outputFolder = "target")
+@CucumberOptions(plugin = {"usage:target/cucumber-usage.json"},
+        features = { "./src/test/java/com/github/mkolisnyk/cucumber/features" },
+        glue = { "com/github/mkolisnyk/cucumber/steps" },
+        tags = {"@consistent"})
+public class SampleCucumberTest {
+}
+{% endhighlight %}

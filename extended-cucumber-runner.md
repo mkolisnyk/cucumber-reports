@@ -87,23 +87,40 @@ public class SampleCucumberTest extends ExtendedTestNGRunner {
 
 # Major options to set
 
-| Option | Type | Description | Default Value | Applied to |
-| ------ | ---- | ----------- | ------------- | ---------- |
-| **jsonReport**               | **String** | | | |
-| **jsonUsageReport**          | **String** | | "cucumber-usage.json" | |
-| **outputFolder**             | **String** | | "." | |
-| **reportPrefix**             | **String** | | "cucumber-results" | |
-| **usageReport**              | **boolean** | | false | |
-| **overviewReport**           | **boolean** | | false | |
-| **coverageReport**           | **boolean** | | false | |
-| **detailedReport**           | **boolean** | | false | |
-| **detailedAggregatedReport** | **boolean** | | false | |
-| **toPDF**                    | **boolean** | | false | |
-| **screenShotSize**           | **String** | | "" | |
-| **screenShotLocation**       | **String** | | "" | |
-| **includeCoverageTags**      | **String[]** | | { } | |
-| **excludeCoverageTags**      | **String[]** | | { } | |
-| **retryCount**               | **int** | | 0 | |
+| Option                       | Type         | Description | Default Value |
+| ---------------------------- | ------------ | ----------- | ------------- |
+| **jsonReport**               | **String**   | Contains path to standard Cucumber JSON results output | |
+| **jsonReports**              | **String[]** | Contains paths to multiple Cucumber JSON result output files. This way multiple results can be merged in one report. If **jsonReport** field is used, it's value will be added to final array of paths | {} |
+| **jsonUsageReport**          | **String**   | Contains path to standard Cucumber usage report | "cucumber-usage.json" |
+| **jsonUsageReports**         | **String[]** | Contains paths to multiple usage reports | {} |
+| **outputFolder**             | **String**   | Contains path to output folder where all reports will be written to | "." |
+| **reportPrefix**             | **String**   | Common file prefix which will be used for all generated output files | "cucumber-results" |
+| **usageReport**              | **boolean**  | Enables/disables [usage report](/cucumber-reports/usage-report) | false |
+| **overviewReport**           | **boolean**  | Enables/disables [overview report](/cucumber-reports/overview-report) | false |
+| **featureOverviewChart**     | **boolean**  | Enables/disables [feature overview chart](/cucumber-reports/overview-chart-report) | false |
+| **overviewChartsReport**     | **boolean**  | Enables/disables [overview charts report](/cucumber-reports/chart-report) | false |
+| **coverageReport**           | **boolean**  | Enables/disables [coverage report](/cucumber-reports/coverage-report) | false |
+| **includeCoverageTags**      | **String[]** | Used to define which tags are to be included in [coverage report](/cucumber-reports/coverage-report). | { } |
+| **excludeCoverageTags**      | **String[]** | Used to define which tags are to be excluded from [coverage report](/cucumber-reports/coverage-report). | { } |
+| **detailedReport**           | **boolean**  | Enables/disables [detailed report](/cucumber-reports/detailed-report) | false |
+| **detailedAggregatedReport** | **boolean**  | Enables/disables [detailed results aggregation](/cucumber-reports/detailed-report#aggregated-results). Important if [failed tests re-run](/cucumber-reports/failed-tests-rerun) is enabled | false |
+| **breakdownReport**          | **boolean**  | Enables/disables [breakdown report](/cucumber-reports/breakdown-report) | false |
+| **breakdownConfig**          | **String**   | Path to the configuration file for [breakdown report](/cucumber-reports/breakdown-report). Mandatory if this report is enabled. | "" |
+| **featureMapReport**         | **boolean**  | Enables/disables [feature map report](/cucumber-reports/feature-map-report) | false |
+| **featureMapConfig**         | **String**   | Path to the configuration file for [feature map report](/cucumber-reports/feature-map-report). Mandatory if this report is enabled. | "" |
+| **knownErrorsReport**        | **boolean**  | Enables/disables [known errors report](/cucumber-reports/known-errors-report) | false |
+| **knownErrorsConfig**        | **String**   | Path to the configuration file for [known errors report](/cucumber-reports/known-errors-report). Mandatory if this report is enabled. | "" |
+| **consolidatedReport**       | **boolean**  | Enables/disables [consolidated report](/cucumber-reports/consolidated-report) | false |
+| **consolidatedReportConfig** | **String**   | Path to the configuration file for [consolidated report](/cucumber-reports/consolidated-report). Mandatory if this report is enabled. | "" |
+| **systemInfoReport**         | **boolean**  | Enables/disables [system information report](/cucumber-reports/system-info) | false |
+| **screenShotSize**           | **String**   | Defines the size of screenshots in the report. It should be a string similar to the one which is used in **width** attribute of the **img** HTML tag. Examples: **300px**, **50%** | "" |
+| **screenShotLocation**       | **String**   | Not used at the moment | "" |
+| **formats**                  | **String[]** | Defines the list of [export formats](/cucumber-reports/other-formats-export) | { } |
+| **toPDF**                    | **boolean**  | Enables/disables [PDF export](/cucumber-reports/pdf-export) | false |
+| **pdfPageSize**              | **String**   | Defines the page size of [exported PDF](/cucumber-reports/pdf-export) | "auto" |
+| **retryCount**               | **int**      | Defines the number of [failed tests re-run](/cucumber-reports/failed-tests-rerun) | 0 |
+| **threadsCount**             | **int**      | Defines the number of threads to [run in parallel](/cucumber-reports/parallel-runner) | 1 |
+| **threadsCountValue**        | **String**   | Defines the system property name containing the number of threads to [run in parallel](/cucumber-reports/parallel-runner) | "" |
 
 # Parameterizing Values
 

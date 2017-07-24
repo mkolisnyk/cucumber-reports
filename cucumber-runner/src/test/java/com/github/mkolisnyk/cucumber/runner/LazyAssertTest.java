@@ -39,7 +39,7 @@ public class LazyAssertTest {
     @Test
     public void testFailedAssertTrueWithMessage() {
         try {
-            LazyAssert.assertTrue(false, "Sample message");
+            LazyAssert.assertTrue("Sample message", false);
             Assert.fail("Previous instruction was supposed to fail!");
         } catch (LazyAssertionError e) {
             Assert.assertEquals(e.getMessage(), "Sample message");

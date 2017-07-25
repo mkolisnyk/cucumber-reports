@@ -49,6 +49,8 @@ public class ExtendedRuntimeOptions {
     private int threadsCount;
     private String threadsCountValue;
     private boolean systemInfoReport = false;
+    private boolean benchmarkReport = false;
+    private String benchmarkReportConfig = "";
     private String[] formats = {};
 
     private String[] joinPaths(String singlePath, String[] arrayPath) {
@@ -184,6 +186,8 @@ public class ExtendedRuntimeOptions {
             this.threadsCount = options.threadsCount();
             this.threadsCountValue = options.threadsCountValue();
             this.systemInfoReport = options.systemInfoReport();
+            this.benchmarkReport = options.benchmarkReport();
+            this.benchmarkReportConfig = options.benchmarkReportConfig();
             this.formats = options.formats();
         }
         for (Field field : this.getClass().getDeclaredFields()) {
@@ -407,6 +411,18 @@ public class ExtendedRuntimeOptions {
     }
     public void setSystemInfoReport(boolean systemInfoReportValue) {
         this.systemInfoReport = systemInfoReportValue;
+    }
+    public boolean isBenchmarkReport() {
+        return benchmarkReport;
+    }
+    public void setBenchmarkReport(boolean benchmarkReportValue) {
+        this.benchmarkReport = benchmarkReportValue;
+    }
+    public String getBenchmarkReportConfig() {
+        return benchmarkReportConfig;
+    }
+    public void setBenchmarkReportConfig(String benchmarkReportConfigValue) {
+        this.benchmarkReportConfig = benchmarkReportConfigValue;
     }
     public String[] getFormats() {
         return formats;

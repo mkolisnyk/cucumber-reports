@@ -12,10 +12,10 @@ public class BenchmarkRowData {
     public BenchmarkRowData() {
         this("", new OverviewStats[]{});
     }
-    public BenchmarkRowData(String name, OverviewStats[] results) {
+    public BenchmarkRowData(String nameValue, OverviewStats[] resultsValue) {
         super();
-        this.name = name;
-        this.results = results;
+        this.name = nameValue;
+        this.results = resultsValue;
     }
     public String getName() {
         return name;
@@ -29,11 +29,11 @@ public class BenchmarkRowData {
             for (CucumberFeatureResult feature : features) {
                 if (feature.getId().equals(featureId)) {
                     feature.valuate();
-                    stats.addFeaturesPassed(feature.getPassed());
-                    stats.addFeaturesFailed(feature.getFailed());
-                    stats.addFeaturesUndefined(feature.getUndefined() + feature.getSkipped());
-                    stats.addFeaturesKnown(feature.getKnown());
-                    
+                    stats.addScenariosPassed(feature.getPassed());
+                    stats.addScenariosFailed(feature.getFailed());
+                    stats.addScenariosUndefined(feature.getUndefined() + feature.getSkipped());
+                    stats.addScenariosKnown(feature.getKnown());
+
                     this.name = feature.getName();
                     break;
                 }
@@ -48,12 +48,12 @@ public class BenchmarkRowData {
             for (CucumberScenarioResult scenario : scenarios) {
                 if (scenario.getId().equals(scenarioId)) {
                     scenario.valuate();
-                    stats.addScenariosPassed(scenario.getPassed());
-                    stats.addScenariosFailed(scenario.getFailed());
-                    stats.addScenariosUndefined(scenario.getUndefined() + scenario.getSkipped());
-                    stats.addScenariosKnown(scenario.getKnown());
-                    
-                    this.name = scenario.getName();
+                    stats.addStepsPassed(scenario.getPassed());
+                    stats.addStepsFailed(scenario.getFailed());
+                    stats.addStepsUndefined(scenario.getUndefined() + scenario.getSkipped());
+                    stats.addStepsKnown(scenario.getKnown());
+
+                    this.name = scenario.getFeature().getName() + "/" + scenario.getName();
                     break;
                 }
             }

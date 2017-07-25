@@ -6,10 +6,10 @@ public class BenchmarkReportInfo {
     public BenchmarkReportInfo() {
         this("", "");
     }
-    public BenchmarkReportInfo(String title, String path) {
+    public BenchmarkReportInfo(String titleValue, String pathValue) {
         super();
-        this.title = title;
-        this.path = path;
+        this.title = titleValue;
+        this.path = pathValue;
     }
     public String getTitle() {
         return title;

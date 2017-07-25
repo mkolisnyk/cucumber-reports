@@ -1,0 +1,21 @@
+{
+  "@type": "com.github.mkolisnyk.cucumber.reporting.types.benchmark.BenchmarkReportModel", 
+  "items": [
+    {
+      "path": "src/test/resources/benchmark-source/2/cucumber-1.json", 
+      "title": "First"
+    }, 
+    {
+      "path": "src/test/resources/benchmark-source/2/cucumber-2.json", 
+      "title": "Second"
+    },
+    {
+      "path": "src/test/resources/benchmark-source/1/cucumber-1.json", 
+      "title": "Third"
+    }, 
+    {
+      "path": "src/test/resources/benchmark-source/1/cucumber-2.json", 
+      "title": "Fourth"
+    }
+  ]
+}

@@ -64,6 +64,8 @@ public @interface ExtendedCucumberOptions {
     String threadsCountValue() default "";
 
     boolean systemInfoReport() default false;
+    boolean benchmarkReport() default false;
+    String benchmarkReportConfig() default "";
 
     String[] formats() default {};
 }

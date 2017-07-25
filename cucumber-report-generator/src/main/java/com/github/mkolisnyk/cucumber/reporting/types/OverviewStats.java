@@ -180,4 +180,31 @@ public class OverviewStats {
         }
         return this;
     }
+    public String getFeatureStatus() {
+        if (this.getScenariosFailed() > 0) {
+            return "failed";
+        } else if (this.getScenariosKnown() > 0) {
+            return "known";
+        } else if (this.getScenariosUndefined() > 0) {
+            return "undefined";
+        } else {
+            return "passed";
+        }
+    }
+    public String getScenarioStatus() {
+        if (this.getStepsFailed() > 0) {
+            return "failed";
+        } else if (this.getStepsKnown() > 0) {
+            return "known";
+        } else if (this.getStepsUndefined() > 0) {
+            return "undefined";
+        } else {
+            return "passed";
+        }
+    }
+    public boolean isEmpty() {
+        return this.featuresFailed + this.featuresKnown + this.featuresPassed + this.featuresUndefined
+                + this.scenariosFailed + this.scenariosKnown + this.scenariosPassed + this.scenariosUndefined
+                + this.stepsFailed + this.stepsKnown + this.stepsPassed + this.stepsUndefined <= 0;
+    }
 }

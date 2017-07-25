@@ -13,7 +13,6 @@
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <java.main.class>com.github.mkolisnyk.cucumber.runner.CLIRunner</java.main.class>
-    <fail.coverage>false</fail.coverage>
   </properties>
   <dependencies>
     <dependency>

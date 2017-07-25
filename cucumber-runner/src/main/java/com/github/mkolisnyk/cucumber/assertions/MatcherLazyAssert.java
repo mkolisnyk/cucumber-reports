@@ -7,9 +7,9 @@ import org.hamcrest.StringDescription;
 public final class MatcherLazyAssert {
     private MatcherLazyAssert() {
     }
-    public static <T> void assertThat(T actual, Matcher<? super T> matcher) {
-        assertThat("", actual, matcher);
-    }
+//    public static <T> void assertThat(T actual, Matcher<? super T> matcher) {
+//        assertThat("", actual, matcher);
+//    }
 
     public static <T> void assertThat(String reason, T actual, Matcher<? super T> matcher) {
         if (!matcher.matches(actual)) {

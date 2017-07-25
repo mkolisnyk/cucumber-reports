@@ -472,7 +472,11 @@ public final class LazyAssert {
      */
     public static void assertArrayEquals(String message, double[] expecteds,
             double[] actuals, double delta) throws ArrayComparisonFailure {
-        new InexactComparisonCriteria(delta).arrayEquals(message, expecteds, actuals);
+        try {
+            new InexactComparisonCriteria(delta).arrayEquals(message, expecteds, actuals);
+        } catch (AssertionError e) {
+            throw new LazyAssertionError(message, e);
+        }
     }
 
     /**
@@ -503,7 +507,11 @@ public final class LazyAssert {
      */
     public static void assertArrayEquals(String message, float[] expecteds,
             float[] actuals, float delta) throws ArrayComparisonFailure {
-        new InexactComparisonCriteria(delta).arrayEquals(message, expecteds, actuals);
+        try {
+            new InexactComparisonCriteria(delta).arrayEquals(message, expecteds, actuals);
+        } catch (AssertionError e) {
+            throw new LazyAssertionError(message, e);
+        }
     }
 
     /**
@@ -535,7 +543,11 @@ public final class LazyAssert {
      */
     private static void internalArrayEquals(String message, Object expecteds,
             Object actuals) throws ArrayComparisonFailure {
-        new ExactComparisonCriteria().arrayEquals(message, expecteds, actuals);
+        try {
+            new ExactComparisonCriteria().arrayEquals(message, expecteds, actuals);
+        } catch (AssertionError e) {
+            throw new LazyAssertionError(message, e);
+        }
     }
 
     /**

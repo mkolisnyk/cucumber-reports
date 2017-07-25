@@ -2,6 +2,7 @@ package com.github.mkolisnyk.cucumber.runner;
 
 import java.io.File;
 
+import com.github.mkolisnyk.cucumber.reporting.CucumberBenchmarkReport;
 import com.github.mkolisnyk.cucumber.reporting.CucumberBreakdownReport;
 import com.github.mkolisnyk.cucumber.reporting.CucumberConsolidatedReport;
 import com.github.mkolisnyk.cucumber.reporting.CucumberCoverageOverview;
@@ -180,6 +181,18 @@ public final class ReportRunner {
             e.printStackTrace();
         }
     }
+    public void runBenchmarkReport(ExtendedRuntimeOptions extendedOptions) {
+        if (!extendedOptions.isBenchmarkReport()) {
+            return;
+        }
+        CucumberBenchmarkReport report = new CucumberBenchmarkReport(extendedOptions);
+        try {
+            report.execute(new File(extendedOptions.getBenchmarkReportConfig()),
+                    extendedOptions.getFormats());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
     public static void run(ExtendedRuntimeOptions extendedOption) {
         ReportRunner runner = new ReportRunner();
         runner.runUsageReport(extendedOption);
@@ -193,6 +206,7 @@ public final class ReportRunner {
         runner.runFeatureMapReport(extendedOption);
         runner.runKnownErrorsReport(extendedOption);
         runner.runSystemInfoReport(extendedOption);
+        runner.runBenchmarkReport(extendedOption);
         runner.runConsolidatedReport(extendedOption);
     }
 }

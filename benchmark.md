@@ -14,6 +14,13 @@ Report consists of 2 major sections:
 * Features Status
 * Scenario Status
 
+Both sections represent the table with similar format. It includes columns reflecting the following:
+
+* Feature or scenario name
+* Run name
+
+If some run doesn't have some feature or scenario which present in other runs the corresponding cell will be filled with gray.
+
 ## Features Status
 
 Features Status section is represented with the table containing the list of features by their names and scenario run statistics.
@@ -29,7 +36,7 @@ Scenario Status section contains more detailed breakdown where features are also
 The table contain the number of passed, failed and undefined steps for each specific scenario for each specific run.
 Sample table looks like (sample fragment):
 
-![Scenario Status](/cucumber-reports/images/overview-report/scenario-status.png)
+![Scenario Status](/cucumber-reports/images/benchmark/scenario-status.png)
 
 # Configuration options
 

@@ -3,6 +3,13 @@ title: Cucumber Reports News
 layout: null
 ---
 
+## 26.07.2017 1.0.11 Version Release
+
+* [#120](https://github.com/mkolisnyk/cucumber-reports/issues/120) Enhancement: New Report: Results comparative report
+* [#104](https://github.com/mkolisnyk/cucumber-reports/issues/104) Documentation outdated enhancement
+* [#117](https://github.com/mkolisnyk/cucumber-reports/issues/117) Enhancement: extend LazyAssert with more assertions
+* [#118](https://github.com/mkolisnyk/cucumber-reports/issues/118) Enhancements: update external dependencies
+
 ## 29.06.2017 1.0.10 Version Release
 
 * [#116](https://github.com/mkolisnyk/cucumber-reports/issues/116) Enhancement: add ability to generate overview report in different image formats

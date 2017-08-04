@@ -1,6 +1,12 @@
 @sample @feature
 Feature: Sample re-run feature
 
+  @failed_hook
+  Scenario: Failed test hook
+    Given I am in the system
+    When I do wrong
+    Then I should see nothing
+
   @passed @consistent
   Scenario: Always passed test
     Given I am in the system

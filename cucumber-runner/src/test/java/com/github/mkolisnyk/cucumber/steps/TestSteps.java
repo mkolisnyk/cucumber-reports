@@ -1,6 +1,7 @@
 package com.github.mkolisnyk.cucumber.steps;
 
 import org.junit.Assert;
+import org.junit.AssumptionViolatedException;
 
 import com.github.mkolisnyk.cucumber.assertions.LazyAssert;
 
@@ -22,6 +23,10 @@ public class TestSteps {
     
     @Before(value={"@lazy"})
     public void beforeHook() {
+    }
+    @Before(value={"@failed_hook"})
+    public void beforeHook2() {
+        throw new AssumptionViolatedException("Failed hook");
     }
     @After
     public void afterHook() {
@@ -71,7 +76,8 @@ public class TestSteps {
     }
     @When("^I do pending wrong$")
     public void i_do_pending_wrong() throws Throwable {
-        throw new PendingException();
+        //throw new PendingException();
+        throw new AssumptionViolatedException("Pending step");
     }
     @When("^I do another pending wrong$")
     public void i_do_another_pending_wrong() throws Throwable {

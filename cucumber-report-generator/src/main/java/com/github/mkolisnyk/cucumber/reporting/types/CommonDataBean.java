@@ -7,19 +7,19 @@ public class CommonDataBean {
     public String getTitle() {
         return title;
     }
-    public void setTitle(String title) {
-        this.title = title;
+    public void setTitle(String titleValue) {
+        this.title = titleValue;
     }
     public String getPdfPageSize() {
         return pdfPageSize;
     }
-    public void setPdfPageSize(String pdfPageSize) {
-        this.pdfPageSize = pdfPageSize;
+    public void setPdfPageSize(String pdfPageSizeValue) {
+        this.pdfPageSize = pdfPageSizeValue;
     }
     public String getRefreshData() {
         return refreshData;
     }
-    public void setRefreshData(String refreshData) {
-        this.refreshData = refreshData;
+    public void setRefreshData(String refreshDataValue) {
+        this.refreshData = refreshDataValue;
     }
 }

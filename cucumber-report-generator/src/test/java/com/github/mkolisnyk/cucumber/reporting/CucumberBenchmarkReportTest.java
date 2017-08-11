@@ -7,6 +7,7 @@ import java.io.Writer;
 
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.IOUtils;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.testng.Assert;
 
@@ -134,7 +135,7 @@ public class CucumberBenchmarkReportTest {
         TestUtils.verifyXpathValue(content, "//table[2]/tbody/tr[5]/td[3]", "25 / 0 / 0");
         TestUtils.verifyXpathValue(content, "//table[2]/tbody/tr[5]/td[3]/@class", "passed");
     }
-    
+    @Ignore
     @Test
     public void testGenerateTemplate() throws Exception {
         Configuration cfg = new Configuration(Configuration.VERSION_2_3_23);

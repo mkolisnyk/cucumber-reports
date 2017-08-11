@@ -5,6 +5,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.util.Date;
@@ -18,6 +19,7 @@ import org.apache.batik.transcoder.TranscoderInput;
 import org.apache.batik.transcoder.TranscoderOutput;
 import org.apache.batik.transcoder.image.PNGTranscoder;
 import org.apache.commons.io.FileUtils;
+import org.apache.commons.lang3.StringUtils;
 //import org.apache.commons.lang.ArrayUtils;
 import org.xhtmlrenderer.pdf.ITextRenderer;
 import org.xhtmlrenderer.simple.Graphics2DRenderer;
@@ -25,14 +27,19 @@ import org.xhtmlrenderer.util.FSImageWriter;
 
 import com.cedarsoftware.util.io.JsonObject;
 import com.cedarsoftware.util.io.JsonReader;
+import com.github.mkolisnyk.cucumber.reporting.types.CommonDataBean;
 import com.github.mkolisnyk.cucumber.reporting.types.OverviewStats;
 import com.github.mkolisnyk.cucumber.reporting.types.enums.CucumberReportError;
 import com.github.mkolisnyk.cucumber.reporting.types.enums.CucumberReportLink;
 import com.github.mkolisnyk.cucumber.reporting.types.enums.CucumberReportTypes;
 import com.github.mkolisnyk.cucumber.reporting.types.result.CucumberFeatureResult;
+import com.github.mkolisnyk.cucumber.reporting.utils.helpers.FreemarkerConfiguration;
 import com.github.mkolisnyk.cucumber.reporting.utils.helpers.StringConversionUtils;
 //import com.google.common.io.Files;
 import com.github.mkolisnyk.cucumber.runner.runtime.ExtendedRuntimeOptions;
+
+import freemarker.template.Configuration;
+import freemarker.template.Template;
 
 public abstract class CucumberResultsCommon {
     public static final int CHART_WIDTH = 450;
@@ -197,6 +204,22 @@ public abstract class CucumberResultsCommon {
             index++;
         }
         return htmlText;
+    }
+    protected <T extends CommonDataBean> void generateReportFromTemplate(
+            File outFile, String templateName, T bean) throws Exception {
+        Configuration cfg = FreemarkerConfiguration.get("");
+
+        /* Get the template (uses cache internally) */
+        Template temp = cfg.getTemplate(templateName);
+        outFile.getAbsoluteFile().getParentFile().mkdirs();
+        /* Merge data-model with template */
+        FileWriter writer = new FileWriter(outFile);
+        bean.setPdfPageSize(this.getPdfPageSize());
+        if (StringUtils.isBlank(bean.getTitle())) {
+            bean.setTitle(this.getReportType().toString());
+        }
+        temp.process(bean, writer);
+        writer.close();
     }
     private File generateBackupFile(File htmlFile) throws Exception {
         File backupFile = new File(htmlFile.getAbsolutePath() + ".bak.html");

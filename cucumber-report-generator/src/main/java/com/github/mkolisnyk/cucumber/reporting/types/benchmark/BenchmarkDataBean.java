@@ -9,19 +9,19 @@ public class BenchmarkDataBean extends CommonDataBean {
     public String[] getHeaders() {
         return headers;
     }
-    public void setHeaders(String[] headers) {
-        this.headers = headers;
+    public void setHeaders(String[] headersValue) {
+        this.headers = headersValue;
     }
     public BenchmarkRowData[] getFeatureRows() {
         return featureRows;
     }
-    public void setFeatureRows(BenchmarkRowData[] featureRows) {
-        this.featureRows = featureRows;
+    public void setFeatureRows(BenchmarkRowData[] featureRowsValue) {
+        this.featureRows = featureRowsValue;
     }
     public BenchmarkRowData[] getScenarioRows() {
         return scenarioRows;
     }
-    public void setScenarioRows(BenchmarkRowData[] scenarioRows) {
-        this.scenarioRows = scenarioRows;
+    public void setScenarioRows(BenchmarkRowData[] scenarioRowsValue) {
+        this.scenarioRows = scenarioRowsValue;
     }
 }

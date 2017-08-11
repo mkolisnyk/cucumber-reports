@@ -77,7 +77,11 @@ ${refreshData}
         <tr><td>${row.name}</td>
     <#list row.getResults()>
         <#items as item>
+            <#if item.isEmpty() >
+			<td class="skipped"></td>
+			<#else>
 			<td class="${item.getFeatureStatus()}">${item.getScenariosPassed()} / ${item.getScenariosFailed()} / ${item.getScenariosUndefined()}</td>
+			</#if>
         </#items>
     </#list>
         </tr>
@@ -95,7 +99,11 @@ ${refreshData}
         <tr><td>${row.name}</td>
     <#list row.getResults()>
         <#items as item>
+            <#if item.isEmpty() >
+			<td class="skipped"></td>
+			<#else>
 			<td class="${item.getScenarioStatus()}">${item.getStepsPassed()} / ${item.getStepsFailed()} / ${item.getStepsUndefined()}</td>
+			</#if>
         </#items>
     </#list>
         </tr>

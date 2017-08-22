@@ -1,6 +1,6 @@
-package com.github.mkolisnyk.cucumber.reporting.types.benchmark;
+package com.github.mkolisnyk.cucumber.reporting.types.beans;
 
-import com.github.mkolisnyk.cucumber.reporting.types.CommonDataBean;
+import com.github.mkolisnyk.cucumber.reporting.types.benchmark.BenchmarkRowData;
 
 public class BenchmarkDataBean extends CommonDataBean {
     private String[] headers;

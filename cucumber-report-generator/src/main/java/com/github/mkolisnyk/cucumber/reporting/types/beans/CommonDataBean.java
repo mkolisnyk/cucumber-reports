@@ -1,4 +1,4 @@
-package com.github.mkolisnyk.cucumber.reporting.types;
+package com.github.mkolisnyk.cucumber.reporting.types.beans;
 
 public class CommonDataBean {
     private String title;

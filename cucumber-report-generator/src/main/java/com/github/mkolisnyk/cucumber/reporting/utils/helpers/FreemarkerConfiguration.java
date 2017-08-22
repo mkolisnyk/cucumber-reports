@@ -25,6 +25,10 @@ public final class FreemarkerConfiguration {
         {
             put("benchmark", "/templates/default/benchmark.ftlh");
             put("consolidated", "/templates/default/consolidated.ftlh");
+            put("coverage", "/templates/default/coverage.ftlh");
+            put("known_errors", "/templates/default/known_errors.ftlh");
+            put("system_info", "/templates/default/system_info.ftlh");
+            put("feature_overview", "/templates/default/feature_overview.ftlh");
         }
     };
     private static void loadDefaultConfig() throws Exception {

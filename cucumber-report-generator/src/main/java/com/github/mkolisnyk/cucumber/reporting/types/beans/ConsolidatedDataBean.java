@@ -1,9 +1,7 @@
-package com.github.mkolisnyk.cucumber.reporting.types.consolidated;
+package com.github.mkolisnyk.cucumber.reporting.types.beans;
 
 import java.util.LinkedHashMap;
 import java.util.Map;
-
-import com.github.mkolisnyk.cucumber.reporting.types.CommonDataBean;
 
 public class ConsolidatedDataBean extends CommonDataBean {
 

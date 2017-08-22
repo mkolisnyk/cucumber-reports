@@ -11,6 +11,8 @@ import org.apache.commons.lang3.ArrayUtils;
 import org.junit.Assert;
 
 import com.github.mkolisnyk.cucumber.reporting.interfaces.KECompatibleReport;
+import com.github.mkolisnyk.cucumber.reporting.types.beans.CommonDataBean;
+import com.github.mkolisnyk.cucumber.reporting.types.beans.KnownErrorsDataBean;
 import com.github.mkolisnyk.cucumber.reporting.types.enums.CucumberReportError;
 import com.github.mkolisnyk.cucumber.reporting.types.enums.CucumberReportLink;
 import com.github.mkolisnyk.cucumber.reporting.types.enums.CucumberReportTypes;
@@ -80,7 +82,15 @@ public class CucumberKnownErrorsReport extends KECompatibleReport {
         File outFile = new File(
                 this.getOutputDirectory() + File.separator + this.getOutputName()
                 + "-known-errors.html");
-        FileUtils.writeStringToFile(outFile, generateKnownErrorsReport(features, batch));
+        KnownErrorsDataBean data = new KnownErrorsDataBean();
+        CucumberScenarioResult[] scenarios = {};
+        for (CucumberFeatureResult feature : features) {
+            scenarios = ArrayUtils.addAll(scenarios, feature.getElements());
+        }
+        KnownErrorsResultSet results = new KnownErrorsResultSet();
+        results.valuate(scenarios, batch);
+        data.setResults(results.getResults());
+        generateReportFromTemplate(outFile, "known_errors", data);
         this.export(outFile, "known-errors", formats, this.isImageExportable());
     }
 

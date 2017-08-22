@@ -9,8 +9,8 @@ import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.IOUtils;
 
 import com.github.mkolisnyk.cucumber.reporting.interfaces.ConfigurableReport;
-import com.github.mkolisnyk.cucumber.reporting.types.CommonDataBean;
-import com.github.mkolisnyk.cucumber.reporting.types.consolidated.ConsolidatedDataBean;
+import com.github.mkolisnyk.cucumber.reporting.types.beans.CommonDataBean;
+import com.github.mkolisnyk.cucumber.reporting.types.beans.ConsolidatedDataBean;
 import com.github.mkolisnyk.cucumber.reporting.types.consolidated.ConsolidatedItemInfo;
 import com.github.mkolisnyk.cucumber.reporting.types.consolidated.ConsolidatedReportBatch;
 import com.github.mkolisnyk.cucumber.reporting.types.consolidated.ConsolidatedReportModel;

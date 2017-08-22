@@ -1,12 +1,18 @@
 package com.github.mkolisnyk.cucumber.reporting;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.HashSet;
 import java.util.Locale;
 import java.util.Set;
 
+import org.apache.commons.lang3.ArrayUtils;
 import org.apache.commons.lang3.StringUtils;
 
+import com.github.mkolisnyk.cucumber.reporting.types.beans.CommonDataBean;
+import com.github.mkolisnyk.cucumber.reporting.types.beans.CoverageDataBean;
+import com.github.mkolisnyk.cucumber.reporting.types.beans.CoverageDataBean.FeatureStatusRow;
+import com.github.mkolisnyk.cucumber.reporting.types.beans.CoverageDataBean.ScenarioStatusRow;
 import com.github.mkolisnyk.cucumber.reporting.types.enums.CucumberReportLink;
 import com.github.mkolisnyk.cucumber.reporting.types.enums.CucumberReportTypes;
 import com.github.mkolisnyk.cucumber.reporting.types.result.CucumberFeatureResult;
@@ -68,6 +74,7 @@ public class CucumberCoverageOverview extends CucumberResultsOverview {
             return "passed";
         }
     }
+
     public int[][] getStatuses(CucumberFeatureResult[] results) {
         int[][] statuses = {{0, 0}, {0, 0}, {0, 0}};
         for (CucumberFeatureResult result : results) {
@@ -193,13 +200,52 @@ public class CucumberCoverageOverview extends CucumberResultsOverview {
 
     @Override
     public void execute(String[] formats) throws Exception {
-        // TODO Auto-generated method stub
-        executeOverviewReport("coverage", formats);
+        File outFile = new File(
+                this.getOutputDirectory() + File.separator + this.getOutputName()
+                + "-coverage.html");
+        this.validateParameters();
+        CucumberFeatureResult[] features = readFileContent(true);
+        CoverageDataBean data = new CoverageDataBean();
+        FeatureStatusRow[] featureRows = new CoverageDataBean.FeatureStatusRow[] {};
+        ScenarioStatusRow[] scenarioRows = new CoverageDataBean.ScenarioStatusRow[] {};
+        
+        for (CucumberFeatureResult feature : features) {
+            feature.setIncludeCoverageTags(includeCoverageTags);
+            feature.setExcludeCoverageTags(excludeCoverageTags);
+            feature.valuate();
+            FeatureStatusRow featureRow = new CoverageDataBean().new FeatureStatusRow();
+            featureRow.setFeatureName(feature.getName());
+            featureRow.setStatus(getFeatureStatus(feature));
+            featureRow.setTags(feature.getAllTags(true));
+            featureRow.setCovered(feature.getPassed() + feature.getFailed() + feature.getSkipped());
+            featureRow.setNotCovered(feature.getUndefined());
+            
+            featureRows = ArrayUtils.add(featureRows, featureRow);
+            
+            for (CucumberScenarioResult scenario : feature.getElements()) {
+                ScenarioStatusRow scenarioRow = new CoverageDataBean().new ScenarioStatusRow();
+                scenario.setIncludeCoverageTags(includeCoverageTags);
+                scenario.setExcludeCoverageTags(excludeCoverageTags);
+                scenario.valuate();
+                scenarioRow.setFeatureName(scenario.getFeature().getName());
+                scenarioRow.setScenarioName(scenario.getName());
+                scenarioRow.setStatus(getScenarioStatus(scenario));
+                scenarioRow.setCovered(scenario.getPassed() + scenario.getFailed() + scenario.getSkipped());
+                scenarioRow.setNotCovered(scenario.getUndefined());
+                scenarioRow.setTags(ArrayUtils.addAll(scenario.getAllTags(), scenario.getFeature().getAllTags(false)));
+                
+                scenarioRows = ArrayUtils.add(scenarioRows, scenarioRow);
+            }
+        }
+        data.setFeatures(featureRows);
+        data.setScenarios(scenarioRows);
+        generateReportFromTemplate(outFile, "coverage", data);
+        this.export(outFile, "coverage", formats, this.isImageExportable());
     }
 
     @Override
     public void execute() throws Exception {
-        executeOverviewReport("coverage");
+        execute(new String[] {});
     }
 
     @Override

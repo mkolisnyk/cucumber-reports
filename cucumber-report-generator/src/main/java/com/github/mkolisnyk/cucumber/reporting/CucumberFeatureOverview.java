@@ -3,11 +3,14 @@ package com.github.mkolisnyk.cucumber.reporting;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.LinkedHashMap;
 import java.util.Locale;
+import java.util.Map;
 
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.IOUtils;
 
+import com.github.mkolisnyk.cucumber.reporting.types.beans.FeatureOverviewDataBean;
 import com.github.mkolisnyk.cucumber.reporting.types.enums.CucumberReportLink;
 import com.github.mkolisnyk.cucumber.reporting.types.enums.CucumberReportTypes;
 import com.github.mkolisnyk.cucumber.reporting.types.result.CucumberFeatureResult;
@@ -114,7 +117,17 @@ public class CucumberFeatureOverview extends CucumberResultsOverview {
         File outFile = new File(
                 this.getOutputDirectory() + File.separator + this.getOutputName()
                 + "-feature-overview-chart.html");
-        FileUtils.writeStringToFile(outFile, generateFeatureOverviewChart(features));
+        FeatureOverviewDataBean data = new FeatureOverviewDataBean();
+        Map<String, String> featureData = new LinkedHashMap<String, String>();
+        for (int i = 0; i < features.length; i++) {
+            features[i].valuate();
+            featureData.put(features[i].getName(), getFeatureStatusLetter(features[i]));
+        }
+        data.setFeatureRate(featureData);
+        double rate = getOverallRate(features);
+        data.setPassRate((int) (rate * 100));
+        data.setOverallRate(getStatusLetter(rate));
+        generateReportFromTemplate(outFile, "feature_overview", data);
         this.export(outFile, "feature-overview-chart", formats, this.isImageExportable());
     }
 }

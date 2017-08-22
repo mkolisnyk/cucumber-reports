@@ -10,6 +10,8 @@ import org.apache.commons.io.IOUtils;
 import org.junit.Assert;
 
 import com.github.mkolisnyk.cucumber.reporting.interfaces.KECompatibleReport;
+import com.github.mkolisnyk.cucumber.reporting.types.beans.CommonDataBean;
+import com.github.mkolisnyk.cucumber.reporting.types.beans.OverviewDataBean;
 import com.github.mkolisnyk.cucumber.reporting.types.enums.CucumberReportError;
 import com.github.mkolisnyk.cucumber.reporting.types.enums.CucumberReportLink;
 import com.github.mkolisnyk.cucumber.reporting.types.enums.CucumberReportTypes;
@@ -173,7 +175,10 @@ public class CucumberResultsOverview extends KECompatibleReport {
         File outFile = new File(
                 this.getOutputDirectory() + File.separator + this.getOutputName()
                 + "-" + reportSuffix + ".html");
-        FileUtils.writeStringToFile(outFile, generateFeatureOverview(features));
+        //FileUtils.writeStringToFile(outFile, generateFeatureOverview(features));
+        OverviewDataBean data = new OverviewDataBean();
+        // TODO: Add bean population
+        generateReportFromTemplate(outFile, "overview", data);
         this.export(outFile, reportSuffix, formats, this.isImageExportable());
         try {
             outFile = new File(

@@ -6,7 +6,7 @@ import org.apache.commons.lang.ArrayUtils;
 import org.junit.Assert;
 
 import com.github.mkolisnyk.cucumber.reporting.interfaces.ConfigurableReport;
-import com.github.mkolisnyk.cucumber.reporting.types.benchmark.BenchmarkDataBean;
+import com.github.mkolisnyk.cucumber.reporting.types.beans.BenchmarkDataBean;
 import com.github.mkolisnyk.cucumber.reporting.types.benchmark.BenchmarkReportInfo;
 import com.github.mkolisnyk.cucumber.reporting.types.benchmark.BenchmarkReportModel;
 import com.github.mkolisnyk.cucumber.reporting.types.benchmark.BenchmarkRowData;

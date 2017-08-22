@@ -27,8 +27,8 @@ import org.xhtmlrenderer.util.FSImageWriter;
 
 import com.cedarsoftware.util.io.JsonObject;
 import com.cedarsoftware.util.io.JsonReader;
-import com.github.mkolisnyk.cucumber.reporting.types.CommonDataBean;
 import com.github.mkolisnyk.cucumber.reporting.types.OverviewStats;
+import com.github.mkolisnyk.cucumber.reporting.types.beans.CommonDataBean;
 import com.github.mkolisnyk.cucumber.reporting.types.enums.CucumberReportError;
 import com.github.mkolisnyk.cucumber.reporting.types.enums.CucumberReportLink;
 import com.github.mkolisnyk.cucumber.reporting.types.enums.CucumberReportTypes;

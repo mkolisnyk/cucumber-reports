@@ -12,7 +12,7 @@ import org.junit.Test;
 import org.testng.Assert;
 
 import com.github.mkolisnyk.cucumber.reporting.types.OverviewStats;
-import com.github.mkolisnyk.cucumber.reporting.types.benchmark.BenchmarkDataBean;
+import com.github.mkolisnyk.cucumber.reporting.types.beans.BenchmarkDataBean;
 import com.github.mkolisnyk.cucumber.reporting.types.benchmark.BenchmarkReportInfo;
 import com.github.mkolisnyk.cucumber.reporting.types.benchmark.BenchmarkReportModel;
 import com.github.mkolisnyk.cucumber.reporting.types.benchmark.BenchmarkRowData;

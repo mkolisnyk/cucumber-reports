@@ -46,6 +46,7 @@ div.content {page-break-after: always;}
   <body>
     <div class='header'></div>
     <div class='footer'></div>
+<#include "pie_chart">
   
   <h1>Overview Chart</h1>
 	<table class="chart">
@@ -54,42 +55,26 @@ div.content {page-break-after: always;}
 	</tr>
 	<tr class="chart">
     <td class="chart">
-    	<div style="width: 400px; height: 200px;" >
-			<div id="features_chart" style="width: 400px; height: 300px;">
-			    <div style="position: relative;">
-			        <div dir="ltr"
-			            style="position: relative; width: 400px; height: 300px;">
-			            <div aria-label="A chart."
-			                style="position: absolute; left: 0px; top: 0px; width: 100%; height: 100%;">
-			                <svg aria-label="A chart." style="overflow: hidden;" height="300"
-			                    width="450">
-			                    <defs id="defs"></defs>
-			                         __DRAWING__
-			                    </svg>
-			            </div>
-			        </div>
-			    </div>
-			</div>
-    	</div>
+	     <@drawPieChart 
+	     	id="feature_coverage"
+	     	width=450 height=300
+	     	values=featureStatuses
+	     	labels=["Covered", "Not Covered"]
+	     	colors=["green", "gold"]
+	     	shadowColors=["darkgreen", "GoldenRod"]
+	     	pieThickness=20
+	     	shift=2 />
 	</td>
     <td class="chart">
-    	<div style="width: 400px; height: 200px;">
-			<div id="scenario_chart" style="width: 400px; height: 300px;">
-			    <div style="position: relative;">
-			        <div dir="ltr"
-			            style="position: relative; width: 400px; height: 300px;">
-			            <div aria-label="A chart."
-			                style="position: absolute; left: 0px; top: 0px; width: 100%; height: 100%;">
-			                <svg aria-label="A chart." style="overflow: hidden;" height="300"
-			                    width="450">
-			                    <defs id="defs"></defs>
-			                         __DRAWING__
-			                    </svg>
-			            </div>
-			        </div>
-			    </div>
-			</div>
-    	</div>
+ 	     <@drawPieChart 
+	     	id="feature_coverage"
+	     	width=450 height=300
+	     	values=scenarioStatuses
+	     	labels=["Covered", "Not Covered"]
+	     	colors=["green", "gold"]
+	     	shadowColors=["darkgreen", "GoldenRod"]
+	     	pieThickness=20
+	     	shift=2 />
 	</td>
 	</tr>
 	</table>

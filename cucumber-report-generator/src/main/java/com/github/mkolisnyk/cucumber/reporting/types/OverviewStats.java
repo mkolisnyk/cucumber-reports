@@ -152,12 +152,63 @@ public class OverviewStats {
     public void addStepsKnown(int stepsKnownValue) {
         this.stepsKnown += stepsKnownValue;
     }
+    public OverviewStats add(OverviewStats other) {
+        this.addFeaturesFailed(other.getFeaturesFailed());
+        this.addFeaturesKnown(other.getFeaturesKnown());
+        this.addFeaturesPassed(other.getFeaturesPassed());
+        this.addFeaturesUndefined(other.getFeaturesUndefined());
+        this.addScenariosFailed(other.getScenariosFailed());
+        this.addScenariosKnown(other.getScenariosKnown());
+        this.addScenariosPassed(other.getScenariosPassed());
+        this.addScenariosUndefined(other.getScenariosUndefined());
+        this.addStepsFailed(other.getStepsFailed());
+        this.addStepsKnown(other.getStepsKnown());
+        this.addStepsPassed(other.getStepsPassed());
+        this.addStepsUndefined(other.getStepsUndefined());
+        return this;
+    }
+    public OverviewStats valuate(CucumberScenarioResult scenario) {
+        this.reset();
+        scenario.valuate();
+        this.addOverallDuration((float) scenario.getDuration());
+        this.addStepsPassed(scenario.getPassed());
+        this.addStepsFailed(scenario.getFailed());
+        this.addStepsKnown(scenario.getKnown());
+        this.addStepsUndefined(scenario.getUndefined() + scenario.getSkipped());
+        return this;
+    }
+    public OverviewStats valuate(CucumberFeatureResult result) {
+        this.reset();
+        result.valuate();
+        this.addOverallDuration(result.getDuration());
+        if (result.getStatus().equals("passed")) {
+            this.addFeaturesPassed(1);
+        } else if (result.getStatus().equals("failed")) {
+            this.addFeaturesFailed(1);
+        }  else if (result.getStatus().equals("known")) {
+            this.addFeaturesKnown(1);
+        } else {
+            this.addFeaturesUndefined(1);
+        }
+        this.addScenariosPassed(result.getPassed());
+        this.addScenariosFailed(result.getFailed());
+        this.addScenariosKnown(result.getKnown());
+        this.addScenariosUndefined(result.getUndefined() + result.getSkipped());
+
+        for (CucumberScenarioResult scenario : result.getElements()) {
+            this.addStepsPassed(scenario.getPassed());
+            this.addStepsFailed(scenario.getFailed());
+            this.addStepsKnown(scenario.getKnown());
+            this.addStepsUndefined(scenario.getUndefined() + scenario.getSkipped());
+        }
+        return this;
+    }
     public OverviewStats valuate(CucumberFeatureResult[] results) {
         this.reset();
         for (CucumberFeatureResult result : results) {
             result.valuate();
             this.addOverallDuration(result.getDuration());
-            if (result.getStatus().equals("passed")) {
+            /*if (result.getStatus().equals("passed")) {
                 this.addFeaturesPassed(1);
             } else if (result.getStatus().equals("failed")) {
                 this.addFeaturesFailed(1);
@@ -169,13 +220,17 @@ public class OverviewStats {
             this.addScenariosPassed(result.getPassed());
             this.addScenariosFailed(result.getFailed());
             this.addScenariosKnown(result.getKnown());
-            this.addScenariosUndefined(result.getUndefined() + result.getSkipped());
-
+            this.addScenariosUndefined(result.getUndefined() + result.getSkipped());*/
+            OverviewStats stats = new OverviewStats();
+            stats.valuate(result);
+            this.add(stats);
             for (CucumberScenarioResult scenario : result.getElements()) {
-                this.addStepsPassed(scenario.getPassed());
+                /*this.addStepsPassed(scenario.getPassed());
                 this.addStepsFailed(scenario.getFailed());
                 this.addStepsKnown(scenario.getKnown());
-                this.addStepsUndefined(scenario.getUndefined() + scenario.getSkipped());
+                this.addStepsUndefined(scenario.getUndefined() + scenario.getSkipped());*/
+                stats.valuate(scenario);
+                this.add(stats);
             }
         }
         return this;

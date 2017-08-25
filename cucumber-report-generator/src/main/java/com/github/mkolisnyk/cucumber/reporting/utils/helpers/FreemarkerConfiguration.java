@@ -12,8 +12,10 @@ import org.apache.commons.lang3.StringUtils;
 import freemarker.cache.MultiTemplateLoader;
 import freemarker.cache.StringTemplateLoader;
 import freemarker.cache.TemplateLoader;
+import freemarker.ext.beans.BeansWrapper;
 import freemarker.template.Configuration;
 import freemarker.template.TemplateExceptionHandler;
+import freemarker.template.TemplateHashModel;
 
 public final class FreemarkerConfiguration {
     private static Configuration config;
@@ -23,12 +25,16 @@ public final class FreemarkerConfiguration {
         private static final long serialVersionUID = 1L;
 
         {
+            put("pie_chart", "/templates/default/pie_chart.ftlh");
+            put("tables", "/templates/default/tables.ftlh");
             put("benchmark", "/templates/default/benchmark.ftlh");
             put("consolidated", "/templates/default/consolidated.ftlh");
+            put("overview", "/templates/default/overview.ftlh");
             put("coverage", "/templates/default/coverage.ftlh");
             put("known_errors", "/templates/default/known_errors.ftlh");
             put("system_info", "/templates/default/system_info.ftlh");
             put("feature_overview", "/templates/default/feature_overview.ftlh");
+            put("overview_chart", "/templates/default/overview_chart.ftlh");
         }
     };
     private static void loadDefaultConfig() throws Exception {
@@ -48,6 +54,10 @@ public final class FreemarkerConfiguration {
         config.setDefaultEncoding("UTF-8");
         config.setTemplateExceptionHandler(TemplateExceptionHandler.RETHROW_HANDLER);
         config.setLogTemplateExceptions(false);
+
+        TemplateHashModel staticModels = BeansWrapper.getDefaultInstance().getStaticModels();
+        config.setSharedVariable("statics", staticModels);
+        
     }
     public static Configuration get(String location) throws Exception {
         if (config == null) {

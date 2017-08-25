@@ -46,7 +46,8 @@ div.content {page-break-after: always;}
   <body>
     <div class='header'></div>
     <div class='footer'></div>
-  
+<#include "pie_chart">
+<#include "tables">
   <h1>Overview Chart</h1>
 	<table class="chart">
 	<tr>
@@ -54,84 +55,97 @@ div.content {page-break-after: always;}
 	</tr>
 	<tr class="chart">
     <td class="chart">
-    	<div style="width: 400px; height: 200px;" >
-			<div id="features_chart" style="width: 400px; height: 300px;">
-			    <div style="position: relative;">
-			        <div dir="ltr"
-			            style="position: relative; width: 400px; height: 300px;">
-			            <div aria-label="A chart."
-			                style="position: absolute; left: 0px; top: 0px; width: 100%; height: 100%;">
-			                <svg aria-label="A chart." style="overflow: hidden;" height="300"
-			                    width="450">
-			                    <defs id="defs"></defs>
-			                         __DRAWING__
-			                    </svg>
-			            </div>
-			        </div>
-			    </div>
-			</div>
-    	</div>
+	     <@drawPieChart 
+	     	id="feature_status"
+	     	width=450 height=300
+	     	values=[overallStats.getFeaturesPassed(),
+	     		 	overallStats.getFeaturesFailed(),
+	     		 	overallStats.getFeaturesUndefined(),
+	     		 	overallStats.getFeaturesKnown()]
+	     	labels=["Passed", "Failed", "Undefined", "Known"]
+	     	colors=["green", "red", "silver", "gold"]
+	     	shadowColors=["darkgreen", "darkred", "darkgray", "goldenrod"]
+	     	pieThickness=20
+	     	shift=2 />
 	</td>
     <td class="chart">
-    	<div style="width: 400px; height: 200px;">
-			<div id="scenario_chart" style="width: 400px; height: 300px;">
-			    <div style="position: relative;">
-			        <div dir="ltr"
-			            style="position: relative; width: 400px; height: 300px;">
-			            <div aria-label="A chart."
-			                style="position: absolute; left: 0px; top: 0px; width: 100%; height: 100%;">
-			                <svg aria-label="A chart." style="overflow: hidden;" height="300"
-			                    width="450">
-			                    <defs id="defs"></defs>
-			                         __DRAWING__
-			                    </svg>
-			            </div>
-			        </div>
-			    </div>
-			</div>
-    	</div>
+	     <@drawPieChart 
+	     	id="scenario_status"
+	     	width=450 height=300
+	     	values=[overallStats.getScenariosPassed(),
+	     		 	overallStats.getScenariosFailed(),
+	     		 	overallStats.getScenariosUndefined(),
+	     		 	overallStats.getScenariosKnown()]
+	     	labels=["Passed", "Failed", "Undefined", "Known"]
+	     	colors=["green", "red", "silver", "gold"]
+	     	shadowColors=["darkgreen", "darkred", "darkgray", "goldenrod"]
+	     	pieThickness=20
+	     	shift=2 />
 	</td>
 	</tr>
 	</table>
 
+<h1>Summary</h1>
+
+<@drawOverviewStatsTable stats=overallStats />
+	
 <h1>Features Status</h1>
+	
 <table>
 	<tr>
-		<th rowspan="2">Feature Name</th><th rowspan="2">Status</th><th colspan="2">Scenarios</th><th rowspan="2">Tags</th>
+		<th>Feature Name</th>
+		<th>Status</th>
+		<th>Passed</th>
+		<th>Failed</th>
+		<th>Known</th>
+		<th>Undefined</th>
+		<th>Total</th>
+		<th>Duration</th>
 	</tr>
-	<tr>
-		<th>Covered</th><th>Not Covered</th>
-	</tr>
-<#list features as row>
-	<tr class="${row.status}">
-		<td>${row.featureName}</td>
-		<td>${row.status}</td>
-		<td>${row.covered}</td>
-		<td>${row.notCovered}</td>
-		<td>${row.tags?join(", ")}</td>
-	</tr>
+<#list features as feature>
+	<tr class="${feature.status}">
+		<td>${feature.featureName}</td>
+		<td>${feature.status}</td>
+		<td>${feature.stats.scenariosPassed}</td>
+		<td>${feature.stats.scenariosFailed}</td>
+		<td>${feature.stats.scenariosKnown}</td>
+		<td>${feature.stats.scenariosUndefined}</td>
+		<td>${feature.stats.getScenariosTotal()}</td>
+		<td>${feature.duration}s</td>
+	</tr>	
 </#list>
 
 </table>
+	
 <h1>Scenario Status</h1>
+
 <table>
 	<tr>
-		<th rowspan="2">Feature Name</th><th rowspan="2">Scenario</th><th rowspan="2">Status</th><th colspan="2">Steps</th><th rowspan="2">Tags</th>
+		<th>Feature Name</th>
+		<th>Scenario</th>
+		<th>Status</th>
+		<th>Passed</th>
+		<th>Failed</th>
+		<th>Known</th>
+		<th>Undefined</th>
+		<th>Total</th>
+		<th>Retries</th>
+		<th>Duration</th>
 	</tr>
-	<tr>
-		<th>Covered</th><th>Not Covered</th>
-	</tr>
-<#list scenarios as row>
-	<tr class="${row.status}">
-		<td>${row.featureName}</td>
-		<td>${row.scenarioName}</td>
-		<td>${row.status}</td>
-		<td>${row.covered}</td>
-		<td>${row.notCovered}</td>
-		<td>${row.tags?join(", ")}</td>
-	</tr>
+<#list scenarios as scenario>
+	<tr class="${scenario.status}">
+		<td>${scenario.featureName}</td>
+		<td>${scenario.scenarioName}</td>
+		<td>${scenario.status}</td>
+		<td>${scenario.stats.stepsPassed}</td>
+		<td>${scenario.stats.stepsFailed}</td>
+		<td>${scenario.stats.stepsKnown}</td>
+		<td>${scenario.stats.stepsUndefined}</td>
+		<td>${scenario.stats.getStepsTotal()}</td>
+		<td>${scenario.retries}</td>
+		<td>${scenario.duration}s</td>
+	</tr>	
 </#list>
-
-</table>
+</table>	
 	</body>
 </html>

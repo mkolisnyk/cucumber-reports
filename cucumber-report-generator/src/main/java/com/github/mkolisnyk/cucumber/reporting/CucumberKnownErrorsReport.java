@@ -32,39 +32,6 @@ public class CucumberKnownErrorsReport extends KECompatibleReport {
         super(extendedOptions);
     }
 
-    protected String getReportBase() throws IOException {
-        InputStream is = this.getClass().getResourceAsStream("/known-errors-report-tmpl.html");
-        String result = IOUtils.toString(is);
-        return result;
-    }
-
-    public String generateKnownErrorsReport(CucumberFeatureResult[] features, KnownErrorsModel model) throws Exception {
-        String content = this.getReportBase();
-        content = content.replaceAll("__TITLE__", "Known Errors");
-        String reportContent = "";
-        CucumberScenarioResult[] scenarios = {};
-        for (CucumberFeatureResult feature : features) {
-            scenarios = ArrayUtils.addAll(scenarios, feature.getElements());
-        }
-        KnownErrorsResultSet results = new KnownErrorsResultSet();
-        results.valuate(scenarios, model);
-        for (KnownErrorsResult result : results.getResults()) {
-            reportContent = reportContent.concat(
-                String.format(
-                        Locale.US,
-                        "<tr class=\"%s\"><td><p><b>%s</b></p><p>%s</p></td><td>%s</td><td>%d</td></tr>",
-                    result.getInfo().getPriority().toString().toLowerCase(),
-                    result.getInfo().getTitle(),
-                    result.getInfo().getDescription(),
-                    result.getInfo().getPriority(),
-                    result.getFrequency()
-                )
-            );
-        }
-        content = content.replaceAll("__REPORT__", reportContent);
-        return content;
-    }
-
     @Override
     public CucumberReportTypes getReportType() {
         return CucumberReportTypes.KNOWN_ERRORS;

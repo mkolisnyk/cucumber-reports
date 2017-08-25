@@ -7,11 +7,15 @@ import java.util.Locale;
 
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.IOUtils;
+import org.apache.commons.lang.ArrayUtils;
 import org.junit.Assert;
 
 import com.github.mkolisnyk.cucumber.reporting.interfaces.KECompatibleReport;
+import com.github.mkolisnyk.cucumber.reporting.types.OverviewStats;
 import com.github.mkolisnyk.cucumber.reporting.types.beans.CommonDataBean;
 import com.github.mkolisnyk.cucumber.reporting.types.beans.OverviewDataBean;
+import com.github.mkolisnyk.cucumber.reporting.types.beans.OverviewDataBean.FeatureStatusRow;
+import com.github.mkolisnyk.cucumber.reporting.types.beans.OverviewDataBean.ScenarioStatusRow;
 import com.github.mkolisnyk.cucumber.reporting.types.enums.CucumberReportError;
 import com.github.mkolisnyk.cucumber.reporting.types.enums.CucumberReportLink;
 import com.github.mkolisnyk.cucumber.reporting.types.enums.CucumberReportTypes;
@@ -30,13 +34,6 @@ public class CucumberResultsOverview extends KECompatibleReport {
     public CucumberResultsOverview(ExtendedRuntimeOptions extendedOptions) {
         super(extendedOptions);
     }
-
-    protected String getReportBase() throws IOException {
-        InputStream is = this.getClass().getResourceAsStream("/feature-overview-tmpl.html");
-        String result = IOUtils.toString(is);
-        return result;
-    }
-
     @Override
     public int[][] getStatuses(CucumberFeatureResult[] results) {
         final int kePosition = 3;
@@ -73,88 +70,6 @@ public class CucumberResultsOverview extends KECompatibleReport {
     public boolean isImageExportable() {
         return true;
     }
-    protected String generateFeatureOverview(CucumberFeatureResult[] results) throws IOException {
-        String content = this.getReportBase();
-        content = content.replaceAll("__TITLE__", "Features Overview");
-        String reportContent = "";
-        reportContent += "<h1>Summary</h1>" + this.generateRunStatsTable(results);
-        reportContent += "<h1>Features Status</h1><table><tr><th>Feature Name</th><th>Status</th>"
-                + "<th>Passed</th><th>Failed</th><th>Known</th><th>Undefined</th><th>Total</th>"
-                + "<th>Duration</th></tr>";
-
-        for (CucumberFeatureResult result : results) {
-            reportContent += String.format(Locale.US,
-                    "<tr class=\"%s\"><td>%s</td><td>%s</td>"
-                    + "<td>%d</td><td>%d</td><td>%d</td><td>%d</td><td>%d</td><td>%.2fs</td></tr>",
-                    result.getStatus(),
-                    result.getName(),
-                    result.getStatus(),
-                    result.getPassed(),
-                    result.getFailed(),
-                    result.getKnown(),
-                    result.getUndefined() + result.getSkipped(),
-                    result.getPassed() + result.getFailed() + result.getKnown()
-                    + result.getUndefined() + result.getSkipped(),
-                    result.getDuration());
-        }
-        reportContent += "</table>";
-        reportContent += "<h1>Scenario Status</h1><table>"
-                + "<tr><th>Feature Name</th>"
-                + "<th>Scenario</th>"
-                + "<th>Status</th>"
-                + "<th>Passed</th>"
-                + "<th>Failed</th>"
-                + "<th>Known</th>"
-                + "<th>Undefined</th>"
-                + "<th>Total</th>"
-                + "<th>Retries</th>"
-                + "<th>Duration</th></tr>";
-
-        int[][] statuses = this.getStatuses(results);
-        int[] featureStatuses = statuses[0];
-        int[] scenarioStatuses = statuses[1];
-        for (CucumberFeatureResult result : results) {
-            for (CucumberScenarioResult element : result.getElements()) {
-                reportContent += String.format(Locale.US,
-                        "<tr class=\"%s\">"
-                        + "<td>%s</td><td>%s</td><td>%s</td>"
-                        + "<td>%d</td><td>%d</td><td>%d</td><td>%d</td><td>%d</td><td>%d</td>"
-                        + "<td>%.2fs</td></tr>",
-                        element.getStatus(),
-                        result.getName(),
-                        element.getName(),
-                        element.getStatus(),
-                        element.getPassed(),
-                        element.getFailed(),
-                        element.getKnown(),
-                        element.getUndefined() + element.getSkipped(),
-                        element.getPassed() + element.getFailed()
-                        + element.getKnown() + element.getUndefined() + element.getSkipped(),
-                        element.getRerunAttempts(),
-                        element.getDuration());
-            }
-        }
-        reportContent += "</table>";
-        content = content.replaceAll("__REPORT__", reportContent);
-        PieChartDrawer pieChart = new PieChartDrawer();
-        content = content.replaceAll("__FEATURE_DATA__", pieChart.generatePieChart(
-                CHART_WIDTH, CHART_HEIGHT,
-                featureStatuses,
-                new String[]{"Passed", "Failed", "Undefined", "Known"},
-                new String[]{"green", "red", "silver", "gold"},
-                new String[]{"darkgreen", "darkred", "darkgray", "goldenrod"},
-                CHART_THICKNESS,
-                2));
-        content = content.replaceAll("__SCENARIO_DATA__", pieChart.generatePieChart(
-                CHART_WIDTH, CHART_HEIGHT,
-                scenarioStatuses,
-                new String[]{"Passed", "Failed", "Undefined", "Known"},
-                new String[]{"green", "red", "silver", "gold"},
-                new String[]{"darkgreen", "darkred", "darkgray", "goldenrod"},
-                CHART_THICKNESS,
-                2));
-        return content;
-    }
 
     protected void executeOverviewReport(String reportSuffix) throws Exception {
         executeOverviewReport(reportSuffix, new String[] {});
@@ -175,9 +90,41 @@ public class CucumberResultsOverview extends KECompatibleReport {
         File outFile = new File(
                 this.getOutputDirectory() + File.separator + this.getOutputName()
                 + "-" + reportSuffix + ".html");
-        //FileUtils.writeStringToFile(outFile, generateFeatureOverview(features));
         OverviewDataBean data = new OverviewDataBean();
-        // TODO: Add bean population
+        FeatureStatusRow[] featureRows = new FeatureStatusRow[] {};
+        ScenarioStatusRow[] scenarioRows = new ScenarioStatusRow[] {};
+        for (CucumberFeatureResult feature : features) {
+            feature.valuate();
+            if (batch != null) {
+                feature.valuateKnownErrors(batch);
+            }
+            FeatureStatusRow featureRow = data.new FeatureStatusRow();
+            featureRow.setFeatureName(feature.getName());
+            OverviewStats stats = new OverviewStats();
+            stats.valuate(feature);
+            featureRow.setStats(stats);
+            featureRow.setDuration(String.format("%.2f", feature.getDuration()));
+            featureRow.setStatus(feature.getStatus());
+            featureRows = (FeatureStatusRow[]) ArrayUtils.add(featureRows, featureRow);
+            for (CucumberScenarioResult scenario : feature.getElements()) {
+                ScenarioStatusRow scenarioRow = data.new ScenarioStatusRow();
+                scenario.valuate();
+                OverviewStats scenarioStats = new OverviewStats();
+                scenarioStats.valuate(scenario);
+                scenarioRow.setDuration(String.format("%.2f", scenario.getDuration()));
+                scenarioRow.setFeatureName(feature.getName());
+                scenarioRow.setRetries(scenario.getRerunAttempts());
+                scenarioRow.setScenarioName(scenario.getName());
+                scenarioRow.setStats(scenarioStats);
+                scenarioRow.setStatus(scenario.getStatus());
+                scenarioRows = (ScenarioStatusRow[]) ArrayUtils.add(scenarioRows, scenarioRow);
+            }
+        }
+        OverviewStats stats = new OverviewStats();
+        stats.valuate(features);
+        data.setOverallStats(stats);
+        data.setFeatures(featureRows);
+        data.setScenarios(scenarioRows);
         generateReportFromTemplate(outFile, "overview", data);
         this.export(outFile, reportSuffix, formats, this.isImageExportable());
         try {

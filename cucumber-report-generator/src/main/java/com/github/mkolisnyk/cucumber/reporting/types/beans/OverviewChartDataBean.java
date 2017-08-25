@@ -1,25 +1,20 @@
 package com.github.mkolisnyk.cucumber.reporting.types.beans;
 
+import com.github.mkolisnyk.cucumber.reporting.types.OverviewStats;
+
 public class OverviewChartDataBean extends CommonDataBean {
-    private int[][] overviewStatuses;
-    private int[][] coverageStatuses;
-    private boolean isCoverageIncluded;
-    public int[][] getOverviewStatuses() {
-        return overviewStatuses;
+    private OverviewStats overviewData;
+    private boolean coverageIncluded;
+    public OverviewStats getOverviewData() {
+        return overviewData;
     }
-    public void setOverviewStatuses(int[][] overviewStatuses) {
-        this.overviewStatuses = overviewStatuses;
-    }
-    public int[][] getCoverageStatuses() {
-        return coverageStatuses;
-    }
-    public void setCoverageStatuses(int[][] coverageStatuses) {
-        this.coverageStatuses = coverageStatuses;
+    public void setOverviewData(OverviewStats overviewStatuses) {
+        this.overviewData = overviewStatuses;
     }
     public boolean isCoverageIncluded() {
-        return isCoverageIncluded;
+        return coverageIncluded;
     }
     public void setCoverageIncluded(boolean isCoverageIncluded) {
-        this.isCoverageIncluded = isCoverageIncluded;
+        this.coverageIncluded = isCoverageIncluded;
     }
 }

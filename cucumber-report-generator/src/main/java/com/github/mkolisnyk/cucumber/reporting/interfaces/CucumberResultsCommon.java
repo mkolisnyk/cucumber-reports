@@ -38,8 +38,12 @@ import com.github.mkolisnyk.cucumber.reporting.utils.helpers.StringConversionUti
 //import com.google.common.io.Files;
 import com.github.mkolisnyk.cucumber.runner.runtime.ExtendedRuntimeOptions;
 
+import freemarker.ext.beans.BeansWrapper;
 import freemarker.template.Configuration;
+import freemarker.template.DefaultObjectWrapper;
+import freemarker.template.ObjectWrapper;
 import freemarker.template.Template;
+import freemarker.template.TemplateHashModel;
 
 public abstract class CucumberResultsCommon {
     public static final int CHART_WIDTH = 450;
@@ -218,6 +222,12 @@ public abstract class CucumberResultsCommon {
         if (StringUtils.isBlank(bean.getTitle())) {
             bean.setTitle(this.getReportType().toString());
         }
+        BeansWrapper wrapper = new BeansWrapper(Configuration.VERSION_2_3_23);
+        TemplateHashModel staticModels = wrapper.getStaticModels();
+        TemplateHashModel mathStatics =
+            (TemplateHashModel) staticModels.get("java.lang.Math");
+        wrapper.wrap(bean);
+        //model.put("Math", BeansWrapper.getDefaultInstance().getStaticModels().get("java.lang.Math"));
         temp.process(bean, writer);
         writer.close();
     }

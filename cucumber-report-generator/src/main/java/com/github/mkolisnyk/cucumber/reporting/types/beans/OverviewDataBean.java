@@ -7,8 +7,8 @@ public class OverviewDataBean extends CommonDataBean {
     public class FeatureStatusRow {
         private String featureName;
         private OverviewStats stats;
-        private int retries;
         private String duration;
+        private String status;
         public String getFeatureName() {
             return featureName;
         }
@@ -21,21 +21,22 @@ public class OverviewDataBean extends CommonDataBean {
         public void setStats(OverviewStats stats) {
             this.stats = stats;
         }
-        public int getRetries() {
-            return retries;
-        }
-        public void setRetries(int retries) {
-            this.retries = retries;
-        }
-        public String getDuration() {
+       public String getDuration() {
             return duration;
         }
         public void setDuration(String duration) {
             this.duration = duration;
         }
+        public String getStatus() {
+            return status;
+        }
+        public void setStatus(String status) {
+            this.status = status;
+        }
     }
     public class ScenarioStatusRow extends FeatureStatusRow {
         private String scenarioName;
+        private int retries;
 
         public String getScenarioName() {
             return scenarioName;
@@ -44,9 +45,16 @@ public class OverviewDataBean extends CommonDataBean {
         public void setScenarioName(String scenarioName) {
             this.scenarioName = scenarioName;
         }
+        public int getRetries() {
+            return retries;
+        }
+        public void setRetries(int retries) {
+            this.retries = retries;
+        }
     }
     private FeatureStatusRow[] features;
     private ScenarioStatusRow[] scenarios;
+    private OverviewStats overallStats;
     public FeatureStatusRow[] getFeatures() {
         return features;
     }
@@ -58,5 +66,11 @@ public class OverviewDataBean extends CommonDataBean {
     }
     public void setScenarios(ScenarioStatusRow[] scenarios) {
         this.scenarios = scenarios;
+    }
+    public OverviewStats getOverallStats() {
+        return overallStats;
+    }
+    public void setOverallStats(OverviewStats overallStats) {
+        this.overallStats = overallStats;
     }
 }

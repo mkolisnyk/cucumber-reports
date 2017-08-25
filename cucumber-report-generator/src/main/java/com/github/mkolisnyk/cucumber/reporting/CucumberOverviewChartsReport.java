@@ -10,6 +10,8 @@ import org.apache.commons.io.IOUtils;
 import org.junit.Assert;
 
 import com.github.mkolisnyk.cucumber.reporting.interfaces.KECompatibleReport;
+import com.github.mkolisnyk.cucumber.reporting.types.OverviewStats;
+import com.github.mkolisnyk.cucumber.reporting.types.beans.OverviewChartDataBean;
 import com.github.mkolisnyk.cucumber.reporting.types.enums.CucumberReportError;
 import com.github.mkolisnyk.cucumber.reporting.types.enums.CucumberReportLink;
 import com.github.mkolisnyk.cucumber.reporting.types.enums.CucumberReportTypes;
@@ -131,7 +133,11 @@ public class CucumberOverviewChartsReport extends KECompatibleReport {
         File outFile = new File(
                 this.getOutputDirectory() + File.separator + this.getOutputName()
                 + "-charts-report.html");
-        FileUtils.writeStringToFile(outFile, generateCharts(features));
+        OverviewChartDataBean data = new OverviewChartDataBean();
+        OverviewStats stats = new OverviewStats();
+        data.setCoverageIncluded(options.isCoverageReport());
+        data.setOverviewData(stats.valuate(features));
+        generateReportFromTemplate(outFile, "overview_chart", data);
         this.export(outFile, "charts-report", formats, this.isImageExportable());
     }
 

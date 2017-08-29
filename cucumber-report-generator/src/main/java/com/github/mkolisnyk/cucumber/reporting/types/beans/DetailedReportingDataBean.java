@@ -6,6 +6,7 @@ import com.github.mkolisnyk.cucumber.reporting.types.result.CucumberFeatureResul
 public class DetailedReportingDataBean extends CommonDataBean {
     private OverviewStats stats;
     private CucumberFeatureResult[] results;
+    private String screenShotWidth = "";
     public OverviewStats getStats() {
         return stats;
     }
@@ -17,5 +18,11 @@ public class DetailedReportingDataBean extends CommonDataBean {
     }
     public void setResults(CucumberFeatureResult[] results) {
         this.results = results;
+    }
+    public String getScreenShotWidth() {
+        return screenShotWidth;
+    }
+    public void setScreenShotWidth(String screenShotWidth) {
+        this.screenShotWidth = screenShotWidth;
     }
 }

@@ -8,10 +8,13 @@ import java.util.Locale;
 
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.IOUtils;
+import org.apache.commons.lang.ArrayUtils;
 import org.apache.commons.lang.StringEscapeUtils;
 import org.apache.commons.lang.StringUtils;
 
 import com.github.mkolisnyk.cucumber.reporting.interfaces.KECompatibleReport;
+import com.github.mkolisnyk.cucumber.reporting.types.OverviewStats;
+import com.github.mkolisnyk.cucumber.reporting.types.beans.DetailedReportingDataBean;
 import com.github.mkolisnyk.cucumber.reporting.types.enums.CucumberReportLink;
 import com.github.mkolisnyk.cucumber.reporting.types.enums.CucumberReportTypes;
 import com.github.mkolisnyk.cucumber.reporting.types.knownerrors.KnownErrorsModel;
@@ -38,7 +41,7 @@ public class CucumberDetailedResults extends KECompatibleReport {
     }
 
     private String screenShotLocation;
-    private String screenShotWidth;
+    private String screenShotWidth = "100%";
 
     /**
      * @return the screenShotLocation
@@ -182,6 +185,37 @@ public class CucumberDetailedResults extends KECompatibleReport {
             }
         }
         return reportContent;
+    }
+    private String[] generateEmbededScreenShots(CucumberScenarioResult scenario, CucumberStepResult step) throws IOException {
+        String[] outputs = new String[] {};
+        String scenarioId = scenario.getId();
+        if (StringUtils.isBlank(scenarioId)) {
+            scenarioId = "background";
+        }
+        if (step.getEmbeddings() != null) {
+            int index = 0;
+            long base = new Date().getTime();
+            for (CucumberEmbedding embedding : step.getEmbeddings()) {
+                String embedPath = this.getScreenShotLocation()
+                        + this.generateNameFromId(scenarioId) + (base + index) + "."
+                        + getExtensionFromMime(embedding.getMimeType());
+                File embedShot = new File(this.getOutputDirectory() + embedPath);
+                FileUtils.writeByteArrayToFile(embedShot, embedding.getData());
+                outputs = (String[]) ArrayUtils.add(outputs, embedPath);
+                /*String widthString = "";
+                if (StringUtils.isNotBlank(this.getScreenShotWidth())) {
+                    widthString = String.format(Locale.US, "width=\"%s\"", this.getScreenShotWidth());
+                }
+                reportContent += String.format(Locale.US,
+                        "<tr class=\"%s\"><td colspan=\"2\"><img src=\"%s\" %s /></td></tr>",
+                        step.getResult().getStatus(),
+                        embedPath,
+                        widthString
+                );*/
+                index++;
+            }
+        }
+        return outputs;
     }
     private String embeddingOutput(CucumberStepResult step) {
         String reportContent = "";
@@ -378,8 +412,9 @@ public class CucumberDetailedResults extends KECompatibleReport {
             throws Exception {
         CucumberFeatureResult[] features = readFileContent(aggregate);
         String formatName = "";
-        if (batch != null) {
-            for (CucumberFeatureResult feature : features) {
+        for (CucumberFeatureResult feature : features) {
+            feature.valuate();
+            if (batch != null) {
                 feature.valuateKnownErrors(batch);
             }
         }
@@ -392,8 +427,22 @@ public class CucumberDetailedResults extends KECompatibleReport {
                 String.format(Locale.US,
                         formatName,
                         this.getOutputDirectory(), File.separator, this.getOutputName()));
-        String content = generateStepsReport(features);
-        FileUtils.writeStringToFile(outFile, content, "UTF-8");
+        //String content = generateStepsReport(features);
+        DetailedReportingDataBean data = new DetailedReportingDataBean();
+        OverviewStats stats = new OverviewStats();
+        data.setStats(stats.valuate(features));
+        data.setResults(features);
+        for (CucumberFeatureResult feature : features) {
+            for (CucumberScenarioResult scenario : feature.getElements()) {
+                for (CucumberStepResult step : scenario.getSteps()) {
+                    String[] screenShotLocations = this.generateEmbededScreenShots(scenario, step);
+                    step.setScreenShotLocations(screenShotLocations);
+                }
+            }
+        }
+        data.setScreenShotWidth(getScreenShotWidth());
+        generateReportFromTemplate(outFile, "detailed", data);
+        //FileUtils.writeStringToFile(outFile, content, "UTF-8");
         this.export(outFile, "test-results", formats, this.isImageExportable());
     }
 }

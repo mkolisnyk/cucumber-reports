@@ -14,6 +14,7 @@ public class CucumberStepResult {
     private String docString;
     private CucumberEmbedding[] embeddings;
     private String[] output;
+    private String[] screenShotLocations;
 
     @SuppressWarnings("unchecked")
     public CucumberStepResult(JsonObject<String, Object> json) {
@@ -100,5 +101,11 @@ public class CucumberStepResult {
 
     public String[] getOutput() {
         return output;
+    }
+    public String[] getScreenShotLocations() {
+        return screenShotLocations;
+    }
+    public void setScreenShotLocations(String[] screenShotLocationsValue) {
+        this.screenShotLocations = screenShotLocationsValue;
     }
 }

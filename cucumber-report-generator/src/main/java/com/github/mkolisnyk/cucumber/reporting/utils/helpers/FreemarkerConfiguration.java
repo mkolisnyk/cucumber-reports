@@ -35,6 +35,7 @@ public final class FreemarkerConfiguration {
             put("system_info", "/templates/default/system_info.ftlh");
             put("feature_overview", "/templates/default/feature_overview.ftlh");
             put("overview_chart", "/templates/default/overview_chart.ftlh");
+            put("detailed", "/templates/default/detailed.ftlh");
         }
     };
     private static void loadDefaultConfig() throws Exception {

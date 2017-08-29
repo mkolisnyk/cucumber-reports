@@ -22,15 +22,21 @@
             		   <@drawPieLayers width=width height=height values=values colors=shadowColors pieVOffset=pieThickness shift=shift />
                        <@drawPieBorders width=width height=height values = values colors = shadowColors pieVOffset = pieThickness shift=shift />
                        <@drawPieLayers width=width height=height values=values colors=colors pieVOffset=0 shift=shift />
+                       <#assign total=sum(values)>
                        <#list values as value>
 	                    <#assign xShiftScale = 0.6>
 			            <#assign yShiftScale = 0.15>
 			            <#assign xOffset = 10>
 			            <#assign yHeight = 30>
+			            <#if total == 0>
+			            	<#assign ratio="N/A">
+			            <#else>
+			            	<#assign ratio="#{100 * value / total; M0}">
+			            </#if>
 			            <text x="${(xShiftScale * width) + xOffset}"
 			            	 y="${(yShiftScale * width) + yHeight * value?index}"
 			            	 font-weight = "bold"
-			            	 font-size = "14">#{100 * value / total; M0}% (${value}) ${labels[value?index]}</text>
+			            	 font-size = "14">${ratio}% (${value}) ${labels[value?index]}</text>
 			           <circle cx="${xShiftScale * width}"
 			            cy="${(yShiftScale * width) + yHeight * value?index - xOffset / 2}"
 			             r="5" stroke="${shadowColors[value?index]}" stroke-width="1" fill="${colors[value?index]}" />
@@ -44,6 +50,9 @@
 <#macro drawPieBorders width height values colors pieVOffset shift>
     <#assign total=sum(values)>
     <#assign accumulated = 0 >
+    <#if total == 0>
+    	<#return>
+    </#if>
     <#list values as value>
     	<#if value gt 0>
     		<#assign l_shift = shift>
@@ -95,6 +104,9 @@
 <#macro drawPieLayers width height values colors pieVOffset shift>
 	<#assign total=sum(values)>
     <#assign accumulated = 0 >
+    <#if total == 0>
+    	<#return>
+    </#if>
     <#list values as value>
     	<#if value gt 0>
     		<#assign l_shift = shift>

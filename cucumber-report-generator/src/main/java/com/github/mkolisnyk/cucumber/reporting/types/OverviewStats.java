@@ -224,14 +224,10 @@ public class OverviewStats {
             OverviewStats stats = new OverviewStats();
             stats.valuate(result);
             this.add(stats);
-            for (CucumberScenarioResult scenario : result.getElements()) {
-                /*this.addStepsPassed(scenario.getPassed());
-                this.addStepsFailed(scenario.getFailed());
-                this.addStepsKnown(scenario.getKnown());
-                this.addStepsUndefined(scenario.getUndefined() + scenario.getSkipped());*/
+            /*for (CucumberScenarioResult scenario : result.getElements()) {
                 stats.valuate(scenario);
                 this.add(stats);
-            }
+            }*/
         }
         return this;
     }

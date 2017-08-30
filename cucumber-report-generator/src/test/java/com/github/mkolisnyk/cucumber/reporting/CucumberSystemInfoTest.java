@@ -24,7 +24,7 @@ public class CucumberSystemInfoTest {
         TestUtils.verifyXpathValue(content, "//h1[1]/text()", "System Properties");
         TestUtils.verifyXpathValue(content, "//table[1]//th[1]/text()", "Property");
         TestUtils.verifyXpathValue(content, "//table[1]//th[2]/text()", "Value");
-        TestUtils.verifyXpathValue(content, "count(//table[1]//tr)", "" + System.getProperties().size());
+        TestUtils.verifyXpathValue(content, "count(//table[1]//tr)", "" + (System.getProperties().size() + 1));
 
         TestUtils.verifyXpathValue(content, "(//h1)[2]/text()", "Environment Variables");
         TestUtils.verifyXpathValue(content, "//table[2]//th[1]/text()", "Variable");

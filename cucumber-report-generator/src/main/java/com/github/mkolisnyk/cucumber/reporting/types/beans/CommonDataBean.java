@@ -1,6 +1,5 @@
 package com.github.mkolisnyk.cucumber.reporting.types.beans;
 
-import freemarker.template.WrappingTemplateModel;
 
 public class CommonDataBean {
     private String title;

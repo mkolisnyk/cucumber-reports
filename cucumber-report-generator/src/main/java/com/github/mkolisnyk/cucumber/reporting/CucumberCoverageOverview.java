@@ -1,15 +1,9 @@
 package com.github.mkolisnyk.cucumber.reporting;
 
 import java.io.File;
-import java.io.IOException;
-import java.util.HashSet;
-import java.util.Locale;
-import java.util.Set;
 
 import org.apache.commons.lang3.ArrayUtils;
-import org.apache.commons.lang3.StringUtils;
 
-import com.github.mkolisnyk.cucumber.reporting.types.beans.CommonDataBean;
 import com.github.mkolisnyk.cucumber.reporting.types.beans.CoverageDataBean;
 import com.github.mkolisnyk.cucumber.reporting.types.beans.CoverageDataBean.FeatureStatusRow;
 import com.github.mkolisnyk.cucumber.reporting.types.beans.CoverageDataBean.ScenarioStatusRow;
@@ -17,8 +11,6 @@ import com.github.mkolisnyk.cucumber.reporting.types.enums.CucumberReportLink;
 import com.github.mkolisnyk.cucumber.reporting.types.enums.CucumberReportTypes;
 import com.github.mkolisnyk.cucumber.reporting.types.result.CucumberFeatureResult;
 import com.github.mkolisnyk.cucumber.reporting.types.result.CucumberScenarioResult;
-import com.github.mkolisnyk.cucumber.reporting.types.result.CucumberStepResult;
-import com.github.mkolisnyk.cucumber.reporting.utils.drawers.PieChartDrawer;
 import com.github.mkolisnyk.cucumber.runner.runtime.ExtendedRuntimeOptions;
 
 public class CucumberCoverageOverview extends CucumberResultsOverview {
@@ -85,7 +77,7 @@ public class CucumberCoverageOverview extends CucumberResultsOverview {
         CoverageDataBean data = new CoverageDataBean();
         FeatureStatusRow[] featureRows = new CoverageDataBean.FeatureStatusRow[] {};
         ScenarioStatusRow[] scenarioRows = new CoverageDataBean.ScenarioStatusRow[] {};
-        
+
         for (CucumberFeatureResult feature : features) {
             feature.setIncludeCoverageTags(includeCoverageTags);
             feature.setExcludeCoverageTags(excludeCoverageTags);
@@ -96,9 +88,9 @@ public class CucumberCoverageOverview extends CucumberResultsOverview {
             featureRow.setTags(feature.getAllTags(true));
             featureRow.setCovered(feature.getPassed() + feature.getFailed() + feature.getSkipped());
             featureRow.setNotCovered(feature.getUndefined());
-            
+
             featureRows = ArrayUtils.add(featureRows, featureRow);
-            
+
             for (CucumberScenarioResult scenario : feature.getElements()) {
                 ScenarioStatusRow scenarioRow = new CoverageDataBean().new ScenarioStatusRow();
                 scenario.setIncludeCoverageTags(includeCoverageTags);
@@ -110,7 +102,7 @@ public class CucumberCoverageOverview extends CucumberResultsOverview {
                 scenarioRow.setCovered(scenario.getPassed() + scenario.getFailed() + scenario.getSkipped());
                 scenarioRow.setNotCovered(scenario.getUndefined());
                 scenarioRow.setTags(ArrayUtils.addAll(scenario.getAllTags(), scenario.getFeature().getAllTags(false)));
-                
+
                 scenarioRows = ArrayUtils.add(scenarioRows, scenarioRow);
             }
         }

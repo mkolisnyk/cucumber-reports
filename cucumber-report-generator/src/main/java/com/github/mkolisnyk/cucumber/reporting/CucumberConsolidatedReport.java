@@ -1,15 +1,10 @@
 package com.github.mkolisnyk.cucumber.reporting;
 
 import java.io.File;
-import java.io.IOException;
-import java.io.InputStream;
-import java.util.Locale;
 
 import org.apache.commons.io.FileUtils;
-import org.apache.commons.io.IOUtils;
 
 import com.github.mkolisnyk.cucumber.reporting.interfaces.ConfigurableReport;
-import com.github.mkolisnyk.cucumber.reporting.types.beans.CommonDataBean;
 import com.github.mkolisnyk.cucumber.reporting.types.beans.ConsolidatedDataBean;
 import com.github.mkolisnyk.cucumber.reporting.types.consolidated.ConsolidatedItemInfo;
 import com.github.mkolisnyk.cucumber.reporting.types.consolidated.ConsolidatedReportBatch;
@@ -53,7 +48,7 @@ public class CucumberConsolidatedReport extends ConfigurableReport<ConsolidatedR
             content = StringConversionUtils.replaceHtmlEntitiesWithCodes(content);
             data.getContents().put(item.getTitle(), content);
         }
-        generateReportFromTemplate(outFile, "consolidated", data );
+        generateReportFromTemplate(outFile, "consolidated", data);
         this.export(outFile, model.getReportSuffix(), formats, this.isImageExportable());
     }
     public void executeConsolidatedReport(ConsolidatedReportModel model) throws Exception {

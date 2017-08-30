@@ -1,23 +1,16 @@
 package com.github.mkolisnyk.cucumber.reporting;
 
 import java.io.File;
-import java.io.IOException;
-import java.io.InputStream;
-import java.util.Locale;
 
-import org.apache.commons.io.FileUtils;
-import org.apache.commons.io.IOUtils;
 import org.apache.commons.lang3.ArrayUtils;
 import org.junit.Assert;
 
 import com.github.mkolisnyk.cucumber.reporting.interfaces.KECompatibleReport;
-import com.github.mkolisnyk.cucumber.reporting.types.beans.CommonDataBean;
 import com.github.mkolisnyk.cucumber.reporting.types.beans.KnownErrorsDataBean;
 import com.github.mkolisnyk.cucumber.reporting.types.enums.CucumberReportError;
 import com.github.mkolisnyk.cucumber.reporting.types.enums.CucumberReportLink;
 import com.github.mkolisnyk.cucumber.reporting.types.enums.CucumberReportTypes;
 import com.github.mkolisnyk.cucumber.reporting.types.knownerrors.KnownErrorsModel;
-import com.github.mkolisnyk.cucumber.reporting.types.knownerrors.KnownErrorsResult;
 import com.github.mkolisnyk.cucumber.reporting.types.knownerrors.KnownErrorsResultSet;
 import com.github.mkolisnyk.cucumber.reporting.types.result.CucumberFeatureResult;
 import com.github.mkolisnyk.cucumber.reporting.types.result.CucumberScenarioResult;

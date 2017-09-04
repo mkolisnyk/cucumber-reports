@@ -96,7 +96,7 @@
             </#if>
             
             <path fill="${colors[value?index]}" stroke-width="1" stroke="${colors[value?index]}"
-				 d="M#{centerX; M8},#{centerY + pieVOffset;M8} L#{endX;M8},#{startY + pieVOffset;M8} L#{endX;M8},#{endY;M8} L#{centerX;M8},#{centerY;M8} L#{centerX;M8},#{centerY + pieVOffset;M8} "></path>
+				 d="M#{centerX; M8},#{centerY + pieVOffset;M8} L#{endX;M8},#{endY + pieVOffset;M8} L#{endX;M8},#{endY;M8} L#{centerX;M8},#{centerY;M8} L#{centerX;M8},#{centerY + pieVOffset;M8} "></path>
 			<#assign accumulated = accumulated + value >
     </#list>    
 </#macro>
@@ -138,7 +138,7 @@
                         + l_shift * Math.sin(shiftAngle) >
                 <#assign endY = centerY - (scale * height)
                         * Math.cos(startAngle + (j + 1) * angleDiff / pieParts)
-                        - shift * Math.cos(shiftAngle) >
+                        - l_shift * Math.cos(shiftAngle) >
                         
                 <path fill="${colors[value?index]}" stroke-width="1" stroke="${colors[value?index]}"
 					d="M#{centerX;M8},#{centerY + pieVOffset;M8} L#{startX;M8},#{startY + pieVOffset;M8} A#{radiusX;M8},#{radiusY;M8},0,0,1,#{endX;M8},#{endY + pieVOffset;M8} M#{endX;M8},#{endY + pieVOffset;M8} L#{centerX;M8},#{centerY + pieVOffset;M8}"></path>

@@ -21,7 +21,7 @@ public final class FreemarkerConfiguration {
     private static Configuration config;
     private FreemarkerConfiguration() {
     }
-    private static final Map<String, String> defaultResources = new HashMap<String, String>() {
+    private static final Map<String, String> DEFAULT_RESOURCES = new HashMap<String, String>() {
         private static final long serialVersionUID = 1L;
 
         {
@@ -36,13 +36,16 @@ public final class FreemarkerConfiguration {
             put("feature_overview", "/templates/default/feature_overview.ftlh");
             put("overview_chart", "/templates/default/overview_chart.ftlh");
             put("detailed", "/templates/default/detailed.ftlh");
+            put("retrospective", "/templates/default/retrospective.ftlh");
+            put("breakdown", "/templates/default/breakdown.ftlh");
+            put("feature_map", "/templates/default/feature_map.ftlh");
         }
     };
     private static void loadDefaultConfig() throws Exception {
         config = new Configuration(Configuration.VERSION_2_3_23);
 
         TemplateLoader[] loaders = new TemplateLoader[] {};
-        for (Entry<String, String> resource : defaultResources.entrySet()) {
+        for (Entry<String, String> resource : DEFAULT_RESOURCES.entrySet()) {
             InputStream is = FreemarkerConfiguration.class.getResourceAsStream(resource.getValue());
             String templateString = IOUtils.toString(is);
             StringTemplateLoader stringLoader = new StringTemplateLoader();
@@ -50,7 +53,7 @@ public final class FreemarkerConfiguration {
             loaders = ArrayUtils.add(loaders, stringLoader);
         }
         MultiTemplateLoader multiLoader = new MultiTemplateLoader(loaders);
-        
+
         config.setTemplateLoader(multiLoader);
         config.setDefaultEncoding("UTF-8");
         config.setTemplateExceptionHandler(TemplateExceptionHandler.RETHROW_HANDLER);
@@ -58,7 +61,6 @@ public final class FreemarkerConfiguration {
 
         TemplateHashModel staticModels = BeansWrapper.getDefaultInstance().getStaticModels();
         config.setSharedVariable("statics", staticModels);
-        
     }
     public static Configuration get(String location) throws Exception {
         if (config == null) {

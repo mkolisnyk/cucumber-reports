@@ -6,4 +6,16 @@ import com.github.mkolisnyk.cucumber.reporting.types.retrospective.Retrospective
 public class RetrospectiveDataBean extends CommonDataBean {
     private RetrospectiveModel model;
     private BreakdownStats[] stats;
+    public RetrospectiveModel getModel() {
+        return model;
+    }
+    public void setModel(RetrospectiveModel model) {
+        this.model = model;
+    }
+    public BreakdownStats[] getStats() {
+        return stats;
+    }
+    public void setStats(BreakdownStats[] stats) {
+        this.stats = stats;
+    }
 }

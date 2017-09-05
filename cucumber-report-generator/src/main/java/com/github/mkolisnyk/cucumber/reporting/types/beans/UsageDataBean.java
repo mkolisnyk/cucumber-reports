@@ -1,6 +1,7 @@
 package com.github.mkolisnyk.cucumber.reporting.types.beans;
 
 import java.util.Map;
+import java.util.SortedMap;
 
 import com.github.mkolisnyk.cucumber.reporting.types.usage.CucumberStepSource;
 

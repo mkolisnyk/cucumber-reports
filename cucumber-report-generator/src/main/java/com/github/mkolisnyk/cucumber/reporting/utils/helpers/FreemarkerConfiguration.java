@@ -39,6 +39,7 @@ public final class FreemarkerConfiguration {
             put("retrospective", "/templates/default/retrospective.ftlh");
             put("breakdown", "/templates/default/breakdown.ftlh");
             put("feature_map", "/templates/default/feature_map.ftlh");
+            put("usage", "/templates/default/usage.ftlh");
         }
     };
     private static void loadDefaultConfig() throws Exception {

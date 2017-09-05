@@ -7,6 +7,11 @@
 	</parent>
 	<artifactId>cucumber-report-generator</artifactId>
 	<packaging>jar</packaging>
+	<properties>
+		<fail.pmd>false</fail.pmd>
+		<fail.checkstyle>false</fail.checkstyle>
+		<fail.coverage>false</fail.coverage>
+	</properties>
 	<build>
 		<resources>
 			<resource>

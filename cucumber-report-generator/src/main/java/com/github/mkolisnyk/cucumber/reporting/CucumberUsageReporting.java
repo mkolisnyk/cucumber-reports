@@ -23,20 +23,22 @@ import org.apache.commons.lang.ArrayUtils;
 
 import com.cedarsoftware.util.io.JsonObject;
 import com.cedarsoftware.util.io.JsonReader;
+import com.github.mkolisnyk.cucumber.reporting.interfaces.CucumberResultsCommon;
+import com.github.mkolisnyk.cucumber.reporting.types.beans.UsageDataBean;
+import com.github.mkolisnyk.cucumber.reporting.types.enums.CucumberReportLink;
+import com.github.mkolisnyk.cucumber.reporting.types.enums.CucumberReportTypes;
 import com.github.mkolisnyk.cucumber.reporting.types.usage.CucumberStep;
 import com.github.mkolisnyk.cucumber.reporting.types.usage.CucumberStepDuration;
 import com.github.mkolisnyk.cucumber.reporting.types.usage.CucumberStepSource;
 import com.github.mkolisnyk.cucumber.reporting.utils.helpers.MapUtils;
 import com.github.mkolisnyk.cucumber.reporting.utils.helpers.StringConversionUtils;
 
-public class CucumberUsageReporting {
+public class CucumberUsageReporting extends CucumberResultsCommon {
     private static final float USAGE_30 = 30.f;
     private static final float USAGE_70 = 70.f;
     private static final float USAGE_100 = 100.f;
 
     private String[]       jsonUsageFiles;
-
-    private String       outputDirectory;
 
     public String getDescription(Locale arg0) {
         return "HTML formatted Cucumber keywords usage report";
@@ -44,14 +46,6 @@ public class CucumberUsageReporting {
 
     public String getName(Locale arg0) {
         return "Cucumber usage report";
-    }
-
-    public String getOutputName() {
-        return "cucumber-usage-report";
-    }
-
-    protected String getOutputDirectory() {
-        return StringConversionUtils.transformPathString(this.outputDirectory);
     }
 
     public String getJsonUsageFile() {
@@ -68,10 +62,6 @@ public class CucumberUsageReporting {
 
     public void setJsonUsageFiles(String[] jsonUsageFilesValue) {
         this.jsonUsageFiles = jsonUsageFilesValue;
-    }
-
-    public void setOutputDirectory(String outputDirectoryValue) {
-        this.outputDirectory = outputDirectoryValue;
     }
 
     public LinkedHashMap<String, Integer> calculateStepsUsageScore(CucumberStepSource[] sources) {
@@ -673,15 +663,17 @@ public class CucumberUsageReporting {
             + "tr:nth-child(even) {background: #CCC}" + System.lineSeparator()
             + "tr:nth-child(odd) {background: #FFF}";
     }
-
     public void executeReport() throws Exception {
+        executeReport(new String[] {});
+    }
+    public void executeReport(String[] formats) throws Exception {
         try {
 
             CucumberStepSource[] sources = {}; //getStepSources(jsonUsageFile);
             for (String jsonUsageFile : this.getJsonUsageFiles()) {
                 sources = (CucumberStepSource[]) ArrayUtils.addAll(sources, getStepSources(jsonUsageFile));
             }
-            String output = "<html><head><style type=\"text/css\">"
+            /*String output = "<html><head><style type=\"text/css\">"
                     + generateStyle()
                     + "</style>"
                     + "<title>Cucumber Steps Usage Report</title></head>"
@@ -694,12 +686,37 @@ public class CucumberUsageReporting {
                     + "</p>"
                     + "<h1>Cucumber Usage Detailed Information</h1><p>"
                     + generateUsageDetailedReport(sources)
-                    + "</p></body></html>";
-            File report = new File(this.getOutputDirectory() + File.separator + this.getOutputName() + ".html");
-            FileUtils.writeStringToFile(report, output);
+                    + "</p></body></html>";*/
+            File report = new File(this.getOutputDirectory() + File.separator + this.getOutputName() + "-usage.html");
+            UsageDataBean data = new UsageDataBean();
+            SortedMap<Integer, Integer> map = calculateStepsUsageCounts(sources);
+            int max = calculateStepsUsageMax(map);
+            int median = calculateStepsUsageMedian(map);
+            double average = calculateStepsUsageAverage(map);
+            data.setStepsUseMax(max);
+            data.setStepsUseAverage(average);
+            data.setStepsUseMedian(median);
+            data.setUsageCounts(map);
+            generateReportFromTemplate(report, "usage", data);
+            this.export(report, "usage", formats, this.isImageExportable());
+            //FileUtils.writeStringToFile(report, output);
         } catch (Exception e) {
             throw new Exception(
                     "Error occured while generating Cucumber usage report", e);
         }
+    }
+
+    @Override
+    public CucumberReportTypes getReportType() {
+        return CucumberReportTypes.USAGE;
+    }
+
+    @Override
+    public CucumberReportLink getReportDocLink() {
+        return CucumberReportLink.USAGE_URL;
+    }
+
+    @Override
+    public void validateParameters() {
     }
 }

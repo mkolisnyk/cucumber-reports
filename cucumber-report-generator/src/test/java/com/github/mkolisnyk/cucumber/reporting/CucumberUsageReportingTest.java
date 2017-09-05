@@ -21,6 +21,7 @@ public class CucumberUsageReportingTest {
     @Test
     public void testGenerateReportWithBackRef() throws Exception {
         CucumberUsageReporting report = new CucumberUsageReporting();
+        report.setOutputName("cucumber-results");
         report.setOutputDirectory("target/large");
         report.setJsonUsageFile("./src/test/resources/usage-source/sample5.json");
         report.executeReport();

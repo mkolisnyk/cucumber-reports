@@ -28,7 +28,7 @@ public final class ReportRunner {
         report.setOutputDirectory(extendedOptions.getOutputFolder());
         report.setJsonUsageFiles(extendedOptions.getJsonUsageReportPaths());
         try {
-            report.executeReport();
+            report.execute(extendedOptions.getFormats());
         } catch (Throwable e) {
             e.printStackTrace();
         }

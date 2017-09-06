@@ -14,19 +14,22 @@ import java.util.SortedMap;
 import java.util.TreeMap;
 
 import org.apache.commons.lang.ArrayUtils;
+import org.junit.Assert;
 
 import com.cedarsoftware.util.io.JsonObject;
 import com.cedarsoftware.util.io.JsonReader;
 import com.github.mkolisnyk.cucumber.reporting.interfaces.CucumberResultsCommon;
+import com.github.mkolisnyk.cucumber.reporting.interfaces.SimpleReport;
 import com.github.mkolisnyk.cucumber.reporting.types.beans.UsageDataBean;
 import com.github.mkolisnyk.cucumber.reporting.types.beans.UsageDataBean.StepSourceData;
+import com.github.mkolisnyk.cucumber.reporting.types.enums.CucumberReportError;
 import com.github.mkolisnyk.cucumber.reporting.types.enums.CucumberReportLink;
 import com.github.mkolisnyk.cucumber.reporting.types.enums.CucumberReportTypes;
 import com.github.mkolisnyk.cucumber.reporting.types.usage.CucumberStep;
 import com.github.mkolisnyk.cucumber.reporting.types.usage.CucumberStepSource;
 import com.github.mkolisnyk.cucumber.reporting.utils.helpers.MapUtils;
 
-public class CucumberUsageReporting extends CucumberResultsCommon {
+public class CucumberUsageReporting extends SimpleReport {
 
     private String[]       jsonUsageFiles;
 
@@ -265,10 +268,7 @@ public class CucumberUsageReporting extends CucumberResultsCommon {
         return sources;
     }
 
-    public void executeReport() throws Exception {
-        executeReport(new String[] {});
-    }
-    public void executeReport(String[] formats) throws Exception {
+    private void executeReport(String[] formats) throws Exception {
         try {
 
             CucumberStepSource[] sources = {};
@@ -350,5 +350,30 @@ public class CucumberUsageReporting extends CucumberResultsCommon {
 
     @Override
     public void validateParameters() {
+        Assert.assertNotNull(this.constructErrorMessage(CucumberReportError.NO_SOURCE_FILE, ""),
+                this.getJsonUsageFiles());
+        Assert.assertNotNull(this.constructErrorMessage(CucumberReportError.NO_OUTPUT_DIRECTORY, ""),
+                this.getOutputDirectory());
+        Assert.assertNotNull(this.constructErrorMessage(CucumberReportError.NO_OUTPUT_NAME, ""),
+                this.getOutputName());
+        for (String sourceFile : this.getJsonUsageFiles()) {
+            Assert.assertNotNull(
+                    this.constructErrorMessage(CucumberReportError.NO_SOURCE_FILE, ""), sourceFile);
+            File path = new File(sourceFile);
+            Assert.assertTrue(this.constructErrorMessage(CucumberReportError.NON_EXISTING_SOURCE_FILE, "")
+                    + ". Was looking for path: \"" + path.getAbsolutePath() + "\"", path.exists());
+        }
     }
+
+    @Override
+    public void execute() throws Exception {
+        this.execute(new String[] {});
+    }
+
+    @Override
+    public void execute(String[] formats) throws Exception {
+        this.validateParameters();
+        this.executeReport(formats);
+    }
+    
 }

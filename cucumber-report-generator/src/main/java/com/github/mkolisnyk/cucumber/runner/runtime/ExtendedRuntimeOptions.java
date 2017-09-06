@@ -51,6 +51,7 @@ public class ExtendedRuntimeOptions {
     private boolean systemInfoReport = false;
     private boolean benchmarkReport = false;
     private String benchmarkReportConfig = "";
+    private String customTemplatesPath = "";
     private String[] formats = {};
 
     private String[] joinPaths(String singlePath, String[] arrayPath) {
@@ -94,6 +95,8 @@ public class ExtendedRuntimeOptions {
                 put("--known-errors-config", "knownErrorsConfig");
                 put("-crc", "consolidatedReportConfig");
                 put("--consolidated-report-config", "consolidatedReportConfig");
+                put("-ctp", "customTemplatesPath");
+                put("--custom-templates-path", "customTemplatesPath");
             }
         };
         Map<String, String> multiValueMap = new HashMap<String, String>() {
@@ -188,6 +191,7 @@ public class ExtendedRuntimeOptions {
             this.systemInfoReport = options.systemInfoReport();
             this.benchmarkReport = options.benchmarkReport();
             this.benchmarkReportConfig = options.benchmarkReportConfig();
+            this.customTemplatesPath = options.customTemplatesPath();
             this.formats = options.formats();
         }
         for (Field field : this.getClass().getDeclaredFields()) {
@@ -423,6 +427,12 @@ public class ExtendedRuntimeOptions {
     }
     public void setBenchmarkReportConfig(String benchmarkReportConfigValue) {
         this.benchmarkReportConfig = benchmarkReportConfigValue;
+    }
+    public String getCustomTemplatesPath() {
+        return customTemplatesPath;
+    }
+    public void setCustomTemplatesPath(String customTemplatesPath) {
+        this.customTemplatesPath = customTemplatesPath;
     }
     public String[] getFormats() {
         return formats;

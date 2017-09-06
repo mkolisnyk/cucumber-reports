@@ -52,6 +52,7 @@ public abstract class CucumberResultsCommon {
     private String outputDirectory;
     private String outputName;
     private String pdfPageSize = "auto";
+    private String templatesLocation = "";
 
     public abstract CucumberReportTypes getReportType();
     public abstract CucumberReportLink getReportDocLink();
@@ -64,6 +65,7 @@ public abstract class CucumberResultsCommon {
         this.setOutputName(extendedOptions.getReportPrefix());
         this.setSourceFiles(extendedOptions.getJsonReportPaths());
         this.setPdfPageSize(extendedOptions.getPdfPageSize());
+        this.setTemplatesLocation(extendedOptions.getCustomTemplatesPath());
     }
 
     public String constructErrorMessage(CucumberReportError error, String suffix) {
@@ -132,6 +134,12 @@ public abstract class CucumberResultsCommon {
     }
     public boolean isImageExportable() {
         return false;
+    }
+    public String getTemplatesLocation() {
+        return templatesLocation;
+    }
+    public void setTemplatesLocation(String templatesLocation) {
+        this.templatesLocation = templatesLocation;
     }
     @SuppressWarnings("unchecked")
     public CucumberFeatureResult[] readFileContent(String sourceFileValue) throws Exception {
@@ -209,7 +217,7 @@ public abstract class CucumberResultsCommon {
     }
     protected <T extends CommonDataBean> void generateReportFromTemplate(
             File outFile, String templateName, T bean) throws Exception {
-        Configuration cfg = FreemarkerConfiguration.get("");
+        Configuration cfg = FreemarkerConfiguration.get(this.getTemplatesLocation());
         /* Get the template (uses cache internally) */
         Template temp = cfg.getTemplate(templateName);
         outFile.getAbsoluteFile().getParentFile().mkdirs();

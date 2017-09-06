@@ -43,10 +43,13 @@ public final class FreemarkerConfiguration {
         }
     };
     private static void loadDefaultConfig() throws Exception {
+        loadConfig(DEFAULT_RESOURCES);
+    }
+    private static void loadConfig(Map<String, String> resourceMap) throws Exception {
         config = new Configuration(Configuration.VERSION_2_3_23);
 
         TemplateLoader[] loaders = new TemplateLoader[] {};
-        for (Entry<String, String> resource : DEFAULT_RESOURCES.entrySet()) {
+        for (Entry<String, String> resource : resourceMap.entrySet()) {
             InputStream is = FreemarkerConfiguration.class.getResourceAsStream(resource.getValue());
             String templateString = IOUtils.toString(is);
             StringTemplateLoader stringLoader = new StringTemplateLoader();

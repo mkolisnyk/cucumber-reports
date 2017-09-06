@@ -67,5 +67,7 @@ public @interface ExtendedCucumberOptions {
     boolean benchmarkReport() default false;
     String benchmarkReportConfig() default "";
 
+    String customTemplatesPath() default "";
+    
     String[] formats() default {};
 }

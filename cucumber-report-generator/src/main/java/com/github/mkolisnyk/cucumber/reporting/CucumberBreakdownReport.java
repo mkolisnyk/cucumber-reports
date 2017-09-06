@@ -61,41 +61,11 @@ public class CucumberBreakdownReport extends ConfigurableReport<BreakdownReportM
     public void executeReport(BreakdownTable table, String[] formats) throws Exception {
         executeReport(new BreakdownReportInfo(table), table, formats);
     }
-    protected void generateFrameFile(BreakdownReportModel model) throws Exception {
-        InputStream is = this.getClass().getResourceAsStream("/breakdown-frame.html");
-        String content = IOUtils.toString(is);
-        File outFile = new File(
-                this.getOutputDirectory() + File.separator + this.getOutputName()
-                + "-frame.html");
-        content = content.replaceAll("__THIS__", outFile.getName());
-        for (BreakdownReportInfo item : model.getReportsInfo()) {
-            if (item.getRefreshTimeout() > 0) {
-                content = content.replaceAll("__FIRST__",
-                        "./" + this.getOutputName() + "-" + item.getReportSuffix() + ".html");
-                break;
-            }
-        }
-        int totalTimeout = 0;
-        for (BreakdownReportInfo item : model.getReportsInfo()) {
-            if (item.getRefreshTimeout() > 0) {
-                totalTimeout += item.getRefreshTimeout();
-            }
-        }
-        totalTimeout *= TIMEOUT_MULTIPLIER;
-        content = content.replaceAll("__TIMEOUT__", "" + totalTimeout);
-        FileUtils.writeStringToFile(outFile, content);
-    }
-
     @Override
     public void execute(BreakdownReportModel batch, String[] formats) throws Exception {
-        boolean frameGenerated = false;
         validateParameters();
         batch.initRedirectSequence("./" + this.getOutputName() + "-");
         for (BreakdownReportInfo info : batch.getReportsInfo()) {
-            if (info.getRefreshTimeout() > 0 && !frameGenerated) {
-                frameGenerated = true;
-                generateFrameFile(batch);
-            }
             this.executeReport(info, info.getTable(), formats);
         }
     }

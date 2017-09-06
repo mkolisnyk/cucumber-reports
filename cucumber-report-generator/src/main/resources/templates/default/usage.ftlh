@@ -1,3 +1,4 @@
+<#assign Math=statics['java.lang.Math'] >
 <#function sum values>
 	<#assign result = 0>
 	<#list values as value>
@@ -5,6 +6,122 @@
 	</#list>
 	<#return result>
 </#function>
+<#macro emptyHystogram>
+<svg  xmlns="http://www.w3.org/2000/svg" version="1.1" width="400" height="300">
+	<defs>
+		<filter id="f1" x="0" y="0" width="200%" height="200%">
+		<feOffset result="offOut" in="SourceAlpha" dx="10" dy="10" />
+		<feGaussianBlur result="blurOut" in="offOut" stdDeviation="10" />
+		<feBlend in="SourceGraphic" in2="blurOut" mode="normal" /></filter>
+		<radialGradient id="grad4" cx="0%" cy="100%" r="150%" fx="0%"
+			fy="100%">
+		<stop offset="0%" style="stop-color:white;stop-opacity:0.1" />
+		<stop offset="100%" style="stop-color:silver;stop-opacity:0.7" /></radialGradient>
+	</defs>
+<rect width="90%" height="90%" stroke="black" stroke-width="1" fill="url(#grad4)" filter="url(#f1)"/>
+			<line x1="30" y1="30" x2="30" y2="240"
+			style="stroke:black;stroke-width:1" />
+		<line x1="30" y1="240" x2="350" y2="240"
+			style="stroke:black;stroke-width:1" />
+		<polygon points="25,50 30,30 35,50"
+			style="fill:black;stroke:black;stroke-width:1" />
+		<polygon points="350,240 330,245 330,235"
+			style="fill:black;stroke:black;stroke-width:1" />
+		<!-- Scale Marks-->
+		<line x1="40" y1="240" x2="40" y2="245"
+			style="stroke:black;stroke-width:1" />
+		<text x="42" y="253" font-size="8">0.0s</text>
+		<line x1="320" y1="240" x2="320" y2="245"
+			style="stroke:black;stroke-width:1" />
+		<text x="322" y="253" font-size="8">0.0s</text>
+
+		<text x="60" y="220" font-weight="bold" font-size="14"
+			transform="rotate(-90 20,220)">Frequency</text>
+			<text x="140" y="260" font-weight="bold" font-size="14">Duration</text>
+		<!-- Polygon -->
+			<text x="22%" y="55%" font-weight="bold" font-size="120" fill="gray">N/A</text>
+</svg>
+</#macro>
+<#macro filledHystogram source>
+<svg  xmlns="http://www.w3.org/2000/svg" version="1.1" width="400" height="300">
+	<defs>
+		<filter id="f1" x="0" y="0" width="200%" height="200%">
+		<feOffset result="offOut" in="SourceAlpha" dx="10" dy="10" />
+		<feGaussianBlur result="blurOut" in="offOut" stdDeviation="10" />
+		<feBlend in="SourceGraphic" in2="blurOut" mode="normal" /></filter>
+		<radialGradient id="grad1" cx="0%" cy="100%" r="150%" fx="0%"
+			fy="100%">
+		<stop offset="0%" style="stop-color:white;stop-opacity:0.1" />
+		<stop offset="100%" style="stop-color:gold;stop-opacity:0.7" /></radialGradient>
+		<linearGradient id="grad3" cx="0%" cy="100%" r="150%" fx="0%"
+			fy="100%">
+		<stop offset="0%" style="stop-color:green;stop-opacity:0.7" />
+		<stop offset="50%" style="stop-color:yellow;stop-opacity:0.7" />
+		<stop offset="100%" style="stop-color:red;stop-opacity:0.7" />
+		</linearGradient>
+	</defs>
+<rect width="90%" height="90%" stroke="black" stroke-width="1" fill="url(#grad1)" filter="url(#f1)"/>
+			<line x1="30" y1="30" x2="30" y2="240"
+			style="stroke:black;stroke-width:1" />
+		<line x1="30" y1="240" x2="350" y2="240"
+			style="stroke:black;stroke-width:1" />
+		<polygon points="25,50 30,30 35,50"
+			style="fill:black;stroke:black;stroke-width:1" />
+		<polygon points="350,240 330,245 330,235"
+			style="fill:black;stroke:black;stroke-width:1" />
+		<!-- Scale Marks-->
+		<!--<line x1="40" y1="240" x2="40" y2="245"
+			style="stroke:black;stroke-width:1" />
+		<text x="42" y="253" font-size="8">0.6s</text>
+		<line x1="320" y1="240" x2="320" y2="245"
+			style="stroke:black;stroke-width:1" />
+		<text x="322" y="253" font-size="8">11.6s</text>-->
+
+		<text x="60" y="220" font-weight="bold" font-size="14"
+			transform="rotate(-90 20,220)">Frequency</text>
+			<text x="140" y="260" font-weight="bold" font-size="14">Duration</text>
+		<!-- Polygon -->
+		
+		<#assign startX = 40 >
+    	<#assign endX = 320 >
+    	<#assign topY = 50 >
+    	<#assign bottomY = 240 >
+    	<#assign max = 0 >
+    	<#assign shiftX = 7 >
+    	<#assign shiftY = 8>
+    	<#assign stepX = (endX - startX) / source.frequencies?size >
+    	<#list source.frequencies as item>
+    		<#assign  max = Math.max(max, item) >
+    	</#list>
+        <#assign stepY = (bottomY - topY) / max >
+
+		<polygon
+			points="
+	        <#list source.frequencies as item>
+	        	${startX + item?index * stepX},${bottomY}
+	        	${startX + item?index * stepX},${bottomY - (item * stepY)}
+	        	${startX + (item?index + 1) * stepX},${bottomY - (item * stepY)}
+	        	${startX + (item?index + 1) * stepX},${bottomY} 
+	        </#list>
+			"
+			style="stroke:black;stroke-width:1" fill="url(#grad3)" />
+		<#list source.frequencies as item>
+			<#if item gt 0>
+				<text x="${startX + item?index * stepX + stepX / 2 - shiftX}"
+				 	y="${bottomY - (item * stepY)?floor - 2}" font-weight="bold" font-size="14">${item}</text>
+			</#if>
+            <#assign step = (source.maxDuration - source.minDuration) / source.frequencies?size >
+            <line x1="${startX + item?index * stepX}" y1="${bottomY}"
+            	  x2="${startX + item?index * stepX}" y2="${bottomY + 2}" style="stroke:black;stroke-width:1" />
+            <text x="${startX + item?index * stepX + 2}" y="${bottomY + shiftY}" font-size="8">
+            	${(source.minDuration + item?index * step)?string("0.##")}
+        	</text>
+		</#list>
+        <#--<line x1="${endX}" y1="${bottomY}" x2="${endX}"
+              y2="${bottomY + 2}" style="stroke:black;stroke-width:1" />
+        <text x="${endX + 2}" y="${bottomY + shiftY}" font-size="8">source.maxDuration?string("0.##")</text> -->
+</svg>
+</#macro>
 <html>
 	<head>
 		<style type="text/css">
@@ -108,7 +225,11 @@ tr:nth-child(odd) {background: #FFF}
 		<#list usageCounts?keys as key>
 			<#assign totalSteps += key * usageCounts?api.get(key)>
 		</#list>
-        <#assign usage = 100 * (1 - sum(usageCounts?values)/ totalSteps)>
+		<#if totalSteps == 0>
+			<#assign usage = 0>
+		<#else>
+        	<#assign usage = 100 * (1 - sum(usageCounts?values)/ totalSteps)>
+        </#if>
 
         <#assign statusColor = "silver">
 
@@ -143,7 +264,6 @@ tr:nth-child(odd) {background: #FFF}
         </p>
         <h2>Overview Table</h2>
         <p>
-    protected String generateUsageOverviewTableReport(CucumberStepSource[] sources) throws Exception {
         <table>
         	<tr>
         		<th rowspan="2"><a id="top">#</a></th>
@@ -158,44 +278,93 @@ tr:nth-child(odd) {background: #FFF}
         		<th>Maximal</th>
         		<th>Total</th>
     		</tr>
-<#--        int index = 0;
-        for (String key:map.keySet()) {
-            String color = getGroupColor(map, groupsCount, index);
-            content += "<tr style=\"background:" + color + "\"><td>" + (++index) + "</td>"
-                    + "<td width=\"60%\"><a href=\"#" + getKeyId(key) + "\">" + key + "</a></td>"
-                    + "<td>" + map.get(key) + "</td>";
-            CucumberStepSource source = getSourceByString(sources, key);
-            if (source == null) {
-                content += "<td>-</td><td>-</td><td>-</td><td>-</td><td>-</td>";
-            } else {
-                List<Double> durations = source.getDurations();
-                if (durations.size() <= 0) {
-                    return "";
-                }
-                Collections.sort(durations);
-                Double median = durations.get(durations.size() / 2);
-                Double total = 0.;
-                for (Double duration : durations) {
-                    total += duration;
-                }
-                Double average = total / durations.size();
-                Double min = Collections.min(durations);
-                Double max = Collections.max(durations);
-                content += String.format(
-                        Locale.US,
-                        "<td>%.2fs</td><td>%.2fs</td><td>%.2fs</td><td>%.2fs</td><td>%.2fs</td>",
-                        average, median, min, max, total);
-            }
-            content += "</tr>";
-        }
-        content += "</table>";
-        return content;
-    }-->
+    		<#list stepsData as step>
+    			<#assign groupColor = "silver">
+    			<#if stepsData?size gt 3>
+    				<#switch (step?index / (stepsData?size / 3))?floor?string("0")>
+    					<#case "0">
+    						<#assign groupColor = "lightgreen">
+    						<#break>
+    					<#case "1">
+    						<#assign groupColor = "gold">
+    						<#break>
+    					<#case "2">
+    						<#assign groupColor = "tomato">
+    						<#break>
+    					<#default>
+    						<#break>
+    				</#switch>
+    			<#else>
+    				<#assign groupColor = "red">
+    			</#if>
+    		<tr style="background:${groupColor}">
+    			<td>${step?counter}</td>
+                <td width="60%"><a href="#${step.source.source?url?replace("\\+", "-", "r")?replace("\\%", "_", "r")}">${step.source.source}</a></td><td>${step.totalUsed}</td>
+                <#if !step?has_content>
+                	<td>-</td><td>-</td><td>-</td><td>-</td><td>-</td>
+               	<#else>
+               		<td>${step.averageDuration?string("0.##")}s</td>
+               		<td>${step.medianDuration?string("0.##")}s</td>
+               		<td>${step.minDuration?string("0.##")}s</td>
+               		<td>${step.maxDuration?string("0.##")}s</td>
+               		<td>${step.totalDuration?string("0.##")}s</td>
+                </#if>
+            </tr>
+    		</#list>
     	</table>
         </p>
         <h1>Cucumber Usage Detailed Information</h1>
+
+        <#list stepsData as source>
+        	<h3><a id="${source.source.source?url?replace("\\+", "-", "r")?replace("\\%", "_", "r")}">${source.source.source}</a></h3>
         <p>
-        	generateUsageDetailedReport(sources)
+        	<table>
+        		<tr>
+        			<th>Step Name</th>
+        			<th>Duration</th>
+        			<th>Location</th>
+    			</tr>
+    			<#list source.source.steps as step>
+    				<tr><td rowspan="${step.durations?size + 1}">${step.name}</td><td colspan="2">&#160;</td></tr>
+    				<#list step.durations as duration>
+    					<tr>
+    						<td>${duration.getDuration()}</td>
+    						<td>${duration.getLocation()}</td>
+						</tr>
+    				</#list>
+    			</#list>
+            </table>
         </p>
+        <p>
+        	<table class="none">
+        		<tr>
+        			<td class="none">
+        				<#if source.totalUsed lt 6>
+        					<@emptyHystogram />
+        				<#else>
+					        <@filledHystogram source=source/>
+        				</#if>
+    				</td>
+                    <td valign="top" class="none">
+                    	<p><table>
+                    	<tr><th colspan="2">Duration Characteristic</th></tr>
+		                <tr><th>Average</th><td>${source.averageDuration?string("0.##")}s</td></tr>
+		                <tr><th>Median</th><td>${source.medianDuration?string("0.##")}s</td></tr>
+		                <tr><th>Variance</th><td>${source.variance?string("0.##")}</td></tr>
+		                <tr><th>Skewness</th><td>${source.skewness?string("0.##")}</td></tr>
+		                <tr><th>Minimum</th><td>${source.minDuration?string("0.##")}s</td></tr>
+		                <tr><th>Maximum</th><td>${source.maxDuration?string("0.##")}s</td></tr>
+		                <tr><th>Total</th><td>${source.totalDuration?string("0.##")}s</td></tr>
+		                </table>
+		                </p>
+                	</td>
+                </tr>
+            </table>
+        </p>
+        <p>
+        	<a href="#top">To Overview Table</a>
+    	</p>
+        </#list>
+
     </body>
 </html>

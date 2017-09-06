@@ -59,6 +59,8 @@ public final class FreemarkerConfiguration {
         config.setDefaultEncoding("UTF-8");
         config.setTemplateExceptionHandler(TemplateExceptionHandler.RETHROW_HANDLER);
         config.setLogTemplateExceptions(false);
+        config.setAPIBuiltinEnabled(true);
+        config.setURLEscapingCharset("UTF-8");
 
         TemplateHashModel staticModels = BeansWrapper.getDefaultInstance().getStaticModels();
         config.setSharedVariable("statics", staticModels);

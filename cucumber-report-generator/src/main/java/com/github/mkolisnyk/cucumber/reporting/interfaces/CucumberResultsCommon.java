@@ -210,7 +210,6 @@ public abstract class CucumberResultsCommon {
     protected <T extends CommonDataBean> void generateReportFromTemplate(
             File outFile, String templateName, T bean) throws Exception {
         Configuration cfg = FreemarkerConfiguration.get("");
-        cfg.setAPIBuiltinEnabled(true);
         /* Get the template (uses cache internally) */
         Template temp = cfg.getTemplate(templateName);
         outFile.getAbsoluteFile().getParentFile().mkdirs();

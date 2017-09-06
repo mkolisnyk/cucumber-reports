@@ -6,10 +6,6 @@ package com.github.mkolisnyk.cucumber.reporting;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.UnsupportedEncodingException;
-import java.net.URLEncoder;
 import java.util.Collections;
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -17,26 +13,20 @@ import java.util.Locale;
 import java.util.SortedMap;
 import java.util.TreeMap;
 
-import org.apache.commons.io.FileUtils;
-import org.apache.commons.io.IOUtils;
 import org.apache.commons.lang.ArrayUtils;
 
 import com.cedarsoftware.util.io.JsonObject;
 import com.cedarsoftware.util.io.JsonReader;
 import com.github.mkolisnyk.cucumber.reporting.interfaces.CucumberResultsCommon;
 import com.github.mkolisnyk.cucumber.reporting.types.beans.UsageDataBean;
+import com.github.mkolisnyk.cucumber.reporting.types.beans.UsageDataBean.StepSourceData;
 import com.github.mkolisnyk.cucumber.reporting.types.enums.CucumberReportLink;
 import com.github.mkolisnyk.cucumber.reporting.types.enums.CucumberReportTypes;
 import com.github.mkolisnyk.cucumber.reporting.types.usage.CucumberStep;
-import com.github.mkolisnyk.cucumber.reporting.types.usage.CucumberStepDuration;
 import com.github.mkolisnyk.cucumber.reporting.types.usage.CucumberStepSource;
 import com.github.mkolisnyk.cucumber.reporting.utils.helpers.MapUtils;
-import com.github.mkolisnyk.cucumber.reporting.utils.helpers.StringConversionUtils;
 
 public class CucumberUsageReporting extends CucumberResultsCommon {
-    private static final float USAGE_30 = 30.f;
-    private static final float USAGE_70 = 70.f;
-    private static final float USAGE_100 = 100.f;
 
     private String[]       jsonUsageFiles;
 
@@ -158,157 +148,6 @@ public class CucumberUsageReporting extends CucumberResultsCommon {
         return max;
     }
 
-    protected String generateUsageOverviewGraphReport(
-            CucumberStepSource[] sources) {
-        double hscale;
-        double vscale;
-        final int hsize = 400;
-        final int vsize = 400;
-        final int hstart = 40;
-        final int vstart = 30;
-        final int hend = 350;
-        final int vend = 300;
-
-        int hstep = 0;
-        int vstep = 0;
-
-        int median;
-        double average;
-
-        SortedMap<Integer, Integer> map = calculateStepsUsageCounts(sources);
-
-        int lastKey = 0;
-        if (map.isEmpty()) {
-            hscale = 1;
-            vscale = 1;
-        } else {
-            lastKey = map.lastKey();
-            hscale = (double) (hend - 2 * hstart)
-                    / ((double) map.lastKey() + 1);
-            vscale = (double) (vend - 2 * vstart)
-                    / ((double) calculateStepsUsageMax(map) + 1);
-        }
-        final double stepScale = 30.f;
-
-        hstep = (int) (stepScale / hscale) + 1;
-        vstep = (int) (stepScale / vscale) + 1;
-
-        median = calculateStepsUsageMedian(map);
-        average = calculateStepsUsageAverage(map);
-
-        final int hsizeMargin = 100;
-        final int smallMargin = 5;
-        final int midMargin = 10;
-        final int largeMargin = 20;
-        String htmlContent = "<svg xmlns=\"http://www.w3.org/2000/svg\" version=\"1.1\" width=\""
-                + (hsize + hsizeMargin)
-                + "\" height=\""
-                + vsize
-                + "\">"
-                + "<defs>"
-                + "<filter id=\"f1\" x=\"0\" y=\"0\" width=\"200%\" height=\"200%\">"
-                + "<feOffset result=\"offOut\" in=\"SourceAlpha\" dx=\"10\" dy=\"10\" />"
-                + "<feGaussianBlur result=\"blurOut\" in=\"offOut\" stdDeviation=\"10\" />"
-                + "<feBlend in=\"SourceGraphic\" in2=\"blurOut\" mode=\"normal\" />"
-                + "</filter>"
-                + "<radialGradient id=\"grad1\" cx=\"0%\" cy=\"100%\" r=\"150%\" fx=\"0%\" fy=\"100%\">"
-                + "<stop offset=\"0%\" style=\"stop-color:white;stop-opacity:0.1\" />"
-                + "<stop offset=\"100%\" style=\"stop-color:gold;stop-opacity:0.7\" />"
-                + "</radialGradient>"
-                + "<linearGradient id=\"grad2\" cx=\"0%\" cy=\"100%\" r=\"150%\" fx=\"0%\" fy=\"100%\">"
-                + "<stop offset=\"0%\" style=\"stop-color:red;stop-opacity:0.7\" />"
-                + "<stop offset=\"50%\" style=\"stop-color:yellow;stop-opacity:0.7\" />"
-                + "<stop offset=\"100%\" style=\"stop-color:green;stop-opacity:0.7\" />"
-                + "</linearGradient>"
-                + "</defs>"
-                + "<rect width=\"90%\" height=\"90%\" stroke=\"black\" "
-                + "stroke-width=\"1\" fill=\"url(#grad1)\" filter=\"url(#f1)\" />"
-                + "<line x1=\"" + (hstart) + "\" y1=\"" + (vstart) + "\" x2=\"" + (hstart) + "\" y2=\"" + (vend)
-                + "\" style=\"stroke:black;stroke-width:1\" />"
-                + "<line x1=\"" + (hstart) + "\" y1=\"" + (vend) + "\" x2=\"" + (hend) + "\" y2=\"" + (vend)
-                + "\" style=\"stroke:black;stroke-width:1\" />"
-                + "<polygon points=\"" + (hstart - smallMargin) + "," + (vstart + largeMargin) + " " + (hstart) + ","
-                + (vstart) + " " + (hstart + smallMargin) + "," + (vstart + largeMargin)
-                + "\" style=\"fill:black;stroke:black;stroke-width:1\"/>"
-                + "<polygon points=\"" + (hend) + "," + (vend) + " " + (hend - largeMargin) + ","
-                + (vend + smallMargin) + " " + (hend - largeMargin) + "," + (vend - smallMargin)
-                + "\" style=\"fill:black;stroke:black;stroke-width:1\"/>"
-                + "<polygon points=\"" + hstart + "," + vend;
-        for (int i = 0; i <= lastKey + 1; i++) {
-            int value = 0;
-            if (map.containsKey(i)) {
-                value = map.get(i);
-            }
-            htmlContent += " " + (hstart + (int) (i * hscale)) + ","
-                    + (vend - (int) (value * vscale));
-        }
-        htmlContent += "\" style=\"stroke:black;stroke-width:1\"  fill=\"url(#grad2)\" />";
-
-        for (int i = 0; i <= lastKey; i += hstep) {
-            htmlContent += "<line x1=\""
-                    + (hstart + (int) (i * hscale)) + "\" y1=\""
-                    + (vend) + "\" x2=\""
-                    + (hstart + (int) (i * hscale)) + "\" y2=\""
-                    + (vend + smallMargin)
-                    + "\" style=\"stroke:black;stroke-width:1\" />"
-                    + "<text x=\"" + (hstart + (int) (i * hscale))
-                    + "\" y=\"" + (vend + midMargin)
-                    + "\" font-size = \"8\">" + i + "</text>";
-        }
-
-        for (int i = 0; i <= calculateStepsUsageMax(map); i += vstep) {
-            htmlContent += "<line x1=\"" + (hstart) + "\" y1=\""
-                    + (vend - (int) (i * vscale)) + "\" x2=\""
-                    + (hstart - smallMargin) + "\" y2=\""
-                    + (vend - (int) (i * vscale))
-                    + "\" style=\"stroke:black;stroke-width:1\" />"
-                    + "<text x=\"" + (hstart - smallMargin) + "\" y=\""
-                    + (vend - (int) (i * vscale))
-                    + "\" transform=\"rotate(-90 " + (hstart - smallMargin)
-                    + "," + (vend - (int) (i * vscale))
-                    + ")\" font-size = \"8\">" + i + "</text>";
-        }
-
-        float usage = USAGE_100 * (1.f - (float) calculateUsedSteps(map)
-                / (float) calculateTotalSteps(map));
-        String statusColor = "silver";
-
-        if (usage <= USAGE_30) {
-            statusColor = "red";
-        } else if (usage >= USAGE_70) {
-            statusColor = "green";
-        } else {
-            statusColor = "#BBBB00";
-        }
-
-        htmlContent += "<line stroke-dasharray=\"10,10\" x1=\"" + (hstart + median * hscale) + "\" y1=\"" + (vstart)
-                + "\" x2=\"" + (hstart + median * hscale) + "\" y2=\"" + vend
-                + "\" style=\"stroke:yellow;stroke-width:3\" />"
-                + "<line stroke-dasharray=\"10,10\" x1=\"" + (hstart + (int) (average * hscale))
-                + "\" y1=\"" + (vstart) + "\" x2=\"" + (hstart + (int) (average * hscale)) + "\" y2=\"" + vend
-                + "\" style=\"stroke:red;stroke-width:3\" />"
-                + "<rect x=\"60%\" y=\"20%\" width=\"28%\" height=\"20%\" stroke=\"black\""
-                + " stroke-width=\"1\" fill=\"white\" filter=\"url(#f1)\" />"
-                + "<line x1=\"62%\" y1=\"29%\" x2=\"67%\" y2=\"29%\" stroke-dasharray=\"5,5\""
-                + " style=\"stroke:red;stroke-width:3\" /><text x=\"69%\" y=\"30%\""
-                + " font-weight = \"bold\" font-size = \"12\">Average: " + String.format(Locale.US, "%.1f", average)
-                + "</text>"
-                + "<line x1=\"62%\" y1=\"34%\" x2=\"67%\" y2=\"34%\" stroke-dasharray=\"5,5\""
-                + " style=\"stroke:yellow;stroke-width:3\" /><text x=\"69%\" y=\"35%\""
-                + " font-weight = \"bold\" font-size = \"12\">Median: " + median + "</text>"
-                + "<text x=\"60%\" y=\"55%\" font-weight = \"bold\" font-size = \"40\" fill=\""
-                + statusColor + "\">" + String.format(Locale.US, "%.1f", usage)
-                + "%</text>"
-                + "<text x=\"66%\" y=\"60%\" font-weight = \"bold\" font-size = \"16\" fill=\""
-                + statusColor
-                + "\">Re-use</text>"
-                + "<text x=\"120\" y=\"330\" font-weight = \"bold\" font-size = \"14\" >Step re-use count</text>"
-                + "<text x=\"20\" y=\"220\" font-weight = \"bold\" font-size = \"14\""
-                + " transform=\"rotate(-90 20,220)\">Steps count</text>"
-                + "</svg>";
-        return htmlContent;
-    }
-
     private CucumberStepSource getSourceByString(CucumberStepSource[] sources, String text) {
         for (CucumberStepSource source : sources) {
             if (source.getSource().equals(text)) {
@@ -317,75 +156,6 @@ public class CucumberUsageReporting extends CucumberResultsCommon {
         }
         return null;
     }
-    private String getGroupColor(LinkedHashMap<String, Integer> map, int groupsCount, int index) {
-        String color = "silver";
-        if (map.keySet().size() >= groupsCount) {
-            switch (index / (map.keySet().size() / groupsCount)) {
-                case 0:
-                    color = "lightgreen";
-                    break;
-                case 1:
-                    color = "gold";
-                    break;
-                case 2:
-                    color = "tomato";
-                    break;
-                default:
-                    break;
-            }
-        } else {
-            color = "red";
-        }
-        return color;
-    }
-    protected String generateUsageOverviewTableReport(CucumberStepSource[] sources) throws Exception {
-        final int groupsCount = 3;
-        LinkedHashMap<String, Integer> map = calculateStepsUsageScore(sources);
-        String content = "<table><tr><th rowspan=\"2\"><a id=\"top\">#</a></th>"
-                + "<th rowspan=\"2\">Expression</th><th rowspan=\"2\">Occurences</th>"
-                + "<th colspan=\"5\">Duration</th></tr>"
-                + "<tr>"
-                + "<th>Average</th><th>Median</th><th>Minimal</th><th>Maximal</th><th>Total</th></tr>";
-        int index = 0;
-        for (String key:map.keySet()) {
-            String color = getGroupColor(map, groupsCount, index);
-            content += "<tr style=\"background:" + color + "\"><td>" + (++index) + "</td>"
-                    + "<td width=\"60%\"><a href=\"#" + getKeyId(key) + "\">" + key + "</a></td>"
-                    + "<td>" + map.get(key) + "</td>";
-            CucumberStepSource source = getSourceByString(sources, key);
-            if (source == null) {
-                content += "<td>-</td><td>-</td><td>-</td><td>-</td><td>-</td>";
-            } else {
-                List<Double> durations = source.getDurations();
-                if (durations.size() <= 0) {
-                    return "";
-                }
-                Collections.sort(durations);
-                Double median = durations.get(durations.size() / 2);
-                Double total = 0.;
-                for (Double duration : durations) {
-                    total += duration;
-                }
-                Double average = total / durations.size();
-                Double min = Collections.min(durations);
-                Double max = Collections.max(durations);
-                content += String.format(
-                        Locale.US,
-                        "<td>%.2fs</td><td>%.2fs</td><td>%.2fs</td><td>%.2fs</td><td>%.2fs</td>",
-                        average, median, min, max, total);
-            }
-            content += "</tr>";
-        }
-        content += "</table>";
-        return content;
-    }
-
-    private String getEmptyHystogram() throws IOException {
-        InputStream is = this.getClass().getResourceAsStream("/usage-na-graph-tmpl.html");
-        String result = IOUtils.toString(is);
-        return result;
-    }
-
     public int getDurationGroupsCount(CucumberStepSource source) {
         final int minimalDurations = 5;
         final int minimalDurationSize = 3;
@@ -424,30 +194,6 @@ public class CucumberUsageReporting extends CucumberResultsCommon {
         }
         return result;
     }
-    private String getFrequencyPolyPoints(int[] data) {
-        final int startX = 40;
-        final int endX = 320;
-        final int topY = 50;
-        final int bottomY = 240;
-        int max = 0;
-        int stepX = (endX - startX) / data.length;
-        for (int item : data) {
-            max = Math.max(max, item);
-        }
-        float stepY = ((float) bottomY - (float) topY) / (float) max;
-        String result = "";
-        for (int i = 0; i < data.length; i++) {
-            result = result.concat(
-                String.format(Locale.US, "%d,%d %d,%d %d,%d %d,%d ",
-                    startX + i * stepX, bottomY,
-                    startX + i * stepX, bottomY - (int) (data[i] * stepY),
-                    startX + (i + 1) * stepX, bottomY - (int) (data[i] * stepY),
-                    startX + (i + 1) * stepX, bottomY
-                )
-            );
-        }
-        return result;
-    }
 
     private Double getMaxDuration(CucumberStepSource source) {
         List<Double> durations = source.getDurations();
@@ -465,77 +211,6 @@ public class CucumberUsageReporting extends CucumberResultsCommon {
             minDuration = Math.min(minDuration, duration);
         }
         return minDuration;
-    }
-
-    private String getFrequencyLabels(CucumberStepSource source, int[] data) {
-        final int startX = 40;
-        final int endX = 320;
-        final int topY = 50;
-        final int bottomY = 240;
-        final int shiftX = 7;
-        final int shiftY = 8;
-        int max = 0;
-        int stepX = (endX - startX) / data.length;
-        for (int item : data) {
-            max = Math.max(max, item);
-        }
-        float stepY = ((float) bottomY - (float) topY) / (float) max;
-        String result = "";
-        for (int i = 0; i < data.length; i++) {
-            result = result.concat(
-                String.format(Locale.US,
-                        "<text x=\"%d\" y=\"%d\" font-weight=\"bold\" font-size=\"14\">%d</text>",
-                    startX + i * stepX + stepX / 2 - (int) (Math.log10(data[i])) * shiftX,
-                    bottomY - (int) ((float) data[i] * stepY) - 2,
-                    data[i])
-            );
-            double step = (this.getMaxDuration(source) - this.getMinDuration(source)) / (double) data.length;
-            result = result.concat(
-                    String.format(Locale.US,
-                            "<line x1=\"%d\" y1=\"%d\" x2=\"%d\""
-                            + " y2=\"%d\" style=\"stroke:black;stroke-width:1\" />"
-                            + "<text x=\"%d\" y=\"%d\" font-size=\"8\">%.2f</text>",
-                        startX + i * stepX, bottomY,
-                        startX + i * stepX, bottomY + 2,
-                        startX + i * stepX + 2, bottomY + shiftY, this.getMinDuration(source) + (double) i * step)
-                );
-        }
-        result = result.concat(
-                String.format(Locale.US,
-                        "<line x1=\"%d\" y1=\"%d\" x2=\"%d\""
-                        + " y2=\"%d\" style=\"stroke:black;stroke-width:1\" />"
-                        + "<text x=\"%d\" y=\"%d\" font-size=\"8\">%.2f</text>",
-                    endX, bottomY,
-                    endX, bottomY + 2,
-                    endX + 2, bottomY + shiftY, this.getMaxDuration(source))
-            );
-        return result;
-    }
-
-    private String getFilledHystogram(CucumberStepSource source) throws IOException {
-        InputStream is = this.getClass().getResourceAsStream("/usage-base-graph-tmpl.html");
-        String result = IOUtils.toString(is);
-        int[] data = getFrequencyData(source);
-        String polypoints = "";
-        String frequencies = "";
-        if (data.length > 0) {
-            polypoints = getFrequencyPolyPoints(data);
-            frequencies = getFrequencyLabels(source, data);
-        }
-        result = result.replaceAll("\\{POLYPOINTS\\}", polypoints);
-        result = result.replaceAll("\\{FREQUENCIES\\}", frequencies);
-        return result;
-    }
-    private String getHystogram(CucumberStepSource source) throws Exception {
-        final int minimalDurations = 5;
-        int durations = 0;
-        for (CucumberStep step : source.getSteps()) {
-            durations += step.getDurations().length;
-        }
-        if (durations <= minimalDurations) {
-            return getEmptyHystogram();
-        }
-        return getFilledHystogram(source);
     }
 
     private double variance(List<Double> durations, double average) {
@@ -565,68 +240,6 @@ public class CucumberUsageReporting extends CucumberResultsCommon {
         result = result / Math.pow(variance, extand);
         return result;
     }
-    private String generateSourceDurationOverview(CucumberStepSource source) {
-        List<Double> durations = source.getDurations();
-        if (durations.size() <= 0) {
-            return "";
-        }
-        Collections.sort(durations);
-        Double median = durations.get(durations.size() / 2);
-        Double total = 0.;
-        for (Double duration : durations) {
-            total += duration;
-        }
-        Double average = total / durations.size();
-        Double min = Collections.min(durations);
-        Double max = Collections.max(durations);
-        return String.format(Locale.US,
-                "<p><table>"
-                + "<tr><th colspan=\"2\">Duration Characteristic</th></tr>"
-                + "<tr><th>Average</th><td>%.2fs</td></tr>"
-                + "<tr><th>Median</th><td>%.2fs</td></tr>"
-                + "<tr><th>Variance</th><td>%.2f</td></tr>"
-                + "<tr><th>Skewness</th><td>%.2f</td></tr>"
-                + "<tr><th>Minimum</th><td>%.2fs</td></tr>"
-                + "<tr><th>Maximum</th><td>%.2fs</td></tr>"
-                + "<tr><th>Total</th><td>%.2fs</td></tr>"
-                + "</table></p>", average, median,
-                    variance(durations, average),
-                    skewness(durations, average),
-                    min, max, total);
-    }
-
-    private String getKeyId(String key) throws UnsupportedEncodingException {
-        String result = URLEncoder.encode(key, "UTF-8").replaceAll("\\+", "-")
-                /*.replaceAll("\\%21", "_")
-                .replaceAll("\\%27", "_")
-                .replaceAll("\\%28", "_")
-                .replaceAll("\\%29", "_")
-                .replaceAll("\\%7E", "_")*/
-                .replaceAll("\\%", "_");
-        return result;
-    }
-
-    protected String generateUsageDetailedReport(CucumberStepSource[] sources) throws Exception {
-        String content = "";
-        for (CucumberStepSource source:sources) {
-            content += "<h3><a id=\"" + getKeyId(source.getSource()) + "\">"
-                    + source.getSource() + "</a></h3>"
-                    + "<p><table><tr><th>Step Name</th><th>Duration</th><th>Location</th></tr>";
-
-            for (CucumberStep step:source.getSteps()) {
-                content += "<tr><td>" + step.getName() + "</td><td> - </td><td> - </td></tr>";
-                for (CucumberStepDuration duration:step.getDurations()) {
-                    content += "<tr><td></td><td>" + duration.getDuration()
-                            + "</td><td>" + duration.getLocation() + "</td></tr>";
-                }
-            }
-            content += "</table></p>";
-            content += "<p><table class=\"none\"><tr><td class=\"none\">" + this.getHystogram(source) + "</td>"
-                    + "<td valign=\"top\" class=\"none\">" + generateSourceDurationOverview(source) + "</td></tr>"
-                    + "</table></p><p><a href=\"#top\">To Overview Table</a></p>";
-        }
-        return content;
-    }
 
     @SuppressWarnings("unchecked")
     public CucumberStepSource[] getStepSources(String filePath) throws Exception {
@@ -652,41 +265,17 @@ public class CucumberUsageReporting extends CucumberResultsCommon {
         return sources;
     }
 
-    private String generateStyle() {
-        return "h1 {background-color:#9999CC}" + System.lineSeparator()
-            + "h2 {background-color:#BBBBCC}" + System.lineSeparator()
-            + "h3 {background-color:#DDDDFF}" + System.lineSeparator()
-            + "th {border:1px solid black;background-color:#CCCCDD;}" + System.lineSeparator()
-            + "td{border:1px solid black;}" + System.lineSeparator()
-            + ".none {border:0px none black;}" + System.lineSeparator()
-            + "table{border:1px solid black;border-collapse: collapse;}" + System.lineSeparator()
-            + "tr:nth-child(even) {background: #CCC}" + System.lineSeparator()
-            + "tr:nth-child(odd) {background: #FFF}";
-    }
     public void executeReport() throws Exception {
         executeReport(new String[] {});
     }
     public void executeReport(String[] formats) throws Exception {
         try {
 
-            CucumberStepSource[] sources = {}; //getStepSources(jsonUsageFile);
+            CucumberStepSource[] sources = {};
             for (String jsonUsageFile : this.getJsonUsageFiles()) {
                 sources = (CucumberStepSource[]) ArrayUtils.addAll(sources, getStepSources(jsonUsageFile));
             }
-            /*String output = "<html><head><style type=\"text/css\">"
-                    + generateStyle()
-                    + "</style>"
-                    + "<title>Cucumber Steps Usage Report</title></head>"
-                    + "<body><h1>Cucumber Usage Statistics</h1>"
-                    + "<h2>Overview Graph</h2><p>"
-                    + generateUsageOverviewGraphReport(sources)
-                    + "</p>"
-                    + "<h2>Overview Table</h2><p>"
-                    + generateUsageOverviewTableReport(sources)
-                    + "</p>"
-                    + "<h1>Cucumber Usage Detailed Information</h1><p>"
-                    + generateUsageDetailedReport(sources)
-                    + "</p></body></html>";*/
+
             File report = new File(this.getOutputDirectory() + File.separator + this.getOutputName() + "-usage.html");
             UsageDataBean data = new UsageDataBean();
             SortedMap<Integer, Integer> map = calculateStepsUsageCounts(sources);
@@ -697,9 +286,52 @@ public class CucumberUsageReporting extends CucumberResultsCommon {
             data.setStepsUseAverage(average);
             data.setStepsUseMedian(median);
             data.setUsageCounts(map);
+            
+            StepSourceData[] stepSourceData = new StepSourceData[sources.length];
+            LinkedHashMap<String, Integer> stepsScoreMap = calculateStepsUsageScore(sources);
+            int index = 0;
+            for (String key:stepsScoreMap.keySet()) {
+                CucumberStepSource source = getSourceByString(sources, key);
+                stepSourceData[index] = data.new StepSourceData();
+                stepSourceData[index].setSource(source);
+                Double medianDuration = 0.;
+                Double totalDuration = 0.;
+                Double averageDuration = 0.;
+                Double minDuration = 0.;
+                Double maxDuration = 0.;
+                
+                if (source != null) {
+                    List<Double> durations = source.getDurations();
+                    if (durations.size() > 0) {
+                        Collections.sort(durations);
+                        medianDuration = durations.get(durations.size() / 2);
+                        for (Double duration : durations) {
+                            totalDuration += duration;
+                        }
+                        averageDuration = totalDuration / durations.size();
+                        minDuration = Collections.min(durations);
+                        maxDuration = Collections.max(durations);
+                    }
+                    stepSourceData[index].setTotalUsed(stepsScoreMap.get(key));
+                    stepSourceData[index].setVariance(this.variance(durations, averageDuration));
+                    stepSourceData[index].setSkewness(this.skewness(durations, averageDuration));
+                    stepSourceData[index].setFrequencies(this.getFrequencyData(source));
+                } else {
+                    stepSourceData[index].setTotalUsed(0);
+                    stepSourceData[index].setVariance(0);
+                    stepSourceData[index].setSkewness(0);
+                    stepSourceData[index].setFrequencies(new int[] {});
+                }
+                stepSourceData[index].setAverageDuration(averageDuration);
+                stepSourceData[index].setMaxDuration(maxDuration);
+                stepSourceData[index].setMedianDuration(medianDuration);
+                stepSourceData[index].setMinDuration(minDuration);
+                stepSourceData[index].setTotalDuration(totalDuration);
+                index++;
+            }
+            data.setStepsData(stepSourceData);
             generateReportFromTemplate(report, "usage", data);
             this.export(report, "usage", formats, this.isImageExportable());
-            //FileUtils.writeStringToFile(report, output);
         } catch (Exception e) {
             throw new Exception(
                     "Error occured while generating Cucumber usage report", e);

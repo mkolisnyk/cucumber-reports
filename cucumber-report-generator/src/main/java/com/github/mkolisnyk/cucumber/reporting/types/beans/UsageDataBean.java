@@ -13,6 +13,7 @@ public class UsageDataBean extends CommonDataBean {
         private double maxDuration;
         private double averageDuration;
         private double medianDuration;
+        private double totalDuration;
         private int[] frequencies;
         private double variance;
         private double skewness;
@@ -69,6 +70,12 @@ public class UsageDataBean extends CommonDataBean {
         }
         public void setSkewness(double skewness) {
             this.skewness = skewness;
+        }
+        public double getTotalDuration() {
+            return totalDuration;
+        }
+        public void setTotalDuration(double totalDuration) {
+            this.totalDuration = totalDuration;
         }
     }
     private Map<Integer, Integer> usageCounts;

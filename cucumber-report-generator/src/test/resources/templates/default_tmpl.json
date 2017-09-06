@@ -1,0 +1,18 @@
+{
+  "@type": "com.github.mkolisnyk.cucumber.reporting.utils.helpers.FreemarkerConfiguration$1", 
+  "benchmark": "/templates/default/benchmark.ftlh", 
+  "breakdown": "/templates/default/breakdown.ftlh", 
+  "consolidated": "/templates/default/consolidated.ftlh", 
+  "coverage": "/templates/default/coverage.ftlh", 
+  "detailed": "/templates/default/detailed.ftlh", 
+  "feature_map": "/templates/default/feature_map.ftlh", 
+  "feature_overview": "/templates/default/feature_overview.ftlh", 
+  "known_errors": "/templates/default/known_errors.ftlh", 
+  "overview": "/templates/default/overview.ftlh", 
+  "overview_chart": "/templates/default/overview_chart.ftlh", 
+  "pie_chart": "/templates/default/pie_chart.ftlh", 
+  "retrospective": "/templates/default/retrospective.ftlh", 
+  "system_info": "/templates/default/system_info.ftlh", 
+  "tables": "/templates/default/tables.ftlh", 
+  "usage": "/templates/default/usage.ftlh"
+}

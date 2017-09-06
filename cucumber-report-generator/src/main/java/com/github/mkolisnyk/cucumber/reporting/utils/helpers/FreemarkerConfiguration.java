@@ -1,13 +1,19 @@
 package com.github.mkolisnyk.cucumber.reporting.utils.helpers;
 
+import java.io.File;
+import java.io.IOException;
 import java.io.InputStream;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Map.Entry;
 
+import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.IOUtils;
 import org.apache.commons.lang3.ArrayUtils;
 import org.apache.commons.lang3.StringUtils;
+
+import com.cedarsoftware.util.io.JsonReader;
+import com.cedarsoftware.util.io.JsonWriter;
 
 import freemarker.cache.MultiTemplateLoader;
 import freemarker.cache.StringTemplateLoader;
@@ -42,9 +48,6 @@ public final class FreemarkerConfiguration {
             put("usage", "/templates/default/usage.ftlh");
         }
     };
-    private static void loadDefaultConfig() throws Exception {
-        loadConfig(DEFAULT_RESOURCES);
-    }
     private static void loadConfig(Map<String, String> resourceMap) throws Exception {
         config = new Configuration(Configuration.VERSION_2_3_23);
 
@@ -68,13 +71,45 @@ public final class FreemarkerConfiguration {
         TemplateHashModel staticModels = BeansWrapper.getDefaultInstance().getStaticModels();
         config.setSharedVariable("statics", staticModels);
     }
+    private static Map<String, String> loadTemplatesFromFile(File configFile) throws IOException {
+        Map<String, String> resultMap = new HashMap<String, String>();
+        resultMap.putAll(DEFAULT_RESOURCES);
+        String content = FileUtils.readFileToString(configFile, "UTF-8");
+        HashMap<String, String> loadedMap = (HashMap<String, String>) JsonReader.jsonToJava(content);
+        for (Entry<String, String> entry : loadedMap.entrySet()) {
+            File tmplFile = new File(entry.getValue());
+            if (tmplFile.exists()) {
+                resultMap.put(entry.getKey(), entry.getValue());
+            }
+        }
+        return resultMap;
+    }
+    private static Map<String, String> loadTemplatesFromFolder(File configFile) {
+        Map<String, String> resultMap = new HashMap<String, String>();
+        resultMap.putAll(DEFAULT_RESOURCES);
+        return resultMap;
+    }
+    public static Map<String, String> getResourceMap(String location) throws Exception {
+        Map<String, String> resultMap = new HashMap<String, String>();
+        resultMap.putAll(DEFAULT_RESOURCES);
+        if (StringUtils.isBlank(location)) {
+            return resultMap;
+        }
+        File resLocation = new File(location);
+        if (!resLocation.exists()) {
+            return resultMap;
+        }
+        if (resLocation.isFile()) {
+            resultMap = loadTemplatesFromFile(resLocation);
+        } else {
+            resultMap = loadTemplatesFromFolder(resLocation);
+        }
+        return resultMap;
+    }
     public static Configuration get(String location) throws Exception {
         if (config == null) {
-            if (StringUtils.isBlank(location)) {
-                loadDefaultConfig();
-            } else {
-                config = null;
-            }
+            Map<String, String> resourceMap = getResourceMap(location);
+            loadConfig(resourceMap);
         }
         return config;
     }

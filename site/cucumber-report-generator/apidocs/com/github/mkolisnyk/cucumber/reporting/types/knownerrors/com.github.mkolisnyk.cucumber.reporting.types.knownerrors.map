@@ -1,0 +1,14 @@
+<map id="G" name="G">
+<area shape="rect" id="node1_0" href="./KnownErrorsResultSet.html" title="com.github.mkolisnyk.cucumber.reporting.types.knownerrors.KnownErrorsResultSet" alt="" coords="16,67,492,187"/>
+<area shape="rect" id="node1" href="./KnownErrorsResultSet.html" title="&lt;TABLE&gt;" alt="" coords="5,61,503,192"/>
+<area shape="rect" id="node2_1" href="./KnownErrorsResult.html" title="com.github.mkolisnyk.cucumber.reporting.types.knownerrors.KnownErrorsResult" alt="" coords="537,11,853,243"/>
+<area shape="rect" id="node2" href="./KnownErrorsResult.html" title="&lt;TABLE&gt;" alt="" coords="527,5,864,248"/>
+<area shape="rect" id="node3_2" href="./KnownErrorsModel.html" title="com.github.mkolisnyk.cucumber.reporting.types.knownerrors.KnownErrorsModel" alt="" coords="899,67,1521,187"/>
+<area shape="rect" id="node3" href="./KnownErrorsModel.html" title="&lt;TABLE&gt;" alt="" coords="889,61,1531,192"/>
+<area shape="rect" id="node4_3" href="./KnownErrorsInfo.html" title="com.github.mkolisnyk.cucumber.reporting.types.knownerrors.KnownErrorsInfo" alt="" coords="1566,11,2326,243"/>
+<area shape="rect" id="node4" href="./KnownErrorsInfo.html" title="&lt;TABLE&gt;" alt="" coords="1555,5,2337,248"/>
+<area shape="rect" id="node5_4" href="./KnownErrorPriority.html" title="com.github.mkolisnyk.cucumber.reporting.types.knownerrors.KnownErrorPriority" alt="" coords="2372,51,2501,203"/>
+<area shape="rect" id="node5" href="./KnownErrorPriority.html" title="&lt;TABLE&gt;" alt="" coords="2361,45,2512,208"/>
+<area shape="rect" id="node6_5" href="./KnownErrorOrderBy.html" title="com.github.mkolisnyk.cucumber.reporting.types.knownerrors.KnownErrorOrderBy" alt="" coords="2547,67,2684,187"/>
+<area shape="rect" id="node6" href="./KnownErrorOrderBy.html" title="&lt;TABLE&gt;" alt="" coords="2536,61,2695,192"/>
+</map>

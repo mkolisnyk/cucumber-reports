@@ -1,0 +1,8 @@
+<map id="G" name="G">
+<area shape="rect" id="node1_0" href="./CucumberReportTypes.html" title="com.github.mkolisnyk.cucumber.reporting.types.enums.CucumberReportTypes" alt="" coords="16,19,225,299"/>
+<area shape="rect" id="node1" href="./CucumberReportTypes.html" title="&lt;TABLE&gt;" alt="" coords="5,13,236,304"/>
+<area shape="rect" id="node2_1" href="./CucumberReportLink.html" title="com.github.mkolisnyk.cucumber.reporting.types.enums.CucumberReportLink" alt="" coords="271,11,514,307"/>
+<area shape="rect" id="node2" href="./CucumberReportLink.html" title="&lt;TABLE&gt;" alt="" coords="261,5,525,312"/>
+<area shape="rect" id="node3_2" href="./CucumberReportError.html" title="com.github.mkolisnyk.cucumber.reporting.types.enums.CucumberReportError" alt="" coords="560,67,777,251"/>
+<area shape="rect" id="node3" href="./CucumberReportError.html" title="&lt;TABLE&gt;" alt="" coords="549,61,788,256"/>
+</map>

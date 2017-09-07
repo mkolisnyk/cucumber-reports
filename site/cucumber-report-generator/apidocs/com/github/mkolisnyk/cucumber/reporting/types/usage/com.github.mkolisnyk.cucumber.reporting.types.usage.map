@@ -1,0 +1,10 @@
+<map id="G" name="G">
+<area shape="rect" id="node1_0" href="./CucumberStepSource.html" title="com.github.mkolisnyk.cucumber.reporting.types.usage.CucumberStepSource" alt="" coords="16,27,384,147"/>
+<area shape="rect" id="node1" href="./CucumberStepSource.html" title="&lt;TABLE&gt;" alt="" coords="5,21,395,152"/>
+<area shape="rect" id="node2_1" href="./CucumberStepDuration.html" title="com.github.mkolisnyk.cucumber.reporting.types.usage.CucumberStepDuration" alt="" coords="429,35,805,139"/>
+<area shape="rect" id="node2" href="./CucumberStepDuration.html" title="&lt;TABLE&gt;" alt="" coords="419,29,816,144"/>
+<area shape="rect" id="node3_2" href="./CucumberStep.html" title="com.github.mkolisnyk.cucumber.reporting.types.usage.CucumberStep" alt="" coords="851,27,1226,147"/>
+<area shape="rect" id="node3" href="./CucumberStep.html" title="&lt;TABLE&gt;" alt="" coords="841,21,1237,152"/>
+<area shape="rect" id="node4_3" href="./CucumberAggregatedDuration.html" title="com.github.mkolisnyk.cucumber.reporting.types.usage.CucumberAggregatedDuration" alt="" coords="1272,11,1763,163"/>
+<area shape="rect" id="node4" href="./CucumberAggregatedDuration.html" title="&lt;TABLE&gt;" alt="" coords="1261,5,1773,168"/>
+</map>

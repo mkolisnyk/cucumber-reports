@@ -1,0 +1,30 @@
+<map id="G" name="G">
+<area shape="rect" id="node1_0" href="./UsageDataBean.html" title="com.github.mkolisnyk.cucumber.reporting.types.beans.UsageDataBean" alt="" coords="16,237,412,469"/>
+<area shape="rect" id="node1" href="./UsageDataBean.html" title="&lt;TABLE&gt;" alt="" coords="5,232,423,475"/>
+<area shape="rect" id="node2_1" href="./SystemInfoDataBean.html" title="com.github.mkolisnyk.cucumber.reporting.types.beans.SystemInfoDataBean" alt="" coords="458,285,901,421"/>
+<area shape="rect" id="node2" href="./SystemInfoDataBean.html" title="&lt;TABLE&gt;" alt="" coords="447,280,911,427"/>
+<area shape="rect" id="node3_2" href="./RetrospectiveDataBean.html" title="com.github.mkolisnyk.cucumber.reporting.types.beans.RetrospectiveDataBean" alt="" coords="947,285,1204,421"/>
+<area shape="rect" id="node3" href="./RetrospectiveDataBean.html" title="&lt;TABLE&gt;" alt="" coords="936,280,1215,427"/>
+<area shape="rect" id="node4_3" href="./OverviewDataBean.html" title="com.github.mkolisnyk.cucumber.reporting.types.beans.OverviewDataBean" alt="" coords="1250,269,1677,437"/>
+<area shape="rect" id="node4" href="./OverviewDataBean.html" title="&lt;TABLE&gt;" alt="" coords="1239,264,1687,443"/>
+<area shape="rect" id="node5_4" href="./OverviewChartDataBean.html" title="com.github.mkolisnyk.cucumber.reporting.types.beans.OverviewChartDataBean" alt="" coords="1722,285,2063,421"/>
+<area shape="rect" id="node5" href="./OverviewChartDataBean.html" title="&lt;TABLE&gt;" alt="" coords="1711,280,2074,427"/>
+<area shape="rect" id="node6_5" href="./KnownErrorsDataBean.html" title="com.github.mkolisnyk.cucumber.reporting.types.beans.KnownErrorsDataBean" alt="" coords="2109,301,2410,405"/>
+<area shape="rect" id="node6" href="./KnownErrorsDataBean.html" title="&lt;TABLE&gt;" alt="" coords="2098,296,2421,411"/>
+<area shape="rect" id="node7_6" href="./FeatureOverviewDataBean.html" title="com.github.mkolisnyk.cucumber.reporting.types.beans.FeatureOverviewDataBean" alt="" coords="2456,269,2785,437"/>
+<area shape="rect" id="node7" href="./FeatureOverviewDataBean.html" title="&lt;TABLE&gt;" alt="" coords="2445,264,2796,443"/>
+<area shape="rect" id="node8_7" href="./FeatureMapDataBean.html" title="com.github.mkolisnyk.cucumber.reporting.types.beans.FeatureMapDataBean" alt="" coords="2831,285,3189,421"/>
+<area shape="rect" id="node8" href="./FeatureMapDataBean.html" title="&lt;TABLE&gt;" alt="" coords="2821,280,3199,427"/>
+<area shape="rect" id="node9_8" href="./DetailedReportingDataBean.html" title="com.github.mkolisnyk.cucumber.reporting.types.beans.DetailedReportingDataBean" alt="" coords="3234,269,3541,437"/>
+<area shape="rect" id="node9" href="./DetailedReportingDataBean.html" title="&lt;TABLE&gt;" alt="" coords="3223,264,3551,443"/>
+<area shape="rect" id="node10_9" href="./CoverageDataBean.html" title="com.github.mkolisnyk.cucumber.reporting.types.beans.CoverageDataBean" alt="" coords="3587,269,4015,437"/>
+<area shape="rect" id="node10" href="./CoverageDataBean.html" title="&lt;TABLE&gt;" alt="" coords="3576,264,4025,443"/>
+<area shape="rect" id="node11_10" href="./ConsolidatedDataBean.html" title="com.github.mkolisnyk.cucumber.reporting.types.beans.ConsolidatedDataBean" alt="" coords="4061,269,4418,437"/>
+<area shape="rect" id="node11" href="./ConsolidatedDataBean.html" title="&lt;TABLE&gt;" alt="" coords="4050,264,4429,443"/>
+<area shape="rect" id="node12_11" href="./CommonDataBean.html" title="com.github.mkolisnyk.cucumber.reporting.types.beans.CommonDataBean" alt="" coords="2477,11,2764,179"/>
+<area shape="rect" id="node12" href="./CommonDataBean.html" title="&lt;TABLE&gt;" alt="" coords="2467,5,2775,184"/>
+<area shape="rect" id="node13_12" href="./BreakdownDataBean.html" title="com.github.mkolisnyk.cucumber.reporting.types.beans.BreakdownDataBean" alt="" coords="4463,285,4701,421"/>
+<area shape="rect" id="node13" href="./BreakdownDataBean.html" title="&lt;TABLE&gt;" alt="" coords="4453,280,4711,427"/>
+<area shape="rect" id="node14_13" href="./BenchmarkDataBean.html" title="com.github.mkolisnyk.cucumber.reporting.types.beans.BenchmarkDataBean" alt="" coords="4747,269,5145,437"/>
+<area shape="rect" id="node14" href="./BenchmarkDataBean.html" title="&lt;TABLE&gt;" alt="" coords="4736,264,5156,443"/>
+</map>

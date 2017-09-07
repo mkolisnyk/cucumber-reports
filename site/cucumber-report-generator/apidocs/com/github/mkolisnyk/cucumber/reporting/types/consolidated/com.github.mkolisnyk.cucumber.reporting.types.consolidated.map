@@ -1,0 +1,8 @@
+<map id="G" name="G">
+<area shape="rect" id="node1_0" href="./ConsolidatedReportModel.html" title="com.github.mkolisnyk.cucumber.reporting.types.consolidated.ConsolidatedReportModel" alt="" coords="16,11,981,179"/>
+<area shape="rect" id="node1" href="./ConsolidatedReportModel.html" title="&lt;TABLE&gt;" alt="" coords="5,5,992,184"/>
+<area shape="rect" id="node2_1" href="./ConsolidatedReportBatch.html" title="com.github.mkolisnyk.cucumber.reporting.types.consolidated.ConsolidatedReportBatch" alt="" coords="1027,51,1466,139"/>
+<area shape="rect" id="node2" href="./ConsolidatedReportBatch.html" title="&lt;TABLE&gt;" alt="" coords="1017,45,1477,144"/>
+<area shape="rect" id="node3_2" href="./ConsolidatedItemInfo.html" title="com.github.mkolisnyk.cucumber.reporting.types.consolidated.ConsolidatedItemInfo" alt="" coords="1512,35,1888,155"/>
+<area shape="rect" id="node3" href="./ConsolidatedItemInfo.html" title="&lt;TABLE&gt;" alt="" coords="1501,29,1899,160"/>
+</map>

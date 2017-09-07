@@ -1,0 +1,14 @@
+<map id="G" name="G">
+<area shape="rect" id="node1_0" href="./StepSequenceMatcher.html" title="com.github.mkolisnyk.cucumber.reporting.types.breakdown.matchers.StepSequenceMatcher" alt="" coords="16,352,493,440"/>
+<area shape="rect" id="node1" href="./StepSequenceMatcher.html" title="&lt;TABLE&gt;" alt="" coords="5,347,504,445"/>
+<area shape="rect" id="node2_1" href="./OrMatcher.html" title="com.github.mkolisnyk.cucumber.reporting.types.breakdown.matchers.OrMatcher" alt="" coords="539,352,1016,440"/>
+<area shape="rect" id="node2" href="./OrMatcher.html" title="&lt;TABLE&gt;" alt="" coords="528,347,1027,445"/>
+<area shape="rect" id="node3_2" href="./NotMatcher.html" title="com.github.mkolisnyk.cucumber.reporting.types.breakdown.matchers.NotMatcher" alt="" coords="1061,352,1539,440"/>
+<area shape="rect" id="node3" href="./NotMatcher.html" title="&lt;TABLE&gt;" alt="" coords="1051,347,1549,445"/>
+<area shape="rect" id="node4_3" href="./ComplexMatcher.html" title="com.github.mkolisnyk.cucumber.reporting.types.breakdown.matchers.ComplexMatcher" alt="" coords="800,173,1277,293"/>
+<area shape="rect" id="node4" href="./ComplexMatcher.html" title="&lt;TABLE&gt;" alt="" coords="789,168,1288,299"/>
+<area shape="rect" id="node6_4" href="./AndMatcher.html" title="com.github.mkolisnyk.cucumber.reporting.types.breakdown.matchers.AndMatcher" alt="" coords="1584,352,2061,440"/>
+<area shape="rect" id="node6" href="./AndMatcher.html" title="&lt;TABLE&gt;" alt="" coords="1573,347,2072,445"/>
+<area shape="rect" id="node5_5" href="./BaseMatcher.html" title="com.github.mkolisnyk.cucumber.reporting.types.breakdown.matchers.BaseMatcher" alt="" coords="840,11,1237,115"/>
+<area shape="rect" id="node5" href="./BaseMatcher.html" title="&lt;TABLE&gt;" alt="" coords="829,5,1248,120"/>
+</map>

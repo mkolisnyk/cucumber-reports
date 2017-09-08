@@ -3,7 +3,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <title>Cucumber Reporting Maven Plugin - </title>
+    <title>Cucumber Reporting Maven Plugin - Plugin Documentation</title>
     <style type="text/css" media="all">
       @import url("./css/maven-base.css");
       @import url("./css/maven-theme.css");
@@ -53,9 +53,18 @@
                                                                                                                                                                                                                                                                                             <li class="collapsed">
                           <a href="project-info.html" title="Project Information">Project Information</a>
                   </li>
-                                                                                                                                                                                                                                                <li class="expanded">
+                                                                                                                                                                                                                                                                                                                        <li class="expanded">
                           <a href="project-reports.html" title="Project Reports">Project Reports</a>
                     <ul>
+                      <li class="none">
+                          <a href="surefire-report.html" title="Surefire Report">Surefire Report</a>
+            </li>
+                      <li class="none">
+                          <a href="checkstyle.html" title="Checkstyle">Checkstyle</a>
+            </li>
+                      <li class="none">
+                          <a href="javancss.html" title="JavaNCSS Report">JavaNCSS Report</a>
+            </li>
                       <li class="none">
                           <a href="cpd.html" title="CPD Report">CPD Report</a>
             </li>
@@ -73,6 +82,9 @@
             </li>
                       <li class="none">
                           <a href="testapidocs/index.html" title="Test JavaDocs">Test JavaDocs</a>
+            </li>
+                      <li class="none">
+                          <a href="findbugs.html" title="FindBugs">FindBugs</a>
             </li>
                       <li class="none">
                           <a href="cobertura/index.html" title="Cobertura Test Coverage">Cobertura Test Coverage</a>
@@ -98,7 +110,69 @@
     </div>
     <div id="bodyColumn">
       <div id="contentBox">
-        
+        <div class="section">
+<h2>Plugin Documentation<a name="Plugin_Documentation"></a></h2><a name="Plugin_Documentation"></a>
+<p>Goals available for this plugin:</p>
+<table border="0" class="bodyTable">
+<tr class="a">
+<th>Goal</th>
+<th>Description</th></tr>
+<tr class="b">
+<td><a href="generate-mojo.html">cucumber-reporting:generate</a></td>
+<td>No description.</td></tr>
+<tr class="a">
+<td><a href="help-mojo.html">cucumber-reporting:help</a></td>
+<td>Display help information on cucumber-reporting-maven-plugin.<br />
+Call <code>mvn cucumber-reporting:help -Ddetail=true
+-Dgoal=&lt;goal-name&gt;</code> to display parameter details.</td></tr></table>
+<div class="section">
+<h3>System Requirements<a name="System_Requirements"></a></h3><a name="System_Requirements"></a>
+<p>The following specifies the minimum requirements to run this Maven plugin:</p>
+<table border="0" class="bodyTable">
+<tr class="a">
+<td>Maven</td>
+<td>2.0</td></tr>
+<tr class="b">
+<td>JDK</td>
+<td>1.8</td></tr>
+<tr class="a">
+<td>Memory</td>
+<td>No minimum requirement.</td></tr>
+<tr class="b">
+<td>Disk Space</td>
+<td>No minimum requirement.</td></tr></table></div>
+<div class="section">
+<h3>Usage<a name="Usage"></a></h3><a name="Usage"></a>
+<p>You should specify the version in your project's plugin configuration:</p>
+<div class="source">
+<pre>&lt;project&gt;
+  ...
+  &lt;build&gt;
+    &lt;!-- To define the plugin version in your parent POM --&gt;
+    &lt;pluginManagement&gt;
+      &lt;plugins&gt;
+        &lt;plugin&gt;
+          &lt;groupId&gt;com.github.mkolisnyk&lt;/groupId&gt;
+          &lt;artifactId&gt;cucumber-reporting-maven-plugin&lt;/artifactId&gt;
+          &lt;version&gt;1.0.12-SNAPSHOT&lt;/version&gt;
+        &lt;/plugin&gt;
+        ...
+      &lt;/plugins&gt;
+    &lt;/pluginManagement&gt;
+    &lt;!-- To use the plugin goals in your POM or parent POM --&gt;
+    &lt;plugins&gt;
+      &lt;plugin&gt;
+        &lt;groupId&gt;com.github.mkolisnyk&lt;/groupId&gt;
+        &lt;artifactId&gt;cucumber-reporting-maven-plugin&lt;/artifactId&gt;
+        &lt;version&gt;1.0.12-SNAPSHOT&lt;/version&gt;
+      &lt;/plugin&gt;
+      ...
+    &lt;/plugins&gt;
+  &lt;/build&gt;
+  ...
+&lt;/project&gt;
+</pre></div>
+<p>For more information, see <a class="externalLink" href="http://maven.apache.org/guides/mini/guide-configuring-plugins.html">&quot;Guide to Configuring Plug-ins&quot;</a></p></div></div>
       </div>
     </div>
     <div class="clear">

@@ -1,8 +1,0 @@
-<map id="G" name="G">
-<area shape="rect" id="node1_0" href="./CucumberFeatureMapReport.html" title="com.github.mkolisnyk.cucumber.reporting.CucumberFeatureMapReport" alt="" coords="16,576,553,696"/>
-<area shape="rect" id="node1" href="./CucumberFeatureMapReport.html" title="&lt;TABLE&gt;" alt="" coords="5,571,564,701"/>
-<area shape="rect" id="node2_1" href="./CucumberBreakdownReport.html" title="com.github.mkolisnyk.cucumber.reporting.CucumberBreakdownReport" alt="" coords="16,253,553,517"/>
-<area shape="rect" id="node2" href="./CucumberBreakdownReport.html" title="&lt;TABLE&gt;" alt="" coords="5,248,564,523"/>
-<area shape="rect" id="node3_2" href="./interfaces/ConfigurableReport.html" title="com.github.mkolisnyk.cucumber.reporting.interfaces.ConfigurableReport" alt="" coords="76,11,493,195"/>
-<area shape="rect" id="node3" href="./interfaces/ConfigurableReport.html" title="&lt;TABLE&gt;" alt="" coords="65,5,504,200"/>
-</map>

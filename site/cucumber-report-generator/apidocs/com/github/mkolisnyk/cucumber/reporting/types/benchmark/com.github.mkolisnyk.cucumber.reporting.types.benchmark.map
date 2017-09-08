@@ -1,8 +1,0 @@
-<map id="G" name="G">
-<area shape="rect" id="node1_0" href="./BenchmarkRowData.html" title="com.github.mkolisnyk.cucumber.reporting.types.benchmark.BenchmarkRowData" alt="" coords="16,11,573,179"/>
-<area shape="rect" id="node1" href="./BenchmarkRowData.html" title="&lt;TABLE&gt;" alt="" coords="5,5,584,184"/>
-<area shape="rect" id="node2_1" href="./BenchmarkReportModel.html" title="com.github.mkolisnyk.cucumber.reporting.types.benchmark.BenchmarkReportModel" alt="" coords="619,51,1013,139"/>
-<area shape="rect" id="node2" href="./BenchmarkReportModel.html" title="&lt;TABLE&gt;" alt="" coords="608,45,1024,144"/>
-<area shape="rect" id="node3_2" href="./BenchmarkReportInfo.html" title="com.github.mkolisnyk.cucumber.reporting.types.benchmark.BenchmarkReportInfo" alt="" coords="1059,35,1439,155"/>
-<area shape="rect" id="node3" href="./BenchmarkReportInfo.html" title="&lt;TABLE&gt;" alt="" coords="1049,29,1450,160"/>
-</map>

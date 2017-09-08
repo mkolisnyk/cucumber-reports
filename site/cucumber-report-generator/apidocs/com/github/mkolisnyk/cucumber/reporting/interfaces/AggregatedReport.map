@@ -1,8 +1,0 @@
-<map id="G" name="G">
-<area shape="rect" id="node1_0" href="./SimpleReport.html" title="com.github.mkolisnyk.cucumber.reporting.interfaces.SimpleReport" alt="" coords="131,11,514,131"/>
-<area shape="rect" id="node1" href="./SimpleReport.html" title="&lt;TABLE&gt;" alt="" coords="121,5,525,136"/>
-<area shape="rect" id="node3_1" href="./AggregatedReport.html" title="com.github.mkolisnyk.cucumber.reporting.interfaces.AggregatedReport" alt="" coords="16,189,629,373"/>
-<area shape="rect" id="node3" href="./AggregatedReport.html" title="&lt;TABLE&gt;" alt="" coords="5,184,640,379"/>
-<area shape="rect" id="node2_2" href="./ConfigurableReport.html" title="com.github.mkolisnyk.cucumber.reporting.interfaces.ConfigurableReport" alt="" coords="114,432,531,616"/>
-<area shape="rect" id="node2" href="./ConfigurableReport.html" title="&lt;TABLE&gt;" alt="" coords="103,427,542,621"/>
-</map>

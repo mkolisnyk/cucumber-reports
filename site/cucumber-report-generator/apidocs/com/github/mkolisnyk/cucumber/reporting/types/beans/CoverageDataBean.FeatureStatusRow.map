@@ -1,6 +1,0 @@
-<map id="G" name="G">
-<area shape="rect" id="node1_0" href="./CoverageDataBean.FeatureStatusRow.html" title="com.github.mkolisnyk.cucumber.reporting.types.beans.CoverageDataBean.FeatureStatusRow" alt="" coords="24,11,284,243"/>
-<area shape="rect" id="node1" href="./CoverageDataBean.FeatureStatusRow.html" title="&lt;TABLE&gt;" alt="" coords="13,5,295,248"/>
-<area shape="rect" id="node2_1" href="./CoverageDataBean.ScenarioStatusRow.html" title="com.github.mkolisnyk.cucumber.reporting.types.beans.CoverageDataBean.ScenarioStatusRow" alt="" coords="16,301,292,405"/>
-<area shape="rect" id="node2" href="./CoverageDataBean.ScenarioStatusRow.html" title="&lt;TABLE&gt;" alt="" coords="5,296,303,411"/>
-</map>

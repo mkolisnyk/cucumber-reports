@@ -21,6 +21,6 @@ public class CommonDataBean {
         return refreshData;
     }
     public void setRefreshData(String refreshDataValue) {
-        this.refreshData = refreshDataValue ;
+        this.refreshData = refreshDataValue;
     }
 }

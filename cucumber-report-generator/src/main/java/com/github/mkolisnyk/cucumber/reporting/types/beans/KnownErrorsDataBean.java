@@ -11,8 +11,7 @@ public class KnownErrorsDataBean extends CommonDataBean {
         return results;
     }
 
-    public void setResults(List<KnownErrorsResult> results) {
-        this.results = results;
+    public void setResults(List<KnownErrorsResult> resultsValue) {
+        this.results = resultsValue;
     }
-    
 }

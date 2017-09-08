@@ -9,13 +9,13 @@ public class RetrospectiveDataBean extends CommonDataBean {
     public RetrospectiveModel getModel() {
         return model;
     }
-    public void setModel(RetrospectiveModel model) {
-        this.model = model;
+    public void setModel(RetrospectiveModel modelValue) {
+        this.model = modelValue;
     }
     public BreakdownStats[] getStats() {
         return stats;
     }
-    public void setStats(BreakdownStats[] stats) {
-        this.stats = stats;
+    public void setStats(BreakdownStats[] statsValue) {
+        this.stats = statsValue;
     }
 }

@@ -11,34 +11,34 @@ public class CoverageDataBean extends CommonDataBean {
         public String getFeatureName() {
             return featureName;
         }
-        public void setFeatureName(String featureName) {
-            this.featureName = featureName;
+        public void setFeatureName(String featureNameValue) {
+            this.featureName = featureNameValue;
         }
         public String getStatus() {
             return status;
         }
-        public void setStatus(String status) {
-            this.status = status;
+        public void setStatus(String statusValue) {
+            this.status = statusValue;
         }
         public int getCovered() {
             return covered;
         }
-        public void setCovered(int covered) {
-            this.covered = covered;
+        public void setCovered(int coveredValue) {
+            this.covered = coveredValue;
         }
         public int getNotCovered() {
             return notCovered;
         }
-        public void setNotCovered(int notCovered) {
-            this.notCovered = notCovered;
+        public void setNotCovered(int notCoveredValue) {
+            this.notCovered = notCoveredValue;
         }
         public String[] getTags() {
             return tags;
         }
-        public void setTags(String[] tags) {
-            this.tags = tags;
+        public void setTags(String[] tagsValue) {
+            this.tags = tagsValue;
         }
-    } 
+    }
     public class ScenarioStatusRow extends FeatureStatusRow {
         private String scenarioName;
 
@@ -46,8 +46,8 @@ public class CoverageDataBean extends CommonDataBean {
             return scenarioName;
         }
 
-        public void setScenarioName(String scenarioName) {
-            this.scenarioName = scenarioName;
+        public void setScenarioName(String scenarioNameValue) {
+            this.scenarioName = scenarioNameValue;
         }
     }
     private FeatureStatusRow[] features;
@@ -57,8 +57,8 @@ public class CoverageDataBean extends CommonDataBean {
     public FeatureStatusRow[] getFeatures() {
         return features;
     }
-    public void setFeatures(FeatureStatusRow[] features) {
-        this.features = features;
+    public void setFeatures(FeatureStatusRow[] featuresValue) {
+        this.features = featuresValue;
         featureStatuses = new int[] {0, 0};
         for (FeatureStatusRow feature : this.features) {
             if (feature.getNotCovered() > 0) {
@@ -71,8 +71,8 @@ public class CoverageDataBean extends CommonDataBean {
     public ScenarioStatusRow[] getScenarios() {
         return scenarios;
     }
-    public void setScenarios(ScenarioStatusRow[] scenarios) {
-        this.scenarios = scenarios;
+    public void setScenarios(ScenarioStatusRow[] scenariosValue) {
+        this.scenarios = scenariosValue;
         scenarioStatuses = new int[] {0, 0};
         for (ScenarioStatusRow scenario : this.scenarios) {
             if (scenario.getNotCovered() > 0 || scenario.getCovered() == 0) {

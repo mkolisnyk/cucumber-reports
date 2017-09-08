@@ -18,7 +18,6 @@ import org.junit.Assert;
 
 import com.cedarsoftware.util.io.JsonObject;
 import com.cedarsoftware.util.io.JsonReader;
-import com.github.mkolisnyk.cucumber.reporting.interfaces.CucumberResultsCommon;
 import com.github.mkolisnyk.cucumber.reporting.interfaces.SimpleReport;
 import com.github.mkolisnyk.cucumber.reporting.types.beans.UsageDataBean;
 import com.github.mkolisnyk.cucumber.reporting.types.beans.UsageDataBean.StepSourceData;
@@ -286,7 +285,7 @@ public class CucumberUsageReporting extends SimpleReport {
             data.setStepsUseAverage(average);
             data.setStepsUseMedian(median);
             data.setUsageCounts(map);
-            
+
             StepSourceData[] stepSourceData = new StepSourceData[sources.length];
             LinkedHashMap<String, Integer> stepsScoreMap = calculateStepsUsageScore(sources);
             int index = 0;
@@ -299,7 +298,7 @@ public class CucumberUsageReporting extends SimpleReport {
                 Double averageDuration = 0.;
                 Double minDuration = 0.;
                 Double maxDuration = 0.;
-                
+
                 if (source != null) {
                     List<Double> durations = source.getDurations();
                     if (durations.size() > 0) {
@@ -375,5 +374,4 @@ public class CucumberUsageReporting extends SimpleReport {
         this.validateParameters();
         this.executeReport(formats);
     }
-    
 }

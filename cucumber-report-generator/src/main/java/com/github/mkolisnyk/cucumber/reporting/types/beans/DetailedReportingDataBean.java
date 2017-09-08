@@ -10,19 +10,19 @@ public class DetailedReportingDataBean extends CommonDataBean {
     public OverviewStats getStats() {
         return stats;
     }
-    public void setStats(OverviewStats stats) {
-        this.stats = stats;
+    public void setStats(OverviewStats statsValue) {
+        this.stats = statsValue;
     }
     public CucumberFeatureResult[] getResults() {
         return results;
     }
-    public void setResults(CucumberFeatureResult[] results) {
-        this.results = results;
+    public void setResults(CucumberFeatureResult[] resultsValue) {
+        this.results = resultsValue;
     }
     public String getScreenShotWidth() {
         return screenShotWidth;
     }
-    public void setScreenShotWidth(String screenShotWidth) {
-        this.screenShotWidth = screenShotWidth;
+    public void setScreenShotWidth(String screenShotWidthValue) {
+        this.screenShotWidth = screenShotWidthValue;
     }
 }

@@ -11,19 +11,19 @@ public class ConsolidatedDataBean extends CommonDataBean {
     public boolean isUseTableOfContents() {
         return useTableOfContents;
     }
-    public void setUseTableOfContents(boolean useTableOfContents) {
-        this.useTableOfContents = useTableOfContents;
+    public void setUseTableOfContents(boolean useTableOfContentsValue) {
+        this.useTableOfContents = useTableOfContentsValue;
     }
     public int getColumns() {
         return columns;
     }
-    public void setColumns(int columns) {
-        this.columns = columns;
+    public void setColumns(int columnsValue) {
+        this.columns = columnsValue;
     }
     public Map<String, String> getContents() {
         return contents;
     }
-    public void setContents(Map<String, String> contents) {
-        this.contents = contents;
+    public void setContents(Map<String, String> contentsValue) {
+        this.contents = contentsValue;
     }
 }

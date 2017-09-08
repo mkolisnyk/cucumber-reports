@@ -2,14 +2,11 @@ package com.github.mkolisnyk.cucumber.reporting;
 
 import java.io.File;
 import java.io.IOException;
-import java.io.InputStream;
 import java.util.Date;
 import java.util.Locale;
 
 import org.apache.commons.io.FileUtils;
-import org.apache.commons.io.IOUtils;
 import org.apache.commons.lang.ArrayUtils;
-import org.apache.commons.lang.StringEscapeUtils;
 import org.apache.commons.lang.StringUtils;
 
 import com.github.mkolisnyk.cucumber.reporting.interfaces.KECompatibleReport;
@@ -18,12 +15,10 @@ import com.github.mkolisnyk.cucumber.reporting.types.beans.DetailedReportingData
 import com.github.mkolisnyk.cucumber.reporting.types.enums.CucumberReportLink;
 import com.github.mkolisnyk.cucumber.reporting.types.enums.CucumberReportTypes;
 import com.github.mkolisnyk.cucumber.reporting.types.knownerrors.KnownErrorsModel;
-import com.github.mkolisnyk.cucumber.reporting.types.result.CucumberBeforeAfterResult;
 import com.github.mkolisnyk.cucumber.reporting.types.result.CucumberEmbedding;
 import com.github.mkolisnyk.cucumber.reporting.types.result.CucumberFeatureResult;
 import com.github.mkolisnyk.cucumber.reporting.types.result.CucumberScenarioResult;
 import com.github.mkolisnyk.cucumber.reporting.types.result.CucumberStepResult;
-import com.github.mkolisnyk.cucumber.reporting.utils.helpers.StringConversionUtils;
 import com.github.mkolisnyk.cucumber.runner.runtime.ExtendedRuntimeOptions;
 
 /**

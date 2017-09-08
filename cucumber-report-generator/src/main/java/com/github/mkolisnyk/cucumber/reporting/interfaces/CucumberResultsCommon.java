@@ -27,7 +27,6 @@ import org.xhtmlrenderer.util.FSImageWriter;
 
 import com.cedarsoftware.util.io.JsonObject;
 import com.cedarsoftware.util.io.JsonReader;
-import com.github.mkolisnyk.cucumber.reporting.types.OverviewStats;
 import com.github.mkolisnyk.cucumber.reporting.types.beans.CommonDataBean;
 import com.github.mkolisnyk.cucumber.reporting.types.enums.CucumberReportError;
 import com.github.mkolisnyk.cucumber.reporting.types.enums.CucumberReportLink;
@@ -41,7 +40,6 @@ import com.github.mkolisnyk.cucumber.runner.runtime.ExtendedRuntimeOptions;
 import freemarker.ext.beans.BeansWrapper;
 import freemarker.template.Configuration;
 import freemarker.template.Template;
-import freemarker.template.TemplateHashModel;
 
 public abstract class CucumberResultsCommon {
     public static final int CHART_WIDTH = 450;
@@ -138,8 +136,8 @@ public abstract class CucumberResultsCommon {
     public String getTemplatesLocation() {
         return templatesLocation;
     }
-    public void setTemplatesLocation(String templatesLocation) {
-        this.templatesLocation = templatesLocation;
+    public void setTemplatesLocation(String templatesLocationValue) {
+        this.templatesLocation = templatesLocationValue;
     }
     @SuppressWarnings("unchecked")
     public CucumberFeatureResult[] readFileContent(String sourceFileValue) throws Exception {
@@ -228,11 +226,7 @@ public abstract class CucumberResultsCommon {
             bean.setTitle(this.getReportType().toString());
         }
         BeansWrapper wrapper = new BeansWrapper(Configuration.VERSION_2_3_23);
-        TemplateHashModel staticModels = wrapper.getStaticModels();
-        TemplateHashModel mathStatics =
-            (TemplateHashModel) staticModels.get("java.lang.Math");
         wrapper.wrap(bean);
-        //model.put("Math", BeansWrapper.getDefaultInstance().getStaticModels().get("java.lang.Math"));
         temp.process(bean, writer);
         writer.close();
     }

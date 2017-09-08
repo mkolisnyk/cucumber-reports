@@ -12,26 +12,26 @@ public class OverviewDataBean extends CommonDataBean {
         public String getFeatureName() {
             return featureName;
         }
-        public void setFeatureName(String featureName) {
-            this.featureName = featureName;
+        public void setFeatureName(String featureNameValue) {
+            this.featureName = featureNameValue;
         }
         public OverviewStats getStats() {
             return stats;
         }
-        public void setStats(OverviewStats stats) {
-            this.stats = stats;
+        public void setStats(OverviewStats statsValue) {
+            this.stats = statsValue;
         }
        public String getDuration() {
             return duration;
         }
-        public void setDuration(String duration) {
-            this.duration = duration;
+        public void setDuration(String durationValue) {
+            this.duration = durationValue;
         }
         public String getStatus() {
             return status;
         }
-        public void setStatus(String status) {
-            this.status = status;
+        public void setStatus(String statusValue) {
+            this.status = statusValue;
         }
     }
     public class ScenarioStatusRow extends FeatureStatusRow {
@@ -42,14 +42,14 @@ public class OverviewDataBean extends CommonDataBean {
             return scenarioName;
         }
 
-        public void setScenarioName(String scenarioName) {
-            this.scenarioName = scenarioName;
+        public void setScenarioName(String scenarioNameValue) {
+            this.scenarioName = scenarioNameValue;
         }
         public int getRetries() {
             return retries;
         }
-        public void setRetries(int retries) {
-            this.retries = retries;
+        public void setRetries(int retriesValue) {
+            this.retries = retriesValue;
         }
     }
     private FeatureStatusRow[] features;
@@ -58,19 +58,19 @@ public class OverviewDataBean extends CommonDataBean {
     public FeatureStatusRow[] getFeatures() {
         return features;
     }
-    public void setFeatures(FeatureStatusRow[] features) {
-        this.features = features;
+    public void setFeatures(FeatureStatusRow[] featuresValue) {
+        this.features = featuresValue;
     }
     public ScenarioStatusRow[] getScenarios() {
         return scenarios;
     }
-    public void setScenarios(ScenarioStatusRow[] scenarios) {
-        this.scenarios = scenarios;
+    public void setScenarios(ScenarioStatusRow[] scenariosValue) {
+        this.scenarios = scenariosValue;
     }
     public OverviewStats getOverallStats() {
         return overallStats;
     }
-    public void setOverallStats(OverviewStats overallStats) {
-        this.overallStats = overallStats;
+    public void setOverallStats(OverviewStats overallStatsValue) {
+        this.overallStats = overallStatsValue;
     }
 }

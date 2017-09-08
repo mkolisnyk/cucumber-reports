@@ -68,6 +68,6 @@ public @interface ExtendedCucumberOptions {
     String benchmarkReportConfig() default "";
 
     String customTemplatesPath() default "";
-    
+
     String[] formats() default {};
 }

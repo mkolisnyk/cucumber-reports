@@ -10,19 +10,19 @@ public class FeatureOverviewDataBean extends CommonDataBean {
     public String getOverallRate() {
         return overallRate;
     }
-    public void setOverallRate(String overallRate) {
-        this.overallRate = overallRate;
+    public void setOverallRate(String overallRateValue) {
+        this.overallRate = overallRateValue;
     }
     public Map<String, String> getFeatureRate() {
         return featureRate;
     }
-    public void setFeatureRate(Map<String, String> featureRate) {
-        this.featureRate = featureRate;
+    public void setFeatureRate(Map<String, String> featureRateValue) {
+        this.featureRate = featureRateValue;
     }
     public int getPassRate() {
         return passRate;
     }
-    public void setPassRate(int passRate) {
-        this.passRate = passRate;
+    public void setPassRate(int passRateValue) {
+        this.passRate = passRateValue;
     }
 }

@@ -4,7 +4,6 @@ import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.LinkedHashMap;
-import java.util.Locale;
 import java.util.Map;
 
 import org.apache.commons.io.IOUtils;
@@ -13,7 +12,6 @@ import com.github.mkolisnyk.cucumber.reporting.types.beans.FeatureOverviewDataBe
 import com.github.mkolisnyk.cucumber.reporting.types.enums.CucumberReportLink;
 import com.github.mkolisnyk.cucumber.reporting.types.enums.CucumberReportTypes;
 import com.github.mkolisnyk.cucumber.reporting.types.result.CucumberFeatureResult;
-import com.github.mkolisnyk.cucumber.reporting.utils.helpers.StringConversionUtils;
 import com.github.mkolisnyk.cucumber.runner.runtime.ExtendedRuntimeOptions;
 
 public class CucumberFeatureOverview extends CucumberResultsOverview {
@@ -76,6 +74,7 @@ public class CucumberFeatureOverview extends CucumberResultsOverview {
 
     @Override
     public void execute(boolean aggregate, String[] formats) throws Exception {
+        final int maxRate = 100;
         validateParameters();
         CucumberFeatureResult[] features = readFileContent(aggregate);
         File outFile = new File(
@@ -89,7 +88,7 @@ public class CucumberFeatureOverview extends CucumberResultsOverview {
         }
         data.setFeatureRate(featureData);
         double rate = getOverallRate(features);
-        data.setPassRate((int) (rate * 100));
+        data.setPassRate((int) (rate * maxRate));
         data.setOverallRate(getStatusLetter(rate));
         generateReportFromTemplate(outFile, "feature_overview", data);
         this.export(outFile, "feature-overview-chart", formats, this.isImageExportable());

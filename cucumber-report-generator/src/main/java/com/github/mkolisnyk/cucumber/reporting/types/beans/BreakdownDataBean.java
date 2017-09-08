@@ -9,13 +9,13 @@ public class BreakdownDataBean extends CommonDataBean {
     public BreakdownStats[][] getStats() {
         return stats;
     }
-    public void setStats(BreakdownStats[][] stats) {
-        this.stats = stats;
+    public void setStats(BreakdownStats[][] statsValue) {
+        this.stats = statsValue;
     }
     public BreakdownTable getTable() {
         return table;
     }
-    public void setTable(BreakdownTable table) {
-        this.table = table;
+    public void setTable(BreakdownTable tableValue) {
+        this.table = tableValue;
     }
 }

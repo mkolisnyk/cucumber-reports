@@ -15,7 +15,7 @@ public class SystemInfoDataBean extends CommonDataBean {
     public Map<String, String> getEnvironmentVariables() {
         return environmentVariables;
     }
-    public void setEnvironmentVariables(Map<String, String> environmentVariables) {
-        this.environmentVariables = environmentVariables;
+    public void setEnvironmentVariables(Map<String, String> environmentVariablesValue) {
+        this.environmentVariables = environmentVariablesValue;
     }
 }

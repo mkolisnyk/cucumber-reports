@@ -9,13 +9,13 @@ public class FeatureMapDataBean extends CommonDataBean {
     public BreakdownTable getTable() {
         return table;
     }
-    public void setTable(BreakdownTable table) {
-        this.table = table;
+    public void setTable(BreakdownTable tableValue) {
+        this.table = tableValue;
     }
     public CucumberScenarioResult[][][] getScenarios() {
         return scenarios;
     }
-    public void setScenarios(CucumberScenarioResult[][][] scenarios) {
-        this.scenarios = scenarios;
+    public void setScenarios(CucumberScenarioResult[][][] scenariosValue) {
+        this.scenarios = scenariosValue;
     }
 }

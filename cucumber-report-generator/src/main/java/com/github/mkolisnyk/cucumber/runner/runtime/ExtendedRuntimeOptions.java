@@ -431,8 +431,8 @@ public class ExtendedRuntimeOptions {
     public String getCustomTemplatesPath() {
         return customTemplatesPath;
     }
-    public void setCustomTemplatesPath(String customTemplatesPath) {
-        this.customTemplatesPath = customTemplatesPath;
+    public void setCustomTemplatesPath(String customTemplatesPathValue) {
+        this.customTemplatesPath = customTemplatesPathValue;
     }
     public String[] getFormats() {
         return formats;

@@ -1,6 +1,7 @@
 package com.github.mkolisnyk.cucumber.reporting.utils.helpers;
 
 import java.io.File;
+import java.io.FileFilter;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.HashMap;
@@ -13,7 +14,6 @@ import org.apache.commons.lang3.ArrayUtils;
 import org.apache.commons.lang3.StringUtils;
 
 import com.cedarsoftware.util.io.JsonReader;
-import com.cedarsoftware.util.io.JsonWriter;
 
 import freemarker.cache.MultiTemplateLoader;
 import freemarker.cache.StringTemplateLoader;
@@ -24,6 +24,7 @@ import freemarker.template.TemplateExceptionHandler;
 import freemarker.template.TemplateHashModel;
 
 public final class FreemarkerConfiguration {
+    private static final String TEMPLATE_EXTENSION = ".ftlh";
     private static Configuration config;
     private FreemarkerConfiguration() {
     }
@@ -84,9 +85,35 @@ public final class FreemarkerConfiguration {
         }
         return resultMap;
     }
-    private static Map<String, String> loadTemplatesFromFolder(File configFile) {
+    private static File[] getTemplateFilesFromDirectory(File folder) {
+        File[] subFiles = new File[] {};
+        File[] resultFiles = new File[] {};
+        File[] files = folder.listFiles(new FileFilter() {
+
+            @Override
+            public boolean accept(File pathname) {
+                return pathname.isDirectory() || pathname.getName().endsWith(TEMPLATE_EXTENSION);
+            }
+        });
+        for (File file : files) {
+            if (file.isDirectory()) {
+                subFiles = ArrayUtils.addAll(subFiles, getTemplateFilesFromDirectory(file));
+            } else {
+                resultFiles = ArrayUtils.add(resultFiles, file);
+            }
+        }
+        return (File[]) ArrayUtils.addAll(resultFiles, subFiles);
+    }
+    private static Map<String, String> loadTemplatesFromFolder(File configFolder) {
         Map<String, String> resultMap = new HashMap<String, String>();
         resultMap.putAll(DEFAULT_RESOURCES);
+        File[] files = getTemplateFilesFromDirectory(configFolder);
+        for (File file : files) {
+            String baseFolder = configFolder.getAbsolutePath();
+            String fileEntry = file.getAbsolutePath().substring(
+                    baseFolder.length(), file.getAbsolutePath().length() - TEMPLATE_EXTENSION.length());
+            resultMap.put(fileEntry, file.getAbsolutePath());
+        }
         return resultMap;
     }
     public static Map<String, String> getResourceMap(String location) throws Exception {

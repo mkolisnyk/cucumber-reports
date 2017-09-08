@@ -1,11 +1,8 @@
 package com.github.mkolisnyk.cucumber.reporting;
 
 import java.io.File;
-import java.io.InputStream;
 import java.util.Locale;
 
-import org.apache.commons.io.FileUtils;
-import org.apache.commons.io.IOUtils;
 import org.apache.commons.lang3.ArrayUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.junit.Assert;
@@ -30,7 +27,6 @@ public class CucumberBreakdownReport extends ConfigurableReport<BreakdownReportM
     public CucumberBreakdownReport(ExtendedRuntimeOptions extendedOptions) {
         super(extendedOptions);
     }
-    private static final int TIMEOUT_MULTIPLIER = 3;
 
     @Override
     public int[][] getStatuses(CucumberFeatureResult[] results) {

@@ -57,6 +57,37 @@ If we point **customTemplatesPath** to some folder, it should contain files with
 
 # Naming conventions for each specific report
 
+Each report generation template is associated to some resource name. Mainly, resource names are taken from file names templates are loaded from. At the same time the library itself generates basic reports from templates associated with some specific resources. The following table shows association between reserved resource name and actual report:
+
+| Resource Name | Report type |
+| ------------- | ----------- |
+| benchmark | [Benchmark Report](/cucumber-reports/benchmark) |
+| breakdown | [Breakdown Report](/cucumber-reports/breakdown-report) |
+| consolidated | [Consolidated Report](/cucumber-reports/consolidated-report) |
+| coverage | [Coverage Report](/cucumber-reports/coverage-report) |
+| detailed | [Detailed Results Report](/cucumber-reports/detailed-report) |
+| feature_map | [Feature Map Report](/cucumber-reports/feature-map-report) |
+| feature_overview | [Overview Chart Report](/cucumber-reports/overview-chart-report) |
+| known_errors | [Known Errors Report](/cucumber-reports/known-errors-report) |
+| overview | [Results Overview Report](/cucumber-reports/overview-report) |
+| overview_chart | [Charts Report](/cucumber-reports/chart-report) |
+| retrospective | [Retrospective Report](/cucumber-reports/retrospective-results-report) |
+| system_info | [System Info Report](/cucumber-reports/system-info) |
+| usage | [Steps Usage Report](/cucumber-reports/usage-report) |
+
 # Rules how to override existing names and adding new entries for templates
 
-# Sample use
+## To customize basic report override existing resource names
+
+As it was mentioned before, there are reserved resource names which are used for report generation. If you define custom report and associate it with existing resource name, it will be overridden.
+
+## Any custom resource name can be used as inclusion
+
+The [Freemarker templates](http://freemarker.org/docs/dgui_template.html) support [templates inclusions](http://freemarker.org/docs/ref_directive_include.html). This is useful when we would like to involve some re-usable components (e.g. some common macro/functions for drawing charts or tables). As soon as we define resource with custom name we always can include it in the Freemarker template. Just like this:
+
+```html
+<#include "custom_template">
+<!-- Here we can use some instructions from included template -->
+```
+
+This way we may create multiple templates sharing some common re-usable functionality.

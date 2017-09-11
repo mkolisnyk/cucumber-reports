@@ -121,6 +121,9 @@ public class SampleCucumberTest extends ExtendedTestNGRunner {
 | **retryCount**               | **int**      | Defines the number of [failed tests re-run](/cucumber-reports/failed-tests-rerun) | 0 |
 | **threadsCount**             | **int**      | Defines the number of threads to [run in parallel](/cucumber-reports/parallel-runner) | 1 |
 | **threadsCountValue**        | **String**   | Defines the system property name containing the number of threads to [run in parallel](/cucumber-reports/parallel-runner) | "" |
+| benchmarkReport | **boolean** | Flag which enables/disables generation of the [Benchmark Report](/cucumber-reports/benchmark) | false |
+| benchmarkReportConfig | **String** | The configuration which defines the way the [Benchmark Report](/cucumber-reports/benchmark) is to be generated | "" |
+| customTemplatesPath | **String** | Defines the path for [Custom report templates](/cucumber-reports/customizing-report-format) | "" | 
 
 # Parameterizing Values
 

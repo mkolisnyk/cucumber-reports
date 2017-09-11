@@ -91,3 +91,156 @@ The [Freemarker templates](http://freemarker.org/docs/dgui_template.html) suppor
 ```
 
 This way we may create multiple templates sharing some common re-usable functionality.
+
+## If some resource names are not overridden the default templates will be picked up for this name
+
+In most of the cases we just need to override several templates only for reports we mainly use. At the same time, all supported report types have default template. So, if we don't override some specific resource name there is always some default resource associated with some specific report.
+
+# Sample use
+
+For the sample purposes let's override [Results Overview Report](/cucumber-reports/overview-report) to display just summary table like this:
+
+![Overview Table](/cucumber-reports/images/overview-report/summary.png)
+
+To do so, let's follow the next steps:
+
+## Create some folder with template files
+
+Let's create our custom folder where we put our custom template files. Let's name it **templates**.
+
+## Create template for the report to override
+
+For overview report we need to add the template which will be associated with the **overview** resource name. The most universal way is to create **templates/overview.ftlh** file. Here we populate it with the following sample content:
+
+```html
+<#assign Math=statics['java.lang.Math'] >
+<html>
+<head>
+	<title>${title}</title>
+	<style type="text/css">
+.passed {background-color:lightgreen;font-weight:bold;color:darkgreen}
+.skipped {background-color:silver;font-weight:bold;color:darkgray}
+.failed {background-color:tomato;font-weight:bold;color:darkred}
+.undefined {background-color:gold;font-weight:bold;color:goldenrod}
+.known {background-color:goldenrod;font-weight:bold;color:darkred}
+	</style>
+</head>
+<body>
+<table>
+	<tr><th></th><th>Passed</th><th>Failed</th><th>Known</th><th>Undefined</th><th>Total</th><th>%Passed</th></tr>
+	<tr><th>Features</th>
+		<td class="passed" id="features_passed">${overallStats.getFeaturesPassed()}</td>
+		<td class="failed" id="features_failed">${overallStats.getFeaturesFailed()}</td>
+		<td class="known" id="features_known">${overallStats.getFeaturesKnown()}</td>
+		<td class="undefined" id="features_undefined">${overallStats.getFeaturesUndefined()}</td>
+		<td id="features_total">${overallStats.getFeaturesTotal()}</td>
+		<td id="features_rate">
+			<#if stats.getFeaturesTotal() == 0>
+			NaN
+			<#else>
+				#{100 * (stats.getFeaturesPassed() + stats.getFeaturesKnown()) / stats.getFeaturesTotal() ;M0}%
+			</#if>
+		</td>
+	</tr>
+	<tr><th>Scenarios</th>
+		<td class="passed" id="scenarios_passed">${overallStats.getScenariosPassed()}</td>
+		<td class="failed" id="scenarios_failed">${overallStats.getScenariosFailed()}</td>
+		<td class="known" id="scenarios_known">${overallStats.getScenariosKnown()}</td>
+		<td class="undefined" id="scenarios_undefined">${overallStats.getScenariosUndefined()}</td>
+		<td id="scenarios_total">${overallStats.getScenariosTotal()}</td>
+		<td id="scenarios_rate">
+			<#if stats.getScenariosTotal() == 0>
+			NaN
+			<#else>
+				#{100 * (stats.getScenariosPassed() + stats.getScenariosKnown()) / stats.getScenariosTotal() ;M0}%
+			</#if>
+		</td>
+	</tr>
+	<tr><th>Steps</th>
+		<td class="passed" id="steps_passed">${overallStats.getStepsPassed()}</td>
+		<td class="failed" id="steps_failed">${overallStats.getStepsFailed()}</td>
+		<td class="known" id="steps_known">${overallStats.getStepsKnown()}</td>
+		<td class="undefined" id="steps_undefined">${overallStats.getStepsUndefined()}</td>
+		<td id="steps_total">${overallStats.getStepsTotal()}</td>
+		<td id="steps_rate">
+			<#if stats.getStepsTotal() == 0>
+			NaN
+			<#else>
+				#{100 * (overallStats.getStepsPassed() + overallStats.getStepsKnown()) / overallStats.getStepsTotal() ;M0}%
+			</#if>
+		</td>
+	</tr>
+</table>
+<div><b>Overall Duration: ${(overallStats.overallDuration/3600)?string["0"]}h ${((overallStats.overallDuration % 3600) / 60)?string["00"]}m ${((overallStats.overallDuration % 3600) % 60)?string["00"]}s</b></div>
+
+</body>
+</html>
+```
+
+## Point Extended Cucumber Runner to custom template
+
+Once we have the template and the folder we already can play with loading templates from folder.
+
+This is the code we can use for this:
+
+{% highlight java linenos=table %}
+package com.github.mkolisnyk.cucumber.reporting;
+
+import org.junit.runner.RunWith;
+
+import com.github.mkolisnyk.cucumber.runner.ExtendedCucumber;
+import com.github.mkolisnyk.cucumber.runner.ExtendedCucumberOptions;
+
+import cucumber.api.CucumberOptions;
+
+@RunWith(ExtendedCucumber.class)
+@ExtendedCucumberOptions(jsonReport = "target/cucumber.json",
+        overviewReport = true,
+        customTemplatesPath = "templates", // Point to local folder with custom templates
+        outputFolder = "target")
+@CucumberOptions(plugin = { "html:target/cucumber-html-report",
+        "json:target/cucumber.json", "pretty:target/cucumber-pretty.txt",
+        "usage:target/cucumber-usage.json", "junit:target/cucumber-results.xml" },
+        features = { "./src/test/java/com/github/mkolisnyk/cucumber/features" },
+        glue = { "com/github/mkolisnyk/cucumber/steps" })
+public class SampleCucumberTest {
+}
+{% endhighlight %}
+
+Since we named our template as **overview** and placed it in the templates root directory the **overview** resource name will be overridden and results overview will be generated using our custom template.
+
+## Point Extended Cucumber Runner to custom template via configuration file
+
+If we want to use configuration file (typically in case we associate specific resource with customized name), we need to create the configuration file. Let's create **templates.json** file with the following content.
+
+```json
+{
+  "overview": "templates/overview.ftlh" 
+}
+```
+
+In this case we can point out test runner to our custom templates configuration file like this:
+
+{% highlight java linenos=table %}
+package com.github.mkolisnyk.cucumber.reporting;
+
+import org.junit.runner.RunWith;
+
+import com.github.mkolisnyk.cucumber.runner.ExtendedCucumber;
+import com.github.mkolisnyk.cucumber.runner.ExtendedCucumberOptions;
+
+import cucumber.api.CucumberOptions;
+
+@RunWith(ExtendedCucumber.class)
+@ExtendedCucumberOptions(jsonReport = "target/cucumber.json",
+        overviewReport = true,
+        customTemplatesPath = "templates.json", // Point to local configuration file with custom templates
+        outputFolder = "target")
+@CucumberOptions(plugin = { "html:target/cucumber-html-report",
+        "json:target/cucumber.json", "pretty:target/cucumber-pretty.txt",
+        "usage:target/cucumber-usage.json", "junit:target/cucumber-results.xml" },
+        features = { "./src/test/java/com/github/mkolisnyk/cucumber/features" },
+        glue = { "com/github/mkolisnyk/cucumber/steps" })
+public class SampleCucumberTest {
+}
+{% endhighlight %}

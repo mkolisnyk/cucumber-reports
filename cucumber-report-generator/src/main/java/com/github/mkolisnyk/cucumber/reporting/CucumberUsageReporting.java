@@ -27,10 +27,19 @@ import com.github.mkolisnyk.cucumber.reporting.types.enums.CucumberReportTypes;
 import com.github.mkolisnyk.cucumber.reporting.types.usage.CucumberStep;
 import com.github.mkolisnyk.cucumber.reporting.types.usage.CucumberStepSource;
 import com.github.mkolisnyk.cucumber.reporting.utils.helpers.MapUtils;
+import com.github.mkolisnyk.cucumber.runner.runtime.ExtendedRuntimeOptions;
 
 public class CucumberUsageReporting extends SimpleReport {
 
     private String[]       jsonUsageFiles;
+
+    public CucumberUsageReporting() {
+        super();
+    }
+    public CucumberUsageReporting(ExtendedRuntimeOptions extendedOptions) {
+        super(extendedOptions);
+        setJsonUsageFiles(extendedOptions.getJsonUsageReportPaths());
+    }
 
     public String getDescription(Locale arg0) {
         return "HTML formatted Cucumber keywords usage report";

@@ -24,9 +24,9 @@ public final class ReportRunner {
         if (!extendedOptions.isUsageReport()) {
             return;
         }
-        CucumberUsageReporting report = new CucumberUsageReporting();
-        report.setOutputDirectory(extendedOptions.getOutputFolder());
-        report.setJsonUsageFiles(extendedOptions.getJsonUsageReportPaths());
+        CucumberUsageReporting report = new CucumberUsageReporting(extendedOptions);
+        //report.setOutputDirectory(extendedOptions.getOutputFolder());
+        //report.setJsonUsageFiles(extendedOptions.getJsonUsageReportPaths());
         try {
             report.execute(extendedOptions.getFormats());
         } catch (Throwable e) {

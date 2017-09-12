@@ -5,6 +5,7 @@ import java.io.FileFilter;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.HashMap;
+import java.util.Locale;
 import java.util.Map;
 import java.util.Map.Entry;
 
@@ -68,6 +69,7 @@ public final class FreemarkerConfiguration {
         config.setLogTemplateExceptions(false);
         config.setAPIBuiltinEnabled(true);
         config.setURLEscapingCharset("UTF-8");
+        config.setLocale(Locale.US);
 
         TemplateHashModel staticModels = BeansWrapper.getDefaultInstance().getStaticModels();
         config.setSharedVariable("statics", staticModels);

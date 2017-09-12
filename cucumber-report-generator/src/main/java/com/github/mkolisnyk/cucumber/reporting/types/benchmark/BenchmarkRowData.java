@@ -6,6 +6,11 @@ import com.github.mkolisnyk.cucumber.reporting.types.OverviewStats;
 import com.github.mkolisnyk.cucumber.reporting.types.result.CucumberFeatureResult;
 import com.github.mkolisnyk.cucumber.reporting.types.result.CucumberScenarioResult;
 
+/**
+ * A part of input data for the <a href="http://mkolisnyk.github.io/cucumber-reports/benchmark">Benchmark Report</a>.
+ * It contains benchmarked data for single feature/scenario.
+ * @author mykolak
+ */
 public class BenchmarkRowData {
     private String name;
     private OverviewStats[] results;
@@ -17,9 +22,19 @@ public class BenchmarkRowData {
         this.name = nameValue;
         this.results = resultsValue;
     }
+    /**
+     * Gets the feature or scenario name in the benchmark report table.
+     * @return the name of the feature/scenario
+     */
     public String getName() {
         return name;
     }
+    /**
+     * Gets the array of {@link OverviewStats} objects containing statistical information
+     * about each run in benchmark. The size of list should correspond to the number of
+     * runs in a benchmark.
+     * @return the array with run statistics for every run from benchmark.
+     */
     public OverviewStats[] getResults() {
         return results;
     }

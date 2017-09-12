@@ -1,3 +1,4 @@
+<#escape x as x?html?replace("\n","</br><br>")>
 <html>
 <head><style type="text/css">h1 {background-color:#9999CC}
 h2 {background-color:#BBBBCC}
@@ -77,13 +78,12 @@ div.content {page-break-after: always;}
 
 <table width="700px">
 <#list results as result>
-	<#assign featureDescriptionHeading="">
-	<#if result.getDescription()?has_content>
-		<#assign featureDescriptionHeading="<tr class=\"${result.getStatus()}_description\">"
-                        + "<td colspan=\"4\"><br>${result.getDescription()}</br></td></tr>">
-	</#if>
 	<tr class="${result.getStatus()}"><td colspan="4"><b>Feature:</b> <a id="feature-${result.getId()}">${result.getName()}</a></td></tr>
-    ${featureDescriptionHeading}
+    <#if result.getDescription()?has_content>
+		<tr class="${result.getStatus()}_description">
+            <td colspan="4"><br>${result.getDescription()}</br></td>
+        </tr>
+	</#if>
     <tr class="${result.getStatus()}">
     	<td><small><b>Passed:</b> ${result.getPassed()}</small></td>
         <td><small><b>Failed:</b> ${result.getFailed()}</small></td>
@@ -94,17 +94,16 @@ div.content {page-break-after: always;}
 		<td colspan="4" style="padding-left:20px">
 		<table width="100%">
 			<#list result.getElements() as scenario>
-				<#assign descriptionHeading = "">
-				<#if scenario.getDescription()?has_content>
-					<#assign descriptionHeading="<tr class=\"${scenario.getStatus()}_description\">"
-			                        + "<td colspan=\"4\"><br>${scenario.getDescription()}</br></td></tr>">
-				</#if>
 				<tr class="${scenario.getStatus()}">
 					<td colspan="4">
 						<b>${scenario.getKeyword()}:</b> <a id="sc-${scenario.getId()}">${scenario.getName()}</a>
 					</td>
 				</tr>
-                    ${descriptionHeading}
+                <#if scenario.getDescription()?has_content>
+					<tr class="${scenario.getStatus()}_description">
+			            <td colspan="4"><br>${scenario.getDescription()}</br></td>
+		            </tr>
+				</#if>
                 <tr class="${scenario.getStatus()}">
                 	<td><small><b>Passed:</b> ${scenario.getPassed()}</small></td>
                 	<td><small><b>Failed:</b> ${scenario.getFailed()}</small></td>
@@ -151,7 +150,7 @@ div.content {page-break-after: always;}
     							<#if step.getDocString()?has_content>
     								<tr class="${step.getResult().getStatus()}_description">
     									<td style="padding-left:20px" colspan="2">
-    										<br>${step.getDocString()?replace("\n","</br><br>")}</br>
+    										<br>${step.getDocString()}</br>
     									</td>
     								</tr>
     							</#if>
@@ -178,17 +177,17 @@ ${line}
 				</tr>
 				
 				<#if scenario.getAfter()?has_content>
-					<#assign error="">
-					<#if scenario.getAfter().getResult().getErrorMessage()?has_content>
-						<#assign error="<br>" + scenario.getAfter().getResult().getErrorMessage()?replace("\n", "</br><br>", "r") + "</br>">
-					</#if>
 					<tr class="${scenario.getAfter().getResult().getStatus()}">
 						<td>After</td>
 						<td colspan="2"></td>
 						<td width="100">${scenario.getAfter().getResult().getStatus()}</td>
 					</tr>
                 	<tr class="${scenario.getAfter().getResult().getDurationTimeString("HH:mm:ss:S")}">
-                		<td colspan="4">${error}</td>
+                		<td colspan="4">
+	                	<#if scenario.getAfter().getResult().getErrorMessage()?has_content>
+							<br>${scenario.getAfter().getResult().getErrorMessage()}</br>
+						</#if>
+						</td>
                 	</tr>
         		</#if>
                 <tr><td colspan="5"><sup><a href="#top">Back to Table of Contents</a></sup></td></tr>
@@ -200,3 +199,4 @@ ${line}
 
 	</body>
 </html>
+</#escape>

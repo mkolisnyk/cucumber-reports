@@ -1,0 +1,81 @@
+[
+  {
+    "line": 2,
+    "elements": [
+      {
+        "line": 4,
+        "name": "Sample",
+        "description": "",
+        "id": "tests-with-docstrings;sample",
+        "after": [
+          {
+            "result": {
+              "duration": 367953,
+              "status": "passed"
+            },
+            "match": {
+              "location": "TestSteps.afterHook()"
+            }
+          }
+        ],
+        "type": "scenario",
+        "keyword": "Scenario",
+        "steps": [
+          {
+            "result": {
+              "duration": 157984714,
+              "status": "passed"
+            },
+            "line": 5,
+            "name": "I use the following text:",
+            "match": {
+              "location": "TestSteps.docstringText(String)"
+            },
+            "keyword": "When ",
+            "doc_string": {
+              "content_type": "",
+              "line": 6,
+              "value": "Some multiline $ £\ndocstring text"
+            }
+          },
+          {
+            "result": {
+              "duration": 260718,
+              "status": "passed"
+            },
+            "line": 10,
+            "name": "I should see the following text:",
+            "match": {
+              "location": "TestSteps.docstringText(String)"
+            },
+            "keyword": "Then ",
+            "doc_string": {
+              "content_type": "",
+              "line": 11,
+              "value": "Another multiline\ndocstring output\n₠\t8352\t20A0\t \tEURO-CURRENCY SIGN\n₡\t8353\t20A1\t \tCOLON SIGN\n₢\t8354\t20A2\t \tCRUZEIRO SIGN\n₣\t8355\t20A3\t \tFRENCH FRANC SIGN\n₤\t8356\t20A4\t \tLIRA SIGN\n₥\t8357\t20A5\t \tMILL SIGN\n₦\t8358\t20A6\t \tNAIRA SIGN\n₧\t8359\t20A7\t \tPESETA SIGN\n₨\t8360\t20A8\t \tRUPEE SIGN\n₩\t8361\t20A9\t \tWON SIGN\n₪\t8362\t20AA\t \tNEW SHEQEL SIGN\n₫\t8363\t20AB\t \tDONG SIGN\n€\t8364\t20AC\t\u0026euro;\tEURO SIGN\n₭\t8365\t20AD\t \tKIP SIGN\n₮\t8366\t20AE\t \tTUGRIK SIGN\n₯\t8367\t20AF\t \tDRACHMA SIGN\n₰\t8368\t20B0\t \tGERMAN PENNY SYMBOL\n₱\t8369\t20B1\t \tPESO SIGN\n₲\t8370\t20B2\t \tGUARANI SIGN\n₳\t8371\t20B3\t \tAUSTRAL SIGN\n₴\t8372\t20B4\t \tHRYVNIA SIGN\n₵\t8373\t20B5\t \tCEDI SIGN\n₶\t8374\t20B6\t \tLIVRE TOURNOIS SIGN\n₷\t8375\t20B7\t \tSPESMILO SIGN\n₸\t8376\t20B8\t \tTENGE SIGN\n₹\t8377\t20B9\t \tINDIAN RUPEE SIGN"
+            }
+          }
+        ]
+      }
+    ],
+    "name": "Tests with docstrings",
+    "description": "",
+    "id": "tests-with-docstrings",
+    "keyword": "Feature",
+    "uri": "Docstring.feature",
+    "tags": [
+      {
+        "line": 1,
+        "name": "@docstring"
+      },
+      {
+        "line": 1,
+        "name": "@passed"
+      },
+      {
+        "line": 1,
+        "name": "@consistent"
+      }
+    ]
+  }
+]

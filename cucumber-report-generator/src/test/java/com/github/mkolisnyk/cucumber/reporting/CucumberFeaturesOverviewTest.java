@@ -27,4 +27,12 @@ public class CucumberFeaturesOverviewTest {
         results.setSourceFile("./src/test/resources/cucumber-dry.json");
         results.execute();
     }
+    @Test
+    public void testGenerateReportFontFix() throws Exception {
+        CucumberFeatureOverview results = new CucumberFeatureOverview();
+        results.setOutputDirectory("target/feature-overview");
+        results.setOutputName("cucumber-results-2");
+        results.setSourceFile("./src/test/resources/feature-overview/cucumber.json");
+        results.execute(true, new String[] {"pdf"});
+    }
 }

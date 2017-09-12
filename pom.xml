@@ -177,6 +177,7 @@
 					</docletArtifact>
 					<additionalparam>-views -all</additionalparam>
 					<useStandardDocletOptions>true</useStandardDocletOptions>
+					<show>private</show>
 				</configuration>
 			</plugin>
 			<plugin>

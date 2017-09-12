@@ -32,6 +32,29 @@ public class CucumberResultsReportTest {
             System.out.println(text);
         }*/
     }
+    @Test
+    public void testGenerateReportLocalized() throws Exception {
+        Locale.setDefault(Locale.FRENCH);
+        CucumberResultsOverview results = new CucumberResultsOverview();
+        results.setOutputDirectory("target");
+        results.setOutputName("cucumber-results-fr");
+        results.setSourceFile("./src/test/resources/cucumber.json");
+        results.execute();
+        File outFile = new File(
+                results.getOutputDirectory() + File.separator + results.getOutputName()
+                + "-" + "feature-overview" + ".html");
+
+        results.export(outFile, "feature-overview", new String[] {"pdf", "png", "jpg"}, true);
+        /*File dump = new File("./target/cucumber-results-feature-overview-dump.xml");
+        int[][] result = JAXB.unmarshal(dump, int[][].class);
+        for (int[] row : result) {
+            String text = "";
+            for (int item : row) {
+                text = text.concat("" + item + ";");
+            }
+            System.out.println(text);
+        }*/
+    }
 
     @Test
     public void testGenerateOverview100Report() throws Exception {
@@ -152,12 +175,22 @@ public class CucumberResultsReportTest {
     }
     @Test
     public void testLocalizedDetailedReportIssue41() throws Exception {
+        // TODO: No features shown in feature overview
         CucumberDetailedResults results = new CucumberDetailedResults();
         results.setOutputDirectory("target/");
         results.setOutputName("localized-results");
         results.setSourceFile("./src/test/resources/detailed-source/localized-1.json");
         results.execute(true, new String[] {});
         results.execute(false, new String[] {});
+    }
+    @Test
+    public void testDetailedReportDocstring() throws Exception {
+        CucumberDetailedResults results = new CucumberDetailedResults();
+        results.setOutputDirectory("target/");
+        results.setOutputName("docstring-results");
+        results.setSourceFile("./src/test/resources/detailed-source/cucumber-docstring.json");
+        results.execute(true, new String[] {"pdf"});
+        //results.execute(false, new String[] {});
     }
     @Test
     public void testLocalizedDetailedReportIssue44() throws Exception {

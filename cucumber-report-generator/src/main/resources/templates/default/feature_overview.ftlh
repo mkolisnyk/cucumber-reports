@@ -85,7 +85,7 @@ div.content {page-break-after: always;}
 	<tr><td><b>&#160;&#160;&#160;&#160;Overall Rate</b></td><td><center>${passRate}%</center></td></tr>
 	<tr><td colspan="2"><center>Features</center></td></tr>
 <#list featureRate?keys as key>
-	<tr><td><b>&#160;&#160;&#160;&#160;${key}</b></td><td><center><font size="3">${"ABCDEF"?replace(featureRate[key],"<font size=\"5\">" + featureRate[key] + "</font>")}</center></td></tr>
+	<tr><td><b>&#160;&#160;&#160;&#160;${key}</b></td><td><center><font size="3">${"ABCDEF"?replace(featureRate[key],"<font size=\"5\">" + featureRate[key] + "</font>")}</font></center></td></tr>
 </#list>
 	</table>
 	</body>

@@ -55,8 +55,13 @@ public final class FreemarkerConfiguration {
 
         TemplateLoader[] loaders = new TemplateLoader[] {};
         for (Entry<String, String> resource : resourceMap.entrySet()) {
+            String templateString = "";
             InputStream is = FreemarkerConfiguration.class.getResourceAsStream(resource.getValue());
-            String templateString = IOUtils.toString(is);
+            if (is != null) {
+                templateString = IOUtils.toString(is);
+            } else {
+                templateString = FileUtils.readFileToString(new File(resource.getValue()), "UTF-8");
+            }
             StringTemplateLoader stringLoader = new StringTemplateLoader();
             stringLoader.putTemplate(resource.getKey(), templateString);
             loaders = ArrayUtils.add(loaders, stringLoader);
@@ -113,7 +118,7 @@ public final class FreemarkerConfiguration {
         for (File file : files) {
             String baseFolder = configFolder.getAbsolutePath();
             String fileEntry = file.getAbsolutePath().substring(
-                    baseFolder.length(), file.getAbsolutePath().length() - TEMPLATE_EXTENSION.length());
+                    baseFolder.length() + 1, file.getAbsolutePath().length() - TEMPLATE_EXTENSION.length());
             resultMap.put(fileEntry, file.getAbsolutePath());
         }
         return resultMap;
@@ -141,5 +146,8 @@ public final class FreemarkerConfiguration {
             loadConfig(resourceMap);
         }
         return config;
+    }
+    public static void flush() {
+        config = null;
     }
 }

@@ -12,9 +12,6 @@
 		reports generation.
 	</description>
 	<packaging>jar</packaging>
-	<properties>
-		<fail.coverage>false</fail.coverage>
-	</properties>
 	<build>
 		<resources>
 			<resource>

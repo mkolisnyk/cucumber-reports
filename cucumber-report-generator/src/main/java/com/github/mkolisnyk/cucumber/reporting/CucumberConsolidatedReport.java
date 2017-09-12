@@ -1,6 +1,8 @@
 package com.github.mkolisnyk.cucumber.reporting;
 
 import java.io.File;
+import java.util.LinkedHashMap;
+import java.util.Map;
 
 import org.apache.commons.io.FileUtils;
 
@@ -41,13 +43,15 @@ public class CucumberConsolidatedReport extends ConfigurableReport<ConsolidatedR
         data.setRefreshData("");
         data.setColumns(model.getCols());
         data.setUseTableOfContents(model.isUseTableOfContents());
+        Map<String, String> contentsMap = new LinkedHashMap<String, String>();
         for (ConsolidatedItemInfo item : model.getItems()) {
             String content = FileUtils.readFileToString(new File(item.getPath()));
             content = this.amendHtmlHeaders(content);
             content = this.retrieveBody(content);
             content = StringConversionUtils.replaceHtmlEntitiesWithCodes(content);
-            data.getContents().put(item.getTitle(), content);
+            contentsMap.put(item.getTitle(), content);
         }
+        data.setContents(contentsMap);
         generateReportFromTemplate(outFile, "consolidated", data);
         this.export(outFile, model.getReportSuffix(), formats, this.isImageExportable());
     }

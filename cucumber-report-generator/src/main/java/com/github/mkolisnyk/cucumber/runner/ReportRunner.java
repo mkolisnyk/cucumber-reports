@@ -14,6 +14,7 @@ import com.github.mkolisnyk.cucumber.reporting.CucumberOverviewChartsReport;
 import com.github.mkolisnyk.cucumber.reporting.CucumberResultsOverview;
 import com.github.mkolisnyk.cucumber.reporting.CucumberSystemInfo;
 import com.github.mkolisnyk.cucumber.reporting.CucumberUsageReporting;
+import com.github.mkolisnyk.cucumber.reporting.utils.helpers.FreemarkerConfiguration;
 import com.github.mkolisnyk.cucumber.runner.runtime.ExtendedRuntimeOptions;
 
 public final class ReportRunner {
@@ -177,7 +178,7 @@ public final class ReportRunner {
         CucumberSystemInfo report = new CucumberSystemInfo(extendedOptions);
         try {
             report.execute(extendedOptions.getFormats());
-        } catch (Exception e) {
+        } catch (Throwable e) {
             e.printStackTrace();
         }
     }
@@ -189,11 +190,12 @@ public final class ReportRunner {
         try {
             report.execute(new File(extendedOptions.getBenchmarkReportConfig()),
                     extendedOptions.getFormats());
-        } catch (Exception e) {
+        } catch (Throwable e) {
             e.printStackTrace();
         }
     }
     public static void run(ExtendedRuntimeOptions extendedOption) {
+        FreemarkerConfiguration.flush();
         ReportRunner runner = new ReportRunner();
         runner.runUsageReport(extendedOption);
         runner.runOverviewReport(extendedOption);

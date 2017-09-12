@@ -48,6 +48,7 @@ div.content {page-break-after: always;}
     <div class='footer'></div>
 <#include "pie_chart">
 <#include "tables">
+<h1>THIS IS CUSTOM TEMPLATE</h1>
   <h1>Overview Chart</h1>
 	<table class="chart">
 	<tr>
@@ -63,7 +64,7 @@ div.content {page-break-after: always;}
 	     		 	overallStats.getFeaturesUndefined(),
 	     		 	overallStats.getFeaturesKnown()]
 	     	labels=["Passed", "Failed", "Undefined", "Known"]
-	     	colors=["green", "red", "silver", "gold"]
+	     	colors=["pink", "orange", "olive", "tomato"]
 	     	shadowColors=["darkgreen", "darkred", "darkgray", "goldenrod"]
 	     	pieThickness=20
 	     	shift=2 />

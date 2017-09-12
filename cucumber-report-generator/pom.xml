@@ -378,6 +378,7 @@
 					</docletArtifact>
 					<additionalparam>-views -all</additionalparam>
 					<useStandardDocletOptions>true</useStandardDocletOptions>
+					<skip>false</skip>
 				</configuration>
 			</plugin>
 			<plugin>

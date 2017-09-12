@@ -178,6 +178,10 @@
 					<additionalparam>-views -all</additionalparam>
 					<useStandardDocletOptions>true</useStandardDocletOptions>
 					<show>private</show>
+					<excludes>
+						<exclude>*/**/HelpMojo.java</exclude>
+					</excludes>
+					<skip>true</skip>
 				</configuration>
 			</plugin>
 			<plugin>

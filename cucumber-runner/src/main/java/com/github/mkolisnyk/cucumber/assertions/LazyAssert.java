@@ -665,27 +665,6 @@ public final class LazyAssert {
     }
 
     /**
-     * @deprecated Use
-     *             <code>assertEquals(double expected, double actual, double delta)</code>
-     *             instead
-     */
-    @Deprecated
-    public static void assertEquals(double expected, double actual) {
-        assertEquals(null, expected, actual);
-    }
-
-    /**
-     * @deprecated Use
-     *             <code>assertEquals(String message, double expected, double actual, double delta)</code>
-     *             instead
-     */
-    @Deprecated
-    public static void assertEquals(String message, double expected,
-            double actual) {
-        fail("Use assertEquals(expected, actual, delta) to compare floating-point numbers");
-    }
-
-    /**
      * Asserts that two doubles are equal to within a positive delta.
      * If they are not, an {@link LazyAssertionError} is thrown. If the expected
      * value is infinity then the delta value is ignored.NaNs are considered

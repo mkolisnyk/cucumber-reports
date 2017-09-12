@@ -247,6 +247,10 @@
 					</docletArtifact>
 					<additionalparam>-views -all</additionalparam>
 					<useStandardDocletOptions>true</useStandardDocletOptions>
+					<excludes>
+						<exclude>*/**/HelpMojo.java</exclude>
+					</excludes>
+					<skip>false</skip>
 				</configuration>
 			</plugin>
 			<plugin>

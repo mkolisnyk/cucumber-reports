@@ -1,0 +1,470 @@
+[
+  {
+    "line": 1,
+    "elements": [
+      {
+        "line": 3,
+        "name": "",
+        "description": "",
+        "type": "background",
+        "keyword": "Background",
+        "steps": [
+          {
+            "result": {
+              "duration": 107571979,
+              "status": "passed"
+            },
+            "line": 4,
+            "name": "I activate app with a valid code",
+            "match": {
+              "location": "BackgroundRunSteps.i_activate_app_with_a_valid_code()"
+            },
+            "keyword": "Given "
+          }
+        ]
+      },
+      {
+        "line": 6,
+        "name": "Test31",
+        "description": "",
+        "id": "test3;test31",
+        "after": [
+          {
+            "result": {
+              "duration": 176522,
+              "status": "passed"
+            },
+            "match": {
+              "location": "TestSteps.afterHook()"
+            }
+          }
+        ],
+        "type": "scenario",
+        "keyword": "Scenario",
+        "steps": [
+          {
+            "result": {
+              "duration": 392226,
+              "error_message": "java.lang.Error\n\tat com.github.mkolisnyk.cucumber.steps.BackgroundRunSteps.i_am_on_home_screen_and_in_disconnected_state(BackgroundRunSteps.java:13)\n\tat ✽.Then I am on home screen and in disconnected state(TestWithBackground.feature:7)\n",
+              "status": "failed"
+            },
+            "line": 7,
+            "name": "I am on home screen and in disconnected state",
+            "match": {
+              "location": "BackgroundRunSteps.i_am_on_home_screen_and_in_disconnected_state()"
+            },
+            "keyword": "Then "
+          }
+        ]
+      },
+      {
+        "line": 3,
+        "name": "",
+        "description": "",
+        "type": "background",
+        "keyword": "Background",
+        "steps": [
+          {
+            "result": {
+              "duration": 95248,
+              "status": "passed"
+            },
+            "line": 4,
+            "name": "I activate app with a valid code",
+            "match": {
+              "location": "BackgroundRunSteps.i_activate_app_with_a_valid_code()"
+            },
+            "keyword": "Given "
+          }
+        ]
+      },
+      {
+        "line": 6,
+        "name": "Test31",
+        "description": "",
+        "id": "test3;test31",
+        "after": [
+          {
+            "result": {
+              "duration": 57809,
+              "status": "passed"
+            },
+            "match": {
+              "location": "TestSteps.afterHook()"
+            }
+          }
+        ],
+        "type": "scenario",
+        "keyword": "Scenario",
+        "steps": [
+          {
+            "result": {
+              "duration": 172247,
+              "error_message": "java.lang.Error\n\tat com.github.mkolisnyk.cucumber.steps.BackgroundRunSteps.i_am_on_home_screen_and_in_disconnected_state(BackgroundRunSteps.java:13)\n\tat ✽.Then I am on home screen and in disconnected state(TestWithBackground.feature:7)\n",
+              "status": "failed"
+            },
+            "line": 7,
+            "name": "I am on home screen and in disconnected state",
+            "match": {
+              "location": "BackgroundRunSteps.i_am_on_home_screen_and_in_disconnected_state()"
+            },
+            "keyword": "Then "
+          }
+        ]
+      },
+      {
+        "line": 3,
+        "name": "",
+        "description": "",
+        "type": "background",
+        "keyword": "Background",
+        "steps": [
+          {
+            "result": {
+              "duration": 59521,
+              "status": "passed"
+            },
+            "line": 4,
+            "name": "I activate app with a valid code",
+            "match": {
+              "location": "BackgroundRunSteps.i_activate_app_with_a_valid_code()"
+            },
+            "keyword": "Given "
+          }
+        ]
+      },
+      {
+        "line": 9,
+        "name": "Test32",
+        "description": "",
+        "id": "test3;test32",
+        "after": [
+          {
+            "result": {
+              "duration": 61876,
+              "status": "passed"
+            },
+            "match": {
+              "location": "TestSteps.afterHook()"
+            }
+          }
+        ],
+        "type": "scenario",
+        "keyword": "Scenario",
+        "steps": [
+          {
+            "result": {
+              "duration": 129630,
+              "error_message": "java.lang.Error\n\tat com.github.mkolisnyk.cucumber.steps.BackgroundRunSteps.i_am_on_home_screen_and_in_disconnected_state(BackgroundRunSteps.java:13)\n\tat ✽.Then I am on home screen and in disconnected state(TestWithBackground.feature:10)\n",
+              "status": "failed"
+            },
+            "line": 10,
+            "name": "I am on home screen and in disconnected state",
+            "match": {
+              "location": "BackgroundRunSteps.i_am_on_home_screen_and_in_disconnected_state()"
+            },
+            "keyword": "Then "
+          },
+          {
+            "result": {
+              "status": "skipped"
+            },
+            "line": 11,
+            "name": "I disabled internet connection",
+            "match": {
+              "location": "BackgroundRunSteps.i_disabled_internet_connection()"
+            },
+            "keyword": "And "
+          }
+        ]
+      },
+      {
+        "line": 3,
+        "name": "",
+        "description": "",
+        "type": "background",
+        "keyword": "Background",
+        "steps": [
+          {
+            "result": {
+              "duration": 110301,
+              "status": "passed"
+            },
+            "line": 4,
+            "name": "I activate app with a valid code",
+            "match": {
+              "location": "BackgroundRunSteps.i_activate_app_with_a_valid_code()"
+            },
+            "keyword": "Given "
+          }
+        ]
+      },
+      {
+        "line": 9,
+        "name": "Test32",
+        "description": "",
+        "id": "test3;test32",
+        "after": [
+          {
+            "result": {
+              "duration": 66428,
+              "status": "passed"
+            },
+            "match": {
+              "location": "TestSteps.afterHook()"
+            }
+          }
+        ],
+        "type": "scenario",
+        "keyword": "Scenario",
+        "steps": [
+          {
+            "result": {
+              "duration": 194327,
+              "error_message": "java.lang.Error\n\tat com.github.mkolisnyk.cucumber.steps.BackgroundRunSteps.i_am_on_home_screen_and_in_disconnected_state(BackgroundRunSteps.java:13)\n\tat ✽.Then I am on home screen and in disconnected state(TestWithBackground.feature:10)\n",
+              "status": "failed"
+            },
+            "line": 10,
+            "name": "I am on home screen and in disconnected state",
+            "match": {
+              "location": "BackgroundRunSteps.i_am_on_home_screen_and_in_disconnected_state()"
+            },
+            "keyword": "Then "
+          },
+          {
+            "result": {
+              "status": "skipped"
+            },
+            "line": 11,
+            "name": "I disabled internet connection",
+            "match": {
+              "location": "BackgroundRunSteps.i_disabled_internet_connection()"
+            },
+            "keyword": "And "
+          }
+        ]
+      }
+    ],
+    "name": "Test3",
+    "description": "",
+    "id": "test3",
+    "keyword": "Feature",
+    "uri": "TestWithBackground.feature"
+  },
+  {
+    "line": 1,
+    "elements": [
+      {
+        "line": 3,
+        "name": "Test11",
+        "description": "",
+        "id": "test1;test11",
+        "after": [
+          {
+            "result": {
+              "duration": 53511,
+              "status": "passed"
+            },
+            "match": {
+              "location": "TestSteps.afterHook()"
+            }
+          }
+        ],
+        "type": "scenario",
+        "keyword": "Scenario",
+        "steps": [
+          {
+            "result": {
+              "duration": 67594,
+              "status": "passed"
+            },
+            "line": 4,
+            "name": "I activate app with a valid code",
+            "match": {
+              "location": "BackgroundRunSteps.i_activate_app_with_a_valid_code()"
+            },
+            "keyword": "Given "
+          },
+          {
+            "result": {
+              "duration": 130844,
+              "error_message": "java.lang.Error\n\tat com.github.mkolisnyk.cucumber.steps.BackgroundRunSteps.i_am_on_home_screen_and_in_disconnected_state(BackgroundRunSteps.java:13)\n\tat ✽.Then I am on home screen and in disconnected state(TestWithoutBackground.feature:5)\n",
+              "status": "failed"
+            },
+            "line": 5,
+            "name": "I am on home screen and in disconnected state",
+            "match": {
+              "location": "BackgroundRunSteps.i_am_on_home_screen_and_in_disconnected_state()"
+            },
+            "keyword": "Then "
+          }
+        ]
+      },
+      {
+        "line": 3,
+        "name": "Test11",
+        "description": "",
+        "id": "test1;test11",
+        "after": [
+          {
+            "result": {
+              "duration": 78315,
+              "status": "passed"
+            },
+            "match": {
+              "location": "TestSteps.afterHook()"
+            }
+          }
+        ],
+        "type": "scenario",
+        "keyword": "Scenario",
+        "steps": [
+          {
+            "result": {
+              "duration": 134021,
+              "status": "passed"
+            },
+            "line": 4,
+            "name": "I activate app with a valid code",
+            "match": {
+              "location": "BackgroundRunSteps.i_activate_app_with_a_valid_code()"
+            },
+            "keyword": "Given "
+          },
+          {
+            "result": {
+              "duration": 218720,
+              "error_message": "java.lang.Error\n\tat com.github.mkolisnyk.cucumber.steps.BackgroundRunSteps.i_am_on_home_screen_and_in_disconnected_state(BackgroundRunSteps.java:13)\n\tat ✽.Then I am on home screen and in disconnected state(TestWithoutBackground.feature:5)\n",
+              "status": "failed"
+            },
+            "line": 5,
+            "name": "I am on home screen and in disconnected state",
+            "match": {
+              "location": "BackgroundRunSteps.i_am_on_home_screen_and_in_disconnected_state()"
+            },
+            "keyword": "Then "
+          }
+        ]
+      },
+      {
+        "line": 7,
+        "name": "Test12",
+        "description": "",
+        "id": "test1;test12",
+        "after": [
+          {
+            "result": {
+              "duration": 65120,
+              "status": "passed"
+            },
+            "match": {
+              "location": "TestSteps.afterHook()"
+            }
+          }
+        ],
+        "type": "scenario",
+        "keyword": "Scenario",
+        "steps": [
+          {
+            "result": {
+              "duration": 66239,
+              "status": "passed"
+            },
+            "line": 8,
+            "name": "I activate app with a valid code",
+            "match": {
+              "location": "BackgroundRunSteps.i_activate_app_with_a_valid_code()"
+            },
+            "keyword": "Given "
+          },
+          {
+            "result": {
+              "duration": 149310,
+              "error_message": "java.lang.Error\n\tat com.github.mkolisnyk.cucumber.steps.BackgroundRunSteps.i_am_on_home_screen_and_in_disconnected_state(BackgroundRunSteps.java:13)\n\tat ✽.Then I am on home screen and in disconnected state(TestWithoutBackground.feature:9)\n",
+              "status": "failed"
+            },
+            "line": 9,
+            "name": "I am on home screen and in disconnected state",
+            "match": {
+              "location": "BackgroundRunSteps.i_am_on_home_screen_and_in_disconnected_state()"
+            },
+            "keyword": "Then "
+          },
+          {
+            "result": {
+              "status": "skipped"
+            },
+            "line": 10,
+            "name": "I disabled internet connection",
+            "match": {
+              "location": "BackgroundRunSteps.i_disabled_internet_connection()"
+            },
+            "keyword": "And "
+          }
+        ]
+      },
+      {
+        "line": 7,
+        "name": "Test12",
+        "description": "",
+        "id": "test1;test12",
+        "after": [
+          {
+            "result": {
+              "duration": 50676,
+              "status": "passed"
+            },
+            "match": {
+              "location": "TestSteps.afterHook()"
+            }
+          }
+        ],
+        "type": "scenario",
+        "keyword": "Scenario",
+        "steps": [
+          {
+            "result": {
+              "duration": 54864,
+              "status": "passed"
+            },
+            "line": 8,
+            "name": "I activate app with a valid code",
+            "match": {
+              "location": "BackgroundRunSteps.i_activate_app_with_a_valid_code()"
+            },
+            "keyword": "Given "
+          },
+          {
+            "result": {
+              "duration": 139152,
+              "error_message": "java.lang.Error\n\tat com.github.mkolisnyk.cucumber.steps.BackgroundRunSteps.i_am_on_home_screen_and_in_disconnected_state(BackgroundRunSteps.java:13)\n\tat ✽.Then I am on home screen and in disconnected state(TestWithoutBackground.feature:9)\n",
+              "status": "failed"
+            },
+            "line": 9,
+            "name": "I am on home screen and in disconnected state",
+            "match": {
+              "location": "BackgroundRunSteps.i_am_on_home_screen_and_in_disconnected_state()"
+            },
+            "keyword": "Then "
+          },
+          {
+            "result": {
+              "status": "skipped"
+            },
+            "line": 10,
+            "name": "I disabled internet connection",
+            "match": {
+              "location": "BackgroundRunSteps.i_disabled_internet_connection()"
+            },
+            "keyword": "And "
+          }
+        ]
+      }
+    ],
+    "name": "Test1",
+    "description": "",
+    "id": "test1",
+    "keyword": "Feature",
+    "uri": "TestWithoutBackground.feature"
+  }
+]

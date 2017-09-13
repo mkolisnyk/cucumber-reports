@@ -59,7 +59,7 @@
 				<artifactId>maven-javadoc-plugin</artifactId>
 				<version>2.9</version>
 				<configuration>
-					<show>private</show>
+					<show>public</show>
 					<nohelp>false</nohelp>
 					<failOnError>false</failOnError>
 					<sourcepath>src/main/java</sourcepath>
@@ -90,6 +90,9 @@
 						<goals>
 							<goal>helpmojo</goal>
 						</goals>
+						<configuration>
+							<skip>true</skip>
+						</configuration>
 					</execution>
 				</executions>
 			</plugin>

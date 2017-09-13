@@ -5,7 +5,7 @@ import java.util.Properties;
 
 /**
  * Data structure which is used for the <a href="http://mkolisnyk.github.io/cucumber-reports/system-info">
- * System Info<a> report generation.
+ * System Info</a> report generation.
  * @author Mykola Kolisnyk
  */
 public class SystemInfoDataBean extends CommonDataBean {

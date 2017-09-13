@@ -9,8 +9,18 @@ import com.github.mkolisnyk.cucumber.reporting.types.benchmark.BenchmarkRowData;
  * @author mykolak
  */
 public class BenchmarkDataBean extends CommonDataBean {
+    /**
+     * The array of benchmark headers. Each header correspond to the specific run
+     * which is the part of the benchmark.
+     */
     private String[] headers;
+    /**
+     * Contains run statistics for each specific feature split by different runs.
+     */
     private BenchmarkRowData[] featureRows;
+    /**
+     * Contains run statistics for each specific scenario split by different runs.
+     */
     private BenchmarkRowData[] scenarioRows;
     public String[] getHeaders() {
         return headers;

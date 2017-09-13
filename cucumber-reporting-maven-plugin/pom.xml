@@ -154,7 +154,7 @@
 				<artifactId>maven-javadoc-plugin</artifactId>
 				<version>2.9</version>
 				<configuration>
-					<show>private</show>
+					<show>public</show>
 					<nohelp>false</nohelp>
 					<failOnError>false</failOnError>
 					<sourcepath>src/main/java</sourcepath>
@@ -177,6 +177,7 @@
 					<path>site/${project.artifactId}</path>
 					<dryRun>false</dryRun>
 					<excludes>
+						<exclude>target/generated-sources/**/*.*</exclude>
 						<exclude>xref-test/**/*.*</exclude>
 						<exclude>xref/**/*.*</exclude>
 						<exclude>testapidocs/**/*.*</exclude>
@@ -253,6 +254,7 @@
 						<exclude>target/generated-sources/**/HelpMojo.java</exclude>
 					</excludes>
 					<skip>false</skip>
+					<show>public</show>
 				</configuration>
 			</plugin>
 			<plugin>

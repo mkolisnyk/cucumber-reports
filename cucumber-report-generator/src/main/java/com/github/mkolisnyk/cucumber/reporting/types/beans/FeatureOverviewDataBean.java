@@ -3,9 +3,25 @@ package com.github.mkolisnyk.cucumber.reporting.types.beans;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
+/**
+ * Represents data structure for the <a href="http://mkolisnyk.github.io/cucumber-reports/overview-chart-report">
+ * Overview Charts Report</a> generation.
+ * @author Mykola Kolisnyk
+ */
 public class FeatureOverviewDataBean extends CommonDataBean {
+    /**
+     * Contains the letter reflecting overall rate. In standard report it's the letter
+     * inside the black arrow on the right hand side of the chart table.
+     */
     private String overallRate;
+    /**
+     * The number reflecting the overall %pass.
+     */
     private int passRate;
+    /**
+     * The map associating feature name with it's run status letter (any from A B C D E F
+     * depending on the actual pass rate).
+     */
     private Map<String, String> featureRate = new LinkedHashMap<String, String>();
     public String getOverallRate() {
         return overallRate;

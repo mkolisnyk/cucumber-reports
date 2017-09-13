@@ -233,7 +233,7 @@ public class CucumberFeatureResult {
             }
         }
     }
-    
+
     public void aggregateScenarioResults(boolean collapse) {
         String prevId = "";
         for (int i = 0; i < this.elements.length; i++) {

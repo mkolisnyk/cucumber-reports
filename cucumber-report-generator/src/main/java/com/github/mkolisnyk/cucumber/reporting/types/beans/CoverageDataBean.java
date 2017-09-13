@@ -1,12 +1,38 @@
 package com.github.mkolisnyk.cucumber.reporting.types.beans;
 
+/**
+ * Represents data structure for <a href="http://mkolisnyk.github.io/cucumber-reports/coverage-report">
+ * Coverage Report</a> generation.
+ * @author Mykola Kolisnyk
+ */
 public class CoverageDataBean extends CommonDataBean {
 
+    /**
+     * Represents data structure for Feature Status table row of the
+     * <a href="http://mkolisnyk.github.io/cucumber-reports/coverage-report">
+     * Coverage Report</a>.
+     * @author Mykola Kolisnyk
+     */
     public class FeatureStatusRow {
+        /**
+         * Represents the name of the feature
+         */
         private String featureName;
+        /**
+         * Represents the status string
+         */
         private String status;
+        /**
+         * Contains the number of scenarios/steps marked as covered.
+         */
         private int covered;
+        /**
+         * Contains the number of scenarios/steps marked as not covered.
+         */
         private int notCovered;
+        /**
+         * Contains the list of tags applicable for the feature/scenario.
+         */
         private String[] tags;
         public String getFeatureName() {
             return featureName;
@@ -39,7 +65,17 @@ public class CoverageDataBean extends CommonDataBean {
             this.tags = tagsValue;
         }
     }
+    /**
+     * Represents data structure for Scenario Status table row of the
+     * <a href="http://mkolisnyk.github.io/cucumber-reports/coverage-report">
+     * Coverage Report</a>. Major difference from {@link FeatureStatusRow} is
+     * the scenario name.
+     * @author mykolak
+     */
     public class ScenarioStatusRow extends FeatureStatusRow {
+        /**
+         * Represents the name of the scenario.
+         */
         private String scenarioName;
 
         public String getScenarioName() {
@@ -50,9 +86,21 @@ public class CoverageDataBean extends CommonDataBean {
             this.scenarioName = scenarioNameValue;
         }
     }
+    /**
+     * The list of row data for Feature Status table.
+     */
     private FeatureStatusRow[] features;
+    /**
+     * The list of row data for Scenario Status table.
+     */
     private ScenarioStatusRow[] scenarios;
+    /**
+     * Array of 2 elements containing the number of covered and not covered features.
+     */
     private int[] featureStatuses;
+    /**
+     * Array of 2 elements containing the number of covered and not covered scenarios.
+     */
     private int[] scenarioStatuses;
     public FeatureStatusRow[] getFeatures() {
         return features;

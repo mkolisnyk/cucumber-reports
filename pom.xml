@@ -63,7 +63,6 @@
 					<nohelp>false</nohelp>
 					<failOnError>false</failOnError>
 					<sourcepath>src/main/java</sourcepath>
-					<skip>true</skip>
 					<excludes>
 						<exclude>*/**/HelpMojo.java</exclude>
 					</excludes>

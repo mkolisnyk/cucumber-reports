@@ -61,19 +61,19 @@ Each report generation template is associated to some resource name. Mainly, res
 
 | Resource Name | Report type | Associated Data Bean |
 | ------------- | ----------- | -------------------- |
-| benchmark | [Benchmark Report](/cucumber-reports/benchmark) | [BenchmarkDataBean](/cucumber-reports/site/apidocs/com/github/mkolisnyk/cucumber/reporting/types/beans/BenchmarkDataBean.html) |
-| breakdown | [Breakdown Report](/cucumber-reports/breakdown-report) | [BreakdownDataBean](/cucumber-reports/site/apidocs/com/github/mkolisnyk/cucumber/reporting/types/beans/BreakdownDataBean.html) |
-| consolidated | [Consolidated Report](/cucumber-reports/consolidated-report) | [ConsolidatedDataBean](/cucumber-reports/site/apidocs/com/github/mkolisnyk/cucumber/reporting/types/beans/ConsolidatedDataBean.html) |
-| coverage | [Coverage Report](/cucumber-reports/coverage-report) | [CoverageDataBean](/cucumber-reports/site/apidocs/com/github/mkolisnyk/cucumber/reporting/types/beans/CoverageDataBean.html) |
-| detailed | [Detailed Results Report](/cucumber-reports/detailed-report) | [DetailedReportingDataBean](/cucumber-reports/site/apidocs/com/github/mkolisnyk/cucumber/reporting/types/beans/DetailedReportingDataBean.html) |
-| feature_map | [Feature Map Report](/cucumber-reports/feature-map-report) | [FeatureMapDataBean](/cucumber-reports/site/apidocs/com/github/mkolisnyk/cucumber/reporting/types/beans/FeatureMapDataBean.html) |
-| feature_overview | [Overview Chart Report](/cucumber-reports/overview-chart-report) | [FeatureOverviewDataBean](/cucumber-reports/site/apidocs/com/github/mkolisnyk/cucumber/reporting/types/beans/FeatureOverviewDataBean.html) |
-| known_errors | [Known Errors Report](/cucumber-reports/known-errors-report) | [KnownErrorsDataBean](/cucumber-reports/site/apidocs/com/github/mkolisnyk/cucumber/reporting/types/beans/KnownErrorsDataBean.html) |
-| overview | [Results Overview Report](/cucumber-reports/overview-report) | [OverviewDataBean](/cucumber-reports/site/apidocs/com/github/mkolisnyk/cucumber/reporting/types/beans/OverviewDataBean.html) |
-| overview_chart | [Charts Report](/cucumber-reports/chart-report) | [OverviewChartDataBean](/cucumber-reports/site/apidocs/com/github/mkolisnyk/cucumber/reporting/types/beans/OverviewChartDataBean.html) |
-| retrospective | [Retrospective Report](/cucumber-reports/retrospective-results-report) | [RetrospectiveDataBean](/cucumber-reports/site/apidocs/com/github/mkolisnyk/cucumber/reporting/types/beans/RetrospectiveDataBean.html) |
-| system_info | [System Info Report](/cucumber-reports/system-info) | [SystemInfoDataBean](/cucumber-reports/site/apidocs/com/github/mkolisnyk/cucumber/reporting/types/beans/SystemInfoDataBean.html) |
-| usage | [Steps Usage Report](/cucumber-reports/usage-report) | [UsageDataBean](/cucumber-reports/site/apidocs/com/github/mkolisnyk/cucumber/reporting/types/beans/UsageDataBean.html) |
+| benchmark | [Benchmark Report](/cucumber-reports/benchmark) | [BenchmarkDataBean](/cucumber-reports/site/cucumber-report-generator/apidocs/com/github/mkolisnyk/cucumber/reporting/types/beans/BenchmarkDataBean.html) |
+| breakdown | [Breakdown Report](/cucumber-reports/breakdown-report) | [BreakdownDataBean](/cucumber-reports/site/cucumber-report-generator/apidocs/com/github/mkolisnyk/cucumber/reporting/types/beans/BreakdownDataBean.html) |
+| consolidated | [Consolidated Report](/cucumber-reports/consolidated-report) | [ConsolidatedDataBean](/cucumber-reports/site/cucumber-report-generator/apidocs/com/github/mkolisnyk/cucumber/reporting/types/beans/ConsolidatedDataBean.html) |
+| coverage | [Coverage Report](/cucumber-reports/coverage-report) | [CoverageDataBean](/cucumber-reports/site/cucumber-report-generator/apidocs/com/github/mkolisnyk/cucumber/reporting/types/beans/CoverageDataBean.html) |
+| detailed | [Detailed Results Report](/cucumber-reports/detailed-report) | [DetailedReportingDataBean](/cucumber-reports/site/cucumber-report-generator/apidocs/com/github/mkolisnyk/cucumber/reporting/types/beans/DetailedReportingDataBean.html) |
+| feature_map | [Feature Map Report](/cucumber-reports/feature-map-report) | [FeatureMapDataBean](/cucumber-reports/site/cucumber-report-generator/apidocs/com/github/mkolisnyk/cucumber/reporting/types/beans/FeatureMapDataBean.html) |
+| feature_overview | [Overview Chart Report](/cucumber-reports/overview-chart-report) | [FeatureOverviewDataBean](/cucumber-reports/site/cucumber-report-generator/apidocs/com/github/mkolisnyk/cucumber/reporting/types/beans/FeatureOverviewDataBean.html) |
+| known_errors | [Known Errors Report](/cucumber-reports/known-errors-report) | [KnownErrorsDataBean](/cucumber-reports/site/cucumber-report-generator/apidocs/com/github/mkolisnyk/cucumber/reporting/types/beans/KnownErrorsDataBean.html) |
+| overview | [Results Overview Report](/cucumber-reports/overview-report) | [OverviewDataBean](/cucumber-reports/site/cucumber-report-generator/apidocs/com/github/mkolisnyk/cucumber/reporting/types/beans/OverviewDataBean.html) |
+| overview_chart | [Charts Report](/cucumber-reports/chart-report) | [OverviewChartDataBean](/cucumber-reports/site/cucumber-report-generator/apidocs/com/github/mkolisnyk/cucumber/reporting/types/beans/OverviewChartDataBean.html) |
+| retrospective | [Retrospective Report](/cucumber-reports/retrospective-results-report) | [RetrospectiveDataBean](/cucumber-reports/site/cucumber-report-generator/apidocs/com/github/mkolisnyk/cucumber/reporting/types/beans/RetrospectiveDataBean.html) |
+| system_info | [System Info Report](/cucumber-reports/system-info) | [SystemInfoDataBean](/cucumber-reports/site/cucumber-report-generator/apidocs/com/github/mkolisnyk/cucumber/reporting/types/beans/SystemInfoDataBean.html) |
+| usage | [Steps Usage Report](/cucumber-reports/usage-report) | [UsageDataBean](/cucumber-reports/site/cucumber-report-generator/apidocs/com/github/mkolisnyk/cucumber/reporting/types/beans/UsageDataBean.html) |
 
 # Rules how to override existing names and adding new entries for templates
 

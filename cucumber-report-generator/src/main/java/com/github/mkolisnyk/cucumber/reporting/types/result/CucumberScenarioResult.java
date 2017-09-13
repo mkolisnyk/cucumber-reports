@@ -226,6 +226,10 @@ public class CucumberScenarioResult {
         return steps;
     }
 
+    public void setSteps(CucumberStepResult[] stepsValue) {
+        this.steps = stepsValue;
+    }
+
     /**
      * @return the type
      */

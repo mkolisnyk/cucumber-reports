@@ -158,6 +158,7 @@ public abstract class CucumberResultsCommon {
         CucumberFeatureResult[] sources = new CucumberFeatureResult[objs.length];
         for (int i = 0; i < objs.length; i++) {
             sources[i] = new CucumberFeatureResult((JsonObject<String, Object>) objs[i]);
+            sources[i].mergeBeckgroundsToScenatios();
         }
         jr.close();
         fis.close();

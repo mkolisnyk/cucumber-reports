@@ -150,7 +150,6 @@ public class CucumberDetailedResults extends KECompatibleReport {
                 String.format(Locale.US,
                         formatName,
                         this.getOutputDirectory(), File.separator, this.getOutputName()));
-        //String content = generateStepsReport(features);
         DetailedReportingDataBean data = new DetailedReportingDataBean();
         OverviewStats stats = new OverviewStats();
         data.setStats(stats.valuate(features));

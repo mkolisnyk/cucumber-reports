@@ -215,6 +215,25 @@ public class CucumberFeatureResult {
         return duration;
     }
 
+    public void mergeBeckgroundsToScenatios() {
+        CucumberScenarioResult[] backgrounds = new CucumberScenarioResult[] {};
+        for (int i = 0; i < this.elements.length; i++) {
+            if (this.elements[i].getKeyword().equalsIgnoreCase("Background")) {
+                backgrounds = (CucumberScenarioResult[]) ArrayUtils.add(backgrounds, this.elements[i]);
+                this.elements = (CucumberScenarioResult[]) ArrayUtils
+                        .remove(this.elements, i);
+                i--;
+            } else {
+                CucumberStepResult[] steps = this.elements[i].getSteps();
+                for (CucumberScenarioResult background : backgrounds) {
+                    steps = (CucumberStepResult[]) ArrayUtils.addAll(background.getSteps(), steps);
+                }
+                this.elements[i].setSteps(steps);
+                backgrounds = new CucumberScenarioResult[] {};
+            }
+        }
+    }
+    
     public void aggregateScenarioResults(boolean collapse) {
         String prevId = "";
         for (int i = 0; i < this.elements.length; i++) {

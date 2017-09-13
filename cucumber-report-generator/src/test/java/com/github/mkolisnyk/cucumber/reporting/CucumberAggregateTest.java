@@ -15,5 +15,9 @@ public class CucumberAggregateTest {
         Assert.assertEquals(2, sources.length);
         Assert.assertEquals(2, sources[1].getElements().length);
         Assert.assertEquals(2, sources[0].getElements().length);
+        report.setOutputDirectory("target/aggregate");
+        report.setOutputName("cucumber-127");
+        report.setSourceFile("src/test/resources/127/cucumber-127.json");
+        report.execute(true, new String[] {"pdf"});
     }
 }

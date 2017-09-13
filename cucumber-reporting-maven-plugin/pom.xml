@@ -160,6 +160,7 @@
 					<sourcepath>src/main/java</sourcepath>
 					<excludes>
 						<exclude>*/**/HelpMojo.java</exclude>
+						<exclude>target/generated-sources/**/HelpMojo.java</exclude>
 					</excludes>
 				</configuration>
 			</plugin>
@@ -249,6 +250,7 @@
 					<useStandardDocletOptions>true</useStandardDocletOptions>
 					<excludes>
 						<exclude>*/**/HelpMojo.java</exclude>
+						<exclude>target/generated-sources/**/HelpMojo.java</exclude>
 					</excludes>
 					<skip>false</skip>
 				</configuration>

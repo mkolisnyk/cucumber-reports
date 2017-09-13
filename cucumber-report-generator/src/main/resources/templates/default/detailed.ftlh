@@ -154,6 +154,13 @@ div.content {page-break-after: always;}
     									</td>
     								</tr>
     							</#if>
+    							<#if step.result.errorMessage?has_content>
+    								<tr class="${step.getResult().getStatus()}">
+										<td colspan="2">
+											<br>${step.result.errorMessage}</br>
+										</td>
+									</tr>
+    							</#if>
 								<#list step.getScreenShotLocations() as screenshot>
 									<tr class="${step.getResult().getStatus()}">
 										<td colspan="2"><img src="${screenshot}" width="${screenShotWidth}" /></td>
@@ -180,9 +187,9 @@ ${line}
 					<tr class="${scenario.getAfter().getResult().getStatus()}">
 						<td>After</td>
 						<td colspan="2"></td>
-						<td width="100">${scenario.getAfter().getResult().getStatus()}</td>
+						<td width="100">${scenario.getAfter().getResult().getDurationTimeString("HH:mm:ss:S")}</td>
 					</tr>
-                	<tr class="${scenario.getAfter().getResult().getDurationTimeString("HH:mm:ss:S")}">
+                	<tr class="${scenario.getAfter().getResult().getStatus()}">
                 		<td colspan="4">
 	                	<#if scenario.getAfter().getResult().getErrorMessage()?has_content>
 							<br>${scenario.getAfter().getResult().getErrorMessage()}</br>

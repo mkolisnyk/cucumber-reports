@@ -29,32 +29,32 @@
   <td class="src"><pre class="src">&nbsp;</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;6</td>  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;<span class="keyword">public</span> <span class="keyword">final</span> <span class="keyword">class</span> JsonUtils {</pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;7</td>  <td class="nbHitsCovered">&nbsp;7349</td>  <td class="src"><pre class="src">&nbsp;    <span class="keyword">private</span> JsonUtils() {</pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;8</td>  <td class="nbHitsCovered">&nbsp;7349</td>  <td class="src"><pre class="src">&nbsp;    }</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;7</td>  <td class="nbHitsCovered">&nbsp;7377</td>  <td class="src"><pre class="src">&nbsp;    <span class="keyword">private</span> JsonUtils() {</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;8</td>  <td class="nbHitsCovered">&nbsp;7377</td>  <td class="src"><pre class="src">&nbsp;    }</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;9</td>  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;    <span class="keyword">private</span> CucumberTagResults[] getCucumberTags(JsonObject&lt;String, Object&gt; json) {</pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;10</td>  <td class="nbHitsCovered">&nbsp;7349</td>  <td class="src"><pre class="src">&nbsp;        Object[] objs = {};</pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;11</td>  <td class="nbHitsCovered">&nbsp;7349</td>  <td class="src"><pre class="src">&nbsp;        objs = (Object[]) json.getOrDefault(<span class="string">"tags"</span>, <span class="keyword">new</span> Object[] {});</pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;12</td>  <td class="nbHitsCovered">&nbsp;7349</td>  <td class="src"><pre class="src">&nbsp;        CucumberTagResults[] tags = <span class="keyword">new</span> CucumberTagResults[objs.length];</pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;13</td>  <td class="nbHitsCovered"><a title="Line 13: Conditional coverage 100% (2/2).">&nbsp;40047</a></td>  <td class="src"><pre class="src">&nbsp;<a title="Line 13: Conditional coverage 100% (2/2).">        <span class="keyword">for</span> (<span class="keyword">int</span> i = 0; i &lt; objs.length; i++) {</a></pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;10</td>  <td class="nbHitsCovered">&nbsp;7377</td>  <td class="src"><pre class="src">&nbsp;        Object[] objs = {};</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;11</td>  <td class="nbHitsCovered">&nbsp;7377</td>  <td class="src"><pre class="src">&nbsp;        objs = (Object[]) json.getOrDefault(<span class="string">"tags"</span>, <span class="keyword">new</span> Object[] {});</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;12</td>  <td class="nbHitsCovered">&nbsp;7377</td>  <td class="src"><pre class="src">&nbsp;        CucumberTagResults[] tags = <span class="keyword">new</span> CucumberTagResults[objs.length];</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;13</td>  <td class="nbHitsCovered"><a title="Line 13: Conditional coverage 100% (2/2).">&nbsp;40075</a></td>  <td class="src"><pre class="src">&nbsp;<a title="Line 13: Conditional coverage 100% (2/2).">        <span class="keyword">for</span> (<span class="keyword">int</span> i = 0; i &lt; objs.length; i++) {</a></pre></td></tr>
 <tr>  <td class="numLineCover">&nbsp;14</td>  <td class="nbHitsCovered">&nbsp;32698</td>  <td class="src"><pre class="src">&nbsp;            tags[i] = <span class="keyword">new</span> CucumberTagResults(</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;15</td>  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;                    (JsonObject&lt;String, Object&gt;) objs[i]);</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;16</td>  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;        }</pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;17</td>  <td class="nbHitsCovered">&nbsp;7349</td>  <td class="src"><pre class="src">&nbsp;        <span class="keyword">return</span> tags;</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;17</td>  <td class="nbHitsCovered">&nbsp;7377</td>  <td class="src"><pre class="src">&nbsp;        <span class="keyword">return</span> tags;</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;18</td>  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;    }</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;19</td>  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;    <span class="keyword">public</span> <span class="keyword">static</span> CucumberTagResults[] toTagArray(JsonObject&lt;String, Object&gt; json) {</pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;20</td>  <td class="nbHitsCovered">&nbsp;7349</td>  <td class="src"><pre class="src">&nbsp;        JsonUtils utils = <span class="keyword">new</span> JsonUtils();</pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;21</td>  <td class="nbHitsCovered">&nbsp;7349</td>  <td class="src"><pre class="src">&nbsp;        <span class="keyword">return</span> utils.getCucumberTags(json);</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;20</td>  <td class="nbHitsCovered">&nbsp;7377</td>  <td class="src"><pre class="src">&nbsp;        JsonUtils utils = <span class="keyword">new</span> JsonUtils();</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;21</td>  <td class="nbHitsCovered">&nbsp;7377</td>  <td class="src"><pre class="src">&nbsp;        <span class="keyword">return</span> utils.getCucumberTags(json);</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;22</td>  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;    }</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;23</td>  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;}</pre></td></tr>
 </table>
 
-<div class="footer">Report generated by <a href="http://cobertura.sourceforge.net/" target="_top">Cobertura</a> 2.0.3 on 12/09/17 19:28.</div>
+<div class="footer">Report generated by <a href="http://cobertura.sourceforge.net/" target="_top">Cobertura</a> 2.0.3 on 13/09/17 17:20.</div>
 </body>
 </html>

@@ -3,7 +3,7 @@ title: Cucumber Reports News
 layout: null
 ---
 
-## 13.09.2017 1.0.12 Version Release
+## 13.09.2017 1.1 Version Release
 
 * [#125](https://github.com/mkolisnyk/cucumber-reports/issues/125) Enahncement: Migrate reports to free marker templates
 * [#127](https://github.com/mkolisnyk/cucumber-reports/issues/127) Bugfix: Results Aggregation doesn't work if feature file contain Background bug

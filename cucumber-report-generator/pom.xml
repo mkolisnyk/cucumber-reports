@@ -3,7 +3,7 @@
 	<parent>
 		<groupId>com.github.mkolisnyk</groupId>
 		<artifactId>cucumber-reports</artifactId>
-		<version>1.1</version>
+		<version>1.2-SNAPSHOT</version>
 	</parent>
 	<artifactId>cucumber-report-generator</artifactId>
 	<name>Cucumber Report Generator</name>

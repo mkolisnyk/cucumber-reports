@@ -1,6 +1,7 @@
 package com.github.mkolisnyk.cucumber.reporting;
 
 import java.io.File;
+import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
@@ -13,6 +14,7 @@ import com.github.mkolisnyk.cucumber.reporting.types.enums.CucumberReportLink;
 import com.github.mkolisnyk.cucumber.reporting.types.enums.CucumberReportTypes;
 import com.github.mkolisnyk.cucumber.reporting.types.result.CucumberFeatureResult;
 import com.github.mkolisnyk.cucumber.reporting.types.usage.CucumberStepSource;
+import com.github.mkolisnyk.cucumber.reporting.utils.helpers.FreemarkerConfiguration;
 import com.github.mkolisnyk.cucumber.runner.runtime.ExtendedRuntimeOptions;
 
 public class CucumberCustomReport extends SimpleReport {
@@ -110,6 +112,18 @@ public class CucumberCustomReport extends SimpleReport {
                 Assert.assertTrue(this.constructErrorMessage(CucumberReportError.NON_EXISTING_SOURCE_FILE, "")
                         + ". Was looking for path: \"" + path.getAbsolutePath() + "\"", path.exists());
             }
+        }
+        Map<String, String> resourceMap = new HashMap<String, String>();
+        try {
+            resourceMap = FreemarkerConfiguration.getResourceMap(getTemplatesLocation());
+        } catch (Exception e) {
+            Assert.fail(this.constructErrorMessage(CucumberReportError.RESOURCE_LOAD_FAILED, ""));
+        }
+        for (String name : this.getCustomReportTemplateNames()) {
+            Assert.assertTrue(
+                    name + " template wasn't found. "
+                       + this.constructErrorMessage(CucumberReportError.MISSING_TEMPLATE, ""),
+                    resourceMap.containsKey(name));
         }
     }
 

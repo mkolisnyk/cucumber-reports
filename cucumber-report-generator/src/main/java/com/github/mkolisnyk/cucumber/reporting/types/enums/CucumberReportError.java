@@ -7,7 +7,9 @@ public enum CucumberReportError {
     NO_OUTPUT_NAME("The output file base name wasn't defined"),
     NO_CONFIG_FILE("Configuration file wasn't defined"),
     NON_EXISTING_CONFIG_FILE("Configuration file specified doesn't exist"),
-    INVALID_CONFIG_FILE("Configuration file specified is of improper format");
+    INVALID_CONFIG_FILE("Configuration file specified is of improper format"),
+    RESOURCE_LOAD_FAILED("Unable to load necessry resources"),
+    MISSING_TEMPLATE("Template resource wasn't found");
     private String value;
 
     CucumberReportError(String valueData) {

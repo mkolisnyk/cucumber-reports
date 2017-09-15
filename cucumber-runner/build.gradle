@@ -1,5 +1,4 @@
 group 'com.github.mkolisnyk'
-version '1.1-SNAPSHOT'
 
 apply plugin: 'java'
 apply plugin: 'application'
@@ -16,11 +15,6 @@ run {
     }
 }
 dependencies {
-    compile 'com.sparkjava:spark-core:2.5.3'
-    compile 'com.google.code.gson:gson:2.8.0'
-    compile 'org.slf4j:slf4j-simple:1.7.21'
-    compile group: 'commons-io', name: 'commons-io', version: '2.5'
-    
     compile 'batik:batik-transcoder:1.6-1'
 	compile 'com.cedarsoftware:json-io:4.9.12'
 	compile 'com.github.mkolisnyk:cucumber-report-generator:1.1'

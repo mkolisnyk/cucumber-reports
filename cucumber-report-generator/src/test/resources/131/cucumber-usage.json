@@ -1,0 +1,2582 @@
+[
+  {
+    "source": "^(?:I |)have the following payment cards stored:$",
+    "steps": [
+      {
+        "name": "I have the following payment cards stored:",
+        "aggregatedDurations": {
+          "average": 47.701652274,
+          "median": 47.701652274
+        },
+        "durations": [
+          {
+            "duration": 47.701652274,
+            "location": "booking/RegisteredKioskBooking.feature:11"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "source": "^(?:I |)proceed search results to the payment screen$",
+    "steps": [
+      {
+        "name": "I proceed search results to the payment screen",
+        "aggregatedDurations": {
+          "average": 22.6316882,
+          "median": 22.166098814
+        },
+        "durations": [
+          {
+            "duration": 21.243203842,
+            "location": "b2b/Bookings.feature:16"
+          },
+          {
+            "duration": 21.47057453,
+            "location": "b2b/Bookings.feature:100"
+          },
+          {
+            "duration": 25.252185604,
+            "location": "booking/GuestKioskBookings.feature:15"
+          },
+          {
+            "duration": 22.166098814,
+            "location": "booking/GuestKioskBookings.feature:15"
+          },
+          {
+            "duration": 23.026378212,
+            "location": "booking/RegisteredKioskBooking.feature:24"
+          }
+        ]
+      },
+      {
+        "name": "proceed search results to the payment screen",
+        "aggregatedDurations": {
+          "average": 38.800991829,
+          "median": 28.81352058
+        },
+        "durations": [
+          {
+            "duration": 28.382058774,
+            "location": "booking/GuestKioskBookings.feature:93"
+          },
+          {
+            "duration": 34.610161232,
+            "location": "booking/GuestKioskBookings.feature:220"
+          },
+          {
+            "duration": 22.341340406,
+            "location": "booking/GuestKioskBookings.feature:263"
+          },
+          {
+            "duration": 23.31292388,
+            "location": "booking/GuestMobileBooking.feature:16"
+          },
+          {
+            "duration": 69.831608126,
+            "location": "booking/GuestMobileBooking.feature:107"
+          },
+          {
+            "duration": 29.244982386,
+            "location": "booking/GuestMobileBooking.feature:181"
+          },
+          {
+            "duration": 64.678867302,
+            "location": "booking/GuestMobileBooking.feature:181"
+          },
+          {
+            "duration": 27.29737192,
+            "location": "booking/RegisteredKioskBooking.feature:103"
+          },
+          {
+            "duration": 23.138485364,
+            "location": "booking/RegisteredKioskBooking.feature:168"
+          },
+          {
+            "duration": 18.673781398,
+            "location": "booking/RegisteredKioskBooking.feature:237"
+          },
+          {
+            "duration": 62.284162896,
+            "location": "booking/RegisteredMobileBooking.feature:14"
+          },
+          {
+            "duration": 61.816158264,
+            "location": "booking/RegisteredMobileBooking.feature:217"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "source": "^(?:I |)search for live time trains with the following criteria:",
+    "steps": [
+      {
+        "name": "I search for live time trains with the following criteria:",
+        "aggregatedDurations": {
+          "average": 67.408476318,
+          "median": 67.408476318
+        },
+        "durations": [
+          {
+            "duration": 66.931114166,
+            "location": "common/LiveTrainTimes.feature:9"
+          },
+          {
+            "duration": 67.88583847,
+            "location": "common/LiveTrainTimes.feature:46"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "source": "^(?:I should see |)the \"(.*?)\" field (contains|has) \"(.*?)\" text$",
+    "steps": [
+      {
+        "name": "I should see the \"Actionbar origin station\" field contains \"Farringdon\" text",
+        "aggregatedDurations": {
+          "average": 0.367190042,
+          "median": 0.367190042
+        },
+        "durations": [
+          {
+            "duration": 0.367190042,
+            "location": "common/LiveTrainTimes.feature:18"
+          }
+        ]
+      },
+      {
+        "name": "I should see the \"Actionbar destination station\" field contains \"City Thameslink\" text",
+        "aggregatedDurations": {
+          "average": 0.382361724,
+          "median": 0.382361724
+        },
+        "durations": [
+          {
+            "duration": 0.382361724,
+            "location": "common/LiveTrainTimes.feature:19"
+          }
+        ]
+      },
+      {
+        "name": "I should see the \"Actionbar origin station\" field contains \"Manchester Piccadilly\" text",
+        "aggregatedDurations": {
+          "average": 0.517740242,
+          "median": 0.517740242
+        },
+        "durations": [
+          {
+            "duration": 0.517740242,
+            "location": "common/LiveTrainTimes.feature:51"
+          }
+        ]
+      },
+      {
+        "name": "I should see the \"Actionbar destination station\" field contains \"London Euston\" text",
+        "aggregatedDurations": {
+          "average": 0.435566382,
+          "median": 0.435566382
+        },
+        "durations": [
+          {
+            "duration": 0.435566382,
+            "location": "common/LiveTrainTimes.feature:52"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "source": "^(?:I |)click on the \"([^\"]*)\" (?:text|label)$",
+    "steps": [
+      {
+        "name": "click on the \"Test User\" label",
+        "aggregatedDurations": {
+          "average": 1.22245417,
+          "median": 1.22245417
+        },
+        "durations": [
+          {
+            "duration": 1.22245417,
+            "location": "b2b/Bookings.feature:20"
+          }
+        ]
+      },
+      {
+        "name": "I click on the \"Live Tracker\" label",
+        "aggregatedDurations": {
+          "average": 1.531083502,
+          "median": 1.531083502
+        },
+        "durations": [
+          {
+            "duration": 1.633892884,
+            "location": "common/LiveTrainTimes.feature:26"
+          },
+          {
+            "duration": 1.42827412,
+            "location": "common/LiveTrainTimes.feature:54"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "source": "^I have no PayPal client installed$",
+    "steps": [
+      {
+        "name": "I have no PayPal client installed",
+        "aggregatedDurations": {
+          "average": 0.000191814,
+          "median": 0.000191814
+        },
+        "durations": [
+          {
+            "duration": 0.000256422,
+            "location": "booking/GuestMobileBooking.feature:173"
+          },
+          {
+            "duration": 0.000127206,
+            "location": "booking/GuestMobileBooking.feature:173"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "source": "^(?:I |)select item No.(\\d+) from the \"([^\"]*)\" table$",
+    "steps": [
+      {
+        "name": "select item No.1 from the \"Coach Search Results\" table",
+        "aggregatedDurations": {
+          "average": 2.126199253,
+          "median": 2.126199253
+        },
+        "durations": [
+          {
+            "duration": 2.240681142,
+            "location": "coach/CoachBooking.feature:13"
+          },
+          {
+            "duration": 2.011717364,
+            "location": "coach/CoachBooking.feature:65"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "source": "^(?:I should see |)the \"([^\"]*)\" (?:message|label|text|error) is shown$",
+    "steps": [
+      {
+        "name": "the \"Cotswold Line Railcard savings applied\" text is shown",
+        "aggregatedDurations": {
+          "average": 0.217622006,
+          "median": 0.217622006
+        },
+        "durations": [
+          {
+            "duration": 0.217622006,
+            "location": "booking/RegisteredKioskBooking.feature:23"
+          }
+        ]
+      },
+      {
+        "name": "the \"Live Tracker\" label is shown",
+        "aggregatedDurations": {
+          "average": 0.186462515,
+          "median": 0.186462515
+        },
+        "durations": [
+          {
+            "duration": 0.20735178,
+            "location": "common/LiveTrainTimes.feature:25"
+          },
+          {
+            "duration": 0.16557325,
+            "location": "common/LiveTrainTimes.feature:53"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "source": "^(?:I |)add the card with the following criteria:$",
+    "steps": [
+      {
+        "name": "add the card with the following criteria:",
+        "aggregatedDurations": {
+          "average": 42.248371493,
+          "median": 42.529356344
+        },
+        "durations": [
+          {
+            "duration": 49.212888598,
+            "location": "b2b/Bookings.feature:8"
+          },
+          {
+            "duration": 47.199668862,
+            "location": "b2b/Bookings.feature:92"
+          },
+          {
+            "duration": 40.140196622,
+            "location": "booking/GuestKioskBookings.feature:28"
+          },
+          {
+            "duration": 42.8820494,
+            "location": "booking/GuestKioskBookings.feature:28"
+          },
+          {
+            "duration": 42.811627718,
+            "location": "booking/GuestKioskBookings.feature:227"
+          },
+          {
+            "duration": 42.24708497,
+            "location": "booking/GuestMobileBooking.feature:26"
+          },
+          {
+            "duration": 31.99580889,
+            "location": "booking/RegisteredKioskBooking.feature:185"
+          },
+          {
+            "duration": 38.365538704,
+            "location": "booking/RegisteredMobileBooking.feature:33"
+          },
+          {
+            "duration": 41.239485406,
+            "location": "coach/CoachBooking.feature:20"
+          },
+          {
+            "duration": 46.389365764,
+            "location": "coach/CoachBooking.feature:72"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "source": "^I login into PayPal$",
+    "steps": [
+      {
+        "name": "I login into PayPal",
+        "aggregatedDurations": {
+          "average": 0.775602063,
+          "median": 0.742043252
+        },
+        "durations": [
+          {
+            "duration": 0.80764114,
+            "location": "booking/GuestKioskBookings.feature:104"
+          },
+          {
+            "duration": 0.689484,
+            "location": "booking/GuestKioskBookings.feature:271"
+          },
+          {
+            "duration": 0.730958238,
+            "location": "booking/GuestMobileBooking.feature:196"
+          },
+          {
+            "duration": 0.601497484,
+            "location": "booking/GuestMobileBooking.feature:196"
+          },
+          {
+            "duration": 0.742043252,
+            "location": "booking/RegisteredKioskBooking.feature:116"
+          },
+          {
+            "duration": 1.062752154,
+            "location": "booking/RegisteredKioskBooking.feature:252"
+          },
+          {
+            "duration": 0.794838174,
+            "location": "booking/RegisteredMobileBooking.feature:235"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "source": "(?:I |)go to the payment methods for the (business|leisure) account",
+    "steps": [
+      {
+        "name": "I go to the payment methods for the business account",
+        "aggregatedDurations": {
+          "average": 14.589845229,
+          "median": 14.589845229
+        },
+        "durations": [
+          {
+            "duration": 14.512899376,
+            "location": "b2b/Bookings.feature:7"
+          },
+          {
+            "duration": 14.666791082,
+            "location": "b2b/Bookings.feature:91"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "source": "^(?:I |)click on the \"([^\"]*)\" (?:field|item|element|button)$",
+    "steps": [
+      {
+        "name": "click on the \"Buy\" button",
+        "aggregatedDurations": {
+          "average": 2.891595387,
+          "median": 2.817905845
+        },
+        "durations": [
+          {
+            "duration": 4.513758354,
+            "location": "b2b/Bookings.feature:23"
+          },
+          {
+            "duration": 2.557179518,
+            "location": "booking/GuestKioskBookings.feature:33"
+          },
+          {
+            "duration": 2.506202976,
+            "location": "booking/GuestKioskBookings.feature:33"
+          },
+          {
+            "duration": 2.601136956,
+            "location": "booking/GuestKioskBookings.feature:232"
+          },
+          {
+            "duration": 3.075842676,
+            "location": "booking/GuestMobileBooking.feature:31"
+          },
+          {
+            "duration": 3.034674734,
+            "location": "booking/RegisteredKioskBooking.feature:40"
+          },
+          {
+            "duration": 3.091719012,
+            "location": "booking/RegisteredKioskBooking.feature:193"
+          },
+          {
+            "duration": 3.143555198,
+            "location": "booking/RegisteredMobileBooking.feature:40"
+          },
+          {
+            "duration": 2.16800523,
+            "location": "coach/CoachBooking.feature:25"
+          },
+          {
+            "duration": 2.223879216,
+            "location": "coach/CoachBooking.feature:77"
+          }
+        ]
+      },
+      {
+        "name": "click on the \"Pay on account\" button",
+        "aggregatedDurations": {
+          "average": 2.690989048,
+          "median": 2.690989048
+        },
+        "durations": [
+          {
+            "duration": 2.690989048,
+            "location": "b2b/Bookings.feature:104"
+          }
+        ]
+      },
+      {
+        "name": "I click on the \"Self-service ticket machine\" element",
+        "aggregatedDurations": {
+          "average": 8.827126116,
+          "median": 10.965239234
+        },
+        "durations": [
+          {
+            "duration": 10.965239234,
+            "location": "booking/GuestKioskBookings.feature:17"
+          },
+          {
+            "duration": 11.58434239,
+            "location": "booking/GuestKioskBookings.feature:17"
+          },
+          {
+            "duration": 3.931796726,
+            "location": "booking/GuestKioskBookings.feature:95"
+          }
+        ]
+      },
+      {
+        "name": "I click on the \"Buy Tickets\" button",
+        "aggregatedDurations": {
+          "average": 2.683942885,
+          "median": 3.594560395
+        },
+        "durations": [
+          {
+            "duration": 3.54885086,
+            "location": "booking/GuestKioskBookings.feature:88"
+          },
+          {
+            "duration": 3.672467158,
+            "location": "booking/GuestMobileBooking.feature:176"
+          },
+          {
+            "duration": 3.64026993,
+            "location": "booking/GuestMobileBooking.feature:176"
+          },
+          {
+            "duration": 0.854959166,
+            "location": "booking/RegisteredKioskBooking.feature:163"
+          },
+          {
+            "duration": 0.7431543,
+            "location": "booking/RegisteredKioskBooking.feature:231"
+          },
+          {
+            "duration": 3.643955898,
+            "location": "booking/RegisteredMobileBooking.feature:212"
+          }
+        ]
+      },
+      {
+        "name": "I click on the \"Self-service ticket machine\" button",
+        "aggregatedDurations": {
+          "average": 9.463635146,
+          "median": 11.025253444
+        },
+        "durations": [
+          {
+            "duration": 11.025253444,
+            "location": "booking/GuestKioskBookings.feature:222"
+          },
+          {
+            "duration": 10.966718174,
+            "location": "booking/GuestKioskBookings.feature:265"
+          },
+          {
+            "duration": 4.180100198,
+            "location": "booking/RegisteredKioskBooking.feature:30"
+          },
+          {
+            "duration": 3.993690908,
+            "location": "booking/RegisteredKioskBooking.feature:105"
+          },
+          {
+            "duration": 11.72288098,
+            "location": "booking/RegisteredKioskBooking.feature:170"
+          },
+          {
+            "duration": 12.015657072,
+            "location": "booking/RegisteredKioskBooking.feature:239"
+          },
+          {
+            "duration": 12.341145246,
+            "location": "booking/RegisteredKioskBooking.feature:249"
+          }
+        ]
+      },
+      {
+        "name": "I click on the \"Back\" button",
+        "aggregatedDurations": {
+          "average": 0.864178938,
+          "median": 0.864178938
+        },
+        "durations": [
+          {
+            "duration": 0.864178938,
+            "location": "booking/GuestKioskBookings.feature:277"
+          }
+        ]
+      },
+      {
+        "name": "I click on the \"Mobile ticket\" element",
+        "aggregatedDurations": {
+          "average": 21.760016483,
+          "median": 21.712408227
+        },
+        "durations": [
+          {
+            "duration": 22.029626656,
+            "location": "booking/GuestMobileBooking.feature:18"
+          },
+          {
+            "duration": 21.778718472,
+            "location": "booking/GuestMobileBooking.feature:109"
+          },
+          {
+            "duration": 21.646097982,
+            "location": "booking/GuestMobileBooking.feature:183"
+          },
+          {
+            "duration": 21.585622822,
+            "location": "booking/GuestMobileBooking.feature:183"
+          }
+        ]
+      },
+      {
+        "name": "click on the \"Download tickets\" button",
+        "aggregatedDurations": {
+          "average": 0.902470678,
+          "median": 0.902470678
+        },
+        "durations": [
+          {
+            "duration": 0.93603537,
+            "location": "booking/GuestMobileBooking.feature:43"
+          },
+          {
+            "duration": 0.868905986,
+            "location": "booking/RegisteredMobileBooking.feature:55"
+          }
+        ]
+      },
+      {
+        "name": "click on the \"Confirm download\" button",
+        "aggregatedDurations": {
+          "average": 1.502754014,
+          "median": 1.502754014
+        },
+        "durations": [
+          {
+            "duration": 1.352246328,
+            "location": "booking/GuestMobileBooking.feature:44"
+          },
+          {
+            "duration": 1.6532617,
+            "location": "booking/RegisteredMobileBooking.feature:56"
+          }
+        ]
+      },
+      {
+        "name": "I click on the \"Buy\" button",
+        "aggregatedDurations": {
+          "average": 14.083125898,
+          "median": 14.083125898
+        },
+        "durations": [
+          {
+            "duration": 14.083125898,
+            "location": "booking/RegisteredMobileBooking.feature:32"
+          }
+        ]
+      },
+      {
+        "name": "click on the \"View tickets\" button",
+        "aggregatedDurations": {
+          "average": 1.812134534,
+          "median": 1.812134534
+        },
+        "durations": [
+          {
+            "duration": 1.812134534,
+            "location": "booking/RegisteredMobileBooking.feature:58"
+          }
+        ]
+      },
+      {
+        "name": "I click on the \"View coach ticket\" button",
+        "aggregatedDurations": {
+          "average": 1.070213298,
+          "median": 1.070213298
+        },
+        "durations": [
+          {
+            "duration": 1.01715342,
+            "location": "coach/CoachBooking.feature:32"
+          },
+          {
+            "duration": 1.123273176,
+            "location": "coach/CoachBooking.feature:85"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "source": "(?:I |)clear text from \"([^\"]*)\" field$",
+    "steps": [
+      {
+        "name": "I clear text from \"Traveller Name\" field",
+        "aggregatedDurations": {
+          "average": 10.48298115,
+          "median": 10.48298115
+        },
+        "durations": [
+          {
+            "duration": 10.48298115,
+            "location": "booking/GuestMobileBooking.feature:22"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "source": "^(?:I should see|) the \"(.*?)\" field text matches the \"(.*?)\" pattern$",
+    "steps": [
+      {
+        "name": "I should see the \"Traveller Name\" field text matches the \"Zenon Kopyto\" pattern",
+        "aggregatedDurations": {
+          "average": 8.22488682,
+          "median": 8.22488682
+        },
+        "durations": [
+          {
+            "duration": 8.22488682,
+            "location": "booking/RegisteredMobileBooking.feature:38"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "source": "(?:I |)wait for (\\d+) seconds$",
+    "steps": [
+      {
+        "name": "I wait for 3 seconds",
+        "aggregatedDurations": {
+          "average": 3.000598538,
+          "median": 3.000598538
+        },
+        "durations": [
+          {
+            "duration": 3.000598538,
+            "location": "booking/RegisteredMobileBooking.feature:54"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "source": "^(?:I |)accept the alert message$",
+    "steps": [
+      {
+        "name": "accept the alert message",
+        "aggregatedDurations": {
+          "average": 3.333151075,
+          "median": 3.266881936
+        },
+        "durations": [
+          {
+            "duration": 3.253626046,
+            "location": "b2b/Bookings.feature:14"
+          },
+          {
+            "duration": 3.403643988,
+            "location": "b2b/Bookings.feature:98"
+          },
+          {
+            "duration": 3.199107148,
+            "location": "booking/GuestKioskBookings.feature:10"
+          },
+          {
+            "duration": 3.182179018,
+            "location": "booking/GuestKioskBookings.feature:10"
+          },
+          {
+            "duration": 3.559783898,
+            "location": "booking/GuestKioskBookings.feature:92"
+          },
+          {
+            "duration": 3.14341159,
+            "location": "booking/GuestKioskBookings.feature:219"
+          },
+          {
+            "duration": 3.127065592,
+            "location": "booking/GuestKioskBookings.feature:262"
+          },
+          {
+            "duration": 3.120921536,
+            "location": "booking/GuestMobileBooking.feature:14"
+          },
+          {
+            "duration": 3.381016684,
+            "location": "booking/GuestMobileBooking.feature:106"
+          },
+          {
+            "duration": 4.267984612,
+            "location": "booking/GuestMobileBooking.feature:180"
+          },
+          {
+            "duration": 3.210232666,
+            "location": "booking/GuestMobileBooking.feature:180"
+          },
+          {
+            "duration": 3.32154344,
+            "location": "booking/RegisteredKioskBooking.feature:18"
+          },
+          {
+            "duration": 3.286305316,
+            "location": "booking/RegisteredKioskBooking.feature:101"
+          },
+          {
+            "duration": 3.266881936,
+            "location": "booking/RegisteredKioskBooking.feature:167"
+          },
+          {
+            "duration": 3.373081028,
+            "location": "booking/RegisteredKioskBooking.feature:235"
+          },
+          {
+            "duration": 3.165345284,
+            "location": "booking/RegisteredMobileBooking.feature:13"
+          },
+          {
+            "duration": 3.145096068,
+            "location": "booking/RegisteredMobileBooking.feature:216"
+          },
+          {
+            "duration": 3.30095244,
+            "location": "coach/CoachBooking.feature:10"
+          },
+          {
+            "duration": 3.621692138,
+            "location": "coach/CoachBooking.feature:62"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "source": "(?:I |)type \"([^\"]*)\" text into \"([^\"]*)\" field$",
+    "steps": [
+      {
+        "name": "I type \"111\" text into \"CVV\" field",
+        "aggregatedDurations": {
+          "average": 40.533939618,
+          "median": 40.533939618
+        },
+        "durations": [
+          {
+            "duration": 40.533939618,
+            "location": "b2b/Bookings.feature:22"
+          }
+        ]
+      },
+      {
+        "name": "I type \"223\" text into \"CVV\" field",
+        "aggregatedDurations": {
+          "average": 31.010610921,
+          "median": 28.567794708
+        },
+        "durations": [
+          {
+            "duration": 24.224181828,
+            "location": "booking/GuestKioskBookings.feature:32"
+          },
+          {
+            "duration": 31.835491264,
+            "location": "booking/GuestMobileBooking.feature:30"
+          },
+          {
+            "duration": 25.300098152,
+            "location": "booking/RegisteredKioskBooking.feature:39"
+          },
+          {
+            "duration": 42.68267244,
+            "location": "booking/RegisteredMobileBooking.feature:39"
+          }
+        ]
+      },
+      {
+        "name": "I type \"1111\" text into \"CVV\" field",
+        "aggregatedDurations": {
+          "average": 15.31425631,
+          "median": 7.584854228
+        },
+        "durations": [
+          {
+            "duration": 30.9758017,
+            "location": "booking/GuestKioskBookings.feature:32"
+          },
+          {
+            "duration": 7.584854228,
+            "location": "coach/CoachBooking.feature:24"
+          },
+          {
+            "duration": 7.382113002,
+            "location": "coach/CoachBooking.feature:76"
+          }
+        ]
+      },
+      {
+        "name": "I type \"222\" text into \"CVV\" field",
+        "aggregatedDurations": {
+          "average": 30.697711058,
+          "median": 30.697711058
+        },
+        "durations": [
+          {
+            "duration": 30.827307554,
+            "location": "booking/GuestKioskBookings.feature:231"
+          },
+          {
+            "duration": 30.568114562,
+            "location": "booking/RegisteredKioskBooking.feature:192"
+          }
+        ]
+      },
+      {
+        "name": "I type \"Test MC\" text into \"Traveller Name\" field",
+        "aggregatedDurations": {
+          "average": 7.975412384,
+          "median": 7.975412384
+        },
+        "durations": [
+          {
+            "duration": 7.975412384,
+            "location": "booking/GuestMobileBooking.feature:23"
+          }
+        ]
+      },
+      {
+        "name": "type \"Test User\" text into \"Traveller Name\" field",
+        "aggregatedDurations": {
+          "average": 11.790464792,
+          "median": 11.790464792
+        },
+        "durations": [
+          {
+            "duration": 7.99865329,
+            "location": "booking/GuestMobileBooking.feature:193"
+          },
+          {
+            "duration": 15.582276294,
+            "location": "booking/GuestMobileBooking.feature:193"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "source": "^(?:I |)proceed to booking confirmation$",
+    "steps": [
+      {
+        "name": "proceed to booking confirmation",
+        "aggregatedDurations": {
+          "average": 11.379166589,
+          "median": 8.968133677
+        },
+        "durations": [
+          {
+            "duration": 21.017661912,
+            "location": "b2b/Bookings.feature:105"
+          },
+          {
+            "duration": 6.56273709,
+            "location": "booking/GuestMobileBooking.feature:32"
+          },
+          {
+            "duration": 8.867582036,
+            "location": "booking/RegisteredKioskBooking.feature:41"
+          },
+          {
+            "duration": 9.068685318,
+            "location": "booking/RegisteredKioskBooking.feature:117"
+          }
+        ]
+      },
+      {
+        "name": "I proceed to booking confirmation",
+        "aggregatedDurations": {
+          "average": 9.912188166,
+          "median": 8.824257618
+        },
+        "durations": [
+          {
+            "duration": 17.368431976,
+            "location": "booking/GuestKioskBookings.feature:34"
+          },
+          {
+            "duration": 13.654492922,
+            "location": "booking/GuestKioskBookings.feature:34"
+          },
+          {
+            "duration": 5.981728838,
+            "location": "booking/GuestKioskBookings.feature:105"
+          },
+          {
+            "duration": 8.824257618,
+            "location": "booking/GuestKioskBookings.feature:233"
+          },
+          {
+            "duration": 8.633007462,
+            "location": "booking/GuestKioskBookings.feature:272"
+          },
+          {
+            "duration": 7.484200322,
+            "location": "booking/GuestMobileBooking.feature:197"
+          },
+          {
+            "duration": 6.989899158,
+            "location": "booking/GuestMobileBooking.feature:197"
+          },
+          {
+            "duration": 9.875231146,
+            "location": "booking/RegisteredKioskBooking.feature:194"
+          },
+          {
+            "duration": 13.879455062,
+            "location": "booking/RegisteredKioskBooking.feature:253"
+          },
+          {
+            "duration": 8.936706216,
+            "location": "booking/RegisteredMobileBooking.feature:41"
+          },
+          {
+            "duration": 7.40665911,
+            "location": "booking/RegisteredMobileBooking.feature:236"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "source": "^(?:I should see |)the \"([^\"]*)\" (?:field|element) is visible$",
+    "steps": [
+      {
+        "name": "the \"Mobile ticket\" field is visible",
+        "aggregatedDurations": {
+          "average": 18.214869834,
+          "median": 18.214869834
+        },
+        "durations": [
+          {
+            "duration": 18.169479486,
+            "location": "booking/RegisteredMobileBooking.feature:16"
+          },
+          {
+            "duration": 18.260260182,
+            "location": "booking/RegisteredMobileBooking.feature:219"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "source": "^(?:I |)register user with the following criteria:$",
+    "steps": [
+      {
+        "name": "I register user with the following criteria:",
+        "aggregatedDurations": {
+          "average": 43.991660462,
+          "median": 43.991660462
+        },
+        "durations": [
+          {
+            "duration": 43.96591577,
+            "location": "booking/RegisteredMobileBooking.feature:28"
+          },
+          {
+            "duration": 44.017405154,
+            "location": "booking/RegisteredMobileBooking.feature:229"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "source": "^I am not logged into the system$",
+    "steps": [
+      {
+        "name": "I am not logged into the system",
+        "aggregatedDurations": {
+          "average": 16.362621617,
+          "median": 16.60223913
+        },
+        "durations": [
+          {
+            "duration": 16.998406576,
+            "location": "booking/GuestKioskBookings.feature:5"
+          },
+          {
+            "duration": 16.633918326,
+            "location": "booking/GuestKioskBookings.feature:5"
+          },
+          {
+            "duration": 15.706801112,
+            "location": "booking/GuestKioskBookings.feature:86"
+          },
+          {
+            "duration": 14.600434308,
+            "location": "booking/GuestKioskBookings.feature:214"
+          },
+          {
+            "duration": 16.815253428,
+            "location": "booking/GuestKioskBookings.feature:257"
+          },
+          {
+            "duration": 16.570559934,
+            "location": "booking/GuestMobileBooking.feature:9"
+          },
+          {
+            "duration": 16.255738004,
+            "location": "booking/GuestMobileBooking.feature:101"
+          },
+          {
+            "duration": 14.516895994,
+            "location": "booking/GuestMobileBooking.feature:174"
+          },
+          {
+            "duration": 16.660816074,
+            "location": "booking/GuestMobileBooking.feature:174"
+          },
+          {
+            "duration": 19.51958105,
+            "location": "booking/RegisteredMobileBooking.feature:8"
+          },
+          {
+            "duration": 15.311357904,
+            "location": "booking/RegisteredMobileBooking.feature:210"
+          },
+          {
+            "duration": 17.785584928,
+            "location": "coach/CoachBooking.feature:5"
+          },
+          {
+            "duration": 17.183750012,
+            "location": "common/LiveTrainTimes.feature:7"
+          },
+          {
+            "duration": 14.517605,
+            "location": "common/LiveTrainTimes.feature:39"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "source": "I am on the \"(.*)\" (?:screen|page|tab)",
+    "steps": [
+      {
+        "name": "I am on the \"Journey Search\" page",
+        "aggregatedDurations": {
+          "average": 14.236057829,
+          "median": 14.214249036
+        },
+        "durations": [
+          {
+            "duration": 14.632292428,
+            "location": "booking/GuestKioskBookings.feature:6"
+          },
+          {
+            "duration": 14.27465122,
+            "location": "booking/GuestKioskBookings.feature:6"
+          },
+          {
+            "duration": 14.14417516,
+            "location": "booking/GuestKioskBookings.feature:215"
+          },
+          {
+            "duration": 14.214249036,
+            "location": "booking/GuestKioskBookings.feature:258"
+          },
+          {
+            "duration": 13.76075562,
+            "location": "booking/GuestMobileBooking.feature:10"
+          },
+          {
+            "duration": 14.61143028,
+            "location": "booking/GuestMobileBooking.feature:102"
+          },
+          {
+            "duration": 14.742303692,
+            "location": "booking/RegisteredMobileBooking.feature:9"
+          },
+          {
+            "duration": 14.188936344,
+            "location": "coach/CoachBooking.feature:6"
+          },
+          {
+            "duration": 13.555726688,
+            "location": "coach/CoachBooking.feature:58"
+          }
+        ]
+      },
+      {
+        "name": "I am on the \"Home\" page",
+        "aggregatedDurations": {
+          "average": 9.522896389,
+          "median": 8.926509637
+        },
+        "durations": [
+          {
+            "duration": 8.395946004,
+            "location": "booking/GuestKioskBookings.feature:87"
+          },
+          {
+            "duration": 8.884793704,
+            "location": "booking/GuestMobileBooking.feature:175"
+          },
+          {
+            "duration": 8.96822557,
+            "location": "booking/GuestMobileBooking.feature:175"
+          },
+          {
+            "duration": 11.135516438,
+            "location": "booking/RegisteredKioskBooking.feature:161"
+          },
+          {
+            "duration": 11.027749696,
+            "location": "booking/RegisteredKioskBooking.feature:229"
+          },
+          {
+            "duration": 8.725146924,
+            "location": "booking/RegisteredMobileBooking.feature:211"
+          }
+        ]
+      },
+      {
+        "name": "I am on the \"Available Cards\" page",
+        "aggregatedDurations": {
+          "average": 19.538586881,
+          "median": 19.508166972
+        },
+        "durations": [
+          {
+            "duration": 19.357291726,
+            "location": "booking/RegisteredKioskBooking.feature:8"
+          },
+          {
+            "duration": 19.750301946,
+            "location": "booking/RegisteredKioskBooking.feature:10"
+          },
+          {
+            "duration": 19.508166972,
+            "location": "booking/RegisteredKioskBooking.feature:96"
+          }
+        ]
+      },
+      {
+        "name": "I am on the \"Live train times\" screen",
+        "aggregatedDurations": {
+          "average": 9.024140722,
+          "median": 9.024140722
+        },
+        "durations": [
+          {
+            "duration": 9.024140722,
+            "location": "common/LiveTrainTimes.feature:8"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "source": "^(?:I |)scroll (up|down) to the \"([^\"]*)\" element",
+    "steps": [
+      {
+        "name": "scroll up to the \"Show Tickets\" element",
+        "aggregatedDurations": {
+          "average": 1.458324574,
+          "median": 1.458324574
+        },
+        "durations": [
+          {
+            "duration": 1.458324574,
+            "location": "booking/GuestKioskBookings.feature:279"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "source": "^(?:I should see |)the \"([^\"]*)\" list is not empty$",
+    "steps": [
+      {
+        "name": "the \"Search Results\" list is not empty",
+        "aggregatedDurations": {
+          "average": 0.231006275,
+          "median": 0.231006275
+        },
+        "durations": [
+          {
+            "duration": 0.26258337,
+            "location": "common/LiveTrainTimes.feature:13"
+          },
+          {
+            "duration": 0.19942918,
+            "location": "common/LiveTrainTimes.feature:50"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "source": "^(?:I |)add details for (\\d+) passenger(?:s|)$",
+    "steps": [
+      {
+        "name": "I add details for 1 passenger",
+        "aggregatedDurations": {
+          "average": 30.699781172,
+          "median": 30.699781172
+        },
+        "durations": [
+          {
+            "duration": 39.749379704,
+            "location": "b2b/Bookings.feature:18"
+          },
+          {
+            "duration": 21.65018264,
+            "location": "b2b/Bookings.feature:103"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "source": "(?:I should see |)the page contains the following data:$",
+    "steps": [
+      {
+        "name": "the page contains the following data:",
+        "aggregatedDurations": {
+          "average": 2.265919185,
+          "median": 2.265919185
+        },
+        "durations": [
+          {
+            "duration": 1.960452934,
+            "location": "booking/RegisteredKioskBooking.feature:189"
+          },
+          {
+            "duration": 2.571385436,
+            "location": "booking/RegisteredKioskBooking.feature:246"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "source": "^(?:I should see |)the \"([^\"]*)\" screen$",
+    "steps": [
+      {
+        "name": "I should see the \"Out Search Results\" screen",
+        "aggregatedDurations": {
+          "average": 21.188057548,
+          "median": 21.266499312
+        },
+        "durations": [
+          {
+            "duration": 21.88028525,
+            "location": "b2b/Bookings.feature:15"
+          },
+          {
+            "duration": 20.93154834,
+            "location": "b2b/Bookings.feature:99"
+          },
+          {
+            "duration": 7.048037076,
+            "location": "booking/GuestKioskBookings.feature:11"
+          },
+          {
+            "duration": 23.863835146,
+            "location": "booking/GuestKioskBookings.feature:11"
+          },
+          {
+            "duration": 30.050097478,
+            "location": "booking/GuestMobileBooking.feature:15"
+          },
+          {
+            "duration": 40.461604486,
+            "location": "booking/RegisteredKioskBooking.feature:19"
+          },
+          {
+            "duration": 18.341069924,
+            "location": "booking/RegisteredKioskBooking.feature:236"
+          },
+          {
+            "duration": 21.601450284,
+            "location": "coach/CoachBooking.feature:11"
+          },
+          {
+            "duration": 20.621372114,
+            "location": "coach/CoachBooking.feature:63"
+          },
+          {
+            "duration": 7.081275384,
+            "location": "common/LiveTrainTimes.feature:12"
+          }
+        ]
+      },
+      {
+        "name": "I should see the \"Payment\" screen",
+        "aggregatedDurations": {
+          "average": 0.969206001,
+          "median": 0.632660322
+        },
+        "durations": [
+          {
+            "duration": 0.523109348,
+            "location": "b2b/Bookings.feature:17"
+          },
+          {
+            "duration": 0.706097128,
+            "location": "b2b/Bookings.feature:21"
+          },
+          {
+            "duration": 0.612957424,
+            "location": "b2b/Bookings.feature:101"
+          },
+          {
+            "duration": 0.59996197,
+            "location": "booking/GuestKioskBookings.feature:16"
+          },
+          {
+            "duration": 0.57856857,
+            "location": "booking/GuestKioskBookings.feature:31"
+          },
+          {
+            "duration": 0.635811688,
+            "location": "booking/GuestKioskBookings.feature:16"
+          },
+          {
+            "duration": 0.740741732,
+            "location": "booking/GuestKioskBookings.feature:31"
+          },
+          {
+            "duration": 0.510630086,
+            "location": "booking/GuestKioskBookings.feature:94"
+          },
+          {
+            "duration": 0.550756944,
+            "location": "booking/GuestKioskBookings.feature:221"
+          },
+          {
+            "duration": 0.699260462,
+            "location": "booking/GuestKioskBookings.feature:230"
+          },
+          {
+            "duration": 0.554655812,
+            "location": "booking/GuestKioskBookings.feature:264"
+          },
+          {
+            "duration": 0.720850364,
+            "location": "booking/GuestMobileBooking.feature:17"
+          },
+          {
+            "duration": 0.711468908,
+            "location": "booking/GuestMobileBooking.feature:29"
+          },
+          {
+            "duration": 0.628693164,
+            "location": "booking/GuestMobileBooking.feature:108"
+          },
+          {
+            "duration": 0.601138628,
+            "location": "booking/GuestMobileBooking.feature:182"
+          },
+          {
+            "duration": 0.608395742,
+            "location": "booking/GuestMobileBooking.feature:182"
+          },
+          {
+            "duration": 0.579611326,
+            "location": "booking/RegisteredKioskBooking.feature:25"
+          },
+          {
+            "duration": 0.493039144,
+            "location": "booking/RegisteredKioskBooking.feature:104"
+          },
+          {
+            "duration": 0.96400232,
+            "location": "booking/RegisteredKioskBooking.feature:169"
+          },
+          {
+            "duration": 0.753406112,
+            "location": "booking/RegisteredKioskBooking.feature:188"
+          },
+          {
+            "duration": 1.040047856,
+            "location": "booking/RegisteredKioskBooking.feature:238"
+          },
+          {
+            "duration": 0.687015192,
+            "location": "booking/RegisteredMobileBooking.feature:15"
+          },
+          {
+            "duration": 9.22452194,
+            "location": "booking/RegisteredMobileBooking.feature:31"
+          },
+          {
+            "duration": 0.603344318,
+            "location": "booking/RegisteredMobileBooking.feature:36"
+          },
+          {
+            "duration": 0.58563621,
+            "location": "booking/RegisteredMobileBooking.feature:218"
+          },
+          {
+            "duration": 1.037192412,
+            "location": "coach/CoachBooking.feature:14"
+          },
+          {
+            "duration": 0.85698777,
+            "location": "coach/CoachBooking.feature:23"
+          },
+          {
+            "duration": 0.632660322,
+            "location": "coach/CoachBooking.feature:66"
+          },
+          {
+            "duration": 0.666411138,
+            "location": "coach/CoachBooking.feature:75"
+          }
+        ]
+      },
+      {
+        "name": "I should see the \"Booking Confirmation\" screen",
+        "aggregatedDurations": {
+          "average": 1.651339168,
+          "median": 0.593827956
+        },
+        "durations": [
+          {
+            "duration": 0.593827956,
+            "location": "b2b/Bookings.feature:106"
+          },
+          {
+            "duration": 0.556372092,
+            "location": "booking/GuestKioskBookings.feature:35"
+          },
+          {
+            "duration": 0.76844222,
+            "location": "booking/GuestKioskBookings.feature:35"
+          },
+          {
+            "duration": 0.646140164,
+            "location": "booking/GuestKioskBookings.feature:106"
+          },
+          {
+            "duration": 0.55842982,
+            "location": "booking/GuestKioskBookings.feature:234"
+          },
+          {
+            "duration": 0.561430212,
+            "location": "booking/GuestKioskBookings.feature:273"
+          },
+          {
+            "duration": 0.54522381,
+            "location": "booking/GuestMobileBooking.feature:33"
+          },
+          {
+            "duration": 0.574134764,
+            "location": "booking/RegisteredKioskBooking.feature:42"
+          },
+          {
+            "duration": 0.473793182,
+            "location": "booking/RegisteredKioskBooking.feature:118"
+          },
+          {
+            "duration": 0.573731388,
+            "location": "booking/RegisteredKioskBooking.feature:195"
+          },
+          {
+            "duration": 0.699119866,
+            "location": "booking/RegisteredKioskBooking.feature:254"
+          },
+          {
+            "duration": 0.728373608,
+            "location": "booking/RegisteredMobileBooking.feature:42"
+          },
+          {
+            "duration": 0.692150642,
+            "location": "booking/RegisteredMobileBooking.feature:237"
+          },
+          {
+            "duration": 8.365169136,
+            "location": "coach/CoachBooking.feature:26"
+          },
+          {
+            "duration": 8.43374867,
+            "location": "coach/CoachBooking.feature:79"
+          }
+        ]
+      },
+      {
+        "name": "I should see the \"My Tickets\" screen",
+        "aggregatedDurations": {
+          "average": 5.644265954,
+          "median": 5.909505685
+        },
+        "durations": [
+          {
+            "duration": 5.947864544,
+            "location": "b2b/Bookings.feature:107"
+          },
+          {
+            "duration": 4.977471112,
+            "location": "booking/GuestKioskBookings.feature:36"
+          },
+          {
+            "duration": 5.499912294,
+            "location": "booking/GuestKioskBookings.feature:36"
+          },
+          {
+            "duration": 6.398378994,
+            "location": "booking/GuestKioskBookings.feature:107"
+          },
+          {
+            "duration": 5.925105014,
+            "location": "booking/GuestKioskBookings.feature:235"
+          },
+          {
+            "duration": 5.893906356,
+            "location": "booking/GuestKioskBookings.feature:274"
+          },
+          {
+            "duration": 0.53746691,
+            "location": "booking/GuestKioskBookings.feature:278"
+          },
+          {
+            "duration": 6.498755388,
+            "location": "booking/GuestMobileBooking.feature:34"
+          },
+          {
+            "duration": 6.907119396,
+            "location": "booking/GuestMobileBooking.feature:198"
+          },
+          {
+            "duration": 7.263133034,
+            "location": "booking/GuestMobileBooking.feature:198"
+          },
+          {
+            "duration": 4.878770492,
+            "location": "booking/RegisteredKioskBooking.feature:43"
+          },
+          {
+            "duration": 4.075164462,
+            "location": "booking/RegisteredKioskBooking.feature:119"
+          },
+          {
+            "duration": 5.882693798,
+            "location": "booking/RegisteredKioskBooking.feature:196"
+          },
+          {
+            "duration": 5.61540179,
+            "location": "booking/RegisteredKioskBooking.feature:255"
+          },
+          {
+            "duration": 5.00976207,
+            "location": "booking/RegisteredMobileBooking.feature:43"
+          },
+          {
+            "duration": 6.298867262,
+            "location": "booking/RegisteredMobileBooking.feature:238"
+          },
+          {
+            "duration": 7.057976564,
+            "location": "coach/CoachBooking.feature:27"
+          },
+          {
+            "duration": 6.929037692,
+            "location": "coach/CoachBooking.feature:80"
+          }
+        ]
+      },
+      {
+        "name": "I should see the \"Booking info\" screen",
+        "aggregatedDurations": {
+          "average": 4.029188321,
+          "median": 4.146443784
+        },
+        "durations": [
+          {
+            "duration": 4.107841726,
+            "location": "booking/GuestKioskBookings.feature:45"
+          },
+          {
+            "duration": 3.73642208,
+            "location": "booking/GuestKioskBookings.feature:237"
+          },
+          {
+            "duration": 4.146443784,
+            "location": "booking/GuestKioskBookings.feature:276"
+          },
+          {
+            "duration": 3.638179732,
+            "location": "booking/GuestKioskBookings.feature:281"
+          },
+          {
+            "duration": 4.170845948,
+            "location": "booking/RegisteredKioskBooking.feature:48"
+          },
+          {
+            "duration": 4.171848534,
+            "location": "booking/RegisteredKioskBooking.feature:125"
+          },
+          {
+            "duration": 4.232736446,
+            "location": "booking/RegisteredKioskBooking.feature:198"
+          }
+        ]
+      },
+      {
+        "name": "I should see the \"Paypal Login\" screen",
+        "aggregatedDurations": {
+          "average": 0.720088372,
+          "median": 0.66439425
+        },
+        "durations": [
+          {
+            "duration": 1.067644568,
+            "location": "booking/GuestKioskBookings.feature:103"
+          },
+          {
+            "duration": 0.66439425,
+            "location": "booking/GuestKioskBookings.feature:270"
+          },
+          {
+            "duration": 0.611452374,
+            "location": "booking/GuestMobileBooking.feature:195"
+          },
+          {
+            "duration": 0.535198286,
+            "location": "booking/GuestMobileBooking.feature:195"
+          },
+          {
+            "duration": 0.497142212,
+            "location": "booking/RegisteredKioskBooking.feature:115"
+          },
+          {
+            "duration": 0.733906408,
+            "location": "booking/RegisteredKioskBooking.feature:251"
+          },
+          {
+            "duration": 0.930880508,
+            "location": "booking/RegisteredMobileBooking.feature:234"
+          }
+        ]
+      },
+      {
+        "name": "I should see the \"Registration\" screen",
+        "aggregatedDurations": {
+          "average": 1.02479868,
+          "median": 1.02479868
+        },
+        "durations": [
+          {
+            "duration": 1.137655176,
+            "location": "booking/RegisteredMobileBooking.feature:27"
+          },
+          {
+            "duration": 0.911942184,
+            "location": "booking/RegisteredMobileBooking.feature:228"
+          }
+        ]
+      },
+      {
+        "name": "I should see the \"Mobile Ticket Barcode\" screen",
+        "aggregatedDurations": {
+          "average": 10.376271896,
+          "median": 10.376271896
+        },
+        "durations": [
+          {
+            "duration": 10.376271896,
+            "location": "booking/RegisteredMobileBooking.feature:60"
+          }
+        ]
+      },
+      {
+        "name": "I should see the \"Live Progress BT\" screen",
+        "aggregatedDurations": {
+          "average": 0.420184978,
+          "median": 0.420184978
+        },
+        "durations": [
+          {
+            "duration": 0.434889512,
+            "location": "common/LiveTrainTimes.feature:27"
+          },
+          {
+            "duration": 0.405480444,
+            "location": "common/LiveTrainTimes.feature:55"
+          }
+        ]
+      },
+      {
+        "name": "I should see the \"Live Train Times Search Results\" screen",
+        "aggregatedDurations": {
+          "average": 4.874115082,
+          "median": 4.874115082
+        },
+        "durations": [
+          {
+            "duration": 4.874115082,
+            "location": "common/LiveTrainTimes.feature:49"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "source": "^(?:I |)select Pay by (.*) method$",
+    "steps": [
+      {
+        "name": "select Pay by card method",
+        "aggregatedDurations": {
+          "average": 16.499446988,
+          "median": 20.788966604
+        },
+        "durations": [
+          {
+            "duration": 5.464360842,
+            "location": "b2b/Bookings.feature:19"
+          },
+          {
+            "duration": 20.788966604,
+            "location": "booking/GuestKioskBookings.feature:226"
+          },
+          {
+            "duration": 23.245013518,
+            "location": "booking/RegisteredKioskBooking.feature:184"
+          }
+        ]
+      },
+      {
+        "name": "I select Pay by card method",
+        "aggregatedDurations": {
+          "average": 21.87350911,
+          "median": 23.081687798
+        },
+        "durations": [
+          {
+            "duration": 23.319804062,
+            "location": "booking/GuestKioskBookings.feature:27"
+          },
+          {
+            "duration": 16.958374118,
+            "location": "booking/GuestKioskBookings.feature:27"
+          },
+          {
+            "duration": 23.081687798,
+            "location": "booking/GuestMobileBooking.feature:25"
+          },
+          {
+            "duration": 22.522748486,
+            "location": "coach/CoachBooking.feature:19"
+          },
+          {
+            "duration": 23.484931088,
+            "location": "coach/CoachBooking.feature:71"
+          }
+        ]
+      },
+      {
+        "name": "I select Pay by PayPal method",
+        "aggregatedDurations": {
+          "average": 17.651416876,
+          "median": 15.854050982
+        },
+        "durations": [
+          {
+            "duration": 21.066236266,
+            "location": "booking/GuestKioskBookings.feature:102"
+          },
+          {
+            "duration": 20.51339113,
+            "location": "booking/GuestKioskBookings.feature:269"
+          },
+          {
+            "duration": 15.854050982,
+            "location": "booking/GuestMobileBooking.feature:194"
+          },
+          {
+            "duration": 8.632387834,
+            "location": "booking/GuestMobileBooking.feature:194"
+          },
+          {
+            "duration": 14.739012398,
+            "location": "booking/RegisteredKioskBooking.feature:114"
+          },
+          {
+            "duration": 13.85516638,
+            "location": "booking/RegisteredKioskBooking.feature:250"
+          },
+          {
+            "duration": 28.899673146,
+            "location": "booking/RegisteredMobileBooking.feature:233"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "source": "^business account has no payment cards stored$",
+    "steps": [
+      {
+        "name": "business account has no payment cards stored",
+        "aggregatedDurations": {
+          "average": 35.598554,
+          "median": 35.598554
+        },
+        "durations": [
+          {
+            "duration": 35.113835816,
+            "location": "b2b/Bookings.feature:6"
+          },
+          {
+            "duration": 36.083272184,
+            "location": "b2b/Bookings.feature:90"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "source": "^(?:I |)search for journey using the following criteria:$",
+    "steps": [
+      {
+        "name": "I search for journey using the following criteria:",
+        "aggregatedDurations": {
+          "average": 105.704360724,
+          "median": 100.073738752
+        },
+        "durations": [
+          {
+            "duration": 91.225235966,
+            "location": "booking/GuestKioskBookings.feature:7"
+          },
+          {
+            "duration": 100.073738752,
+            "location": "booking/GuestKioskBookings.feature:7"
+          },
+          {
+            "duration": 116.363209156,
+            "location": "booking/GuestKioskBookings.feature:89"
+          },
+          {
+            "duration": 128.605532598,
+            "location": "booking/GuestKioskBookings.feature:216"
+          },
+          {
+            "duration": 130.4490807,
+            "location": "booking/GuestKioskBookings.feature:259"
+          },
+          {
+            "duration": 82.9887379,
+            "location": "booking/GuestMobileBooking.feature:11"
+          },
+          {
+            "duration": 98.17527741,
+            "location": "booking/GuestMobileBooking.feature:103"
+          },
+          {
+            "duration": 113.572998276,
+            "location": "booking/GuestMobileBooking.feature:177"
+          },
+          {
+            "duration": 89.885435762,
+            "location": "booking/GuestMobileBooking.feature:177"
+          }
+        ]
+      },
+      {
+        "name": "search for journey using the following criteria:",
+        "aggregatedDurations": {
+          "average": 97.920791048,
+          "median": 97.920791048
+        },
+        "durations": [
+          {
+            "duration": 97.920791048,
+            "location": "booking/RegisteredKioskBooking.feature:15"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "source": "^(?:I |)scroll to the \"([^\"]*)\" text",
+    "steps": [
+      {
+        "name": "I scroll to the \"Guest booking\" text",
+        "aggregatedDurations": {
+          "average": 7.805266737,
+          "median": 7.805266737
+        },
+        "durations": [
+          {
+            "duration": 7.76286021,
+            "location": "booking/GuestMobileBooking.feature:202"
+          },
+          {
+            "duration": 7.847673264,
+            "location": "booking/GuestMobileBooking.feature:202"
+          }
+        ]
+      },
+      {
+        "name": "scroll to the \"Farringdon\" text",
+        "aggregatedDurations": {
+          "average": 0.931785346,
+          "median": 0.931785346
+        },
+        "durations": [
+          {
+            "duration": 0.931785346,
+            "location": "common/LiveTrainTimes.feature:28"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "source": "(?:I |)go to the \"(.*)\" (?:screen|page|tab)",
+    "steps": [
+      {
+        "name": "I go to the \"Journey Search\" screen",
+        "aggregatedDurations": {
+          "average": 14.805253014,
+          "median": 14.805253014
+        },
+        "durations": [
+          {
+            "duration": 14.805253014,
+            "location": "booking/RegisteredKioskBooking.feature:14"
+          }
+        ]
+      },
+      {
+        "name": "I go to the \"Registration\" screen",
+        "aggregatedDurations": {
+          "average": 6.96877724,
+          "median": 6.96877724
+        },
+        "durations": [
+          {
+            "duration": 7.024370362,
+            "location": "booking/RegisteredMobileBooking.feature:26"
+          },
+          {
+            "duration": 6.913184118,
+            "location": "booking/RegisteredMobileBooking.feature:227"
+          }
+        ]
+      },
+      {
+        "name": "I go to the \"Coach Search Results\" tab",
+        "aggregatedDurations": {
+          "average": 5.235579336,
+          "median": 5.235579336
+        },
+        "durations": [
+          {
+            "duration": 5.355125538,
+            "location": "coach/CoachBooking.feature:12"
+          },
+          {
+            "duration": 5.116033134,
+            "location": "coach/CoachBooking.feature:64"
+          }
+        ]
+      },
+      {
+        "name": "I go to the \"Live train times\" screen",
+        "aggregatedDurations": {
+          "average": 9.57629392,
+          "median": 9.57629392
+        },
+        "durations": [
+          {
+            "duration": 9.57629392,
+            "location": "common/LiveTrainTimes.feature:40"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "source": "^(?:I |)note following fields values:$",
+    "steps": [
+      {
+        "name": "I note following fields values:",
+        "aggregatedDurations": {
+          "average": 10.852529426,
+          "median": 10.007991562
+        },
+        "durations": [
+          {
+            "duration": 15.524163822,
+            "location": "booking/GuestKioskBookings.feature:18"
+          },
+          {
+            "duration": 22.37368459,
+            "location": "booking/GuestKioskBookings.feature:18"
+          },
+          {
+            "duration": 0.619262164,
+            "location": "booking/GuestKioskBookings.feature:96"
+          },
+          {
+            "duration": 0.584920844,
+            "location": "booking/GuestKioskBookings.feature:223"
+          },
+          {
+            "duration": 30.98946967,
+            "location": "booking/GuestKioskBookings.feature:266"
+          },
+          {
+            "duration": 27.117420686,
+            "location": "booking/GuestMobileBooking.feature:110"
+          },
+          {
+            "duration": 0.000145618,
+            "location": "booking/GuestMobileBooking.feature:184"
+          },
+          {
+            "duration": 0.000115826,
+            "location": "booking/GuestMobileBooking.feature:184"
+          },
+          {
+            "duration": 1.158181232,
+            "location": "booking/RegisteredKioskBooking.feature:31"
+          },
+          {
+            "duration": 2.991666656,
+            "location": "booking/RegisteredKioskBooking.feature:106"
+          },
+          {
+            "duration": 18.852317632,
+            "location": "booking/RegisteredKioskBooking.feature:171"
+          },
+          {
+            "duration": 10.007991562,
+            "location": "booking/RegisteredKioskBooking.feature:240"
+          },
+          {
+            "duration": 10.863542236,
+            "location": "booking/RegisteredMobileBooking.feature:17"
+          }
+        ]
+      },
+      {
+        "name": "note following fields values:",
+        "aggregatedDurations": {
+          "average": 7.974919626,
+          "median": 7.974919626
+        },
+        "durations": [
+          {
+            "duration": 7.974919626,
+            "location": "booking/GuestMobileBooking.feature:19"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "source": "^(?:I should see |)the following labels are shown:$",
+    "steps": [
+      {
+        "name": "the following labels are shown:",
+        "aggregatedDurations": {
+          "average": 1.592518947,
+          "median": 0.408608044
+        },
+        "durations": [
+          {
+            "duration": 3.977461406,
+            "location": "b2b/Bookings.feature:108"
+          },
+          {
+            "duration": 0.408608044,
+            "location": "booking/GuestKioskBookings.feature:12"
+          },
+          {
+            "duration": 0.317852116,
+            "location": "booking/GuestKioskBookings.feature:37"
+          },
+          {
+            "duration": 0.479492018,
+            "location": "booking/GuestKioskBookings.feature:12"
+          },
+          {
+            "duration": 16.147219408,
+            "location": "booking/GuestKioskBookings.feature:37"
+          },
+          {
+            "duration": 0.269751438,
+            "location": "booking/GuestKioskBookings.feature:108"
+          },
+          {
+            "duration": 0.364328572,
+            "location": "booking/GuestMobileBooking.feature:36"
+          },
+          {
+            "duration": 0.337538948,
+            "location": "booking/GuestMobileBooking.feature:199"
+          },
+          {
+            "duration": 0.308690256,
+            "location": "booking/GuestMobileBooking.feature:199"
+          },
+          {
+            "duration": 0.489720736,
+            "location": "booking/RegisteredKioskBooking.feature:20"
+          },
+          {
+            "duration": 0.367574338,
+            "location": "booking/RegisteredKioskBooking.feature:44"
+          },
+          {
+            "duration": 1.180187568,
+            "location": "booking/RegisteredKioskBooking.feature:120"
+          },
+          {
+            "duration": 1.490274082,
+            "location": "booking/RegisteredKioskBooking.feature:256"
+          },
+          {
+            "duration": 0.358979886,
+            "location": "booking/RegisteredMobileBooking.feature:45"
+          },
+          {
+            "duration": 0.310954192,
+            "location": "booking/RegisteredMobileBooking.feature:239"
+          },
+          {
+            "duration": 0.486135196,
+            "location": "coach/CoachBooking.feature:28"
+          },
+          {
+            "duration": 0.3888633,
+            "location": "coach/CoachBooking.feature:81"
+          },
+          {
+            "duration": 0.88265597,
+            "location": "common/LiveTrainTimes.feature:29"
+          },
+          {
+            "duration": 1.691572524,
+            "location": "common/LiveTrainTimes.feature:56"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "source": "^I am logged into the system$",
+    "steps": [
+      {
+        "name": "I am logged into the system",
+        "aggregatedDurations": {
+          "average": 70.391922942,
+          "median": 70.424558696
+        },
+        "durations": [
+          {
+            "duration": 70.424558696,
+            "location": "booking/RegisteredKioskBooking.feature:7"
+          },
+          {
+            "duration": 65.925439096,
+            "location": "booking/RegisteredKioskBooking.feature:95"
+          },
+          {
+            "duration": 73.629694076,
+            "location": "booking/RegisteredKioskBooking.feature:160"
+          },
+          {
+            "duration": 75.57975326,
+            "location": "booking/RegisteredKioskBooking.feature:228"
+          },
+          {
+            "duration": 66.400169584,
+            "location": "coach/CoachBooking.feature:56"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "source": "^(?:I |)have no payment cards stored$",
+    "steps": [
+      {
+        "name": "I have no payment cards stored",
+        "aggregatedDurations": {
+          "average": 40.173812396,
+          "median": 39.193397262
+        },
+        "durations": [
+          {
+            "duration": 44.981980572,
+            "location": "booking/RegisteredKioskBooking.feature:9"
+          },
+          {
+            "duration": 45.593495546,
+            "location": "booking/RegisteredKioskBooking.feature:97"
+          },
+          {
+            "duration": 35.827222526,
+            "location": "booking/RegisteredKioskBooking.feature:162"
+          },
+          {
+            "duration": 39.193397262,
+            "location": "booking/RegisteredKioskBooking.feature:230"
+          },
+          {
+            "duration": 35.272966074,
+            "location": "coach/CoachBooking.feature:57"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "source": "^I am logged into the system under business account$",
+    "steps": [
+      {
+        "name": "I am logged into the system under business account",
+        "aggregatedDurations": {
+          "average": 60.367011786,
+          "median": 60.367011786
+        },
+        "durations": [
+          {
+            "duration": 59.481384378,
+            "location": "b2b/Bookings.feature:5"
+          },
+          {
+            "duration": 61.252639194,
+            "location": "b2b/Bookings.feature:89"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "source": "^(?:I |)go to the search results for the following journey:$",
+    "steps": [
+      {
+        "name": "go to the search results for the following journey:",
+        "aggregatedDurations": {
+          "average": 3.06345003,
+          "median": 2.97375251
+        },
+        "durations": [
+          {
+            "duration": 2.767329502,
+            "location": "b2b/Bookings.feature:11"
+          },
+          {
+            "duration": 3.018375938,
+            "location": "booking/RegisteredKioskBooking.feature:164"
+          },
+          {
+            "duration": 3.5389656,
+            "location": "booking/RegisteredKioskBooking.feature:232"
+          },
+          {
+            "duration": 2.929129082,
+            "location": "booking/RegisteredMobileBooking.feature:213"
+          }
+        ]
+      },
+      {
+        "name": "I go to the search results for the following journey:",
+        "aggregatedDurations": {
+          "average": 2.736655601,
+          "median": 2.656153966
+        },
+        "durations": [
+          {
+            "duration": 2.748504656,
+            "location": "b2b/Bookings.feature:95"
+          },
+          {
+            "duration": 2.546215684,
+            "location": "booking/RegisteredKioskBooking.feature:98"
+          },
+          {
+            "duration": 3.154174238,
+            "location": "booking/RegisteredMobileBooking.feature:10"
+          },
+          {
+            "duration": 2.578229464,
+            "location": "coach/CoachBooking.feature:7"
+          },
+          {
+            "duration": 2.656153966,
+            "location": "coach/CoachBooking.feature:59"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "source": "^(?:I should see |)the \"([^\"]*)\" button is visible$",
+    "steps": [
+      {
+        "name": "the \"Pay on account\" button is visible",
+        "aggregatedDurations": {
+          "average": 12.966142734,
+          "median": 12.966142734
+        },
+        "durations": [
+          {
+            "duration": 12.966142734,
+            "location": "b2b/Bookings.feature:102"
+          }
+        ]
+      },
+      {
+        "name": "I should see the \"Buy\" button is visible",
+        "aggregatedDurations": {
+          "average": 3.495583602,
+          "median": 1.018999584
+        },
+        "durations": [
+          {
+            "duration": 0.450480638,
+            "location": "booking/GuestKioskBookings.feature:25"
+          },
+          {
+            "duration": 0.368176558,
+            "location": "booking/GuestKioskBookings.feature:25"
+          },
+          {
+            "duration": 1.018999584,
+            "location": "booking/GuestMobileBooking.feature:24"
+          },
+          {
+            "duration": 7.55756917,
+            "location": "coach/CoachBooking.feature:18"
+          },
+          {
+            "duration": 8.08269206,
+            "location": "coach/CoachBooking.feature:70"
+          }
+        ]
+      },
+      {
+        "name": "the \"Login\" button is visible",
+        "aggregatedDurations": {
+          "average": 10.41382065,
+          "median": 10.41382065
+        },
+        "durations": [
+          {
+            "duration": 13.49705484,
+            "location": "booking/RegisteredMobileBooking.feature:25"
+          },
+          {
+            "duration": 7.33058646,
+            "location": "booking/RegisteredMobileBooking.feature:226"
+          }
+        ]
+      },
+      {
+        "name": "the \"View tickets\" button is visible",
+        "aggregatedDurations": {
+          "average": 1.054994582,
+          "median": 1.054994582
+        },
+        "durations": [
+          {
+            "duration": 1.054994582,
+            "location": "booking/RegisteredMobileBooking.feature:57"
+          }
+        ]
+      },
+      {
+        "name": "the \"Barcode\" button is visible",
+        "aggregatedDurations": {
+          "average": 0.18628108,
+          "median": 0.18628108
+        },
+        "durations": [
+          {
+            "duration": 0.18628108,
+            "location": "booking/RegisteredMobileBooking.feature:61"
+          }
+        ]
+      },
+      {
+        "name": "the \"Ticket\" button is visible",
+        "aggregatedDurations": {
+          "average": 0.306369414,
+          "median": 0.306369414
+        },
+        "durations": [
+          {
+            "duration": 0.306369414,
+            "location": "booking/RegisteredMobileBooking.feature:62"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "source": "^(?:I |)open the \"(.*)\" leg for the top-most visible ticket$",
+    "steps": [
+      {
+        "name": "I open the \"Outbound\" leg for the top-most visible ticket",
+        "aggregatedDurations": {
+          "average": 3.144556612,
+          "median": 2.446522685
+        },
+        "durations": [
+          {
+            "duration": 6.827127456,
+            "location": "booking/GuestKioskBookings.feature:44"
+          },
+          {
+            "duration": 2.368810248,
+            "location": "booking/GuestKioskBookings.feature:236"
+          },
+          {
+            "duration": 2.455782794,
+            "location": "booking/GuestKioskBookings.feature:275"
+          },
+          {
+            "duration": 2.437262576,
+            "location": "booking/RegisteredKioskBooking.feature:47"
+          },
+          {
+            "duration": 2.148977196,
+            "location": "booking/RegisteredKioskBooking.feature:124"
+          },
+          {
+            "duration": 2.629379406,
+            "location": "booking/RegisteredKioskBooking.feature:197"
+          }
+        ]
+      },
+      {
+        "name": "I open the \"Return\" leg for the top-most visible ticket",
+        "aggregatedDurations": {
+          "average": 2.92235602,
+          "median": 2.92235602
+        },
+        "durations": [
+          {
+            "duration": 2.92235602,
+            "location": "booking/GuestKioskBookings.feature:280"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "source": "^(?:I should see |)at least one of the following labels (?:is|are) shown:$",
+    "steps": [
+      {
+        "name": "I should see at least one of the following labels is shown:",
+        "aggregatedDurations": {
+          "average": 0.185728069,
+          "median": 0.185728069
+        },
+        "durations": [
+          {
+            "duration": 0.205712496,
+            "location": "booking/GuestMobileBooking.feature:203"
+          },
+          {
+            "duration": 0.165743642,
+            "location": "booking/GuestMobileBooking.feature:203"
+          }
+        ]
+      }
+    ]
+  }
+]

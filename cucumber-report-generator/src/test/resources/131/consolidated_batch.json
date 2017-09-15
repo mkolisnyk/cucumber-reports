@@ -1,0 +1,40 @@
+{
+  "@type": "com.github.mkolisnyk.cucumber.reporting.types.consolidated.ConsolidatedReportBatch", 
+  "models": [
+    {
+      "items": [
+        {
+          "path": "target/runner/i131/cucumber-results-feature-overview-chart.html", 
+          "title": "Overview Chart"
+        }, 
+        {
+          "path": "target/runner/i131/cucumber-results-known-errors.html", 
+          "title": "Known Errors"
+        }, 
+        {
+          "path": "target/runner/i131/cucumber-results-feature-overview.html", 
+          "title": "Feature Overview"
+        }, 
+        {
+          "path": "target/runner/i131/load-activity-durations.html", 
+          "title": "Activities Performance"
+        },
+        {
+          "path": "target/runner/i131/process_metrics.html", 
+          "title": "Processor Workload"
+        },
+        {
+          "path": "target/runner/i131/process_metricsvss.html", 
+          "title": "VSS Workload"
+        },
+        {
+          "path": "target/runner/i131/process_metricsrss.html", 
+          "title": "RSS Workload"
+        }
+      ], 
+      "reportSuffix": "batch-overview", 
+      "title": "Results Overview", 
+      "useTableOfContents": false
+    }
+  ]
+}

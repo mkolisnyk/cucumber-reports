@@ -111,17 +111,17 @@ div.content {page-break-after: always;}
 					<td><small>Duration: ${scenario.getDuration()?string[".##"]}s</small></td>
 				</tr>
                 <#if scenario.getBefore()?has_content>
-					<#assign error="">
-					<#if scenario.getBefore().getResult().getErrorMessage()?has_content>
-						<#assign error="<br>" + scenario.getBefore().getResult().getErrorMessage()?replace("\n", "</br><br>", "r") + "</br>">
-					</#if>
 					<tr class="${scenario.getBefore().getResult().getStatus()}">
 						<td>Before</td>
 						<td colspan="2"></td>
-						<td width="100">${scenario.getBefore().getResult().getStatus()}</td>
+						<td width="100">${scenario.getBefore().getResult().getDurationTimeString("HH:mm:ss:S")}</td>
 					</tr>
-                	<tr class="${scenario.getBefore().getResult().getDurationTimeString("HH:mm:ss:S")}">
-                		<td colspan="4">${error}</td>
+                	<tr class="${scenario.getBefore().getResult().getStatus()}">
+                		<td colspan="4">
+                			<#if scenario.getBefore().getResult().getErrorMessage()?has_content>
+                				<br>${scenario.getBefore().getResult().getErrorMessage()}</br>
+                			</#if>
+                		</td>
                 	</tr>
         		</#if>
                 <tr class="${scenario.getStatus()}">

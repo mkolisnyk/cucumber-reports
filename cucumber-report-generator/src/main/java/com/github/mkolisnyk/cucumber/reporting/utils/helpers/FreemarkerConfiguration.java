@@ -20,6 +20,7 @@ import freemarker.cache.MultiTemplateLoader;
 import freemarker.cache.StringTemplateLoader;
 import freemarker.cache.TemplateLoader;
 import freemarker.ext.beans.BeansWrapper;
+import freemarker.ext.beans.BeansWrapperBuilder;
 import freemarker.template.Configuration;
 import freemarker.template.TemplateExceptionHandler;
 import freemarker.template.TemplateHashModel;
@@ -51,7 +52,7 @@ public final class FreemarkerConfiguration {
         }
     };
     private static void loadConfig(Map<String, String> resourceMap) throws Exception {
-        config = new Configuration(Configuration.VERSION_2_3_23);
+        config = new Configuration(Configuration.VERSION_2_3_26);
 
         TemplateLoader[] loaders = new TemplateLoader[] {};
         for (Entry<String, String> resource : resourceMap.entrySet()) {
@@ -76,7 +77,8 @@ public final class FreemarkerConfiguration {
         config.setURLEscapingCharset("UTF-8");
         config.setLocale(Locale.US);
 
-        TemplateHashModel staticModels = BeansWrapper.getDefaultInstance().getStaticModels();
+        BeansWrapperBuilder builder = new BeansWrapperBuilder(Configuration.VERSION_2_3_26);
+        TemplateHashModel staticModels = builder.build().getStaticModels();
         config.setSharedVariable("statics", staticModels);
     }
     private static Map<String, String> loadTemplatesFromFile(File configFile) throws IOException {

@@ -238,12 +238,12 @@
 		<dependency>
 			<groupId>com.itextpdf</groupId>
 			<artifactId>itextpdf</artifactId>
-			<version>5.5.11</version>
+			<version>5.5.12</version>
 		</dependency>
 		<dependency>
 			<groupId>com.cedarsoftware</groupId>
 			<artifactId>json-io</artifactId>
-			<version>4.9.12</version>
+			<version>4.10.0</version>
 		</dependency>
 		<dependency>
 			<groupId>info.cukes</groupId>
@@ -275,7 +275,7 @@
 		<dependency>
 			<groupId>org.xhtmlrenderer</groupId>
 			<artifactId>flying-saucer-pdf</artifactId>
-			<version>9.1.6</version>
+			<version>9.1.7</version>
 			<exclusions>
 				<exclusion>
 					<groupId>org.bouncycastle</groupId>
@@ -300,7 +300,7 @@
 		<dependency>
 		    <groupId>org.javassist</groupId>
 		    <artifactId>javassist</artifactId>
-		    <version>3.22.0-CR1</version>
+		    <version>3.22.0-CR2</version>
 		</dependency>
 		<dependency>
 			<groupId>joda-time</groupId>
@@ -308,9 +308,9 @@
 			<version>2.9.9</version>
 		</dependency>
 		<dependency>
-			<groupId>org.freemarker</groupId>
-			<artifactId>freemarker</artifactId>
-			<version>2.3.23</version>
+		    <groupId>org.freemarker</groupId>
+		    <artifactId>freemarker</artifactId>
+		    <version>2.3.26-incubating</version>
 		</dependency>
 		<dependency>
 			<groupId>org.w3c</groupId>

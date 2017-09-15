@@ -7,6 +7,7 @@ public enum CucumberReportLink {
     CHART_URL(COMMON_URL + "/chart-report"),
     CONSOLIDATED_URL(COMMON_URL + "/consolidated-report"),
     COVERAGE_OVERVIEW_URL(COMMON_URL + "/coverage-report"),
+    CUSTOM_URL(COMMON_URL + "/custom-report"),
     DETAILED_URL(COMMON_URL + "/detailed-report"),
     FEATURE_MAP_URL(COMMON_URL + "/"),
     FEATURE_OVERVIEW_URL(COMMON_URL + "/overview-chart-report"),

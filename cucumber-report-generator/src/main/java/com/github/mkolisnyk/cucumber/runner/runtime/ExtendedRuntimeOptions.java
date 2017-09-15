@@ -51,6 +51,8 @@ public class ExtendedRuntimeOptions {
     private boolean systemInfoReport = false;
     private boolean benchmarkReport = false;
     private String benchmarkReportConfig = "";
+    private boolean customReport = false;
+    private String[] customReportTemplateNames = {};
     private String customTemplatesPath = "";
     private String[] formats = {};
 
@@ -191,6 +193,8 @@ public class ExtendedRuntimeOptions {
             this.systemInfoReport = options.systemInfoReport();
             this.benchmarkReport = options.benchmarkReport();
             this.benchmarkReportConfig = options.benchmarkReportConfig();
+            this.customReport = options.customReport();
+            this.customReportTemplateNames = options.customReportTemplateNames();
             this.customTemplatesPath = options.customTemplatesPath();
             this.formats = options.formats();
         }
@@ -433,6 +437,18 @@ public class ExtendedRuntimeOptions {
     }
     public void setCustomTemplatesPath(String customTemplatesPathValue) {
         this.customTemplatesPath = customTemplatesPathValue;
+    }
+    public boolean isCustomReport() {
+        return customReport;
+    }
+    public void setCustomReport(boolean customReport) {
+        this.customReport = customReport;
+    }
+    public String[] getCustomReportTemplateNames() {
+        return customReportTemplateNames;
+    }
+    public void setCustomReportTemplateNames(String[] customReportTemplateNamesValue) {
+        this.customReportTemplateNames = customReportTemplateNamesValue;
     }
     public String[] getFormats() {
         return formats;

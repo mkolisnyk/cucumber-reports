@@ -6,6 +6,7 @@ public enum CucumberReportTypes {
     CHARTS_REPORT("Charts Report"),
     CONSOLIDATED_REPORT("Consolidated Report"),
     COVERAGE_OVERVIEW("Coverage Overview"),
+    CUSTOM_REPORT("Custom Report"),
     DETAILED_REPORT("Detailed Results Report"),
     FEATURE_MAP_REPORT("Feature Map Report"),
     FEATURE_OVERVIEW("Feature Overview Report"),

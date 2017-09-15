@@ -6,6 +6,7 @@ import com.github.mkolisnyk.cucumber.reporting.CucumberBenchmarkReport;
 import com.github.mkolisnyk.cucumber.reporting.CucumberBreakdownReport;
 import com.github.mkolisnyk.cucumber.reporting.CucumberConsolidatedReport;
 import com.github.mkolisnyk.cucumber.reporting.CucumberCoverageOverview;
+import com.github.mkolisnyk.cucumber.reporting.CucumberCustomReport;
 import com.github.mkolisnyk.cucumber.reporting.CucumberDetailedResults;
 import com.github.mkolisnyk.cucumber.reporting.CucumberFeatureMapReport;
 import com.github.mkolisnyk.cucumber.reporting.CucumberFeatureOverview;
@@ -194,6 +195,17 @@ public final class ReportRunner {
             e.printStackTrace();
         }
     }
+    public void runCustomReport(ExtendedRuntimeOptions extendedOptions) {
+        if (!extendedOptions.isCustomReport()) {
+            return;
+        }
+        CucumberCustomReport report = new CucumberCustomReport(extendedOptions);
+        try {
+            report.execute(extendedOptions.getFormats());
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
+    }
     public static void run(ExtendedRuntimeOptions extendedOption) {
         FreemarkerConfiguration.flush();
         ReportRunner runner = new ReportRunner();
@@ -209,6 +221,7 @@ public final class ReportRunner {
         runner.runKnownErrorsReport(extendedOption);
         runner.runSystemInfoReport(extendedOption);
         runner.runBenchmarkReport(extendedOption);
+        runner.runCustomReport(extendedOption);
         runner.runConsolidatedReport(extendedOption);
     }
 }

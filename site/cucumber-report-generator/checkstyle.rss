@@ -8,9 +8,9 @@
     <language>en-us</language>
     <copyright>&#169;2013 - 2017</copyright>
     <item>
-      <title>File: 105,
+      <title>File: 107,
              Errors: 0,
-             Warnings: 2,
+             Warnings: 9,
              Infos: 0
       </title>
             <link>http://nexus.sonatype.org/oss-repository-hosting.html/parent-pom/cucumber-reports/cucumber-report-generator/checkstyle.html</link>
@@ -295,6 +295,20 @@
               </tr>
                           <tr>
                 <td>
+                  <a href="http://nexus.sonatype.org/oss-repository-hosting.html/parent-pom/cucumber-reports/cucumber-report-generator/checkstyle.html#com.github.mkolisnyk.cucumber.reporting.CucumberCustomReport.java">com/github/mkolisnyk/cucumber/reporting/CucumberCustomReport.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  2
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
                   <a href="http://nexus.sonatype.org/oss-repository-hosting.html/parent-pom/cucumber-reports/cucumber-report-generator/checkstyle.html#com.github.mkolisnyk.cucumber.reporting.interfaces.KECompatibleReport.java">com/github/mkolisnyk/cucumber/reporting/interfaces/KECompatibleReport.java</a>
                 </td>
                 <td>
@@ -413,7 +427,7 @@
                   0
                 </td>
                 <td>
-                  1
+                  2
                 </td>
                 <td>
                   0
@@ -652,6 +666,20 @@
                 </td>
                 <td>
                   0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://nexus.sonatype.org/oss-repository-hosting.html/parent-pom/cucumber-reports/cucumber-report-generator/checkstyle.html#com.github.mkolisnyk.cucumber.reporting.types.beans.CustomReportDataBean.java">com/github/mkolisnyk/cucumber/reporting/types/beans/CustomReportDataBean.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  2
                 </td>
                 <td>
                   0
@@ -1169,7 +1197,7 @@
                   0
                 </td>
                 <td>
-                  0
+                  1
                 </td>
                 <td>
                   0
@@ -1323,7 +1351,7 @@
                   0
                 </td>
                 <td>
-                  0
+                  1
                 </td>
                 <td>
                   0

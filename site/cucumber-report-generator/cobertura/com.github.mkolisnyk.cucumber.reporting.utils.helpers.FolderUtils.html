@@ -35,18 +35,18 @@
 <tr>  <td class="numLineCover">&nbsp;9</td>  <td class="nbHitsCovered">&nbsp;4</td>  <td class="src"><pre class="src">&nbsp;    }</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;10</td>  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;    <span class="keyword">private</span> String[] getFileNames(String rootFolder) <span class="keyword">throws</span> Exception {</pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;11</td>  <td class="nbHitsCovered">&nbsp;981</td>  <td class="src"><pre class="src">&nbsp;        String[] fileNames = {};</pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;12</td>  <td class="nbHitsCovered"><a title="Line 12: Conditional coverage 100% (2/2).">&nbsp;6276</a></td>  <td class="src"><pre class="src">&nbsp;<a title="Line 12: Conditional coverage 100% (2/2).">        <span class="keyword">for</span> (File file : <span class="keyword">new</span> File(rootFolder).listFiles()) {</a></pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;13</td>  <td class="nbHitsCovered"><a title="Line 13: Conditional coverage 100% (2/2).">&nbsp;5295</a></td>  <td class="src"><pre class="src">&nbsp;<a title="Line 13: Conditional coverage 100% (2/2).">            <span class="keyword">if</span> (file.isDirectory()) {</a></pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;14</td>  <td class="nbHitsCovered">&nbsp;977</td>  <td class="src"><pre class="src">&nbsp;                fileNames = (String[]) ArrayUtils.addAll(fileNames, getFileNames(file.getAbsolutePath()));</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;11</td>  <td class="nbHitsCovered">&nbsp;997</td>  <td class="src"><pre class="src">&nbsp;        String[] fileNames = {};</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;12</td>  <td class="nbHitsCovered"><a title="Line 12: Conditional coverage 100% (2/2).">&nbsp;6568</a></td>  <td class="src"><pre class="src">&nbsp;<a title="Line 12: Conditional coverage 100% (2/2).">        <span class="keyword">for</span> (File file : <span class="keyword">new</span> File(rootFolder).listFiles()) {</a></pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;13</td>  <td class="nbHitsCovered"><a title="Line 13: Conditional coverage 100% (2/2).">&nbsp;5571</a></td>  <td class="src"><pre class="src">&nbsp;<a title="Line 13: Conditional coverage 100% (2/2).">            <span class="keyword">if</span> (file.isDirectory()) {</a></pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;14</td>  <td class="nbHitsCovered">&nbsp;993</td>  <td class="src"><pre class="src">&nbsp;                fileNames = (String[]) ArrayUtils.addAll(fileNames, getFileNames(file.getAbsolutePath()));</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;15</td>  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;            } <span class="keyword">else</span> {</pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;16</td>  <td class="nbHitsCovered">&nbsp;4318</td>  <td class="src"><pre class="src">&nbsp;                fileNames = (String[]) ArrayUtils.add(fileNames, file.getAbsolutePath());</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;16</td>  <td class="nbHitsCovered">&nbsp;4578</td>  <td class="src"><pre class="src">&nbsp;                fileNames = (String[]) ArrayUtils.add(fileNames, file.getAbsolutePath());</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;17</td>  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;            }</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;18</td>  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;        }</pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;19</td>  <td class="nbHitsCovered">&nbsp;981</td>  <td class="src"><pre class="src">&nbsp;        <span class="keyword">return</span> fileNames;</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;19</td>  <td class="nbHitsCovered">&nbsp;997</td>  <td class="src"><pre class="src">&nbsp;        <span class="keyword">return</span> fileNames;</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;20</td>  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;    }</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;21</td>  <td class="nbHits">&nbsp;</td>
@@ -54,8 +54,8 @@
 <tr>  <td class="numLineCover">&nbsp;22</td>  <td class="nbHitsCovered">&nbsp;4</td>  <td class="src"><pre class="src">&nbsp;        String[] result = {};</pre></td></tr>
 <tr>  <td class="numLineCover">&nbsp;23</td>  <td class="nbHitsCovered">&nbsp;4</td>  <td class="src"><pre class="src">&nbsp;        FolderUtils utils = <span class="keyword">new</span> FolderUtils();</pre></td></tr>
 <tr>  <td class="numLineCover">&nbsp;24</td>  <td class="nbHitsCovered">&nbsp;4</td>  <td class="src"><pre class="src">&nbsp;        String[] input = utils.getFileNames(startFolder);</pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;25</td>  <td class="nbHitsCovered"><a title="Line 25: Conditional coverage 100% (2/2).">&nbsp;4322</a></td>  <td class="src"><pre class="src">&nbsp;<a title="Line 25: Conditional coverage 100% (2/2).">        <span class="keyword">for</span> (String fileName : input) {</a></pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;26</td>  <td class="nbHitsCovered"><a title="Line 26: Conditional coverage 100% (2/2).">&nbsp;4318</a></td>  <td class="src"><pre class="src">&nbsp;<a title="Line 26: Conditional coverage 100% (2/2).">            <span class="keyword">if</span> (fileName.matches(mask)) {</a></pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;25</td>  <td class="nbHitsCovered"><a title="Line 25: Conditional coverage 100% (2/2).">&nbsp;4582</a></td>  <td class="src"><pre class="src">&nbsp;<a title="Line 25: Conditional coverage 100% (2/2).">        <span class="keyword">for</span> (String fileName : input) {</a></pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;26</td>  <td class="nbHitsCovered"><a title="Line 26: Conditional coverage 100% (2/2).">&nbsp;4578</a></td>  <td class="src"><pre class="src">&nbsp;<a title="Line 26: Conditional coverage 100% (2/2).">            <span class="keyword">if</span> (fileName.matches(mask)) {</a></pre></td></tr>
 <tr>  <td class="numLineCover">&nbsp;27</td>  <td class="nbHitsCovered">&nbsp;56</td>  <td class="src"><pre class="src">&nbsp;                result = (String[]) ArrayUtils.add(result, fileName);</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;28</td>  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;            }</pre></td></tr>
@@ -70,6 +70,6 @@
   <td class="src"><pre class="src">&nbsp;}</pre></td></tr>
 </table>
 
-<div class="footer">Report generated by <a href="http://cobertura.sourceforge.net/" target="_top">Cobertura</a> 2.0.3 on 13/09/17 17:20.</div>
+<div class="footer">Report generated by <a href="http://cobertura.sourceforge.net/" target="_top">Cobertura</a> 2.0.3 on 18/09/17 18:34.</div>
 </body>
 </html>

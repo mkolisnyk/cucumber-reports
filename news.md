@@ -3,6 +3,14 @@ title: Cucumber Reports News
 layout: null
 ---
 
+## 19.09.2017 1.2 Version Release
+
+* [#132](https://github.com/mkolisnyk/cucumber-reports/issues/132) Bugfix: Detailed report generates malformed HTML
+* [#130](https://github.com/mkolisnyk/cucumber-reports/issues/130) Enhancement: add ability to publish entire library as the fat jar
+* [#128](https://github.com/mkolisnyk/cucumber-reports/issues/128) Enhancement: New Report: Custom Report
+* [#129](https://github.com/mkolisnyk/cucumber-reports/issues/129) Enhancement: update dependencies (including freemarker)
+* [#131](https://github.com/mkolisnyk/cucumber-reports/issues/131) Bugfix: Consolidated report shouldn't fail if some file is missing
+
 ## 13.09.2017 1.1 Version Release
 
 * [#125](https://github.com/mkolisnyk/cucumber-reports/issues/125) Enahncement: Migrate reports to free marker templates

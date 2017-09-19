@@ -25,13 +25,13 @@ public class CustomReportDataBean extends CommonDataBean {
     public Map<String, CucumberStepSource[]> getUsageResults() {
         return usageResults;
     }
-    public void setUsageResults(Map<String, CucumberStepSource[]> usageResults) {
-        this.usageResults = usageResults;
+    public void setUsageResults(Map<String, CucumberStepSource[]> usageResultsValue) {
+        this.usageResults = usageResultsValue;
     }
     public Map<String, CucumberFeatureResult[]> getRunResults() {
         return runResults;
     }
-    public void setRunResults(Map<String, CucumberFeatureResult[]> runResults) {
-        this.runResults = runResults;
+    public void setRunResults(Map<String, CucumberFeatureResult[]> runResultsValue) {
+        this.runResults = runResultsValue;
     }
 }

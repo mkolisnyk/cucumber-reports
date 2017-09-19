@@ -441,8 +441,8 @@ public class ExtendedRuntimeOptions {
     public boolean isCustomReport() {
         return customReport;
     }
-    public void setCustomReport(boolean customReport) {
-        this.customReport = customReport;
+    public void setCustomReport(boolean customReportValue) {
+        this.customReport = customReportValue;
     }
     public String[] getCustomReportTemplateNames() {
         return customReportTemplateNames;

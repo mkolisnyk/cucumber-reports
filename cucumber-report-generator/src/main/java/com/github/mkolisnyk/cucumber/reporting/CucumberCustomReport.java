@@ -36,16 +36,16 @@ public class CucumberCustomReport extends SimpleReport {
         return jsonUsageReportPaths;
     }
 
-    public void setJsonUsageReportPaths(String[] jsonUsageReportPaths) {
-        this.jsonUsageReportPaths = jsonUsageReportPaths;
+    public void setJsonUsageReportPaths(String[] jsonUsageReportPathsValue) {
+        this.jsonUsageReportPaths = jsonUsageReportPathsValue;
     }
 
     public String[] getCustomReportTemplateNames() {
         return customReportTemplateNames;
     }
 
-    public void setCustomReportTemplateNames(String[] customReportTemplateNames) {
-        this.customReportTemplateNames = customReportTemplateNames;
+    public void setCustomReportTemplateNames(String[] customReportTemplateNamesValue) {
+        this.customReportTemplateNames = customReportTemplateNamesValue;
     }
 
     @Override

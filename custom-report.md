@@ -14,7 +14,17 @@ The idea of custom report is to provide common set of Cucumber results to user d
 [Extended Cucumber Runner](/cucumber-reports/extended-cucumber-runner) reserves several configuration options which enable Custom Report generation. They are:
 
 * **customReport** - Flag which enables/disables generation of the [Custom Report](/cucumber-reports/custom-report) | false |
-* **customReportTemplateNames** - The list of template names to be used for custom report. They should be defined as a part of [Custom Templates](/cucumber-reports/customizing-report-format)
+* **customReportTemplateNames** - The list of template names to be used for custom report. They should be defined as a part of [Custom Templates](/cucumber-reports/customizing-report-format).
+
+**NOTE:** All custom templates defined with **customReportTemplateNames** must be loaded.
 
 # What data is transferred
 
+The report sends data structure represented with [CustomReportDataBean](/cucumber-reports/site/cucumber-report-generator/apidocs/com/github/mkolisnyk/cucumber/reporting/types/beans/CustomReportDataBean.html).
+
+It contains 2 maps:
+
+* Usage results - associates path to usage report with corresponding usage data stored in the [CucumberStepSource](/cucumber-reports/site/cucumber-report-generator/apidocs/com/github/mkolisnyk/cucumber/reporting/types/usage/CucumberStepSource.html) structure
+* Execution results- associates path to results report with corresponding execution results data stored in the [CucumberFeatureResult](/cucumber-reports/site/cucumber-report-generator/apidocs/com/github/mkolisnyk/cucumber/reporting/types/result/CucumberFeatureResult.html) structure
+
+So, each custom template should operate with the above structures

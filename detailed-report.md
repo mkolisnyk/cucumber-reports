@@ -35,6 +35,13 @@ Detailed results section contains steps performed with their statuses. Also, thi
 
 Results aggregation is the part of [failed tests re-run](/cucumber-reports/failed-tests-rerun) functionality. If we use tests re-run we receive report containing all results for all re-tries. Usually it distorts actual picture. Aggregation is targeted to show the latest execution status for each test.
 
+**NOTE**: when you define that test results should be aggregated the original report is still generated. So, generally you'll see 2 reports generated:
+
+* Regular report - file with simple **-test-results.html** suffix. It still contains retries information.
+* Aggregated report - file with **-agg-test-results.html** suffix. It already shows results after all retries.
+
+Also, if you define PDF report generation option **only aggregated report is exported to PDF**.
+
 ## Screen shots
 
 Currently major supported way to include screen shots is embedding them into JSON report. Below is the sample code which is to be used as a part of hooks and which generates screen shot if test was ended with error:

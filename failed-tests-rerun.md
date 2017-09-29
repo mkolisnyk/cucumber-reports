@@ -24,7 +24,9 @@ Mainly there are 2 options to set which can be relevant to re-run functionality:
 
 When some test is re-run it is reported multiple times. Thus final report will contain both failed and passed iterations. This may lead to additional confusion and informational noise in test results. The aggregation functionality is aimed to process result reports leaving only latest run result and the number of retries performed.
 
-As the result, if some test eventually passed after re-run it will be shown as passed. If test fails instantly the failed status will be reported. Such functionality is applied to the [Overview](/cucumber-reports/overview-report), [Detailed](detailed-report), [Feature Overview Chart](/cucumber-reports/overview-chart-report) and [Chart](/cucumber-reports/chart-report) reports.
+As the result, if some test eventually passed after re-run it will be shown as passed. If test fails instantly the failed status will be reported. Such functionality is applied to the [Overview](/cucumber-reports/overview-report), [Detailed](/cucumber-reports/detailed-report), [Feature Overview Chart](/cucumber-reports/overview-chart-report) and [Chart](/cucumber-reports/chart-report) reports.
+
+**NOTE:** if results aggregation option is turned on, the Detailed report generates both original and aggregated report. For more details, please, read [Aggregated Results](/cucumber-reports/detailed-report#aggregated-results) section of Detailed report documentation page.
 
 # Conditional Re-run
 

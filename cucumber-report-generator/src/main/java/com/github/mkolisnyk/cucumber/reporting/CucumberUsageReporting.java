@@ -284,7 +284,7 @@ public class CucumberUsageReporting extends SimpleReport {
                 sources = (CucumberStepSource[]) ArrayUtils.addAll(sources, getStepSources(jsonUsageFile));
             }
 
-            File report = new File(this.getOutputDirectory() + File.separator + this.getOutputName() + "-usage.html");
+            File report = getOutputHtmlFile();
             UsageDataBean data = new UsageDataBean();
             SortedMap<Integer, Integer> map = calculateStepsUsageCounts(sources);
             int max = calculateStepsUsageMax(map);
@@ -338,8 +338,8 @@ public class CucumberUsageReporting extends SimpleReport {
                 index++;
             }
             data.setStepsData(stepSourceData);
-            generateReportFromTemplate(report, "usage", data);
-            this.export(report, "usage", formats, this.isImageExportable());
+            generateReportFromTemplate(report, this.templateName(), data);
+            this.export(report, this.reportSuffix(), formats, this.isImageExportable());
         } catch (Exception e) {
             throw new Exception(
                     "Error occured while generating Cucumber usage report", e);

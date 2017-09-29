@@ -56,7 +56,7 @@ public class CucumberConsolidatedReport extends ConfigurableReport<ConsolidatedR
             contentsMap.put(item.getTitle(), content);
         }
         data.setContents(contentsMap);
-        generateReportFromTemplate(outFile, "consolidated", data);
+        generateReportFromTemplate(outFile, this.templateName(), data);
         this.export(outFile, model.getReportSuffix(), formats, this.isImageExportable());
     }
     public void executeConsolidatedReport(ConsolidatedReportModel model) throws Exception {

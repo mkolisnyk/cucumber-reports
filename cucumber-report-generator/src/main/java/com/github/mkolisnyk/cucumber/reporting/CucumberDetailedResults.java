@@ -142,9 +142,9 @@ public class CucumberDetailedResults extends KECompatibleReport {
             }
         }
         if (aggregate) {
-            formatName = "%s%s%s-agg-test-results.html";
+            formatName = "%s%s%s-agg-" + this.reportSuffix() + ".html";
         } else {
-            formatName = "%s%s%s-test-results.html";
+            formatName = "%s%s%s-" + this.reportSuffix() + ".html";
         }
         File outFile = new File(
                 String.format(Locale.US,
@@ -163,8 +163,7 @@ public class CucumberDetailedResults extends KECompatibleReport {
             }
         }
         data.setScreenShotWidth(getScreenShotWidth());
-        generateReportFromTemplate(outFile, "detailed", data);
-        //FileUtils.writeStringToFile(outFile, content, "UTF-8");
-        this.export(outFile, "test-results", formats, this.isImageExportable());
+        generateReportFromTemplate(outFile, this.templateName(), data);
+        this.export(outFile, this.reportSuffix(), formats, this.isImageExportable());
     }
 }

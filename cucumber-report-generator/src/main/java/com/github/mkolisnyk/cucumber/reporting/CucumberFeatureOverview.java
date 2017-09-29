@@ -77,9 +77,7 @@ public class CucumberFeatureOverview extends CucumberResultsOverview {
         final int maxRate = 100;
         validateParameters();
         CucumberFeatureResult[] features = readFileContent(aggregate);
-        File outFile = new File(
-                this.getOutputDirectory() + File.separator + this.getOutputName()
-                + "-feature-overview-chart.html");
+        File outFile = getOutputHtmlFile();
         FeatureOverviewDataBean data = new FeatureOverviewDataBean();
         Map<String, String> featureData = new LinkedHashMap<String, String>();
         for (int i = 0; i < features.length; i++) {
@@ -90,7 +88,7 @@ public class CucumberFeatureOverview extends CucumberResultsOverview {
         double rate = getOverallRate(features);
         data.setPassRate((int) (rate * maxRate));
         data.setOverallRate(getStatusLetter(rate));
-        generateReportFromTemplate(outFile, "feature_overview", data);
-        this.export(outFile, "feature-overview-chart", formats, this.isImageExportable());
+        generateReportFromTemplate(outFile, this.templateName(), data);
+        this.export(outFile, this.reportSuffix(), formats, this.isImageExportable());
     }
 }

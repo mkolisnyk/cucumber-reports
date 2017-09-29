@@ -39,9 +39,7 @@ public class CucumberKnownErrorsReport extends KECompatibleReport {
     public void execute(KnownErrorsModel batch, String[] formats) throws Exception {
         validateParameters();
         CucumberFeatureResult[] features = readFileContent(true);
-        File outFile = new File(
-                this.getOutputDirectory() + File.separator + this.getOutputName()
-                + "-known-errors.html");
+        File outFile = getOutputHtmlFile();
         KnownErrorsDataBean data = new KnownErrorsDataBean();
         CucumberScenarioResult[] scenarios = {};
         for (CucumberFeatureResult feature : features) {
@@ -50,8 +48,8 @@ public class CucumberKnownErrorsReport extends KECompatibleReport {
         KnownErrorsResultSet results = new KnownErrorsResultSet();
         results.valuate(scenarios, batch);
         data.setResults(results.getResults());
-        generateReportFromTemplate(outFile, "known_errors", data);
-        this.export(outFile, "known-errors", formats, this.isImageExportable());
+        generateReportFromTemplate(outFile, this.templateName(), data);
+        this.export(outFile, this.reportSuffix(), formats, this.isImageExportable());
     }
 
     @Deprecated

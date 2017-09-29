@@ -51,7 +51,7 @@ public class CucumberBreakdownReport extends ConfigurableReport<BreakdownReportM
         }
         BreakdownStats[][] results = table.valuate(scenarios);
         data.setStats(results);
-        generateReportFromTemplate(outFile, "breakdown", data);
+        generateReportFromTemplate(outFile, this.templateName(), data);
         this.export(outFile, info.getReportSuffix(), formats, this.isImageExportable());
     }
     public void executeReport(BreakdownTable table, String[] formats) throws Exception {

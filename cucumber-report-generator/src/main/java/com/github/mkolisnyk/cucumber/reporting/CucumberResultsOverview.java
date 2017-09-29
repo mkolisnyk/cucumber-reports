@@ -118,7 +118,7 @@ public class CucumberResultsOverview extends KECompatibleReport {
         data.setOverallStats(stats);
         data.setFeatures(featureRows);
         data.setScenarios(scenarioRows);
-        generateReportFromTemplate(outFile, "overview", data);
+        generateReportFromTemplate(outFile, this.templateName(), data);
         this.export(outFile, reportSuffix, formats, this.isImageExportable());
         try {
             outFile = new File(
@@ -159,12 +159,12 @@ public class CucumberResultsOverview extends KECompatibleReport {
 
     @Override
     public void execute(String[] formats) throws Exception {
-        executeOverviewReport("feature-overview", formats);
+        executeOverviewReport(this.reportSuffix(), formats);
     }
 
     @Override
     public void execute(boolean aggregate, String[] formats) throws Exception {
-        executeOverviewReport("feature-overview", formats);
+        executeOverviewReport(this.reportSuffix(), formats);
     }
 
     @Override

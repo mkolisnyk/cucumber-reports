@@ -37,15 +37,13 @@ public class CucumberOverviewChartsReport extends KECompatibleReport {
                 feature.valuateKnownErrors(batch);
             }
         }
-        File outFile = new File(
-                this.getOutputDirectory() + File.separator + this.getOutputName()
-                + "-charts-report.html");
+        File outFile = getOutputHtmlFile();
         OverviewChartDataBean data = new OverviewChartDataBean();
         OverviewStats stats = new OverviewStats();
         data.setCoverageIncluded(options.isCoverageReport());
         data.setOverviewData(stats.valuate(features));
-        generateReportFromTemplate(outFile, "overview_chart", data);
-        this.export(outFile, "charts-report", formats, this.isImageExportable());
+        generateReportFromTemplate(outFile, this.templateName(), data);
+        this.export(outFile, this.reportSuffix(), formats, this.isImageExportable());
     }
 
     @Override

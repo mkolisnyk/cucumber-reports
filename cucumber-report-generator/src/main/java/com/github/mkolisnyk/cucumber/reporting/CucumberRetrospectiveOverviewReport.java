@@ -73,7 +73,7 @@ public class CucumberRetrospectiveOverviewReport extends ConfigurableReport<Retr
         }
         data.setModel(model);
         data.setStats(stats);
-        generateReportFromTemplate(outFile, "retrospective", data);
+        generateReportFromTemplate(outFile, this.templateName(), data);
         this.export(outFile, model.getReportSuffix(), formats, this.isImageExportable());
     }
 

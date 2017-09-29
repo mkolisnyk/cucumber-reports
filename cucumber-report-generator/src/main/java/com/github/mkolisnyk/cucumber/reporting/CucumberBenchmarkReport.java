@@ -67,11 +67,9 @@ public class CucumberBenchmarkReport extends ConfigurableReport<BenchmarkReportM
             row.addScenarioResults(id, scenarioData);
             data.setScenarioRows((BenchmarkRowData[]) ArrayUtils.add(data.getScenarioRows(), row));
         }
-        File outFile = new File(
-                this.getOutputDirectory() + File.separator + this.getOutputName()
-                + "-benchmark.html");
-        generateReportFromTemplate(outFile, "benchmark", data);
-        this.export(outFile, "benchmark", formats, this.isImageExportable());
+        File outFile = getOutputHtmlFile();
+        generateReportFromTemplate(outFile, this.templateName(), data);
+        this.export(outFile, this.reportSuffix(), formats, this.isImageExportable());
     }
 
     @Override

@@ -38,13 +38,11 @@ public class CucumberSystemInfo extends SimpleReport {
     @Override
     public void execute(String[] formats) throws Exception {
         validateParameters();
-        File outFile = new File(
-                this.getOutputDirectory() + File.separator + this.getOutputName()
-                + "-system-info.html");
+        File outFile = getOutputHtmlFile();
         SystemInfoDataBean data = new SystemInfoDataBean();
         data.setSystemProperties(System.getProperties());
         data.setEnvironmentVariables(System.getenv());
-        generateReportFromTemplate(outFile, "system_info", data);
-        this.export(outFile, "system-info", formats, this.isImageExportable());
+        generateReportFromTemplate(outFile, this.templateName(), data);
+        this.export(outFile, this.reportSuffix(), formats, this.isImageExportable());
     }
 }

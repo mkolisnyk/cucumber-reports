@@ -69,9 +69,7 @@ public class CucumberCoverageOverview extends CucumberResultsOverview {
 
     @Override
     public void execute(String[] formats) throws Exception {
-        File outFile = new File(
-                this.getOutputDirectory() + File.separator + this.getOutputName()
-                + "-coverage.html");
+        File outFile = getOutputHtmlFile();
         this.validateParameters();
         CucumberFeatureResult[] features = readFileContent(true);
         CoverageDataBean data = new CoverageDataBean();
@@ -108,8 +106,8 @@ public class CucumberCoverageOverview extends CucumberResultsOverview {
         }
         data.setFeatures(featureRows);
         data.setScenarios(scenarioRows);
-        generateReportFromTemplate(outFile, "coverage", data);
-        this.export(outFile, "coverage", formats, this.isImageExportable());
+        generateReportFromTemplate(outFile, this.templateName(), data);
+        this.export(outFile, this.reportSuffix(), formats, this.isImageExportable());
     }
 
     @Override

@@ -46,7 +46,7 @@ public class CucumberFeatureMapReport extends CucumberBreakdownReport {
         }
         data.setScenarios(results);
         data.setTable(table);
-        generateReportFromTemplate(outFile, "feature_map", data);
+        generateReportFromTemplate(outFile, this.templateName(), data);
         this.export(outFile, info.getReportSuffix(), formats, this.isImageExportable());
     }
 

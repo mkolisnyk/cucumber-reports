@@ -70,6 +70,19 @@ public abstract class CucumberResultsCommon {
         return String.format("%s: %s. For more information, please, refer to: %s%s",
             this.getReportType(), error, this.getReportDocLink(), suffix);
     }
+
+    public String reportSuffix() {
+        return this.getReportType().suffix();
+    }
+    public String templateName() {
+        return this.getReportType().template();
+    }
+    public File getOutputHtmlFile() {
+        File outFile = new File(
+                this.getOutputDirectory() + File.separator + this.getOutputName()
+                + "-" + this.reportSuffix() + ".html");
+        return outFile;
+    }
     /**
      * @return the outputDirectory
      */

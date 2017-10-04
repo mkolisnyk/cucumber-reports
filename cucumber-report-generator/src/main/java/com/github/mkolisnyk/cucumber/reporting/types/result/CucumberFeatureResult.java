@@ -180,6 +180,10 @@ public class CucumberFeatureResult {
         return tags;
     }
 
+    public final void setTags(CucumberTagResults[] tagsValue) {
+        this.tags = tagsValue;
+    }
+
     /**
      * @return the description
      */
@@ -206,6 +210,10 @@ public class CucumberFeatureResult {
      */
     public final CucumberScenarioResult[] getElements() {
         return elements;
+    }
+
+    public final void setElements(CucumberScenarioResult[] elementsValue) {
+        this.elements = elementsValue;
     }
 
     /**

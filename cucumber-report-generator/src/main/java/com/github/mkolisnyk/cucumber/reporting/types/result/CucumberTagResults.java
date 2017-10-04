@@ -16,6 +16,10 @@ public class CucumberTagResults {
         return name;
     }
 
+    public final void setName(String nameValue) {
+        this.name = nameValue;
+    }
+
     private String name;
     //private Long    line;
 }

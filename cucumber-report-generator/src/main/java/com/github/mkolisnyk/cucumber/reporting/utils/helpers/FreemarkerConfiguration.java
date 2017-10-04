@@ -48,6 +48,7 @@ public final class FreemarkerConfiguration {
             put("breakdown", "/templates/default/breakdown.ftlh");
             put("feature_map", "/templates/default/feature_map.ftlh");
             put("usage", "/templates/default/usage.ftlh");
+            put("split_feature", "/templates/default/split_feature.ftlh");
         }
     };
     private static void loadConfig(Map<String, String> resourceMap) throws Exception {

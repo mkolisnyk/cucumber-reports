@@ -15,6 +15,7 @@ import com.github.mkolisnyk.cucumber.reporting.CucumberOverviewChartsReport;
 import com.github.mkolisnyk.cucumber.reporting.CucumberResultsOverview;
 import com.github.mkolisnyk.cucumber.reporting.CucumberSystemInfo;
 import com.github.mkolisnyk.cucumber.reporting.CucumberUsageReporting;
+import com.github.mkolisnyk.cucumber.reporting.types.result.CucumberFeatureResult;
 import com.github.mkolisnyk.cucumber.reporting.utils.helpers.FreemarkerConfiguration;
 import com.github.mkolisnyk.cucumber.runner.runtime.ExtendedRuntimeOptions;
 
@@ -22,13 +23,11 @@ public final class ReportRunner {
 
     private ReportRunner() { }
 
-    public void runUsageReport(ExtendedRuntimeOptions extendedOptions) {
+    public void runUsageReport(ExtendedRuntimeOptions extendedOptions, CucumberFeatureResult[] features) {
         if (!extendedOptions.isUsageReport()) {
             return;
         }
         CucumberUsageReporting report = new CucumberUsageReporting(extendedOptions);
-        //report.setOutputDirectory(extendedOptions.getOutputFolder());
-        //report.setJsonUsageFiles(extendedOptions.getJsonUsageReportPaths());
         try {
             report.execute(extendedOptions.getFormats());
         } catch (Throwable e) {
@@ -36,15 +35,49 @@ public final class ReportRunner {
         }
     }
 
-    public void runOverviewReport(ExtendedRuntimeOptions extendedOptions) {
+    public void runOverviewReport(ExtendedRuntimeOptions extendedOptions, CucumberFeatureResult[] features) {
         if (!extendedOptions.isOverviewReport()) {
             return;
         }
         CucumberResultsOverview results = new CucumberResultsOverview(extendedOptions);
         try {
             if (extendedOptions.isKnownErrorsReport()) {
-                results.execute(new File(extendedOptions.getKnownErrorsConfig()),
+                if (features != null) {
+                    results.execute(
+                            new File(extendedOptions.getKnownErrorsConfig()),
+                            features, extendedOptions.isDetailedAggregatedReport(),
+                            extendedOptions.getFormats());
+                } else {
+                    results.execute(new File(extendedOptions.getKnownErrorsConfig()),
                         extendedOptions.isDetailedAggregatedReport(),
+                        extendedOptions.getFormats());
+                }
+            } else {
+                if (features != null) {
+                    results.execute(
+                            extendedOptions.isDetailedAggregatedReport(),
+                            features,
+                            extendedOptions.getFormats());
+                } else {
+                    results.execute(extendedOptions.getFormats());
+                }
+            }
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
+    }
+    public void runFeatureOverviewChartReport(
+            ExtendedRuntimeOptions extendedOptions,
+            CucumberFeatureResult[] features) {
+        if (!extendedOptions.isFeatureOverviewChart()) {
+            return;
+        }
+        CucumberFeatureOverview results = new CucumberFeatureOverview(extendedOptions);
+        try {
+            if (features != null) {
+                results.execute(
+                        extendedOptions.isDetailedAggregatedReport(),
+                        features,
                         extendedOptions.getFormats());
             } else {
                 results.execute(extendedOptions.getFormats());
@@ -54,105 +87,147 @@ public final class ReportRunner {
         }
     }
 
-    public void runFeatureOverviewChartReport(ExtendedRuntimeOptions extendedOptions) {
-        if (!extendedOptions.isFeatureOverviewChart()) {
-            return;
-        }
-        CucumberFeatureOverview results = new CucumberFeatureOverview(extendedOptions);
-        try {
-            results.execute(extendedOptions.getFormats());
-        } catch (Throwable e) {
-            e.printStackTrace();
-        }
-    }
-
-    public void runDetailedReport(ExtendedRuntimeOptions extendedOptions) {
+    public void runDetailedReport(ExtendedRuntimeOptions extendedOptions, CucumberFeatureResult[] features) {
         if (!extendedOptions.isDetailedReport()) {
             return;
         }
         CucumberDetailedResults results = new CucumberDetailedResults(extendedOptions);
         try {
             if (extendedOptions.isKnownErrorsReport()) {
-                results.execute(new File(extendedOptions.getKnownErrorsConfig()),
-                        false, extendedOptions.getFormats());
+                if (features != null) {
+                    results.execute(new File(extendedOptions.getKnownErrorsConfig()),
+                            features, false, extendedOptions.getFormats());
+                } else {
+                    results.execute(new File(extendedOptions.getKnownErrorsConfig()),
+                            false, extendedOptions.getFormats());
+                }
             } else {
-                results.execute(false, extendedOptions.getFormats());
+                if (features != null) {
+                    results.execute(false, extendedOptions.getFormats());
+                } else {
+                    results.execute(false, features, extendedOptions.getFormats());
+                }
             }
         } catch (Throwable e) {
             e.printStackTrace();
         }
     }
-    public void runDetailedAggregatedReport(ExtendedRuntimeOptions extendedOptions) {
+    public void runDetailedAggregatedReport(ExtendedRuntimeOptions extendedOptions, CucumberFeatureResult[] features) {
         if (!extendedOptions.isDetailedAggregatedReport()) {
             return;
         }
         CucumberDetailedResults results = new CucumberDetailedResults(extendedOptions);
         try {
             if (extendedOptions.isKnownErrorsReport()) {
-                results.execute(new File(extendedOptions.getKnownErrorsConfig()),
-                        true, extendedOptions.getFormats());
+                if (features != null) {
+                    results.execute(new File(extendedOptions.getKnownErrorsConfig()),
+                            features, true, extendedOptions.getFormats());
+                } else {
+                    results.execute(new File(extendedOptions.getKnownErrorsConfig()),
+                            true, extendedOptions.getFormats());
+                }
             } else {
-                results.execute(true, extendedOptions.getFormats());
+                if (features != null) {
+                    results.execute(true, extendedOptions.getFormats());
+                } else {
+                    results.execute(true, features, extendedOptions.getFormats());
+                }
             }
         } catch (Throwable e) {
             e.printStackTrace();
         }
     }
-    public void runCoverageReport(ExtendedRuntimeOptions extendedOptions) {
+    public void runCoverageReport(ExtendedRuntimeOptions extendedOptions, CucumberFeatureResult[] features) {
         if (!extendedOptions.isCoverageReport()) {
             return;
         }
         CucumberCoverageOverview results = new CucumberCoverageOverview(extendedOptions);
         try {
-            results.execute(extendedOptions.getFormats());
+            if (features != null) {
+                results.execute(false, features, extendedOptions.getFormats());
+            } else {
+                results.execute(extendedOptions.getFormats());
+            }
         } catch (Throwable e) {
             e.printStackTrace();
         }
     }
-    public void runBreakdownReport(ExtendedRuntimeOptions extendedOptions) {
+    public void runBreakdownReport(ExtendedRuntimeOptions extendedOptions, CucumberFeatureResult[] features) {
         if (!extendedOptions.isBreakdownReport()) {
             return;
         }
         CucumberBreakdownReport report = new CucumberBreakdownReport(extendedOptions);
         try {
-            report.execute(new File(extendedOptions.getBreakdownConfig()), extendedOptions.getFormats());
+            if (features != null) {
+                report.execute(
+                        new File(extendedOptions.getBreakdownConfig()),
+                        features,
+                        false,
+                        extendedOptions.getFormats());
+            } else {
+                report.execute(new File(extendedOptions.getBreakdownConfig()), extendedOptions.getFormats());
+            }
         } catch (Throwable e) {
             e.printStackTrace();
         }
     }
-    public void runFeatureMapReport(ExtendedRuntimeOptions extendedOptions) {
+    public void runFeatureMapReport(ExtendedRuntimeOptions extendedOptions, CucumberFeatureResult[] features) {
         if (!extendedOptions.isFeatureMapReport()) {
             return;
         }
         CucumberFeatureMapReport report = new CucumberFeatureMapReport(extendedOptions);
         try {
-            report.execute(new File(extendedOptions.getFeatureMapConfig()), extendedOptions.getFormats());
+            if (features != null) {
+                report.execute(
+                        new File(extendedOptions.getBreakdownConfig()),
+                        features,
+                        false,
+                        extendedOptions.getFormats());
+            } else {
+                report.execute(new File(extendedOptions.getFeatureMapConfig()), extendedOptions.getFormats());
+            }
         } catch (Throwable e) {
             e.printStackTrace();
         }
     }
-    public void runKnownErrorsReport(ExtendedRuntimeOptions extendedOptions) {
+    public void runKnownErrorsReport(ExtendedRuntimeOptions extendedOptions, CucumberFeatureResult[] features) {
         if (!extendedOptions.isKnownErrorsReport()) {
             return;
         }
         CucumberKnownErrorsReport report = new CucumberKnownErrorsReport(extendedOptions);
         try {
-            report.execute(new File(extendedOptions.getKnownErrorsConfig()),
+            if (features != null) {
+                report.execute(
+                    new File(extendedOptions.getKnownErrorsConfig()),
+                    features,
                     true,
                     extendedOptions.getFormats());
+            } else {
+                report.execute(new File(extendedOptions.getKnownErrorsConfig()),
+                    true,
+                    extendedOptions.getFormats());
+            }
         } catch (Throwable e) {
             e.printStackTrace();
         }
     }
-    public void runOverviewChartsReport(ExtendedRuntimeOptions extendedOptions) {
+    public void runOverviewChartsReport(ExtendedRuntimeOptions extendedOptions, CucumberFeatureResult[] features) {
         if (!extendedOptions.isOverviewChartsReport()) {
             return;
         }
         CucumberOverviewChartsReport report = new CucumberOverviewChartsReport(extendedOptions);
         try {
             if (extendedOptions.isKnownErrorsReport()) {
-                report.execute(new File(extendedOptions.getKnownErrorsConfig()),
-                        extendedOptions.isDetailedAggregatedReport(), extendedOptions.getFormats());
+                if (features != null) {
+                    report.execute(
+                            new File(extendedOptions.getKnownErrorsConfig()),
+                            features,
+                            extendedOptions.isDetailedAggregatedReport(),
+                            extendedOptions.getFormats());
+                } else {
+                    report.execute(new File(extendedOptions.getKnownErrorsConfig()),
+                            extendedOptions.isDetailedAggregatedReport(), extendedOptions.getFormats());
+                }
             } else {
                 report.execute(extendedOptions.isDetailedAggregatedReport(), extendedOptions.getFormats());
             }
@@ -160,19 +235,27 @@ public final class ReportRunner {
             e.printStackTrace();
         }
     }
-    public void runConsolidatedReport(ExtendedRuntimeOptions extendedOptions) {
+    public void runConsolidatedReport(ExtendedRuntimeOptions extendedOptions, CucumberFeatureResult[] features) {
         if (!extendedOptions.isConsolidatedReport()) {
             return;
         }
         CucumberConsolidatedReport report = new CucumberConsolidatedReport(extendedOptions);
         try {
-            report.execute(new File(extendedOptions.getConsolidatedReportConfig()),
-                    extendedOptions.getFormats());
+            if (features != null) {
+                report.execute(
+                        new File(extendedOptions.getConsolidatedReportConfig()),
+                        features,
+                        false,
+                        extendedOptions.getFormats());
+            } else {
+                report.execute(new File(extendedOptions.getConsolidatedReportConfig()),
+                        extendedOptions.getFormats());
+            }
         } catch (Throwable e) {
             e.printStackTrace();
         }
     }
-    public void runSystemInfoReport(ExtendedRuntimeOptions extendedOptions) {
+    public void runSystemInfoReport(ExtendedRuntimeOptions extendedOptions, CucumberFeatureResult[] features) {
         if (!extendedOptions.isSystemInfoReport()) {
             return;
         }
@@ -183,7 +266,7 @@ public final class ReportRunner {
             e.printStackTrace();
         }
     }
-    public void runBenchmarkReport(ExtendedRuntimeOptions extendedOptions) {
+    public void runBenchmarkReport(ExtendedRuntimeOptions extendedOptions, CucumberFeatureResult[] features) {
         if (!extendedOptions.isBenchmarkReport()) {
             return;
         }
@@ -195,7 +278,7 @@ public final class ReportRunner {
             e.printStackTrace();
         }
     }
-    public void runCustomReport(ExtendedRuntimeOptions extendedOptions) {
+    public void runCustomReport(ExtendedRuntimeOptions extendedOptions, CucumberFeatureResult[] features) {
         if (!extendedOptions.isCustomReport()) {
             return;
         }
@@ -209,19 +292,37 @@ public final class ReportRunner {
     public static void run(ExtendedRuntimeOptions extendedOption) {
         FreemarkerConfiguration.flush();
         ReportRunner runner = new ReportRunner();
-        runner.runUsageReport(extendedOption);
-        runner.runOverviewReport(extendedOption);
-        runner.runOverviewChartsReport(extendedOption);
-        runner.runFeatureOverviewChartReport(extendedOption);
-        runner.runDetailedReport(extendedOption);
-        runner.runDetailedAggregatedReport(extendedOption);
-        runner.runCoverageReport(extendedOption);
-        runner.runBreakdownReport(extendedOption);
-        runner.runFeatureMapReport(extendedOption);
-        runner.runKnownErrorsReport(extendedOption);
-        runner.runSystemInfoReport(extendedOption);
-        runner.runBenchmarkReport(extendedOption);
-        runner.runCustomReport(extendedOption);
-        runner.runConsolidatedReport(extendedOption);
+        runner.runUsageReport(extendedOption, null);
+        runner.runOverviewReport(extendedOption, null);
+        runner.runOverviewChartsReport(extendedOption, null);
+        runner.runFeatureOverviewChartReport(extendedOption, null);
+        runner.runDetailedReport(extendedOption, null);
+        runner.runDetailedAggregatedReport(extendedOption, null);
+        runner.runCoverageReport(extendedOption, null);
+        runner.runBreakdownReport(extendedOption, null);
+        runner.runFeatureMapReport(extendedOption, null);
+        runner.runKnownErrorsReport(extendedOption, null);
+        runner.runSystemInfoReport(extendedOption, null);
+        runner.runBenchmarkReport(extendedOption, null);
+        runner.runCustomReport(extendedOption, null);
+        runner.runConsolidatedReport(extendedOption, null);
+    }
+    public static void run(ExtendedRuntimeOptions extendedOption, CucumberFeatureResult[] features) {
+        FreemarkerConfiguration.flush();
+        ReportRunner runner = new ReportRunner();
+        runner.runUsageReport(extendedOption, features);
+        runner.runOverviewReport(extendedOption, features);
+        runner.runOverviewChartsReport(extendedOption, features);
+        runner.runFeatureOverviewChartReport(extendedOption, features);
+        runner.runDetailedReport(extendedOption, features);
+        runner.runDetailedAggregatedReport(extendedOption, features);
+        runner.runCoverageReport(extendedOption, features);
+        runner.runBreakdownReport(extendedOption, features);
+        runner.runFeatureMapReport(extendedOption, features);
+        runner.runKnownErrorsReport(extendedOption, features);
+        runner.runSystemInfoReport(extendedOption, features);
+        runner.runBenchmarkReport(extendedOption, features);
+        runner.runCustomReport(extendedOption, features);
+        runner.runConsolidatedReport(extendedOption, features);
     }
 }

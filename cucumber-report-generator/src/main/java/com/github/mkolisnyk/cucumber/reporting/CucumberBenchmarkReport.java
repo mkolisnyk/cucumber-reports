@@ -95,4 +95,13 @@ public class CucumberBenchmarkReport extends ConfigurableReport<BenchmarkReportM
         Assert.assertNotNull(this.constructErrorMessage(CucumberReportError.NO_OUTPUT_NAME, ""),
                 this.getOutputName());
     }
+    @Override
+    public void execute(boolean aggregate, CucumberFeatureResult[] results,
+            String[] formats) throws Exception {
+    }
+    @Override
+    public void execute(BenchmarkReportModel model,
+            CucumberFeatureResult[] results, boolean aggregate, String[] formats)
+            throws Exception {
+    }
 }

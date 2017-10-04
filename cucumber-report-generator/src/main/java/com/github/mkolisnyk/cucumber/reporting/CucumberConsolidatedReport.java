@@ -13,6 +13,7 @@ import com.github.mkolisnyk.cucumber.reporting.types.consolidated.ConsolidatedRe
 import com.github.mkolisnyk.cucumber.reporting.types.consolidated.ConsolidatedReportModel;
 import com.github.mkolisnyk.cucumber.reporting.types.enums.CucumberReportLink;
 import com.github.mkolisnyk.cucumber.reporting.types.enums.CucumberReportTypes;
+import com.github.mkolisnyk.cucumber.reporting.types.result.CucumberFeatureResult;
 import com.github.mkolisnyk.cucumber.reporting.utils.helpers.StringConversionUtils;
 import com.github.mkolisnyk.cucumber.runner.runtime.ExtendedRuntimeOptions;
 
@@ -93,5 +94,15 @@ public class CucumberConsolidatedReport extends ConfigurableReport<ConsolidatedR
     public void execute(File config, boolean aggregate, String[] formats)
             throws Exception {
         execute(config, formats);
+    }
+    @Override
+    public void execute(boolean aggregate, CucumberFeatureResult[] results,
+            String[] formats) throws Exception {
+    }
+    @Override
+    public void execute(ConsolidatedReportBatch model,
+            CucumberFeatureResult[] results, boolean aggregate, String[] formats)
+            throws Exception {
+        execute(model, formats);
     }
 }

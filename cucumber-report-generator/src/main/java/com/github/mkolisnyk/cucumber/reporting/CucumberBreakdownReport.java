@@ -34,6 +34,10 @@ public class CucumberBreakdownReport extends ConfigurableReport<BreakdownReportM
     }
     public void executeReport(BreakdownReportInfo info, BreakdownTable table, String[] formats) throws Exception {
         CucumberFeatureResult[] features = readFileContent(true);
+        this.executeReport(info, features, table, formats);
+    }
+    public void executeReport(BreakdownReportInfo info, CucumberFeatureResult[] features,
+            BreakdownTable table, String[] formats) throws Exception {
         File outFile = new File(
                 this.getOutputDirectory() + File.separator + this.getOutputName()
                 + "-" + info.getReportSuffix() + ".html");
@@ -108,5 +112,19 @@ public class CucumberBreakdownReport extends ConfigurableReport<BreakdownReportM
     }
     @Override
     public void execute(String[] formats) throws Exception {
+    }
+    @Override
+    public void execute(boolean aggregate, CucumberFeatureResult[] results,
+            String[] formats) throws Exception {
+    }
+    @Override
+    public void execute(BreakdownReportModel model,
+            CucumberFeatureResult[] results, boolean aggregate, String[] formats)
+            throws Exception {
+        validateParameters();
+        model.initRedirectSequence("./" + this.getOutputName() + "-");
+        for (BreakdownReportInfo info : model.getReportsInfo()) {
+            this.executeReport(info, results, info.getTable(), formats);
+        }
     }
 }

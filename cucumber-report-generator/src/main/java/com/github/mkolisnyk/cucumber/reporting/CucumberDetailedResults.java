@@ -129,11 +129,8 @@ public class CucumberDetailedResults extends KECompatibleReport {
     public void execute(boolean aggregate, String[] formats) throws Exception {
         execute((KnownErrorsModel) null, aggregate, formats);
     }
-
-    @Override
-    public void execute(KnownErrorsModel batch, boolean aggregate, String[] formats)
+    public void execute(KnownErrorsModel batch, CucumberFeatureResult[] features, boolean aggregate, String[] formats)
             throws Exception {
-        CucumberFeatureResult[] features = readFileContent(aggregate);
         String formatName = "";
         for (CucumberFeatureResult feature : features) {
             feature.valuate();
@@ -165,5 +162,17 @@ public class CucumberDetailedResults extends KECompatibleReport {
         data.setScreenShotWidth(getScreenShotWidth());
         generateReportFromTemplate(outFile, this.templateName(), data);
         this.export(outFile, this.reportSuffix(), formats, this.isImageExportable());
+    }
+    @Override
+    public void execute(KnownErrorsModel batch, boolean aggregate, String[] formats)
+            throws Exception {
+        CucumberFeatureResult[] features = readFileContent(aggregate);
+        execute(batch, features, aggregate, formats);
+    }
+
+    @Override
+    public void execute(boolean aggregate, CucumberFeatureResult[] features,
+            String[] formats) throws Exception {
+        execute((KnownErrorsModel) null, features, aggregate, formats);
     }
 }

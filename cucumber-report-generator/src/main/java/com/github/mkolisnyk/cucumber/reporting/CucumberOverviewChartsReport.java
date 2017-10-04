@@ -32,6 +32,11 @@ public class CucumberOverviewChartsReport extends KECompatibleReport {
             throws Exception {
         this.validateParameters();
         CucumberFeatureResult[] features = readFileContent(aggregate);
+        execute(batch, features, aggregate, formats);
+    }
+    public void execute(KnownErrorsModel batch, CucumberFeatureResult[] features, boolean aggregate, String[] formats)
+            throws Exception {
+        this.validateParameters();
         if (batch != null) {
             for (CucumberFeatureResult feature : features) {
                 feature.valuateKnownErrors(batch);
@@ -45,7 +50,6 @@ public class CucumberOverviewChartsReport extends KECompatibleReport {
         generateReportFromTemplate(outFile, this.templateName(), data);
         this.export(outFile, this.reportSuffix(), formats, this.isImageExportable());
     }
-
     @Override
     public CucumberReportTypes getReportType() {
         return CucumberReportTypes.CHARTS_REPORT;
@@ -74,6 +78,12 @@ public class CucumberOverviewChartsReport extends KECompatibleReport {
                     + ". Was looking for path: \"" + path.getAbsolutePath() + "\"",
                     path.exists());
         }
+    }
+
+    @Override
+    public void execute(boolean aggregate, CucumberFeatureResult[] features,
+            String[] formats) throws Exception {
+        execute((KnownErrorsModel) null, features, aggregate, formats);
     }
 
 }

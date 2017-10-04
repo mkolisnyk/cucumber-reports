@@ -16,6 +16,7 @@ public enum CucumberReportTypes {
     RESULTS_OVERVIEW("Results Overview Report"),
     RETROSPECTIVE_OVERVIEW("Retrospective Overview Report"),
     SYSTEM_INFO("System Information Report"),
+    SPLIT_FEATURE("Split Feature"),
     USAGE("Usage Report");
     private String value;
 
@@ -55,6 +56,7 @@ public enum CucumberReportTypes {
             put(KNOWN_ERRORS, "known_errors");
             put(RESULTS_OVERVIEW, "overview");
             put(RETROSPECTIVE_OVERVIEW, "retrospective");
+            put(SPLIT_FEATURE, "split_feature");
             put(SYSTEM_INFO, "system_info");
             put(USAGE, "usage");
         }

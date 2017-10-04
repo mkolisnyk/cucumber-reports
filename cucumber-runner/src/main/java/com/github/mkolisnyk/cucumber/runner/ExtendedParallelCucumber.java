@@ -25,10 +25,15 @@ import org.junit.runners.ParentRunner;
 import com.github.mkolisnyk.cucumber.reporting.utils.helpers.FolderUtils;
 import com.github.mkolisnyk.cucumber.runner.parallel.CucumberRunnerThread;
 import com.github.mkolisnyk.cucumber.runner.parallel.CucumberRunnerThreadPool;
+import com.github.mkolisnyk.cucumber.runner.runtime.BaseRuntimeOptionsFactory;
 import com.github.mkolisnyk.cucumber.runner.runtime.ExtendedRuntimeOptions;
 
 import cucumber.api.CucumberOptions;
 import cucumber.api.SnippetType;
+import cucumber.runtime.RuntimeOptions;
+import cucumber.runtime.io.MultiLoader;
+import cucumber.runtime.io.ResourceLoader;
+import cucumber.runtime.junit.Assertions;
 
 public class ExtendedParallelCucumber extends ParentRunner<Runner> {
     private Class<?> clazz;
@@ -62,6 +67,19 @@ public class ExtendedParallelCucumber extends ParentRunner<Runner> {
         }
         this.runners = buildRunners();
     }
+    public ExtendedParallelCucumber(
+            Class<?> clazzValue, CucumberOptions baseOptions,
+            ExtendedCucumberOptions[] extendedOptionsValue) throws Exception {
+        super(clazzValue);
+        this.clazz = clazzValue;
+        this.options = extendedOptionsValue;
+        this.cucumberOption = baseOptions;
+        for (ExtendedCucumberOptions option : options) {
+            threadsCount = Math.max(threadsCount,
+                getThreadsCount(option.threadsCount(), option.threadsCountValue()));
+        }
+        this.runners = buildRunners();
+    }
     private ExtendedCucumber[] buildRunners() throws Exception {
         CucumberOptions[] cucumberOptions = this.splitCucumberOption(this.cucumberOption);
         ExtendedCucumberOptions[][] extendedOptions
@@ -87,7 +105,7 @@ public class ExtendedParallelCucumber extends ParentRunner<Runner> {
             return array;
         }
     }
-    public MemberValue getFieldMemberValue(Object object, Method field) throws Exception {
+    private MemberValue getFieldMemberValue(Object object, Method field) throws Exception {
         ConstPool cp = new ConstPool(this.getClass().getCanonicalName());
         if (field.getReturnType().isArray()) {
             return getArrayMemberValue(object, field, cp);
@@ -212,7 +230,7 @@ public class ExtendedParallelCucumber extends ParentRunner<Runner> {
         }
         return result;
     }
-    public ExtendedCucumber[] generateTestClasses(CucumberOptions[] cucumberOptions,
+    public final ExtendedCucumber[] generateTestClasses(CucumberOptions[] cucumberOptions,
             ExtendedCucumberOptions[][] extendedOptions) throws Exception {
         ExtendedCucumber[] classes = new ExtendedCucumber[cucumberOptions.length];
         for (int i = 0; i < cucumberOptions.length; i++) {
@@ -220,7 +238,7 @@ public class ExtendedParallelCucumber extends ParentRunner<Runner> {
         }
         return classes;
     }
-    public String[] getOutputJsonPaths(boolean usage) {
+    public final String[] getOutputJsonPaths(boolean usage) {
         String[] results = {};
         String basePath = "";
         String keyword = "json";
@@ -249,7 +267,7 @@ public class ExtendedParallelCucumber extends ParentRunner<Runner> {
         }
         return results;
     }
-    public void runReports() throws Exception {
+    private void runReports() throws Exception {
         ExtendedRuntimeOptions[] runtimeOptions = new ExtendedRuntimeOptions[this.options.length];
         for (int i = 0; i < runtimeOptions.length; i++) {
             runtimeOptions[i] = new ExtendedRuntimeOptions(this.options[i]);

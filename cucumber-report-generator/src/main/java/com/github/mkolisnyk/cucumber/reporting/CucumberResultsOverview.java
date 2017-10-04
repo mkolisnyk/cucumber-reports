@@ -71,9 +71,9 @@ public class CucumberResultsOverview extends KECompatibleReport {
         executeOverviewReport(null, reportSuffix, formats);
     }
     protected void executeOverviewReport(
-            KnownErrorsModel batch, String reportSuffix,  String[] formats) throws Exception {
+            KnownErrorsModel batch, CucumberFeatureResult[] features,
+            String reportSuffix,  String[] formats) throws Exception {
         this.validateParameters();
-        CucumberFeatureResult[] features = readFileContent(true);
 
         if (batch != null) {
             for (CucumberFeatureResult feature : features) {
@@ -130,6 +130,12 @@ public class CucumberResultsOverview extends KECompatibleReport {
             return;
         }
     }
+    protected void executeOverviewReport(
+            KnownErrorsModel batch, String reportSuffix,  String[] formats) throws Exception {
+        this.validateParameters();
+        CucumberFeatureResult[] features = readFileContent(true);
+        executeOverviewReport(batch, features, reportSuffix, formats);
+    }
     @Override
     public CucumberReportTypes getReportType() {
         return CucumberReportTypes.RESULTS_OVERVIEW;
@@ -170,6 +176,17 @@ public class CucumberResultsOverview extends KECompatibleReport {
     @Override
     public void execute(KnownErrorsModel batch, boolean aggregate, String[] formats)
             throws Exception {
-        executeOverviewReport(batch, "feature-overview", formats);
+        executeOverviewReport(batch, this.reportSuffix(), formats);
+    }
+    public void execute(KnownErrorsModel batch, CucumberFeatureResult[] features,
+            boolean aggregate, String[] formats)
+            throws Exception {
+        executeOverviewReport(batch, features, this.reportSuffix(), formats);
+    }
+    @Override
+    public void execute(boolean aggregate, CucumberFeatureResult[] features,
+            String[] formats) throws Exception {
+        executeOverviewReport(null, features,
+                this.reportSuffix(),  formats);
     }
 }

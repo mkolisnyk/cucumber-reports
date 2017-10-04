@@ -39,6 +39,10 @@ public class CucumberKnownErrorsReport extends KECompatibleReport {
     public void execute(KnownErrorsModel batch, String[] formats) throws Exception {
         validateParameters();
         CucumberFeatureResult[] features = readFileContent(true);
+        this.execute(batch, features, formats);
+    }
+    public void execute(KnownErrorsModel batch, CucumberFeatureResult[] features, String[] formats) throws Exception {
+        validateParameters();
         File outFile = getOutputHtmlFile();
         KnownErrorsDataBean data = new KnownErrorsDataBean();
         CucumberScenarioResult[] scenarios = {};
@@ -69,5 +73,18 @@ public class CucumberKnownErrorsReport extends KECompatibleReport {
     public void execute(KnownErrorsModel batch, boolean aggregate, String[] formats)
             throws Exception {
         execute(batch, formats);
+    }
+
+    @Deprecated
+    @Override
+    public void execute(boolean aggregate, CucumberFeatureResult[] results,
+            String[] formats) throws Exception {
+    }
+
+    @Override
+    public void execute(KnownErrorsModel model,
+            CucumberFeatureResult[] results, boolean aggregate, String[] formats)
+            throws Exception {
+        execute(model, results, formats);
     }
 }

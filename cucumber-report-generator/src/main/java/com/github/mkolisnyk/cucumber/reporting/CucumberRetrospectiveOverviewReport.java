@@ -119,4 +119,14 @@ public class CucumberRetrospectiveOverviewReport extends ConfigurableReport<Retr
         }
         this.execute(batch, aggregate, formats);
     }
+    @Override
+    public void execute(boolean aggregate, CucumberFeatureResult[] results,
+            String[] formats) throws Exception {
+    }
+    @Override
+    public void execute(RetrospectiveBatch model,
+            CucumberFeatureResult[] results, boolean aggregate, String[] formats)
+            throws Exception {
+        execute(model, aggregate, formats);
+    }
 }

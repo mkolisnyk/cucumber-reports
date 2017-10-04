@@ -20,6 +20,13 @@ public abstract class AggregatedReport extends SimpleReport {
     public void execute() throws Exception {
         execute(false, new String[] {});
     }
+    public abstract void execute(boolean aggregate, CucumberFeatureResult[] results, String[] formats) throws Exception;
+    public void execute(CucumberFeatureResult[] results) throws Exception {
+        execute(false, results, new String[] {});
+    }
+    public void execute(boolean aggregate, CucumberFeatureResult[] results) throws Exception {
+        execute(aggregate, results, new String[] {});
+    }
 
     public CucumberFeatureResult[] aggregateResults(CucumberFeatureResult[] input, boolean collapse) {
         for (int i = 0; i < input.length; i++) {

@@ -10,7 +10,7 @@ import com.github.mkolisnyk.cucumber.reporting.types.usage.CucumberStepSource;
  * <a href="http://mkolisnyk.github.io/cucumber-reports/custom-report">Custom Report</a> generation.
  * @author Mykola Kolisnyk
  */
-public class CustomReportDataBean extends CommonDataBean {
+public class CustomReportDataBean extends SystemInfoDataBean {
 
     /**
      * Map containing steps usage data. Each key contains the path to the file.

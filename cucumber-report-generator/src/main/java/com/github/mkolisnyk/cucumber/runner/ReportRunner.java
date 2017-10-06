@@ -103,9 +103,9 @@ public final class ReportRunner {
                 }
             } else {
                 if (features != null) {
-                    results.execute(false, extendedOptions.getFormats());
-                } else {
                     results.execute(false, features, extendedOptions.getFormats());
+                } else {
+                    results.execute(false, extendedOptions.getFormats());
                 }
             }
         } catch (Throwable e) {
@@ -128,9 +128,9 @@ public final class ReportRunner {
                 }
             } else {
                 if (features != null) {
-                    results.execute(true, extendedOptions.getFormats());
-                } else {
                     results.execute(true, features, extendedOptions.getFormats());
+                } else {
+                    results.execute(true, extendedOptions.getFormats());
                 }
             }
         } catch (Throwable e) {

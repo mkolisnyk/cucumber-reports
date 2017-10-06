@@ -1,7 +1,5 @@
 package com.github.mkolisnyk.cucumber.runner.runtime;
 
-import gherkin.util.FixJava;
-
 import java.io.InputStreamReader;
 import java.io.Reader;
 import java.lang.reflect.Field;
@@ -218,7 +216,7 @@ public class ExtendedRuntimeOptions {
             try {
                 Reader reader = new InputStreamReader(
                         ExtendedRuntimeOptions.class.getResourceAsStream(USAGE_RESOURCE), "UTF-8");
-                usageText = FixJava.readReader(reader);
+                //usageText = FixJava.readReader(reader);
             } catch (Exception e) {
                 usageText = "Could not load usage text: " + e.toString();
                 e.printStackTrace();

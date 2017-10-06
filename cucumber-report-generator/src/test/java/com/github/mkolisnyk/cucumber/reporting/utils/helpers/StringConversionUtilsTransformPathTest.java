@@ -10,7 +10,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameters;
-import org.testng.Assert;
+import org.junit.Assert;
 
 @RunWith(Parameterized.class)
 public class StringConversionUtilsTransformPathTest {
@@ -45,6 +45,6 @@ public class StringConversionUtilsTransformPathTest {
     @Test
     public void testVerifyTransformPathFunctionality() {
         String actual = StringConversionUtils.transformPathString(input);
-        Assert.assertEquals(actual, expected, "Unexpected string was generated");
+        Assert.assertEquals( "Unexpected string was generated", actual, expected);
     }
 }

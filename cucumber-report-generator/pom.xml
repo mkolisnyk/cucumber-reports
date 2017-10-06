@@ -246,12 +246,17 @@
 			<version>4.10.0</version>
 		</dependency>
 		<dependency>
-			<groupId>info.cukes</groupId>
+			<groupId>io.cucumber</groupId>
 			<artifactId>cucumber-picocontainer</artifactId>
-			<version>1.2.5</version>
+			<version>2.0.1</version>
 			<scope>test</scope>
 		</dependency>
 		<dependency>
+		    <groupId>io.cucumber</groupId>
+		    <artifactId>cucumber-java8</artifactId>
+		    <version>2.0.1</version>
+		</dependency>
+		<!-- <dependency>
 			<groupId>info.cukes</groupId>
 			<artifactId>cucumber-junit</artifactId>
 			<version>1.2.5</version>
@@ -266,7 +271,7 @@
 			<groupId>info.cukes</groupId>
 			<artifactId>cucumber-testng</artifactId>
 			<version>1.2.5</version>
-		</dependency>
+		</dependency>-->
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>

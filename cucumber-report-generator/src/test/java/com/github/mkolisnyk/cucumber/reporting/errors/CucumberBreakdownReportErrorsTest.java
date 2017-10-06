@@ -8,7 +8,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameters;
-import org.testng.Assert;
+import org.junit.Assert;
 
 import com.github.mkolisnyk.cucumber.reporting.CucumberBreakdownReport;
 import com.github.mkolisnyk.cucumber.reporting.types.breakdown.BreakdownCellDisplayType;
@@ -137,11 +137,11 @@ public class CucumberBreakdownReportErrorsTest {
             } catch (AssertionError e) {
                 actualMessage = e.getMessage();
             }
-            Assert.assertTrue(actualMessage.startsWith(CucumberReportTypes.BREAKDOWN_REPORT.toString()),
-                    "Report name is unexpected");
-            Assert.assertTrue(actualMessage.contains(expectedMessage.toString()),
-                    "Incorrect error message is shown");
-            Assert.assertTrue(actualMessage.contains(CucumberReportLink.BREAKDOWN_URL.toString()),
-                    "Report URL wasn't found");
+            Assert.assertTrue("Report name is unexpected",
+            		actualMessage.startsWith(CucumberReportTypes.BREAKDOWN_REPORT.toString()));
+            Assert.assertTrue("Incorrect error message is shown",
+            		actualMessage.contains(expectedMessage.toString()));
+            Assert.assertTrue("Report URL wasn't found",
+            		actualMessage.contains(CucumberReportLink.BREAKDOWN_URL.toString()));
     }
 }

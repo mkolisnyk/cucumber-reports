@@ -7,7 +7,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameters;
-import org.testng.Assert;
+import org.junit.Assert;
 
 @RunWith(Parameterized.class)
 public class BreakdownReportModelInitRedirectTest {

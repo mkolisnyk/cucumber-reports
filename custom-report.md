@@ -27,4 +27,6 @@ It contains 2 maps:
 * Usage results - associates path to usage report with corresponding usage data stored in the [CucumberStepSource](/cucumber-reports/site/cucumber-report-generator/apidocs/com/github/mkolisnyk/cucumber/reporting/types/usage/CucumberStepSource.html) structure
 * Execution results- associates path to results report with corresponding execution results data stored in the [CucumberFeatureResult](/cucumber-reports/site/cucumber-report-generator/apidocs/com/github/mkolisnyk/cucumber/reporting/types/result/CucumberFeatureResult.html) structure
 
+Also, since version 1.3 the set of system properties and map of environment variables was added. It is needed if we want to align results data to some system information.
+
 So, each custom template should operate with the above structures

@@ -1,17 +1,5 @@
 package cucumber.runtime;
 
-import gherkin.I18n;
-import gherkin.formatter.Argument;
-import gherkin.formatter.Reporter;
-import gherkin.formatter.model.Comment;
-import gherkin.formatter.model.DataTableRow;
-import gherkin.formatter.model.DocString;
-import gherkin.formatter.model.Match;
-import gherkin.formatter.model.Result;
-import gherkin.formatter.model.Scenario;
-import gherkin.formatter.model.Step;
-import gherkin.formatter.model.Tag;
-
 import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -27,6 +15,17 @@ import cucumber.api.SummaryPrinter;
 import cucumber.runtime.io.ResourceLoader;
 import cucumber.runtime.xstream.LocalizedXStreams;
 //import cucumber.runtime.Stats;
+import gherkin.I18n;
+import gherkin.formatter.Argument;
+import gherkin.formatter.Reporter;
+import gherkin.formatter.model.Comment;
+import gherkin.formatter.model.DataTableRow;
+import gherkin.formatter.model.DocString;
+import gherkin.formatter.model.Match;
+import gherkin.formatter.model.Result;
+import gherkin.formatter.model.Scenario;
+import gherkin.formatter.model.Step;
+import gherkin.formatter.model.Tag;
 
 public class ExtendedRuntime extends Runtime {
     private static final String[] PENDING_EXCEPTIONS = {

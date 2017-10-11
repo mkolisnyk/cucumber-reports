@@ -5,16 +5,6 @@ import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.List;
 
-import javassist.ClassPool;
-import javassist.bytecode.ConstPool;
-import javassist.bytecode.annotation.Annotation;
-import javassist.bytecode.annotation.ArrayMemberValue;
-import javassist.bytecode.annotation.BooleanMemberValue;
-import javassist.bytecode.annotation.EnumMemberValue;
-import javassist.bytecode.annotation.IntegerMemberValue;
-import javassist.bytecode.annotation.MemberValue;
-import javassist.bytecode.annotation.StringMemberValue;
-
 import org.apache.commons.lang.ArrayUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.junit.runner.Description;
@@ -25,15 +15,19 @@ import org.junit.runners.ParentRunner;
 import com.github.mkolisnyk.cucumber.reporting.utils.helpers.FolderUtils;
 import com.github.mkolisnyk.cucumber.runner.parallel.CucumberRunnerThread;
 import com.github.mkolisnyk.cucumber.runner.parallel.CucumberRunnerThreadPool;
-import com.github.mkolisnyk.cucumber.runner.runtime.BaseRuntimeOptionsFactory;
 import com.github.mkolisnyk.cucumber.runner.runtime.ExtendedRuntimeOptions;
 
 import cucumber.api.CucumberOptions;
 import cucumber.api.SnippetType;
-import cucumber.runtime.RuntimeOptions;
-import cucumber.runtime.io.MultiLoader;
-import cucumber.runtime.io.ResourceLoader;
-import cucumber.runtime.junit.Assertions;
+import javassist.ClassPool;
+import javassist.bytecode.ConstPool;
+import javassist.bytecode.annotation.Annotation;
+import javassist.bytecode.annotation.ArrayMemberValue;
+import javassist.bytecode.annotation.BooleanMemberValue;
+import javassist.bytecode.annotation.EnumMemberValue;
+import javassist.bytecode.annotation.IntegerMemberValue;
+import javassist.bytecode.annotation.MemberValue;
+import javassist.bytecode.annotation.StringMemberValue;
 
 public class ExtendedParallelCucumber extends ParentRunner<Runner> {
     private Class<?> clazz;

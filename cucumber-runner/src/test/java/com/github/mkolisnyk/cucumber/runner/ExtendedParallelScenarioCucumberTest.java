@@ -1,23 +1,42 @@
 package com.github.mkolisnyk.cucumber.runner;
 
+import java.io.File;
+
+import org.junit.Assert;
+import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.junit.runner.notification.RunNotifier;
 
 import cucumber.api.CucumberOptions;
 
-@RunWith(ExtendedParallelScenarioCucumber.class)
-@ExtendedCucumberOptions(jsonReport = "target/cucumber.json", retryCount = 3, detailedReport = true, detailedAggregatedReport = true, overviewReport = false, toPDF = false, outputFolder = "target")
-@CucumberOptions(
-        features = { "./src/test/java/com/github/mkolisnyk/cucumber/features" },
-        glue = { "com/github/mkolisnyk/cucumber/steps" },
-        plugin = {
-        "json:target/cucumber.json", "html:target/cucumber-html-report",
-        "pretty:target/cucumber-pretty.txt",
-        "usage:target/cucumber-usage.json",
-        "junit:target/cucumber-junit-results.xml" })
 public class ExtendedParallelScenarioCucumberTest {
 
     public ExtendedParallelScenarioCucumberTest() {
         // TODO Auto-generated constructor stub
     }
 
+    @ExtendedCucumberOptions(jsonReport = "target/cucumber-eps.json",
+    		retryCount = 3, detailedReport = true,
+    		detailedAggregatedReport = true, overviewReport = false,
+    		toPDF = false, outputFolder = "target/eps")
+    @CucumberOptions(
+            features = { "./src/test/java/com/github/mkolisnyk/cucumber/features" },
+            glue = { "com/github/mkolisnyk/cucumber/steps" },
+            plugin = {
+            "json:target/cucumber-eps.json", "html:target/cucumber-html-report-eps",
+            "pretty:target/cucumber-pretty-eps.txt",
+            "usage:target/cucumber-usage-eps.json",
+            "junit:target/cucumber-junit-results-eps.xml" })
+    public class SampleRunnerClass {
+    }
+
+    @Test
+    public void testRunScenarioParallelRunner() {
+    		ExtendedParallelScenarioCucumber runner
+    			= new ExtendedParallelScenarioCucumber(SampleRunnerClass.class);
+    		RunNotifier notifier = new RunNotifier();
+		runner.run(notifier);
+		File outFile = new File("target/eps/cucumber-results-test-results.html");
+		Assert.assertTrue(outFile.exists());
+    }
 }

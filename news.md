@@ -3,6 +3,12 @@ title: Cucumber Reports News
 layout: null
 ---
 
+## 11.10.2017 1.3 Version Release
+
+* [#134](https://github.com/mkolisnyk/cucumber-reports/issues/134) Enhancement: implement parallel runner which splits execution by scenarios 
+* [#136](https://github.com/mkolisnyk/cucumber-reports/issues/136) Enhancement: add system properties and env variables to custom report
+* [#135](https://github.com/mkolisnyk/cucumber-reports/issues/135) Enhancement: code updates to avoid hard-coded strings 
+
 ## 19.09.2017 1.2 Version Release
 
 * [#132](https://github.com/mkolisnyk/cucumber-reports/issues/132) Bugfix: Detailed report generates malformed HTML

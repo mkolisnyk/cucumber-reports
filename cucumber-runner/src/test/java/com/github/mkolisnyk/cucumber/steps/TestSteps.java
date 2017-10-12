@@ -15,6 +15,7 @@ import cucumber.api.java.en.When;
 
 public class TestSteps {
     private static int retry = 0;
+    public static int counter = 0;
 
     @Pending
     public class CustomPendingError extends Error {
@@ -105,5 +106,9 @@ public class TestSteps {
     }
     @Then("^(.*)ambiguous step$")
     public void i_should_see_amb_step2() throws Throwable {
+    }
+    @Given("^I am keeping the count$")
+    public void i_am_keeping_the_count() throws Throwable {
+        TestSteps.counter++;
     }
 }

@@ -11,12 +11,9 @@ import org.junit.runners.model.InitializationError;
 
 import cucumber.runtime.Runtime;
 import cucumber.runtime.junit.JUnitReporter;
-import cucumber.runtime.model.CucumberExamples;
-import cucumber.runtime.model.CucumberScenarioOutline;
 
-public class ExtendedScenarioOutlineRunner extends
-        Suite {
-    private final CucumberScenarioOutline cucumberScenarioOutline;
+public class ExtendedScenarioOutlineRunner /*extends Suite*/ {
+/*    private final CucumberScenarioOutline cucumberScenarioOutline;
     private final JUnitReporter jUnitReporter;
     private Description description;
 
@@ -67,5 +64,5 @@ public class ExtendedScenarioOutlineRunner extends
     @Override
     protected void runChild(Runner runner, final RunNotifier notifier) {
         super.runChild(runner, notifier);
-    }
+    }*/
 }

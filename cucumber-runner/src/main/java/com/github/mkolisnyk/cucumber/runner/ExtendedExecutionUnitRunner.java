@@ -4,12 +4,12 @@ import org.junit.runner.notification.RunNotifier;
 import org.junit.runners.model.InitializationError;
 
 import cucumber.runtime.Runtime;
-import cucumber.runtime.junit.ExecutionUnitRunner;
+//import cucumber.runtime.junit.ExecutionUnitRunner;
 import cucumber.runtime.junit.JUnitReporter;
-import cucumber.runtime.model.CucumberScenario;
+//import cucumber.runtime.model.CucumberScenario;
 
-public class ExtendedExecutionUnitRunner extends ExecutionUnitRunner {
-
+public class ExtendedExecutionUnitRunner /*extends ExecutionUnitRunner*/ {
+/*
     private JUnitReporter jUnitReporter;
     private CucumberScenario cucumberScenario;
     private Runtime runtime;
@@ -39,5 +39,5 @@ public class ExtendedExecutionUnitRunner extends ExecutionUnitRunner {
 
     public final void setCucumberScenario(CucumberScenario cucumberScenarioValue) {
         this.cucumberScenario = cucumberScenarioValue;
-    }
+    }*/
 }

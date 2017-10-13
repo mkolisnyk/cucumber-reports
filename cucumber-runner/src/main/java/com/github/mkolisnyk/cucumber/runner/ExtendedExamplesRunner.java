@@ -13,11 +13,11 @@ import org.junit.runners.model.InitializationError;
 
 import cucumber.runtime.Runtime;
 import cucumber.runtime.junit.JUnitReporter;
-import cucumber.runtime.model.CucumberExamples;
-import cucumber.runtime.model.CucumberScenario;
+//import cucumber.runtime.model.CucumberExamples;
+//import cucumber.runtime.model.CucumberScenario;
 
-public class ExtendedExamplesRunner extends Suite {
-    private int retryCount;
+public class ExtendedExamplesRunner /*extends Suite*/ {
+/*    private int retryCount;
     private Runtime runtime;
 
     private final CucumberExamples cucumberExamples;
@@ -32,7 +32,7 @@ public class ExtendedExamplesRunner extends Suite {
             JUnitReporter jUnitReporterValue,
             int retryCountValue) throws InitializationError {
         super(ExtendedExamplesRunner.class,
-                buildRunners(runtimeValue, cucumberExamplesValue, jUnitReporterValue/*, retryCountValue*/));
+                buildRunners(runtimeValue, cucumberExamplesValue, jUnitReporterValue));
         this.cucumberExamples = cucumberExamplesValue;
         this.jUnitReporter = jUnitReporterValue;
         this.runtime = runtimeValue;
@@ -42,14 +42,13 @@ public class ExtendedExamplesRunner extends Suite {
     private static List<Runner> buildRunners(
             Runtime runtime,
             CucumberExamples cucumberExamples,
-            JUnitReporter jUnitReporter/*,
-            int retries*/) {
+            JUnitReporter jUnitReporter) {
         runners = new ArrayList<Runner>();
         exampleScenarios = cucumberExamples.createExampleScenarios();
         for (CucumberScenario scenario : exampleScenarios) {
             try {
                 ExtendedExecutionUnitRunner exampleScenarioRunner
-                    = new ExtendedExecutionUnitRunner(runtime, scenario, jUnitReporter/*, retries*/);
+                    = new ExtendedExecutionUnitRunner(runtime, scenario, jUnitReporter);
                 runners.add(exampleScenarioRunner);
             } catch (InitializationError initializationError) {
                 initializationError.printStackTrace();
@@ -58,9 +57,6 @@ public class ExtendedExamplesRunner extends Suite {
         return runners;
     }
 
-    /**
-     * @return the runtime
-     */
     public final Runtime getRuntime() {
         return runtime;
     }
@@ -87,9 +83,6 @@ public class ExtendedExamplesRunner extends Suite {
         super.run(notifier);
     }
 
-    /* (non-Javadoc)
-     * @see org.junit.runners.Suite#runChild(org.junit.runner.Runner, org.junit.runner.notification.RunNotifier)
-     */
     @Override
     protected void runChild(Runner runner, RunNotifier notifier) {
         ExtendedExecutionUnitRunner featureElementRunner = (ExtendedExecutionUnitRunner) runner;
@@ -116,5 +109,5 @@ public class ExtendedExamplesRunner extends Suite {
         System.out.println(
                 ((ExtendedExecutionUnitRunner) runner).getCucumberScenario().getGherkinModel().getId()
                 + "Scenario completed..." + this.getRuntime().exitStatus());
-   }
+   }*/
 }

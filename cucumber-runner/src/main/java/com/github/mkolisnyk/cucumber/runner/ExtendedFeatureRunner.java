@@ -17,9 +17,6 @@ import cucumber.runtime.Runtime;
 import cucumber.runtime.junit.FeatureRunner;
 import cucumber.runtime.junit.JUnitReporter;
 import cucumber.runtime.model.CucumberFeature;
-import cucumber.runtime.model.CucumberScenario;
-import cucumber.runtime.model.CucumberScenarioOutline;
-import cucumber.runtime.model.CucumberTagStatement;
 
 public class ExtendedFeatureRunner extends FeatureRunner {
     private final List<ParentRunner> children = new ArrayList<ParentRunner>();

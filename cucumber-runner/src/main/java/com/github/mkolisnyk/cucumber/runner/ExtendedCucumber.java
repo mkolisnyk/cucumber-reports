@@ -11,11 +11,14 @@ import org.junit.runner.Description;
 import org.junit.runner.notification.RunNotifier;
 import org.junit.runners.ParentRunner;
 import org.junit.runners.model.InitializationError;
+import org.junit.runners.model.Statement;
 
 import com.github.mkolisnyk.cucumber.runner.runtime.BaseRuntimeOptionsFactory;
 import com.github.mkolisnyk.cucumber.runner.runtime.ExtendedRuntimeOptions;
 
 import cucumber.api.CucumberOptions;
+import cucumber.api.event.TestRunFinished;
+import cucumber.api.formatter.Formatter;
 import cucumber.runtime.ClassFinder;
 import cucumber.runtime.ExtendedRuntime;
 import cucumber.runtime.Runtime;
@@ -25,19 +28,19 @@ import cucumber.runtime.io.MultiLoader;
 import cucumber.runtime.io.ResourceLoader;
 import cucumber.runtime.io.ResourceLoaderClassFinder;
 import cucumber.runtime.junit.Assertions;
+import cucumber.runtime.junit.FeatureRunner;
 import cucumber.runtime.junit.JUnitOptions;
 import cucumber.runtime.junit.JUnitReporter;
 import cucumber.runtime.model.CucumberFeature;
 
-public class ExtendedCucumber extends ParentRunner<ExtendedFeatureRunner> {
-    private JUnitReporter jUnitReporter;
-    private final List<ExtendedFeatureRunner> children = new ArrayList<ExtendedFeatureRunner>();
+public class ExtendedCucumber extends ParentRunner<FeatureRunner> {
+    private final JUnitReporter jUnitReporter;
+    private final List<FeatureRunner> children = new ArrayList<FeatureRunner>();
     private final Runtime runtime;
-    private final ExtendedRuntimeOptions[] extendedOptions;
-    private Class clazzValue;
-    private int retryCount = 0;
-    private int threadsCount = 1;
+    private final Formatter formatter;
+    private Class<?> clazzValue;
     private boolean runPreDefined = true;
+    private ExtendedRuntimeOptions[] extendedOptions;
 
     public ExtendedCucumber(Class clazz) throws Exception {
         super(clazz);
@@ -50,15 +53,17 @@ public class ExtendedCucumber extends ParentRunner<ExtendedFeatureRunner> {
 
         ResourceLoader resourceLoader = new MultiLoader(classLoader);
         runtime = createRuntime(resourceLoader, classLoader, runtimeOptions);
-        extendedOptions = ExtendedRuntimeOptions.init(clazz);
-        init(runtimeOptions, classLoader, resourceLoader);
+        formatter = runtimeOptions.formatter(classLoader);
+        final JUnitOptions junitOptions = new JUnitOptions(runtimeOptions.getJunitOptions());
+        final List<CucumberFeature> cucumberFeatures = runtimeOptions.cucumberFeatures(resourceLoader, runtime.getEventBus());
+        jUnitReporter = new JUnitReporter(runtime.getEventBus(), runtimeOptions.isStrict(), junitOptions);
+        addChildren(cucumberFeatures);
     }
     public ExtendedCucumber(
             Class clazz, CucumberOptions baseOptions,
             ExtendedCucumberOptions[] extendedOptionsValue, boolean runPreDefinedValue) throws Exception {
         super(clazz);
         this.clazzValue = clazz;
-        this.runPreDefined = runPreDefinedValue;
         ClassLoader classLoader = clazz.getClassLoader();
         Assertions.assertNoCucumberAnnotatedMethods(clazz);
         BaseRuntimeOptionsFactory runtimeOptionsFactory = new BaseRuntimeOptionsFactory(clazz);
@@ -66,16 +71,20 @@ public class ExtendedCucumber extends ParentRunner<ExtendedFeatureRunner> {
 
         ResourceLoader resourceLoader = new MultiLoader(classLoader);
         runtime = createRuntime(resourceLoader, classLoader, runtimeOptions);
+        final JUnitOptions junitOptions = new JUnitOptions(runtimeOptions.getJunitOptions());
+        jUnitReporter = new JUnitReporter(runtime.getEventBus(), runtimeOptions.isStrict(), junitOptions);
+        formatter = runtimeOptions.formatter(classLoader);
         extendedOptions = ExtendedRuntimeOptions.init(extendedOptionsValue);
+        runPreDefined = runPreDefinedValue;
         init(runtimeOptions, classLoader, resourceLoader);
     }
     private void init(RuntimeOptions runtimeOptions,
             ClassLoader classLoader, ResourceLoader resourceLoader) throws Exception {
 
-        for (ExtendedRuntimeOptions option : extendedOptions) {
+        /*for (ExtendedRuntimeOptions option : extendedOptions) {
             retryCount = Math.max(retryCount, option.getRetryCount());
             threadsCount = Math.max(threadsCount, option.getThreadsCount());
-        }
+        }*/
 
         final JUnitOptions junitOptions = new JUnitOptions(runtimeOptions.getJunitOptions());
         /*final List<CucumberFeature> cucumberFeatures = runtimeOptions.cucumberFeatures(resourceLoader);
@@ -93,20 +102,41 @@ public class ExtendedCucumber extends ParentRunner<ExtendedFeatureRunner> {
         //return new ExtendedRuntime(resourceLoader, classFinder, classLoader, runtimeOptions);
         return new Runtime(resourceLoader, classFinder, classLoader, runtimeOptions);
     }
-
     @Override
-    public List<ExtendedFeatureRunner> getChildren() {
+    public List<FeatureRunner> getChildren() {
         return children;
     }
 
     @Override
-    protected Description describeChild(ExtendedFeatureRunner child) {
+    protected Description describeChild(FeatureRunner child) {
         return child.getDescription();
     }
 
     @Override
-    protected void runChild(ExtendedFeatureRunner child, RunNotifier notifier) {
+    protected void runChild(FeatureRunner child, RunNotifier notifier) {
         child.run(notifier);
+    }
+
+    @Override
+    protected Statement childrenInvoker(RunNotifier notifier) {
+        final Statement features = super.childrenInvoker(notifier);
+        return new Statement() {
+            @Override
+            public void evaluate() throws Throwable {
+                features.evaluate();
+                runtime.getEventBus().send(new TestRunFinished(runtime.getEventBus().getTime()));
+                runtime.printSummary();
+            }
+        };
+    }
+
+    private void addChildren(List<CucumberFeature> cucumberFeatures) throws InitializationError {
+        for (CucumberFeature cucumberFeature : cucumberFeatures) {
+            FeatureRunner featureRunner = new FeatureRunner(cucumberFeature, runtime, jUnitReporter);
+            if (!featureRunner.isEmpty()) {
+                children.add(featureRunner);
+            }
+        }
     }
 
     private Method[] getPredefinedMethods(Class annotation) {
@@ -160,14 +190,6 @@ public class ExtendedCucumber extends ParentRunner<ExtendedFeatureRunner> {
         //jUnitReporter.close();
         for (ExtendedRuntimeOptions extendedOption : extendedOptions) {
             ReportRunner.run(extendedOption);
-        }
-    }
-
-    private void addChildren(List<CucumberFeature> cucumberFeatures, Method[] retryMethods) throws InitializationError {
-        for (CucumberFeature cucumberFeature : cucumberFeatures) {
-            children.add(
-                    new ExtendedFeatureRunner(cucumberFeature, runtime,
-                            jUnitReporter, this.retryCount, retryMethods));
         }
     }
 }

@@ -4,6 +4,7 @@ import java.io.File;
 
 import org.junit.Assert;
 import org.junit.Test;
+import org.junit.runner.RunWith;
 import org.junit.runner.notification.RunNotifier;
 
 import com.github.mkolisnyk.cucumber.steps.TestSteps;
@@ -16,9 +17,10 @@ public class ExtendedParallelCucumberRunnerTest {
         // TODO Auto-generated constructor stub
     }
 
+    @RunWith(ExtendedParallelCucumber.class)
     @ExtendedCucumberOptions(jsonReport = "target/cucumber-141.json",
             detailedReport = true,
-    		detailedAggregatedReport = true, overviewReport = false,
+    		overviewReport = true,
     		toPDF = false, outputFolder = "target/141")
     @CucumberOptions(
             features = { "./src/test/java/com/github/mkolisnyk/cucumber/issue141" },

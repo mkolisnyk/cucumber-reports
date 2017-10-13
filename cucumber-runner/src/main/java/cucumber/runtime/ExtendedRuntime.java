@@ -12,6 +12,7 @@ import com.github.mkolisnyk.cucumber.assertions.LazyAssertionError;
 
 import cucumber.api.Pending;
 import cucumber.api.SummaryPrinter;
+import cucumber.runner.TimeService;
 import cucumber.runtime.io.ResourceLoader;
 import cucumber.runtime.xstream.LocalizedXStreams;
 //import cucumber.runtime.Stats;
@@ -22,13 +23,17 @@ import gherkin.formatter.model.Comment;
 import gherkin.formatter.model.DataTableRow;
 import gherkin.formatter.model.DocString;
 import gherkin.formatter.model.Match;
-import gherkin.formatter.model.Result;
+import cucumber.api.Result;
 import gherkin.formatter.model.Scenario;
 import gherkin.formatter.model.Step;
 import gherkin.formatter.model.Tag;
 
-public class ExtendedRuntime extends Runtime {
-    private static final String[] PENDING_EXCEPTIONS = {
+public class ExtendedRuntime /*extends Runtime*/ {
+
+    public static boolean isPending(Object object) {
+        return true;
+    }
+/*    private static final String[] PENDING_EXCEPTIONS = {
             "org.junit.AssumptionViolatedException",
             "org.junit.internal.AssumptionViolatedException" };
 
@@ -49,7 +54,7 @@ public class ExtendedRuntime extends Runtime {
     private final Collection<? extends Backend> backends;
     //private final ResourceLoader resourceLoader;
     private final ClassLoader classLoader;
-    private final StopWatch stopWatch;
+    private final TimeService stopWatch;
 
     private boolean skipNextStep = false;
     private ScenarioImpl scenarioResult = null;
@@ -65,19 +70,19 @@ public class ExtendedRuntime extends Runtime {
             ClassLoader classLoaderValue, Collection<? extends Backend> backendsValue,
             RuntimeOptions runtimeOptionsValue) {
         this(resourceLoaderValue, classLoaderValue, backendsValue, runtimeOptionsValue,
-                StopWatch.SYSTEM, null);
+                TimeService.SYSTEM, null);
     }
 
     public ExtendedRuntime(ResourceLoader resourceLoaderValue,
             ClassLoader classLoaderValue, Collection<? extends Backend> backendsValue,
             RuntimeOptions runtimeOptionsValue, RuntimeGlue optionalGlueValue) {
         this(resourceLoaderValue, classLoaderValue, backendsValue, runtimeOptionsValue,
-                StopWatch.SYSTEM, optionalGlueValue);
+                TimeService.SYSTEM, optionalGlueValue);
     }
 
     public ExtendedRuntime(ResourceLoader resourceLoaderValue,
             ClassLoader classLoaderValue, Collection<? extends Backend> backendsValue,
-            RuntimeOptions runtimeOptionsValue, StopWatch stopWatchValue,
+            RuntimeOptions runtimeOptionsValue, TimeService stopWatchValue,
             RuntimeGlue optionalGlueValue) {
         super(resourceLoaderValue, classLoaderValue, backendsValue, runtimeOptionsValue, stopWatchValue,
                 optionalGlueValue);
@@ -114,7 +119,7 @@ public class ExtendedRuntime extends Runtime {
 
     private void addStepToCounterAndResult(Result result) {
         scenarioResult.add(result);
-        stats.addStep(result);
+        stats.addStep(result.getStatus());
     }
 
     public void addError(Throwable error) {
@@ -138,7 +143,7 @@ public class ExtendedRuntime extends Runtime {
         formatter.done();
         formatter.close();
         printSummary();
-    }*/
+    }
 
     public void printSummary() {
         SummaryPrinter summaryPrinter = runtimeOptions.summaryPrinter(classLoader);
@@ -350,5 +355,5 @@ public class ExtendedRuntime extends Runtime {
     private void addHookToCounterAndResult(Result result) {
         scenarioResult.add(result);
         stats.addHookTime(result.getDuration());
-    }
+    }*/
 }

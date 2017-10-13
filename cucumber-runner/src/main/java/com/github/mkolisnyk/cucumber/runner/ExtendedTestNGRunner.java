@@ -11,6 +11,7 @@ import com.github.mkolisnyk.cucumber.runner.runtime.ExtendedRuntimeOptions;
 
 import cucumber.api.testng.AbstractTestNGCucumberTests;
 import cucumber.api.testng.CucumberFeatureWrapper;
+import cucumber.api.testng.PickleEventWrapper;
 
 
 public class ExtendedTestNGRunner extends AbstractTestNGCucumberTests {
@@ -61,14 +62,9 @@ public class ExtendedTestNGRunner extends AbstractTestNGCucumberTests {
             ReportRunner.run(extendedOption);
         }
     }
-
     @Override
     @Test(groups = "cucumber", description = "Runs Cucumber Feature", dataProvider = "features")
-    public void feature(CucumberFeatureWrapper cucumberFeature) {
-        try {
-            super.feature(cucumberFeature);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+    public void runScenario(PickleEventWrapper pickleWrapper, CucumberFeatureWrapper featureWrapper) throws Throwable {
+        super.runScenario(pickleWrapper, featureWrapper);
     }
 }

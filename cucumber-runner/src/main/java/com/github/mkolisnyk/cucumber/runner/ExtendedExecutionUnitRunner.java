@@ -27,10 +27,10 @@ public class ExtendedExecutionUnitRunner extends ExecutionUnitRunner {
 
     @Override
     public void run(RunNotifier notifier) {
-        jUnitReporter.startExecutionUnit(this, notifier);
+        //jUnitReporter.startExecutionUnit(this, notifier);
         // This causes runChild to never be called, which seems OK.
-        cucumberScenario.run(jUnitReporter, jUnitReporter, runtime);
-        jUnitReporter.finishExecutionUnit();
+        //cucumberScenario.run(jUnitReporter, jUnitReporter, runtime);
+        //jUnitReporter.finishExecutionUnit();
     }
 
     public final CucumberScenario getCucumberScenario() {

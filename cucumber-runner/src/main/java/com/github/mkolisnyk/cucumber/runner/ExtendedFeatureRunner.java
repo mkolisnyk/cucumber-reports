@@ -49,12 +49,12 @@ public class ExtendedFeatureRunner extends FeatureRunner {
     }
 
     private void buildFeatureElementRunners() {
-        for (CucumberTagStatement cucumberTagStatement : cucumberFeature.getFeatureElements()) {
+        /*for (CucumberTagStatement cucumberTagStatement : cucumberFeature.getFeatureElements()) {
             try {
                 ParentRunner featureElementRunner;
                 if (cucumberTagStatement instanceof CucumberScenario) {
                     featureElementRunner = new ExtendedExecutionUnitRunner(
-                            runtime, (CucumberScenario) cucumberTagStatement, jUnitReporter/*, retryCount*/);
+                            runtime, (CucumberScenario) cucumberTagStatement, jUnitReporter);
                 } else {
                     featureElementRunner = new ExtendedScenarioOutlineRunner(
                             runtime, (CucumberScenarioOutline) cucumberTagStatement, jUnitReporter, retryCount);
@@ -63,7 +63,7 @@ public class ExtendedFeatureRunner extends FeatureRunner {
             } catch (InitializationError e) {
                 throw new CucumberException("Failed to create scenario runner", e);
             }
-        }
+        }*/
     }
     private boolean isRetryApplicable(Throwable e) {
         if (this.retryMethods == null || this.retryMethods.length == 0) {
@@ -91,8 +91,8 @@ public class ExtendedFeatureRunner extends FeatureRunner {
         return runtime;
     }
 
-    @Override
-    protected void runChild(ParentRunner child, RunNotifier notifier) {
+    //@Override
+/*    protected void runChild(ParentRunner child, RunNotifier notifier) {
         System.out.println("Running Feature child (scenario)...");
         try {
             System.out.println("Begin scenario run...");
@@ -176,5 +176,5 @@ public class ExtendedFeatureRunner extends FeatureRunner {
 
     public void setScenarioCount(int scenarioCountValue) {
         this.scenarioCount = scenarioCountValue;
-    }
+    }*/
 }

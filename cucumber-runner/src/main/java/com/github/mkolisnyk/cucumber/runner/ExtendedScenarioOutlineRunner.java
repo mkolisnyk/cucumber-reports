@@ -60,7 +60,7 @@ public class ExtendedScenarioOutlineRunner extends
 
     @Override
     public void run(final RunNotifier notifier) {
-        cucumberScenarioOutline.formatOutlineScenario(jUnitReporter);
+        //cucumberScenarioOutline.formatOutlineScenario(jUnitReporter);
         super.run(notifier);
     }
 

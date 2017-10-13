@@ -62,7 +62,8 @@ public class LazyAssertTest {
     }
     @Test
     public void testExtendedRuntimeIsPending() {
-        Assert.assertFalse(ExtendedRuntime.isPending(null), "Pending check for null parameter should return false");
+        Assert.assertFalse(ExtendedRuntime.isPending(null),
+                "Pending check for null parameter should return false");
     }
     @Test
     public void testAssertTrue() {

@@ -83,7 +83,7 @@ public class ExtendedExamplesRunner extends Suite {
 
     @Override
     public void run(final RunNotifier notifier) {
-        jUnitReporter.examples(cucumberExamples.getExamples());
+        //jUnitReporter.examples(cucumberExamples.getExamples());
         super.run(notifier);
     }
 

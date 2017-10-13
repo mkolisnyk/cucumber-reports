@@ -78,19 +78,20 @@ public class ExtendedCucumber extends ParentRunner<ExtendedFeatureRunner> {
         }
 
         final JUnitOptions junitOptions = new JUnitOptions(runtimeOptions.getJunitOptions());
-        final List<CucumberFeature> cucumberFeatures = runtimeOptions.cucumberFeatures(resourceLoader);
+        /*final List<CucumberFeature> cucumberFeatures = runtimeOptions.cucumberFeatures(resourceLoader);
         jUnitReporter = new JUnitReporter(
-                runtimeOptions.reporter(classLoader),
+                runtimeOptions.stepDefinitionReporter(classLoader),
                 runtimeOptions.formatter(classLoader),
                 runtimeOptions.isStrict(),
                 junitOptions);
         Method[] retryMethods = this.getPredefinedMethods(RetryAcceptance.class);
-        addChildren(cucumberFeatures, retryMethods);
+        addChildren(cucumberFeatures, retryMethods);*/
     }
     protected Runtime createRuntime(ResourceLoader resourceLoader, ClassLoader classLoader,
                                     RuntimeOptions runtimeOptions) throws InitializationError, IOException {
         ClassFinder classFinder = new ResourceLoaderClassFinder(resourceLoader, classLoader);
-        return new ExtendedRuntime(resourceLoader, classFinder, classLoader, runtimeOptions);
+        //return new ExtendedRuntime(resourceLoader, classFinder, classLoader, runtimeOptions);
+        return new Runtime(resourceLoader, classFinder, classLoader, runtimeOptions);
     }
 
     @Override
@@ -155,8 +156,8 @@ public class ExtendedCucumber extends ParentRunner<ExtendedFeatureRunner> {
             e.printStackTrace();
         }
         runtime.printSummary();
-        jUnitReporter.done();
-        jUnitReporter.close();
+        //jUnitReporter.done();
+        //jUnitReporter.close();
         for (ExtendedRuntimeOptions extendedOption : extendedOptions) {
             ReportRunner.run(extendedOption);
         }

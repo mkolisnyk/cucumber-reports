@@ -57,6 +57,7 @@ public class ExtendedCucumber extends ParentRunner<FeatureRunner> {
         final JUnitOptions junitOptions = new JUnitOptions(runtimeOptions.getJunitOptions());
         final List<CucumberFeature> cucumberFeatures = runtimeOptions.cucumberFeatures(resourceLoader, runtime.getEventBus());
         jUnitReporter = new JUnitReporter(runtime.getEventBus(), runtimeOptions.isStrict(), junitOptions);
+        extendedOptions = ExtendedRuntimeOptions.init(clazz);
         addChildren(cucumberFeatures);
     }
     public ExtendedCucumber(
@@ -185,7 +186,7 @@ public class ExtendedCucumber extends ParentRunner<FeatureRunner> {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        runtime.printSummary();
+        //runtime.printSummary();
         //jUnitReporter.done();
         //jUnitReporter.close();
         for (ExtendedRuntimeOptions extendedOption : extendedOptions) {

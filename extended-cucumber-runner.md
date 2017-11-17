@@ -8,7 +8,7 @@ layout: default
 Extended Cucumber Runner is the extension of standard **Cucumber** JUnit runner which additionally supports:
 
 * [Before- and After- suite methods](/cucumber-reports/before-after-methods)
-* [Failed Tests Re-run](/failed-tests-rerun)
+* [Failed Tests Re-run](/cucumber-reports/failed-tests-rerun)
 * Advanced Reporting after tests completion
 
 This extension is done in a form of JUnit runner. Since there are some additional options there is dedicated **@ExtendedCucumberOptions** annotation for that.

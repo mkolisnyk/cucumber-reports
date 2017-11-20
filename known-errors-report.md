@@ -36,6 +36,39 @@ At the highest level we should define the following options:
 
 ## Configuration File Format
 
+### Sample configuration JSON
+
+The configuration file is defined in JSON format. Here is one of the examples:
+
+```json
+{  
+   "@type":"com.github.mkolisnyk.cucumber.reporting.types.knownerrors.KnownErrorsModel",
+   "errorDescriptions":[  
+      {  
+         "title":"Unexpected message",
+         "description":"Message box shows unexpected content",
+         "filter":{  
+            "alias":"(.*)message is shown",
+            "dimensionValue":"FAILED_STEP",
+            "expression":"(.*)message is shown",
+            "subElements":[  
+
+            ],
+            "isFinal":false
+         },
+         "priority":{  
+            "name":"LOW",
+            "ordinal":1
+         }
+      }
+   ],
+   "orderBy":{  
+      "name":"FREQUENCY",
+      "ordinal":1
+   }
+}
+```
+
 ### What is normally defined
 
 Configuration defines the list of expressions which can indicate known errors. They are defined using [filter rules](/cucumber-reports/filter-rules). Additionally, each rule has title, description and the priority. 

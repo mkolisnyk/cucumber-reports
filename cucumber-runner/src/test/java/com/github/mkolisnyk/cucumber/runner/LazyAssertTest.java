@@ -27,7 +27,7 @@ import cucumber.runtime.ExtendedRuntime;
         features = { "./src/test/java/com/github/mkolisnyk/cucumber/features/LazyAssert.feature" },
         glue = { "com/github/mkolisnyk/cucumber/steps" },
         plugin = {
-        "json:target/cucumber.json", "html: target/cucumber-html-report",
+        "json:target/cucumber.json", "html:target/cucumber-html-report",
         "pretty:target/cucumber-pretty.txt",
         "usage:target/cucumber-usage.json",
         "junit:target/cucumber-junit-results.xml" }, tags = {})

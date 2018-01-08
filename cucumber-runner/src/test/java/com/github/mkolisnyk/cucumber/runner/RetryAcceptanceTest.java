@@ -73,8 +73,52 @@ public class RetryAcceptanceTest {
             "pretty:target/81/cucumber-pretty.txt",
             "usage:target/81/cucumber-usage.json", "junit:target/81/cucumber-results.xml" })
     public static class SampleTestRetryIsOn {
-        public static int retries = 0;
+        public static int retries = 1;
         public SampleTestRetryIsOn() {
+        }
+        @RetryAcceptance
+        public static boolean retryCheck() {
+            retries++;
+            return false;
+        }
+        @RetryAcceptance
+        public static boolean retryCheck(int value) {
+            retries++;
+            return false;
+        }
+        @RetryAcceptance
+        public static boolean retryCheck(Throwable e, int index) {
+            retries++;
+            return false;
+        }
+        @RetryAcceptance
+        public static boolean retryCheck(Throwable e) {
+            retries++;
+            return true;
+        }
+    }
+    @ExtendedCucumberOptions(
+            jsonReport = "target/141/cucumber.json",
+            jsonUsageReport = "target/141/cucumber-usage.json",
+            usageReport = true,
+            detailedReport = true,
+            detailedAggregatedReport = true,
+            overviewReport = true,
+            overviewChartsReport = true,
+            pdfPageSize = "A4 Landscape",
+            toPDF = true,
+            outputFolder = "target/141",
+            retryCount = 3)
+    @CucumberOptions(
+            features = { "src/test/java/com/github/mkolisnyk/cucumber/features/Test.feature" },
+            tags = { "@passed", "~@flaky", "~@exclude" },
+            glue = "com/github/mkolisnyk/cucumber/steps", plugin = {
+            "html:target/141", "json:target/141/cucumber.json",
+            "pretty:target/141/cucumber-pretty.txt",
+            "usage:target/141/cucumber-usage.json", "junit:target/141/cucumber-results.xml" })
+    public static class SampleTestRetryIsOnPassed {
+        public static int retries = 1;
+        public SampleTestRetryIsOnPassed() {
         }
         @RetryAcceptance
         public static boolean retryCheck() {
@@ -110,6 +154,13 @@ public class RetryAcceptanceTest {
         ExtendedCucumber runner = new ExtendedCucumber(SampleTestRetryIsOn.class);
         RunNotifier notifier = new RunNotifier();
         runner.run(notifier);
-        Assert.assertEquals(1, SampleTestRetryIsOn.retries);
+        Assert.assertEquals(2, SampleTestRetryIsOn.retries);
+    }
+    @Test
+    public void testRetryGetsTrueForPassed() throws Exception {
+        ExtendedCucumber runner = new ExtendedCucumber(SampleTestRetryIsOnPassed.class);
+        RunNotifier notifier = new RunNotifier();
+        runner.run(notifier);
+        Assert.assertEquals(1, SampleTestRetryIsOnPassed.retries);
     }
 }

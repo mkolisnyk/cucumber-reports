@@ -89,7 +89,7 @@ public final class FreemarkerConfiguration {
         for (Entry<String, String> entry : loadedMap.entrySet()) {
             URL tmplFileUrl = FreemarkerConfiguration.class.getResource(entry.getValue());
             File tmplFile = new File(entry.getValue());
-            if (tmplFileUrl!=null || tmplFile.exists()) {
+            if (tmplFileUrl != null || tmplFile.exists()) {
                 resultMap.put(entry.getKey(), entry.getValue());
             }
         }
@@ -133,7 +133,7 @@ public final class FreemarkerConfiguration {
             return resultMap;
         }
         URL locationUrl = FreemarkerConfiguration.class.getResource(location);
-        if (locationUrl==null) {
+        if (locationUrl == null) {
             return resultMap;
         }
 

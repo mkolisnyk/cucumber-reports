@@ -17,7 +17,7 @@ import org.junit.runners.Parameterized.Parameters;
 public class FreemarkerConfigurationGetResourceMapFromFileTest {
     private String location;
     private Map<String, String> expectedMap;
-    
+
     public FreemarkerConfigurationGetResourceMapFromFileTest(String location,
             Map<String, String> expectedMap) {
         super();
@@ -34,11 +34,27 @@ public class FreemarkerConfigurationGetResourceMapFromFileTest {
                     new HashMap<String, String>() {
                         {
                             putAll(FreemarkerConfiguration.getResourceMap(""));
-                            put("overview", "/templates/test/overview.ftlh");
+                            put("overview", "src/test/resources/templates/test/overview.ftlh");
                         }
                     }
                 },
                 {"/templates/extra_tmpl.json",
+                    new HashMap<String, String>() {
+                        {
+                            putAll(FreemarkerConfiguration.getResourceMap(""));
+                            put("extra", "/templates/test/overview.ftlh");
+                        }
+                    }
+                },
+                {"src/test/resources/templates/single_tmpl.json",
+                    new HashMap<String, String>() {
+                        {
+                            putAll(FreemarkerConfiguration.getResourceMap(""));
+                            put("overview", "src/test/resources/templates/test/overview.ftlh");
+                        }
+                    }
+                },
+                {"src/test/resources/templates/extra_tmpl.json",
                     new HashMap<String, String>() {
                         {
                             putAll(FreemarkerConfiguration.getResourceMap(""));

@@ -82,7 +82,7 @@ public final class FreemarkerConfiguration {
         TemplateHashModel staticModels = builder.build().getStaticModels();
         config.setSharedVariable("statics", staticModels);
     }
-    private static Map<String, String> loadTemplatesFromFile(String configFile) throws IOException {
+    private static Map<String, String> loadTemplatesFromResource(String configFile) throws IOException {
         Map<String, String> resultMap = new HashMap<String, String>();
         resultMap.putAll(DEFAULT_RESOURCES);
         HashMap<String, String> loadedMap = (HashMap<String, String>) JsonReader.jsonToJava(configFile);
@@ -90,6 +90,19 @@ public final class FreemarkerConfiguration {
             URL tmplFileUrl = FreemarkerConfiguration.class.getResource(entry.getValue());
             File tmplFile = new File(entry.getValue());
             if (tmplFileUrl != null || tmplFile.exists()) {
+                resultMap.put(entry.getKey(), entry.getValue());
+            }
+        }
+        return resultMap;
+    }
+    private static Map<String, String> loadTemplatesFromFile(File configFile) throws IOException {
+        Map<String, String> resultMap = new HashMap<String, String>();
+        resultMap.putAll(DEFAULT_RESOURCES);
+        String content = FileUtils.readFileToString(configFile, "UTF-8");
+        HashMap<String, String> loadedMap = (HashMap<String, String>) JsonReader.jsonToJava(content);
+        for (Entry<String, String> entry : loadedMap.entrySet()) {
+            File tmplFile = new File(entry.getValue());
+            if (tmplFile.exists() || FreemarkerConfiguration.class.getResource(entry.getValue()) != null) {
                 resultMap.put(entry.getKey(), entry.getValue());
             }
         }
@@ -133,17 +146,22 @@ public final class FreemarkerConfiguration {
             return resultMap;
         }
         URL locationUrl = FreemarkerConfiguration.class.getResource(location);
-        if (locationUrl == null) {
+        if (locationUrl != null) {
+            InputStream is = FreemarkerConfiguration.class.getResourceAsStream(location);
+            String locationAsString = IOUtils.toString(is);
+
+            if (locationAsString.trim().startsWith("{")) {
+                resultMap = loadTemplatesFromResource(locationAsString);
+            }
             return resultMap;
         }
-
-        InputStream is = FreemarkerConfiguration.class.getResourceAsStream(location);
-        String locationAsString = IOUtils.toString(is);
-
-        if (locationAsString.trim().startsWith("{")) {
-            resultMap = loadTemplatesFromFile(locationAsString);
+        File resLocation = new File(location);
+        if (!resLocation.exists()) {
+            return resultMap;
+        }
+        if (resLocation.isFile()) {
+            resultMap = loadTemplatesFromFile(resLocation);
         } else {
-            File resLocation = new File(location);
             resultMap = loadTemplatesFromFolder(resLocation);
         }
         return resultMap;

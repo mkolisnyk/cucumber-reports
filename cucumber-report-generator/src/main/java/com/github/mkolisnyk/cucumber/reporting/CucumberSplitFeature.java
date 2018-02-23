@@ -51,6 +51,7 @@ public class CucumberSplitFeature extends AggregatedReport {
             json.put("name", "@" + UUID.randomUUID().toString());
             CucumberTagResults[] tags = new CucumberTagResults[] {new CucumberTagResults(json)};
             feature.setTags(tags);
+            // Add other tags
             for (CucumberScenarioResult scenario : feature.getElements()) {
                 File outFile = new File(
                         this.getOutputDirectory() + File.separator + scenario.getId().replaceAll("[^A-Za-z0-9]", "_")

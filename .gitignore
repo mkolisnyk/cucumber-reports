@@ -11,6 +11,7 @@ buildNumber.properties
 /db/DBReporter/bin/
 /db/DBReporter/*.dbmdl
 /db/DBReporter/*.refactorlog
-
-
+.gradle
+.idea
+*.iml
 /test-output/

@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.FileFilter;
 import java.io.IOException;
 import java.io.InputStream;
+import java.net.URL;
 import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;
@@ -81,14 +82,14 @@ public final class FreemarkerConfiguration {
         TemplateHashModel staticModels = builder.build().getStaticModels();
         config.setSharedVariable("statics", staticModels);
     }
-    private static Map<String, String> loadTemplatesFromFile(File configFile) throws IOException {
+    private static Map<String, String> loadTemplatesFromFile(String configFile) throws IOException {
         Map<String, String> resultMap = new HashMap<String, String>();
         resultMap.putAll(DEFAULT_RESOURCES);
-        String content = FileUtils.readFileToString(configFile, "UTF-8");
-        HashMap<String, String> loadedMap = (HashMap<String, String>) JsonReader.jsonToJava(content);
+        HashMap<String, String> loadedMap = (HashMap<String, String>) JsonReader.jsonToJava(configFile);
         for (Entry<String, String> entry : loadedMap.entrySet()) {
+            URL tmplFileUrl = FreemarkerConfiguration.class.getResource(entry.getValue());
             File tmplFile = new File(entry.getValue());
-            if (tmplFile.exists()) {
+            if (tmplFileUrl != null || tmplFile.exists()) {
                 resultMap.put(entry.getKey(), entry.getValue());
             }
         }
@@ -131,13 +132,18 @@ public final class FreemarkerConfiguration {
         if (StringUtils.isBlank(location)) {
             return resultMap;
         }
-        File resLocation = new File(location);
-        if (!resLocation.exists()) {
+        URL locationUrl = FreemarkerConfiguration.class.getResource(location);
+        if (locationUrl == null) {
             return resultMap;
         }
-        if (resLocation.isFile()) {
-            resultMap = loadTemplatesFromFile(resLocation);
+
+        InputStream is = FreemarkerConfiguration.class.getResourceAsStream(location);
+        String locationAsString = IOUtils.toString(is);
+
+        if (locationAsString.trim().startsWith("{")) {
+            resultMap = loadTemplatesFromFile(locationAsString);
         } else {
+            File resLocation = new File(location);
             resultMap = loadTemplatesFromFolder(resLocation);
         }
         return resultMap;

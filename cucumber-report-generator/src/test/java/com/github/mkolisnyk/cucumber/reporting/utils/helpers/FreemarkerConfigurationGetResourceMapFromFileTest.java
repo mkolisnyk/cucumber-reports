@@ -29,24 +29,24 @@ public class FreemarkerConfigurationGetResourceMapFromFileTest {
     public static Collection<Object[]> getParameters() throws Exception {
         return Arrays.asList(new Object[][] {
                 {"non_existing_path", FreemarkerConfiguration.getResourceMap("")},
-                {"src/test/resources/templates/single_ne_tmpl.json", FreemarkerConfiguration.getResourceMap("")},
-                {"src/test/resources/templates/single_tmpl.json",
+                {"/templates/single_ne_tmpl.json", FreemarkerConfiguration.getResourceMap("")},
+                {"/templates/single_tmpl.json",
                     new HashMap<String, String>() {
                         {
                             putAll(FreemarkerConfiguration.getResourceMap(""));
-                            put("overview", "src/test/resources/templates/test/overview.ftlh");
+                            put("overview", "/templates/test/overview.ftlh");
                         }
                     }
                 },
-                {"src/test/resources/templates/extra_tmpl.json",
+                {"/templates/extra_tmpl.json",
                     new HashMap<String, String>() {
                         {
                             putAll(FreemarkerConfiguration.getResourceMap(""));
-                            put("extra", "src/test/resources/templates/test/overview.ftlh");
+                            put("extra", "/templates/test/overview.ftlh");
                         }
                     }
                 },
-                {"src/test/resources/templates/extra_ne_tmpl.json", FreemarkerConfiguration.getResourceMap("")},
+                {"/templates/extra_ne_tmpl.json", FreemarkerConfiguration.getResourceMap("")},
         });
     }
     @Test

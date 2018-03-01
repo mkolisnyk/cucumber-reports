@@ -3,6 +3,11 @@ title: Cucumber Reports News
 layout: null
 ---
 
+## 01.03.2018 1.3.1 Version Release
+
+* [#150](https://github.com/mkolisnyk/cucumber-reports/issues/150) Bugfix: While adding custom plugin to the cucumber options, ExtendedParallelCucumber fails to load
+* [#157](https://github.com/mkolisnyk/cucumber-reports/issues/157) Enhancement: unable to use templates.json file from a jar
+
 ## 11.10.2017 1.3 Version Release
 
 * [#134](https://github.com/mkolisnyk/cucumber-reports/issues/134) Enhancement: implement parallel runner which splits execution by scenarios 

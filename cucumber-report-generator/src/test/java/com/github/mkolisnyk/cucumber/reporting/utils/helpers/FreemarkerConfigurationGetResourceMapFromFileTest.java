@@ -17,7 +17,7 @@ import org.junit.runners.Parameterized.Parameters;
 public class FreemarkerConfigurationGetResourceMapFromFileTest {
     private String location;
     private Map<String, String> expectedMap;
-    
+
     public FreemarkerConfigurationGetResourceMapFromFileTest(String location,
             Map<String, String> expectedMap) {
         super();
@@ -29,7 +29,23 @@ public class FreemarkerConfigurationGetResourceMapFromFileTest {
     public static Collection<Object[]> getParameters() throws Exception {
         return Arrays.asList(new Object[][] {
                 {"non_existing_path", FreemarkerConfiguration.getResourceMap("")},
-                {"src/test/resources/templates/single_ne_tmpl.json", FreemarkerConfiguration.getResourceMap("")},
+                {"/templates/single_ne_tmpl.json", FreemarkerConfiguration.getResourceMap("")},
+                {"/templates/single_tmpl.json",
+                    new HashMap<String, String>() {
+                        {
+                            putAll(FreemarkerConfiguration.getResourceMap(""));
+                            put("overview", "src/test/resources/templates/test/overview.ftlh");
+                        }
+                    }
+                },
+                {"/templates/extra_tmpl.json",
+                    new HashMap<String, String>() {
+                        {
+                            putAll(FreemarkerConfiguration.getResourceMap(""));
+                            put("extra", "/templates/test/overview.ftlh");
+                        }
+                    }
+                },
                 {"src/test/resources/templates/single_tmpl.json",
                     new HashMap<String, String>() {
                         {
@@ -42,11 +58,11 @@ public class FreemarkerConfigurationGetResourceMapFromFileTest {
                     new HashMap<String, String>() {
                         {
                             putAll(FreemarkerConfiguration.getResourceMap(""));
-                            put("extra", "src/test/resources/templates/test/overview.ftlh");
+                            put("extra", "/templates/test/overview.ftlh");
                         }
                     }
                 },
-                {"src/test/resources/templates/extra_ne_tmpl.json", FreemarkerConfiguration.getResourceMap("")},
+                {"/templates/extra_ne_tmpl.json", FreemarkerConfiguration.getResourceMap("")},
         });
     }
     @Test

@@ -36,4 +36,12 @@ public class CucumberUsageReportingTest {
         report.setJsonUsageFile("./src/test/resources/usage-source/cucumber-empty-usage.json");
         report.execute();
     }
+    @Test
+    public void testGenerateReportFrLocalized() throws Exception {
+        CucumberUsageReporting report = new CucumberUsageReporting();
+        report.setOutputName("cucumber-results");
+        report.setOutputDirectory("target/fr");
+        report.setJsonUsageFile("./src/test/resources/fr_locale/cucumber-usage.json");
+        report.execute(new String[] {"pdf"});
+    }
 }

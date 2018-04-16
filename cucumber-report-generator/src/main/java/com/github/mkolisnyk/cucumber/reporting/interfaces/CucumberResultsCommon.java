@@ -20,6 +20,7 @@ import org.apache.batik.transcoder.TranscoderOutput;
 import org.apache.batik.transcoder.image.PNGTranscoder;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.lang3.StringUtils;
+import org.xhtmlrenderer.pdf.ITextFontResolver;
 //import org.apache.commons.lang.ArrayUtils;
 import org.xhtmlrenderer.pdf.ITextRenderer;
 import org.xhtmlrenderer.simple.Graphics2DRenderer;
@@ -36,6 +37,7 @@ import com.github.mkolisnyk.cucumber.reporting.utils.helpers.FreemarkerConfigura
 import com.github.mkolisnyk.cucumber.reporting.utils.helpers.StringConversionUtils;
 //import com.google.common.io.Files;
 import com.github.mkolisnyk.cucumber.runner.runtime.ExtendedRuntimeOptions;
+import com.itextpdf.text.pdf.BaseFont;
 
 import freemarker.ext.beans.BeansWrapper;
 import freemarker.template.Configuration;

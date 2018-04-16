@@ -1,0 +1,74 @@
+[
+  {
+    "line": 1,
+    "elements": [
+      {
+        "line": 2,
+        "name": "l\u0027utilisateur rentre un login et un mot de passe valides",
+        "description": "",
+        "id": "fonctionnalite-login;l\u0027utilisateur-rentre-un-login-et-un-mot-de-passe-valides",
+        "type": "scenario",
+        "keyword": "Scenario",
+        "steps": [
+          {
+            "result": {
+              "duration": 109152326,
+              "status": "passed"
+            },
+            "line": 3,
+            "name": "username et password corrects",
+            "match": {
+              "location": "LoginSteps.java:48"
+            },
+            "keyword": "Given "
+          },
+          {
+            "result": {
+              "duration": 534911706,
+              "status": "passed"
+            },
+            "line": 4,
+            "name": "username en tant que \"admin\" et le password en tant que \"admin\"",
+            "match": {
+              "arguments": [
+                {
+                  "val": "admin",
+                  "offset": 22
+                },
+                {
+                  "val": "admin",
+                  "offset": 57
+                }
+              ],
+              "location": "LoginSteps.java:63"
+            },
+            "keyword": "When "
+          },
+          {
+            "result": {
+              "duration": 248727,
+              "status": "passed"
+            },
+            "line": 5,
+            "name": "le resultat est \"username et password corrects\"",
+            "match": {
+              "arguments": [
+                {
+                  "val": "username et password corrects",
+                  "offset": 17
+                }
+              ],
+              "location": "LoginSteps.java:76"
+            },
+            "keyword": "Then "
+          }
+        ]
+      }
+    ],
+    "name": "fonctionnalite login",
+    "description": "",
+    "id": "fonctionnalite-login",
+    "keyword": "Feature",
+    "uri": "login.feature"
+  }
+]

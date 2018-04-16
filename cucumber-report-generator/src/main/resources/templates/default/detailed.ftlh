@@ -170,10 +170,11 @@ div.content {page-break-after: always;}
 									<tr class="${step.getResult().getStatus()}">
 										<td colspan="2" class="comment">
 											<span class="tip">Output</span>
-											<pre class="comment">
+											<pre class="comment"><br>
 											<#list step.getOutput() as line>
 ${line}
 											</#list>
+											</br>
 											</pre>
 										</td>
 									</tr>

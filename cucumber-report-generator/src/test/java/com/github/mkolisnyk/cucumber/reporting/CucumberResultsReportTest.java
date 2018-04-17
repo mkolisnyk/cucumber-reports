@@ -277,4 +277,14 @@ public class CucumberResultsReportTest {
         results.setSourceFile("./src/test/resources/165/cucumber.json");
         results.execute(true, new String[] {"pdf"});
     }
+    @Test
+    public void testIssue168SpecialCharacters() throws Exception {
+        CucumberDetailedResults results = new CucumberDetailedResults();
+        results.setScreenShotLocation("screenshots/");
+        results.setScreenShotWidth("600");
+        results.setOutputDirectory("target/");
+        results.setOutputName("issue168-results");
+        results.setSourceFile("./src/test/resources/168/cucumber.json");
+        results.execute(true, new String[] {"pdf"});
+    }
 }

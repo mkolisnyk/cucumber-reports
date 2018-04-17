@@ -1,7 +1,5 @@
 package com.github.mkolisnyk.cucumber.runner.runtime;
 
-import gherkin.util.FixJava;
-
 import java.io.InputStreamReader;
 import java.io.Reader;
 import java.lang.reflect.Field;
@@ -14,6 +12,8 @@ import org.apache.commons.lang3.ArrayUtils;
 import org.apache.commons.lang3.StringUtils;
 
 import com.github.mkolisnyk.cucumber.runner.ExtendedCucumberOptions;
+
+import gherkin.util.FixJava;
 
 public class ExtendedRuntimeOptions {
 

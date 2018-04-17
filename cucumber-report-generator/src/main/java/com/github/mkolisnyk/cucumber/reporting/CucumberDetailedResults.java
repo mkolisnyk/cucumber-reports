@@ -124,7 +124,6 @@ public class CucumberDetailedResults extends KECompatibleReport {
     public CucumberReportLink getReportDocLink() {
         return CucumberReportLink.DETAILED_URL;
     }
-
     @Override
     public void execute(boolean aggregate, String[] formats) throws Exception {
         execute((KnownErrorsModel) null, aggregate, formats);

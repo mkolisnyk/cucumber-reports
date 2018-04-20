@@ -94,7 +94,7 @@ public class CucumberDetailedResults extends KECompatibleReport {
             long base = new Date().getTime();
             for (CucumberEmbedding embedding : step.getEmbeddings()) {
                 String embedPath = Paths.get(
-                        this.getScreenShotLocation(), 
+                        this.getScreenShotLocation(),
                         this.generateNameFromId(scenarioId) + (base + index) + "."
                         + getExtensionFromMime(embedding.getMimeType())).toString();
                 File embedShot = new File(this.getOutputDirectory() + embedPath);

@@ -3,9 +3,6 @@ package com.github.mkolisnyk.cucumber.reporting;
 import java.io.File;
 import java.util.Locale;
 
-import javax.xml.bind.JAXB;
-
-import org.apache.commons.io.FileUtils;
 import org.junit.Test;
 
 public class CucumberResultsReportTest {

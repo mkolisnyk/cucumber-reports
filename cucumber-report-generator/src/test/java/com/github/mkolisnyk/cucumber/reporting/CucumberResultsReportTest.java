@@ -280,7 +280,7 @@ public class CucumberResultsReportTest {
     @Test
     public void testIssue168SpecialCharacters() throws Exception {
         CucumberDetailedResults results = new CucumberDetailedResults();
-        results.setScreenShotLocation("screenshots/");
+        results.setScreenShotLocation("screenshots");
         results.setScreenShotWidth("600");
         results.setOutputDirectory("target/");
         results.setOutputName("issue168-results");

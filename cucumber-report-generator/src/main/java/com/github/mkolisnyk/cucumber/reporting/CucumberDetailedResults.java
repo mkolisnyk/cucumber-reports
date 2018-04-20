@@ -2,6 +2,7 @@ package com.github.mkolisnyk.cucumber.reporting;
 
 import java.io.File;
 import java.io.IOException;
+import java.nio.file.Paths;
 import java.util.Date;
 import java.util.Locale;
 
@@ -92,9 +93,10 @@ public class CucumberDetailedResults extends KECompatibleReport {
             int index = 0;
             long base = new Date().getTime();
             for (CucumberEmbedding embedding : step.getEmbeddings()) {
-                String embedPath = this.getScreenShotLocation()
-                        + this.generateNameFromId(scenarioId) + (base + index) + "."
-                        + getExtensionFromMime(embedding.getMimeType());
+                String embedPath = Paths.get(
+                        this.getScreenShotLocation(), 
+                        this.generateNameFromId(scenarioId) + (base + index) + "."
+                        + getExtensionFromMime(embedding.getMimeType())).toString();
                 File embedShot = new File(this.getOutputDirectory() + embedPath);
                 FileUtils.writeByteArrayToFile(embedShot, embedding.getData());
                 outputs = (String[]) ArrayUtils.add(outputs, embedPath);

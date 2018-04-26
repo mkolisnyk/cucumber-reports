@@ -278,10 +278,11 @@ public class CucumberResultsReportTest {
     public void testIssue168SpecialCharacters() throws Exception {
         CucumberDetailedResults results = new CucumberDetailedResults();
         results.setScreenShotLocation("screenshots");
-        results.setScreenShotWidth("600");
+        results.setScreenShotWidth("100");
         results.setOutputDirectory("target/");
         results.setOutputName("issue168-results");
         results.setSourceFile("./src/test/resources/168/cucumber.json");
+        results.setPdfPageSize("A4 Landscape");
         results.execute(true, new String[] {"pdf"});
     }
 }

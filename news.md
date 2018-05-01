@@ -3,6 +3,12 @@ title: Cucumber Reports News
 layout: null
 ---
 
+## 01.05.2018 1.3.2 Version Release
+
+* [#170](https://github.com/mkolisnyk/cucumber-reports/issues/170) Bugfix: Error with Cucumber Usage Report Generation
+* [#166](https://github.com/mkolisnyk/cucumber-reports/issues/166) Bugfix: Not able to view Screenshots in the detailed reports generated
+* [#165](https://github.com/mkolisnyk/cucumber-reports/issues/165) Bugfix: Multiline scenario write statements aren't formatted properly bug
+
 ## 01.03.2018 1.3.1 Version Release
 
 * [#150](https://github.com/mkolisnyk/cucumber-reports/issues/150) Bugfix: While adding custom plugin to the cucumber options, ExtendedParallelCucumber fails to load

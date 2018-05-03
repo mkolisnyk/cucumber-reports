@@ -285,4 +285,15 @@ public class CucumberResultsReportTest {
         results.setPdfPageSize("A4 Landscape");
         results.execute(true, new String[] {"pdf"});
     }
+    @Test
+    public void testMultiEmbedOutput() throws Exception {
+        CucumberDetailedResults results = new CucumberDetailedResults();
+        results.setScreenShotLocation("screenshots");
+        results.setScreenShotWidth("300");
+        results.setOutputDirectory("target/multi_embed/");
+        results.setOutputName("issue168-results");
+        results.setSourceFile("./src/test/resources/multi_embed/cucumber.json");
+        results.setPdfPageSize("A4 Landscape");
+        results.execute(true, new String[] {"pdf"});
+    }
 }

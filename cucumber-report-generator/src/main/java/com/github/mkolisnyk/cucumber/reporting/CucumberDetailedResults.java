@@ -96,7 +96,8 @@ public class CucumberDetailedResults extends KECompatibleReport {
                 String embedPath = Paths.get(
                         this.getScreenShotLocation(),
                         this.generateNameFromId(scenarioId) + (base + index) + "."
-                        + getExtensionFromMime(embedding.getMimeType())).toString();
+                        + getExtensionFromMime(embedding.getMimeType()))
+                        .toString().replace("\\", "/");
                 File embedShot = new File(this.getOutputDirectory() + embedPath);
                 FileUtils.writeByteArrayToFile(embedShot, embedding.getData());
                 outputs = (String[]) ArrayUtils.add(outputs, embedPath);

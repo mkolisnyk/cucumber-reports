@@ -3,6 +3,10 @@ title: Cucumber Reports News
 layout: null
 ---
 
+## 03.05.2018 1.3.3 Version Release
+
+* [#166](https://github.com/mkolisnyk/cucumber-reports/issues/166) Hotfix for compatibility with Windows
+
 ## 01.05.2018 1.3.2 Version Release
 
 * [#170](https://github.com/mkolisnyk/cucumber-reports/issues/170) Bugfix: Error with Cucumber Usage Report Generation

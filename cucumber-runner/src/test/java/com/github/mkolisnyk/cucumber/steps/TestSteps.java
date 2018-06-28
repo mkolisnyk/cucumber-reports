@@ -111,4 +111,16 @@ public class TestSteps {
     public void i_am_keeping_the_count() throws Throwable {
         TestSteps.counter++;
     }
+    @When("^I throw \"([^\"]*)\" exception$")
+    public void i_throw_exception(String exception) throws Throwable {
+        if (exception.equals("Exception1")) {
+            throw new PendingException();
+        }
+        if (exception.equals("Exception2")) {
+            throw new AssertionError();
+        }
+        if (exception.equals("Exception3")) {
+            throw new Exception();
+        }
+    }
 }

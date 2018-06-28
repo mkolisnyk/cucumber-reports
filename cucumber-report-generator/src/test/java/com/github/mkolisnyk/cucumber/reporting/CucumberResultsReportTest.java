@@ -296,4 +296,13 @@ public class CucumberResultsReportTest {
         results.setPdfPageSize("A4 Landscape");
         results.execute(true, new String[] {"pdf"});
     }
+    @Test
+    public void testIssue172GenerateCustomOverviewReport() throws Exception {
+        CucumberResultsOverview results = new CucumberResultsOverview();
+        results.setTemplatesLocation("src/test/resources/templates/single_tmpl.json");
+        results.setOutputDirectory("target/172");
+        results.setOutputName("cucumber-172-results");
+        results.setSourceFile("./src/test/resources/cucumberAcctScreen.json");
+        results.executeOverviewReport("feature-overview-172", new String[] {"pdf"});
+    }
 }

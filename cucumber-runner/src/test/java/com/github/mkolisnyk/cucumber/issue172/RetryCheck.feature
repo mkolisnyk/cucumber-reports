@@ -10,3 +10,14 @@ Feature: Retry check with custom exception
 	Scenario: Throwing exception 3
 		When I throw "Exception3" exception
 		Then I should see nothing		
+		
+	Scenario Outline: Throwing exceptions
+		When I throw "<Exception>" exception
+		Then I should see nothing
+		
+		Examples:
+			| Exception  |
+			| Exception1 |
+			| Exception2 |
+			| Exception3 |
+		

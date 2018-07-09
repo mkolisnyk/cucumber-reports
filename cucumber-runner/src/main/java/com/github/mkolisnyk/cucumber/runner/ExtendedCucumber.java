@@ -169,4 +169,23 @@ public class ExtendedCucumber extends ParentRunner<ExtendedFeatureRunner> {
                             jUnitReporter, this.retryCount, retryMethods));
         }
     }
+    public static boolean isRetryApplicable(Throwable e, Method[] retryMethods) {
+        if (retryMethods == null || retryMethods.length == 0) {
+            return true;
+        }
+        for (Method method : retryMethods) {
+            Class<?>[] types = method.getParameterTypes();
+            if (types.length != 1 || !ArrayUtils.contains(types, Throwable.class)) {
+                continue;
+            }
+            try {
+                if (!(Boolean) method.invoke(null, e)) {
+                    return false;
+                }
+            } catch (Exception ex) {
+                ex.printStackTrace();
+            }
+        }
+        return true;
+    }
 }

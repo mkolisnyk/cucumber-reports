@@ -1,7 +1,12 @@
 package com.github.mkolisnyk.cucumber.runner;
 
+import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.notification.RunNotifier;
+import org.testng.TestListenerAdapter;
+import org.testng.TestNG;
+
+import com.github.mkolisnyk.cucumber.runner.TestNGRunnerTest.TestSubClass;
 
 import cucumber.api.CucumberOptions;
 
@@ -20,11 +25,19 @@ import cucumber.api.CucumberOptions;
         "pretty:target/cucumber-pretty.txt",
         "usage:target/cucumber-usage.json",
         "junit:target/cucumber-junit-results.xml" }, tags = {})
-public class CustomFormatTemplateTest {
+public class CustomFormatTemplateTest extends ExtendedTestNGRunner {
     @Test
     public void testCustomFormatTemplate() throws Exception {
         ExtendedCucumber runner = new ExtendedCucumber(this.getClass());
         RunNotifier notifier = new RunNotifier();
         runner.run(notifier);
+    }
+    @Test
+    public void testCustomFormatTemplateTestNGClass() throws Exception {
+        TestListenerAdapter tla = new TestListenerAdapter();
+        TestNG testng = new TestNG();
+        testng.setTestClasses(new Class[] {CustomFormatTemplateTest.class});
+        testng.addListener(tla);
+        testng.run();
     }
 }

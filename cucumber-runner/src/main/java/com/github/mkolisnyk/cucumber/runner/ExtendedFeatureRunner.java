@@ -4,7 +4,6 @@ import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.apache.commons.lang3.ArrayUtils;
 import org.junit.Assert;
 import org.junit.internal.AssumptionViolatedException;
 import org.junit.runner.Description;
@@ -57,7 +56,8 @@ public class ExtendedFeatureRunner extends FeatureRunner {
                             runtime, (CucumberScenario) cucumberTagStatement, jUnitReporter/*, retryCount*/);
                 } else {
                     featureElementRunner = new ExtendedScenarioOutlineRunner(
-                            runtime, (CucumberScenarioOutline) cucumberTagStatement, jUnitReporter, retryCount);
+                            runtime, (CucumberScenarioOutline) cucumberTagStatement,
+                            jUnitReporter, retryCount, retryMethods);
                 }
                 children.add(featureElementRunner);
             } catch (InitializationError e) {
@@ -65,25 +65,7 @@ public class ExtendedFeatureRunner extends FeatureRunner {
             }
         }
     }
-    private boolean isRetryApplicable(Throwable e) {
-        if (this.retryMethods == null || this.retryMethods.length == 0) {
-            return true;
-        }
-        for (Method method : this.retryMethods) {
-            Class<?>[] types = method.getParameterTypes();
-            if (types.length != 1 || !ArrayUtils.contains(types, Throwable.class)) {
-                continue;
-            }
-            try {
-                if (!(Boolean) method.invoke(null, e)) {
-                    return false;
-                }
-            } catch (Exception ex) {
-                ex.printStackTrace();
-            }
-        }
-        return true;
-    }
+
     /**
      * @return the runtime
      */
@@ -101,9 +83,11 @@ public class ExtendedFeatureRunner extends FeatureRunner {
         } catch (AssumptionViolatedException e) {
             System.out.println("Scenario AssumptionViolatedException...");
         } catch (Throwable e) {
-            if (this.isRetryApplicable(e)) {
+            List<Throwable> errors = this.getRuntime().getErrors();
+            Throwable error = errors.get(errors.size() - 1);
+            if (ExtendedCucumber.isRetryApplicable(error, this.retryMethods)) {
                 System.out.println("Initiating retry...");
-                retry(notifier, child, e);
+                retry(notifier, child, error);
             }
         } finally {
             System.out.println("Scenario completed..." + this.getRuntime().exitStatus());

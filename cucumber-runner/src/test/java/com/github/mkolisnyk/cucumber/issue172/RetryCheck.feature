@@ -21,3 +21,12 @@ Feature: Retry check with custom exception
 			| Exception2 |
 			| Exception3 |
 		
+	Scenario Outline: Retries count
+		When I do retry after <Count> fails
+		Then I should see nothing
+		
+		Examples:
+			| Count |
+			| 2     |
+			| 1     |
+			| 0     |

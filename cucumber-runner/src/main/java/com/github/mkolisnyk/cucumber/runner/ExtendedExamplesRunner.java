@@ -141,6 +141,7 @@ public class ExtendedExamplesRunner extends Suite {
         if (scenario == null) {
             return;
         }
+        runtime.getErrors().clear();
         while (this.getRetryCount() > this.getFailedAttempts()) {
             try {
                 featureElementRunner = new ExtendedExecutionUnitRunner(
@@ -148,11 +149,12 @@ public class ExtendedExamplesRunner extends Suite {
                         scenario,
                         jUnitReporter);
                 featureElementRunner.run(notifier);
-                Assert.assertEquals(0, this.getRuntime().exitStatus());
-                break;
+                Assert.assertEquals(0, runtime.exitStatus());
+                runtime.getErrors().clear();
+                return;
             } catch (Throwable t) {
                 this.setFailedAttempts(this.getFailedAttempts() + 1);
-                this.getRuntime().getErrors().clear();
+                runtime.getErrors().clear();
             }
         }
     }

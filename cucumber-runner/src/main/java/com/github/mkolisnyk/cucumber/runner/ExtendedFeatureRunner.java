@@ -116,6 +116,7 @@ public class ExtendedFeatureRunner extends FeatureRunner {
         if (scenario == null) {
             return;
         }
+        this.getRuntime().getErrors().clear();
         while (this.getRetryCount() > this.getFailedAttempts()) {
             try {
                 featureElementRunner = new ExtendedExecutionUnitRunner(
@@ -124,7 +125,8 @@ public class ExtendedFeatureRunner extends FeatureRunner {
                         jUnitReporter);
                 featureElementRunner.run(notifier);
                 Assert.assertEquals(0, this.getRuntime().exitStatus());
-                break;
+                this.getRuntime().getErrors().clear();
+                return;
             } catch (Throwable t) {
                 this.setFailedAttempts(this.getFailedAttempts() + 1);
                 this.getRuntime().getErrors().clear();

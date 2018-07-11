@@ -15,6 +15,7 @@ import cucumber.api.java.en.When;
 
 public class TestSteps {
     private static int retry = 0;
+    private static int outlineRetry = 0;
     public static int counter = 0;
 
     @Pending
@@ -92,6 +93,16 @@ public class TestSteps {
             retry = 0;
             System.out.println("" + Thread.currentThread().getId() + "[Step] DONE!!!");
         }
+    }
+    @When("^I do retry after (\\d+) fails$")
+    public void i_do_some_retries(int value) throws Throwable {
+        System.out.println("Retry: " + outlineRetry + ", Value: " + value);
+        if (outlineRetry++ < value) {
+            System.out.println("Test failed");
+            throw new Exception ("Some error");
+        }
+        System.out.println("Test passed");
+        outlineRetry = 0;
     }
     @When("I use the following text:")
     @Then("I should see the following text:")

@@ -49,7 +49,7 @@ public class RetryAcceptanceExceptionClassTest {
         ExtendedCucumber runner = new ExtendedCucumber(SampleTestException1.class);
         RunNotifier notifier = new RunNotifier();
         runner.run(notifier);
-        Assert.assertEquals(4, SampleTestException1.retries);
-        Assert.assertEquals(12, SampleTestException1.testRuns);
+        Assert.assertEquals(6, SampleTestException1.retries);
+        Assert.assertEquals(18, SampleTestException1.testRuns);
     }
 }

@@ -3,6 +3,13 @@ title: Cucumber Reports News
 layout: null
 ---
 
+## 17.07.2018 1.3.4 Version Release
+
+* [#174](https://github.com/mkolisnyk/cucumber-reports/issues/174) Bugfix:jsonUsageReports parameter is not including the other usage JSON files into the report
+* [#175](https://github.com/mkolisnyk/cucumber-reports/issues/175) Bugfix: ExtendedCucumber with Scenario Outline doesn't provide control over scenarios reruns
+* [#176](https://github.com/mkolisnyk/cucumber-reports/issues/176) Enhancement: ExtendedCucumber: My retry check method (with @RetryAcceptance annotation) doesn't receive original thrown exception enhancement
+* [#143](https://github.com/mkolisnyk/cucumber-reports/issues/143) Bugfix: Scenario re-launched 3 times even if 2nd time is passed (when retryCount>1)
+
 ## 03.05.2018 1.3.3 Version Release
 
 * [#166](https://github.com/mkolisnyk/cucumber-reports/issues/166) Hotfix for compatibility with Windows

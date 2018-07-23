@@ -3,6 +3,7 @@ package com.github.mkolisnyk.cucumber.runner;
 import java.io.File;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import org.apache.commons.lang.ArrayUtils;
@@ -360,9 +361,7 @@ public class ExtendedParallelCucumber extends ParentRunner<Runner> {
     @Override
     protected List<Runner> getChildren() {
         List<Runner> children = new ArrayList<>();
-        for (ExtendedCucumber runner : this.getRunners()) {
-            children.add(runner);
-        }
+        Collections.addAll(children, this.getRunners());
         return children;
     }
 

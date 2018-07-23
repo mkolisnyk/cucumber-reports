@@ -26,7 +26,7 @@ public class BaseRuntimeOptionsFactory {
     }
 
     private List<String> buildArgsFromOptions(CucumberOptions options) {
-        List<String> args = new ArrayList<String>();
+        List<String> args = new ArrayList<>();
         if (options != null) {
             addDryRun(options, args);
             addMonochrome(options, args);
@@ -75,7 +75,7 @@ public class BaseRuntimeOptionsFactory {
     }
 
     private void addPlugins(CucumberOptions options, List<String> args) {
-        List<String> plugins = new ArrayList<String>();
+        List<String> plugins = new ArrayList<>();
         plugins.addAll(asList(options.plugin()));
         for (String plugin : plugins) {
             args.add("--plugin");

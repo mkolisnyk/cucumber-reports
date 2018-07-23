@@ -71,7 +71,7 @@ public class ExtendedParallelScenarioCucumber extends Runner {
             parallelRunner.run(notifier);
 
             String[] paths = parallelRunner.getOutputJsonPaths(false);
-            Map<String, CucumberFeatureResult> featureIdMap = new LinkedHashMap<String, CucumberFeatureResult>();
+            Map<String, CucumberFeatureResult> featureIdMap = new LinkedHashMap<>();
             for (String path : paths) {
                 CucumberFeatureResult[] features = report.readFileContent(path, true);
                 for (CucumberFeatureResult feature : features) {

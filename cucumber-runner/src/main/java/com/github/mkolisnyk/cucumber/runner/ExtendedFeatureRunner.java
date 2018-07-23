@@ -14,7 +14,7 @@ import cucumber.runtime.junit.JUnitReporter;
 import cucumber.runtime.model.CucumberFeature;
 
 public class ExtendedFeatureRunner extends FeatureRunner {
-    private final List<ParentRunner> children = new ArrayList<ParentRunner>();
+    private final List<ParentRunner> children = new ArrayList<>();
 
     private int retryCount;
     private Method[] retryMethods;

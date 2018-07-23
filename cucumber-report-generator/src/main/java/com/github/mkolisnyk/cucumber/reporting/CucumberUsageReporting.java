@@ -66,7 +66,7 @@ public class CucumberUsageReporting extends SimpleReport {
     }
 
     public LinkedHashMap<String, Integer> calculateStepsUsageScore(CucumberStepSource[] sources) {
-        LinkedHashMap<String, Integer> map = new LinkedHashMap<String, Integer>();
+        LinkedHashMap<String, Integer> map = new LinkedHashMap<>();
 
         for (CucumberStepSource source:sources) {
             int totalSteps = 0;
@@ -82,7 +82,7 @@ public class CucumberUsageReporting extends SimpleReport {
     }
 
     public SortedMap<Integer, Integer> calculateStepsUsageCounts(CucumberStepSource[] sources) {
-        SortedMap<Integer, Integer> map = new TreeMap<Integer, Integer>();
+        SortedMap<Integer, Integer> map = new TreeMap<>();
         for (CucumberStepSource source:sources) {
             int stepsCount = 0;
 

@@ -11,7 +11,7 @@ import com.github.mkolisnyk.cucumber.reporting.types.result.CucumberScenarioResu
 public class KnownErrorsResultSet {
     private List<KnownErrorsResult> results;
     public KnownErrorsResultSet() {
-        results = new ArrayList<KnownErrorsResult>();
+        results = new ArrayList<>();
     }
     public List<KnownErrorsResult> getResults() {
         Collections.sort(results);

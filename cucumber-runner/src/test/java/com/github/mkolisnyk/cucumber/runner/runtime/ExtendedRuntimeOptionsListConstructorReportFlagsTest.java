@@ -74,7 +74,7 @@ public class ExtendedRuntimeOptionsListConstructorReportFlagsTest {
 
     @Test
     public void testInitializeReportFlags() throws Exception {
-        ArrayList<String> input = new ArrayList<String>(Arrays.asList(new String[] {"-r", reportString}));
+        ArrayList<String> input = new ArrayList<>(Arrays.asList(new String[]{"-r", reportString}));
         ExtendedRuntimeOptions extendedOptions = new ExtendedRuntimeOptions(input);
         Assert.assertEquals(0, input.size());
         Assert.assertEquals(this.isOverviewReport, extendedOptions.isOverviewReport());

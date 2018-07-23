@@ -39,7 +39,7 @@ public class ReportRunnerMavenPlugin extends AbstractMojo {
     @Parameter
     private String consolidatedReportConfig = "";
     @Parameter
-    private List<String> excludeCoverageTags = new ArrayList<String>();
+    private List<String> excludeCoverageTags = new ArrayList<>();
     @Parameter
     private String featureMapConfig = "";
     @Parameter
@@ -54,7 +54,7 @@ public class ReportRunnerMavenPlugin extends AbstractMojo {
     @Parameter
     private boolean featureOverviewChart = false;
     @Parameter
-    private List<String> includeCoverageTags = new ArrayList<String>();
+    private List<String> includeCoverageTags = new ArrayList<>();
     /**
      * Flag identifying if coverage report is to be generated.
      */

@@ -82,7 +82,7 @@ public final class FreemarkerConfiguration {
         config.setSharedVariable("statics", staticModels);
     }
     private static Map<String, String> loadTemplatesFromFile(File configFile) throws IOException {
-        Map<String, String> resultMap = new HashMap<String, String>();
+        Map<String, String> resultMap = new HashMap<>();
         resultMap.putAll(DEFAULT_RESOURCES);
         String content = FileUtils.readFileToString(configFile, "UTF-8");
         HashMap<String, String> loadedMap = (HashMap<String, String>) JsonReader.jsonToJava(content);
@@ -114,7 +114,7 @@ public final class FreemarkerConfiguration {
         return (File[]) ArrayUtils.addAll(resultFiles, subFiles);
     }
     private static Map<String, String> loadTemplatesFromFolder(File configFolder) {
-        Map<String, String> resultMap = new HashMap<String, String>();
+        Map<String, String> resultMap = new HashMap<>();
         resultMap.putAll(DEFAULT_RESOURCES);
         File[] files = getTemplateFilesFromDirectory(configFolder);
         for (File file : files) {
@@ -126,7 +126,7 @@ public final class FreemarkerConfiguration {
         return resultMap;
     }
     public static Map<String, String> getResourceMap(String location) throws Exception {
-        Map<String, String> resultMap = new HashMap<String, String>();
+        Map<String, String> resultMap = new HashMap<>();
         resultMap.putAll(DEFAULT_RESOURCES);
         if (StringUtils.isBlank(location)) {
             return resultMap;

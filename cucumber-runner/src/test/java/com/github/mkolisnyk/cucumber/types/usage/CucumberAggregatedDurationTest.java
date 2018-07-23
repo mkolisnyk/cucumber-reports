@@ -20,7 +20,7 @@ public class CucumberAggregatedDurationTest {
     }
     @Test
     public void testGetDurationFromJsonWithIntegers() {
-        JsonObject<String, Object> json = new JsonObject<String, Object>();
+        JsonObject<String, Object> json = new JsonObject<>();
         json.put("average", new Long(1));
         json.put("median", new Long(2));
         CucumberAggregatedDuration duration = new CucumberAggregatedDuration(json);

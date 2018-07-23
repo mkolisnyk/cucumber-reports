@@ -31,7 +31,7 @@ public class CucumberStepSource {
         }
     }
     public List<Double> getDurations() {
-        List<Double> results = new ArrayList<Double>();
+        List<Double> results = new ArrayList<>();
         for (CucumberStep step : steps) {
             for (CucumberStepDuration duration : step.getDurations()) {
                 results.add(duration.getDuration());

@@ -12,7 +12,7 @@ import com.github.mkolisnyk.cucumber.runner.ExtendedCucumber;
 
 public class CucumberRunnerThreadPoolTest {
 
-    private static List<String> messages = new ArrayList<String>();
+    private static List<String> messages = new ArrayList<>();
     public class TestThread implements Runnable {
 
         @Override

@@ -22,7 +22,7 @@ public class FeatureOverviewDataBean extends CommonDataBean {
      * The map associating feature name with it's run status letter (any from A B C D E F
      * depending on the actual pass rate).
      */
-    private Map<String, String> featureRate = new LinkedHashMap<String, String>();
+    private Map<String, String> featureRate = new LinkedHashMap<>();
     public String getOverallRate() {
         return overallRate;
     }

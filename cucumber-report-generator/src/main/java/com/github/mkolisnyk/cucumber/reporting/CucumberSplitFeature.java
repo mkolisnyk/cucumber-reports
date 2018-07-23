@@ -47,7 +47,7 @@ public class CucumberSplitFeature extends AggregatedReport {
             String[] formats) throws Exception {
         validateParameters();
         for (CucumberFeatureResult feature : features) {
-            JsonObject<String, Object> json = new JsonObject<String, Object>();
+            JsonObject<String, Object> json = new JsonObject<>();
             json.put("name", "@" + UUID.randomUUID().toString());
             CucumberTagResults[] tags = new CucumberTagResults[] {new CucumberTagResults(json)};
             feature.setTags(tags);

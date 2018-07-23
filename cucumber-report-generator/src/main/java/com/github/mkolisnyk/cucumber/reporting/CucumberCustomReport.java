@@ -57,8 +57,8 @@ public class CucumberCustomReport extends SimpleReport {
     public void execute(String[] formats) throws Exception {
         this.validateParameters();
         CustomReportDataBean data = new CustomReportDataBean();
-        Map<String, CucumberStepSource[]> usageResults = new LinkedHashMap<String, CucumberStepSource[]>();
-        Map<String, CucumberFeatureResult[]> runResults = new LinkedHashMap<String, CucumberFeatureResult[]>();
+        Map<String, CucumberStepSource[]> usageResults = new LinkedHashMap<>();
+        Map<String, CucumberFeatureResult[]> runResults = new LinkedHashMap<>();
         for (String file : this.getJsonUsageReportPaths()) {
             CucumberUsageReporting usageReport = new CucumberUsageReporting();
             CucumberStepSource[] value = usageReport.getStepSources(file);
@@ -113,7 +113,7 @@ public class CucumberCustomReport extends SimpleReport {
                         + ". Was looking for path: \"" + path.getAbsolutePath() + "\"", path.exists());
             }
         }
-        Map<String, String> resourceMap = new HashMap<String, String>();
+        Map<String, String> resourceMap = new HashMap<>();
         try {
             resourceMap = FreemarkerConfiguration.getResourceMap(getTemplatesLocation());
         } catch (Exception e) {

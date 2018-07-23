@@ -343,7 +343,7 @@ public class ExtendedParallelCucumber extends ParentRunner<Runner> {
     }
     @Override
     protected List<Runner> getChildren() {
-        List<Runner> children = new ArrayList<Runner>();
+        List<Runner> children = new ArrayList<>();
         for (ExtendedCucumber runner : this.getRunners()) {
             children.add(runner);
         }

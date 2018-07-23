@@ -81,8 +81,8 @@ public class ReportRunnerMavenPluginTest {
         plugin.setConsolidatedReportConfig("./src/test/resources/consolidated-source/sample_batch.json");
         plugin.setOutputFolder("target/maven-plugin");
         plugin.setReportPrefix("sample-maven");
-        plugin.setIncludeCoverageTags(new ArrayList<String>());
-        plugin.setExcludeCoverageTags(new ArrayList<String>());
+        plugin.setIncludeCoverageTags(new ArrayList<>());
+        plugin.setExcludeCoverageTags(new ArrayList<>());
         plugin.setFeatureMapReport(true);
         plugin.setFeatureMapConfig("src/test/resources/breakdown-source/simple.json");
         plugin.setPdfPageSize("A4 Portrait");

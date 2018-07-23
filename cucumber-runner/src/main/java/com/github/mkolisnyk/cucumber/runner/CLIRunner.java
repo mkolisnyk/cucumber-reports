@@ -13,7 +13,7 @@ public final class CLIRunner {
     }
     public static void main(String[] argv) throws Throwable {
         ExtendedRuntimeOptions[] extendedOptions = new ExtendedRuntimeOptions[1];
-        List<String> input = new ArrayList<String>(Arrays.asList(argv));
+        List<String> input = new ArrayList<>(Arrays.asList(argv));
         extendedOptions[0] = new ExtendedRuntimeOptions(input);
         byte exitstatus = Main.run(argv, Thread.currentThread().getContextClassLoader());
         ReportRunner.run(extendedOptions[0]);

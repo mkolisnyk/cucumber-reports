@@ -44,7 +44,7 @@ public final class StringConversionUtils {
     }
     public static String replaceHtmlEntitiesWithCodes(String input) throws IOException {
         String output = input;
-        Map<String, String> entitiesMap = new HashMap<String, String>();
+        Map<String, String> entitiesMap = new HashMap<>();
         InputStream is = StringConversionUtils.class.getResourceAsStream("/html_entities_map.txt");
         String[] result = IOUtils.toString(is).split("\n");
         is.close();

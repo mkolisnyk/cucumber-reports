@@ -9,7 +9,7 @@ public final class CucumberRunnerThreadPool {
     private int maxCapacity = 1;
     private List<Thread> threadList;
     private CucumberRunnerThreadPool() {
-        threadList = new ArrayList<Thread>();
+        threadList = new ArrayList<>();
     }
     public boolean push(Thread thread) throws Exception {
         waitAvailable();

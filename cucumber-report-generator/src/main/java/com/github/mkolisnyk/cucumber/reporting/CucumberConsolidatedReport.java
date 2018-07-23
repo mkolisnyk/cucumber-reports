@@ -44,7 +44,7 @@ public class CucumberConsolidatedReport extends ConfigurableReport<ConsolidatedR
         data.setRefreshData("");
         data.setColumns(model.getCols());
         data.setUseTableOfContents(model.isUseTableOfContents());
-        Map<String, String> contentsMap = new LinkedHashMap<String, String>();
+        Map<String, String> contentsMap = new LinkedHashMap<>();
         for (ConsolidatedItemInfo item : model.getItems()) {
             File source = new File(item.getPath());
             String content = "<html><body>N/A</body></html>";

@@ -21,7 +21,7 @@ public class ConsolidatedDataBean extends CommonDataBean {
     /**
      * Map containing the report text content. The key of the map is the heading of each specific report.
      */
-    private Map<String, String> contents = new LinkedHashMap<String, String>();
+    private Map<String, String> contents = new LinkedHashMap<>();
     public boolean isUseTableOfContents() {
         return useTableOfContents;
     }

@@ -34,7 +34,7 @@ import cucumber.runtime.model.CucumberFeature;
 
 public class ExtendedCucumber extends ParentRunner<FeatureRunner> {
     private final JUnitReporter jUnitReporter;
-    private final List<FeatureRunner> children = new ArrayList<FeatureRunner>();
+    private final List<FeatureRunner> children = new ArrayList<>();
     private final Runtime runtime;
     private final Formatter formatter;
     private Class<?> clazzValue;

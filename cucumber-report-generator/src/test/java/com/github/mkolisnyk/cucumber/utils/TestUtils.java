@@ -1,9 +1,7 @@
 package com.github.mkolisnyk.cucumber.utils;
 
-import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.xpath.XPath;
 import javax.xml.xpath.XPathConstants;
-import javax.xml.xpath.XPathExpressionException;
 import javax.xml.xpath.XPathFactory;
 
 import org.htmlcleaner.CleanerProperties;

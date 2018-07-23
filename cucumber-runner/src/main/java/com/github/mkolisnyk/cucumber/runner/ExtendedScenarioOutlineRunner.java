@@ -1,5 +1,6 @@
 package com.github.mkolisnyk.cucumber.runner;
 
+import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -21,8 +22,11 @@ public class ExtendedScenarioOutlineRunner /*extends Suite*/ {
             Runtime runtimeValue,
             CucumberScenarioOutline cucumberScenarioOutlineValue,
             JUnitReporter jUnitReporterValue,
-            int retryCountValue) throws InitializationError {
-        super(null, buildRunners(runtimeValue, cucumberScenarioOutlineValue, jUnitReporterValue, retryCountValue));
+            int retryCountValue,
+            Method[] retryMethodsValue) throws InitializationError {
+        super(null, buildRunners(
+                runtimeValue, cucumberScenarioOutlineValue,
+                jUnitReporterValue, retryCountValue, retryMethodsValue));
         this.cucumberScenarioOutline = cucumberScenarioOutlineValue;
         this.jUnitReporter = jUnitReporterValue;
     }
@@ -31,10 +35,12 @@ public class ExtendedScenarioOutlineRunner /*extends Suite*/ {
             Runtime runtime,
             CucumberScenarioOutline cucumberScenarioOutline,
             JUnitReporter jUnitReporter,
-            int retryCount) throws InitializationError {
+            int retryCount,
+            Method[] retryMethodsValue) throws InitializationError {
         List<Runner> runners = new ArrayList<Runner>();
         for (CucumberExamples cucumberExamples : cucumberScenarioOutline.getCucumberExamplesList()) {
-            runners.add(new ExtendedExamplesRunner(runtime, cucumberExamples, jUnitReporter, retryCount));
+            runners.add(new ExtendedExamplesRunner(
+                    runtime, cucumberExamples, jUnitReporter, retryCount, retryMethodsValue));
         }
         return runners;
     }

@@ -87,6 +87,5 @@ public class KnownErrorsResultTest {
         Assert.assertEquals(expectedEquals, sample.equals(result));
         Assert.assertTrue(result.equals(result));
         Assert.assertFalse(result.equals(null));
-        Assert.assertFalse(result.equals(orderBy));
     }
 }

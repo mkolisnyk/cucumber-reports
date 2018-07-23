@@ -3,9 +3,6 @@ package com.github.mkolisnyk.cucumber.reporting;
 import java.io.File;
 import java.util.Locale;
 
-import javax.xml.bind.JAXB;
-
-import org.apache.commons.io.FileUtils;
 import org.junit.Test;
 
 public class CucumberResultsReportTest {
@@ -86,8 +83,10 @@ public class CucumberResultsReportTest {
         results.setOutputDirectory("target");
         results.setOutputName("cucumber-issue41-localized");
         results.setSourceFile("./src/test/resources/detailed-source/localized-1.json");
-        results.execute();
+        results.execute(new String[] {"pdf"});
+        //results.execute();
     }
+
     @Test
     public void testGenerateOverviewReportIssue63() throws Exception {
         Locale.setDefault(Locale.FRANCE);
@@ -249,5 +248,61 @@ public class CucumberResultsReportTest {
         results.setOutputName("issue122-results");
         results.setSourceFile("./src/test/resources/122/cucumber.json");
         results.execute(true, new String[] {});
+    }
+    @Test
+    public void testGenerateOverviewLocalizedReportFrench() throws Exception {
+        CucumberResultsOverview overview = new CucumberResultsOverview();
+        overview.setOutputDirectory("target/fr");
+        overview.setOutputName("cucumber-localized");
+        overview.setSourceFile("./src/test/resources/fr_locale/cucumber-2.json");
+        overview.execute( new String[] {"pdf"});
+
+        CucumberDetailedResults results = new CucumberDetailedResults();
+        results.setOutputDirectory("target/fr");
+        results.setOutputName("cucumber-localized");
+        results.setSourceFile("./src/test/resources/fr_locale/cucumber-2.json");
+        results.execute(true, new String[] {"pdf"});
+        //results.execute();
+    }
+    @Test
+    public void testMultipleTextStrings() throws Exception {
+        CucumberDetailedResults results = new CucumberDetailedResults();
+        results.setScreenShotLocation("screenshots/");
+        results.setScreenShotWidth("600");
+        results.setOutputDirectory("target/");
+        results.setOutputName("issue165-results");
+        results.setSourceFile("./src/test/resources/165/cucumber.json");
+        results.execute(true, new String[] {"pdf"});
+    }
+    @Test
+    public void testIssue168SpecialCharacters() throws Exception {
+        CucumberDetailedResults results = new CucumberDetailedResults();
+        results.setScreenShotLocation("screenshots");
+        results.setScreenShotWidth("100");
+        results.setOutputDirectory("target/");
+        results.setOutputName("issue168-results");
+        results.setSourceFile("./src/test/resources/168/cucumber.json");
+        results.setPdfPageSize("A4 Landscape");
+        results.execute(true, new String[] {"pdf"});
+    }
+    @Test
+    public void testMultiEmbedOutput() throws Exception {
+        CucumberDetailedResults results = new CucumberDetailedResults();
+        results.setScreenShotLocation("screenshots");
+        results.setScreenShotWidth("300");
+        results.setOutputDirectory("target/multi_embed/");
+        results.setOutputName("issue168-results");
+        results.setSourceFile("./src/test/resources/multi_embed/cucumber.json");
+        results.setPdfPageSize("A4 Landscape");
+        results.execute(true, new String[] {"pdf"});
+    }
+    @Test
+    public void testIssue172GenerateCustomOverviewReport() throws Exception {
+        CucumberResultsOverview results = new CucumberResultsOverview();
+        results.setTemplatesLocation("src/test/resources/templates/single_tmpl.json");
+        results.setOutputDirectory("target/172");
+        results.setOutputName("cucumber-172-results");
+        results.setSourceFile("./src/test/resources/cucumberAcctScreen.json");
+        results.executeOverviewReport("feature-overview-172", new String[] {"pdf"});
     }
 }

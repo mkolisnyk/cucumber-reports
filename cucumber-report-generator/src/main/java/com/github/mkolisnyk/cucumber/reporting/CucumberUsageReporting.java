@@ -7,9 +7,12 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Locale;
+import java.util.Map;
+import java.util.Map.Entry;
 import java.util.SortedMap;
 import java.util.TreeMap;
 
@@ -75,9 +78,7 @@ public class CucumberUsageReporting extends SimpleReport {
             }
             map.put(source.getSource(), totalSteps);
         }
-
         map = (LinkedHashMap<String, Integer>) MapUtils.sortByValue(map);
-
         return map;
     }
 
@@ -276,6 +277,23 @@ public class CucumberUsageReporting extends SimpleReport {
         return sources;
     }
 
+    private CucumberStepSource[] packStepSources(CucumberStepSource[] sources) {
+        Map<String, CucumberStepSource> sourceMap = new HashMap<String, CucumberStepSource>();
+        for (CucumberStepSource source : sources) {
+            String key = source.getSource();
+            if (sourceMap.containsKey(key)) {
+                CucumberStepSource existing = sourceMap.get(key);
+                source.addSteps(existing);
+            }
+            sourceMap.put(key, source);
+        }
+        CucumberStepSource[] result = new CucumberStepSource[sourceMap.size()];
+        int index = 0;
+        for (Entry<String, CucumberStepSource> item : sourceMap.entrySet()) {
+            result[index++] = item.getValue();
+        }
+        return result;
+    }
     private void executeReport(String[] formats) throws Exception {
         try {
 
@@ -283,7 +301,7 @@ public class CucumberUsageReporting extends SimpleReport {
             for (String jsonUsageFile : this.getJsonUsageFiles()) {
                 sources = (CucumberStepSource[]) ArrayUtils.addAll(sources, getStepSources(jsonUsageFile));
             }
-
+            sources = packStepSources(sources);
             File report = getOutputHtmlFile();
             UsageDataBean data = new UsageDataBean();
             SortedMap<Integer, Integer> map = calculateStepsUsageCounts(sources);

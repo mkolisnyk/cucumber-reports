@@ -1,6 +1,7 @@
 <#list scenario.feature.tags as tag>${tag.name} </#list>
 Feature: ${scenario.feature.name}
   ${scenario.feature.description}
+  <#list scenario.tags as tag>${tag.name} </#list>
   Scenario: ${scenario.name}
   	${scenario.description}
   	<#list scenario.steps as step>

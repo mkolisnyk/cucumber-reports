@@ -126,7 +126,7 @@ public class ExtendedCucumber extends ParentRunner<FeatureRunner> {
             public void evaluate() throws Throwable {
                 features.evaluate();
                 runtime.getEventBus().send(new TestRunFinished(runtime.getEventBus().getTime()));
-                runtime.printSummary();
+                //runtime.printSummary();
             }
         };
     }
@@ -192,5 +192,24 @@ public class ExtendedCucumber extends ParentRunner<FeatureRunner> {
         for (ExtendedRuntimeOptions extendedOption : extendedOptions) {
             ReportRunner.run(extendedOption);
         }
+    }
+    public static boolean isRetryApplicable(Throwable e, Method[] retryMethods) {
+        if (retryMethods == null || retryMethods.length == 0) {
+            return true;
+        }
+        for (Method method : retryMethods) {
+            Class<?>[] types = method.getParameterTypes();
+            if (types.length != 1 || !ArrayUtils.contains(types, Throwable.class)) {
+                continue;
+            }
+            try {
+                if (!(Boolean) method.invoke(null, e)) {
+                    return false;
+                }
+            } catch (Exception ex) {
+                ex.printStackTrace();
+            }
+        }
+        return true;
     }
 }

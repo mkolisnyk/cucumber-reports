@@ -15,6 +15,8 @@ import cucumber.api.java.en.When;
 
 public class TestSteps {
     private static int retry = 0;
+    private static int outlineRetry = 0;
+    public static int counter = 0;
 
     @Pending
     public class CustomPendingError extends Error {
@@ -92,6 +94,16 @@ public class TestSteps {
             System.out.println("" + Thread.currentThread().getId() + "[Step] DONE!!!");
         }
     }
+    @When("^I do retry after (\\d+) fails$")
+    public void i_do_some_retries(int value) throws Throwable {
+        System.out.println("Retry: " + outlineRetry + ", Value: " + value);
+        if (outlineRetry++ < value) {
+            System.out.println("Test failed");
+            throw new Exception ("Some error");
+        }
+        System.out.println("Test passed");
+        outlineRetry = 0;
+    }
     @When("I use the following text:")
     @Then("I should see the following text:")
     public void docstringText(String text) {
@@ -105,5 +117,21 @@ public class TestSteps {
     }
     @Then("^(.*)ambiguous step$")
     public void i_should_see_amb_step2() throws Throwable {
+    }
+    @Given("^I am keeping the count$")
+    public void i_am_keeping_the_count() throws Throwable {
+        TestSteps.counter++;
+    }
+    @When("^I throw \"([^\"]*)\" exception$")
+    public void i_throw_exception(String exception) throws Throwable {
+        if (exception.equals("Exception1")) {
+            throw new PendingException();
+        }
+        if (exception.equals("Exception2")) {
+            throw new AssertionError();
+        }
+        if (exception.equals("Exception3")) {
+            throw new Exception();
+        }
     }
 }

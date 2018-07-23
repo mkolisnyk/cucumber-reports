@@ -1,3 +1,4 @@
+<#escape x as x?html?replace("\n","</br><br>")>
 <#assign Math=statics['java.lang.Math'] >
 <#function sum values>
 	<#assign result = 0>
@@ -368,3 +369,4 @@ tr:nth-child(odd) {background: #FFF}
 
     </body>
 </html>
+</#escape>

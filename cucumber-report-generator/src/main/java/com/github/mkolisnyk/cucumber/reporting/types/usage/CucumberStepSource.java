@@ -6,6 +6,8 @@ package com.github.mkolisnyk.cucumber.reporting.types.usage;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.commons.lang3.ArrayUtils;
+
 import com.cedarsoftware.util.io.JsonObject;
 
 /**
@@ -15,12 +17,6 @@ import com.cedarsoftware.util.io.JsonObject;
 public class CucumberStepSource {
     private String source;
     private CucumberStep[] steps;
-    public String getSource() {
-        return source;
-    }
-    public CucumberStep[] getSteps() {
-        return steps;
-    }
     @SuppressWarnings("unchecked")
     public CucumberStepSource(JsonObject<String, Object> json) {
         this.source = (String) json.get("source");
@@ -30,6 +26,12 @@ public class CucumberStepSource {
             this.steps[i] = new CucumberStep((JsonObject<String, Object>) objs[i]);
         }
     }
+    public String getSource() {
+        return source;
+    }
+    public CucumberStep[] getSteps() {
+        return steps;
+    }
     public List<Double> getDurations() {
         List<Double> results = new ArrayList<Double>();
         for (CucumberStep step : steps) {
@@ -38,5 +40,8 @@ public class CucumberStepSource {
             }
         }
         return results;
+    }
+    public void addSteps(CucumberStepSource other) {
+        steps = ArrayUtils.addAll(steps, other.getSteps());
     }
 }

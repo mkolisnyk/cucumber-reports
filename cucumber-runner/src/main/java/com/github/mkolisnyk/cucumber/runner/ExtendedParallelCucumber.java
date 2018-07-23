@@ -115,15 +115,22 @@ public class ExtendedParallelCucumber extends ParentRunner<Runner> {
         }
         return null;
     }
-    public String[] convertPluginPaths(String[] original, int index) {
+    public static String[] convertPluginPaths(String[] original, int index, boolean checkFormat) {
         String[] result = new String[original.length];
         for (int i = 0; i < original.length; i++) {
-            File path = new File(original[i].replaceFirst("^(usage|junit|json|html|pretty):", ""));
+            String formatPrefix = "^([^:]+)";
+            File path = new File(original[i].replaceFirst(formatPrefix + ":", ""));
             String name = path.getName();
             String location = path.getParent();
-            result[i] = location + "/" + index + "/" + name;
-            if (original[i].matches("^(usage|junit|json|html|pretty):(.*)$")) {
-                result[i] = original[i].replaceFirst("^(usage|junit|json|html|pretty):(.*)$", "$1:" + result[i]);
+            if (StringUtils.isBlank(location)) {
+                result[i] = "" + index + "/" + name;
+            } else {
+                result[i] = location + "/" + index + "/" + name;
+            }
+            if (original[i].matches(formatPrefix + ":(.*)$")) {
+                result[i] = original[i].replaceFirst(formatPrefix + ":(.*)$", "$1:" + result[i]);
+            } else if (checkFormat) {
+                result[i] = original[i];
             }
         }
         return result;
@@ -153,7 +160,7 @@ public class ExtendedParallelCucumber extends ParentRunner<Runner> {
                     array.setValue(new StringMemberValue[] {new StringMemberValue(file, cp)});
                     anno.addMemberValue(name, array);
                 } else if (name.equals("plugin")) {
-                    String[] plugin = convertPluginPaths(option.plugin(), index);
+                    String[] plugin = convertPluginPaths(option.plugin(), index, true);
                     ArrayMemberValue array = new ArrayMemberValue(new StringMemberValue(cp), cp);
                     StringMemberValue[] values = new StringMemberValue[plugin.length];
                     for (int i = 0; i < plugin.length; i++) {
@@ -188,12 +195,12 @@ public class ExtendedParallelCucumber extends ParentRunner<Runner> {
                 anno.addMemberValue(name,
                     new StringMemberValue(extendedOption.outputFolder() + "/" + i + "_" + j, cp));
             } else if (name.equals("jsonReport") || name.equals("jsonUsageReport")) {
-                String newName = this.convertPluginPaths(
-                    new String[] {(String) field.invoke(extendedOption)}, i)[0];
+                String newName = convertPluginPaths(
+                    new String[] {(String) field.invoke(extendedOption)}, i, false)[0];
                 anno.addMemberValue(name,
                         new StringMemberValue(newName, cp));
             } else if (name.equals("jsonReports") || name.equals("jsonUsageReports")) {
-                String[] reports = convertPluginPaths((String[]) field.invoke(extendedOption), i);
+                String[] reports = convertPluginPaths((String[]) field.invoke(extendedOption), i, false);
                 ArrayMemberValue array = new ArrayMemberValue(new StringMemberValue(cp), cp);
                 StringMemberValue[] values = new StringMemberValue[reports.length];
                 for (int k = 0; k < reports.length; k++) {

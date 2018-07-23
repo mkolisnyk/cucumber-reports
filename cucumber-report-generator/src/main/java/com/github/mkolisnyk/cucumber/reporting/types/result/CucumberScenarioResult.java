@@ -108,7 +108,10 @@ public class CucumberScenarioResult {
             return;
         }
         for (CucumberStepResult step : steps) {
-            String status = step.getResult().getStatus();
+            String status = "undefined";
+            if (step.getResult() != null) {
+                status = step.getResult().getStatus();
+            }
             valuateStepStatus(status);
             this.duration += (float) (step.getResult().getDuration() / nanosecondsInMillisecond)
                     / millesecondsInSecond;

@@ -25,7 +25,7 @@ Feature: Sample re-run feature
     When I do something
     Then I should see nothing
 
-   @passed
+   @passed @exclude
   Scenario Outline: outlining test
     Given I am in the system
     When I do some <Value> things

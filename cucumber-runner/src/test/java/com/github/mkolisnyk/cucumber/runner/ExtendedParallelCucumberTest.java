@@ -58,7 +58,9 @@ import cucumber.api.CucumberOptions;
     outputFolder = "target")
 @CucumberOptions(plugin = { "html:target/cucumber-html-report",
         "json:target/cucumber.json", "pretty:target/cucumber-pretty.txt",
-        "usage:target/cucumber-usage.json", "junit:target/cucumber-results.xml" },
+        "usage:target/cucumber-usage.json", "junit:target/cucumber-results.xml",
+        "com.github.mkolisnyk.cucumber.runner.CustomReporter",
+        "com.github.mkolisnyk.cucumber.runner.CustomFormatter:test.txt" },
         features = { "./src/test/java/com/github/mkolisnyk/cucumber/features" },
         glue = { "com/github/mkolisnyk/cucumber/steps" },
         tags = {"@passed"})
@@ -122,14 +124,14 @@ public class ExtendedParallelCucumberTest {
             "junit:target/cucumber-results-dry.xml"
         };
         ExtendedParallelCucumber cucumber = new ExtendedParallelCucumber(this.getClass());
-        String[] output = cucumber.convertPluginPaths(input, 1);
+        String[] output = cucumber.convertPluginPaths(input, 1, true);
         Assert.assertEquals(output[0], "html:target/1/cucumber-html-report");
         Assert.assertEquals(output[1], "json:target/1/cucumber-dry.json");
         Assert.assertEquals(output[2], "pretty:target/1/cucumber-pretty-dry.txt");
         Assert.assertEquals(output[3], "usage:target/1/cucumber-usage-dry.json");
         Assert.assertEquals(output[4], "junit:target/1/cucumber-results-dry.xml");
         
-        output = cucumber.convertPluginPaths(input, 3);
+        output = cucumber.convertPluginPaths(input, 3, false);
         Assert.assertEquals(output[0], "html:target/3/cucumber-html-report");
         Assert.assertEquals(output[1], "json:target/3/cucumber-dry.json");
         Assert.assertEquals(output[2], "pretty:target/3/cucumber-pretty-dry.txt");

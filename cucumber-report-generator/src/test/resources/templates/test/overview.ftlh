@@ -104,7 +104,7 @@ div.content {page-break-after: always;}
 		<th>Duration</th>
 	</tr>
 <#list features as feature>
-	<#if feature.keyword?has_content && feature.keyword == "Feature">
+	<#if feature.featureName?has_content>
 	<tr class="${feature.status}">
 		<td>${feature.featureName}</td>
 		<td>${feature.status}</td>

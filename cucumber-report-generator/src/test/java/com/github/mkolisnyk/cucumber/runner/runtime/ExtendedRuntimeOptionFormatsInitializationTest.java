@@ -1,7 +1,6 @@
 package com.github.mkolisnyk.cucumber.runner.runtime;
 
 import org.junit.Assert;
-import org.junit.BeforeClass;
 import org.junit.Test;
 
 import com.github.mkolisnyk.cucumber.runner.ExtendedCucumberOptions;

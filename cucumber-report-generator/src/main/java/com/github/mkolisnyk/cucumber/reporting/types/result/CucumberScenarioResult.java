@@ -44,16 +44,16 @@ public class CucumberScenarioResult {
         this.type = (String) json.get("type");
         if (json.containsKey("before")) {
             Object[] objs = (Object[]) json.get("before");
-            for (int i = 0; i < objs.length; i++) {
+            for (Object obj : objs) {
                 this.before = new CucumberBeforeAfterResult(
-                        (JsonObject<String, Object>) objs[i]);
+                        (JsonObject<String, Object>) obj);
             }
         }
         if (json.containsKey("after")) {
             Object[] objs = (Object[]) json.get("after");
-            for (int i = 0; i < objs.length; i++) {
+            for (Object obj : objs) {
                 this.after = new CucumberBeforeAfterResult(
-                        (JsonObject<String, Object>) objs[i]);
+                        (JsonObject<String, Object>) obj);
             }
         }
         if (json.containsKey("steps")) {

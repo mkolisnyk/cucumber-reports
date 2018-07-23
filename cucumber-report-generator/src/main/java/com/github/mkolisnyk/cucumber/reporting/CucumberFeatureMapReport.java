@@ -29,10 +29,10 @@ public class CucumberFeatureMapReport extends CucumberBreakdownReport {
                 this.getOutputDirectory() + File.separator + this.getOutputName()
                 + "-" + info.getReportSuffix() + ".html");
         CucumberScenarioResult[] scenarios = new CucumberScenarioResult[] {};
-        for (int j = 0; j < features.length; j++) {
-            CucumberScenarioResult[] elements = features[j].getElements();
-            for (int i = 0; i < elements.length; i++) {
-                elements[i].setFeature(features[j]);
+        for (CucumberFeatureResult feature : features) {
+            CucumberScenarioResult[] elements = feature.getElements();
+            for (CucumberScenarioResult element : elements) {
+                element.setFeature(feature);
             }
             scenarios = ArrayUtils.addAll(scenarios, elements);
         }

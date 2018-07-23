@@ -80,9 +80,9 @@ public class CucumberFeatureOverview extends CucumberResultsOverview {
         File outFile = getOutputHtmlFile();
         FeatureOverviewDataBean data = new FeatureOverviewDataBean();
         Map<String, String> featureData = new LinkedHashMap<String, String>();
-        for (int i = 0; i < features.length; i++) {
-            features[i].valuate();
-            featureData.put(features[i].getName(), getFeatureStatusLetter(features[i]));
+        for (CucumberFeatureResult feature : features) {
+            feature.valuate();
+            featureData.put(feature.getName(), getFeatureStatusLetter(feature));
         }
         data.setFeatureRate(featureData);
         double rate = getOverallRate(features);

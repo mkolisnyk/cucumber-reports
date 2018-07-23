@@ -29,9 +29,9 @@ public abstract class AggregatedReport extends SimpleReport {
     }
 
     public CucumberFeatureResult[] aggregateResults(CucumberFeatureResult[] input, boolean collapse) {
-        for (int i = 0; i < input.length; i++) {
-            input[i].setId("" + input[i].getLine() + "" + input[i].getId());
-            input[i].aggregateScenarioResults(collapse);
+        for (CucumberFeatureResult anInput : input) {
+            anInput.setId("" + anInput.getLine() + "" + anInput.getId());
+            anInput.aggregateScenarioResults(collapse);
         }
         return input;
     }

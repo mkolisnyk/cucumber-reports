@@ -19,9 +19,9 @@ public class StepsValuator implements Valuator {
         if (rows == null) {
             return false;
         }
-        for (int i = 0; i < rows.length; i++) {
-            for (int j = 0; j < rows[i].length; j++) {
-                if (rows[i][j].equals(expression) || rows[i][j].matches(expression)) {
+        for (String[] row : rows) {
+            for (int j = 0; j < row.length; j++) {
+                if (row[j].equals(expression) || row[j].matches(expression)) {
                     return true;
                 }
             }

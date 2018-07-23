@@ -7,12 +7,12 @@ public class StepParamMatcher extends SimpleMatcher {
 
     private boolean cellMatches(String[][] rows, String expression) {
         if (rows != null && rows.length > 0) {
-            for (int i = 0; i < rows.length; i++) {
-                if (rows[i] == null || rows[i].length <= 0) {
+            for (String[] row : rows) {
+                if (row == null || row.length <= 0) {
                     continue;
                 }
-                for (int j = 0; j < rows[i].length; j++) {
-                    String cell = rows[i][j];
+                for (int j = 0; j < row.length; j++) {
+                    String cell = row[j];
                     if (this.stringMatches(cell, expression)) {
                         return true;
                     }

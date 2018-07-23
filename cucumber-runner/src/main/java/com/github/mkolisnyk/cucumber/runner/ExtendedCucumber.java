@@ -126,7 +126,7 @@ public class ExtendedCucumber extends ParentRunner<FeatureRunner> {
             public void evaluate() throws Throwable {
                 features.evaluate();
                 runtime.getEventBus().send(new TestRunFinished(runtime.getEventBus().getTime()));
-                runtime.printSummary();
+                //runtime.printSummary();
             }
         };
     }

@@ -3,18 +3,12 @@ package com.github.mkolisnyk.cucumber.runner.runtime;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
-import java.util.List;
 
-import org.apache.commons.lang.ArrayUtils;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameters;
-
-import com.github.mkolisnyk.cucumber.reporting.types.breakdown.DataDimension;
-import com.github.mkolisnyk.cucumber.reporting.types.knownerrors.KnownErrorPriority;
-import com.github.mkolisnyk.cucumber.reporting.types.knownerrors.KnownErrorsInfo;
 
 @RunWith(Parameterized.class)
 public class ExtendedRuntimeOptionsListConstructorReportFlagsTest {

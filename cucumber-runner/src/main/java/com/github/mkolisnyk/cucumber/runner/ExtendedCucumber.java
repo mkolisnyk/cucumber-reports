@@ -20,7 +20,6 @@ import cucumber.api.CucumberOptions;
 import cucumber.api.event.TestRunFinished;
 import cucumber.api.formatter.Formatter;
 import cucumber.runtime.ClassFinder;
-import cucumber.runtime.ExtendedRuntime;
 import cucumber.runtime.Runtime;
 import cucumber.runtime.RuntimeOptions;
 import cucumber.runtime.RuntimeOptionsFactory;

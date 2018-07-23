@@ -1,10 +1,8 @@
 package com.github.mkolisnyk.cucumber.runner;
 
-import static org.junit.Assert.fail;
 import static org.hamcrest.CoreMatchers.*;
-import org.junit.Ignore;
+
 import org.junit.Test;
-import org.junit.runner.RunWith;
 import org.junit.runner.notification.RunNotifier;
 import org.testng.Assert;
 

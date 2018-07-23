@@ -4,7 +4,6 @@ import java.io.File;
 
 import org.junit.Assert;
 import org.junit.Test;
-import org.junit.runner.RunWith;
 import org.junit.runner.notification.RunNotifier;
 
 import cucumber.api.CucumberOptions;

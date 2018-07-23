@@ -1,11 +1,7 @@
 package com.github.mkolisnyk.cucumber.runner;
 
-import org.junit.runner.notification.RunNotifier;
-import org.junit.runners.model.InitializationError;
-
-import cucumber.runtime.Runtime;
 //import cucumber.runtime.junit.ExecutionUnitRunner;
-import cucumber.runtime.junit.JUnitReporter;
+
 //import cucumber.runtime.model.CucumberScenario;
 
 public class ExtendedExecutionUnitRunner /*extends ExecutionUnitRunner*/ {

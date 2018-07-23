@@ -6,7 +6,6 @@ import org.junit.AssumptionViolatedException;
 import com.github.mkolisnyk.cucumber.assertions.LazyAssert;
 
 import cucumber.api.Pending;
-import cucumber.api.PendingException;
 import cucumber.api.java.After;
 import cucumber.api.java.Before;
 import cucumber.api.java.en.Given;

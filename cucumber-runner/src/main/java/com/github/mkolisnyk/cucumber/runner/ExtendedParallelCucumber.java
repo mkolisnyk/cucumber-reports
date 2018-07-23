@@ -148,28 +148,37 @@ public class ExtendedParallelCucumber extends ParentRunner<Runner> {
             Annotation anno = new Annotation(CucumberOptions.class.getCanonicalName(), cp);
             for (Method field : CucumberOptions.class.getDeclaredMethods()) {
                 String name = field.getName();
-                if (name.equals("features")) {
-                    ArrayMemberValue array = new ArrayMemberValue(new StringMemberValue(cp), cp);
-                    array.setValue(new StringMemberValue[] {new StringMemberValue(file, cp)});
-                    anno.addMemberValue(name, array);
-                } else if (name.equals("plugin")) {
-                    String[] plugin = convertPluginPaths(option.plugin(), index);
-                    ArrayMemberValue array = new ArrayMemberValue(new StringMemberValue(cp), cp);
-                    StringMemberValue[] values = new StringMemberValue[plugin.length];
-                    for (int i = 0; i < plugin.length; i++) {
-                        values[i] = new StringMemberValue(plugin[i], cp);
+                switch (name) {
+                    case "features": {
+                        ArrayMemberValue array = new ArrayMemberValue(new StringMemberValue(cp), cp);
+                        array.setValue(new StringMemberValue[]{new StringMemberValue(file, cp)});
+                        anno.addMemberValue(name, array);
+                        break;
                     }
-                    array.setValue(values);
-                    anno.addMemberValue(name, array);
-                } else if (name.equals("snippets")) {
-                    EnumMemberValue value = new EnumMemberValue(cp);
-                    value.setType(SnippetType.class.getCanonicalName());
-                    value.setValue(SnippetType.UNDERSCORE.name());
-                    anno.addMemberValue(name, value);
-                } else {
-                    MemberValue value = getFieldMemberValue(option, field);
-                    if (value != null) {
+                    case "plugin": {
+                        String[] plugin = convertPluginPaths(option.plugin(), index);
+                        ArrayMemberValue array = new ArrayMemberValue(new StringMemberValue(cp), cp);
+                        StringMemberValue[] values = new StringMemberValue[plugin.length];
+                        for (int i = 0; i < plugin.length; i++) {
+                            values[i] = new StringMemberValue(plugin[i], cp);
+                        }
+                        array.setValue(values);
+                        anno.addMemberValue(name, array);
+                        break;
+                    }
+                    case "snippets": {
+                        EnumMemberValue value = new EnumMemberValue(cp);
+                        value.setType(SnippetType.class.getCanonicalName());
+                        value.setValue(SnippetType.UNDERSCORE.name());
                         anno.addMemberValue(name, value);
+                        break;
+                    }
+                    default: {
+                        MemberValue value = getFieldMemberValue(option, field);
+                        if (value != null) {
+                            anno.addMemberValue(name, value);
+                        }
+                        break;
                     }
                 }
             }
@@ -184,28 +193,35 @@ public class ExtendedParallelCucumber extends ParentRunner<Runner> {
         Annotation anno = new Annotation(ExtendedCucumberOptions.class.getCanonicalName(), cp);
         for (Method field : ExtendedCucumberOptions.class.getDeclaredMethods()) {
             String name = field.getName();
-            if (name.equals("outputFolder")) {
-                anno.addMemberValue(name,
-                    new StringMemberValue(extendedOption.outputFolder() + "/" + i + "_" + j, cp));
-            } else if (name.equals("jsonReport") || name.equals("jsonUsageReport")) {
-                String newName = this.convertPluginPaths(
-                    new String[] {(String) field.invoke(extendedOption)}, i)[0];
-                anno.addMemberValue(name,
-                        new StringMemberValue(newName, cp));
-            } else if (name.equals("jsonReports") || name.equals("jsonUsageReports")) {
-                String[] reports = convertPluginPaths((String[]) field.invoke(extendedOption), i);
-                ArrayMemberValue array = new ArrayMemberValue(new StringMemberValue(cp), cp);
-                StringMemberValue[] values = new StringMemberValue[reports.length];
-                for (int k = 0; k < reports.length; k++) {
-                    values[k] = new StringMemberValue(reports[k], cp);
-                }
-                array.setValue(values);
-                anno.addMemberValue(name, array);
-            } else {
-                MemberValue value = getFieldMemberValue(extendedOption, field);
-                if (value != null) {
-                    anno.addMemberValue(name, getFieldMemberValue(extendedOption, field));
-                }
+            switch (name) {
+                case "outputFolder":
+                    anno.addMemberValue(name,
+                            new StringMemberValue(extendedOption.outputFolder() + "/" + i + "_" + j, cp));
+                    break;
+                case "jsonReport":
+                case "jsonUsageReport":
+                    String newName = this.convertPluginPaths(
+                            new String[]{(String) field.invoke(extendedOption)}, i)[0];
+                    anno.addMemberValue(name,
+                            new StringMemberValue(newName, cp));
+                    break;
+                case "jsonReports":
+                case "jsonUsageReports":
+                    String[] reports = convertPluginPaths((String[]) field.invoke(extendedOption), i);
+                    ArrayMemberValue array = new ArrayMemberValue(new StringMemberValue(cp), cp);
+                    StringMemberValue[] values = new StringMemberValue[reports.length];
+                    for (int k = 0; k < reports.length; k++) {
+                        values[k] = new StringMemberValue(reports[k], cp);
+                    }
+                    array.setValue(values);
+                    anno.addMemberValue(name, array);
+                    break;
+                default:
+                    MemberValue value = getFieldMemberValue(extendedOption, field);
+                    if (value != null) {
+                        anno.addMemberValue(name, getFieldMemberValue(extendedOption, field));
+                    }
+                    break;
             }
         }
         return (ExtendedCucumberOptions) anno.toAnnotationType(

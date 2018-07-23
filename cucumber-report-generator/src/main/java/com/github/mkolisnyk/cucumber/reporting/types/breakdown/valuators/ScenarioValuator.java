@@ -11,12 +11,16 @@ public class ScenarioValuator implements Valuator {
             String expression, Matcher[] matchers) {
         BreakdownStats stats = new BreakdownStats();
         for (CucumberScenarioResult result : results) {
-            if (result.getStatus().equals("passed")) {
-                stats.addPassed();
-            } else if (result.getStatus().equals("failed")) {
-                stats.addFailed();
-            } else {
-                stats.addSkipped();
+            switch (result.getStatus()) {
+                case "passed":
+                    stats.addPassed();
+                    break;
+                case "failed":
+                    stats.addFailed();
+                    break;
+                default:
+                    stats.addSkipped();
+                    break;
             }
         }
         return stats;

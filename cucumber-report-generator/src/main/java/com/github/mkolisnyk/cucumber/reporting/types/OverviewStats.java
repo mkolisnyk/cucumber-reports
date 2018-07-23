@@ -248,14 +248,19 @@ public class OverviewStats {
         this.reset();
         result.valuate();
         this.addOverallDuration(result.getDuration());
-        if (result.getStatus().equals("passed")) {
-            this.addFeaturesPassed(1);
-        } else if (result.getStatus().equals("failed")) {
-            this.addFeaturesFailed(1);
-        }  else if (result.getStatus().equals("known")) {
-            this.addFeaturesKnown(1);
-        } else {
-            this.addFeaturesUndefined(1);
+        switch (result.getStatus()) {
+            case "passed":
+                this.addFeaturesPassed(1);
+                break;
+            case "failed":
+                this.addFeaturesFailed(1);
+                break;
+            case "known":
+                this.addFeaturesKnown(1);
+                break;
+            default:
+                this.addFeaturesUndefined(1);
+                break;
         }
         this.addScenariosPassed(result.getPassed());
         this.addScenariosFailed(result.getFailed());

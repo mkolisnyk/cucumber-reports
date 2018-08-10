@@ -21,6 +21,10 @@ public class CucumberCustomReport extends SimpleReport {
 
     private String[] jsonUsageReportPaths;
     private String[] customReportTemplateNames;
+    private CustomReportDataBean data;
+        {
+            data = new CustomReportDataBean();
+        }
 
     public CucumberCustomReport() {
         super();
@@ -56,7 +60,6 @@ public class CucumberCustomReport extends SimpleReport {
     @Override
     public void execute(String[] formats) throws Exception {
         this.validateParameters();
-        CustomReportDataBean data = new CustomReportDataBean();
         Map<String, CucumberStepSource[]> usageResults = new LinkedHashMap<String, CucumberStepSource[]>();
         Map<String, CucumberFeatureResult[]> runResults = new LinkedHashMap<String, CucumberFeatureResult[]>();
         for (String file : this.getJsonUsageReportPaths()) {
@@ -125,6 +128,14 @@ public class CucumberCustomReport extends SimpleReport {
                        + this.constructErrorMessage(CucumberReportError.MISSING_TEMPLATE, ""),
                     resourceMap.containsKey(name));
         }
+    }
+    
+    public void setPersonalDataBean(CustomReportDataBean dataBean) {
+        data = dataBean;
+    }
+        
+    public CustomReportDataBean getDataBean() {
+        return data;
     }
 
 }

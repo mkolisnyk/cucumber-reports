@@ -27,6 +27,37 @@ It contains 2 maps:
 * Usage results - associates path to usage report with corresponding usage data stored in the [CucumberStepSource](/cucumber-reports/site/cucumber-report-generator/apidocs/com/github/mkolisnyk/cucumber/reporting/types/usage/CucumberStepSource.html) structure
 * Execution results- associates path to results report with corresponding execution results data stored in the [CucumberFeatureResult](/cucumber-reports/site/cucumber-report-generator/apidocs/com/github/mkolisnyk/cucumber/reporting/types/result/CucumberFeatureResult.html) structure
 
+## System properties and environment variables.
+
 Also, since version 1.3 the set of system properties and map of environment variables was added. It is needed if we want to align results data to some system information.
 
+Here is the example of custom template which lists all system properties and environment variables:
+
+``` xml
+<h1>System Properties</h1>
+<table width="700px">
+<tr><th>Property</th><th>Value</th></tr>
+
+<#list systemProperties?keys as key>
+<tr><td>${key}</td><td>${systemProperties[key]}</td></tr>
+</#list>
+
+</table>
+
+<h1>Environment Variables</h1>
+<table width="700px">
+<tr><th>Variable</th><th>Value</th></tr>
+
+<#list environmentVariables?keys as key>
+<tr><td>${key}</td><td>${environmentVariables[key]}</td></tr>
+</#list>
+```
+
+If you need to use specific environment variable or system property in your freemarker template, you can use instructions like that:
+
+``` xml
+${systemProperties['some.property']}
+${environmentVariables['MY_VARIABLE']}
+```
+ 
 So, each custom template should operate with the above structures

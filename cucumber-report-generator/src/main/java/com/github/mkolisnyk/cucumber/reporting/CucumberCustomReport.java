@@ -68,6 +68,8 @@ public class CucumberCustomReport extends SimpleReport {
             CucumberFeatureResult[] value = this.readFileContent(file);
             runResults.put(file, value);
         }
+        data.setSystemProperties(System.getProperties());
+        data.setEnvironmentVariables(System.getenv());
         data.setRunResults(runResults);
         data.setUsageResults(usageResults);
         for (String reportSuffix : this.getCustomReportTemplateNames()) {

@@ -46,5 +46,5 @@
 		</td>
 	</tr>
 </table>
-<div><b>Overall Duration: ${(stats.overallDuration/3600)?string["0"]}h ${((stats.overallDuration % 3600) / 60)?string["00"]}m ${((stats.overallDuration % 3600) % 60)?string["00"]}s</b></div>
+<div><b>Overall Duration: ${(stats.overallDuration/3600)?string["0;; roundingMode=floor"]}h ${((stats.overallDuration % 3600) / 60)?string["00"]}m ${((stats.overallDuration % 3600) % 60)?string["00"]}s</b></div>
 </#macro>

@@ -13,7 +13,7 @@ The idea of custom report is to provide common set of Cucumber results to user d
 
 [Extended Cucumber Runner](/cucumber-reports/extended-cucumber-runner) reserves several configuration options which enable Custom Report generation. They are:
 
-* **customReport** - Flag which enables/disables generation of the [Custom Report](/cucumber-reports/custom-report) | false |
+* **customReport** - Flag which enables/disables generation of the [Custom Report](/cucumber-reports/custom-report)
 * **customReportTemplateNames** - The list of template names to be used for custom report. They should be defined as a part of [Custom Templates](/cucumber-reports/customizing-report-format).
 
 **NOTE:** All custom templates defined with **customReportTemplateNames** must be loaded.

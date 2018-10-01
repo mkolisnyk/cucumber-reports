@@ -3,6 +3,11 @@ title: Cucumber Reports News
 layout: null
 ---
 
+## 28.09.2019 1.3.5 Version Release
+
+* [#179](https://github.com/mkolisnyk/cucumber-reports/issues/179) Bugfix: "Overall Duration" as shown in the aggregate and the test results reports are not matching with the actual execution time
+* [#184](https://github.com/mkolisnyk/cucumber-reports/issues/184) Enhancement: Custom report, get run date and env values
+
 ## 17.07.2018 1.3.4 Version Release
 
 * [#174](https://github.com/mkolisnyk/cucumber-reports/issues/174) Bugfix:jsonUsageReports parameter is not including the other usage JSON files into the report

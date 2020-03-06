@@ -18,7 +18,6 @@ dependencies {
     compile 'batik:batik-transcoder:1.6-1'
 	compile 'com.cedarsoftware:json-io:4.9.12'
 	compile 'com.github.mkolisnyk:cucumber-report-generator:1.1'
-	compile 'com.itextpdf:itextpdf:5.5.11'
 	compile 'commons-codec:commons-codec:1.10'
 	compile 'info.cukes:cucumber-junit:1.2.5'
 	compile 'info.cukes:cucumber-testng:1.2.5'

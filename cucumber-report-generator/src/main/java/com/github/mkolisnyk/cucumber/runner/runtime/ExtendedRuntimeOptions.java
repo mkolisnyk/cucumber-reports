@@ -157,6 +157,7 @@ public class ExtendedRuntimeOptions {
             }
             size = args.size();
         }
+        initSystemProperties();
         processParameters();
     }
     public ExtendedRuntimeOptions(ExtendedCucumberOptions options) throws Exception {
@@ -198,6 +199,11 @@ public class ExtendedRuntimeOptions {
             this.customTemplatesPath = options.customTemplatesPath();
             this.formats = options.formats();
         }
+        initSystemProperties();
+        processParameters();
+    }
+
+    private void initSystemProperties() throws Exception {
         for (Field field : this.getClass().getDeclaredFields()) {
             String propertyName = "cucumber.reports." + field.getName();
             if (System.getProperties().containsKey(propertyName)) {
@@ -210,7 +216,6 @@ public class ExtendedRuntimeOptions {
                 }
             }
         }
-        processParameters();
     }
 
     private static void loadUsageTextIfNeeded() {

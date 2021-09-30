@@ -8,7 +8,7 @@
 	<artifactId>cucumber-report-generator</artifactId>
 	<name>Cucumber Report Generator</name>
 	<description>
-		The part of the Cucumber Reports library directly responsible for 
+		The part of the Cucumber Reports library directly responsible for
 		reports generation.
 	</description>
 	<packaging>jar</packaging>
@@ -216,7 +216,7 @@
 				</plugin>
 			</plugins>
 		</pluginManagement>
-		
+
 	</build>
 	<dependencies>
 		<dependency>
@@ -234,11 +234,6 @@
 					<artifactId>fop</artifactId>
 				</exclusion>
 			</exclusions>
-		</dependency>
-		<dependency>
-			<groupId>com.itextpdf</groupId>
-			<artifactId>itextpdf</artifactId>
-			<version>5.5.12</version>
 		</dependency>
 		<dependency>
 			<groupId>com.cedarsoftware</groupId>

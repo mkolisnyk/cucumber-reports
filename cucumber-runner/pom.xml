@@ -40,11 +40,6 @@
 			</exclusions>
 		</dependency>
 		<dependency>
-			<groupId>com.itextpdf</groupId>
-			<artifactId>itextpdf</artifactId>
-			<version>5.5.11</version>
-		</dependency>
-		<dependency>
 			<groupId>com.cedarsoftware</groupId>
 			<artifactId>json-io</artifactId>
 			<version>4.9.12</version>
